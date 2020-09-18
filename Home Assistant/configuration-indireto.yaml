@@ -1,15 +1,43 @@
 sensor:
   - platform: mqtt
-    name: "Contador - Tensão"
+    name: "Contador - Tensão L1"
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Voltage_P1|float }}'
+    value_template: '{{ value_json.EB.Voltage_L1|float }}'
     unit_of_measurement: "V"
     icon: mdi:flash
 
   - platform: mqtt
-    name: "Contador - Corrente"
+    name: "Contador - Tensão L2"
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Current_P1|float }}'
+    value_template: '{{ value_json.EB.Voltage_L2|float }}'
+    unit_of_measurement: "V"
+    icon: mdi:flash
+
+  - platform: mqtt
+    name: "Contador - Tensão L3"
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Voltage_L3|float }}'
+    unit_of_measurement: "V"
+    icon: mdi:flash
+
+  - platform: mqtt
+    name: "Contador - Corrente L1"
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Current_L1|float }}'
+    unit_of_measurement: "A"
+    icon: mdi:power-socket
+
+- platform: mqtt
+    name: "Contador - Corrente L2"
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Current_L2|float }}'
+    unit_of_measurement: "A"
+    icon: mdi:power-socket
+
+- platform: mqtt
+    name: "Contador - Corrente L3"
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Current_L3|float }}'
     unit_of_measurement: "A"
     icon: mdi:power-socket
 
