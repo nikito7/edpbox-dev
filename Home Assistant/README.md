@@ -26,8 +26,12 @@ Deverá re-iniciar a sua instalação do Home Assistant Core e, posteriormente, 
 
 ```yaml
 entities:
-  - entity: sensor.edp_box_tensao
-  - entity: sensor.edp_box_corrente
+  - entity: sensor.edp_box_tensao_l1
+  - entity: sensor.edp_box_tensao_l2
+  - entity: sensor.edp_box_tensao_l3
+  - entity: sensor.edp_box_corrente_l1
+  - entity: sensor.edp_box_corrente_l2
+  - entity: sensor.edp_box_corrente_l3
   - entity: sensor.edp_box_potencia_ativa
   - entity: sensor.edp_box_fator_de_potencia
   - entity: sensor.edp_box_frequencia
