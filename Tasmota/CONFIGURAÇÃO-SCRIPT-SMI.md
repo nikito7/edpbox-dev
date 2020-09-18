@@ -16,10 +16,10 @@ Deverá ativar a opção de "script ativado" e colar o seguinte script:
 
 1,=hVALORES TÉCNICOS
 1,010404UUuuxxxx@i0:10,Tensão L1,V,Voltage_L1,17
-1,010404xxxxUUuu@i0:10,Corrente L1,A,Current_L1,17
 1,010404UUuuxxxx@i9:10,Tensão L2,V,Voltage_L2,17
-1,010404xxxxUUuu@i9:10,Corrente L2,A,Current_L2,17
 1,010404UUuuxxxx@i10:10,Tensão L3,V,Voltage_L3,17
+1,010404xxxxUUuu@i0:10,Corrente L1,A,Current_L1,17
+1,010404xxxxUUuu@i9:10,Corrente L2,A,Current_L2,17
 1,010404xxxxUUuu@i10:10,Corrente L3,A,Current_L3,17
 1,010408UUuuUUuuxxxxxxxxxxxx@i1:1,Potência ativa,W,Power_P1,16
 1,010406xxxxxxxxUUuu@i2:1000,Fator de potência,pu,PFactor_P1,19
