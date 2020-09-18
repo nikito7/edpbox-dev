@@ -23,7 +23,7 @@ Trifásico
 1,010404xxxxUUuu@i9:10,Corrente L2,A,Current_L2,17
 1,010404xxxxUUuu@i10:10,Corrente L3,A,Current_L3,17
 
-1,010406UUuuxxxx@i2:1000,Factor Potência,pu,PFactor_P1,19
+1,010406xxxxUUuu@i2:1000,Factor Potência,pu,PFactor_P1,19
 1,01040aUUuuxxxx@i3:10,Frequência,Hz,Frequency_P1,17
 
 1,010408UUuuUUuuxxxxxxxxxxxx@i1:1,Potência Activa,W,Power_P1,16
