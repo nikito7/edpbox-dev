@@ -12,11 +12,13 @@ Deverá ativar a opção de "script ativado" e colar o seguinte script:
  
 >M 1
  
-+1,14,m,1,9600,EDPBOX,5,50,0104006C,01040079,0104007A,0104007F,01040026,01040027,01040028,0104000B,01040084
- 
++1,14,m,1,9600,EDPBOX,5,50,0104006C,01040079,0104007A,0104007F,01040026,01040027,01040028,0104000B,01040084,0104006E,01040070
+
 1,=hVALORES TÉCNICOS
 1,010404UUuuxxxx@i0:10,Tensão L1,V,Voltage_L1,17
 1,010404xxxxUUuu@i0:10,Corrente L1,A,Current_L1,17
+1,010404UUuuxxxx@i9:10,Tensão L2,V,Voltage_L2,17
+1,010404xxxxUUuu@i10:10,Corrente L2,A,Current_L2,17
 1,010408UUuuUUuuxxxxxxxxxxxx@i1:1,Potência ativa,W,Power_P1,16
 1,010406xxxxxxxxUUuu@i2:1000,Fator de potência,pu,PFactor_P1,19
 1,01040aUUuuxxxx@i3:10,Frequência,Hz,Frequency_P1,17
