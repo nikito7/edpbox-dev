@@ -2,10 +2,11 @@
 
 All credits to https://github.com/tiagofreire-pt for the original work. Many thanks.
 
-![Tasmota](./20200919_220314.jpg)
+Tasmota:
+![Tasmota](./20200919_220349.jpg)
 
-Home Assistant
-
+Home Assistant:
+![Home Assistant](./20200919_220314.jpg)
 
 # Âmbito
 
