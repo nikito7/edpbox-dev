@@ -72,7 +72,7 @@ sensor:
     icon: mdi:power-plug
     
   - platform: mqtt
-    name: "EB Total Vazio (1)"
+    name: "EB Total Vazio T1"
     unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Energy_P1_R1|float }}'
@@ -80,7 +80,7 @@ sensor:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Total Ponta (2)"
+    name: "EB Total Ponta T2"
     unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Energy_P1_R2|float }}'
@@ -88,7 +88,7 @@ sensor:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Total Cheia (3)"
+    name: "EB Total Cheia T3"
     unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Energy_P1_R3|float }}'
