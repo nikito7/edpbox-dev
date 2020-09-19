@@ -33,7 +33,7 @@ Deverá obrigatoriamente adicionar a configuração seguinte quando lhe o for so
 #ifdef USE_RULES
 #undef USE_RULES
 #endif
-#define SML_MAX_VARS 12
+#define SML_MAX_VARS 20
 ```
 
 Mais info, [aqui](https://tasmota.github.io/docs/Smart-Meter-Interface/).
