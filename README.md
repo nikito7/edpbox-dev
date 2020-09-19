@@ -3,7 +3,7 @@
 All credits to https://github.com/tiagofreire-pt for the original work. Many thanks.
 
 Tasmota
-!
+!(./20200919_220314.jpg)
 Home Assistant
 
 
