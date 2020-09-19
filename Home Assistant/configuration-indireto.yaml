@@ -1,6 +1,7 @@
 sensor:
   - platform: mqtt
     name: "EB Tensão L1"
+    unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Voltage_L1|float }}'
     unit_of_measurement: "V"
@@ -8,6 +9,7 @@ sensor:
 
   - platform: mqtt
     name: "EB Tensão L2"
+    unique_id: ebten2
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Voltage_L2|float }}'
     unit_of_measurement: "V"
@@ -15,6 +17,7 @@ sensor:
 
   - platform: mqtt
     name: "EB Tensão L3"
+    unique_id: ebten3
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Voltage_L3|float }}'
     unit_of_measurement: "V"
@@ -22,6 +25,7 @@ sensor:
 
   - platform: mqtt
     name: "EB Corrente L1"
+    unique_id: ebcur1
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Current_L1|float }}'
     unit_of_measurement: "A"
@@ -29,6 +33,7 @@ sensor:
 
 - platform: mqtt
     name: "EB Corrente L2"
+    unique_id: ebcur2
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Current_L2|float }}'
     unit_of_measurement: "A"
@@ -36,6 +41,7 @@ sensor:
 
 - platform: mqtt
     name: "EB Corrente L3"
+    unique_id: ebcur3
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Current_L3|float }}'
     unit_of_measurement: "A"
@@ -43,6 +49,7 @@ sensor:
 
   - platform: mqtt
     name: "EB Factor de Potência"
+    unique_id: ebpfactor
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.PFactor_P1|float }}'
     unit_of_measurement: "p.u."
@@ -50,6 +57,7 @@ sensor:
     
   - platform: mqtt
     name: "EB Frequência"
+    unique_id: ebfreq
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Frequency_P1|float }}'
     unit_of_measurement: "Hz"
@@ -57,6 +65,7 @@ sensor:
     
   - platform: mqtt
     name: "EB Potência Activa"
+    unique_id: ebpowerp1
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Power_P1|float }}'
     unit_of_measurement: "W"
@@ -64,6 +73,7 @@ sensor:
     
   - platform: mqtt
     name: "EB Total Vazio (1)"
+    unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Energy_P1_R1|float }}'
     unit_of_measurement: "kWh"
@@ -71,6 +81,7 @@ sensor:
     
   - platform: mqtt
     name: "EB Total Ponta (2)"
+    unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Energy_P1_R2|float }}'
     unit_of_measurement: "kWh"
@@ -78,6 +89,7 @@ sensor:
     
   - platform: mqtt
     name: "EB Total Cheia (3)"
+    unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
     value_template: '{{ value_json.EB.Energy_P1_R3|float }}'
     unit_of_measurement: "kWh"
@@ -85,6 +97,7 @@ sensor:
     
   - platform: mqtt
     name: "EB Tarifa"
+    unique_id: ebtariff
     state_topic: "tele/contador/SENSOR"
     value_template: >-
       {% if value_json.EB.Tariff_P1|int == 1 %}
@@ -100,6 +113,7 @@ sensor:
     
   - platform: mqtt
     name: "EB Estado DCP"
+    unique_id: ebdcpstate
     state_topic: "tele/contador/SENSOR"
     value_template: >-
       {% if value_json.EB.DCP_P1|int == 0 %}
