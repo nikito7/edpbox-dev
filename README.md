@@ -2,6 +2,9 @@
 
 All credits to https://github.com/tiagofreire-pt for the original work. Many thanks.
 
+Tasmota
+!
+Home Assistant
 
 
 # Âmbito
