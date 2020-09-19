@@ -1,6 +1,6 @@
 # Info
 
-All credits to github.com/tiagofreire-pt for the original work. Many thanks.
+All credits to @tiagofreire-pt for the original work. Many thanks.
 
 Tasmota:
 ![Tasmota](./20200919_220349.jpg)
