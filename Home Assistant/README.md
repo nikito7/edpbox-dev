@@ -35,9 +35,9 @@ entities:
   - entity: sensor.eb_potencia_activa
   - entity: sensor.eb_factor_de_potencia
   - entity: sensor.eb_frequencia
-  - entity: sensor.eb_total_vazio_1
-  - entity: sensor.eb_total_ponta_2
-  - entity: sensor.eb_total_cheia_3
+  - entity: sensor.eb_total_vazio_t1
+  - entity: sensor.eb_total_ponta_t2
+  - entity: sensor.eb_total_cheia_t3
   - entity: sensor.eb_tarifa
   - entity: sensor.eb_estado_dcp
 show_header_toggle: false
