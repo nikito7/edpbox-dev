@@ -26,65 +26,27 @@ Deverá re-iniciar a sua instalação do Home Assistant Core e, posteriormente, 
 
 ```yaml
 entities:
-  - entity: sensor.edp_box_tensao_l1
-  - entity: sensor.edp_box_tensao_l2
-  - entity: sensor.edp_box_tensao_l3
-  - entity: sensor.edp_box_corrente_l1
-  - entity: sensor.edp_box_corrente_l2
-  - entity: sensor.edp_box_corrente_l3
-  - entity: sensor.edp_box_potencia_ativa
-  - entity: sensor.edp_box_fator_de_potencia
-  - entity: sensor.edp_box_frequencia
-  - entity: sensor.edp_box_total_vazio
-  - entity: sensor.edp_box_total_ponta
-  - entity: sensor.edp_box_total_cheia
-  - entity: sensor.edp_box_tarifa
-  - entity: sensor.edp_box_estado_dcp
+  - entity: sensor.eb_tensao_l1
+  - entity: sensor.eb_tensao_l2
+  - entity: sensor.eb_tensao_l3
+  - entity: sensor.eb_corrente_l1
+  - entity: sensor.eb_corrente_l2
+  - entity: sensor.eb_corrente_l3
+  - entity: sensor.eb_potencia_activa
+  - entity: sensor.eb_factor_de_potencia
+  - entity: sensor.eb_frequencia
+  - entity: sensor.eb_total_vazio_1
+  - entity: sensor.eb_total_ponta_2
+  - entity: sensor.eb_total_cheia_3
+  - entity: sensor.eb_tarifa
+  - entity: sensor.eb_estado_dcp
 show_header_toggle: false
 title: Contador
 type: entities
 
 ```
 
-# Método direto
 
-## Ligação física entre o contador inteligente e o hub com Home Assistant Core
-
-Deverá garantir a ligação ao contador, seguindo [estas instruções](./LIGACOES_DIRETO.md).
-
-## Ficheiro de configuração
-
-Deverá transpôr o conteúdo do ficheiro [configuration.yaml](./configuration-direto.yaml) para o seu, na sua instalação de Home Assistante Core.
-
-Esta configuração permitirá obter as seguintes entidades de consumo e estados, em valores instantâneos (à data de 16/06/2020):
-
-* Tensão (V)
-* Intensidade de corrente (A)
-* Fator de potência (W)
-* Frequência da rede eléctrica (Hz)
-* Tarifa
-* Estado do Disjuntor Controlador de Potência (DCP)
-
-## Personalizar as entidades geradas
-
-Para personalizar os sensores gerados com essa configuração, é proposto um código e conteúdo para colocar no seu ficheiro [customize.yaml](./customize.yaml)
-
-## Aplicação das configurações
-
-Deverá re-iniciar a sua instalação do Home Assistant Core e, posteriormente, poderá configurar um cartão do `lovelace`, conforme a seguinte proposta:
-
-```yaml
-entities:
-  - entity: sensor.voltage_l1
-  - entity: sensor.current_l1
-  - entity: sensor.tariff
-  - entity: sensor.power_factor
-  - entity: sensor.frequency
-  - entity: sensor.switch_control_state
-show_header_toggle: false
-title: Contador
-type: entities
-```
 
 # Mais info
 
