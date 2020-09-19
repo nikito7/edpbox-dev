@@ -1,7 +1,7 @@
 # Âmbito
 
 
-All credits to @tiagofreire-pt for the original work. Many thanks.
+All credits to https://github.com/tiagofreire-pt for the original work. Many thanks.
 
 
 A integração de contadores inteligentes com sistemas de domótica permite potenciar automações, controlo e análises com base na informação disponível das grandezas elétricas e estados do equipamento. Nomeadamente, tensão, intensidade de corrente, potência ativa, fator de potência, frequência, estado do disjuntor controlador de potência, *et al*.
