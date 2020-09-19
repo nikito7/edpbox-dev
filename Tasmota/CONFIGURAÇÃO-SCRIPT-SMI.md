@@ -14,7 +14,7 @@ Trifásico
  
 >M 1
  
-+1,14,m,1,9600,EB,5,50,0104006C,0104006E,01040070,01040079,0104007A,0104007F,01040026,01040028,0104000B,01040084
++1,14,m,1,9600,EB,5,50,0104006C,0104006E,01040070,01040079,0104007A,0104007F,01040026,01040028
  
 1,010404UUuuxxxx@i0:10,Tensão L1,V,Voltage_L1,16
 1,010404UUuuxxxx@i1:10,Tensão L2,V,Voltage_L2,16
@@ -31,10 +31,8 @@ Trifásico
 1,010408UUuuUUuuxxxxxxxxxxxx@i6:1000,Vazio (1),kWh,Energy_P1_R1,16
 1,010408xxxxxxxxUUuuUUuuxxxx@i6:1000,Ponta (2),kWh,Energy_P1_R2,16
 1,010408UUuuUUuuxxxxxxxxxxxx@i7:1000,Cheia (3),kWh,Energy_P1_R3,16
-1,=h&#8205;
-1,010406uuxxxxxxxxxx@i8:1,Tarifa,,Tariff_P1,16
-1,010406uuxxxxxxxxxx@i9:1,DCP,,DCP_P1,16
-
+  
+  
 #
 
 ```
