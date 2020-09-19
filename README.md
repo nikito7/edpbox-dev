@@ -48,12 +48,9 @@ São propostas duas alternativas distintas possíveis para integração:
 - Home Assistant Core instalado (versão inicial de prova de conceito: 0.106.6. Recomendada a versão 0.109.7 ou superior);
 - Mosquitto MQTT Broker instalado (versão 5.0 ou superior, como add-on oficial em Home Assistant Core. Ou qualquer outro broker MQTT à sua escolha);
 - Acessórios de ligação variados.
-## Exclusivamente para o 1º método (indireto)
+## Exclusivamente para o método (indireto)
 - Conversor TTL vs RS-485 (por exemplo, "TTL to RS485 For Arduino")
 - Wemos D1 Mini
-## Exclusivamente para o 2º método (direto)
-- Conversor USB - TTL vs RS-485 (por exemplo, "Waveshare Industrial USB to RS485")
-- Cabo extensor USB "A macho" - "A fêmea" (recomendado)
 
 
 # Fontes
