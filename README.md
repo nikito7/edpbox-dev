@@ -1,5 +1,9 @@
 # Âmbito
 
+
+All credits to @tiagofreire-pt for the original work. Many thanks.
+
+
 A integração de contadores inteligentes com sistemas de domótica permite potenciar automações, controlo e análises com base na informação disponível das grandezas elétricas e estados do equipamento. Nomeadamente, tensão, intensidade de corrente, potência ativa, fator de potência, frequência, estado do disjuntor controlador de potência, *et al*.
 
 A EDP Distribuição S.A. surge neste contexto enquanto Operadora da Rede de Distribuição de baixa tensão. Independentemente do comercializador de energia elétrica com quem tem contrato de fornecimento e de estar em mercado regulado ou liberalizado.
