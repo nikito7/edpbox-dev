@@ -76,16 +76,3 @@ Todas as marcas registadas, nomes de produtos ou de marcas, referidas neste docu
 
 - 4 de Julho de 2020: segunda integração validada e publicada, através de MQTT e WIFI.
 - 13 de Março de 2020: primeira integração publicada e validada, através de USB.
-
-# A fazeres
-
-Método direto:
-- [ ] Potência ativa
-- [ ] Totalizadores de energia
-- [ ] Religação do DCP
-
-Método indireto (atualizado em 05/07/2020):
-- [X] Tarifa
-- [X] Estado do DCP
-- [X] Totalizadores de energia
-- [ ] Religação do DCP
