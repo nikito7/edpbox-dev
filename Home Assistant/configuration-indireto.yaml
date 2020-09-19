@@ -31,7 +31,7 @@ sensor:
     unit_of_measurement: "A"
     icon: mdi:power-socket
 
-- platform: mqtt
+  - platform: mqtt
     name: "EB Corrente L2"
     unique_id: ebcur2
     state_topic: "tele/contador/SENSOR"
@@ -39,7 +39,7 @@ sensor:
     unit_of_measurement: "A"
     icon: mdi:power-socket
 
-- platform: mqtt
+  - platform: mqtt
     name: "EB Corrente L3"
     unique_id: ebcur3
     state_topic: "tele/contador/SENSOR"
