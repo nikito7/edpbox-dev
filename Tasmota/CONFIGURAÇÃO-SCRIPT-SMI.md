@@ -28,9 +28,9 @@ Trifásico
 1,010406xxxxxxxxUUuu@i2:1000,Factor de Potência,pu,PFactor_P1,19
 1,01040aUUuuxxxx@i3:10,Frequência,Hz,Frequency_P1,17
 
-1,010408UUuuUUuuxxxxxxxxxxxx@i4:1000,Vazio (1),kWh,Energy_P1_R1,17
-1,010408UUuuUUuuxxxxxxxxxxxx@i5:1000,Ponta (2),kWh,Energy_P1_R2,17
-1,010408UUuuUUuuxxxxxxxxxxxx@i6:1000,Cheia (3),kWh,Energy_P1_R3,17
+1,010408UUuuUUuuxxxxxxxxxxxx@i4:1000,Vazio T1,kWh,Energy_P1_R1,17
+1,010408UUuuUUuuxxxxxxxxxxxx@i5:1000,Ponta T2,kWh,Energy_P1_R2,17
+1,010408UUuuUUuuxxxxxxxxxxxx@i6:1000,Cheia T3,kWh,Energy_P1_R3,17
 
 1,010406uuxxxxxxxx@i9:1,Tarifa,,Tariff_P1,16
 1,010406uuxxxxxxxx@i10:1,DCP,,DCP_P1,16
