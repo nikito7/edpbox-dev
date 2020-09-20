@@ -3,18 +3,21 @@ sensor:
     name: "EB Tensão L1"
     unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
-    unit_of_measurement: "V"
     value_template: >-
       {% if value_json.EB.Voltage_L1|float > 1 %}
         {{ value_json.EB.Voltage_L1|float }}
       {% endif %}
+    unit_of_measurement: "V"
     icon: mdi:flash
 
   - platform: mqtt
     name: "EB Tensão L2"
     unique_id: ebten2
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Voltage_L2|float }}'
+    value_template: >-
+      {% if value_json.EB.Voltage_L2|float > 1 %}
+        {{ value_json.EB.Voltage_L2|float }}
+      {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
 
@@ -22,7 +25,10 @@ sensor:
     name: "EB Tensão L3"
     unique_id: ebten3
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Voltage_L3|float }}'
+    value_template: >-
+      {% if value_json.EB.Voltage_L3|float > 1 %}
+        {{ value_json.EB.Voltage_L3|float }}
+      {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
 
