@@ -8,6 +8,9 @@ Tasmota:
 Home Assistant:
 ![Home Assistant](./20200919_220314.jpg)
 
+
+__ Original stuff below __
+
 # Âmbito
 
 A integração de contadores inteligentes com sistemas de domótica permite potenciar automações, controlo e análises com base na informação disponível das grandezas elétricas e estados do equipamento. Nomeadamente, tensão, intensidade de corrente, potência ativa, fator de potência, frequência, estado do disjuntor controlador de potência, *et al*.
