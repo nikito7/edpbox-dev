@@ -3,8 +3,11 @@ sensor:
     name: "EB Tensão L1"
     unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Voltage_L1|float }}'
     unit_of_measurement: "V"
+    value_template: >-
+      {% if value_json.EB.Voltage_L1|float > 1 %}
+        {{ value_json.EB.Voltage_L1|float }}
+      {% endif %}
     icon: mdi:flash
 
   - platform: mqtt
