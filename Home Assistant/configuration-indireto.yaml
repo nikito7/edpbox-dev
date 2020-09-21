@@ -1,6 +1,22 @@
 sensor:
 
   - platform: mqtt
+    name: "EB ESP Uptime"
+    unique_id: eb_esp_uptime
+    state_topic: "tele/contador/STATE"
+    value_template: '{{ value_json.UptimeSec }}'
+    unit_of_measurement: "s"
+    icon: mdi:uptime
+
+  - platform: mqtt
+    name: "EB ESP LoadAvg"
+    unique_id: eb_esp_loadavg
+    state_topic: "tele/contador/STATE"
+    value_template: '{{ value_json.LoadAvg }}'
+    unit_of_measurement: "%"
+    icon: mdi:uptime
+
+  - platform: mqtt
     name: "EB ESP Signal"
     unique_id: eb_esp_signal
     state_topic: "tele/contador/STATE"
