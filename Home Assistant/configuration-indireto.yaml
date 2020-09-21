@@ -137,7 +137,7 @@ sensor:
     icon: 'mdi:counter'
     
   - platform: mqtt
-    name: "EB Estado DCP"
+    name: "EB Estado do DCP"
     unique_id: ebdcpstate
     state_topic: "tele/contador/SENSOR"
     value_template: >-
