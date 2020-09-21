@@ -1,6 +1,14 @@
 sensor:
 
   - platform: mqtt
+    name: "EB ESP Signal"
+    unique_id: eb_esp_signal
+    state_topic: "tele/contador/STATE"
+    value_template: '{{ value_json.Wifi.Signal }}'
+    unit_of_measurement: "dBm"
+    icon: mdi:signal
+
+  - platform: mqtt
     name: "EB Tensão L1"
     unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
