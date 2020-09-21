@@ -4,7 +4,7 @@ sensor:
     unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L1|float > 1 %}
+      {% if value_json.EB.Voltage_L1|float > 0 %}
         {{ value_json.EB.Voltage_L1|float }}
       {% endif %}
     unit_of_measurement: "V"
@@ -15,7 +15,7 @@ sensor:
     unique_id: ebten2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L2|float > 1 %}
+      {% if value_json.EB.Voltage_L2|float > 0 %}
         {{ value_json.EB.Voltage_L2|float }}
       {% endif %}
     unit_of_measurement: "V"
@@ -26,7 +26,7 @@ sensor:
     unique_id: ebten3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L3|float > 1 %}
+      {% if value_json.EB.Voltage_L3|float > 0 %}
         {{ value_json.EB.Voltage_L3|float }}
       {% endif %}
     unit_of_measurement: "V"
@@ -60,7 +60,10 @@ sensor:
     name: "EB Factor de Potência"
     unique_id: ebpfactor
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.PFactor_P1|float }}'
+    value_template: >-
+      {% if value_json.EB.PFactor_P1|float > 0.1 %}
+        {{ value_json.EB.PFactor_P1|float }}
+      {% endif %}
     unit_of_measurement: "p.u."
     icon: mdi:percent
     
@@ -68,7 +71,10 @@ sensor:
     name: "EB Frequência"
     unique_id: ebfreq
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Frequency_P1|float }}'
+    value_template: >-
+      {% if value_json.EB.Frequency_P1|float > 0 %}
+        {{ value_json.EB.Frequency_P1|float }}
+      {% endif %}
     unit_of_measurement: "Hz"
     icon: mdi:current-ac
     
@@ -76,7 +82,10 @@ sensor:
     name: "EB Potência Activa"
     unique_id: ebpowerp1
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Power_P1|float }}'
+    value_template: >-
+      {% if value_json.EB.Power_P1|float > 0 %}
+        {{ value_json.EB.Power_P1|float }}
+      {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
     
@@ -84,7 +93,10 @@ sensor:
     name: "EB Total Vazio T1"
     unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Energy_P1_R1|float }}'
+    value_template: >-
+      {% if value_json.EB.Energy_P1_R1|float > 0.1 %}
+        {{ value_json.EB.Energy_P1_R1|float }}
+      {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
@@ -92,7 +104,10 @@ sensor:
     name: "EB Total Ponta T2"
     unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Energy_P1_R2|float }}'
+    value_template: >-
+      {% if value_json.EB.Energy_P1_R2|float > 0.1 %}
+        {{ value_json.EB.Energy_P1_R2|float }}
+      {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
@@ -100,7 +115,10 @@ sensor:
     name: "EB Total Cheia T3"
     unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Energy_P1_R3|float }}'
+    value_template: >-
+      {% if value_json.EB.Energy_P1_R3|float > 0.1 %}
+        {{ value_json.EB.Energy_P1_R3|float }}
+      {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
@@ -130,7 +148,7 @@ sensor:
       {% elif value_json.EB.DCP_P1|int == 1 %}
         {{ 'Ligado' }}
       {% elif value_json.EB.DCP_P1|int == 2 %}
-        {{ 'Preparado para religação' }}
+        {{ 'Preparado' }}
       {% else %}
         {{ value_json.EB.DCP_P1|string }}
       {% endif %}
