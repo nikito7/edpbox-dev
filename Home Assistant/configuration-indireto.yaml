@@ -1,4 +1,5 @@
 sensor:
+
   - platform: mqtt
     name: "EB Tensão L1"
     unique_id: ebten1
@@ -133,11 +134,13 @@ sensor:
         {{ 'Ponta' }}
       {% elif value_json.EB.Tariff_P1|int == 3 %}
         {{ 'Cheia' }}
+      {% elif value_json.EB.Tariff_P1|int %}
+        {{ 'Desconhecida' }}
       {% endif %}
     icon: 'mdi:counter'
     
   - platform: mqtt
-    name: "EB Estado do DCP"
+    name: "EB Estado DCP"
     unique_id: ebdcpstate
     state_topic: "tele/contador/SENSOR"
     value_template: >-
