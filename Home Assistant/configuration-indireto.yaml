@@ -129,13 +129,11 @@ sensor:
     state_topic: "tele/contador/SENSOR"
     value_template: >-
       {% if value_json.EB.Tariff_P1|int == 1 %}
-        {{ 'Vazio' }}
+        {{ 'Vazio T1' }}
       {% elif value_json.EB.Tariff_P1|int == 2 %}
-        {{ 'Ponta' }}
+        {{ 'Ponta T2' }}
       {% elif value_json.EB.Tariff_P1|int == 3 %}
-        {{ 'Cheia' }}
-      {% elif value_json.EB.Tariff_P1|int %}
-        {{ 'Desconhecida' }}
+        {{ 'Cheia T3' }}
       {% endif %}
     icon: 'mdi:counter'
     
