@@ -133,8 +133,6 @@ sensor:
         {{ 'Ponta' }}
       {% elif value_json.EB.Tariff_P1|int == 3 %}
         {{ 'Cheia' }}
-      {% else %}
-        {{ value_json.EB.Tariff_P1|string }}
       {% endif %}
     icon: 'mdi:counter'
     
