@@ -26,6 +26,9 @@ Deverá re-iniciar a sua instalação do Home Assistant Core e, posteriormente, 
 
 ```yaml
 entities:
+  - entity: sensor.eb_esp_uptime
+  - entity: sensor.eb_esp_loadavg
+  - entity: sensor.eb_esp_signal
   - entity: sensor.eb_tensao_l1
   - entity: sensor.eb_tensao_l2
   - entity: sensor.eb_tensao_l3
