@@ -2,7 +2,7 @@
 
 ## Descarga do firmware Tasmota pré-compilado (recomendado)
 
-Deverá descarregar o firmware pré-compilado, [aqui](./). 
+Deverá descarregar o firmware pré-compilado, [aqui](https://github.com/nikito7/HA_EDP_Box_Trifasico_Addon/releases). 
 
 Este firmware pré-compilado é **personalizado** para esta abordagem, sendo baseado no repositório do Tasmota, versão 8.5.0 (20 vars), preparado para memória flash até 1 MB. Compatível com Wemos D1 Mini e outros dispositivos, por exemplo, da marca Sonoff ou NodeMCU.
 
