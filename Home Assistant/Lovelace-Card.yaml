@@ -1,5 +1,4 @@
 
-```yaml
 entities:
   - entity: sensor.eb_esp_uptime
   - entity: sensor.eb_esp_vcc
@@ -22,5 +21,4 @@ entities:
 show_header_toggle: false
 type: entities
 
-```
 
