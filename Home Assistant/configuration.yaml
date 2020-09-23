@@ -123,7 +123,7 @@ sensor:
     icon: mdi:power-plug
     
   - platform: mqtt
-    name: "EB Total Vazio T1"
+    name: "EB Vazio T1"
     unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -134,7 +134,7 @@ sensor:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Total Ponta T2"
+    name: "EB Ponta T2"
     unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -145,12 +145,23 @@ sensor:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Total Cheia T3"
+    name: "EB Cheia T3"
     unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_P1_R3|float > 0.1 %}
         {{ value_json.EB.Energy_P1_R3|float }}
+      {% endif %}
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+
+  - platform: mqtt
+    name: "EB Consumo Total"
+    unique_id: ebenergysum
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Energy_P1_Sum|float > 0.1 %}
+        {{ value_json.EB.Energy_P1_Sum|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -166,21 +177,8 @@ sensor:
         {{ 'Ponta T2' }}
       {% elif value_json.EB.Tariff_P1|int == 3 %}
         {{ 'Cheia T3' }}
+      {% else %}
+        {{ 'Desconhecida' }}
       {% endif %}
     icon: 'mdi:counter'
-    
-  - platform: mqtt
-    name: "EB Estado DCP"
-    unique_id: ebdcpstate
-    state_topic: "tele/contador/SENSOR"
-    value_template: >-
-      {% if value_json.EB.DCP_P1|int == 0 %}
-        {{ 'Desligado' }}
-      {% elif value_json.EB.DCP_P1|int == 1 %}
-        {{ 'Ligado' }}
-      {% elif value_json.EB.DCP_P1|int == 2 %}
-        {{ 'Preparado' }}
-      {% else %}
-        {{ value_json.EB.DCP_P1|string }}
-      {% endif %}
-    icon: 'mdi:cog-refresh'
+
