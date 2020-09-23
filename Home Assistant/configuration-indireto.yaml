@@ -4,8 +4,8 @@ sensor:
     name: "EB ESP Uptime"
     unique_id: eb_esp_uptime
     state_topic: "tele/contador/STATE"
-    value_template: '{{ value_json.UptimeSec }}'
-    unit_of_measurement: "s"
+    value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
+    unit_of_measurement: "h"
     icon: mdi:alarm
 
   - platform: mqtt
