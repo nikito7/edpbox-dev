@@ -1,0 +1,26 @@
+
+```yaml
+entities:
+  - entity: sensor.eb_esp_uptime
+  - entity: sensor.eb_esp_vcc
+  - entity: sensor.eb_esp_load
+  - entity: sensor.eb_esp_signal
+  - entity: sensor.eb_tensao_l1
+  - entity: sensor.eb_tensao_l2
+  - entity: sensor.eb_tensao_l3
+  - entity: sensor.eb_corrente_l1
+  - entity: sensor.eb_corrente_l2
+  - entity: sensor.eb_corrente_l3
+  - entity: sensor.eb_potencia_activa
+  - entity: sensor.eb_factor_de_potencia
+  - entity: sensor.eb_frequencia
+  - entity: sensor.eb_vazio_t1
+  - entity: sensor.eb_ponta_t2
+  - entity: sensor.eb_cheia_t3
+  - entity: sensor.eb_consumo_total
+  - entity: sensor.eb_tarifa
+show_header_toggle: false
+type: entities
+
+```
+
