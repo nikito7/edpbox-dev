@@ -8,7 +8,7 @@ sensor:
     unit_of_measurement: "h"
     icon: mdi:alarm
 
-- platform: mqtt
+  - platform: mqtt
     name: "EB ESP Vcc"
     unique_id: eb_esp_vcc
     state_topic: "tele/contador/STATE"
