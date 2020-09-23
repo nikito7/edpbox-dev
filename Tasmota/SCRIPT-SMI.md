@@ -29,7 +29,6 @@ tper=30
 1,010408UUuuUUuuxxxxxxxxxxxx@i5:1000,Ponta T2,kWh,Energy_P1_R2,1
 1,010408xxxxxxxxUUuuUUuuxxxx@i5:1000,Cheia T3,kWh,Energy_P1_R3,1
 1,010408UUuuUUuuxxxxxxxxxxxx@i9:1000,Total,kWh,Energy_P1_Sum,1
-1,=h<hr>
 1,010406uuxxxxxxxx@i8:1,Tarifa,,Tariff_P1,0
 
 #
