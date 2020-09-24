@@ -1,6 +1,3 @@
-Trifásico
-
-``` js
 >D
 
 >BS
@@ -38,5 +35,3 @@ tper=30
 1,010406uuxxxxxxxx@i9:1,Tarifa,,Tariff_P1,0
 
 #
-
-```
