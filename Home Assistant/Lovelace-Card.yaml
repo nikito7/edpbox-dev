@@ -1,8 +1,6 @@
 
 entities:
   - entity: sensor.eb_esp_uptime
-  - entity: sensor.eb_esp_vcc
-  - entity: sensor.eb_esp_load
   - entity: sensor.eb_esp_signal
   - entity: sensor.eb_tensao_l1
   - entity: sensor.eb_tensao_l2
