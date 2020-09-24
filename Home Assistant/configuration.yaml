@@ -9,22 +9,6 @@ sensor:
     icon: mdi:alarm
 
   - platform: mqtt
-    name: "EB ESP Vcc"
-    unique_id: eb_esp_vcc
-    state_topic: "tele/contador/STATE"
-    value_template: '{{ value_json.Vcc }}'
-    unit_of_measurement: "v"
-    icon: mdi:flash
-
-  - platform: mqtt
-    name: "EB ESP Load"
-    unique_id: eb_esp_loadavg
-    state_topic: "tele/contador/STATE"
-    value_template: '{{ value_json.LoadAvg }}'
-    unit_of_measurement: "%"
-    icon: mdi:gauge
-
-  - platform: mqtt
     name: "EB ESP Signal"
     unique_id: eb_esp_signal
     state_topic: "tele/contador/STATE"
