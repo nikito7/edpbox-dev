@@ -1,6 +1,6 @@
-Trifásico 
+Trifásico
 
-```
+``` js
 >D
 
 >BS
@@ -40,4 +40,3 @@ tper=30
 #
 
 ```
-
