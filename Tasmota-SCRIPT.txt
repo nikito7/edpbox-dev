@@ -29,7 +29,7 @@ tper=60
 ; 79 7B 7F 5C
 
 1,010408UUuuUUuuxxxxxxxxxxxx@i3:1,Potência Activa,W,Power_P1,16
-1,010410UUuuUUuuxxxxxxxxxxxx@i10:1,Potência Pico,W,Power_Max_P1,0
+1,010410UUuuUUuuxxxxxxxxxxxx@i10:1,Potência Max Avg,W,Power_Max_P1,0
 1,010404UUuuxxxx@i4:1000,Factor de Potência,pu,PFactor_P1,19
 1,01040aUUuuxxxx@i5:10,Frequência,Hz,Frequency_P1,1
 
