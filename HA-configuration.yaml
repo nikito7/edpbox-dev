@@ -83,18 +83,7 @@ sensor:
       {% endif %}
     unit_of_measurement: "p.u."
     icon: mdi:percent
-    
-  - platform: mqtt
-    name: "EB Frequência"
-    unique_id: ebfreq
-    state_topic: "tele/contador/SENSOR"
-    value_template: >-
-      {% if value_json.EB.Frequency_P1|float > 0 %}
-        {{ value_json.EB.Frequency_P1|float }}
-      {% endif %}
-    unit_of_measurement: "Hz"
-    icon: mdi:current-ac
-    
+ 
   - platform: mqtt
     name: "EB Potência Activa"
     unique_id: ebpowerp1
@@ -105,6 +94,28 @@ sensor:
       {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
+
+  - platform: mqtt
+    name: "EB Potência Pico"
+    unique_id: ebpowerp1max
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Power_Max_P1|float > 0 %}
+        {{ value_json.EB.Power_Max_P1|float }}
+      {% endif %}
+    unit_of_measurement: "W"
+    icon: mdi:power-plug
+
+  - platform: mqtt
+    name: "EB Frequência"
+    unique_id: ebfreq
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Frequency_P1|float > 0 %}
+        {{ value_json.EB.Frequency_P1|float }}
+      {% endif %}
+    unit_of_measurement: "Hz"
+    icon: mdi:current-ac
     
   - platform: mqtt
     name: "EB Vazio T1"
@@ -156,13 +167,13 @@ sensor:
     state_topic: "tele/contador/SENSOR"
     value_template: >-
       {% if value_json.EB.Tariff_P1|int == 1 %}
-        {{ 'Vazio T1' }}
+        {{ 'T1' }}
       {% elif value_json.EB.Tariff_P1|int == 2 %}
-        {{ 'Ponta T2' }}
+        {{ 'T2' }}
       {% elif value_json.EB.Tariff_P1|int == 3 %}
-        {{ 'Cheia T3' }}
+        {{ 'T3' }}
       {% else %}
-        {{ 'Desconhecida' }}
+        {{ 'Error' }}
       {% endif %}
     icon: 'mdi:counter'
 
