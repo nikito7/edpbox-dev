@@ -1,4 +1,4 @@
-sensor:
+; sensor:
 
   - platform: mqtt
     name: "EB ESP Uptime"
@@ -118,7 +118,7 @@ sensor:
     icon: mdi:current-ac
     
   - platform: mqtt
-    name: "EB Vazio T1"
+    name: "EB Consumo Vazio T1"
     unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -129,7 +129,7 @@ sensor:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Ponta T2"
+    name: "EB Consumo Ponta T2"
     unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -140,7 +140,7 @@ sensor:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Cheia T3"
+    name: "EB Consumo Cheia T3"
     unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -155,14 +155,14 @@ sensor:
     unique_id: ebenergysum
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_P1_Sum|float > 0.1 %}
+      {% if value_json.EB.Energy_P1_Sum|float > 0 %}
         {{ value_json.EB.Energy_P1_Sum|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Tarifa"
+    name: "EB Tarifa Activa"
     unique_id: ebtariff
     state_topic: "tele/contador/SENSOR"
     value_template: >-
