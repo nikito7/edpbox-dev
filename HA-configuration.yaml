@@ -17,10 +17,27 @@
     icon: mdi:signal
 
   - platform: mqtt
-    name: "EB Clock"
-    unique_id: ebclock
+    name: "EB Clock H"
+    unique_id: ebclockh
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Clock_H }}:{{ value_json.EB.Clock_M }}:{{ value_json.EB.Clock_S }}'
+    value_template: '{{ value_json.EB.Clock_H|int }}'
+    unit_of_measurement: "h"
+    icon: mdi:clock
+
+  - platform: mqtt
+    name: "EB Clock M"
+    unique_id: ebclockm
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Clock_M|int }}'
+    unit_of_measurement: "m"
+    icon: mdi:clock
+
+  - platform: mqtt
+    name: "EB Clock S"
+    unique_id: ebclocks
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Clock_S|int }}'
+    unit_of_measurement: "s"
     icon: mdi:clock
 
   - platform: mqtt
@@ -28,8 +45,8 @@
     unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L1 > 0 %}
-        {{ value_json.EB.Voltage_L1 }}
+      {% if value_json.EB.Voltage_L1|float > 0 %}
+        {{ value_json.EB.Voltage_L1|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -39,8 +56,8 @@
     unique_id: ebten2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L2 > 0 %}
-        {{ value_json.EB.Voltage_L2 }}
+      {% if value_json.EB.Voltage_L2|float > 0 %}
+        {{ value_json.EB.Voltage_L2|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -50,8 +67,8 @@
     unique_id: ebten3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L3 > 0 %}
-        {{ value_json.EB.Voltage_L3 }}
+      {% if value_json.EB.Voltage_L3|float > 0 %}
+        {{ value_json.EB.Voltage_L3|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -60,7 +77,7 @@
     name: "EB Corrente L1"
     unique_id: ebcur1
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Current_L1 }}'
+    value_template: '{{ value_json.EB.Current_L1|float }}'
     unit_of_measurement: "A"
     icon: mdi:power-socket
 
@@ -68,7 +85,7 @@
     name: "EB Corrente L2"
     unique_id: ebcur2
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Current_L2 }}'
+    value_template: '{{ value_json.EB.Current_L2|float }}'
     unit_of_measurement: "A"
     icon: mdi:power-socket
 
@@ -76,7 +93,7 @@
     name: "EB Corrente L3"
     unique_id: ebcur3
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Current_L3 }}'
+    value_template: '{{ value_json.EB.Current_L3|float }}'
     unit_of_measurement: "A"
     icon: mdi:power-socket
 
@@ -85,8 +102,8 @@
     unique_id: ebpfactor
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor_P1 > 0.1 %}
-        {{ value_json.EB.PFactor_P1 }}
+      {% if value_json.EB.PFactor_P1|float > 0.1 %}
+        {{ value_json.EB.PFactor_P1|float }}
       {% endif %}
     unit_of_measurement: "p.u."
     icon: mdi:percent
@@ -96,8 +113,8 @@
     unique_id: ebpowerp1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_P1 > 0 %}
-        {{ value_json.EB.Power_P1 }}
+      {% if value_json.EB.Power_P1|int > 0 %}
+        {{ value_json.EB.Power_P1|int }}
       {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
@@ -107,8 +124,8 @@
     unique_id: ebpowerp1max
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_Max_P1 > 0 %}
-        {{ value_json.EB.Power_Max_P1 }}
+      {% if value_json.EB.Power_Max_P1|int > 0 %}
+        {{ value_json.EB.Power_Max_P1|int }}
       {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
@@ -118,8 +135,8 @@
     unique_id: ebfreq
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Frequency_P1 > 0 %}
-        {{ value_json.EB.Frequency_P1 }}
+      {% if value_json.EB.Frequency_P1|float > 0 %}
+        {{ value_json.EB.Frequency_P1|float }}
       {% endif %}
     unit_of_measurement: "Hz"
     icon: mdi:current-ac
@@ -129,8 +146,8 @@
     unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_P1_R1 > 0.1 %}
-        {{ value_json.EB.Energy_P1_R1 }}
+      {% if value_json.EB.Energy_P1_R1|float > 0.1 %}
+        {{ value_json.EB.Energy_P1_R1|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -140,8 +157,8 @@
     unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_P1_R2 > 0.1 %}
-        {{ value_json.EB.Energy_P1_R2 }}
+      {% if value_json.EB.Energy_P1_R2|float > 0.1 %}
+        {{ value_json.EB.Energy_P1_R2|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -151,8 +168,8 @@
     unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_P1_R3 > 0.1 %}
-        {{ value_json.EB.Energy_P1_R3 }}
+      {% if value_json.EB.Energy_P1_R3|float > 0.1 %}
+        {{ value_json.EB.Energy_P1_R3|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -162,8 +179,8 @@
     unique_id: ebenergysum
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_P1_Sum > 0 %}
-        {{ value_json.EB.Energy_P1_Sum }}
+      {% if value_json.EB.Energy_P1_Sum|float > 0 %}
+        {{ value_json.EB.Energy_P1_Sum|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -183,4 +200,3 @@
         {{ 'Error' }}
       {% endif %}
     icon: 'mdi:counter'
-
