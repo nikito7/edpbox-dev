@@ -6,11 +6,6 @@ Tasmota:
 
 ![Tasmota](./img/Tasmota1.jpg)
 
-Home Assistant:
-
-![Home Assistant](./ha1.jpg)
-
-![Home Assistant](./ha2.jpg)
 
 # Links
 
