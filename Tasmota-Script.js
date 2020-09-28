@@ -8,7 +8,7 @@ tper=60
 
 >M 1
 
-+1,14,m,1,9600,EB,5,15,01040001,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C
++1,14,m,1,9600,EB,5,15,01040001,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C,01040016
 
 ; 01 clock
 ; Pseudo init fix
@@ -31,6 +31,7 @@ tper=60
 ; 79 7B 7F
 
 1,010408UUuuUUuu@i4:1,Potência Activa,W,Power_P1,16
+1,010408xxxxxxxxUUuuUUuu@i4:1,Potência Exportada,W,Power_P1_Export,16
 1,010404UUuu@i5:1000,Factor de Potência,pu,PFactor_P1,18
 1,01040aUUuu@i6:10,Frequência,Hz,Frequency_P1,1
 
@@ -42,5 +43,10 @@ tper=60
 1,010408UUuuUUuu@i8:1000,Consumo T2 Ponta,kWh,Energy_P1_R2,1
 1,010408xxxxxxxxUUuuUUuu@i8:1000,Consumo T3 Cheia,kWh,Energy_P1_R3,1
 1,010408UUuuUUuu@i9:1000,Consumo Total,kWh,Energy_P1_Sum,1
+
+; 16
+
+1,010408UUuuUUuu@i10:1000,Energia Importada,kWh,Energy_Import,1
+1,010408xxxxxxxxUUuuUUuu@i10:1000,Energia Exportada,kWh,Energy_Export,1
 
 #
