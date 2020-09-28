@@ -1,4 +1,4 @@
-# sensor:
+sensor edpbox:
 
   - platform: mqtt
     name: "EB ESP Uptime"
