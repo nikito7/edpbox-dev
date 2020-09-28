@@ -4,7 +4,7 @@ All credits to @tiagofreire-pt for the original work. Many thanks.
 
 Tasmota:
 
-![Tasmota](./Tasmota3.jpg)
+![Tasmota](./img/Tasmota1.jpg)
 
 Home Assistant:
 
