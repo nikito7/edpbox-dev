@@ -13,31 +13,14 @@
     unique_id: eb_esp_signal
     state_topic: "tele/contador/STATE"
     value_template: '{{ value_json.Wifi.Signal }}'
-    unit_of_measurement: "dBm"
+    unit_of_measurement: "dB"
     icon: mdi:signal
 
   - platform: mqtt
-    name: "EB Clock H"
-    unique_id: ebclockh
+    name: "EB Clock"
+    unique_id: ebclock
     state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Clock_H|int }}'
-    unit_of_measurement: "h"
-    icon: mdi:clock
-
-  - platform: mqtt
-    name: "EB Clock M"
-    unique_id: ebclockm
-    state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Clock_M|int }}'
-    unit_of_measurement: "m"
-    icon: mdi:clock
-
-  - platform: mqtt
-    name: "EB Clock S"
-    unique_id: ebclocks
-    state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Clock_S|int }}'
-    unit_of_measurement: "s"
+    value_template: '{{ value_json.EB.Clock_H|int }}:{{ value_json.EB.Clock_M|int }}:{{ value_json.EB.Clock_S|int }}'
     icon: mdi:clock
 
   - platform: mqtt
@@ -196,7 +179,5 @@
         {{ 'T2' }}
       {% elif value_json.EB.Tariff_P1|int == 3 %}
         {{ 'T3' }}
-      {% else %}
-        {{ 'Error' }}
       {% endif %}
     icon: 'mdi:counter'
