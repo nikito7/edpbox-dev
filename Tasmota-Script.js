@@ -2,7 +2,7 @@
 
 >BS
 
-tper=30
+tper=60
 
 =>sensor53 r
 
@@ -12,9 +12,9 @@ tper=30
 
 ; 6C 6E 70
 
-1,010404UUuuxxxx@i0:10,Tensão L1,V,Voltage_L1,1
-1,010404UUuuxxxx@i1:10,Tensão L2,V,Voltage_L2,1
-1,010404UUuuxxxx@i2:10,Tensão L3,V,Voltage_L3,1
+1,010404UUuuxxxx@i0:10,Tensão L1,V,Voltage_L1,17
+1,010404UUuuxxxx@i1:10,Tensão L2,V,Voltage_L2,17
+1,010404UUuuxxxx@i2:10,Tensão L3,V,Voltage_L3,17
 
 1,=h<hr>
 
