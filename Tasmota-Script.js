@@ -2,13 +2,13 @@
 
 >BS
 
-tper=20
+tper=30
 
 =>sensor53 r
 
 >M 1
 
-+1,14,m,1,9600,EB,5,10,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C,0104000B,0104005C,01040001
++1,14,m,1,9600,EB,5,15,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C,0104000B,0104005C
 
 ; 6C 6E 70
 
@@ -42,13 +42,5 @@ tper=20
 1,010408xxxxxxxxUUuuUUuu@i7:1000,Consumo Cheia T3,kWh,Energy_P1_R3,1
 1,010408UUuuUUuuxx@i8:1000,Consumo Total,kWh,Energy_P1_Sum,1
 1,010406uuxx@i9:1,Tarifa Activa,,Tariff_P1,16
-
-1,=h<hr>
-
-; 01
-
-1,010416xxxxxxxxxxuuxxxxxx@i11:1,Clock,h,Clock_H,0
-1,010416xxxxxxxxxxxxuuxxxx@i11:1,Clock,m,Clock_M,0
-1,010416xxxxxxxxxxxxxxuuxx@i11:1,Clock,s,Clock_S,0
 
 #
