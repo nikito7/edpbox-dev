@@ -17,13 +17,6 @@ sensor edpbox:
     icon: mdi:signal
 
   - platform: mqtt
-    name: "EB Clock"
-    unique_id: ebclock
-    state_topic: "tele/contador/SENSOR"
-    value_template: '{{ value_json.EB.Clock_H|int }}:{{ value_json.EB.Clock_M|int }}:{{ value_json.EB.Clock_S|int }}'
-    icon: mdi:clock
-
-  - platform: mqtt
     name: "EB Tensão L1"
     unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
@@ -103,17 +96,6 @@ sensor edpbox:
     icon: mdi:power-plug
 
   - platform: mqtt
-    name: "EB Potência Pico"
-    unique_id: ebpowerp1max
-    state_topic: "tele/contador/SENSOR"
-    value_template: >-
-      {% if value_json.EB.Power_Max_P1|int > 0 %}
-        {{ value_json.EB.Power_Max_P1|int }}
-      {% endif %}
-    unit_of_measurement: "W"
-    icon: mdi:power-plug
-
-  - platform: mqtt
     name: "EB Frequência"
     unique_id: ebfreq
     state_topic: "tele/contador/SENSOR"
@@ -125,7 +107,7 @@ sensor edpbox:
     icon: mdi:current-ac
     
   - platform: mqtt
-    name: "EB Consumo Vazio T1"
+    name: "EB Consumo T1 Vazio"
     unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -136,7 +118,7 @@ sensor edpbox:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Consumo Ponta T2"
+    name: "EB Consumo T2 Ponta"
     unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -147,7 +129,7 @@ sensor edpbox:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Consumo Cheia T3"
+    name: "EB Consumo T3 Cheia"
     unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -167,17 +149,16 @@ sensor edpbox:
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-    
+
   - platform: mqtt
-    name: "EB Tarifa Activa"
-    unique_id: ebtariff
+    name: "EB Energia Exportada"
+    unique_id: ebenergyexport
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Tariff_P1|int == 1 %}
-        {{ 'T1' }}
-      {% elif value_json.EB.Tariff_P1|int == 2 %}
-        {{ 'T2' }}
-      {% elif value_json.EB.Tariff_P1|int == 3 %}
-        {{ 'T3' }}
+      {% if value_json.EB.Energy_Export|float > 0 %}
+        {{ value_json.EB.Energy_Export|float }}
       {% endif %}
-    icon: 'mdi:counter'
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+
+# eof
