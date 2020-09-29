@@ -1,0 +1,37 @@
+
+
+
+   
+  - platform: mqtt
+    name: "EB Tarifa Activa"
+    unique_id: ebtariff
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Tariff_P1|int == 1 %}
+        {{ 'T1' }}
+      {% elif value_json.EB.Tariff_P1|int == 2 %}
+        {{ 'T2' }}
+      {% elif value_json.EB.Tariff_P1|int == 3 %}
+        {{ 'T3' }}
+      {% endif %}
+    icon: 'mdi:counter'
+
+  - platform: mqtt
+    name: "EB Potência Pico"
+    unique_id: ebpowerp1max
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Power_Max_P1|int > 0 %}
+        {{ value_json.EB.Power_Max_P1|int }}
+      {% endif %}
+    unit_of_measurement: "W"
+    icon: mdi:power-plug
+
+  - platform: mqtt
+    name: "EB Clock"
+    unique_id: ebclock
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Clock_H|int }}:{{ value_json.EB.Clock_M|int }}:{{ value_json.EB.Clock_S|int }}'
+    icon: mdi:clock
+
+# eof
