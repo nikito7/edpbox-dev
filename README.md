@@ -4,7 +4,7 @@ All credits to @tiagofreire-pt for the original work. Many thanks.
 
 Tasmota:
 
-![Tasmota](./img/Tasmota1.jpg)
+![Tasmota](./img/Tasmota2.jpg)
 
 
 # Links
