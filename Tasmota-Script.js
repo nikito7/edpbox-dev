@@ -31,7 +31,6 @@ tper=60
 ; 79 7B 7F
 
 1,010408UUuuUUuu@i4:1,Potência Activa,W,Power_P1,16
-1,010408xxxxxxxxUUuuUUuu@i4:1,Potência Exportada,W,Power_P1_Export,16
 1,010404UUuu@i5:1000,Factor de Potência,pu,PFactor_P1,18
 1,01040aUUuu@i6:10,Frequência,Hz,Frequency_P1,1
 
@@ -46,7 +45,6 @@ tper=60
 
 ; 16
 
-1,010408UUuuUUuu@i10:1000,Energia Importada,kWh,Energy_Import,1
 1,010408xxxxxxxxUUuuUUuu@i10:1000,Energia Exportada,kWh,Energy_Export,1
 
 #
