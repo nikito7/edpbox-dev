@@ -17,6 +17,14 @@ sensor edpbox:
     icon: mdi:signal
 
   - platform: mqtt
+    name: "EB Clock S"
+    unique_id: ebclocks
+    state_topic: "tele/contador/SENSOR"
+    value_template: '{{ value_json.EB.Clock_S|int }}'
+    unit_of_measurement: "s"
+    icon: mdi:clock
+
+  - platform: mqtt
     name: "EB Tensão L1"
     unique_id: ebten1
     state_topic: "tele/contador/SENSOR"
