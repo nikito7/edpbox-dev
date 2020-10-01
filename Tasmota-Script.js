@@ -8,22 +8,17 @@ tper=60
 
 >M 1
 
-+1,14,m,1,9600,EB,5,15,01040001,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C,01040016
++1,14,m,1,9600,EB,5,10,01040001,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C,01040016,0104007D
 
 ; 01
 
-1,010416xxxxxxxxxxuu@i0:1,Clock,h,Clock_H,16
-1,010416xxxxxxxxxxxxuu@i0:1,Clock,m,Clock_M,16
 1,010416xxxxxxxxxxxxxxuu@i0:1,Clock,s,Clock_S,16
-
 
 ; 6C 6E 70
 
 1,010404UUuu@i1:10,Tensão L1,V,Voltage_L1,17
 1,010404UUuu@i2:10,Tensão L2,V,Voltage_L2,17
 1,010404UUuu@i3:10,Tensão L3,V,Voltage_L3,17
-
-1,=h<hr>
 
 ; 6C 6E 70
 
@@ -33,10 +28,15 @@ tper=60
 
 1,=h<hr>
 
-; 79 7B 7F
+; 79 7B 7F 7C
 
 1,010408UUuuUUuu@i4:1,Potência Activa,W,Power_P1,16
 1,010404UUuu@i5:1000,Factor de Potência,pu,PFactor_P1,19
+
+1,010404xxxxUUuu@i5:1000,PFactor L1,pu,PFactor_L1,19
+1,010404UUuu@i11:1000,PFactor L2,pu,PFactor_L2,19
+1,010404xxxxUUuu@i11:1000,PFactor L3,pu,PFactor_L3,19
+
 1,01040aUUuu@i6:10,Frequência,Hz,Frequency_P1,1
 
 1,=h<hr>
