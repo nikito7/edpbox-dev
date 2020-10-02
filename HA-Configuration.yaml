@@ -86,7 +86,7 @@ sensor edpbox:
     unique_id: ebpfactor
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor|float > 0.1 %}
+      {% if value_json.EB.PFactor|float > 0 %}
         {{ value_json.EB.PFactor|float }}
       {% endif %}
     unit_of_measurement: "p.u."
@@ -97,7 +97,7 @@ sensor edpbox:
     unique_id: ebpfactorl1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor_L1|float > 0.1 %}
+      {% if value_json.EB.PFactor_L1|float > 0 %}
         {{ value_json.EB.PFactor_L1|float }}
       {% endif %}
     unit_of_measurement: "p.u."
@@ -108,7 +108,7 @@ sensor edpbox:
     unique_id: ebpfactorl2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor_L2|float > 0.1 %}
+      {% if value_json.EB.PFactor_L2|float > 0 %}
         {{ value_json.EB.PFactor_L2|float }}
       {% endif %}
     unit_of_measurement: "p.u."
@@ -119,7 +119,7 @@ sensor edpbox:
     unique_id: ebpfactorl3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor_L3|float > 0.1 %}
+      {% if value_json.EB.PFactor_L3|float > 0 %}
         {{ value_json.EB.PFactor_L3|float }}
       {% endif %}
     unit_of_measurement: "p.u."
@@ -137,7 +137,7 @@ sensor edpbox:
     icon: mdi:power-plug
 
   - platform: mqtt
-    name: "EB Potência L1"
+    name: "EB Potência Activa L1"
     unique_id: ebpowerl1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -148,7 +148,7 @@ sensor edpbox:
     icon: mdi:power-plug
 
   - platform: mqtt
-    name: "EB Potência L2"
+    name: "EB Potência Activa L2"
     unique_id: ebpowerl2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -159,7 +159,7 @@ sensor edpbox:
     icon: mdi:power-plug
 
   - platform: mqtt
-    name: "EB Potência L3"
+    name: "EB Potência Activa L3"
     unique_id: ebpowerl3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
@@ -181,40 +181,40 @@ sensor edpbox:
     icon: mdi:current-ac
     
   - platform: mqtt
-    name: "EB Consumo T1 Vazio"
+    name: "EB Energia T1 Vazio"
     unique_id: ebenergy1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_R1|float > 0.1 %}
+      {% if value_json.EB.Energy_R1|float > 0 %}
         {{ value_json.EB.Energy_R1|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Consumo T2 Ponta"
+    name: "EB Energia T2 Ponta"
     unique_id: ebenergy2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_R2|float > 0.1 %}
+      {% if value_json.EB.Energy_R2|float > 0 %}
         {{ value_json.EB.Energy_R2|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB Consumo T3 Cheia"
+    name: "EB Energia T3 Cheia"
     unique_id: ebenergy3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_R3|float > 0.1 %}
+      {% if value_json.EB.Energy_R3|float > 0 %}
         {{ value_json.EB.Energy_R3|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
 
   - platform: mqtt
-    name: "EB Consumo Total"
+    name: "EB Energia Total"
     unique_id: ebenergysum
     state_topic: "tele/contador/SENSOR"
     value_template: >-
