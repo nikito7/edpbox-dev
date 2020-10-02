@@ -1,6 +1,6 @@
 >D
 
->BS
+>B
 
 tper=60
 
@@ -31,11 +31,11 @@ tper=60
 ; 79 7B 7F 7C
 
 1,010408UUuuUUuu@i4:1,Potência Activa,W,Power_P1,16
-1,010404UUuu@i5:1000,Factor de Potência,pu,PFactor_P1,19
+1,010404UUuu@i5:1000,Factor de Potência,pu,PFactor_P1,18
 
-1,010404xxxxUUuu@i5:1000,PFactor L1,pu,PFactor_L1,19
-1,010404UUuu@i11:1000,PFactor L2,pu,PFactor_L2,19
-1,010404xxxxUUuu@i11:1000,PFactor L3,pu,PFactor_L3,19
+1,010404xxxxUUuu@i5:1000,PFactor L1,pu,PFactor_L1,18
+1,010404UUuu@i11:1000,PFactor L2,pu,PFactor_L2,18
+1,010404xxxxUUuu@i11:1000,PFactor L3,pu,PFactor_L3,18
 
 1,01040aUUuu@i6:10,Frequência,Hz,Frequency_P1,1
 
