@@ -20,11 +20,15 @@ tper=60
 1,010404UUuu@i2:10,Tensão L2,V,Voltage_L2,17
 1,010404UUuu@i3:10,Tensão L3,V,Voltage_L3,17
 
+1,=h<hr>
+
 ; 6C 6E 70
 
 1,010404xxxxUUuu@i1:10,Corrente L1,A,Current_L1,17
 1,010404xxxxUUuu@i2:10,Corrente L2,A,Current_L2,17
 1,010404xxxxUUuu@i3:10,Corrente L3,A,Current_L3,17
+
+1,=h<hr>
 
 ; 79 73 75 77
 
@@ -32,6 +36,8 @@ tper=60
 1,010408UUuuUUuu@i13:1,Potência A L1,W,Power_L1,16
 1,010408UUuuUUuu@i14:1,Potência A L2,W,Power_L2,16
 1,010408UUuuUUuu@i15:1,Potência A L3,W,Power_L3,16
+
+1,=h<hr>
 
 ; 7B 7F 7C
 
@@ -42,12 +48,16 @@ tper=60
 
 1,01040aUUuu@i6:10,Frequência,Hz,Frequency,17
 
+1,=h<hr>
+
 ; 26 27 2C
 
 1,010408UUuuUUuu@i7:1000,Energia T1 Vazio,kWh,Energy_R1,17
 1,010408UUuuUUuu@i8:1000,Energia T2 Ponta,kWh,Energy_R2,17
 1,010408xxxxxxxxUUuuUUuu@i8:1000,Energia T3 Cheia,kWh,Energy_R3,17
 1,010408UUuuUUuu@i9:1000,Energia Total,kWh,Energy_Sum,17
+
+1,=h<hr>
 
 ; 16
 
