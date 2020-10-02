@@ -8,7 +8,7 @@ tper=60
 
 >M 1
 
-+1,14,m,1,9600,EB,5,10,01040001,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C,01040016,0104007D
++1,14,m,1,9600,EB,5,10,01040001,0104006C,0104006E,01040070,01040079,0104007B,0104007F,01040026,01040027,0104002C,01040016,0104007D,01040018,01040019,01040073,01040075,01040077
 
 ; 01
 
@@ -28,28 +28,37 @@ tper=60
 
 1,=h<hr>
 
-; 79 7B 7F 7C
+; 79 73 75 77
 
-1,010408UUuuUUuu@i4:1,Potência Activa,W,Power_P1,16
-1,010404UUuu@i5:1000,Factor de Potência,pu,PFactor_P1,18
+1,010408UUuuUUuu@i4:1,Potência Activa,W,Power,16
+1,010408UUuuUUuu@i13:1,Potência L1,W,Power_L1,16
+1,010408UUuuUUuu@i14:1,Potência L2,W,Power_L2,16
+1,010408UUuuUUuu@i15:1,Potência L3,W,Power_L3,16
 
-1,010404xxxxUUuu@i5:1000,PFactor L1,pu,PFactor_L1,18
-1,010404UUuu@i11:1000,PFactor L2,pu,PFactor_L2,18
-1,010404xxxxUUuu@i11:1000,PFactor L3,pu,PFactor_L3,18
+; 7B 7F 7C
 
-1,01040aUUuu@i6:10,Frequência,Hz,Frequency_P1,1
+1,010404UUuu@i5:1000,Factor de Potência,pu,PFactor,19
+1,010404xxxxUUuu@i5:1000,PFactor L1,pu,PFactor_L1,19
+1,010404UUuu@i11:1000,PFactor L2,pu,PFactor_L2,19
+1,010404xxxxUUuu@i11:1000,PFactor L3,pu,PFactor_L3,19
+
+1,01040aUUuu@i6:10,Frequência,Hz,Frequency,1
 
 1,=h<hr>
 
 ; 26 27 2C
 
-1,010408UUuuUUuu@i7:1000,Consumo T1 Vazio,kWh,Energy_P1_R1,1
-1,010408UUuuUUuu@i8:1000,Consumo T2 Ponta,kWh,Energy_P1_R2,1
-1,010408xxxxxxxxUUuuUUuu@i8:1000,Consumo T3 Cheia,kWh,Energy_P1_R3,1
-1,010408UUuuUUuu@i9:1000,Consumo Total,kWh,Energy_P1_Sum,1
+1,010408UUuuUUuu@i7:1000,Consumo T1 Vazio,kWh,Energy_R1,1
+1,010408UUuuUUuu@i8:1000,Consumo T2 Ponta,kWh,Energy_R2,1
+1,010408xxxxxxxxUUuuUUuu@i8:1000,Consumo T3 Cheia,kWh,Energy_R3,1
+1,010408UUuuUUuu@i9:1000,Consumo Total,kWh,Energy_Sum,1
 
 ; 16
 
 1,010408xxxxxxxxUUuuUUuu@i10:1000,Energia Exportada,kWh,Energy_Export,3
+
+; 18 19 need both!
+
+1,010408UUuuUUuu@i12:1000,Energia Q2,kVArh,Energy_Q2,3
 
 #
