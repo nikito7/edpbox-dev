@@ -137,6 +137,39 @@ sensor edpbox:
     icon: mdi:power-plug
 
   - platform: mqtt
+    name: "EB Potência L1"
+    unique_id: ebpowerl1
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Power_L1|int > 0 %}
+        {{ value_json.EB.Power_L1|int }}
+      {% endif %}
+    unit_of_measurement: "W"
+    icon: mdi:power-plug
+
+  - platform: mqtt
+    name: "EB Potência L2"
+    unique_id: ebpowerl2
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Power_L2|int > 0 %}
+        {{ value_json.EB.Power_L2|int }}
+      {% endif %}
+    unit_of_measurement: "W"
+    icon: mdi:power-plug
+
+  - platform: mqtt
+    name: "EB Potência L3"
+    unique_id: ebpowerl3
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Power_L3|int > 0 %}
+        {{ value_json.EB.Power_L3|int }}
+      {% endif %}
+    unit_of_measurement: "W"
+    icon: mdi:power-plug
+
+  - platform: mqtt
     name: "EB Frequência"
     unique_id: ebfreq
     state_topic: "tele/contador/SENSOR"
@@ -200,6 +233,17 @@ sensor edpbox:
         {{ value_json.EB.Energy_Export|float }}
       {% endif %}
     unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+
+  - platform: mqtt
+    name: "EB Energia Q1"
+    unique_id: ebenergyq1
+    state_topic: "tele/contador/SENSOR"
+    value_template: >-
+      {% if value_json.EB.Energy_Q1|float > 0 %}
+        {{ value_json.EB.Energy_Q1|float }}
+      {% endif %}
+    unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
 
 # eof
