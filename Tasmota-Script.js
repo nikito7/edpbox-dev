@@ -1,8 +1,8 @@
 >D
 
->BS
+>B
 
-tper=60
+tper=30
 
 =>sensor53 r
 
@@ -69,7 +69,5 @@ tper=60
 
 1,010408UUuuUUuuxxxxxxxx@i15:1000,Energia Q1 Ri ,kVAr,Energy_Q1,19
 1,010408xxxxxxxxUUuuUUuu@i16:1000,Energia Q4 Rc ,kVAr,Energy_Q4,19
-
-; dev
 
 #
