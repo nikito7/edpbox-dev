@@ -62,7 +62,7 @@ sensor edpbox:
     unique_id: ebcur1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Current_L1|float > 0 %}
+      {% if value_json.EB.Current_L1|float > -1 %}
         {{ value_json.EB.Current_L1|float }}
       {% endif %} 
     unit_of_measurement: "A"
@@ -73,7 +73,7 @@ sensor edpbox:
     unique_id: ebcur2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Current_L2|float > 0 %}
+      {% if value_json.EB.Current_L2|float > -1 %}
         {{ value_json.EB.Current_L2|float }}
       {% endif %}  
     unit_of_measurement: "A"
@@ -84,7 +84,7 @@ sensor edpbox:
     unique_id: ebcur3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Current_L3|float > 0 %}
+      {% if value_json.EB.Current_L3|float > -1 %}
         {{ value_json.EB.Current_L3|float }}
       {% endif %} 
     unit_of_measurement: "A"
@@ -150,7 +150,7 @@ sensor edpbox:
     unique_id: ebpowerl1
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_L1|int > 0 %}
+      {% if value_json.EB.Power_L1|int > -1 %}
         {{ value_json.EB.Power_L1|int }}
       {% endif %}
     unit_of_measurement: "W"
@@ -161,7 +161,7 @@ sensor edpbox:
     unique_id: ebpowerl2
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_L2|int > 0 %}
+      {% if value_json.EB.Power_L2|int > -1 %}
         {{ value_json.EB.Power_L2|int }}
       {% endif %}
     unit_of_measurement: "W"
@@ -172,7 +172,7 @@ sensor edpbox:
     unique_id: ebpowerl3
     state_topic: "tele/contador/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_L3|int > 0 %}
+      {% if value_json.EB.Power_L3|int > -1 %}
         {{ value_json.EB.Power_L3|int }}
       {% endif %}
     unit_of_measurement: "W"
