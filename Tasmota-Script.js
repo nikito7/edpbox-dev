@@ -33,7 +33,7 @@ tper=60
 
 1,010408UUuuUUuu@i2:1,Potência Activa ,W,Power,16
 1,010408UUuuUUuu@i3:1,Potência L1 ,W,Power_L1,16
-1,010408UUuuUUuu@i3:1,Potência L2 ,W,Power_L2,16
+1,010408UUuuUUuu@i4:1,Potência L2 ,W,Power_L2,16
 1,010408UUuuUUuu@i5:1,Potência L3 ,W,Power_L3,16
 
 1,=h<hr>
