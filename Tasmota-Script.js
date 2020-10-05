@@ -12,6 +12,11 @@ tper=60
 
 ; 0104-0001-0001
 
+1,01040cUUuu@i0:1,Year ,,Clock_Year,16
+1,01040cxxxxuu@i0:1,Month ,,Clock_Month,16
+1,01040cxxxxxxuu@i0:1,Day ,,Clock_Day,16
+1,01040cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,16
+1,01040cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,16
 1,01040cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,16
 
 1,=h<hr>
@@ -69,7 +74,9 @@ tper=60
 
 ; 0104-0018-0004
 
-1,010410UUuuUUuu@i7:1000,Energia Q1 Ri ,kVAr,Energy_Q1,19
+1,010410UUuuUUuu@i7:1000,Energia Q1 Ri ,kVAr,Energy_Q1,18
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q4 Rc ,kVAr,Energy_Q4,19
+
+; dev
 
 #
