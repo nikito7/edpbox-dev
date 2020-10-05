@@ -8,7 +8,7 @@ tper=60
 
 >M 1
 
-+1,14,m,1,9600,EB,5,15,r010400010001,r0104006C0006,r010400730007,r0104007B0005,r010400260003,r0104002C0001,r010400170001,r010400180004
++1,14,m,1,9600,EB,5,10,r010400010001,r0104006C0006,r010400730007,r0104007B0005,r010400260003,r0104002C0001,r010400170001,r010400180004
 
 ; 0104-0001-0001
 
@@ -18,9 +18,9 @@ tper=60
 
 ; 0104-006C-0006
 
-1,01040cUUuu@i1:10,Tensão L1 ,V,Voltage_L1,16
-1,01040cxxxxxxxxUUuu@i1:10,Tensão L2 ,V,Voltage_L2,16
-1,01040cxxxxxxxxxxxxxxxxUUuu@i1:10,Tensão L3 ,V,Voltage_L3,16
+1,01040cUUuu@i1:10,Tensão L1 ,V,Voltage_L1,17
+1,01040cxxxxxxxxUUuu@i1:10,Tensão L2 ,V,Voltage_L2,17
+1,01040cxxxxxxxxxxxxxxxxUUuu@i1:10,Tensão L3 ,V,Voltage_L3,17
 
 1,=h<hr>
 
@@ -43,23 +43,23 @@ tper=60
 
 ; 0104-007B-0005
 
-1,01040aUUuu@i3:1000,Factor de Potência ,pu,PFactor,18
-1,01040axxxxUUuu@i3:1000,PFactor L1 ,pu,PFactor_L1,18
-1,01040axxxxxxxxUUuu@i3:1000,PFactor L2 ,pu,PFactor_L2,18
-1,01040axxxxxxxxxxxxUUuu@i3:1000,PFactor L3 ,pu,PFactor_L3,18
+1,01040aUUuu@i3:1000,Factor de Potência ,pu,PFactor,19
+1,01040axxxxUUuu@i3:1000,PFactor L1 ,pu,PFactor_L1,19
+1,01040axxxxxxxxUUuu@i3:1000,PFactor L2 ,pu,PFactor_L2,19
+1,01040axxxxxxxxxxxxUUuu@i3:1000,PFactor L3 ,pu,PFactor_L3,19
 1,01040axxxxxxxxxxxxxxxxUUuu@i3:10,Frequência ,Hz,Frequency,17
 
 1,=h<hr>
 
 ; 0104-0026-0003
 
-1,01040cUUuuUUuu@i4:1000,Energia T1 Vazio ,kWh,Energy_R1,16
-1,01040cxxxxxxxxUUuuUUuu@i4:1000,Energia T2 Ponta ,kWh,Energy_R2,16
-1,01040cxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energia T3 Cheia ,kWh,Energy_R3,16
+1,01040cUUuuUUuu@i4:1000,Energia T1 Vazio ,kWh,Energy_R1,17
+1,01040cxxxxxxxxUUuuUUuu@i4:1000,Energia T2 Ponta ,kWh,Energy_R2,17
+1,01040cxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energia T3 Cheia ,kWh,Energy_R3,17
 
 ; 0104-002C-0001
 
-1,010404UUuuUUuu@i5:1000,Energia Total ,kWh,Energy_Sum,16
+1,010404UUuuUUuu@i5:1000,Energia Total ,kWh,Energy_Sum,17
 
 1,=h<hr>
 
@@ -69,10 +69,10 @@ tper=60
 
 ; 0104-0018-0004
 
-1,010410UUuuUUuu@i7:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,19
-1,010410xxxxxxxxUUuuUUuu@i7:1000,Energia Q2 +Rc ,kVAr,Energy_Q2,19
-1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q3 -Ri ,kVAr,Energy_Q3,19
-1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q4 -Rc ,kVAr,Energy_Q4,19
+1,010410UUuuUUuu@i7:1000,Energia Q1 Ri ,kVAr,Energy_Q1,19
+1,010410xxxxxxxxUUuuUUuu@i7:1000,Energia Q2 Rc ,kVAr,Energy_Q2,19
+1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q3 Ri ,kVAr,Energy_Q3,19
+1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q4 Rc ,kVAr,Energy_Q4,19
 
 ; dev
 
