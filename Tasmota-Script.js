@@ -8,24 +8,24 @@ tper=60
 
 >M 1
 
-+1,14,m,1,9600,EB,5,30,01040001,0104006C,0104006E,01040070,01040079,01040073,01040075,01040077,0104007B,0104007D,0104007F,01040026,01040027,0104002C,01040016,01040018,0104001A
++1,14,m,1,9600,EB,5,15,01040001,r0104006C0006,01040001,01040001,01040079,01040073,01040075,01040077,r0104007B0004,0104007F,01040001,01040026,01040027,0104002C,01040016,01040018,0104001A
 
 ; 01
 
 1,010416xxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,16
 
-; 6C 6E 70
+1,=h<hr>
 
-1,010404UUuuxxxx@i1:10,Tensão L1 ,V,Voltage_L1,16
-1,010404UUuuxxxx@i2:10,Tensão L2 ,V,Voltage_L2,16
-1,010404UUuuxxxx@i3:10,Tensão L3 ,V,Voltage_L3,16
+; 0104-006C-0006
 
+1,01040CUUuu@i1:10,Tensão L1 ,V,Voltage_L1,16
+1,01040CxxxxxxxxUUuu@i1:10,Tensão L2 ,V,Voltage_L2,16
+1,01040CxxxxxxxxxxxxxxxxUUuu@i1:10,Tensão L3 ,V,Voltage_L3,16
 
-; 6C 6E 70
+1,01040CxxxxUUuu@i1:10,Corrente L1 ,A,Current_L1,17
+1,01040CxxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
+1,01040CxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente L3 ,A,Current_L3,17
 
-1,010404xxxxUUuu@i1:10,Corrente L1,A,Current_L1,17
-1,010404xxxxUUuu@i2:10,Corrente L2,A,Current_L2,17
-1,010404xxxxUUuu@i3:10,Corrente L3,A,Current_L3,17
 
 1,=h<hr>
 
@@ -38,16 +38,16 @@ tper=60
 
 1,=h<hr>
 
-; 7B 7D
+; 7B-0004
 
-1,010404UUuuxxxx@i8:1000,Factor de Potência ,pu,PFactor,18
-1,010404xxxxUUuu@i8:1000,PFactor L1 ,pu,PFactor_L1,18
-1,010404UUuuxxxx@i9:1000,PFactor L2 ,pu,PFactor_L2,18
-1,010404xxxxUUuu@i9:1000,PFactor L3 ,pu,PFactor_L3,18
+1,010408UUuuxxxx@i8:1000,Factor de Potência ,pu,PFactor,18
+1,010408xxxxUUuu@i8:1000,PFactor L1 ,pu,PFactor_L1,18
+1,010408xxxxxxxxUUuu@i8:1000,PFactor L2 ,pu,PFactor_L2,18
+1,010408xxxxxxxxxxxxUUuu@i8:1000,PFactor L3 ,pu,PFactor_L3,18
 
 ; 7F
 
-1,01040aUUuu@i10:10,Frequência ,Hz,Frequency,17
+1,01040aUUuu@i9:10,Frequência ,Hz,Frequency,17
 
 1,=h<hr>
 
@@ -66,8 +66,8 @@ tper=60
 
 ; 18 1A
 
-1,010408UUuuUUuuxxxxxxxx@i15:1000,Energia Q1 Ri ,kVAr,Energy_Q1,19
-1,010408xxxxxxxxUUuuUUuu@i16:1000,Energia Q4 Rc ,kVAr,Energy_Q4,19
+1,010408UUuuUUuuxxxxxxxx@i15:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,19
+1,010408xxxxxxxxUUuuUUuu@i16:1000,Energia Q4 -Rc ,kVAr,Energy_Q4,19
 
 ; dev
 
