@@ -77,6 +77,4 @@ tper=60
 1,010410UUuuUUuu@i7:1000,Energia Q1 Ri ,kVAr,Energy_Q1,18
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q4 Rc ,kVAr,Energy_Q4,19
 
-; dev
-
 #
