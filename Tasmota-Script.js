@@ -10,7 +10,7 @@ tper=20
 
 >M 1
 
-+1,14,m,1,9600,EB,5,11,r010400010001,r0104006C0006,r010400730007,r0104007B0005,r010400260003,r0104002C0001,r010400170001,r010400180004
++1,14,m,1,9600,EB,5,11,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r0104002C0001,r010400170001,r010400180004
 
 ; 0104-0001-0001
 
@@ -20,17 +20,18 @@ tper=20
 
 1,=h<hr>
 
-; 0104-006C-0006
+; 0104-006C-0007
 
-1,01040cUUuu@i1:10,Tensão L1 ,V,Voltage_L1,17
-1,01040cxxxxxxxxUUuu@i1:10,Tensão L2 ,V,Voltage_L2,17
-1,01040cxxxxxxxxxxxxxxxxUUuu@i1:10,Tensão L3 ,V,Voltage_L3,17
+1,01040eUUuu@i1:10,Tensão L1 ,V,Voltage_L1,16
+1,01040exxxxxxxxUUuu@i1:10,Tensão L2 ,V,Voltage_L2,16
+1,01040exxxxxxxxxxxxxxxxUUuu@i1:10,Tensão L3 ,V,Voltage_L3,16
 
 1,=h<hr>
 
-1,01040cxxxxUUuu@i1:10,Corrente L1 ,A,Current_L1,17
-1,01040cxxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
-1,01040cxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente L3 ,A,Current_L3,17
+1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente Total ,A,Current_Sum,17
+1,01040exxxxUUuu@i1:10,Corrente L1 ,A,Current_L1,17
+1,01040exxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
+1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente L3 ,A,Current_L3,17
 
 1,=h<hr>
 
