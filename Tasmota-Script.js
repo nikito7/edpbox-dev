@@ -29,6 +29,7 @@ tper=20
 1,=h<hr>
 
 1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente Total ,A,Current_Sum,17
+
 1,01040exxxxUUuu@i1:10,Corrente L1 ,A,Current_L1,17
 1,01040exxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
 1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente L3 ,A,Current_L3,17
@@ -75,7 +76,5 @@ tper=20
 
 1,010410UUuuUUuu@i7:1000,Energia Q1 Ri ,kVAr,Energy_Q1,18
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q4 Rc ,kVAr,Energy_Q4,19
-
-; dev
 
 #
