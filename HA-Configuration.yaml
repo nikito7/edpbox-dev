@@ -3,7 +3,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB ESP Uptime"
     unique_id: eb_esp_uptime
-    state_topic: "tele/contador/STATE"
+    state_topic: "tele/edpbox1/STATE"
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:alarm
@@ -11,7 +11,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB ESP Signal"
     unique_id: eb_esp_signal
-    state_topic: "tele/contador/STATE"
+    state_topic: "tele/edpbox1/STATE"
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     icon: mdi:signal
@@ -19,14 +19,14 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Clock"
     unique_id: ebclock
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: '{{ value_json.EB.Clock_H|int }}:{{ value_json.EB.Clock_M|int }}:{{ value_json.EB.Clock_S|int }}'
     icon: mdi:clock
 
   - platform: mqtt
     name: "EB Tensão L1"
     unique_id: ebten1
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Voltage_L1 > 0 %}
         {{ value_json.EB.Voltage_L1|int }}
@@ -37,7 +37,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Tensão L2"
     unique_id: ebten2
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Voltage_L2 > 0 %}
         {{ value_json.EB.Voltage_L2|int }}
@@ -48,7 +48,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Tensão L3"
     unique_id: ebten3
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Voltage_L3 > 0 %}
         {{ value_json.EB.Voltage_L3|int }}
@@ -59,7 +59,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Corrente L1"
     unique_id: ebcur1
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Current_L1 > -1 %}
         {{ value_json.EB.Current_L1|float }}
@@ -70,7 +70,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Corrente L2"
     unique_id: ebcur2
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Current_L2 > -1 %}
         {{ value_json.EB.Current_L2|float }}
@@ -81,7 +81,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Corrente L3"
     unique_id: ebcur3
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Current_L3 > -1 %}
         {{ value_json.EB.Current_L3|float }}
@@ -92,7 +92,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Factor de Potência"
     unique_id: ebpfactor
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.PFactor|float > 0 %}
         {{ value_json.EB.PFactor|float }}
@@ -103,7 +103,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB PFactor L1"
     unique_id: ebpfactorl1
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.PFactor_L1 > 0 %}
         {{ value_json.EB.PFactor_L1|float }}
@@ -114,7 +114,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB PFactor L2"
     unique_id: ebpfactorl2
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.PFactor_L2 > 0 %}
         {{ value_json.EB.PFactor_L2|float }}
@@ -125,7 +125,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB PFactor L3"
     unique_id: ebpfactorl3
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.PFactor_L3 > 0 %}
         {{ value_json.EB.PFactor_L3|float }}
@@ -136,7 +136,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Potência Activa"
     unique_id: ebpowerp1
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Power > 0 %}
         {{ value_json.EB.Power|int }}
@@ -147,7 +147,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Potência L1"
     unique_id: ebpowerl1
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Power_L1 > -1 %}
         {{ value_json.EB.Power_L1|int }}
@@ -158,7 +158,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Potência L2"
     unique_id: ebpowerl2
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Power_L2 > -1 %}
         {{ value_json.EB.Power_L2|int }}
@@ -169,7 +169,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Potência L3"
     unique_id: ebpowerl3
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Power_L3 > -1 %}
         {{ value_json.EB.Power_L3|int }}
@@ -180,7 +180,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Frequência"
     unique_id: ebfreq
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Frequency > 0 %}
         {{ value_json.EB.Frequency|float }}
@@ -191,7 +191,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Energia T1 Vazio"
     unique_id: ebenergy1
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_R1 > 0 %}
         {{ value_json.EB.Energy_R1|float }}
@@ -202,7 +202,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Energia T2 Ponta"
     unique_id: ebenergy2
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_R2 > 0 %}
         {{ value_json.EB.Energy_R2|float }}
@@ -213,7 +213,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Energia T3 Cheia"
     unique_id: ebenergy3
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_R3 > 0 %}
         {{ value_json.EB.Energy_R3|float }}
@@ -224,7 +224,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Energia Total"
     unique_id: ebenergysum
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_Sum > 0 %}
         {{ value_json.EB.Energy_Sum|float }}
@@ -235,7 +235,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Energia Exportada"
     unique_id: ebenergyexport
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_Export > 0 %}
         {{ value_json.EB.Energy_Export|float }}
@@ -246,7 +246,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Energia Q1"
     unique_id: ebenergyq1
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_Q1 > 0 %}
         {{ value_json.EB.Energy_Q1|float }}
@@ -257,7 +257,7 @@ sensor edpbox:
   - platform: mqtt
     name: "EB Energia Q4"
     unique_id: ebenergyq4
-    state_topic: "tele/contador/SENSOR"
+    state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Energy_Q4 > 0 %}
         {{ value_json.EB.Energy_Q4|float }}
