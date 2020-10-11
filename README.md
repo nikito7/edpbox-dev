@@ -1,13 +1,11 @@
 # Info
 
-All credits to @tiagofreire-pt for the original work. Many thanks.
+8.5.1
 
-Tasmota:
-
-![Tasmota](./img/Tasmota2.jpg)
-
+35 sml vars
 
 # Links
 
 - [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
+
 - [tasmota smi](https://tasmota.github.io/docs/Smart-Meter-Interface/)
