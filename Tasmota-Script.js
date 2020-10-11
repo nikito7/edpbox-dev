@@ -1,19 +1,16 @@
 >D
 
->BS
-
-; clock ha 20s update.
-; tele period.
+>B
 
 tper=20
 
-=>sensor53 r
+->sensor53 r
 
 >M 1
 
-+1,14,m,1,9600,EB,5,11,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r0104002C0001,r010400170001,r010400180004
++1,14,m,1,9600,EB,5,10,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r0104002C0001,r010400170001,r010400180004
 
-; 0104-0001-0001
+; 01
 
 1,01040cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,0
 1,01040cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,16
@@ -21,7 +18,7 @@ tper=20
 
 1,=h<hr>
 
-; 0104-006C-0007
+; 6C
 
 1,01040eUUuu@i1:10,Tensão L1 ,V,Voltage_L1,0
 1,01040exxxxxxxxUUuu@i1:10,Tensão L2 ,V,Voltage_L2,0
@@ -37,7 +34,7 @@ tper=20
 
 1,=h<hr>
 
-; 0104-0073-0007
+; 73
 
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência Activa ,W,Power,16
 
@@ -47,7 +44,7 @@ tper=20
 
 1,=h<hr>
 
-; 0104-007B-0005
+; 7B
 
 1,01040aUUuu@i3:1000,Factor de Potência ,pu,PFactor,19
 1,01040axxxxUUuu@i3:1000,PFactor L1 ,pu,PFactor_L1,19
@@ -57,23 +54,23 @@ tper=20
 
 1,=h<hr>
 
-; 0104-0026-0003
+; 26
 
 1,01040cUUuuUUuu@i4:1000,Energia T1 Vazio ,kWh,Energy_R1,1
 1,01040cxxxxxxxxUUuuUUuu@i4:1000,Energia T2 Ponta ,kWh,Energy_R2,1
 1,01040cxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energia T3 Cheia ,kWh,Energy_R3,1
 
-; 0104-002C-0001
+; 2C
 
 1,010404UUuuUUuu@i5:1000,Energia Total ,kWh,Energy_Sum,1
 
 1,=h<hr>
 
-; 0104-0017-0001
+; 17
 
 1,010404UUuuUUuu@i6:1000,Energia Exportada ,kWh,Energy_Export,3
 
-; 0104-0018-0004
+; 18
 
 1,010410UUuuUUuu@i7:1000,Energia Q1 Ri ,kVAr,Energy_Q1,2
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Energia Q4 Rc ,kVAr,Energy_Q4,3
