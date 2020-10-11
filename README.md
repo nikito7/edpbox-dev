@@ -1,6 +1,6 @@
 # Info
 
-Tasmota 8.5.1
+Tasmota 8.5.1 (b9)
 
 ```
 #undef USE_RULES
