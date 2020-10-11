@@ -2,7 +2,14 @@
 
 Tasmota 8.5.1
 
-SML_MAX_VARS 35
+```
+#undef USE_RULES
+#define USE_SCRIPT
+#define USE_SML_M
+#define SML_MAX_VARS 40
+#define SML_REPLACE_VARS
+#define USE_SCRIPT_GLOBVARS
+```
 
 # Links
 
