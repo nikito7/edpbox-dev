@@ -4,7 +4,6 @@
 
 35 sml vars
 
-# Links
 
 - [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
 
