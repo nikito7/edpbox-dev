@@ -1,9 +1,10 @@
 # Info
 
-8.5.1
+Tasmota 8.5.1
 
-35 sml vars
+SML_MAX_VARS 35
 
+# Links
 
 - [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
 
