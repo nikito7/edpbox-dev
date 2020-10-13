@@ -38,7 +38,7 @@ sensor edpbox:
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Voltage_L1 > 0 %}
-        {{ value_json.EB.Voltage_L1|int }}
+        {{ value_json.EB.Voltage_L1|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -49,7 +49,7 @@ sensor edpbox:
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Voltage_L2 > 0 %}
-        {{ value_json.EB.Voltage_L2|int }}
+        {{ value_json.EB.Voltage_L2|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -60,7 +60,7 @@ sensor edpbox:
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
       {% if value_json.EB.Voltage_L3 > 0 %}
-        {{ value_json.EB.Voltage_L3|int }}
+        {{ value_json.EB.Voltage_L3|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
