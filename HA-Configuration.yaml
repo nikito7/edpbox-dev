@@ -20,7 +20,7 @@ sensor edpbox:
     payload_not_available: Offline
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
-    icon: mdi:signal
+    icon: mdi:wifi
 
   - platform: mqtt
     name: "EB Clock"
