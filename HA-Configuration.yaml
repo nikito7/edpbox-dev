@@ -1,15 +1,6 @@
 sensor edpbox:
 
   - platform: mqtt
-    name: "EB ESP Status"
-    unique_id: eb_esp_status
-    state_topic: "tele/edpbox1/LWT"
-    availability_topic: "tele/edpbox1/LWT"
-    payload_available: Online
-    payload_not_available: Offline
-    icon: mdi:clock
-
-  - platform: mqtt
     name: "EB ESP Uptime"
     unique_id: eb_esp_uptime
     state_topic: "tele/edpbox1/STATE"
@@ -18,7 +9,7 @@ sensor edpbox:
     payload_not_available: Offline
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
-    icon: mdi:clock
+    icon: mdi:alarm
 
   - platform: mqtt
     name: "EB ESP Signal"
