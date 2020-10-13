@@ -5,8 +5,9 @@ sensor edpbox:
     unique_id: eb_esp_status
     state_topic: "tele/edpbox1/LWT"
     availability_topic: "tele/edpbox1/LWT"
-    expire_after: 300
-    icon: mdi:clock
+    payload_available: Online
+    payload_not_available: Offline
+    device_class: connectivity
 
   - platform: mqtt
     name: "EB ESP Uptime"
