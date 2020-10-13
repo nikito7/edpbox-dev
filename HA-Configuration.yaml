@@ -1,6 +1,12 @@
 sensor edpbox:
 
   - platform: mqtt
+    name: "EB ESP Status"
+    unique_id: eb_esp_status
+    state_topic: "stat/edpbox1/LWT"
+    icon: mdi:clock
+
+  - platform: mqtt
     name: "EB ESP Uptime"
     unique_id: eb_esp_uptime
     state_topic: "tele/edpbox1/STATE"
