@@ -14,6 +14,8 @@ sensor edpbox:
     unique_id: eb_esp_uptime
     state_topic: "tele/edpbox1/STATE"
     availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:clock
@@ -23,6 +25,8 @@ sensor edpbox:
     unique_id: eb_esp_signal
     state_topic: "tele/edpbox1/STATE"
     availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     icon: mdi:signal
@@ -31,6 +35,9 @@ sensor edpbox:
     name: "EB Clock"
     unique_id: ebclock
     state_topic: "tele/edpbox1/SENSOR"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
     value_template: '{{ value_json.EB.Clock_H|int }}:{{ value_json.EB.Clock_M|int }}:{{ value_json.EB.Clock_S|int }}'
     icon: mdi:clock
 
