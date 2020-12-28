@@ -1,14 +1,13 @@
 # Info
 
-Tasmota 8.5.1 (b9)
+Tasmota 9.2.0 (b1)
 
 ```
-#undef USE_RULES
-#define USE_SCRIPT
-#define USE_SML_M
 #define SML_MAX_VARS 40
 #define SML_REPLACE_VARS
 #define USE_SCRIPT_GLOBVARS
+#define USE_SCRIPT_SUB_COMMAND
+#define USE_SML_SCRIPT_CMD
 ```
 
 # Links
