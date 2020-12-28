@@ -4,7 +4,7 @@
 
 tper=30
 
-->sensor53 r
+=>sensor53 r
 
 >M 1
 
@@ -71,7 +71,5 @@ tper=30
 
 1,010410UUuuUUuu@i6:1000,Energia Q1 Ri ,kVAr,Energy_Q1,1
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 Rc ,kVAr,Energy_Q4,3
-
-; dev
 
 #
