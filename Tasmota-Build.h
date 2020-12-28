@@ -4,6 +4,8 @@
 #define SML_MAX_VARS 40
 #define SML_REPLACE_VARS
 #define USE_SCRIPT_GLOBVARS
+#define USE_SCRIPT_SUB_COMMAND
+#define USE_SML_SCRIPT_CMD
 
 //#undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
