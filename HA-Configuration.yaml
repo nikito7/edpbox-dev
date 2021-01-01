@@ -1,4 +1,4 @@
-sensor edpbox:
+sensor edpbox1:
 
   - platform: mqtt
     name: "EB ESP Uptime"
@@ -29,7 +29,7 @@ sensor edpbox:
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
     payload_not_available: Offline
-    value_template: '{{ value_json.EB.Clock_H|int }}:{{ value_json.EB.Clock_M|int }}:{{ value_json.EB.Clock_S|int }}'
+    value_template: '{{ value_json.EB1.Clock_H|int }}:{{ value_json.EB1.Clock_M|int }}:{{ value_json.EB1.Clock_S|int }}'
     icon: mdi:clock
 
   - platform: mqtt
@@ -37,8 +37,8 @@ sensor edpbox:
     unique_id: ebten1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L1 > 0 %}
-        {{ value_json.EB.Voltage_L1|float }}
+      {% if value_json.EB1.Voltage_L1 > 0 %}
+        {{ value_json.EB1.Voltage_L1|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -48,8 +48,8 @@ sensor edpbox:
     unique_id: ebten2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L2 > 0 %}
-        {{ value_json.EB.Voltage_L2|float }}
+      {% if value_json.EB1.Voltage_L2 > 0 %}
+        {{ value_json.EB1.Voltage_L2|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -59,8 +59,8 @@ sensor edpbox:
     unique_id: ebten3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Voltage_L3 > 0 %}
-        {{ value_json.EB.Voltage_L3|float }}
+      {% if value_json.EB1.Voltage_L3 > 0 %}
+        {{ value_json.EB1.Voltage_L3|float }}
       {% endif %}
     unit_of_measurement: "V"
     icon: mdi:flash
@@ -70,8 +70,8 @@ sensor edpbox:
     unique_id: ebcursum
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Current_Sum > -1 %}
-        {{ value_json.EB.Current_Sum|float }}
+      {% if value_json.EB1.Current_Sum > -1 %}
+        {{ value_json.EB1.Current_Sum|float }}
       {% endif %} 
     unit_of_measurement: "A"
     icon: mdi:power-socket
@@ -81,8 +81,8 @@ sensor edpbox:
     unique_id: ebcur1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Current_L1 > -1 %}
-        {{ value_json.EB.Current_L1|float }}
+      {% if value_json.EB1.Current_L1 > -1 %}
+        {{ value_json.EB1.Current_L1|float }}
       {% endif %} 
     unit_of_measurement: "A"
     icon: mdi:power-socket
@@ -92,8 +92,8 @@ sensor edpbox:
     unique_id: ebcur2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Current_L2 > -1 %}
-        {{ value_json.EB.Current_L2|float }}
+      {% if value_json.EB1.Current_L2 > -1 %}
+        {{ value_json.EB1.Current_L2|float }}
       {% endif %}  
     unit_of_measurement: "A"
     icon: mdi:power-socket
@@ -103,8 +103,8 @@ sensor edpbox:
     unique_id: ebcur3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Current_L3 > -1 %}
-        {{ value_json.EB.Current_L3|float }}
+      {% if value_json.EB1.Current_L3 > -1 %}
+        {{ value_json.EB1.Current_L3|float }}
       {% endif %} 
     unit_of_measurement: "A"
     icon: mdi:power-socket
@@ -114,8 +114,8 @@ sensor edpbox:
     unique_id: ebpfactor
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor|float > 0 %}
-        {{ value_json.EB.PFactor|float }}
+      {% if value_json.EB1.PFactor|float > 0 %}
+        {{ value_json.EB1.PFactor|float }}
       {% endif %}
     unit_of_measurement: "p.u."
     icon: mdi:percent
@@ -125,8 +125,8 @@ sensor edpbox:
     unique_id: ebpfactorl1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor_L1 > 0 %}
-        {{ value_json.EB.PFactor_L1|float }}
+      {% if value_json.EB1.PFactor_L1 > 0 %}
+        {{ value_json.EB1.PFactor_L1|float }}
       {% endif %}
     unit_of_measurement: "p.u."
     icon: mdi:percent
@@ -136,8 +136,8 @@ sensor edpbox:
     unique_id: ebpfactorl2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor_L2 > 0 %}
-        {{ value_json.EB.PFactor_L2|float }}
+      {% if value_json.EB1.PFactor_L2 > 0 %}
+        {{ value_json.EB1.PFactor_L2|float }}
       {% endif %}
     unit_of_measurement: "p.u."
     icon: mdi:percent
@@ -147,8 +147,8 @@ sensor edpbox:
     unique_id: ebpfactorl3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.PFactor_L3 > 0 %}
-        {{ value_json.EB.PFactor_L3|float }}
+      {% if value_json.EB1.PFactor_L3 > 0 %}
+        {{ value_json.EB1.PFactor_L3|float }}
       {% endif %}
     unit_of_measurement: "p.u."
     icon: mdi:percent
@@ -158,8 +158,8 @@ sensor edpbox:
     unique_id: ebpowerp1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power > 0 %}
-        {{ value_json.EB.Power|int }}
+      {% if value_json.EB1.Power > 0 %}
+        {{ value_json.EB1.Power|int }}
       {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
@@ -169,8 +169,8 @@ sensor edpbox:
     unique_id: ebpowerl1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_L1 > -1 %}
-        {{ value_json.EB.Power_L1|int }}
+      {% if value_json.EB1.Power_L1 > -1 %}
+        {{ value_json.EB1.Power_L1|int }}
       {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
@@ -180,8 +180,8 @@ sensor edpbox:
     unique_id: ebpowerl2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_L2 > -1 %}
-        {{ value_json.EB.Power_L2|int }}
+      {% if value_json.EB1.Power_L2 > -1 %}
+        {{ value_json.EB1.Power_L2|int }}
       {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
@@ -191,8 +191,8 @@ sensor edpbox:
     unique_id: ebpowerl3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Power_L3 > -1 %}
-        {{ value_json.EB.Power_L3|int }}
+      {% if value_json.EB1.Power_L3 > -1 %}
+        {{ value_json.EB1.Power_L3|int }}
       {% endif %}
     unit_of_measurement: "W"
     icon: mdi:power-plug
@@ -202,8 +202,8 @@ sensor edpbox:
     unique_id: ebfreq
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Frequency > 0 %}
-        {{ value_json.EB.Frequency|float }}
+      {% if value_json.EB1.Frequency > 0 %}
+        {{ value_json.EB1.Frequency|float }}
       {% endif %}
     unit_of_measurement: "Hz"
     icon: mdi:current-ac
@@ -213,8 +213,8 @@ sensor edpbox:
     unique_id: ebenergy1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_R1 > 0 %}
-        {{ value_json.EB.Energy_R1|float }}
+      {% if value_json.EB1.Energy_R1 > 0 %}
+        {{ value_json.EB1.Energy_R1|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -224,8 +224,8 @@ sensor edpbox:
     unique_id: ebenergy2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_R2 > 0 %}
-        {{ value_json.EB.Energy_R2|float }}
+      {% if value_json.EB1.Energy_R2 > 0 %}
+        {{ value_json.EB1.Energy_R2|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -235,8 +235,8 @@ sensor edpbox:
     unique_id: ebenergy3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_R3 > 0 %}
-        {{ value_json.EB.Energy_R3|float }}
+      {% if value_json.EB1.Energy_R3 > 0 %}
+        {{ value_json.EB1.Energy_R3|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -246,8 +246,8 @@ sensor edpbox:
     unique_id: ebenergysum
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_Sum > 0 %}
-        {{ value_json.EB.Energy_Sum|float }}
+      {% if value_json.EB1.Energy_Sum > 0 %}
+        {{ value_json.EB1.Energy_Sum|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -257,8 +257,8 @@ sensor edpbox:
     unique_id: ebenergyexport
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_Export > 0 %}
-        {{ value_json.EB.Energy_Export|float }}
+      {% if value_json.EB1.Energy_Export > 0 %}
+        {{ value_json.EB1.Energy_Export|float }}
       {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
@@ -268,8 +268,8 @@ sensor edpbox:
     unique_id: ebenergyq1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_Q1 > 0 %}
-        {{ value_json.EB.Energy_Q1|float }}
+      {% if value_json.EB1.Energy_Q1 > 0 %}
+        {{ value_json.EB1.Energy_Q1|float }}
       {% endif %}
     unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
@@ -279,8 +279,8 @@ sensor edpbox:
     unique_id: ebenergyq4
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-      {% if value_json.EB.Energy_Q4 > 0 %}
-        {{ value_json.EB.Energy_Q4|float }}
+      {% if value_json.EB1.Energy_Q4 > 0 %}
+        {{ value_json.EB1.Energy_Q4|float }}
       {% endif %}
     unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
