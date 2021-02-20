@@ -1,6 +1,6 @@
 recorder:
 
-  purge_keep_days: 8
+  purge_keep_days: 2
 
 utility_meter:
 
