@@ -5,7 +5,7 @@ recorder:
 utility_meter:
 
   daily_energy:
-    source: sensor.ebenergysum
+    source: sensor.eb_consumo_total
     cycle: daily
 
 sensor edpbox1:
