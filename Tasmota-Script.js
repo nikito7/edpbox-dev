@@ -2,7 +2,7 @@
 
 >BS
 
-tper=60
+tper=30
 
 =>sensor53 r
 
