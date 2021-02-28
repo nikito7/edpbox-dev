@@ -3,13 +3,17 @@
 >B
 
 smlj=0
-tper=51
+tper=31
 
 =>sensor53 r
 
+>R
+
+smlj=0
+
 >S
 
-if upsecs>30
+if upsecs>25
 then
 smlj=1
 endif
