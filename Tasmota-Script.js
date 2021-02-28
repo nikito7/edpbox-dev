@@ -1,10 +1,18 @@
 >D
 
->BS
+>B
 
-tper=30
+smlj=0
+tper=51
 
 =>sensor53 r
+
+>S
+
+if upsecs>30
+then
+smlj=1
+endif
 
 >M 1
 
