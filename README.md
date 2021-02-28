@@ -1,9 +1,9 @@
 # Info
 
-Tasmota 9.2.0 (b1)
+Tasmota 9.x
 
 ```
-#define SML_MAX_VARS 40
+#define SML_MAX_VARS 50
 #define SML_REPLACE_VARS
 #define USE_SCRIPT_GLOBVARS
 #define USE_SCRIPT_SUB_COMMAND
