@@ -13,14 +13,14 @@ smlj=0
 
 >S
 
-if upsecs>45
+if upsecs>30
 then
 smlj=1
 endif
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,30,r1F0400010001,r1F04006C0007,r1F0400730007,r1F04007B0005,r1F0400260003,r1F0400160002,r1F0400180004
++1,14,m,1,9600,EB1,5,15,r1F0400010001,r1F04006C0007,r1F0400730007,r1F04007B0005,r1F0400260003,r1F0400160002,r1F0400180004
 
 ; 01
 
@@ -82,6 +82,8 @@ endif
 ; 18
 
 1,1F0410UUuuUUuu@i6:1000,Energia Q1 Ri ,kVAr,Energy_Q1,1
+1,1F0410xxxxxxxxUUuuUUuu@i6:1000,Energia Q2 ,kVAr,Energy_Q2,1
+1,1F0410xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 ,kVAr,Energy_Q3,1
 1,1F0410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 Rc ,kVAr,Energy_Q4,2
 
 ; dev ID: 1F
