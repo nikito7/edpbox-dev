@@ -79,10 +79,14 @@ endif
 1,010408UUuuUUuu@i5:1000,Energia Importada ,kWh,Energy_Sum,1
 1,010408xxxxxxxxUUuuUUuu@i5:1000,Energia Exportada ,kWh,Energy_Export,3
 
+1,=h<hr>
+
 ; 18 count 4
 
 1,010410UUuuUUuu@i6:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
+
+1,=h<hr>
 
 ; 85 count 2
 
