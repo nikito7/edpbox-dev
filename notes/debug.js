@@ -2,7 +2,7 @@
 
 >B
 
-=>sensor53 r
+->sensor53 r
 
 >M 1
 
