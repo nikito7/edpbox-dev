@@ -7,7 +7,6 @@ utility_meter:
   daily_energy:
     source: sensor.eb_consumo_total
     cycle: daily
-    unique_id: umeterdaily
     name: "Daily Energy"
 
 sensor edpbox1:
