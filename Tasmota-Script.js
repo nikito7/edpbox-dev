@@ -20,7 +20,7 @@ endif
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160002,r010400180004
++1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160002,r010400180004,r010400850002
 
 ; 01 count 1
 
@@ -81,10 +81,15 @@ endif
 
 ; 18 count 4
 
-1,010410UUuuUUuu@i6:1000,Energia Q1 Ri ,kVAr,Energy_Q1,1
-1,010410xxxxxxxxUUuuUUuu@i6:1000,Energia Q2 ,kVAr,Energy_Q2,3
-1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 ,kVAr,Energy_Q3,3
-1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 Rc ,kVAr,Energy_Q4,2
+1,010410UUuuUUuu@i6:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
+1,010410xxxxxxxxUUuuUUuu@i6:1000,Energia Q2 - ,kVAr,Energy_Q2,4
+1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 - ,kVAr,Energy_Q3,3
+1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
+
+; 85 count 2
+
+1,010408UUuuUUuu@i7:1,Disconnector Q , ,Disconnector_Q,0
+1,010408xxxxxxxxUUuuUUuu@i7:1,Disconnector K ,%%,Disconnector_K,0
 
 ; dev
 
