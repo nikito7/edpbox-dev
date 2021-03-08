@@ -1,9 +1,9 @@
 >D
 
->B
+>BS
 
 smlj=0
-tper=51
+tper=60
 
 ->sensor53 r
 
@@ -13,7 +13,7 @@ smlj=0
 
 >S
 
-if upsecs>31
+if upsecs>30
 then
 smlj=1
 endif
@@ -82,8 +82,8 @@ endif
 ; 18 count 4
 
 1,010410UUuuUUuu@i6:1000,Energia Q1 Ri ,kVAr,Energy_Q1,1
-1,010410xxxxxxxxUUuuUUuu@i6:1000,Energia Q2 ,kVAr,Energy_Q2,1
-1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 ,kVAr,Energy_Q3,1
+1,010410xxxxxxxxUUuuUUuu@i6:1000,Energia Q2 ,kVAr,Energy_Q2,3
+1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 ,kVAr,Energy_Q3,3
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 Rc ,kVAr,Energy_Q4,2
 
 ; dev
