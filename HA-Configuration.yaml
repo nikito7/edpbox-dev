@@ -33,13 +33,33 @@ sensor edpbox1:
     icon: mdi:wifi
 
   - platform: mqtt
-    name: "EB Clock"
-    unique_id: ebclock
+    name: "EB Clock H"
+    unique_id: eb1_clock_h
     state_topic: "tele/edpbox1/SENSOR"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
     payload_not_available: Offline
-    value_template: '{{ value_json.EB1.Clock_H|int }}:{{ value_json.EB1.Clock_M|int }}:{{ value_json.EB1.Clock_S|int }}'
+    value_template: '{{ value_json.EB1.Clock_H|int }}'
+    icon: mdi:clock
+
+  - platform: mqtt
+    name: "EB Clock M"
+    unique_id: eb1_clock_m
+    state_topic: "tele/edpbox1/SENSOR"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.EB1.Clock_M|int }}'
+    icon: mdi:clock
+
+  - platform: mqtt
+    name: "EB Clock S"
+    unique_id: eb1_clock_s
+    state_topic: "tele/edpbox1/SENSOR"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.EB1.Clock_S|int }}'
     icon: mdi:clock
 
   - platform: mqtt
@@ -255,24 +275,6 @@ sensor edpbox1:
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Energy_Q1|float }}
-    unit_of_measurement: "kVAr"
-    icon: mdi:transmission-tower
-
-  - platform: mqtt
-    name: "EB Energia Q2"
-    unique_id: ebenergyq2
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_Q2|float }}
-    unit_of_measurement: "kVAr"
-    icon: mdi:transmission-tower
-
-  - platform: mqtt
-    name: "EB Energia Q3"
-    unique_id: ebenergyq3
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_Q3|float }}
     unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
 
