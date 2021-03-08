@@ -82,8 +82,6 @@ endif
 ; 18 count 4
 
 1,010410UUuuUUuu@i6:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
-1,010410xxxxxxxxUUuuUUuu@i6:1000,Energia Q2 - ,kVAr,Energy_Q2,4
-1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 - ,kVAr,Energy_Q3,3
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
 
 ; 85 count 2
