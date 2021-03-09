@@ -41,6 +41,7 @@ sensor edpbox1:
     payload_not_available: Offline
     value_template: '{{ value_json.EB1.Clock_H|int }}'
     icon: mdi:clock
+    unit_of_measurement: "h"
 
   - platform: mqtt
     name: "EB Clock M"
@@ -51,6 +52,7 @@ sensor edpbox1:
     payload_not_available: Offline
     value_template: '{{ value_json.EB1.Clock_M|int }}'
     icon: mdi:clock
+    unit_of_measurement: "m"
 
   - platform: mqtt
     name: "EB Clock S"
@@ -61,6 +63,7 @@ sensor edpbox1:
     payload_not_available: Offline
     value_template: '{{ value_json.EB1.Clock_S|int }}'
     icon: mdi:clock
+    unit_of_measurement: "s"
 
   - platform: mqtt
     name: "EB Tensão L1"
