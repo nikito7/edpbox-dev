@@ -64,7 +64,7 @@
 #undef USE_SHELLY_DIMMER                         // Disable support for Shelly Dimmer (+3k code)
 
 #undef USE_COUNTER                               // Disable counters
-define USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
+#define USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
 #undef USE_DS18x20                               // Disable DS18x20 sensor
 
 #undef USE_I2C                                   // Disable all I2C sensors and devices
