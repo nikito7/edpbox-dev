@@ -1,3 +1,5 @@
+// copy to custom...
+
 #undef USE_RULES
 #define USE_SCRIPT
 #define USE_SML_M
@@ -9,7 +11,7 @@
 
 //#undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
-#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
+//#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
 //#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
@@ -18,17 +20,17 @@
 #undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
 #undef USE_EMULATION_WEMO                        // Disable Belkin WeMo emulation for Alexa (+6k code, +2k mem common)
 //#undef USE_CUSTOM                                // Disable Custom features
-#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
-#undef USE_TIMERS                                // Disable support for up to 16 timers
-#undef USE_TIMERS_WEB                            // Disable support for timer webpage
-#undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
+//#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
+//#undef USE_TIMERS                                // Disable support for up to 16 timers
+//#undef USE_TIMERS_WEB                            // Disable support for timer webpage
+//#undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
 #undef USE_RULES                                 // Disable support for rules
 //#undef USE_SCRIPT                                // Disable support for script
 
 // -- Optional modules ----------------------------
 #undef ROTARY_V1                                 // Disable support for MI Desk Lamp
 #undef USE_SONOFF_RF                             // Disable support for Sonoff Rf Bridge (+3k2 code)
-  #undef USE_RF_FLASH                            // Disable support for flashing the EFM8BB1 chip on the Sonoff RF Bridge. C2CK must be connected to GPIO4, C2D to GPIO5 on the PCB
+#undef USE_RF_FLASH                            // Disable support for flashing the EFM8BB1 chip on the Sonoff RF Bridge. C2CK must be connected to GPIO4, C2D to GPIO5 on the PCB
 #undef USE_SONOFF_SC                             // Disable support for Sonoff Sc (+1k1 code)
 #undef USE_TUYA_MCU                              // Disable support for Tuya Serial MCU
 #undef USE_ARMTRONIX_DIMMERS                     // Disable support for Armtronix Dimmers (+1k4 code)
@@ -47,7 +49,7 @@
 #undef USE_SONOFF_D1                             // Disable support for Sonoff D1 Dimmer (+0k7 code)
 
 // -- Optional light modules ----------------------
-#undef USE_LIGHT                                 // Disable support for lights
+//#undef USE_LIGHT                                 // Disable support for lights
 #undef USE_WS2812                                // Disable WS2812 Led string using library NeoPixelBus (+5k code, +1k mem, 232 iram) - Disable by //
 #undef USE_MY92X1                                // Disable support for MY92X1 RGBCW led controller as used in Sonoff B1, Ailight and Lohas
 #undef USE_SM16716                               // Disable support for SM16716 RGB LED controller (+0k7 code)
@@ -69,7 +71,7 @@
 #undef USE_PMS5003                               // Disable support for PMS5003 and PMS7003 particle concentration sensor
 #undef USE_NOVA_SDS                              // Disable support for SDS011 and SDS021 particle concentration sensor
 #undef USE_HPMA                                  // Disable support for Honeywell HPMA115S0 particle concentration sensor
-#undef USE_SERIAL_BRIDGE                         // Disable support for software Serial Bridge
+//#undef USE_SERIAL_BRIDGE                         // Disable support for software Serial Bridge
 #undef USE_MP3_PLAYER                            // Disable DFPlayer Mini MP3 Player RB-DFR-562 commands: play, volume and stop
 #undef USE_AZ7798                                // Disable support for AZ-Instrument 7798 CO2 datalogger
 #undef USE_PN532_HSU                             // Disable support for PN532 using HSU (Serial) interface (+1k8 code, 140 bytes mem)
@@ -94,7 +96,7 @@
 #undef USE_DDSU666                               // Disable support for Chint DDSU666 Modbus energy monitor (+0k6 code)
 #undef USE_SOLAX_X1                              // Disable support for Solax X1 series Modbus log info (+3k1 code)
 #undef USE_LE01MR                                // Disable support for F&F LE-01MR Modbus energy meter (+2k code)
-#undef USE_TELEINFO                              // Disable support for French Energy Provider metering telemetry
+//#undef USE_TELEINFO                              // Disable support for French Energy Provider metering telemetry
 
 #undef USE_DHT                                   // Disable support for DHT11, AM2301 (DHT21, DHT22, AM2302, AM2321) and SI7021 Temperature and Humidity sensor
 #undef USE_MAX31855                              // Disable MAX31855 K-Type thermocouple sensor using softSPI
