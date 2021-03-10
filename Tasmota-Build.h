@@ -1,5 +1,5 @@
 // copy to user_config_override.h
-// meter configs at the end
+// energy meter sml configs at the end
 
 #undef FIRMWARE_LITE                             // Disable tasmota-lite with no sensors
 #undef FIRMWARE_SENSORS                          // Disable tasmota-sensors with useful sensors enabled
