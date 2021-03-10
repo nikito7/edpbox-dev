@@ -1,4 +1,4 @@
-// copy to custom...
+// copy to user_config_override.h
 
 #undef USE_RULES
 #define USE_SCRIPT
