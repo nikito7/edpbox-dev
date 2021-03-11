@@ -1,5 +1,5 @@
 // copy to user_config_override.h
-// tasmota-minicustom
+// tasmota-minimal
 
 #define USE_MQTT_TLS
 #define USE_WEBSERVER
