@@ -1,7 +1,9 @@
 // copy to user_config_override.h
 // sml at the end of file
-
+// 
+// 
 // copy from minimal begin
+// no changes here
 
 #undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
@@ -128,9 +130,12 @@
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER
 
+//
 // copy from minimal end
-
+//
 // force configs
+// changes next
+// 
 
 #define USE_MQTT_TLS
 #define USE_WEBSERVER
