@@ -1,0 +1,17 @@
+# (...)
+
+recorder:
+
+  purge_keep_days: 2
+
+utility_meter:
+
+  daily_energy:
+    source: sensor.eb_consumo_total
+    cycle: daily
+
+sensor: !include edpbox1.yaml
+
+###
+##
+#
