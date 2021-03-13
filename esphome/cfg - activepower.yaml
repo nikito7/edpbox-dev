@@ -7,7 +7,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
 
       - id: Active_Power_L1_Export
@@ -17,7 +17,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
 
       - id: Active_Power_L2_Import
@@ -27,9 +27,8 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
-        icon: mdi:power-plug
 
       - id: Active_Power_L2_Export
         name: "EB1 Active Power L2 Export"
@@ -38,9 +37,8 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
-        icon: mdi:power-plug
 
       - id: Active_Power_L3_Import
         name: "EB1 Active Power L3 Import"
@@ -49,9 +47,8 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
-        icon: mdi:power-plug
 
       - id: Active_Power_L3_Export
         name: "EB1 Active Power L3 Export"
@@ -60,9 +57,8 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
-        icon: mdi:power-plug
 
       - id: Active_Power_Total_Import
         name: "EB1 Active Power Total Import"
@@ -71,19 +67,17 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
-        icon: mdi:power-plug
 
       - id: Active_Power_Total_Export
         name: "EB1 Active Power Total Export"
         address: 0x0073
-        offset: 8
+        offset: 7
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 1
+        scale_factor: 0.0001
         accuracy_decimals: 1
-        icon: mdi:power-plug
 
 # eof active power
