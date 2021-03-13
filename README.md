@@ -1,6 +1,8 @@
 # Info
 
-Tasmota 9.x
+Aos novos utilizadores, ler primeiro: [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
+
+# Tasmota 9.x
 
 ```c
 #define USE_MQTT_TLS
@@ -26,3 +28,5 @@ Tasmota 9.x
 - [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
 
 - [tasmota smi](https://tasmota.github.io/docs/Smart-Meter-Interface/)
+
+- [forum](https://forum.cpha.pt/t/integrar-contadores-inteligentes-da-edp-em-home-assistant/4953/)
