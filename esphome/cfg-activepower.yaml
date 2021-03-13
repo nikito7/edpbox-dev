@@ -7,7 +7,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
       - id: Active_Power_L1_Export
@@ -17,7 +17,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
       - id: Active_Power_L2_Import
@@ -27,7 +27,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
       - id: Active_Power_L2_Export
@@ -37,7 +37,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
       - id: Active_Power_L3_Import
@@ -47,7 +47,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
       - id: Active_Power_L3_Export
@@ -57,7 +57,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
       - id: Active_Power_Total_Import
@@ -67,7 +67,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
       - id: Active_Power_Total_Export
@@ -77,7 +77,7 @@
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_DOUBLE
-        scale_factor: 0.0001
+        scale_factor: 0.001
         accuracy_decimals: 1
 
 # eof active power
