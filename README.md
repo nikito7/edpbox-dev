@@ -23,6 +23,10 @@ Aos novos utilizadores, ler primeiro: [tiagofreire-pt](https://github.com/tiagof
 #define USE_SML_SCRIPT_CMD
 ```
 
+# ESPHome
+
+todo
+
 # Links
 
 - [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
