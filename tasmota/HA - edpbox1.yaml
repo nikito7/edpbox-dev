@@ -9,7 +9,7 @@
     payload_not_available: Offline
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
-    icon: mdi:ala
+    icon: mdi:alarm
     expire_after: 120
 
   - platform: mqtt
@@ -45,7 +45,7 @@
     payload_not_available: Offline
     value_template: '{{ value_json.EB1.Clock_M|int }}'
     icon: mdi:clock
-    unit_of_measurement: "m
+    unit_of_measurement: m
     expire_after: 120
 
   - platform: mqtt
