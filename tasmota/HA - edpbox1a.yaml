@@ -190,65 +190,6 @@
     icon: mdi:percent
 
 
-  - platform: mqtt
-    name: "EB Potência Activa"
-    unique_id: ebpowerp1
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Power|int }}
-    unit_of_measurement: "W"
-    icon: mdi:power-plug
-
-
-  - platform: mqtt
-    name: "EB Potência Exportada"
-    unique_id: ebpowerp1exp
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Power_Export|int }}
-    unit_of_measurement: "W"
-    icon: mdi:power-plug
-
-
-  - platform: mqtt
-    name: "EB Potência L1"
-    unique_id: ebpowerl1
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Power_L1|int }}
-    unit_of_measurement: "W"
-    icon: mdi:power-plug
-
-  - platform: mqtt
-    name: "EB Potência L2"
-    unique_id: ebpowerl2
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Power_L2|int }}
-    unit_of_measurement: "W"
-    icon: mdi:power-plug
-
-
-  - platform: mqtt
-    name: "EB Potência L3"
-    unique_id: ebpowerl3
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Power_L3|int }}
-    unit_of_measurement: "W"
-    icon: mdi:power-plug
-
-
-  - platform: mqtt
-    name: "EB Frequência"
-    unique_id: ebfreq
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Frequency|float }}
-    unit_of_measurement: "Hz"
-    icon: mdi:current-ac
-    device_class: none
-    expire_after: 0
 
 ###
 ##
