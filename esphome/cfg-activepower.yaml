@@ -48,7 +48,7 @@
       - id: Active_Power_L3_Export
         name: "EB1 Active Power L3 Export"
         address: 0x0073
-        offset: 0a
+        offset: 10
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
@@ -57,7 +57,7 @@
       - id: Active_Power_Total_Import
         name: "EB1 Active Power Total Import"
         address: 0x0073
-        offset: 0c
+        offset: 12
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
@@ -66,7 +66,7 @@
       - id: Active_Power_Total_Export
         name: "EB1 Active Power Total Export"
         address: 0x0073
-        offset: 0e
+        offset: 14
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
