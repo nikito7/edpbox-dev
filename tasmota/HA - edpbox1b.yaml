@@ -9,7 +9,6 @@
     unit_of_measurement: "W"
     icon: mdi:power-plug
 
-
   - platform: mqtt
     name: "EB Potência Exportada"
     unique_id: ebpowerp1exp
@@ -18,7 +17,6 @@
         {{ value_json.EB1.Power_Export|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
-
 
   - platform: mqtt
     name: "EB Potência L1"
@@ -38,7 +36,6 @@
     unit_of_measurement: "W"
     icon: mdi:power-plug
 
-
   - platform: mqtt
     name: "EB Potência L3"
     unique_id: ebpowerl3
@@ -48,7 +45,6 @@
     unit_of_measurement: "W"
     icon: mdi:power-plug
 
-
   - platform: mqtt
     name: "EB Frequência"
     unique_id: ebfreq
@@ -57,9 +53,6 @@
         {{ value_json.EB1.Frequency|float }}
     unit_of_measurement: "Hz"
     icon: mdi:current-ac
-    device_class: none
-    expire_after: 0
-
 
   - platform: mqtt
     name: "EB Energia T1 Vazio"
@@ -69,8 +62,6 @@
         {{ value_json.EB1.Energy_R1|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
    
   - platform: mqtt
     name: "EB Energia T2 Ponta"
@@ -80,8 +71,6 @@
         {{ value_json.EB1.Energy_R2|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
     
   - platform: mqtt
     name: "EB Energia T3 Cheia"
@@ -91,8 +80,6 @@
         {{ value_json.EB1.Energy_R3|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Total"
@@ -102,8 +89,6 @@
         {{ value_json.EB1.Energy_Sum|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Exportada"
@@ -113,8 +98,6 @@
         {{ value_json.EB1.Energy_Export|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Q1"
@@ -124,8 +107,6 @@
         {{ value_json.EB1.Energy_Q1|float }}
     unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Q4"
@@ -135,8 +116,6 @@
         {{ value_json.EB1.Energy_Q4|float }}
     unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
 
 ###
 ##
