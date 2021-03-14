@@ -1,5 +1,8 @@
 >D
 
+x1=xxxxxxxx
+x2=xxxxxxxxxxxxxxxx
+
 >BS
 
 smlj=0
