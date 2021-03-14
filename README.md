@@ -1,6 +1,6 @@
 # Info
 
-Aos novos utilizadores, ler primeiro: [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
+⚠️ Ler primeiro: [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box) ⚠️
 
 # Tasmota 9.x
 
