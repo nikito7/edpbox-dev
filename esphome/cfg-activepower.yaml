@@ -6,78 +6,70 @@
         offset: 0
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_LONGLONG
+        value_type: U_LONG
         accuracy_decimals: 0
 
       - id: Active_Power_L1_Export
         name: "EB1 Active Power L1 Export"
         address: 0x0073
-        offset: 1
+        offset: 2
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_LONGLONG
+        value_type: U_LONG
         accuracy_decimals: 0
-
-####
 
       - id: Active_Power_L2_Import
         name: "EB1 Active Power L2 Import"
         address: 0x0073
-        offset: 2
+        offset: 4
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONG
         accuracy_decimals: 0
 
       - id: Active_Power_L2_Export
         name: "EB1 Active Power L2 Export"
         address: 0x0073
-        offset: 3
+        offset: 6
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONG
         accuracy_decimals: 0
 
       - id: Active_Power_L3_Import
         name: "EB1 Active Power L3 Import"
         address: 0x0073
-        offset: 4
+        offset: 8
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONG
         accuracy_decimals: 0
 
       - id: Active_Power_L3_Export
         name: "EB1 Active Power L3 Export"
         address: 0x0073
-        offset: 5
+        offset: 0a
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONG
         accuracy_decimals: 0
 
       - id: Active_Power_Total_Import
         name: "EB1 Active Power Total Import"
         address: 0x0073
-        offset: 6
+        offset: 0c
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONG
         accuracy_decimals: 0
 
       - id: Active_Power_Total_Export
         name: "EB1 Active Power Total Export"
         address: 0x0073
-        offset: 7
+        offset: 0e
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONG
         accuracy_decimals: 0
 
 # eof active power
