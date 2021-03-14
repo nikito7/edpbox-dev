@@ -7,7 +7,8 @@
         unit_of_measurement: "V"
         modbus_functioncode: "read_input_registers"
         value_type: U_SINGLE
-        scale_factor: 0.1
+        filters:
+          - multiply: 0.1
         accuracy_decimals: 1
 
       - id: Current_L1
@@ -17,8 +18,13 @@
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_SINGLE
-        scale_factor: 0.1
+        filters:
+          - multiply: 0.1
         accuracy_decimals: 1
+
+
+####
+
 
       - id: Voltage_L2
         name: "EB1 Voltage L2"
