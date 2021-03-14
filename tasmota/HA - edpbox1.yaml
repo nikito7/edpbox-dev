@@ -10,6 +10,8 @@
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:alarm
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB ESP Signal"
@@ -21,6 +23,8 @@
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     icon: mdi:wifi
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Clock H"
@@ -32,6 +36,8 @@
     value_template: '{{ value_json.EB1.Clock_H|int }}'
     icon: mdi:clock
     unit_of_measurement: "h"
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Clock M"
@@ -43,6 +49,8 @@
     value_template: '{{ value_json.EB1.Clock_M|int }}'
     icon: mdi:clock
     unit_of_measurement: "m"
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Clock S"
@@ -54,6 +62,8 @@
     value_template: '{{ value_json.EB1.Clock_S|int }}'
     icon: mdi:clock
     unit_of_measurement: "s"
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Tensão L1"
@@ -63,6 +73,8 @@
         {{ value_json.EB1.Voltage_L1|float }}
     unit_of_measurement: "V"
     icon: mdi:flash
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Tensão L1-10"
@@ -72,6 +84,8 @@
         {{ value_json.EB1.Voltage_L1 - 10 | float }}
     unit_of_measurement: "V"
     icon: mdi:flash
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Tensão L2"
@@ -81,6 +95,8 @@
         {{ value_json.EB1.Voltage_L2|float }}
     unit_of_measurement: "V"
     icon: mdi:flash
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Tensão L3"
@@ -90,6 +106,8 @@
         {{ value_json.EB1.Voltage_L3|float }}
     unit_of_measurement: "V"
     icon: mdi:flash
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Tensão L3+10"
@@ -99,6 +117,8 @@
         {{ value_json.EB1.Voltage_L3 + 10 | float }}
     unit_of_measurement: "V"
     icon: mdi:flash
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Corrente Total"
@@ -108,6 +128,8 @@
         {{ value_json.EB1.Current_Sum|float }}
     unit_of_measurement: "A"
     icon: mdi:power-socket
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Corrente L1"
@@ -117,6 +139,8 @@
         {{ value_json.EB1.Current_L1|float }}
     unit_of_measurement: "A"
     icon: mdi:power-socket
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Corrente L2"
@@ -126,6 +150,8 @@
         {{ value_json.EB1.Current_L2|float }} 
     unit_of_measurement: "A"
     icon: mdi:power-socket
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Corrente L3"
@@ -135,6 +161,8 @@
         {{ value_json.EB1.Current_L3|float }}
     unit_of_measurement: "A"
     icon: mdi:power-socket
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Factor de Potência"
@@ -153,6 +181,8 @@
         {{ value_json.EB1.PFactor_L1|float }}
     unit_of_measurement: "p.u."
     icon: mdi:percent
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB PFactor L2"
@@ -171,6 +201,8 @@
         {{ value_json.EB1.PFactor_L3|float }}
     unit_of_measurement: "p.u."
     icon: mdi:percent
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Potência Activa"
@@ -180,6 +212,8 @@
         {{ value_json.EB1.Power|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Potência Exportada"
@@ -189,6 +223,8 @@
         {{ value_json.EB1.Power_Export|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Potência L1"
@@ -198,6 +234,8 @@
         {{ value_json.EB1.Power_L1|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Potência L2"
@@ -207,6 +245,8 @@
         {{ value_json.EB1.Power_L2|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Potência L3"
@@ -216,6 +256,8 @@
         {{ value_json.EB1.Power_L3|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Frequência"
@@ -225,7 +267,9 @@
         {{ value_json.EB1.Frequency|float }}
     unit_of_measurement: "Hz"
     icon: mdi:current-ac
-    
+     device_class: none
+    expire_after: 0
+   
   - platform: mqtt
     name: "EB Energia T1 Vazio"
     unique_id: ebenergy1
@@ -234,7 +278,9 @@
         {{ value_json.EB1.Energy_R1|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-    
+     device_class: none
+    expire_after: 0
+   
   - platform: mqtt
     name: "EB Energia T2 Ponta"
     unique_id: ebenergy2
@@ -243,6 +289,8 @@
         {{ value_json.EB1.Energy_R2|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
+    device_class: none
+    expire_after: 0
     
   - platform: mqtt
     name: "EB Energia T3 Cheia"
@@ -252,6 +300,8 @@
         {{ value_json.EB1.Energy_R3|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Total"
@@ -261,6 +311,8 @@
         {{ value_json.EB1.Energy_Sum|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Exportada"
@@ -270,6 +322,8 @@
         {{ value_json.EB1.Energy_Export|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Q1"
@@ -279,6 +333,8 @@
         {{ value_json.EB1.Energy_Q1|float }}
     unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
+    device_class: none
+    expire_after: 0
 
   - platform: mqtt
     name: "EB Energia Q4"
@@ -288,6 +344,8 @@
         {{ value_json.EB1.Energy_Q4|float }}
     unit_of_measurement: "kVAr"
     icon: mdi:transmission-tower
+    device_class: none
+    expire_after: 0
 
 ###
 ##
