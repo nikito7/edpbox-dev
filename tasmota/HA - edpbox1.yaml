@@ -33,7 +33,7 @@
     payload_not_available: Offline
     value_template: '{{ value_json.EB1.Clock_H|int }}'
     icon: mdi:clock
-    unit_of_measurement
+    unit_of_measurement: h
     expire_after: 120
 
   - platform: mqtt
