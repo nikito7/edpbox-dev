@@ -187,9 +187,8 @@
     value_template: >-
         {{ value_json.EB1.PFactor_L3|float }}
     unit_of_measurement: "p.u."
-    icon: mdi:percent
-
-
+    device_class: power_factor
+    expire_after: 30
 
 ###
 ##
