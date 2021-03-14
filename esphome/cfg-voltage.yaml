@@ -55,7 +55,7 @@
         unit_of_measurement: "V"
         modbus_functioncode: "read_input_registers"
         value_type: U_SINGLE
-         filters:
+        filters:
           - multiply: 0.01
         accuracy_decimals: 1
         device_class: voltage
@@ -79,7 +79,7 @@
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_SINGLE
-         filters:
+        filters:
           - multiply: 0.01
         accuracy_decimals: 1
         device_class: current
