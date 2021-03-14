@@ -8,6 +8,7 @@
         value_type: U_LONG
         accuracy_decimals: 0
         device_class: power
+        unit_of_measurement: "W"
 
       - id: Active_Power_L2
         name: "EB1 Active Power L2"
@@ -17,16 +18,17 @@
         value_type: U_LONG
         accuracy_decimals: 0
         device_class: power
+        unit_of_measurement: "W"
 
       - id: Active_Power_L3
         name: "EB1 Active Power L3"
         address: 0x0073
         offset: 8
-        unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
         device_class: power
+        unit_of_measurement: "W"
 
       - id: Active_Power_Import
         name: "EB1 Active Power Import"
@@ -36,6 +38,7 @@
         value_type: U_LONG
         accuracy_decimals: 0
         device_class: power
+        unit_of_measurement: "W"
 
       - id: Active_Power_Export
         name: "EB1 Active Power Export"
@@ -45,5 +48,6 @@
         value_type: U_LONG
         accuracy_decimals: 0
         device_class: power
+        unit_of_measurement: "W"
 
 # eof active power
