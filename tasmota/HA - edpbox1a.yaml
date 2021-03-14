@@ -1,4 +1,4 @@
-# edpbox1
+# edpbox1a
 
   - platform: mqtt
     name: "EB ESP Uptime"
@@ -247,83 +247,6 @@
         {{ value_json.EB1.Frequency|float }}
     unit_of_measurement: "Hz"
     icon: mdi:current-ac
-    device_class: none
-    expire_after: 0
-   
-  - platform: mqtt
-    name: "EB Energia T1 Vazio"
-    unique_id: ebenergy1
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_R1|float }}
-    unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
-   
-  - platform: mqtt
-    name: "EB Energia T2 Ponta"
-    unique_id: ebenergy2
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_R2|float }}
-    unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
-    
-  - platform: mqtt
-    name: "EB Energia T3 Cheia"
-    unique_id: ebenergy3
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_R3|float }}
-    unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
-
-  - platform: mqtt
-    name: "EB Energia Total"
-    unique_id: ebenergysum
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_Sum|float }}
-    unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
-
-  - platform: mqtt
-    name: "EB Energia Exportada"
-    unique_id: ebenergyexport
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_Export|float }}
-    unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
-
-  - platform: mqtt
-    name: "EB Energia Q1"
-    unique_id: ebenergyq1
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_Q1|float }}
-    unit_of_measurement: "kVAr"
-    icon: mdi:transmission-tower
-    device_class: none
-    expire_after: 0
-
-  - platform: mqtt
-    name: "EB Energia Q4"
-    unique_id: ebenergyq4
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Energy_Q4|float }}
-    unit_of_measurement: "kVAr"
-    icon: mdi:transmission-tower
     device_class: none
     expire_after: 0
 
