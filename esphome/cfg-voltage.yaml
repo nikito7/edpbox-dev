@@ -1,0 +1,73 @@
+# begin voltage
+
+      - id: Voltage_L1
+        name: "EB1 Voltage L1"
+        address: 0x006C
+        offset: 0
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        scale_factor: 0.1
+        accuracy_decimals: 1
+
+      - id: Current_L1
+        name: "EB1 Current L1"
+        address: 0x006C
+        offset: 1
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        scale_factor: 0.1
+        accuracy_decimals: 1
+
+      - id: Voltage_L2
+        name: "EB1 Voltage L2"
+        address: 0x006C
+        offset: 2
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        scale_factor: 0.1
+        accuracy_decimals: 1
+
+      - id: Current_L2
+        name: "EB1 Current L2"
+        address: 0x006C
+        offset: 3
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        scale_factor: 0.1
+        accuracy_decimals: 1
+
+      - id: Voltage_L3
+        name: "EB1 Voltage L3"
+        address: 0x006C
+        offset: 4
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        scale_factor: 0.1
+        accuracy_decimals: 1
+
+      - id: Current_L3
+        name: "EB1 Current L3"
+        address: 0x006C
+        offset: 5
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        scale_factor: 0.1
+        accuracy_decimals: 1
+
+      - id: Current_Total
+        name: "EB1 Current Total"
+        address: 0x006C
+        offset: 6
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        scale_factor: 0.1
+        accuracy_decimals: 1
+
+# eof voltage
