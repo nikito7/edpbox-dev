@@ -6,9 +6,9 @@
         offset: 0
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
       - id: Active_Power_L1_Export
         name: "EB1 Active Power L1 Export"
@@ -16,9 +16,9 @@
         offset: 1
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
       - id: Active_Power_L2_Import
         name: "EB1 Active Power L2 Import"
@@ -26,9 +26,9 @@
         offset: 2
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
       - id: Active_Power_L2_Export
         name: "EB1 Active Power L2 Export"
@@ -36,9 +36,9 @@
         offset: 3
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
       - id: Active_Power_L3_Import
         name: "EB1 Active Power L3 Import"
@@ -46,9 +46,9 @@
         offset: 4
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
       - id: Active_Power_L3_Export
         name: "EB1 Active Power L3 Export"
@@ -56,9 +56,9 @@
         offset: 5
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
       - id: Active_Power_Total_Import
         name: "EB1 Active Power Total Import"
@@ -66,9 +66,9 @@
         offset: 6
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
       - id: Active_Power_Total_Export
         name: "EB1 Active Power Total Export"
@@ -76,8 +76,8 @@
         offset: 7
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE
-        scale_factor: 0.001
-        accuracy_decimals: 1
+        value_type: U_DOUBLE_HILO
+        scale_factor: 1
+        accuracy_decimals: 0
 
 # eof active power
