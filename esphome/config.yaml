@@ -1,0 +1,31 @@
+# (...)
+
+uart:
+
+  tx_pin: 5
+  rx_pin: 14
+  baud_rate: 9600
+  stop_bits: 1
+
+sensor:
+
+  - platform: modbus_component
+    address: 0x1
+    command_throttle: 1500
+    update_interval: 20s
+    sensors:
+      - id: Active_Power_L1
+        name: "EB1 Active Power L1"
+        address: 0x0073
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_LONG
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+        # ...
+
+###
+##
+#
