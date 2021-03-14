@@ -182,6 +182,15 @@
     icon: mdi:power-plug
 
   - platform: mqtt
+    name: "EB Potência Exportada"
+    unique_id: ebpowerp1exp
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.Power_Export|int }}
+    unit_of_measurement: "W"
+    icon: mdi:power-plug
+
+  - platform: mqtt
     name: "EB Potência L1"
     unique_id: ebpowerl1
     state_topic: "tele/edpbox1/SENSOR"
