@@ -1,29 +1,32 @@
 # begin active power
 
-      - id: Active_Power_L1_Import
-        name: "EB1 Active Power L1 Import"
+      - id: Active_Power_L1
+        name: "EB1 Active Power L1"
         address: 0x0073
         offset: 0
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
+        device_class: power
 
-      - id: Active_Power_L2_Import
-        name: "EB1 Active Power L2 Import"
+      - id: Active_Power_L2
+        name: "EB1 Active Power L2"
         address: 0x0073
         offset: 4
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
+        device_class: power
 
-      - id: Active_Power_L3_Import
-        name: "EB1 Active Power L3 Import"
+      - id: Active_Power_L3
+        name: "EB1 Active Power L3"
         address: 0x0073
         offset: 8
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
+        device_class: power
 
       - id: Active_Power_Import
         name: "EB1 Active Power Import"
@@ -32,6 +35,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
+        device_class: power
 
       - id: Active_Power_Export
         name: "EB1 Active Power Export"
@@ -40,5 +44,6 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
+        device_class: power
 
 # eof active power
