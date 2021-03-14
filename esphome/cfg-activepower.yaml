@@ -4,16 +4,6 @@
         name: "EB1 Active Power L1 Import"
         address: 0x0073
         offset: 0
-        unit_of_measurement: "W"
-        modbus_functioncode: "read_input_registers"
-        value_type: U_LONG
-        accuracy_decimals: 0
-
-      - id: Active_Power_L1_Export
-        name: "EB1 Active Power L1 Export"
-        address: 0x0073
-        offset: 2
-        unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
@@ -22,16 +12,6 @@
         name: "EB1 Active Power L2 Import"
         address: 0x0073
         offset: 4
-        unit_of_measurement: "W"
-        modbus_functioncode: "read_input_registers"
-        value_type: U_LONG
-        accuracy_decimals: 0
-
-      - id: Active_Power_L2_Export
-        name: "EB1 Active Power L2 Export"
-        address: 0x0073
-        offset: 6
-        unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
@@ -45,29 +25,18 @@
         value_type: U_LONG
         accuracy_decimals: 0
 
-      - id: Active_Power_L3_Export
-        name: "EB1 Active Power L3 Export"
-        address: 0x0073
-        offset: 10
-        unit_of_measurement: "W"
-        modbus_functioncode: "read_input_registers"
-        value_type: U_LONG
-        accuracy_decimals: 0
-
-      - id: Active_Power_Total_Import
-        name: "EB1 Active Power Total Import"
+      - id: Active_Power_Import
+        name: "EB1 Active Power Import"
         address: 0x0073
         offset: 12
-        unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
 
-      - id: Active_Power_Total_Export
-        name: "EB1 Active Power Total Export"
+      - id: Active_Power_Export
+        name: "EB1 Active Power Export"
         address: 0x0073
         offset: 14
-        unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
         value_type: U_LONG
         accuracy_decimals: 0
