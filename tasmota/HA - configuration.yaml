@@ -10,8 +10,9 @@ utility_meter:
     source: sensor.eb_consumo_total
     cycle: daily
 
-sensor: !include edpbox1a.yaml
-sensor: !include edpbox1b.yaml
+sensor edpbox1a: !include edpbox1a.yaml
+
+sensor edpbox1b: !include edpbox1b.yaml
 
 ###
 ##
