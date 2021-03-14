@@ -11,7 +11,6 @@ utility_meter:
     cycle: daily
 
 sensor edpbox1a: !include edpbox1a.yaml
-
 sensor edpbox1b: !include edpbox1b.yaml
 
 ###
