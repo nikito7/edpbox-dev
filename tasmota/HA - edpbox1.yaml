@@ -9,8 +9,7 @@
     payload_not_available: Offline
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
-    icon: mdi:alarm
-    device_class: none
+    icon: mdi:ala
     expire_after: 120
 
   - platform: mqtt
@@ -34,8 +33,7 @@
     payload_not_available: Offline
     value_template: '{{ value_json.EB1.Clock_H|int }}'
     icon: mdi:clock
-    unit_of_measurement: "h"
-    device_class: none
+    unit_of_measurement
     expire_after: 120
 
   - platform: mqtt
@@ -47,8 +45,7 @@
     payload_not_available: Offline
     value_template: '{{ value_json.EB1.Clock_M|int }}'
     icon: mdi:clock
-    unit_of_measurement: "m"
-    device_class: none
+    unit_of_measurement: "m
     expire_after: 120
 
   - platform: mqtt
@@ -61,7 +58,6 @@
     value_template: '{{ value_json.EB1.Clock_S|int }}'
     icon: mdi:clock
     unit_of_measurement: "s"
-    device_class: none
     expire_after: 60
 
   - platform: mqtt
@@ -121,7 +117,6 @@
     value_template: >-
         {{ value_json.EB1.Current_Sum|float }}
     unit_of_measurement: "A"
-    icon: mdi:power-socket
     device_class: current
     expire_after: 30
 
@@ -132,7 +127,6 @@
     value_template: >-
         {{ value_json.EB1.Current_L1|float }}
     unit_of_measurement: "A"
-    icon: mdi:power-socket
     device_class: current
     expire_after: 30
 
@@ -143,7 +137,6 @@
     value_template: >-
         {{ value_json.EB1.Current_L2|float }} 
     unit_of_measurement: "A"
-    icon: mdi:power-socket
     device_class: current
     expire_after: 30
 
@@ -154,7 +147,6 @@
     value_template: >-
         {{ value_json.EB1.Current_L3|float }}
     unit_of_measurement: "A"
-    icon: mdi:power-socket
     device_class: current
     expire_after: 30
 
@@ -165,7 +157,6 @@
     value_template: >-
         {{ value_json.EB1.PFactor|float }}
     unit_of_measurement: "p.u."
-    icon: mdi:percent
     device_class: power_factor
     expire_after: 30
 
@@ -176,7 +167,6 @@
     value_template: >-
         {{ value_json.EB1.PFactor_L1|float }}
     unit_of_measurement: "p.u."
-    icon: mdi:percent
     device_class: power_factor
     expire_after: 30
 
@@ -187,7 +177,6 @@
     value_template: >-
         {{ value_json.EB1.PFactor_L2|float }}
     unit_of_measurement: "p.u."
-    icon: mdi:percent
     device_class: power_factor
     expire_after: 30
 
@@ -199,8 +188,7 @@
         {{ value_json.EB1.PFactor_L3|float }}
     unit_of_measurement: "p.u."
     icon: mdi:percent
-    device_class: none
-    expire_after: 0
+
 
   - platform: mqtt
     name: "EB Potência Activa"
@@ -210,8 +198,7 @@
         {{ value_json.EB1.Power|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
-    device_class: none
-    expire_after: 0
+
 
   - platform: mqtt
     name: "EB Potência Exportada"
@@ -221,8 +208,7 @@
         {{ value_json.EB1.Power_Export|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
-    device_class: none
-    expire_after: 0
+
 
   - platform: mqtt
     name: "EB Potência L1"
@@ -232,8 +218,6 @@
         {{ value_json.EB1.Power_L1|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
-    device_class: none
-    expire_after: 0
 
   - platform: mqtt
     name: "EB Potência L2"
@@ -243,8 +227,7 @@
         {{ value_json.EB1.Power_L2|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
-    device_class: none
-    expire_after: 0
+
 
   - platform: mqtt
     name: "EB Potência L3"
@@ -254,8 +237,7 @@
         {{ value_json.EB1.Power_L3|int }}
     unit_of_measurement: "W"
     icon: mdi:power-plug
-    device_class: none
-    expire_after: 0
+
 
   - platform: mqtt
     name: "EB Frequência"
@@ -265,7 +247,7 @@
         {{ value_json.EB1.Frequency|float }}
     unit_of_measurement: "Hz"
     icon: mdi:current-ac
-     device_class: none
+    device_class: none
     expire_after: 0
    
   - platform: mqtt
@@ -276,7 +258,7 @@
         {{ value_json.EB1.Energy_R1|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
-     device_class: none
+    device_class: none
     expire_after: 0
    
   - platform: mqtt
