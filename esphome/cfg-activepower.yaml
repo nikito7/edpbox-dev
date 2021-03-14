@@ -6,8 +6,7 @@
         offset: 0
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONGLONG
         accuracy_decimals: 0
 
       - id: Active_Power_L1_Export
@@ -16,9 +15,10 @@
         offset: 1
         unit_of_measurement: "W"
         modbus_functioncode: "read_input_registers"
-        value_type: U_DOUBLE_HILO
-        scale_factor: 1
+        value_type: U_LONGLONG
         accuracy_decimals: 0
+
+####
 
       - id: Active_Power_L2_Import
         name: "EB1 Active Power L2 Import"
