@@ -11,7 +11,7 @@
     unit_of_measurement: "h"
     icon: mdi:alarm
     device_class: none
-    expire_after: 0
+    expire_after: 120
 
   - platform: mqtt
     name: "EB ESP Signal"
@@ -22,9 +22,8 @@
     payload_not_available: Offline
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
-    icon: mdi:wifi
-    device_class: none
-    expire_after: 0
+    device_class: signal_strength
+    expire_after: 120
 
   - platform: mqtt
     name: "EB Clock H"
@@ -37,7 +36,7 @@
     icon: mdi:clock
     unit_of_measurement: "h"
     device_class: none
-    expire_after: 0
+    expire_after: 120
 
   - platform: mqtt
     name: "EB Clock M"
@@ -50,7 +49,7 @@
     icon: mdi:clock
     unit_of_measurement: "m"
     device_class: none
-    expire_after: 0
+    expire_after: 120
 
   - platform: mqtt
     name: "EB Clock S"
@@ -63,7 +62,7 @@
     icon: mdi:clock
     unit_of_measurement: "s"
     device_class: none
-    expire_after: 0
+    expire_after: 60
 
   - platform: mqtt
     name: "EB Tensão L1"
@@ -72,9 +71,8 @@
     value_template: >-
         {{ value_json.EB1.Voltage_L1|float }}
     unit_of_measurement: "V"
-    icon: mdi:flash
-    device_class: none
-    expire_after: 0
+    device_class: voltage 
+    expire_after: 60
 
   - platform: mqtt
     name: "EB Tensão L1-10"
@@ -83,9 +81,8 @@
     value_template: >-
         {{ value_json.EB1.Voltage_L1 - 10 | float }}
     unit_of_measurement: "V"
-    icon: mdi:flash
-    device_class: none
-    expire_after: 0
+    device_class: voltage
+    expire_after: 60
 
   - platform: mqtt
     name: "EB Tensão L2"
@@ -94,9 +91,8 @@
     value_template: >-
         {{ value_json.EB1.Voltage_L2|float }}
     unit_of_measurement: "V"
-    icon: mdi:flash
-    device_class: none
-    expire_after: 0
+    device_class: voltage
+    expire_after: 60
 
   - platform: mqtt
     name: "EB Tensão L3"
@@ -105,9 +101,8 @@
     value_template: >-
         {{ value_json.EB1.Voltage_L3|float }}
     unit_of_measurement: "V"
-    icon: mdi:flash
-    device_class: none
-    expire_after: 0
+    device_class: voltage
+    expire_after: 60
 
   - platform: mqtt
     name: "EB Tensão L3+10"
@@ -116,9 +111,8 @@
     value_template: >-
         {{ value_json.EB1.Voltage_L3 + 10 | float }}
     unit_of_measurement: "V"
-    icon: mdi:flash
-    device_class: none
-    expire_after: 0
+    device_class: voltage
+    expire_after: 60
 
   - platform: mqtt
     name: "EB Corrente Total"
@@ -128,8 +122,8 @@
         {{ value_json.EB1.Current_Sum|float }}
     unit_of_measurement: "A"
     icon: mdi:power-socket
-    device_class: none
-    expire_after: 0
+    device_class: current
+    expire_after: 30
 
   - platform: mqtt
     name: "EB Corrente L1"
@@ -139,8 +133,8 @@
         {{ value_json.EB1.Current_L1|float }}
     unit_of_measurement: "A"
     icon: mdi:power-socket
-    device_class: none
-    expire_after: 0
+    device_class: current
+    expire_after: 30
 
   - platform: mqtt
     name: "EB Corrente L2"
@@ -150,8 +144,8 @@
         {{ value_json.EB1.Current_L2|float }} 
     unit_of_measurement: "A"
     icon: mdi:power-socket
-    device_class: none
-    expire_after: 0
+    device_class: current
+    expire_after: 30
 
   - platform: mqtt
     name: "EB Corrente L3"
@@ -161,8 +155,8 @@
         {{ value_json.EB1.Current_L3|float }}
     unit_of_measurement: "A"
     icon: mdi:power-socket
-    device_class: none
-    expire_after: 0
+    device_class: current
+    expire_after: 30
 
   - platform: mqtt
     name: "EB Factor de Potência"
@@ -172,6 +166,8 @@
         {{ value_json.EB1.PFactor|float }}
     unit_of_measurement: "p.u."
     icon: mdi:percent
+    device_class: power_factor
+    expire_after: 30
 
   - platform: mqtt
     name: "EB PFactor L1"
@@ -181,8 +177,8 @@
         {{ value_json.EB1.PFactor_L1|float }}
     unit_of_measurement: "p.u."
     icon: mdi:percent
-    device_class: none
-    expire_after: 0
+    device_class: power_factor
+    expire_after: 30
 
   - platform: mqtt
     name: "EB PFactor L2"
@@ -192,6 +188,8 @@
         {{ value_json.EB1.PFactor_L2|float }}
     unit_of_measurement: "p.u."
     icon: mdi:percent
+    device_class: power_factor
+    expire_after: 30
 
   - platform: mqtt
     name: "EB PFactor L3"
