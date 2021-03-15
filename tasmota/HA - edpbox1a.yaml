@@ -58,7 +58,7 @@
     value_template: '{{ value_json.EB1.Clock_S|int }}'
     icon: mdi:clock
     unit_of_measurement: "s"
-    expire_after: 60
+    expire_after: 30
 
   - platform: mqtt
     name: "EB Tensão L1"
@@ -158,7 +158,7 @@
         {{ value_json.EB1.PFactor|float }}
     unit_of_measurement: "p.u."
     device_class: power_factor
-    expire_after: 30
+    expire_after: 60
 
   - platform: mqtt
     name: "EB PFactor L1"
@@ -168,7 +168,7 @@
         {{ value_json.EB1.PFactor_L1|float }}
     unit_of_measurement: "p.u."
     device_class: power_factor
-    expire_after: 30
+    expire_after: 60
 
   - platform: mqtt
     name: "EB PFactor L2"
@@ -178,7 +178,7 @@
         {{ value_json.EB1.PFactor_L2|float }}
     unit_of_measurement: "p.u."
     device_class: power_factor
-    expire_after: 30
+    expire_after: 60
 
   - platform: mqtt
     name: "EB PFactor L3"
@@ -188,7 +188,7 @@
         {{ value_json.EB1.PFactor_L3|float }}
     unit_of_measurement: "p.u."
     device_class: power_factor
-    expire_after: 30
+    expire_after: 60
 
 ###
 ##
