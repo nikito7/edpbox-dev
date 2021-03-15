@@ -54,7 +54,6 @@ endif
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L3 ,W,Power_L3,16
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência Activa ,W,Power,16
 
-
 1,=h<hr>
 
 ; 7B count 5
@@ -83,6 +82,8 @@ endif
 ; 18 count 4
 
 1,010410UUuuUUuu@i6:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
+1,010410xxxxxxxxUUuuUUuu@i6:1000,Energia Q2 ,kVAr,*,4
+1,010410xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 ,kVAr,*,4
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
 
 ; dev
