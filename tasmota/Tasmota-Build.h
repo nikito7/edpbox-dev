@@ -156,8 +156,8 @@
 // sml tweaks
 
 #define MAX_METERS 1
-#define SML_BSIZ 128
-#define TMSBSIZ 240
-#define SML_DUMP_SIZE 240
+#define SML_BSIZ 512
+#define TMSBSIZ 1024
+#define SML_DUMP_SIZE 512
 
 // eof
