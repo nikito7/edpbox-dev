@@ -57,7 +57,7 @@
     value_template: >-
         {{ value_json.EB1.Frequency|float }}
     unit_of_measurement: "Hz"
-    icon: mdi:current-ac
+    icon: mdi:pulse
 
   - platform: mqtt
     name: "EB Energia T1 Vazio"
