@@ -142,7 +142,7 @@
 #define USE_CUSTOM
 #define USE_ADC_VCC
 
-// sml basic
+// sml configs
 
 #undef USE_RULES
 #define USE_SCRIPT
@@ -155,6 +155,9 @@
 
 // sml tweaks
 
-
+#define MAX_METERS 1
+#define SML_BSIZ 128
+#define TMSBSIZ 240
+#define SML_DUMP_SIZE 240
 
 // eof
