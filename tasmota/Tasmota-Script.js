@@ -1,7 +1,6 @@
 >D
 
-x1=xxxxxxxx
-x2=xxxxxxxxxxxxxxxx
+x16=xxxxxxxxxxxxxxxx
 
 >BS
 
@@ -23,7 +22,7 @@ endif
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160002,r010400180004,r010400850002,r0104007A0001
++1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160002,r010400180004
 
 ; 01 count 1
 
@@ -41,21 +40,20 @@ endif
 
 1,=h<hr>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente Total ,A,Current_Sum,17
-
 1,01040ExxxxUUuu@i1:10,Corrente L1 ,A,Current_L1,17
 1,01040ExxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
 1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente L3 ,A,Current_L3,17
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente Total ,A,Current_Sum,17
 
 1,=h<hr>
 
 ; 73 count 7
 
-1,01041CxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência Activa ,W,Power,16
+1,01041cUUuuUUuu@i2:1,Potência L1 ,W,Power_L1,16
+1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L2 ,W,Power_L2,16
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L3 ,W,Power_L3,16
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência Activa ,W,Power,16
 
-1,01041CUUuuUUuu@i2:1,Potência L1 ,W,Power_L1,16
-1,01041CxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L2 ,W,Power_L2,16
-1,01041CxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L3 ,W,Power_L3,16
 
 1,=h<hr>
 
@@ -86,15 +84,6 @@ endif
 
 1,010410UUuuUUuu@i6:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
 1,010410xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
-
-; 85 count 2
-
-1,010408UUuuUUuu@i7:1,Disconnector Q , ,Disconnector_Q,0
-1,010408xxxxxxxxUUuuUUuu@i7:1,Disconnector K ,%%,Disconnector_K,0
-
-; 7A
-
-1,010404UUuuUUuu@i8:1,Potência Exportada ,W,Power_Export,16
 
 ; dev
 
