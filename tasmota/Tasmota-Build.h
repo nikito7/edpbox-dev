@@ -139,11 +139,10 @@
 
 #define USE_MQTT_TLS
 #define USE_WEBSERVER
-#define USE_ENHANCED_GUI_WIFI_SCAN
 #define USE_CUSTOM
 #define USE_ADC_VCC
 
-// sml configs
+// sml basic
 
 #undef USE_RULES
 #define USE_SCRIPT
@@ -153,5 +152,9 @@
 #define USE_SCRIPT_GLOBVARS
 #define USE_SCRIPT_SUB_COMMAND
 #define USE_SML_SCRIPT_CMD
+
+// sml tweaks
+
+
 
 // eof
