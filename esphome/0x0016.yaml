@@ -67,7 +67,7 @@
         offset: 20
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
-        accuracy_decimals: 3
+        accuracy_decimals: 1
         filters:
           - multiply: 0.001
         unit_of_measurement: "kVAr"
