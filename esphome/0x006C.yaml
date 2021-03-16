@@ -1,4 +1,4 @@
-# begin voltage
+# begin 0x006C
 
       - id: Voltage_L1
         name: "EB1 Voltage L1"
@@ -84,4 +84,4 @@
         accuracy_decimals: 1
         device_class: current
 
-# eof voltage
+# eof 0x006C
