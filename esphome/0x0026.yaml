@@ -15,7 +15,7 @@
       - id: Total_Energy_T2
         name: "EB1 Total Energy T2"
         address: 0x0026
-        offset: 4
+        offset: 2
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
@@ -27,7 +27,7 @@
       - id: Total_Energy_T3
         name: "EB1 Total Energy T3"
         address: 0x0026
-        offset: 8
+        offset: 4
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
