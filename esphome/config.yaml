@@ -1,6 +1,5 @@
 # (...)
 
-
 time:
 
   - platform: homeassistant
