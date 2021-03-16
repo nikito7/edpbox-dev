@@ -44,7 +44,6 @@ sensor:
   - platform: adc
     pin: VCC
     name: "${dev} ESP VCC" # ESP 8266
-    device_class: battery
 
   - platform: modbus_component
     modbus_id: edpbox_bus
