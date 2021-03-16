@@ -5,7 +5,7 @@
         address: 0x0073
         offset: 0
         modbus_functioncode: "read_input_registers"
-        value_type: U_WORD
+        value_type: U_DWORD
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
@@ -15,19 +15,27 @@
         address: 0x0073
         offset: 4
         modbus_functioncode: "read_input_registers"
-        value_type: U_WORD
+        value_type: U_DWORD
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
 
-#
-
       - id: Active_Power_L2
         name: "EB1 Active Power L2"
         address: 0x0073
-        offset: 4
+        offset: 8
         modbus_functioncode: "read_input_registers"
-        value_type: U_LONG
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: Active_Power_L2_Export
+        name: "EB1 Active Power L2 Export"
+        address: 0x0073
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
@@ -35,9 +43,19 @@
       - id: Active_Power_L3
         name: "EB1 Active Power L3"
         address: 0x0073
-        offset: 8
+        offset: 16
         modbus_functioncode: "read_input_registers"
-        value_type: U_LONG
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: Active_Power_L3_Export
+        name: "EB1 Active Power L3 Export"
+        address: 0x0073
+        offset: 30
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
@@ -45,9 +63,9 @@
       - id: Active_Power_Import
         name: "EB1 Active Power Import"
         address: 0x0073
-        offset: 12
+        offset: 34
         modbus_functioncode: "read_input_registers"
-        value_type: U_LONG
+        value_type: U_DWORD
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
@@ -55,9 +73,9 @@
       - id: Active_Power_Export
         name: "EB1 Active Power Export"
         address: 0x0073
-        offset: 14
+        offset: 38
         modbus_functioncode: "read_input_registers"
-        value_type: U_LONG
+        value_type: U_DWORD
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
@@ -65,10 +83,10 @@
       - id: Power_Factor
         name: "EB1 Power Factor"
         address: 0x0073
-        offset: 16
+        offset: 42
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
-        value_type: U_SINGLE
+        value_type: U_WORD
         filters:
           - multiply: 0.001
         accuracy_decimals: 3
@@ -77,10 +95,10 @@
       - id: Power_Factor_L1
         name: "EB1 Power Factor L1"
         address: 0x0073
-        offset: 17
+        offset: 44
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
-        value_type: U_SINGLE
+        value_type: U_WORD
         filters:
           - multiply: 0.001
         accuracy_decimals: 3
@@ -89,10 +107,10 @@
       - id: Power_Factor_L2
         name: "EB1 Power Factor L2"
         address: 0x0073
-        offset: 18
+        offset: 46
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
-        value_type: U_SINGLE
+        value_type: U_WORD
         filters:
           - multiply: 0.001
         accuracy_decimals: 3
@@ -101,10 +119,10 @@
       - id: Power_Factor_L3
         name: "EB1 Power Factor L3"
         address: 0x0073
-        offset: 19
+        offset: 48
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
-        value_type: U_SINGLE
+        value_type: U_WORD
         filters:
           - multiply: 0.001
         accuracy_decimals: 3
@@ -113,10 +131,10 @@
       - id: Frequency
         name: "EB1 Frequency"
         address: 0x0073
-        offset: 20
+        offset: 50
         unit_of_measurement: "Hz"
         modbus_functioncode: "read_input_registers"
-        value_type: U_SINGLE
+        value_type: U_WORD
         filters:
           - multiply: 0.1
         accuracy_decimals: 1
