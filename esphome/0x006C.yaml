@@ -15,7 +15,7 @@
       - id: Current_L1
         name: "EB1 Current L1"
         address: 0x006C
-        offset: 1
+        offset: 2
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -27,7 +27,7 @@
       - id: Voltage_L2
         name: "EB1 Voltage L2"
         address: 0x006C
-        offset: 2
+        offset: 4
         unit_of_measurement: "V"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -39,7 +39,7 @@
       - id: Current_L2
         name: "EB1 Current L2"
         address: 0x006C
-        offset: 3
+        offset: 6
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -51,7 +51,7 @@
       - id: Voltage_L3
         name: "EB1 Voltage L3"
         address: 0x006C
-        offset: 4
+        offset: 8
         unit_of_measurement: "V"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -63,7 +63,7 @@
       - id: Current_L3
         name: "EB1 Current L3"
         address: 0x006C
-        offset: 5
+        offset: 10
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -75,7 +75,7 @@
       - id: Current_Total
         name: "EB1 Current Total"
         address: 0x006C
-        offset: 6
+        offset: 12
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
