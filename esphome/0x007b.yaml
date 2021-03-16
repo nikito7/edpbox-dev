@@ -2,7 +2,7 @@
 
       - id: Power_Factor
         name: "EB1 Power Factor"
-        address: 0x0073
+        address: 0x007b
         offset: 0
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -14,7 +14,7 @@
 
       - id: Power_Factor_L1
         name: "EB1 Power Factor L1"
-        address: 0x0073
+        address: 0x007b
         offset: 2
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -26,7 +26,7 @@
 
       - id: Power_Factor_L2
         name: "EB1 Power Factor L2"
-        address: 0x0073
+        address: 0x007b
         offset: 4
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -38,7 +38,7 @@
 
       - id: Power_Factor_L3
         name: "EB1 Power Factor L3"
-        address: 0x0073
+        address: 0x007b
         offset: 6
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -50,7 +50,7 @@
 
       - id: Frequency
         name: "EB1 Frequency"
-        address: 0x0073
+        address: 0x007b
         offset: 8
         unit_of_measurement: "Hz"
         modbus_functioncode: "read_input_registers"
