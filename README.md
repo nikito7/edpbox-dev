@@ -6,11 +6,13 @@
 
 Status: working
 
-Limits: long requests overflow
+Limitations: long requests overflow
 
 # ESPHome
 
 Status: dev/test
+
+Limitations: esp8266 memory issues could happen
 
 # Links
 
