@@ -2,7 +2,7 @@
 # filters bug
 
       - id: Total_Energy_Import
-        name: "EB1 Total Import"
+        name: "EB1 Total Energy Import"
         address: 0x0016
         offset: 0
         modbus_functioncode: "read_input_registers"
@@ -12,13 +12,53 @@
         icon: "mdi:transmission-tower"
 
       - id: Total_Energy_Export
-        name: "EB1 Total Export"
+        name: "EB1 Total Energy Export"
         address: 0x0016
         offset: 4
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
         unit_of_measurement: "kWh"
+        icon: "mdi:transmission-tower"
+
+      - id: Total_Energy_Q1
+        name: "EB1 Total Energy Q1"
+        address: 0x0016
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+      - id: Total_Energy_Q2
+        name: "EB1 Total Energy Q2"
+        address: 0x0016
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+      - id: Total_Energy_Q3
+        name: "EB1 Total Energy Q3"
+        address: 0x0016
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+      - id: Total_Energy_Q4
+        name: "EB1 Total Energy Q4"
+        address: 0x0016
+        offset: 16
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
 
 # eof 0x0016
