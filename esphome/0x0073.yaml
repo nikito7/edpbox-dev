@@ -65,8 +65,8 @@
         unit_of_measurement: "W"
         internal: true # disable sensor
 
-      - id: Active_Power_Import
-        name: "EB1 Active Power Import"
+      - id: Active_Power
+        name: "EB1 Active Power"
         address: 0x0073
         offset: 24
         modbus_functioncode: "read_input_registers"
