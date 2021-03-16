@@ -1,6 +1,16 @@
 # Info
 
-⚠️ [Home_Assistant_EDP_Box](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box) ⚠️
+⚠️ Read First [HA: EDP Box](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box) ⚠️
+
+# Tasmota
+
+Status: working
+
+Limits: long requests overflow
+
+# ESPHome
+
+Status: dev/test
 
 # Links
 
