@@ -5,8 +5,8 @@ time:
   - platform: homeassistant
     id: esptime
 
-logger:
-  level: VERBOSE
+#logger:
+#  level: VERBOSE
 
 uart:
 
