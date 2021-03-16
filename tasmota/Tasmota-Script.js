@@ -1,13 +1,19 @@
 >D
+
 >BS
+
 smlj=0
-tper=30
+tper=60
+
 ->sensor53 r
+
 >R
+
 smlj=0
+
 >S
 
-if upsecs>25
+if upsecs>20
 then
 smlj=1
 endif
@@ -70,10 +76,10 @@ endif
 
 1,010418UUuuUUuu@i5:1000,Energia Importada ,kWh,Energy_Sum,1
 1,010418xxxxxxxxUUuuUUuu@i5:1000,Energia Exportada ,kWh,Energy_Export,3
-1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q2 ,kVAr,*,4
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q3 ,kVAr,*,4
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
+1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q2 ,kVAr,*,4
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q3 ,kVAr,*,4
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
 
 ; dev
 
