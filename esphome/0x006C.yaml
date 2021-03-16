@@ -72,8 +72,8 @@
         accuracy_decimals: 1
         device_class: current
 
-      - id: Current_Total
-        name: "EB1 Current Total"
+      - id: Current
+        name: "EB1 Current"
         address: 0x006C
         offset: 12
         unit_of_measurement: "A"
