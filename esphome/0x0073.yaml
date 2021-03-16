@@ -19,6 +19,7 @@
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
+        internal: true # disable sensor
 
       - id: Active_Power_L2
         name: "EB1 Active Power L2"
@@ -39,6 +40,7 @@
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
+        internal: true # disable sensor
 
       - id: Active_Power_L3
         name: "EB1 Active Power L3"
@@ -59,6 +61,7 @@
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
+        internal: true # disable sensor
 
       - id: Active_Power_Import
         name: "EB1 Active Power Import"
@@ -79,6 +82,7 @@
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
+        internal: true # disable sensor
 
       - id: Power_Factor
         name: "EB1 Power Factor"
