@@ -48,6 +48,7 @@
           - multiply: 0.001
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
+        internal: true
 
       - id: Total_Energy_Q3
         name: "EB1 Total Energy Q3"
@@ -60,6 +61,7 @@
           - multiply: 0.001
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
+        internal: true
 
       - id: Total_Energy_Q4
         name: "EB1 Total Energy Q4"
