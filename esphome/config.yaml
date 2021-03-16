@@ -19,7 +19,7 @@ uart:
 modbus:
 
   uart_id: edpbox_serial
-# ctrl_pin: 5
+  # ctrl_pin: 5
   id: edpbox_bus
 
 
