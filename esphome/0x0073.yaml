@@ -1,4 +1,6 @@
 # begin 0x0073
+# don't remove middle sensors of a range. 
+# scary things could happen
 
       - id: Active_Power_L1
         name: "EB1 Active Power L1"
