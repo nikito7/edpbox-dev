@@ -1,5 +1,5 @@
 # begin 0x0016
-# filters bug
+# filters bug: memory issue esp8266
 
       - id: Total_Energy_Import
         name: "EB1 Total Energy Import"
