@@ -8,6 +8,11 @@ time:
 #logger:
 #  level: VERBOSE
 
+switch:
+
+  - platform: restart
+    name: "${dev} ESP Restart"
+
 uart:
 
   tx_pin: 5
@@ -21,11 +26,6 @@ modbus:
   uart_id: edpbox_serial
   # ctrl_pin: 5
   id: edpbox_bus
-
-switch:
-
-  - platform: restart
-    name: "${dev} ESP Restart"
 
 sensor:
 
