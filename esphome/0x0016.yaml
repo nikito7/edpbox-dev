@@ -19,7 +19,7 @@
         offset: 4
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
-        accuracy_decimals: 1
+        accuracy_decimals: 3
         filters:
           - multiply: 0.001
         unit_of_measurement: "kWh"
@@ -43,7 +43,7 @@
         offset: 12
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
-        accuracy_decimals: 1
+        accuracy_decimals: 3
         filters:
           - multiply: 0.001
         unit_of_measurement: "kVAr"
@@ -55,7 +55,7 @@
         offset: 16
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
-        accuracy_decimals: 1
+        accuracy_decimals: 3
         filters:
           - multiply: 0.001
         unit_of_measurement: "kVAr"
@@ -67,7 +67,7 @@
         offset: 20
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
-        accuracy_decimals: 1
+        accuracy_decimals: 3
         filters:
           - multiply: 0.001
         unit_of_measurement: "kVAr"
