@@ -1,16 +1,10 @@
 >D
-
 >BS
-
 smlj=0
 tper=30
-
 ->sensor53 r
-
 >R
-
 smlj=0
-
 >S
 
 if upsecs>25
