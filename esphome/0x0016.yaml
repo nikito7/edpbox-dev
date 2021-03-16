@@ -44,7 +44,7 @@
       - id: Total_Energy_Q3
         name: "EB1 Total Energy Q3"
         address: 0x0016
-        offset: 12
+        offset: 16
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
@@ -54,7 +54,7 @@
       - id: Total_Energy_Q4
         name: "EB1 Total Energy Q4"
         address: 0x0016
-        offset: 16
+        offset: 20
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
