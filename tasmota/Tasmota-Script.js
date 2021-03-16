@@ -38,19 +38,21 @@ endif
 
 1,=h<hr>
 
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente Total ,A,Current_Sum,17
+
 1,01040ExxxxUUuu@i1:10,Corrente L1 ,A,Current_L1,17
 1,01040ExxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
 1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente L3 ,A,Current_L3,17
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente Total ,A,Current_Sum,17
 
 1,=h<hr>
 
 ; 73
 
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência Activa ,W,Power,16
+
 1,01041cUUuuUUuu@i2:1,Potência L1 ,W,Power_L1,16
 1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L2 ,W,Power_L2,16
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L3 ,W,Power_L3,16
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência Activa ,W,Power,16
 
 1,=h<hr>
 
@@ -76,10 +78,8 @@ endif
 
 1,010418UUuuUUuu@i5:1000,Energia Importada ,kWh,Energy_Sum,1
 1,010418xxxxxxxxUUuuUUuu@i5:1000,Energia Exportada ,kWh,Energy_Export,3
-1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q1 +Ri ,kVAr,Energy_Q1,1
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q2 ,kVAr,*,4
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q3 ,kVAr,*,4
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q4 +Rc ,kVAr,Energy_Q4,2
+1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q1 ,kVAr,Energy_Q1,1
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q4 ,kVAr,Energy_Q4,2
 
 ; dev
 
