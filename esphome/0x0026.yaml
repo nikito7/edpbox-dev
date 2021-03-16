@@ -1,0 +1,12 @@
+# begin 0x0026
+
+      - id: Total_Energy_T1
+        name: "EB1 Total Energy T1"
+        address: 0x0026
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        unit_of_measurement: "kWh"
+
+# eof 0x0026
