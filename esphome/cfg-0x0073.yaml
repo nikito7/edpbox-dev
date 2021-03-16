@@ -1,0 +1,113 @@
+# begin 0x0073
+
+      - id: Active_Power_L1
+        name: "EB1 Active Power L1"
+        address: 0x0073
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_LONG
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: Active_Power_L2
+        name: "EB1 Active Power L2"
+        address: 0x0073
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_LONG
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: Active_Power_L3
+        name: "EB1 Active Power L3"
+        address: 0x0073
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_LONG
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: Active_Power_Import
+        name: "EB1 Active Power Import"
+        address: 0x0073
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_LONG
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: Active_Power_Export
+        name: "EB1 Active Power Export"
+        address: 0x0073
+        offset: 14
+        modbus_functioncode: "read_input_registers"
+        value_type: U_LONG
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: Power_Factor
+        name: "EB1 Power Factor"
+        address: 0x0073
+        offset: 16
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        filters:
+          - multiply: 0.001
+        accuracy_decimals: 1
+        device_class: power_factor
+
+      - id: Power_Factor_L1
+        name: "EB1 Power Factor L1"
+        address: 0x0073
+        offset: 17
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        filters:
+          - multiply: 0.001
+        accuracy_decimals: 1
+        device_class: power_factor
+
+      - id: Power_Factor_L2
+        name: "EB1 Power Factor L2"
+        address: 0x0073
+        offset: 18
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        filters:
+          - multiply: 0.001
+        accuracy_decimals: 1
+        device_class: power_factor
+
+      - id: Power_Factor_L3
+        name: "EB1 Power Factor L3"
+        address: 0x0073
+        offset: 19
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        filters:
+          - multiply: 0.001
+        accuracy_decimals: 1
+        device_class: power_factor
+
+      - id: Frequency
+        name: "EB1 Frequency"
+        address: 0x0073
+        offset: 20
+        unit_of_measurement: "Hz"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_SINGLE
+        filters:
+          - multiply: 0.1
+        accuracy_decimals: 1
+
+# eof 0x0073
+
