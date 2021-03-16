@@ -18,4 +18,6 @@ Status: dev/test
 
 - [tasmota smi](https://tasmota.github.io/docs/Smart-Meter-Interface/)
 
-- [forum](https://forum.cpha.pt/t/integrar-contadores-inteligentes-da-edp-em-home-assistant/4953/)
+- [forum.cpha.pt](https://forum.cpha.pt/t/integrar-contadores-inteligentes-da-edp-em-home-assistant/4953/)
+
+- [martgras/esphome](https://github.com/martgras/esphome)
