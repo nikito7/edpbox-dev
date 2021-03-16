@@ -1,5 +1,4 @@
 # begin 0x0026
-# filters bug or esp8266 limitation
 
       - id: Total_Energy_T1
         name: "EB1 Total Energy T1"
