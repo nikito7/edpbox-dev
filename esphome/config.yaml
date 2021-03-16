@@ -1,12 +1,13 @@
 # (...)
 
+
 time:
 
   - platform: homeassistant
     id: esptime
 
-#logger:
-#  level: VERBOSE
+logger:
+  level: VERBOSE
 
 uart:
 
@@ -22,21 +23,54 @@ modbus:
   # ctrl_pin: 5
   id: edpbox_bus
 
+switch:
 
-### ### ###
+  - platform: restart
+    name: "${dev} ESP Restart"
 
 sensor:
+
+  - platform: wifi_signal
+    name: "${dev} ESP Signal"
+    update_interval: 30s
+
+  - platform: uptime
+    name: "${dev} ESP Uptime"
+    filters:
+      - lambda: return x/3600;
+    unit_of_measurement: "h"
+    accuracy_decimals: 1
+    update_interval: 30s
+
+  - platform: adc
+    pin: VCC
+    name: "${dev} ESP VCC" # ESP 8266
+    device_class: battery
 
   - platform: modbus_component
     modbus_id: edpbox_bus
     address: 0x1
     command_throttle: 1500
-    update_interval: 4s
+    update_interval: 10s
     # min update = (throttle/1000)*(unique_ranges + 1)
     sensors:
 
 ### ### ###
 
+# begin 0x0026
+# filters bug
+
+      - id: Total_Energy_T1
+        name: "EB1 Total Energy T1"
+        address: 0x0026
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        unit_of_measurement: "kWh"
+        icon: "mdi:transmission-tower"
+
+# eof 0x0026
 
 
 ### ### ###
