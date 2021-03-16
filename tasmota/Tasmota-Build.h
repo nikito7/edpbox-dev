@@ -135,7 +135,6 @@
 //
 // force configs
 // changes next
-// 
 
 #define USE_MQTT_TLS
 #define USE_WEBSERVER
@@ -148,21 +147,6 @@
 #define USE_SCRIPT
 #define USE_SML_M
 #define SML_MAX_VARS 50
-#define SML_REPLACE_VARS
-#define USE_SML_SCRIPT_CMD
-
-// sml tweaks
-
 #define MAX_METERS 1
-#define SML_BSIZ 512
-#define TMSBSIZ 1024
-#define SML_DUMP_SIZE 512
-
-// script tweaks
-
-#define USE_SCRIPT_GLOBVARS
-#define USE_SCRIPT_SUB_COMMAND
-#define LARGE_ARRAYS
-#define SCRIPT_LARGE_VNBUFF
 
 // eof
