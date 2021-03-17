@@ -20,7 +20,7 @@ endif
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,9,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
++1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
 
 ; 01
 
@@ -32,37 +32,37 @@ endif
 
 ; 6C
 
-1,01040EUUuu@i1:10,Tensão L1 ,V,Voltage_L1,1
-1,01040ExxxxxxxxUUuu@i1:10,Tensão L2 ,V,Voltage_L2,1
-1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Tensão L3 ,V,Voltage_L3,1
+1,01040EUUuu@i1:10,Voltage L1 ,V,Voltage_L1,1
+1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,Voltage_L2,1
+1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,Voltage_L3,1
 
 1,=h<hr>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente Total ,A,Current_Sum,17
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,17
 
-1,01040ExxxxUUuu@i1:10,Corrente L1 ,A,Current_L1,17
+1,01040ExxxxUUuu@i1:10,Current L1 ,A,Current_L1,17
 1,01040ExxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
-1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Corrente L3 ,A,Current_L3,17
+1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,Current_L3,17
 
 1,=h<hr>
 
 ; 73
 
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência Activa ,W,Power,16
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,Active_Power,16
 
-1,01041cUUuuUUuu@i2:1,Potência L1 ,W,Power_L1,16
-1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L2 ,W,Power_L2,16
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Potência L3 ,W,Power_L3,16
+1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,Active_Power_L1,16
+1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 ,W,Active_Power_L2,16
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L3 ,W,Active_Power_L3,16
 
 1,=h<hr>
 
 ; 7B
 
-1,01040AUUuu@i3:1000,Factor de Potência ,pu,PFactor,19
-1,01040AxxxxUUuu@i3:1000,PFactor L1 ,pu,PFactor_L1,19
-1,01040AxxxxxxxxUUuu@i3:1000,PFactor L2 ,pu,PFactor_L2,19
-1,01040AxxxxxxxxxxxxUUuu@i3:1000,PFactor L3 ,pu,PFactor_L3,19
-1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequência ,Hz,Frequency,1
+1,01040AUUuu@i3:10,Power Factor ,%,Power_Factor,17
+1,01040AxxxxUUuu@i3:10,Power Factor L1 ,%,Power_Factor_L1,17
+1,01040AxxxxxxxxUUuu@i3:10,Power Factor L2 ,%,Power_Factor_L2,17
+1,01040AxxxxxxxxxxxxUUuu@i3:10,Power Factor L3 ,%,Power_Factor_L3,17
+1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
 
 1,=h<hr>
 
