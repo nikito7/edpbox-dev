@@ -4,7 +4,7 @@ substitutions:
 
 esphome:
 
-  name: *********
+  name: ********
   platform: ESP8266
   board: esp01_1m
 
@@ -57,6 +57,14 @@ modbus:
 
 sensor:
 
+  - platform: template
+    name: "${dev} ESP Free Heap"
+    lambda: |-
+      int heap = ESP.getFreeHeap();
+      return heap / 1024.0;
+    unit_of_measurement: "kB"
+    update_interval: 5s
+
   - platform: wifi_signal
     name: "${dev} ESP Signal"
     update_interval: 30s
@@ -79,7 +87,7 @@ sensor:
     modbus_id: edpbox_bus
     id: edpbox1
     address: 0x1
-    command_throttle: 500
+    command_throttle: 1500
     update_interval: 10s
     # min update = (throttle/1000)*(unique_ranges + 1)
     sensors:
