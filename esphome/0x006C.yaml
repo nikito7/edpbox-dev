@@ -7,8 +7,6 @@
         unit_of_measurement: "V"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        filters:
-          - multiply: 0.1
         accuracy_decimals: 1
         device_class: voltage
 
@@ -19,8 +17,6 @@
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        filters:
-          - multiply: 0.1
         accuracy_decimals: 1
         device_class: current
 
@@ -31,8 +27,6 @@
         unit_of_measurement: "V"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        filters:
-          - multiply: 0.1
         accuracy_decimals: 1
         device_class: voltage
 
@@ -43,8 +37,6 @@
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        filters:
-          - multiply: 0.1
         accuracy_decimals: 1
         device_class: current
 
@@ -55,8 +47,6 @@
         unit_of_measurement: "V"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        filters:
-          - multiply: 0.1
         accuracy_decimals: 1
         device_class: voltage
 
@@ -67,8 +57,6 @@
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        filters:
-          - multiply: 0.1
         accuracy_decimals: 1
         device_class: current
 
@@ -79,8 +67,6 @@
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        filters:
-          - multiply: 0.1
         accuracy_decimals: 1
         device_class: current
 
