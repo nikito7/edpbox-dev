@@ -1,4 +1,33 @@
-# (...)
+substitutions:
+
+  dev: ****
+
+esphome:
+
+  name: ********
+  platform: ESP8266
+  board: esp01_1m
+
+wifi:
+
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
+
+  ap:
+    ssid: "Fallback ${dev}"
+    password: !secret wifi_key
+
+#captive_portal:
+
+api:
+
+  password: !secret api_key
+
+ota:
+
+  password: !secret ota_key
+
+### ### ###
 
 time:
 
@@ -55,25 +84,10 @@ sensor:
 
 ### ### ###
 
-# begin 0x0026
-# filters bug
-
-      - id: Total_Energy_T1
-        name: "EB1 Total Energy T1"
-        address: 0x0026
-        offset: 0
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 1
-        unit_of_measurement: "kWh"
-        icon: "mdi:transmission-tower"
-
-# eof 0x0026
-
+# paste here
 
 ### ### ###
 
 #######
 # eof #
 #######
-
