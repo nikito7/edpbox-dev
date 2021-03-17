@@ -1,6 +1,6 @@
 # begin 0x006C
 
-      - id: Voltage_L1
+      - id: VolL1
         name: "EB1 Voltage L1"
         address: 0x006C
         offset: 0
@@ -9,10 +9,10 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: 'int v = x; return v/10;'
+          - multiply: 0.1
         device_class: voltage
 
-      - id: Current_L1
+      - id: CurL1
         name: "EB1 Current L1"
         address: 0x006C
         offset: 2
@@ -21,10 +21,10 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: 'int v = x; return v/10;'
+          - multiply: 0.1
         device_class: current
 
-      - id: Voltage_L2
+      - id: VolL2
         name: "EB1 Voltage L2"
         address: 0x006C
         offset: 4
@@ -33,10 +33,10 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: 'int v = x; return v/10;'
+          - multiply: 0.1
         device_class: voltage
 
-      - id: Current_L2
+      - id: CurL2
         name: "EB1 Current L2"
         address: 0x006C
         offset: 6
@@ -45,10 +45,10 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: 'int v = x; return v/10;'
+          - multiply: 0.1
         device_class: current
 
-      - id: Voltage_L3
+      - id: VolL3
         name: "EB1 Voltage L3"
         address: 0x006C
         offset: 8
@@ -57,10 +57,10 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: 'int v = x; return v/10;'
+          - multiply: 0.1
         device_class: voltage
 
-      - id: Current_L3
+      - id: CurL3
         name: "EB1 Current L3"
         address: 0x006C
         offset: 10
@@ -69,10 +69,10 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: 'int v = x; return v/10;'
+          - multiply: 0.1
         device_class: current
 
-      - id: Current
+      - id: Cur
         name: "EB1 Current"
         address: 0x006C
         offset: 12
@@ -80,7 +80,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         filters:
-          - lambda: 'int v = x; return v/10;'
+          - multiply: 0.1
         accuracy_decimals: 1
         device_class: current
 
