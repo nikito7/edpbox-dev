@@ -8,6 +8,8 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
         device_class: power_factor
 
       - id: Power_Factor_L1
@@ -18,6 +20,8 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
         device_class: power_factor
 
       - id: Power_Factor_L2
@@ -28,6 +32,8 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
         device_class: power_factor
 
       - id: Power_Factor_L3
@@ -38,6 +44,8 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
         device_class: power_factor
 
       - id: Frequency
@@ -48,6 +56,8 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
         icon: "mdi:pulse"
 
 # eof 0x007B
