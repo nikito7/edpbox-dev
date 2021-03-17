@@ -9,9 +9,7 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: |-
-              int v = x;
-              return v/10;
+          - lambda: 'int v = x; return v/10;'
         device_class: voltage
 
       - id: Current_L1
@@ -23,9 +21,7 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: |-
-              int v = x;
-              return v/10;'
+          - lambda: 'int v = x; return v/10;'
         device_class: current
 
       - id: Voltage_L2
@@ -37,9 +33,7 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: |-
-              int v = x;
-              return v/10;
+          - lambda: 'int v = x; return v/10;'
         device_class: voltage
 
       - id: Current_L2
@@ -51,9 +45,7 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: |-
-              int v = x;
-              return v/10;
+          - lambda: 'int v = x; return v/10;'
         device_class: current
 
       - id: Voltage_L3
@@ -65,9 +57,7 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: |-
-              int v = x;
-              return v/10;
+          - lambda: 'int v = x; return v/10;'
         device_class: voltage
 
       - id: Current_L3
@@ -79,9 +69,7 @@
         value_type: U_WORD
         accuracy_decimals: 1
         filters:
-          - lambda: |-
-              int v = x;
-              return v/10;
+          - lambda: 'int v = x; return v/10;'
         device_class: current
 
       - id: Current
@@ -92,9 +80,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         filters:
-          - lambda: |-
-              int v = x;
-              return v/10;
+          - lambda: 'int v = x; return v/10;'
         accuracy_decimals: 1
         device_class: current
 
