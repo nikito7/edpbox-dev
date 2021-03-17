@@ -60,13 +60,13 @@
     icon: mdi:pulse
 
   - platform: mqtt
-    name: "EB1 Total Enerfy T1 Vazio"
+    name: "EB1 Total Energy T1 Vazio"
     unique_id: ebenergy1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Total_Energy_T1|float }}
     unit_of_measurement: "kWh"
-    device_class: energy
+    icon: mdi:transmission-tower
    
   - platform: mqtt
     name: "EB1 Total Energy T2 Ponta"
@@ -75,7 +75,7 @@
     value_template: >-
         {{ value_json.EB1.Total_Energy_T2|float }}
     unit_of_measurement: "kWh"
-    device_class: energy
+    icon: mdi:transmission-tower
     
   - platform: mqtt
     name: "EB1 Total Energy T3 Cheia"
@@ -84,7 +84,7 @@
     value_template: >-
         {{ value_json.EB1.Total_Energy_T3|float }}
     unit_of_measurement: "kWh"
-    device_class: energy
+    icon: mdi:transmission-tower
 
   - platform: mqtt
     name: "EB1 Total Energy Import"
