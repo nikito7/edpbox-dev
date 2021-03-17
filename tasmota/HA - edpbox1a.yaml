@@ -1,8 +1,8 @@
 # edpbox1a
 
   - platform: mqtt
-    name: "EB ESP Uptime"
-    unique_id: eb_esp_uptime
+    name: "EB1 ESP Uptime"
+    unique_id: EB1_ESP_Uptime
     state_topic: "tele/edpbox1/STATE"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
@@ -13,8 +13,8 @@
     expire_after: 120
 
   - platform: mqtt
-    name: "EB ESP Signal"
-    unique_id: eb_esp_signal
+    name: "EB1 ESP Signal"
+    unique_id: EB1_ESP_Signal
     state_topic: "tele/edpbox1/STATE"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
@@ -25,19 +25,18 @@
     expire_after: 120
 
   - platform: mqtt
-    name: "EB ESP Vcc"
-    unique_id: eb_esp_vcc
+    name: "EB1 ESP Vcc"
+    unique_id: EB1_ESP_Vcc
     state_topic: "tele/edpbox1/STATE"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
     payload_not_available: Offline
     value_template: '{{ value_json.Vcc }}'
     unit_of_measurement: "V"
-    device_class: battery
 
   - platform: mqtt
-    name: "EB ESP Load"
-    unique_id: eb_esp_load
+    name: "EB1 ESP Load"
+    unique_id: EB1_ESP_Load
     state_topic: "tele/edpbox1/STATE"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
@@ -48,8 +47,8 @@
 # eof esp
 
   - platform: mqtt
-    name: "EB Clock H"
-    unique_id: eb1_clock_h
+    name: "EB1 Clock H"
+    unique_id: EB1_Clock_H
     state_topic: "tele/edpbox1/SENSOR"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
@@ -60,8 +59,8 @@
     expire_after: 120
 
   - platform: mqtt
-    name: "EB Clock M"
-    unique_id: eb1_clock_m
+    name: "EB1 Clock M"
+    unique_id: EB1_Clock_M
     state_topic: "tele/edpbox1/SENSOR"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
@@ -72,8 +71,8 @@
     expire_after: 120
 
   - platform: mqtt
-    name: "EB Clock S"
-    unique_id: eb1_clock_s
+    name: "EB1 Clock S"
+    unique_id: EB1_Clock_S
     state_topic: "tele/edpbox1/SENSOR"
     availability_topic: "tele/edpbox1/LWT"
     payload_available: Online
