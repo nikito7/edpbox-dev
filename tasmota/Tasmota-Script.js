@@ -41,7 +41,7 @@ endif
 1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,17
 
 1,01040ExxxxUUuu@i1:10,Current L1 ,A,Current_L1,17
-1,01040ExxxxxxxxxxxxUUuu@i1:10,Corrente L2 ,A,Current_L2,17
+1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,Current_L2,17
 1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,Current_L3,17
 
 1,=h<hr>
@@ -68,18 +68,18 @@ endif
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Energia T1 Vazio ,kWh,Energy_R1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Energia T2 Ponta ,kWh,Energy_R2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energia T3 Cheia ,kWh,Energy_R3,1
+1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,Total_Energy_T1,1
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,Total_Energy_T2,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheia ,kWh,Total_Energy_T3,1
 
 1,=h<hr>
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Energia Importada ,kWh,Energy_Sum,1
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Energia Exportada ,kWh,Energy_Export,3
-1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q1 ,kVAr,Energy_Q1,1
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Energia Q4 ,kVAr,Energy_Q4,2
+1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,Total_Energy_Import,1
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,Total_Energy_Export,3
+1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q1 ,kVAr,Total_Energy_Q1,1
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,Total_Energy_Q4,2
 
 ; dev
 
