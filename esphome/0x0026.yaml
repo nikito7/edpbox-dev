@@ -1,32 +1,38 @@
 # begin 0x0026
 
-      - id: Total_Energy_T1
+      - id: TotEneT1
         name: "EB1 Total Energy T1"
         address: 0x0026
         offset: 0
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
 
-      - id: Total_Energy_T2
+      - id: TotEneT2
         name: "EB1 Total Energy T2"
         address: 0x0026
         offset: 4
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
 
-      - id: Total_Energy_T3
+      - id: TotEneT3
         name: "EB1 Total Energy T3"
         address: 0x0026
         offset: 8
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
         accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
 
