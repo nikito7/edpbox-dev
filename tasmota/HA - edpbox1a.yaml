@@ -84,7 +84,7 @@
     expire_after: 30
 
   - platform: mqtt
-    name: "EB Tensão L1"
+    name: "EB1 Voltage L1"
     unique_id: ebten1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -94,7 +94,7 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Tensão L1-10"
+    name: "EB1 Voltage L1-10"
     unique_id: ebten110
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -104,7 +104,7 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Tensão L2"
+    name: "EB1 Voltage L2"
     unique_id: ebten2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -114,7 +114,7 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Tensão L3"
+    name: "EB1 Voltage L3"
     unique_id: ebten3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -124,7 +124,7 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Tensão L3+10"
+    name: "EB1 Voltage L3+10"
     unique_id: ebten310
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -134,17 +134,17 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Corrente Total"
+    name: "EB1 Current"
     unique_id: ebcursum
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Current_Sum|float }}
+        {{ value_json.EB1.Current|float }}
     unit_of_measurement: "A"
     device_class: current
     expire_after: 30
 
   - platform: mqtt
-    name: "EB Corrente L1"
+    name: "EB1 Current L1"
     unique_id: ebcur1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -154,7 +154,7 @@
     expire_after: 30
 
   - platform: mqtt
-    name: "EB Corrente L2"
+    name: "EB1 Current L2"
     unique_id: ebcur2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -164,7 +164,7 @@
     expire_after: 30
 
   - platform: mqtt
-    name: "EB Corrente L3"
+    name: "EB1 Current L3"
     unique_id: ebcur3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -174,42 +174,42 @@
     expire_after: 30
 
   - platform: mqtt
-    name: "EB Factor de Potência"
+    name: "EB1 Power Factor"
     unique_id: ebpfactor
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PFactor|float }}
-    unit_of_measurement: "p.u."
+        {{ value_json.EB1.Power_Factor|float }}
+    unit_of_measurement: "%"
     device_class: power_factor
     expire_after: 60
 
   - platform: mqtt
-    name: "EB PFactor L1"
+    name: "EB Power Factor L1"
     unique_id: ebpfactorl1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PFactor_L1|float }}
-    unit_of_measurement: "p.u."
+        {{ value_json.EB1.Power_Factor_L1|float }}
+    unit_of_measurement: "%"
     device_class: power_factor
     expire_after: 60
 
   - platform: mqtt
-    name: "EB PFactor L2"
+    name: "EB Power Factor L2"
     unique_id: ebpfactorl2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PFactor_L2|float }}
-    unit_of_measurement: "p.u."
+        {{ value_json.EB1.Power_Factor_L2|float }}
+    unit_of_measurement: "%"
     device_class: power_factor
     expire_after: 60
 
   - platform: mqtt
-    name: "EB PFactor L3"
+    name: "EB Power Factor L3"
     unique_id: ebpfactorl3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PFactor_L3|float }}
-    unit_of_measurement: "p.u."
+        {{ value_json.EB1.Power_Factor_L3|float }}
+    unit_of_measurement: "%"
     device_class: power_factor
     expire_after: 60
 
