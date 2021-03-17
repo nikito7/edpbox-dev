@@ -183,7 +183,7 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Power Factor L1"
+    name: "EB1 Power Factor L1"
     unique_id: ebpfactorl1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -193,7 +193,7 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Power Factor L2"
+    name: "EB1 Power Factor L2"
     unique_id: ebpfactorl2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -203,7 +203,7 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB Power Factor L3"
+    name: "EB1 Power Factor L3"
     unique_id: ebpfactorl3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
