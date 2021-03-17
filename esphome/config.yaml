@@ -1,19 +1,10 @@
 substitutions:
 
-  dev: ******
-
-interval:
-
-  - interval: 15s
-    then:
-      - lambda: |-
-          if (millis() > 30000) {
-            id(edpbox1).update();
-          }
+  dev: T5
 
 esphome:
 
-  name: ********
+  name: *********
   platform: ESP8266
   board: esp01_1m
 
@@ -26,7 +17,7 @@ wifi:
     ssid: "Fallback ${dev}"
     password: !secret wifi_key
 
-#captive_portal:
+captive_portal:
 
 api:
 
@@ -36,15 +27,14 @@ ota:
 
   password: !secret ota_key
 
-### ### ###
-
 time:
 
   - platform: homeassistant
     id: esptime
 
-#logger:
-#  level: VERBOSE
+logger:
+
+  level: VERBOSE
 
 switch:
 
@@ -89,8 +79,8 @@ sensor:
     modbus_id: edpbox_bus
     id: edpbox1
     address: 0x1
-    command_throttle: 2000
-    update_interval: never # change at interval above
+    command_throttle: 500
+    update_interval: 10s
     # min update = (throttle/1000)*(unique_ranges + 1)
     sensors:
 
