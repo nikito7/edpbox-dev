@@ -1,8 +1,6 @@
 # begin 0x0073
-# don't remove middle sensors of a range. 
-# scary things could happen
 
-      - id: Active_Power_L1
+      - id: ActPowL1
         name: "EB1 Active Power L1"
         address: 0x0073
         offset: 0
@@ -12,18 +10,18 @@
         device_class: power
         unit_of_measurement: "W"
 
-      - id: Active_Power_L1_Export
-        name: "EB1 Active Power L1 Export"
-        address: 0x0073
-        offset: 4
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
+#      - id: ActPowL1Exp
+#        name: "EB1 Active Power L1 Export"
+#        address: 0x0073
+#        offset: 4
+#        modbus_functioncode: "read_input_registers"
+#        value_type: U_DWORD
+#        accuracy_decimals: 0
+#        device_class: power
+#        unit_of_measurement: "W"
+#        internal: true # disable sensor
 
-      - id: Active_Power_L2
+      - id: ActPowL2
         name: "EB1 Active Power L2"
         address: 0x0073
         offset: 8
@@ -33,18 +31,18 @@
         device_class: power
         unit_of_measurement: "W"
 
-      - id: Active_Power_L2_Export
-        name: "EB1 Active Power L2 Export"
-        address: 0x0073
-        offset: 12
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
+#      - id: ActPowL2Exp
+#        name: "EB1 Active Power L2 Export"
+#        address: 0x0073
+#        offset: 12
+#        modbus_functioncode: "read_input_registers"
+#        value_type: U_DWORD
+#        accuracy_decimals: 0
+#        device_class: power
+#        unit_of_measurement: "W"
+#        internal: true # disable sensor
 
-      - id: Active_Power_L3
+      - id: ActPowL3
         name: "EB1 Active Power L3"
         address: 0x0073
         offset: 16
@@ -54,18 +52,18 @@
         device_class: power
         unit_of_measurement: "W"
 
-      - id: Active_Power_L3_Export
-        name: "EB1 Active Power L3 Export"
-        address: 0x0073
-        offset: 20
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
+#      - id: ActPowL3Exp
+#        name: "EB1 Active Power L3 Export"
+#        address: 0x0073
+#        offset: 20
+#        modbus_functioncode: "read_input_registers"
+#        value_type: U_DWORD
+#        accuracy_decimals: 0
+#        device_class: power
+#        unit_of_measurement: "W"
+#        internal: true # disable sensor
 
-      - id: Active_Power
+      - id: ActPower
         name: "EB1 Active Power"
         address: 0x0073
         offset: 24
@@ -75,16 +73,16 @@
         device_class: power
         unit_of_measurement: "W"
 
-      - id: Active_Power_Export
-        name: "EB1 Active Power Export"
-        address: 0x0073
-        offset: 28
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
+#      - id: ActPowExp
+#        name: "EB1 Active Power Export"
+#        address: 0x0073
+#        offset: 28
+#        modbus_functioncode: "read_input_registers"
+#        value_type: U_DWORD
+#        accuracy_decimals: 0
+#        device_class: power
+#        unit_of_measurement: "W"
+#        internal: true # disable sensor
 
 # eof 0x0073
 
