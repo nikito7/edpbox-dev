@@ -1,6 +1,6 @@
 # begin 0x007B
 
-      - id: Power_Factor
+      - id: PowFac
         name: "EB1 Power Factor"
         address: 0x007B
         offset: 0
@@ -12,7 +12,7 @@
           - multiply: 0.1
         device_class: power_factor
 
-      - id: Power_Factor_L1
+      - id: PowFacL1
         name: "EB1 Power Factor L1"
         address: 0x007B
         offset: 2
@@ -24,7 +24,7 @@
           - multiply: 0.1
         device_class: power_factor
 
-      - id: Power_Factor_L2
+      - id: PowFacL2
         name: "EB1 Power Factor L2"
         address: 0x007B
         offset: 4
@@ -36,7 +36,7 @@
           - multiply: 0.1
         device_class: power_factor
 
-      - id: Power_Factor_L3
+      - id: PowFacL3
         name: "EB1 Power Factor L3"
         address: 0x007B
         offset: 6
@@ -48,7 +48,7 @@
           - multiply: 0.1
         device_class: power_factor
 
-      - id: Frequency
+      - id: Freq
         name: "EB1 Frequency"
         address: 0x007B
         offset: 8
