@@ -37,42 +37,4 @@
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
 
-      - id: TotEneQ2
-        name: "EB1 Total Energy Q2"
-        address: 0x0016
-        offset: 12
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 3
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVAr"
-        icon: "mdi:transmission-tower"
-        internal: true # disable sensor
-
-      - id: TotEneQ3
-        name: "EB1 Total Energy Q3"
-        address: 0x0016
-        offset: 16
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 3
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVAr"
-        icon: "mdi:transmission-tower"
-        internal: true # disable sensor
-
-      - id: TotEneQ4
-        name: "EB1 Total Energy Q4"
-        address: 0x0016
-        offset: 20
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 1
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVAr"
-        icon: "mdi:transmission-tower"
-
 # eof 0x0016
