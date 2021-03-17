@@ -1,56 +1,56 @@
-# begin 0x007b
+# begin 0x007B
 
       - id: Power_Factor
         name: "EB1 Power Factor"
-        address: 0x007b
+        address: 0x007B
         offset: 0
-        unit_of_measurement: "pu"
+        unit_of_measurement: "%"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         filters:
-          - multiply: 0.001
-        accuracy_decimals: 3
+          - multiply: 0.1
+        accuracy_decimals: 1
         device_class: power_factor
 
       - id: Power_Factor_L1
         name: "EB1 Power Factor L1"
-        address: 0x007b
+        address: 0x007B
         offset: 2
-        unit_of_measurement: "pu"
+        unit_of_measurement: "%"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         filters:
-          - multiply: 0.001
-        accuracy_decimals: 3
+          - multiply: 0.1
+        accuracy_decimals: 1
         device_class: power_factor
 
       - id: Power_Factor_L2
         name: "EB1 Power Factor L2"
-        address: 0x007b
+        address: 0x007B
         offset: 4
-        unit_of_measurement: "pu"
+        unit_of_measurement: "%"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         filters:
-          - multiply: 0.001
-        accuracy_decimals: 3
+          - multiply: 0.1
+        accuracy_decimals: 1
         device_class: power_factor
 
       - id: Power_Factor_L3
         name: "EB1 Power Factor L3"
-        address: 0x007b
+        address: 0x007B
         offset: 6
-        unit_of_measurement: "pu"
+        unit_of_measurement: "%"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         filters:
-          - multiply: 0.001
-        accuracy_decimals: 3
+          - multiply: 0.1
+        accuracy_decimals: 1
         device_class: power_factor
 
       - id: Frequency
         name: "EB1 Frequency"
-        address: 0x007b
+        address: 0x007B
         offset: 8
         unit_of_measurement: "Hz"
         modbus_functioncode: "read_input_registers"
@@ -60,4 +60,4 @@
         accuracy_decimals: 1
         icon: "mdi:pulse"
 
-# eof 0x007b
+# eof 0x007B
