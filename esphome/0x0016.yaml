@@ -1,7 +1,7 @@
 # begin 0x0016
 # filters bug: memory issue esp8266
 
-      - id: Total_Energy_Import
+      - id: TotEneImp
         name: "EB1 Total Energy Import"
         address: 0x0016
         offset: 0
@@ -13,7 +13,7 @@
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
 
-      - id: Total_Energy_Export
+      - id: TotEneExp
         name: "EB1 Total Energy Export"
         address: 0x0016
         offset: 4
@@ -25,7 +25,7 @@
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
 
-      - id: Total_Energy_Q1
+      - id: TotEneQ1
         name: "EB1 Total Energy Q1"
         address: 0x0016
         offset: 8
@@ -37,7 +37,7 @@
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
 
-      - id: Total_Energy_Q2
+      - id: TotEneQ2
         name: "EB1 Total Energy Q2"
         address: 0x0016
         offset: 12
@@ -50,7 +50,7 @@
         icon: "mdi:transmission-tower"
         internal: true # disable sensor
 
-      - id: Total_Energy_Q3
+      - id: TotEneQ3
         name: "EB1 Total Energy Q3"
         address: 0x0016
         offset: 16
@@ -63,7 +63,7 @@
         icon: "mdi:transmission-tower"
         internal: true # disable sensor
 
-      - id: Total_Energy_Q4
+      - id: TotEneQ4
         name: "EB1 Total Energy Q4"
         address: 0x0016
         offset: 20
