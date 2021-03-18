@@ -63,6 +63,7 @@ sensor:
       return heap / 1024.0;
     unit_of_measurement: "kB"
     update_interval: 5s
+    icon: mdi:chip
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
