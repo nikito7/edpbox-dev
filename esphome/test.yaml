@@ -4,7 +4,7 @@
 
       - id: en1_test
         name: "eb1 test"
-        modbus_functioncode: 0x4
+        modbus_functioncode: "read_input_registers"
         address: 0x0001
         offset: 0
         register_count: 1
