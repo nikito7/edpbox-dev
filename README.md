@@ -10,7 +10,7 @@ Limitations: long requests overflow
 
 # ESPHome
 
-Status: dev/test
+Status: working
 
 Limitations: esp8266 memory issues
 
