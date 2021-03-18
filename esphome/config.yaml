@@ -8,16 +8,27 @@ esphome:
   platform: ESP8266
   board: esp01_1m
 
+interval:
+
+  - interval: 9s
+    then:
+      - lambda: |-
+          if (millis() > 15000) {
+            id(edpbox1).update();
+          }
+
 wifi:
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
 
-#  ap:
-#    ssid: "Fallback ${dev}"
-#    password: !secret wifi_key
-#
-#captive_portal:
+  ap:
+    ssid: "Fallback ${dev}"
+    password: !secret wifi_key
+
+captive_portal:
+
+web_server:
 
 api:
 
@@ -78,7 +89,8 @@ sensor:
     modbus_id: edpbox_bus
     address: 0x1
     command_throttle: 500
-    update_interval: 9s
+    update_interval: never
+    id: edpbox1
     sensors:
 
 ### ### ###
