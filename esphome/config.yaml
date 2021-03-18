@@ -2,18 +2,9 @@ substitutions:
 
   dev: T5
 
-interval:
-
-  - interval: 10s
-    then:
-      - lambda: |-
-          if (millis() > 30000) {
-            id(edpbox1).update();
-          }
-
 esphome:
 
-  name: ********
+  name: *******
   platform: ESP8266
   board: esp01_1m
 
@@ -85,11 +76,9 @@ sensor:
 
   - platform: modbus_component
     modbus_id: edpbox_bus
-    id: edpbox1
     address: 0x1
-    command_throttle: 1500
-    update_interval: never
-    # min update = (throttle/1000)*(unique_ranges + 1)
+    command_throttle: 500
+    update_interval: 9s
     sensors:
 
 ### ### ###
