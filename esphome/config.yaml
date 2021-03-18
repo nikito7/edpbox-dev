@@ -13,11 +13,11 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_key
 
-  ap:
-    ssid: "Fallback ${dev}"
-    password: !secret wifi_key
-
-captive_portal:
+#  ap:
+#    ssid: "Fallback ${dev}"
+#    password: !secret wifi_key
+#
+#captive_portal:
 
 api:
 
@@ -32,9 +32,8 @@ time:
   - platform: homeassistant
     id: esptime
 
-logger:
-
-  level: VERBOSE
+#logger:
+#  level: VERBOSE
 
 switch:
 
