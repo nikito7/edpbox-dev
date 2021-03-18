@@ -4,7 +4,7 @@ substitutions:
 
 esphome:
 
-  name: ********
+  name: *******
   platform: ESP8266
   board: esp01_1m
 
@@ -88,7 +88,7 @@ sensor:
   - platform: modbus_component
     modbus_id: edpbox_bus
     address: 0x1
-    command_throttle: 500
+    command_throttle: 1000
     update_interval: never
     id: edpbox1
     sensors:
