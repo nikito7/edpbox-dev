@@ -13,6 +13,17 @@
     expire_after: 120
 
   - platform: mqtt
+    name: "EB1 ESP Heap"
+    unique_id: EB1_ESP_Heap
+    state_topic: "tele/edpbox1/STATE"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.Heap }}'
+    unit_of_measurement: "kB"
+    icon: mdi:chip
+
+  - platform: mqtt
     name: "EB1 ESP Signal"
     unique_id: EB1_ESP_Signal
     state_topic: "tele/edpbox1/STATE"
