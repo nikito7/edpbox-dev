@@ -3,7 +3,7 @@
 >BS
 
 smlj=0
-tper=60
+tper=30
 
 ->sensor53 r
 
@@ -20,7 +20,7 @@ endif
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
++1,14,m,1,9600,EB1,5,10,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
 
 ; 01
 
@@ -58,10 +58,10 @@ endif
 
 ; 7B
 
-1,01040AUUuu@i3:10,Power Factor ,%,Power_Factor,17
-1,01040AxxxxUUuu@i3:10,Power Factor L1 ,%,Power_Factor_L1,17
-1,01040AxxxxxxxxUUuu@i3:10,Power Factor L2 ,%,Power_Factor_L2,17
-1,01040AxxxxxxxxxxxxUUuu@i3:10,Power Factor L3 ,%,Power_Factor_L3,17
+1,01040AUUuu@i3:1000,Power Factor ,pu,Power_Factor,19
+1,01040AxxxxUUuu@i3:1000,Power Factor L1 ,pu,Power_Factor_L1,19
+1,01040AxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,Power_Factor_L2,19
+1,01040AxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,Power_Factor_L3,19
 1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
 
 1,=h<hr>
