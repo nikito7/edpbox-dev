@@ -2,13 +2,11 @@
 
     text_sensors:
 
-      - id: en1_test
-        name: "eb1 test"
+      - id: Clock_Test
+        name: "EB1 Test 2"
         modbus_functioncode: "read_input_registers"
         address: 0x0001
         offset: 0
-        register_count: 1
         hex_encode: true
-        response_size: 10
 
 # eof test
