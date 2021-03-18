@@ -4,44 +4,44 @@
         name: "EB1 Power Factor"
         address: 0x007B
         offset: 0
-        unit_of_measurement: "%"
+        unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        accuracy_decimals: 1
-        scale_factor: 10
+        accuracy_decimals: 3
+        scale_factor: 0.001
         device_class: power_factor
 
       - id: PowFacL1
         name: "EB1 Power Factor L1"
         address: 0x007B
         offset: 2
-        unit_of_measurement: "%"
+        unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        accuracy_decimals: 1
-        scale_factor: 10
+        accuracy_decimals: 3
+        scale_factor: 0.001
         device_class: power_factor
 
       - id: PowFacL2
         name: "EB1 Power Factor L2"
         address: 0x007B
         offset: 4
-        unit_of_measurement: "%"
+        unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        accuracy_decimals: 1
-        scale_factor: 10
+        accuracy_decimals: 3
+        scale_factor: 0.001
         device_class: power_factor
 
       - id: PowFacL3
         name: "EB1 Power Factor L3"
         address: 0x007B
         offset: 6
-        unit_of_measurement: "%"
+        unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        accuracy_decimals: 1
-        scale_factor: 10
+        accuracy_decimals: 3
+        scale_factor: 0.001
         device_class: power_factor
 
       - id: Freq
@@ -52,7 +52,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
-        scale_factor: 10
+        scale_factor: 0.1
         icon: "mdi:pulse"
 
 # eof 0x007B
