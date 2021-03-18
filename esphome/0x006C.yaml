@@ -8,7 +8,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
-        scale_factor: 10
+        scale_factor: 0.1
         device_class: voltage
 
       - id: CurL1
@@ -19,7 +19,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
-        scale_factor: 10
+        scale_factor: 0.1
         device_class: current
 
       - id: VolL2
@@ -30,7 +30,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
-        scale_factor: 10
+        scale_factor: 0.1
         device_class: voltage
 
       - id: CurL2
@@ -41,7 +41,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
-        scale_factor: 10
+        scale_factor: 0.1
         device_class: current
 
       - id: VolL3
@@ -52,7 +52,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
-        scale_factor: 10
+        scale_factor: 0.1
         device_class: voltage
 
       - id: CurL3
@@ -63,7 +63,7 @@
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
         accuracy_decimals: 1
-        scale_factor: 10
+        scale_factor: 0.1
         device_class: current
 
       - id: Cur
@@ -73,7 +73,7 @@
         unit_of_measurement: "A"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
-        scale_factor: 10
+        scale_factor: 0.1
         accuracy_decimals: 1
         device_class: current
 
