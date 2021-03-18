@@ -1,14 +1,14 @@
 # begin test
 
     text_sensors:
-      - name: "rtc_clock"
-        id: rtc_clock
-        modbus_functioncode: read_holding_registers
-        address: 0x9013
-        offset: 0
-        register_count: 2
-        hex_encode: true
-        response_size: 4
 
+      - id: en1_test
+        name: "eb1 test"
+        modbus_functioncode: 0x4
+        address: 0x0001
+        offset: 0
+        register_count: 1
+        hex_encode: true
+        response_size: 10
 
 # eof test
