@@ -2,6 +2,15 @@ substitutions:
 
   dev: T5
 
+interval:
+
+  - interval: 10s
+    then:
+      - lambda: |-
+          if (millis() > 30000) {
+            id(edpbox1).update();
+          }
+
 esphome:
 
   name: ********
@@ -26,11 +35,6 @@ api:
 ota:
 
   password: !secret ota_key
-
-time:
-
-  - platform: homeassistant
-    id: esptime
 
 #logger:
 #  level: VERBOSE
@@ -77,10 +81,6 @@ sensor:
     accuracy_decimals: 1
     update_interval: 30s
 
-  - platform: adc
-    pin: VCC
-    name: "${dev} ESP VCC" # ESP 8266
-
 ### ### ###
 
   - platform: modbus_component
@@ -88,7 +88,7 @@ sensor:
     id: edpbox1
     address: 0x1
     command_throttle: 1500
-    update_interval: 10s
+    update_interval: never
     # min update = (throttle/1000)*(unique_ranges + 1)
     sensors:
 
