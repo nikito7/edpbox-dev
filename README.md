@@ -12,7 +12,7 @@ Limitations: long requests overflow
 
 Status: dev/test
 
-Limitations: esp8266 memory issues could happen
+Limitations: esp8266 memory issues
 
 # Links
 
