@@ -8,13 +8,7 @@
     update_interval: 30s
 
   - platform: template
-    name: "EB1 L2"
-    lambda: |-
-      return id(VolL2).state;
-    update_interval: 30s
-
-  - platform: template
-    name: "EB1 L1+10"
+    name: "EB1 L3+10"
     lambda: |-
       return id(VolL3).state+10;
     update_interval: 30s
