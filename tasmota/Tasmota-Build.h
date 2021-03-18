@@ -13,20 +13,20 @@
 #undef USE_EMULATION                             // Disable Wemo or Hue emulation
 #undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
 #undef USE_EMULATION_WEMO                        // Disable Belkin WeMo emulation for Alexa (+6k code, +2k mem common)
-#undef USE_CUSTOM                                // Disable Custom features
+//#undef USE_CUSTOM                                // Disable Custom features
 #undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
 #undef USE_TIMERS                                // Disable support for up to 16 timers
 #undef USE_TIMERS_WEB                            // Disable support for timer webpage
 #undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
 #undef USE_PING                                  // Disable Ping command (+2k code)
-#undef USE_UNISHOX_COMPRESSION                   // Disable support for string compression in Rules or Scripts
+//#undef USE_UNISHOX_COMPRESSION                   // Disable support for string compression in Rules or Scripts
 #undef USE_RULES                                 // Disable support for rules
-#undef USE_SCRIPT                                // Disable support for script
+//#undef USE_SCRIPT                                // Disable support for script
 
 // -- Optional modules ----------------------------
 #undef ROTARY_V1                                 // Disable support for MI Desk Lamp
 #undef USE_SONOFF_RF                             // Disable support for Sonoff Rf Bridge (+3k2 code)
-  #undef USE_RF_FLASH                            // Disable support for flashing the EFM8BB1 chip on the Sonoff RF Bridge. C2CK must be connected to GPIO4, C2D to GPIO5 on the PCB
+#undef USE_RF_FLASH                            // Disable support for flashing the EFM8BB1 chip on the Sonoff RF Bridge. C2CK must be connected to GPIO4, C2D to GPIO5 on the PCB
 #undef USE_SONOFF_SC                             // Disable support for Sonoff Sc (+1k1 code)
 #undef USE_TUYA_MCU                              // Disable support for Tuya Serial MCU
 #undef USE_ARMTRONIX_DIMMERS                     // Disable support for Armtronix Dimmers (+1k4 code)
@@ -57,7 +57,7 @@
 #undef USE_SHELLY_DIMMER                         // Disable support for Shelly Dimmer (+3k code)
 
 #undef USE_COUNTER                               // Disable counters
-#define USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
+#undef USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
 #undef USE_DS18x20                               // Disable DS18x20 sensor
 
 #undef USE_I2C                                   // Disable all I2C sensors and devices
