@@ -5,15 +5,12 @@
 smlj=0
 tper=30
 
-->sensor53 r
-
->R
-
-smlj=0
+=>sensor53 r
 
 >S
 
 if upsecs>20
+and upsecs<60
 then
 smlj=1
 endif
