@@ -5,7 +5,7 @@
 #undef USE_DOMOTICZ                              // Disable Domoticz
 #undef USE_HOME_ASSISTANT                        // Disable Home Assistant
 #undef USE_TELEGRAM                              // Disable support for Telegram protocol (+49k code, +7.0k mem and +4.8k additional during connection handshake)
-//#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
+#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
 #undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
@@ -19,7 +19,7 @@
 #undef USE_TIMERS_WEB                            // Disable support for timer webpage
 #undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
 #undef USE_PING                                  // Disable Ping command (+2k code)
-//#undef USE_UNISHOX_COMPRESSION                   // Disable support for string compression in Rules or Scripts
+#undef USE_UNISHOX_COMPRESSION                   // Disable support for string compression in Rules or Scripts
 #undef USE_RULES                                 // Disable support for rules
 //#undef USE_SCRIPT                                // Disable support for script
 
@@ -57,7 +57,7 @@
 #undef USE_SHELLY_DIMMER                         // Disable support for Shelly Dimmer (+3k code)
 
 #undef USE_COUNTER                               // Disable counters
-#undef USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
+#define USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
 #undef USE_DS18x20                               // Disable DS18x20 sensor
 
 #undef USE_I2C                                   // Disable all I2C sensors and devices
@@ -131,7 +131,7 @@
 #undef USE_RULES
 #define USE_SCRIPT
 #define USE_SML_M
-#define SML_MAX_VARS 30
+#define SML_MAX_VARS 50
 #define MAX_METERS 1
 
 // eof
