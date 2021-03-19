@@ -13,7 +13,7 @@
     expire_after: 120
 
   - platform: mqtt
-    name: "EB1 ESP Heap"
+    name: "EB1 ESP Free Heap"
     unique_id: EB1_ESP_Heap
     state_topic: "tele/edpbox1/STATE"
     availability_topic: "tele/edpbox1/LWT"
@@ -100,7 +100,7 @@
     unique_id: ebten1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Voltage_L1|float }}
+        {{ value_json.EB1.VolL1|float }}
     unit_of_measurement: "V"
     device_class: voltage 
     expire_after: 60
@@ -110,7 +110,7 @@
     unique_id: ebten110
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Voltage_L1 - 10 | float }}
+        {{ value_json.EB1.VolL1 - 10 | float }}
     unit_of_measurement: "V"
     device_class: voltage
     expire_after: 60
@@ -120,7 +120,7 @@
     unique_id: ebten2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Voltage_L2|float }}
+        {{ value_json.EB1.VolL2|float }}
     unit_of_measurement: "V"
     device_class: voltage
     expire_after: 60
@@ -130,7 +130,7 @@
     unique_id: ebten3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Voltage_L3|float }}
+        {{ value_json.EB1.VolL3|float }}
     unit_of_measurement: "V"
     device_class: voltage
     expire_after: 60
@@ -140,7 +140,7 @@
     unique_id: ebten310
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Voltage_L3 + 10 | float }}
+        {{ value_json.EB1.VolL3 + 10 | float }}
     unit_of_measurement: "V"
     device_class: voltage
     expire_after: 60
@@ -160,7 +160,7 @@
     unique_id: ebcur1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Current_L1|float }}
+        {{ value_json.EB1.CurL1|float }}
     unit_of_measurement: "A"
     device_class: current
     expire_after: 30
@@ -170,7 +170,7 @@
     unique_id: ebcur2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Current_L2|float }} 
+        {{ value_json.EB1.CurL2|float }} 
     unit_of_measurement: "A"
     device_class: current
     expire_after: 30
@@ -180,7 +180,7 @@
     unique_id: ebcur3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Current_L3|float }}
+        {{ value_json.EB1.CurL3|float }}
     unit_of_measurement: "A"
     device_class: current
     expire_after: 30
@@ -190,7 +190,7 @@
     unique_id: ebpfactor
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Power_Factor|float }}
+        {{ value_json.EB1.PowFac|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
@@ -200,7 +200,7 @@
     unique_id: ebpfactorl1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Power_Factor_L1|float }}
+        {{ value_json.EB1.PowFacL1|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
@@ -210,7 +210,7 @@
     unique_id: ebpfactorl2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Power_Factor_L2|float }}
+        {{ value_json.EB1.PowFacL2|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
@@ -220,7 +220,7 @@
     unique_id: ebpfactorl3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Power_Factor_L3|float }}
+        {{ value_json.EB1.PowFacL3|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
