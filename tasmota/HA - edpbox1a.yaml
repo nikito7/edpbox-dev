@@ -44,6 +44,7 @@
     payload_not_available: Offline
     value_template: '{{ value_json.Vcc }}'
     unit_of_measurement: "V"
+    icon: mdi:chip
 
   - platform: mqtt
     name: "EB1 ESP Load"
@@ -54,6 +55,7 @@
     payload_not_available: Offline
     value_template: '{{ value_json.LoadAvg }}'
     unit_of_measurement: "%"
+    icon: mdi:chip
 
 # eof esp
 
@@ -189,7 +191,7 @@
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Power_Factor|float }}
-    unit_of_measurement: "%"
+    unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
 
@@ -199,7 +201,7 @@
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Power_Factor_L1|float }}
-    unit_of_measurement: "%"
+    unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
 
@@ -209,7 +211,7 @@
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Power_Factor_L2|float }}
-    unit_of_measurement: "%"
+    unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
 
@@ -219,7 +221,7 @@
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Power_Factor_L3|float }}
-    unit_of_measurement: "%"
+    unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
 
