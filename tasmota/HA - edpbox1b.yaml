@@ -5,17 +5,7 @@
     unique_id: ebpowerp1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Active_Power|int }}
-    unit_of_measurement: "W"
-    device_class: power
-    expire_after: 30
-
-  - platform: mqtt
-    name: "EB1 Active Power Export"
-    unique_id: ebpowerp1exp
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.Active_Power_Export|int }}
+        {{ value_json.EB1.ActPow|int }}
     unit_of_measurement: "W"
     device_class: power
     expire_after: 30
@@ -25,7 +15,7 @@
     unique_id: ebpowerl1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Active_Power_L1|int }}
+        {{ value_json.EB1.ActPowL1|int }}
     unit_of_measurement: "W"
     device_class: power
     expire_after: 30
@@ -35,7 +25,7 @@
     unique_id: ebpowerl2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Active_Power_L2|int }}
+        {{ value_json.EB1.ActPowL2|int }}
     unit_of_measurement: "W"
     device_class: power
     expire_after: 30
@@ -45,7 +35,7 @@
     unique_id: ebpowerl3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Active_Power_L3|int }}
+        {{ value_json.EB1.ActPowL3|int }}
     unit_of_measurement: "W"
     device_class: power
     expire_after: 30
@@ -64,7 +54,7 @@
     unique_id: ebenergy1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Total_Energy_T1|float }}
+        {{ value_json.EB1.TotEneT1|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
    
@@ -73,7 +63,7 @@
     unique_id: ebenergy2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Total_Energy_T2|float }}
+        {{ value_json.EB1.TotEneT2|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
@@ -82,7 +72,7 @@
     unique_id: ebenergy3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Total_Energy_T3|float }}
+        {{ value_json.EB1.TotEneT3|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
 
@@ -91,7 +81,7 @@
     unique_id: ebenergysum
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Total_Energy_Import|float }}
+        {{ value_json.EB1.TotEneImp|float }}
     unit_of_measurement: "kWh"
     device_class: energy
 
@@ -100,7 +90,7 @@
     unique_id: ebenergyexport
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Total_Energy_Export|float }}
+        {{ value_json.EB1.TotEneExp|float }}
     unit_of_measurement: "kWh"
     device_class: energy
 
@@ -109,7 +99,7 @@
     unique_id: ebenergyq1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Total_Energy_Q1|float }}
+        {{ value_json.EB1.TotEneQ1|float }}
     unit_of_measurement: "kVAr"
     device_class: energy
 
@@ -118,7 +108,7 @@
     unique_id: ebenergyq4
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Total_Energy_Q4|float }}
+        {{ value_json.EB1.TotEneQ4|float }}
     unit_of_measurement: "kVAr"
     device_class: energy
 
