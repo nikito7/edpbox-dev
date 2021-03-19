@@ -48,11 +48,17 @@ endif
 
 ; 73
 
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,16
 
 1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,16
+1,01041cxxxxxxxxUUuuUUuu@i2:1,Active Power L1 Export ,W,ActPowL1Exp,16
+
 1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,16
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 Export ,W,ActPowL2Exp,16
+
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,16
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L3 Export ,W,ActPowL3Exp,16
+
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,16
 
 1,=h<hr>
 
