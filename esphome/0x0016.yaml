@@ -2,7 +2,7 @@
 # filters bug: memory issue esp8266
 
       - id: TotEneImp
-        name: "EB1 Total Energy Import"
+        name: "${dev} Total Energy Import"
         address: 0x0016
         offset: 0
         modbus_functioncode: "read_input_registers"
@@ -13,7 +13,7 @@
         icon: "mdi:transmission-tower"
 
       - id: TotEneExp
-        name: "EB1 Total Energy Export"
+        name: "${dev} Total Energy Export"
         address: 0x0016
         offset: 4
         modbus_functioncode: "read_input_registers"
@@ -24,7 +24,7 @@
         icon: "mdi:transmission-tower"
 
       - id: TotEneQ1
-        name: "EB1 Total Energy Q1"
+        name: "${dev} Total Energy Q1"
         address: 0x0016
         offset: 8
         modbus_functioncode: "read_input_registers"
