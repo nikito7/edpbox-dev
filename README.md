@@ -12,6 +12,8 @@ Limitations: long requests overflow
 
 Status: working
 
+Firmware: [beta1](https://github.com/nikito7/edp_box_han_modbus/releases/tag/esphome_b1)
+
 Limitations: esp8266 memory issues
 
 # Links
