@@ -34,4 +34,37 @@
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
 
+      - id: TotEneQ2
+        name: "${dev} Total Energy Q2"
+        address: 0x0016
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneQ3
+        name: "${dev} Total Energy Q3"
+        address: 0x0016
+        offset: 16
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneQ4
+        name: "${dev} Total Energy Q4"
+        address: 0x0016
+        offset: 20
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
 # eof 0x0016
