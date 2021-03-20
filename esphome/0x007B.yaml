@@ -1,7 +1,7 @@
 # begin 0x007B
 
       - id: PowFac
-        name: "EB1 Power Factor"
+        name: "${dev} Power Factor"
         address: 0x007B
         offset: 0
         unit_of_measurement: "pu"
@@ -12,7 +12,7 @@
         device_class: power_factor
 
       - id: PowFacL1
-        name: "EB1 Power Factor L1"
+        name: "${dev} Power Factor L1"
         address: 0x007B
         offset: 2
         unit_of_measurement: "pu"
@@ -23,7 +23,7 @@
         device_class: power_factor
 
       - id: PowFacL2
-        name: "EB1 Power Factor L2"
+        name: "${dev} Power Factor L2"
         address: 0x007B
         offset: 4
         unit_of_measurement: "pu"
@@ -34,7 +34,7 @@
         device_class: power_factor
 
       - id: PowFacL3
-        name: "EB1 Power Factor L3"
+        name: "${dev} Power Factor L3"
         address: 0x007B
         offset: 6
         unit_of_measurement: "pu"
@@ -45,7 +45,7 @@
         device_class: power_factor
 
       - id: Freq
-        name: "EB1 Frequency"
+        name: "${dev} Frequency"
         address: 0x007B
         offset: 8
         unit_of_measurement: "Hz"
