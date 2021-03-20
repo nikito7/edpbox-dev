@@ -1,7 +1,7 @@
 # begin 0x006C
 
       - id: VolL1
-        name: "EB1 Voltage L1"
+        name: "${dev} Voltage L1"
         address: 0x006C
         offset: 0
         unit_of_measurement: "V"
@@ -12,7 +12,7 @@
         device_class: voltage
 
       - id: CurL1
-        name: "EB1 Current L1"
+        name: "${dev} Current L1"
         address: 0x006C
         offset: 2
         unit_of_measurement: "A"
@@ -23,7 +23,7 @@
         device_class: current
 
       - id: VolL2
-        name: "EB1 Voltage L2"
+        name: "${dev} Voltage L2"
         address: 0x006C
         offset: 4
         unit_of_measurement: "V"
@@ -34,7 +34,7 @@
         device_class: voltage
 
       - id: CurL2
-        name: "EB1 Current L2"
+        name: "${dev} Current L2"
         address: 0x006C
         offset: 6
         unit_of_measurement: "A"
@@ -45,7 +45,7 @@
         device_class: current
 
       - id: VolL3
-        name: "EB1 Voltage L3"
+        name: "${dev} Voltage L3"
         address: 0x006C
         offset: 8
         unit_of_measurement: "V"
@@ -56,7 +56,7 @@
         device_class: voltage
 
       - id: CurL3
-        name: "EB1 Current L3"
+        name: "${dev} Current L3"
         address: 0x006C
         offset: 10
         unit_of_measurement: "A"
@@ -67,7 +67,7 @@
         device_class: current
 
       - id: Cur
-        name: "EB1 Current"
+        name: "${dev} Current"
         address: 0x006C
         offset: 12
         unit_of_measurement: "A"
