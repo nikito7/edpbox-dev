@@ -1,7 +1,7 @@
 # begin 0x0026
 
       - id: TotEneT1
-        name: "EB1 Total Energy T1"
+        name: "${dev} Total Energy T1"
         address: 0x0026
         offset: 0
         modbus_functioncode: "read_input_registers"
@@ -12,7 +12,7 @@
         icon: "mdi:transmission-tower"
 
       - id: TotEneT2
-        name: "EB1 Total Energy T2"
+        name: "${dev} Total Energy T2"
         address: 0x0026
         offset: 4
         modbus_functioncode: "read_input_registers"
@@ -23,7 +23,7 @@
         icon: "mdi:transmission-tower"
 
       - id: TotEneT3
-        name: "EB1 Total Energy T3"
+        name: "${dev} Total Energy T3"
         address: 0x0026
         offset: 8
         modbus_functioncode: "read_input_registers"
