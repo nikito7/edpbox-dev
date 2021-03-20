@@ -17,7 +17,7 @@ endif
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,9,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
++1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r010400010001
 
 ; 01
 
@@ -79,6 +79,13 @@ endif
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q2 ,kVAr,TotEneQ2,3
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q3 ,kVAr,TotEneQ3,3
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,2
+
+1,=h<hr>
+1,=h<b>Duplicate:</b>
+
+1,01040Cxxxxxxxxxxuu@i6:1,Clock ,h,Clock_H,16
+1,01040Cxxxxxxxxxxxxuu@i6:1,Clock ,m,Clock_M,16
+1,01040Cxxxxxxxxxxxxxxuu@i6:1,Clock ,s,Clock_S,16
 
 #
 
