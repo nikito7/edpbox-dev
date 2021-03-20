@@ -1,10 +1,10 @@
 substitutions:
 
-  dev: T5
+  dev: EB5
 
 esphome:
 
-  name: **********
+  name: edpbox5esp
   platform: ESP8266
   board: esp01_1m
 
@@ -14,29 +14,29 @@ interval:
     then:
       - lambda: |-
           if (millis() > 15000) {
-            id(edpbox1).update();
+            id(edpbox5).update();
           }
 
 wifi:
 
-  ssid: !secret wifi_ssid
-  password: !secret wifi_key
+  ssid: edpbox5wifi
+  password: edpbox123
 
   ap:
     ssid: "Fallback ${dev}"
-    password: !secret wifi_key
+    password: edpbox123
 
 captive_portal:
 
-#web_server:
+web_server:
 
 api:
 
-  password: !secret api_key
+  password: edpbox123
 
 ota:
 
-  password: !secret ota_key
+  password: edpbox123
 
 #logger:
 #  level: VERBOSE
@@ -90,7 +90,7 @@ sensor:
     address: 0x1
     command_throttle: 1000
     update_interval: never
-    id: edpbox1
+    id: edpbox5
     sensors:
 
 ### ### ###
