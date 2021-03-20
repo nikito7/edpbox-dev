@@ -80,6 +80,6 @@ endif
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q3 ,kVAr,TotEneQ3,3
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,2
 
-; dev
-
 #
+
+; eof
