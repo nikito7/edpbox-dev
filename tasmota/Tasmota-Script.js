@@ -10,7 +10,7 @@ tper=30
 >S
 
 if upsecs>20
-and upsecs<60
+and upsecs<30
 then
 smlj=1
 endif
