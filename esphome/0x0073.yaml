@@ -9,6 +9,7 @@
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
+        skip_updates: 2
 
       - id: ActPowL1Exp
         name: "${dev} Active Power L1 Export"
