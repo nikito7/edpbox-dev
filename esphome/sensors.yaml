@@ -93,7 +93,6 @@
         accuracy_decimals: 0
         device_class: power
         unit_of_measurement: "W"
-        skip_updates: 2
 
       - id: ActPowL1Exp
         name: "${dev} Active Power L1 Export"
@@ -241,7 +240,6 @@
         scale_factor: 0.001
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
-        skip_updates: 300
 
       - id: TotEneExp
         name: "${dev} Total Energy Export"
@@ -275,7 +273,7 @@
         scale_factor: 0.001
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
-        internal: true # disable sensor
+        #internal: true # disable sensor
 
       - id: TotEneQ3
         name: "${dev} Total Energy Q3"
@@ -287,7 +285,7 @@
         scale_factor: 0.001
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
-        internal: true # disable sensor
+        #internal: true # disable sensor
 
       - id: TotEneQ4
         name: "${dev} Total Energy Q4"
@@ -314,7 +312,6 @@
         scale_factor: 0.001
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
-        skip_updates: 900
 
       - id: TotEneT2
         name: "${dev} Total Energy T2"
