@@ -1,4 +1,4 @@
-# begin 0x006C
+# begin 0x006C range
 # sorted:
 # - voltage
 # - current
@@ -80,4 +80,4 @@
         scale_factor: 0.1
         device_class: current
 
-# eof 0x006C
+# eof 0x006C range
