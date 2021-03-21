@@ -1,26 +1,29 @@
 substitutions:
 
-  dev: EB5
+  dev: EB1
+  name: edpbox1
 
 esphome:
 
-  name: edpbox5esp
+  name: ${name}
   platform: ESP8266
   board: esp01_1m
 
 interval:
 
-  - interval: 9s
+  - interval: 10s
     then:
       - lambda: |-
-          if (millis() > 15000) {
-            id(edpbox5).update();
+          if (millis() > 20000) {
+            id(edpbox).update();
           }
 
 wifi:
 
-  ssid: edpbox5wifi
-  password: edpbox123
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
+#  ssid: my_wifi
+#  password: edpbox123
 
   ap:
     ssid: "Fallback ${dev}"
@@ -29,6 +32,8 @@ wifi:
 captive_portal:
 
 web_server:
+
+  css_url: https://nikito7.github.io/edpbox.css?2
 
 api:
 
@@ -88,9 +93,9 @@ sensor:
   - platform: modbus_component
     modbus_id: edpbox_bus
     address: 0x1
-    command_throttle: 1000
+    command_throttle: 1500
     update_interval: never
-    id: edpbox5
+    id: edpbox
     sensors:
 
 ### ### ###
