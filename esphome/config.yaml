@@ -11,7 +11,7 @@ esphome:
 
 interval:
 
-  - interval: 10s
+  - interval: 9s
     then:
       - lambda: |-
           if (millis() > 20000) {
@@ -33,7 +33,7 @@ captive_portal:
 
 web_server:
 
-  css_url: https://nikito7.github.io/edpbox.css?2
+  css_url: https://nikito7.github.io/edpbox.css?v4
 
 api:
 
@@ -93,7 +93,7 @@ sensor:
   - platform: modbus_component
     modbus_id: edpbox_bus
     address: 0x1
-    command_throttle: 1500
+    command_throttle: 1500 # ms
     update_interval: never
     id: edpbox
     sensors:
