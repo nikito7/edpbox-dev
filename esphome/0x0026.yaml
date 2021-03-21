@@ -10,6 +10,7 @@
         scale_factor: 0.001
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
+        skip_updates: 900
 
       - id: TotEneT2
         name: "${dev} Total Energy T2"
