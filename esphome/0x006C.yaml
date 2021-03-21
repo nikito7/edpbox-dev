@@ -1,4 +1,7 @@
 # begin 0x006C
+# sorted:
+# - voltage
+# - current
 
       - id: VolL1
         name: "${dev} Voltage L1"
@@ -11,17 +14,6 @@
         scale_factor: 0.1
         device_class: voltage
 
-      - id: CurL1
-        name: "${dev} Current L1"
-        address: 0x006C
-        offset: 2
-        unit_of_measurement: "A"
-        modbus_functioncode: "read_input_registers"
-        value_type: U_WORD
-        accuracy_decimals: 1
-        scale_factor: 0.1
-        device_class: current
-
       - id: VolL2
         name: "${dev} Voltage L2"
         address: 0x006C
@@ -32,17 +24,6 @@
         accuracy_decimals: 1
         scale_factor: 0.1
         device_class: voltage
-
-      - id: CurL2
-        name: "${dev} Current L2"
-        address: 0x006C
-        offset: 6
-        unit_of_measurement: "A"
-        modbus_functioncode: "read_input_registers"
-        value_type: U_WORD
-        accuracy_decimals: 1
-        scale_factor: 0.1
-        device_class: current
 
       - id: VolL3
         name: "${dev} Voltage L3"
@@ -55,17 +36,6 @@
         scale_factor: 0.1
         device_class: voltage
 
-      - id: CurL3
-        name: "${dev} Current L3"
-        address: 0x006C
-        offset: 10
-        unit_of_measurement: "A"
-        modbus_functioncode: "read_input_registers"
-        value_type: U_WORD
-        accuracy_decimals: 1
-        scale_factor: 0.1
-        device_class: current
-
       - id: Cur
         name: "${dev} Current"
         address: 0x006C
@@ -75,6 +45,39 @@
         value_type: U_WORD
         scale_factor: 0.1
         accuracy_decimals: 1
+        device_class: current
+
+      - id: CurL1
+        name: "${dev} Current L1"
+        address: 0x006C
+        offset: 2
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: current
+
+      - id: CurL2
+        name: "${dev} Current L2"
+        address: 0x006C
+        offset: 6
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: current
+
+      - id: CurL3
+        name: "${dev} Current L3"
+        address: 0x006C
+        offset: 10
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
         device_class: current
 
 # eof 0x006C
