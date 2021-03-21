@@ -85,10 +85,12 @@
         unit_of_measurement: "W"
         internal: true # disable sensor
 
+# type changes
+
       - id: PowFac
         name: "${dev} Power Factor"
         address: 0x0073
-        offset: 30
+        offset: 32
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -99,7 +101,7 @@
       - id: PowFacL1
         name: "${dev} Power Factor L1"
         address: 0x0073
-        offset: 32
+        offset: 34
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -110,7 +112,7 @@
       - id: PowFacL2
         name: "${dev} Power Factor L2"
         address: 0x0073
-        offset: 34
+        offset: 36
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -121,7 +123,7 @@
       - id: PowFacL3
         name: "${dev} Power Factor L3"
         address: 0x0073
-        offset: 36
+        offset: 38
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
@@ -132,7 +134,7 @@
       - id: Freq
         name: "${dev} Frequency"
         address: 0x0073
-        offset: 38
+        offset: 40
         unit_of_measurement: "Hz"
         modbus_functioncode: "read_input_registers"
         value_type: U_WORD
