@@ -84,5 +84,64 @@
         unit_of_measurement: "W"
         internal: true # disable sensor
 
+####
+
+# begin 0x007B
+
+      - id: PowFac
+        name: "${dev} Power Factor"
+        address: 0x0073
+        offset: 0
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: PowFacL1
+        name: "${dev} Power Factor L1"
+        address: 0x0073
+        offset: 2
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: PowFacL2
+        name: "${dev} Power Factor L2"
+        address: 0x0073
+        offset: 4
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: PowFacL3
+        name: "${dev} Power Factor L3"
+        address: 0x0073
+        offset: 6
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: Freq
+        name: "${dev} Frequency"
+        address: 0x0073
+        offset: 8
+        unit_of_measurement: "Hz"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        icon: "mdi:pulse"
+
 # eof 0x0073
 
