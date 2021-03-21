@@ -44,6 +44,7 @@
         scale_factor: 0.001
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
+        internal: true # disable sensor
 
       - id: TotEneQ3
         name: "${dev} Total Energy Q3"
@@ -55,6 +56,7 @@
         scale_factor: 0.001
         unit_of_measurement: "kVAr"
         icon: "mdi:transmission-tower"
+        internal: true # disable sensor
 
       - id: TotEneQ4
         name: "${dev} Total Energy Q4"
