@@ -11,6 +11,7 @@
         scale_factor: 0.001
         unit_of_measurement: "kWh"
         icon: "mdi:transmission-tower"
+        skip_updates: 300
 
       - id: TotEneExp
         name: "${dev} Total Energy Export"
