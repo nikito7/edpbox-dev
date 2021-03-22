@@ -11,11 +11,18 @@ esphome:
 
 interval:
 
-  - interval: 9s
+  - interval: 7s
     then:
       - lambda: |-
-          if (millis() > 20000) {
-            id(edpbox).update();
+          if (id(boxloop) = 5) {
+            id(edpbox_slow).update();
+          } else {
+            id(edpbox_fast).update();
+          }
+          if (id(boxloop) > 100) {
+          id(boxloop) = 5;
+          } else {
+          id(boxloop) += 1;
           }
 
 wifi:
@@ -33,7 +40,7 @@ captive_portal:
 
 web_server:
 
-  css_url: https://nikito7.github.io/edpbox.css?v4
+  css_url: https://nikito7.github.io/edpbox_v2.css
 
 api:
 
@@ -42,6 +49,13 @@ api:
 ota:
 
   password: edpbox123
+
+globals:
+
+   - id: boxloop
+     type: int
+     restore_value: no
+     initial_value: '0' 
 
 #logger:
 #  level: VERBOSE
@@ -95,15 +109,30 @@ sensor:
     address: 0x1
     command_throttle: 1500 # ms
     update_interval: never
-    id: edpbox
+    id: edpbox_fast
     sensors:
 
 ### ### ###
 
-# paste here
+# fast sensors polling
 
 ### ### ###
+
+  - platform: modbus_component
+    modbus_id: edpbox_bus
+    address: 0x1
+    command_throttle: 1500 # ms
+    update_interval: never
+    id: edpbox_slow
+    sensors:
+
+### ### ###
+
+# slow sensors polling
+
+### ### ### 
 
 #######
 # eof #
 #######
+
