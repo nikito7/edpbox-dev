@@ -2,7 +2,7 @@
 
 >B
 
-->sensor53 r
+=>sensor53 r
 
 >M 1
 
@@ -12,3 +12,5 @@
 ; sensor53 d0
 
 #
+
+; eof
