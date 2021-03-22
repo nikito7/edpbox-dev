@@ -9,27 +9,13 @@ esphome:
   platform: ESP8266
   board: esp01_1m
 
-globals:
-
-   - id: boxloop
-     type: int
-     restore_value: no
-     initial_value: '1' 
-
 interval:
 
   - interval: 9s
     then:
       - lambda: |-
-          // 
-          if (id(boxloop) > 5) {
+          if (millis() > 30000) {
             id(edpbox).update();
-          }
-          // 
-          if (id(boxloop) > 100) {
-            id(boxloop) = 5;
-          } else {
-            id(boxloop) += 1;
           }
 
 wifi:
@@ -452,8 +438,6 @@ sensor:
         icon: "mdi:transmission-tower"
 
 # eof 0x0026
-
-
 
 ### ### ### 
 
