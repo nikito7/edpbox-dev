@@ -9,16 +9,23 @@ esphome:
   platform: ESP8266
   board: esp01_1m
 
+globals:
+
+   - id: boxloop
+     type: int
+     restore_value: no
+     initial_value: '1' 
+
 interval:
 
-  - interval: 7s
+  - interval: 9s
     then:
       - lambda: |-
-          if (id(boxloop) == 5) {
-            id(edpbox_slow).update();
-          } else {
-            id(edpbox_fast).update();
+          // 
+          if (id(boxloop) > 5) {
+            id(edpbox).update();
           }
+          // 
           if (id(boxloop) > 100) {
             id(boxloop) = 5;
           } else {
@@ -49,13 +56,6 @@ api:
 ota:
 
   password: edpbox123
-
-globals:
-
-   - id: boxloop
-     type: int
-     restore_value: no
-     initial_value: '0' 
 
 #logger:
 #  level: VERBOSE
@@ -109,7 +109,7 @@ sensor:
     address: 0x1
     command_throttle: 1500 # ms
     update_interval: never
-    id: edpbox_fast
+    id: edpbox
     sensors:
 
 ### ### ###
@@ -342,19 +342,6 @@ sensor:
         icon: "mdi:pulse"
 
 # eof 0x0073
-
-
-### ### ###
-
-  - platform: modbus_component
-    modbus_id: edpbox_bus
-    address: 0x1
-    command_throttle: 1500 # ms
-    update_interval: never
-    id: edpbox_slow
-    sensors:
-
-### ### ###
 
 # begin 0x0016
 # filters bug: memory issue esp8266
