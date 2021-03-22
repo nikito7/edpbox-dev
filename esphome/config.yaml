@@ -14,15 +14,15 @@ interval:
   - interval: 7s
     then:
       - lambda: |-
-          if (id(boxloop) = 5) {
+          if (id(boxloop) == 5) {
             id(edpbox_slow).update();
           } else {
             id(edpbox_fast).update();
           }
           if (id(boxloop) > 100) {
-          id(boxloop) = 5;
+            id(boxloop) = 5;
           } else {
-          id(boxloop) += 1;
+            id(boxloop) += 1;
           }
 
 wifi:
@@ -110,20 +110,6 @@ sensor:
     command_throttle: 1500 # ms
     update_interval: never
     id: edpbox_fast
-    sensors:
-
-### ### ###
-
-# fast sensors polling
-
-### ### ###
-
-  - platform: modbus_component
-    modbus_id: edpbox_bus
-    address: 0x1
-    command_throttle: 1500 # ms
-    update_interval: never
-    id: edpbox_slow
     sensors:
 
 ### ### ###
@@ -357,6 +343,19 @@ sensor:
 
 # eof 0x0073
 
+
+### ### ###
+
+  - platform: modbus_component
+    modbus_id: edpbox_bus
+    address: 0x1
+    command_throttle: 1500 # ms
+    update_interval: never
+    id: edpbox_slow
+    sensors:
+
+### ### ###
+
 # begin 0x0016
 # filters bug: memory issue esp8266
 
@@ -466,6 +465,7 @@ sensor:
         icon: "mdi:transmission-tower"
 
 # eof 0x0026
+
 
 
 ### ### ### 
