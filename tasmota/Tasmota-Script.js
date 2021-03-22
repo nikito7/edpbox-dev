@@ -10,14 +10,14 @@ tper=30
 >S
 
 if upsecs>20
-and upsecs<30
+and upsecs<25
 then
 smlj=1
 endif
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
++1,14,m,1,9600,EB1,5,12,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
 
 ; 01
 
@@ -76,8 +76,6 @@ endif
 1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,1
 1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,3
 1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q1 ,kVAr,TotEneQ1,1
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q2 ,kVAr,TotEneQ2,3
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q3 ,kVAr,TotEneQ3,3
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,2
 
 #
