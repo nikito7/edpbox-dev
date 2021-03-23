@@ -15,7 +15,7 @@ smlj=1
 print edpbox: smlj=1 !
 endif
 
-print edpbox: up %upsecs% !
+print edpbox: up %upsecs%
 
 >M 1
 
