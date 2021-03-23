@@ -1,6 +1,6 @@
 >D
 
->BS
+>B
 
 smlj=0
 tper=30
@@ -9,11 +9,13 @@ tper=30
 
 >S
 
-if upsecs>20
-and upsecs<25
+if upsecs==25
 then
 smlj=1
+print edpbox: smlj=1 !
 endif
+
+print edpbox: up %upsecs% !
 
 >M 1
 
