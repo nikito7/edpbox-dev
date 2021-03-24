@@ -1,4 +1,4 @@
->D
+>D 128
 
 >B
 
@@ -19,7 +19,7 @@ print edpbox: up %upsecs%
 
 >M 1
 
-+1,14,m,1,9600,EB1,5,12,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
++1,14,m,1,9600,EB1,5,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
 
 ; 01
 
@@ -31,9 +31,9 @@ print edpbox: up %upsecs%
 
 ; 6C
 
-1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,1
-1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VolL2,1
-1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VolL3,1
+1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,17
+1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VolL2,17
+1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VolL3,17
 
 1,=h<hr>
 
@@ -61,24 +61,24 @@ print edpbox: up %upsecs%
 1,01040AxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
 1,01040AxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
 1,01040AxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,19
-1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
+1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,17
 
 1,=h<hr>
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TotEneT1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TotEneT2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheia ,kWh,TotEneT3,1
+1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TotEneT1,17
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TotEneT2,17
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheia ,kWh,TotEneT3,17
 
 1,=h<hr>
 
 ; 16
 
 1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,1
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,3
-1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q1 ,kVAr,TotEneQ1,1
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,2
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,19
+1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q1 ,kVAr,TotEneQ1,17
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,18
 
 #
 
