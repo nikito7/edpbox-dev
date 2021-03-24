@@ -25,11 +25,4 @@
     unit_of_measurement: "W"
     icon: mdi:power-plug
 
-  - platform: mqtt
-    name: "EB Clock"
-    unique_id: ebclock
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: '{{ value_json.EB.Clock_H|int }}:{{ value_json.EB.Clock_M|int }}:{{ value_json.EB.Clock_S|int }}'
-    icon: mdi:clock
-
 # eof
