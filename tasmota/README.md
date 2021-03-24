@@ -1,4 +1,6 @@
-# tasmota-9.3.1.2-b2
+---
+
+tasmota-9.3.1.2-b2
 
 ```h
 #undef USE_RULES
@@ -8,3 +10,5 @@
 #define MAX_METERS 1
 #define SML_REPLACE_VARS
 ```
+
+---
