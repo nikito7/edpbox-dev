@@ -139,7 +139,11 @@
 #define USE_SCRIPT
 #define USE_SML_M
 #define SML_MAX_VARS 50
-#define MAX_METERS 1
+#define MAX_METERS 2
 #define SML_REPLACE_VARS
+#define SML_BSIZ 128
+#define SCRIPT_MAXSSIZE 128
+#define SCRIPT_LARGE_VNBUFF
+
 
 // eof
