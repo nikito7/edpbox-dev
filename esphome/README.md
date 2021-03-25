@@ -11,5 +11,5 @@ pip uninstall esphome
 
 pip install modbus*.zip
 
-esphome config.yaml run
+esphome edpbox1.yaml run
 ```
