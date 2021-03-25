@@ -33,8 +33,6 @@ captive_portal:
 
 web_server:
 
-  css_url: https://nikito7.github.io/edpbox_v2.css
-
 api:
 
   password: edpbox123
