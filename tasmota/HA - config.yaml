@@ -7,7 +7,7 @@ recorder:
 utility_meter:
 
   daily_energy:
-    source: sensor.eb_consumo_total
+    source: sensor.eb1_total_energy_import
     cycle: daily
 
 sensor edpbox1a: !include edpbox1a.yaml
