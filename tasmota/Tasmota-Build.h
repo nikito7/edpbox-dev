@@ -1,13 +1,6 @@
 // copy to user_config_override.h
 // sml at the end of file
 
-#undef FIRMWARE_LITE                             // Disable tasmota-lite with no sensors
-#undef FIRMWARE_SENSORS                          // Disable tasmota-sensors with useful sensors enabled
-#undef FIRMWARE_KNX_NO_EMULATION                 // Disable tasmota-knx with KNX but without Emulation
-#undef FIRMWARE_DISPLAYS                         // Disable tasmota-display with display drivers enabled
-#undef FIRMWARE_IR                               // Disable tasmota-ir with IR full protocols activated
-#undef FIRMWARE_IR_CUSTOM                        // Disable tasmota customizable with special marker to add all IR protocols
-
 #undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
 #undef USE_HOME_ASSISTANT                        // Disable Home Assistant
@@ -131,7 +124,7 @@
 #undef USE_THERMOSTAT                            // Disable support for Thermostat
 #undef USE_PROMETHEUS                            // Disable support for https://prometheus.io/ metrics exporting over HTTP /metrics endpoint
 #undef DEBUG_THEO                                // Disable debug code
-#undef USE_DEBUG_DRIVER                          // Disable debug code
+//#undef USE_DEBUG_DRIVER                          // Disable debug code
 
 // sml configs
 
@@ -139,7 +132,7 @@
 #define USE_SCRIPT
 #define USE_SML_M
 #define SML_MAX_VARS 50
-#define MAX_METERS 2
+#define MAX_METERS 1
 #define SML_REPLACE_VARS
 
 // eof
