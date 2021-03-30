@@ -4,9 +4,9 @@
 
 smlj=0
 tper=30
+led=0
 
-print script: smlj %smlj%
-print script: tper %tper%
+print script: smlj disabled
 
 =>sensor53 r
 
@@ -15,10 +15,19 @@ print script: tper %tper%
 if upsecs==25
 then
 smlj=1
-print script: smlj %smlj%
+print script: smlj enabled
 endif
 
 print script: up %upsecs%
+
+if led==0
+then
+LedPower1 1
+led=1
+else
+LedPower1 0
+led=0
+endif
 
 >M 1
 
