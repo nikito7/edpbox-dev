@@ -5,8 +5,6 @@
 smlj=0
 tper=30
 
-print script: smlj disabled
-
 =>sensor53 r
 
 >S
