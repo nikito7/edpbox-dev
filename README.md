@@ -12,4 +12,4 @@
 
 # ESPHome
 
-- [martgras/esphome](https://github.com/martgras/esphome)
+- [martgras/modbus](https://github.com/martgras/esphome/tree/modbus_component)
