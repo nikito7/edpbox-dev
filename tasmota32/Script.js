@@ -1,6 +1,6 @@
 >D
 
->BS
+>B
 
 smlj=0
 tper=30
