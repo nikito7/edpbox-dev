@@ -1,0 +1,462 @@
+substitutions:
+
+  dev: EB1
+  name: edpbox1
+
+esphome:
+
+  name: ${name}
+  platform: ESP32
+  board: esp32dev
+
+interval:
+
+  - interval: 9s
+    then:
+      - lambda: |-
+          if (millis() > 5000) {
+            id(edpbox).update();
+          }
+
+wifi:
+
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
+#  ssid: my_wifi
+#  password: edpbox123
+
+  ap:
+    ssid: "Fallback ${dev}"
+    password: edpbox123
+
+captive_portal:
+
+web_server:
+
+api:
+
+  password: edpbox123
+
+ota:
+
+  password: edpbox123
+
+#logger:
+#  level: VERBOSE
+
+switch:
+
+  - platform: restart
+    name: "${dev} ESP Restart"
+
+uart:
+
+  tx_pin: 17
+  rx_pin: 18
+  baud_rate: 9600
+  data_bits: 8
+  parity: NONE
+  stop_bits: 1
+  id: edpbox_serial
+
+modbus:
+
+  uart_id: edpbox_serial
+  # ctrl_pin: 5
+  id: edpbox_bus
+
+sensor:
+
+  - platform: template
+    name: "${dev} ESP Free Heap"
+    lambda: |-
+      int heap = ESP.getFreeHeap();
+      return heap / 1024.0;
+    unit_of_measurement: "kB"
+    update_interval: 5s
+    icon: mdi:chip
+
+  - platform: wifi_signal
+    name: "${dev} ESP Signal"
+    update_interval: 30s
+
+  - platform: uptime
+    name: "${dev} ESP Uptime"
+    filters:
+      - lambda: return x/3600;
+    unit_of_measurement: "h"
+    accuracy_decimals: 1
+    update_interval: 30s
+
+### ### ###
+
+  - platform: template
+    name: "${dev} Voltage L1-10"
+    lambda: 'return id(VolL1).state - 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+  - platform: template
+    name: "${dev} Voltage L3+10"
+    lambda: 'return id(VolL3).state + 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+### ### ###
+
+  - platform: modbus_component
+    modbus_id: edpbox_bus
+    address: 0x1
+    command_throttle: 1500 # ms
+    update_interval: never
+    id: edpbox
+    sensors:
+
+### ### ###
+
+# begin 0x006C range
+# sorted:
+# - voltage
+# - current
+
+      - id: VolL1
+        name: "${dev} Voltage L1"
+        address: 0x006C
+        offset: 0
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: voltage
+
+      - id: VolL2
+        name: "${dev} Voltage L2"
+        address: 0x006C
+        offset: 4
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: voltage
+
+      - id: VolL3
+        name: "${dev} Voltage L3"
+        address: 0x006C
+        offset: 8
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: voltage
+
+      - id: Cur
+        name: "${dev} Current"
+        address: 0x006C
+        offset: 12
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        scale_factor: 0.1
+        accuracy_decimals: 1
+        device_class: current
+
+      - id: CurL1
+        name: "${dev} Current L1"
+        address: 0x006C
+        offset: 2
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: current
+
+      - id: CurL2
+        name: "${dev} Current L2"
+        address: 0x006C
+        offset: 6
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: current
+
+      - id: CurL3
+        name: "${dev} Current L3"
+        address: 0x006C
+        offset: 10
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        device_class: current
+
+# eof 0x006C range
+
+# begin 0x0073
+
+      - id: ActPowL1
+        name: "${dev} Active Power L1"
+        address: 0x0073
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowL1Exp
+        name: "${dev} Active Power L1 Export"
+        address: 0x0073
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+      - id: ActPowL2
+        name: "${dev} Active Power L2"
+        address: 0x0073
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowL2Exp
+        name: "${dev} Active Power L2 Export"
+        address: 0x0073
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+      - id: ActPowL3
+        name: "${dev} Active Power L3"
+        address: 0x0073
+        offset: 16
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowL3Exp
+        name: "${dev} Active Power L3 Export"
+        address: 0x0073
+        offset: 20
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+      - id: ActPower
+        name: "${dev} Active Power"
+        address: 0x0073
+        offset: 24
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowExp
+        name: "${dev} Active Power Export"
+        address: 0x0073
+        offset: 28
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+# type changes
+
+      - id: PowFac
+        name: "${dev} Power Factor"
+        address: 0x0073
+        offset: 32
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: PowFacL1
+        name: "${dev} Power Factor L1"
+        address: 0x0073
+        offset: 34
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: PowFacL2
+        name: "${dev} Power Factor L2"
+        address: 0x0073
+        offset: 36
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: PowFacL3
+        name: "${dev} Power Factor L3"
+        address: 0x0073
+        offset: 38
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        device_class: power_factor
+
+      - id: Freq
+        name: "${dev} Frequency"
+        address: 0x0073
+        offset: 40
+        unit_of_measurement: "Hz"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        scale_factor: 0.1
+        icon: "mdi:pulse"
+
+# eof 0x0073
+
+# begin 0x0016
+# filters bug: memory issue esp8266
+
+      - id: TotEneImp
+        name: "${dev} Total Energy Import"
+        address: 0x0016
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kWh"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneExp
+        name: "${dev} Total Energy Export"
+        address: 0x0016
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        unit_of_measurement: "kWh"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneQ1
+        name: "${dev} Total Energy Q1"
+        address: 0x0016
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneQ2
+        name: "${dev} Total Energy Q2"
+        address: 0x0016
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+        #internal: true # disable sensor
+
+      - id: TotEneQ3
+        name: "${dev} Total Energy Q3"
+        address: 0x0016
+        offset: 16
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 3
+        scale_factor: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+        #internal: true # disable sensor
+
+      - id: TotEneQ4
+        name: "${dev} Total Energy Q4"
+        address: 0x0016
+        offset: 20
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 2
+        scale_factor: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+# eof 0x0016
+
+# begin 0x0026
+
+      - id: TotEneT1
+        name: "${dev} Total Energy T1 Vazio"
+        address: 0x0026
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kWh"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneT2
+        name: "${dev} Total Energy T2 Ponta"
+        address: 0x0026
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kWh"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneT3
+        name: "${dev} Total Energy T3 Cheia"
+        address: 0x0026
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        scale_factor: 0.001
+        unit_of_measurement: "kWh"
+        icon: "mdi:transmission-tower"
+
+# eof 0x0026
+
+### ### ### 
+
+#######
+# eof #
+#######
