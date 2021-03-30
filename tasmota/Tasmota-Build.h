@@ -124,7 +124,7 @@
 #undef USE_THERMOSTAT                            // Disable support for Thermostat
 #undef USE_PROMETHEUS                            // Disable support for https://prometheus.io/ metrics exporting over HTTP /metrics endpoint
 #undef DEBUG_THEO                                // Disable debug code
-//#undef USE_DEBUG_DRIVER                          // Disable debug code
+#undef USE_DEBUG_DRIVER                          // Disable debug code
 
 // sml configs
 
