@@ -4,7 +4,6 @@
 
 smlj=0
 tper=30
-led=0
 
 print script: smlj disabled
 
@@ -19,15 +18,6 @@ print script: smlj enabled
 endif
 
 print script: up %upsecs%
-
-if led==0
-then
-->LedPower1 1
-led=1
-else
-->LedPower1 2
-led=0
-endif
 
 >M 1
 
