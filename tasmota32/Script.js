@@ -5,11 +5,14 @@
 smlj=0
 tper=30
 
-=>sensor53 r
-
 >S
 
-if upsecs==25
+if upsecs==10
+then
+=>sensor53 r
+endif
+
+if upsecs==50
 then
 smlj=1
 print script: smlj enabled
@@ -19,9 +22,9 @@ print script: up %upsecs%
 
 >M 1
 
-; adapt to your pins and mode
-
 +1,18,mN1,1,9600,EB1,17,50,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
+;  ^   ^             ^  
+; adapt to your pins and mode
 
 ; 01
 
