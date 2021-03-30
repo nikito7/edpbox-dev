@@ -2,13 +2,21 @@
 
 recorder:
 
-  purge_keep_days: 2
+  purge_keep_days: 1
 
 utility_meter:
 
   daily_energy:
     source: sensor.eb1_total_energy_import
     cycle: daily
+
+  weekly_energy:
+    source: sensor.eb1_total_energy_import
+    cycle: weekly
+
+  monthly_energy:
+    source: sensor.eb1_total_energy_import
+    cycle: monthly
 
 sensor edpbox1a: !include edpbox1a.yaml
 sensor edpbox1b: !include edpbox1b.yaml
