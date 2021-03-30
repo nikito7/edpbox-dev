@@ -22,10 +22,10 @@ print script: up %upsecs%
 
 if led==0
 then
-LedPower1 1
+->LedPower1 1
 led=1
 else
-LedPower1 0
+->LedPower1 2
 led=0
 endif
 
