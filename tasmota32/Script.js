@@ -5,12 +5,9 @@
 smlj=0
 tper=30
 
->S
-
-if upsecs==10
-then
 =>sensor53 r
-endif
+
+>S
 
 if upsecs==50
 then
