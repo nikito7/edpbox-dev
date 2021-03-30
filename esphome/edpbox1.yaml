@@ -41,8 +41,8 @@ ota:
 
   password: edpbox123
 
-#logger:
-#  level: VERBOSE
+logger:
+  level: VERBOSE
 
 switch:
 
