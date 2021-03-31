@@ -15,6 +15,11 @@ smlj=1
 print script: smlj enabled
 endif
 
+if upsecs>3600
+then
+=>sensor53 r
+endif
+
 print script: up %upsecs%
 
 >M 1
