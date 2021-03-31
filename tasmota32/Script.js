@@ -1,6 +1,6 @@
 >D
 
->B
+>BS
 
 smlj=0
 tper=30
@@ -21,7 +21,7 @@ print script: up %upsecs%
 
 ; change to your gpios and mode
 ;  v   v             v
-+1,18,mN1,1,9600,EB1,17,30,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
++1,18,mN1,1,9600,EB1,17,30,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0001,r010400840001
 
 ; 01
 
@@ -83,6 +83,16 @@ print script: up %upsecs%
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q2 ,kVAr,TotEneQ2,4
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q3 ,kVAr,TotEneQ3,4
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,2
+
+1,=h<hr>
+
+; 0B
+
+1,010402uu@i6:1,Tariff,,Tariff,16
+
+; 84
+
+1,010402uu@i7:1,DCP,,DCP,16
 
 #
 
