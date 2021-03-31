@@ -69,18 +69,20 @@ print script: up %upsecs%
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TotEneT1,17
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TotEneT2,17
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheia ,kWh,TotEneT3,17
+1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TotEneT1,1
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TotEneT2,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheia ,kWh,TotEneT3,1
 
 1,=h<hr>
 
 ; 16
 
 1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,1
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,19
-1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q1 ,kVAr,TotEneQ1,17
-1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,18
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,4
+1,010418xxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q1 ,kVAr,TotEneQ1,1
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q2 ,kVAr,TotEneQ2,4
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q3 ,kVAr,TotEneQ3,4
+1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,2
 
 #
 
