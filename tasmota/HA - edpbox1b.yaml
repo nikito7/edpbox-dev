@@ -118,6 +118,7 @@
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Tariff|int }}
+    unit_of_measurement: ""
     icon: 'mdi:counter'
     
   - platform: mqtt
@@ -126,6 +127,7 @@
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.DCP|int }}
+    unit_of_measurement: ""
     icon: 'mdi:cog-refresh'
 
 ###
