@@ -1,3 +1,4 @@
+// user_config_override.h
 // sml configs
 
 #undef USE_RULES
@@ -6,10 +7,10 @@
 #define SML_MAX_VARS 50
 
 // misc
-// dont work here
-//
-// #undef USE_KNX
-// #undef USE_JELLY
+// tasmota_configurations_ESP32.h
+
+#undef USE_KNX
+#undef USE_JELLY
 
 // eof
 
