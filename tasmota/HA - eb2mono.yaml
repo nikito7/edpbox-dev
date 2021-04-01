@@ -1,5 +1,4 @@
-
-# edpbox1a
+# eb2mono
 
   - platform: mqtt
     name: "EB1 ESP Uptime"
@@ -107,46 +106,6 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB1 Voltage L1-10"
-    unique_id: ebten110
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.VolL1 - 10 | float }}
-    unit_of_measurement: "V"
-    device_class: voltage
-    expire_after: 60
-
-  - platform: mqtt
-    name: "EB1 Voltage L2"
-    unique_id: ebten2
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.VolL2|float }}
-    unit_of_measurement: "V"
-    device_class: voltage
-    expire_after: 60
-
-  - platform: mqtt
-    name: "EB1 Voltage L3"
-    unique_id: ebten3
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.VolL3|float }}
-    unit_of_measurement: "V"
-    device_class: voltage
-    expire_after: 60
-
-  - platform: mqtt
-    name: "EB1 Voltage L3+10"
-    unique_id: ebten310
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.VolL3 + 10 | float }}
-    unit_of_measurement: "V"
-    device_class: voltage
-    expire_after: 60
-
-  - platform: mqtt
     name: "EB1 Current"
     unique_id: ebcursum
     state_topic: "tele/edpbox1/SENSOR"
@@ -162,26 +121,6 @@
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.CurL1|float }}
-    unit_of_measurement: "A"
-    device_class: current
-    expire_after: 30
-
-  - platform: mqtt
-    name: "EB1 Current L2"
-    unique_id: ebcur2
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.CurL2|float }} 
-    unit_of_measurement: "A"
-    device_class: current
-    expire_after: 30
-
-  - platform: mqtt
-    name: "EB1 Current L3"
-    unique_id: ebcur3
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: >-
-        {{ value_json.EB1.CurL3|float }}
     unit_of_measurement: "A"
     device_class: current
     expire_after: 30
@@ -207,24 +146,115 @@
     expire_after: 60
 
   - platform: mqtt
-    name: "EB1 Power Factor L2"
-    unique_id: ebpfactorl2
+    name: "EB1 Active Power"
+    unique_id: ebpowerp1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PowFacL2|float }}
-    unit_of_measurement: "pu"
-    device_class: power_factor
-    expire_after: 60
+        {{ value_json.EB1.ActPow|int }}
+    unit_of_measurement: "W"
+    device_class: power
+    expire_after: 30
 
   - platform: mqtt
-    name: "EB1 Power Factor L3"
-    unique_id: ebpfactorl3
+    name: "EB1 Active Power L1"
+    unique_id: ebpowerl1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PowFacL3|float }}
-    unit_of_measurement: "pu"
-    device_class: power_factor
-    expire_after: 60
+        {{ value_json.EB1.ActPowL1|int }}
+    unit_of_measurement: "W"
+    device_class: power
+    expire_after: 30
+
+
+  - platform: mqtt
+    name: "EB1 Frequency"
+    unique_id: ebfreq
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.Frequency|float }}
+    unit_of_measurement: "Hz"
+    icon: mdi:pulse
+
+  - platform: mqtt
+    name: "EB1 Total Energy T1 Vazio"
+    unique_id: ebenergy1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.TotEneT1|float }}
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+   
+  - platform: mqtt
+    name: "EB1 Total Energy T2 Ponta"
+    unique_id: ebenergy2
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.TotEneT2|float }}
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+    
+  - platform: mqtt
+    name: "EB1 Total Energy T3 Cheia"
+    unique_id: ebenergy3
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.TotEneT3|float }}
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+
+  - platform: mqtt
+    name: "EB1 Total Energy Import"
+    unique_id: ebenergysum
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.TotEneImp|float }}
+    unit_of_measurement: "kWh"
+    device_class: energy
+
+  - platform: mqtt
+    name: "EB1 Total Energy Export"
+    unique_id: ebenergyexport
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.TotEneExp|float }}
+    unit_of_measurement: "kWh"
+    device_class: energy
+
+  - platform: mqtt
+    name: "EB1 Total Energy Q1"
+    unique_id: ebenergyq1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.TotEneQ1|float }}
+    unit_of_measurement: "kVAr"
+    device_class: energy
+
+  - platform: mqtt
+    name: "EB1 Total Energy Q4"
+    unique_id: ebenergyq4
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.TotEneQ4|float }}
+    unit_of_measurement: "kVAr"
+    device_class: energy
+
+  - platform: mqtt
+    name: "EB1 Tariff"
+    unique_id: eb1tariff
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.Tariff|int }}
+    unit_of_measurement: "T"
+    icon: 'mdi:counter'
+    
+  - platform: mqtt
+    name: "EB1 DCP"
+    unique_id: eb1dcp
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.DCP|int }}
+    unit_of_measurement: "S"
+    icon: 'mdi:cog-refresh'
 
 ###
 ##
