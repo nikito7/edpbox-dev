@@ -10,7 +10,7 @@
 // tasmota_configurations_ESP32.h
 
 #undef USE_KNX
-#undef USE_JELLY
+#undef USE_BERRY
 
 // eof
 
