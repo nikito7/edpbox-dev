@@ -1,10 +1,10 @@
 # eb2mono
 
   - platform: mqtt
-    name: "EB1 ESP Uptime"
-    unique_id: EB1_ESP_Uptime
-    state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 ESP Uptime"
+    unique_id: EB2_ESP_Uptime
+    state_topic: "tele/edpbox2/STATE"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
@@ -13,10 +13,10 @@
     expire_after: 120
 
   - platform: mqtt
-    name: "EB1 ESP Free Heap"
-    unique_id: EB1_ESP_Heap
-    state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 ESP Free Heap"
+    unique_id: EB2_ESP_Heap
+    state_topic: "tele/edpbox2/STATE"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
     value_template: '{{ value_json.Heap }}'
@@ -24,10 +24,10 @@
     icon: mdi:chip
 
   - platform: mqtt
-    name: "EB1 ESP Signal"
-    unique_id: EB1_ESP_Signal
-    state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 ESP Signal"
+    unique_id: EB2_ESP_Signal
+    state_topic: "tele/edpbox2/STATE"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
     value_template: '{{ value_json.Wifi.Signal }}'
@@ -36,10 +36,10 @@
     expire_after: 120
 
   - platform: mqtt
-    name: "EB1 ESP Vcc"
-    unique_id: EB1_ESP_Vcc
-    state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 ESP Vcc"
+    unique_id: EB2_ESP_Vcc
+    state_topic: "tele/edpbox2/STATE"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
     value_template: '{{ value_json.Vcc }}'
@@ -47,10 +47,10 @@
     icon: mdi:chip
 
   - platform: mqtt
-    name: "EB1 ESP Load"
-    unique_id: EB1_ESP_Load
-    state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 ESP Load"
+    unique_id: EB2_ESP_Load
+    state_topic: "tele/edpbox2/STATE"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
     value_template: '{{ value_json.LoadAvg }}'
@@ -60,199 +60,199 @@
 # eof esp
 
   - platform: mqtt
-    name: "EB1 Clock H"
-    unique_id: EB1_Clock_H
-    state_topic: "tele/edpbox1/SENSOR"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 Clock H"
+    unique_id: EB2_Clock_H
+    state_topic: "tele/edpbox2/SENSOR"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
-    value_template: '{{ value_json.EB1.Clock_H|int }}'
+    value_template: '{{ value_json.EB2.Clock_H|int }}'
     icon: mdi:clock
     unit_of_measurement: h
     expire_after: 120
 
   - platform: mqtt
-    name: "EB1 Clock M"
-    unique_id: EB1_Clock_M
-    state_topic: "tele/edpbox1/SENSOR"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 Clock M"
+    unique_id: EB2_Clock_M
+    state_topic: "tele/edpbox2/SENSOR"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
-    value_template: '{{ value_json.EB1.Clock_M|int }}'
+    value_template: '{{ value_json.EB2.Clock_M|int }}'
     icon: mdi:clock
     unit_of_measurement: m
     expire_after: 120
 
   - platform: mqtt
-    name: "EB1 Clock S"
-    unique_id: EB1_Clock_S
-    state_topic: "tele/edpbox1/SENSOR"
-    availability_topic: "tele/edpbox1/LWT"
+    name: "EB2 Clock S"
+    unique_id: EB2_Clock_S
+    state_topic: "tele/edpbox2/SENSOR"
+    availability_topic: "tele/edpbox2/LWT"
     payload_available: Online
     payload_not_available: Offline
-    value_template: '{{ value_json.EB1.Clock_S|int }}'
+    value_template: '{{ value_json.EB2.Clock_S|int }}'
     icon: mdi:clock
     unit_of_measurement: "s"
     expire_after: 30
 
   - platform: mqtt
-    name: "EB1 Voltage L1"
-    unique_id: ebten1
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Voltage L1"
+    unique_id: eb2ten1
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.VolL1|float }}
+        {{ value_json.EB2.VolL1|float }}
     unit_of_measurement: "V"
     device_class: voltage 
     expire_after: 60
 
   - platform: mqtt
-    name: "EB1 Current"
-    unique_id: ebcursum
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Current"
+    unique_id: eb2cursum
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Current|float }}
+        {{ value_json.EB2.Current|float }}
     unit_of_measurement: "A"
     device_class: current
     expire_after: 30
 
   - platform: mqtt
-    name: "EB1 Current L1"
-    unique_id: ebcur1
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Current L1"
+    unique_id: eb2cur1
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.CurL1|float }}
+        {{ value_json.EB2.CurL1|float }}
     unit_of_measurement: "A"
     device_class: current
     expire_after: 30
 
   - platform: mqtt
-    name: "EB1 Power Factor"
-    unique_id: ebpfactor
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Power Factor"
+    unique_id: eb2pfactor
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PowFac|float }}
+        {{ value_json.EB2.PowFac|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
 
   - platform: mqtt
-    name: "EB1 Power Factor L1"
-    unique_id: ebpfactorl1
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Power Factor L1"
+    unique_id: eb2pfactorl1
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.PowFacL1|float }}
+        {{ value_json.EB2.PowFacL1|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
     expire_after: 60
 
   - platform: mqtt
-    name: "EB1 Active Power"
-    unique_id: ebpowerp1
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Active Power"
+    unique_id: eb2powerp1
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.ActPow|int }}
+        {{ value_json.EB2.ActPow|int }}
     unit_of_measurement: "W"
     device_class: power
     expire_after: 30
 
   - platform: mqtt
-    name: "EB1 Active Power L1"
-    unique_id: ebpowerl1
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Active Power L1"
+    unique_id: eb2powerl1
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.ActPowL1|int }}
+        {{ value_json.EB2.ActPowL1|int }}
     unit_of_measurement: "W"
     device_class: power
     expire_after: 30
 
 
   - platform: mqtt
-    name: "EB1 Frequency"
-    unique_id: ebfreq
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Frequency"
+    unique_id: eb2freq
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Frequency|float }}
+        {{ value_json.EB2.Frequency|float }}
     unit_of_measurement: "Hz"
     icon: mdi:pulse
 
   - platform: mqtt
-    name: "EB1 Total Energy T1 Vazio"
-    unique_id: ebenergy1
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Total Energy T1 Vazio"
+    unique_id: eb2energy1
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneT1|float }}
+        {{ value_json.EB2.TotEneT1|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
    
   - platform: mqtt
-    name: "EB1 Total Energy T2 Ponta"
-    unique_id: ebenergy2
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Total Energy T2 Ponta"
+    unique_id: eb2energy2
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneT2|float }}
+        {{ value_json.EB2.TotEneT2|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB1 Total Energy T3 Cheia"
-    unique_id: ebenergy3
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Total Energy T3 Cheia"
+    unique_id: eb2energy3
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneT3|float }}
+        {{ value_json.EB2.TotEneT3|float }}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
 
   - platform: mqtt
-    name: "EB1 Total Energy Import"
-    unique_id: ebenergysum
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Total Energy Import"
+    unique_id: eb2energysum
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneImp|float }}
+        {{ value_json.EB2.TotEneImp|float }}
     unit_of_measurement: "kWh"
     device_class: energy
 
   - platform: mqtt
-    name: "EB1 Total Energy Export"
-    unique_id: ebenergyexport
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Total Energy Export"
+    unique_id: eb2energyexport
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneExp|float }}
+        {{ value_json.EB2.TotEneExp|float }}
     unit_of_measurement: "kWh"
     device_class: energy
 
   - platform: mqtt
-    name: "EB1 Total Energy Q1"
-    unique_id: ebenergyq1
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Total Energy Q1"
+    unique_id: eb2energyq1
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneQ1|float }}
+        {{ value_json.EB2.TotEneQ1|float }}
     unit_of_measurement: "kVAr"
     device_class: energy
 
   - platform: mqtt
-    name: "EB1 Total Energy Q4"
-    unique_id: ebenergyq4
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Total Energy Q4"
+    unique_id: eb2energyq4
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneQ4|float }}
+        {{ value_json.EB2.TotEneQ4|float }}
     unit_of_measurement: "kVAr"
     device_class: energy
 
   - platform: mqtt
-    name: "EB1 Tariff"
-    unique_id: eb1tariff
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 Tariff"
+    unique_id: eb2tariff
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Tariff|int }}
+        {{ value_json.EB2.Tariff|int }}
     unit_of_measurement: "T"
     icon: 'mdi:counter'
     
   - platform: mqtt
-    name: "EB1 DCP"
-    unique_id: eb1dcp
-    state_topic: "tele/edpbox1/SENSOR"
+    name: "EB2 DCP"
+    unique_id: eb2dcp
+    state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
-        {{ value_json.EB1.DCP|int }}
+        {{ value_json.EB2.DCP|int }}
     unit_of_measurement: "S"
     icon: 'mdi:cog-refresh'
 
