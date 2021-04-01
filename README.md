@@ -12,5 +12,3 @@
 
 - [forum.cpha.pt](https://forum.cpha.pt/t/integrar-contadores-inteligentes-da-edp-em-home-assistant/4953/)
 
-- [martgras/modbus](https://github.com/martgras/esphome/tree/modbus_component)
-
