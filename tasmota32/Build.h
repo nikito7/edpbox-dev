@@ -6,9 +6,10 @@
 #define SML_MAX_VARS 50
 
 // misc
-
-#undef USE_KNX
-#undef USE_JELLY
+// dont work here
+//
+// #undef USE_KNX
+// #undef USE_JELLY
 
 // eof
 
