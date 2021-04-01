@@ -1,1 +1,231 @@
 
+# edpbox1a
+
+  - platform: mqtt
+    name: "EB1 ESP Uptime"
+    unique_id: EB1_ESP_Uptime
+    state_topic: "tele/edpbox1/STATE"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
+    unit_of_measurement: "h"
+    icon: mdi:alarm
+    expire_after: 120
+
+  - platform: mqtt
+    name: "EB1 ESP Free Heap"
+    unique_id: EB1_ESP_Heap
+    state_topic: "tele/edpbox1/STATE"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.Heap }}'
+    unit_of_measurement: "kB"
+    icon: mdi:chip
+
+  - platform: mqtt
+    name: "EB1 ESP Signal"
+    unique_id: EB1_ESP_Signal
+    state_topic: "tele/edpbox1/STATE"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.Wifi.Signal }}'
+    unit_of_measurement: "dB"
+    device_class: signal_strength
+    expire_after: 120
+
+  - platform: mqtt
+    name: "EB1 ESP Vcc"
+    unique_id: EB1_ESP_Vcc
+    state_topic: "tele/edpbox1/STATE"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.Vcc }}'
+    unit_of_measurement: "V"
+    icon: mdi:chip
+
+  - platform: mqtt
+    name: "EB1 ESP Load"
+    unique_id: EB1_ESP_Load
+    state_topic: "tele/edpbox1/STATE"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.LoadAvg }}'
+    unit_of_measurement: "%"
+    icon: mdi:chip
+
+# eof esp
+
+  - platform: mqtt
+    name: "EB1 Clock H"
+    unique_id: EB1_Clock_H
+    state_topic: "tele/edpbox1/SENSOR"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.EB1.Clock_H|int }}'
+    icon: mdi:clock
+    unit_of_measurement: h
+    expire_after: 120
+
+  - platform: mqtt
+    name: "EB1 Clock M"
+    unique_id: EB1_Clock_M
+    state_topic: "tele/edpbox1/SENSOR"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.EB1.Clock_M|int }}'
+    icon: mdi:clock
+    unit_of_measurement: m
+    expire_after: 120
+
+  - platform: mqtt
+    name: "EB1 Clock S"
+    unique_id: EB1_Clock_S
+    state_topic: "tele/edpbox1/SENSOR"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: Online
+    payload_not_available: Offline
+    value_template: '{{ value_json.EB1.Clock_S|int }}'
+    icon: mdi:clock
+    unit_of_measurement: "s"
+    expire_after: 30
+
+  - platform: mqtt
+    name: "EB1 Voltage L1"
+    unique_id: ebten1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.VolL1|float }}
+    unit_of_measurement: "V"
+    device_class: voltage 
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Voltage L1-10"
+    unique_id: ebten110
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.VolL1 - 10 | float }}
+    unit_of_measurement: "V"
+    device_class: voltage
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Voltage L2"
+    unique_id: ebten2
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.VolL2|float }}
+    unit_of_measurement: "V"
+    device_class: voltage
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Voltage L3"
+    unique_id: ebten3
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.VolL3|float }}
+    unit_of_measurement: "V"
+    device_class: voltage
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Voltage L3+10"
+    unique_id: ebten310
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.VolL3 + 10 | float }}
+    unit_of_measurement: "V"
+    device_class: voltage
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Current"
+    unique_id: ebcursum
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.Current|float }}
+    unit_of_measurement: "A"
+    device_class: current
+    expire_after: 30
+
+  - platform: mqtt
+    name: "EB1 Current L1"
+    unique_id: ebcur1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.CurL1|float }}
+    unit_of_measurement: "A"
+    device_class: current
+    expire_after: 30
+
+  - platform: mqtt
+    name: "EB1 Current L2"
+    unique_id: ebcur2
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.CurL2|float }} 
+    unit_of_measurement: "A"
+    device_class: current
+    expire_after: 30
+
+  - platform: mqtt
+    name: "EB1 Current L3"
+    unique_id: ebcur3
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.CurL3|float }}
+    unit_of_measurement: "A"
+    device_class: current
+    expire_after: 30
+
+  - platform: mqtt
+    name: "EB1 Power Factor"
+    unique_id: ebpfactor
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.PowFac|float }}
+    unit_of_measurement: "pu"
+    device_class: power_factor
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Power Factor L1"
+    unique_id: ebpfactorl1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.PowFacL1|float }}
+    unit_of_measurement: "pu"
+    device_class: power_factor
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Power Factor L2"
+    unique_id: ebpfactorl2
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.PowFacL2|float }}
+    unit_of_measurement: "pu"
+    device_class: power_factor
+    expire_after: 60
+
+  - platform: mqtt
+    name: "EB1 Power Factor L3"
+    unique_id: ebpfactorl3
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.PowFacL3|float }}
+    unit_of_measurement: "pu"
+    device_class: power_factor
+    expire_after: 60
+
+###
+##
+#
