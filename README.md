@@ -1,8 +1,10 @@
 # Info
 
+
 ⚠️ Read First [HA: EDP Box](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box) ⚠️
 
-# Tasmota
+
+# Links
 
 - [tiagofreire-pt](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box)
 
@@ -10,6 +12,5 @@
 
 - [forum.cpha.pt](https://forum.cpha.pt/t/integrar-contadores-inteligentes-da-edp-em-home-assistant/4953/)
 
-# ESPHome
-
 - [martgras/modbus](https://github.com/martgras/esphome/tree/modbus_component)
+
