@@ -21,9 +21,7 @@ print script: up %upsecs%
 
 ; change to your gpios and mode
 ;  v   v             v
-+1,18,mN1,1,9600,EB1,17,50,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
-
-;,r0104000B0002,r010400840002
++1,18,mN1,1,9600,EB1,17,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002,r010400840002
 
 ; 01
 
@@ -86,15 +84,15 @@ print script: up %upsecs%
 ;1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q3 ,kVAr,TotEneQ3,3
 1,010418xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i5:1000,Total Energy Q4 ,kVAr,TotEneQ4,2
 
-;1,=h<hr>
+1,=h<hr>
 
 ; 0B
 
-;1,010406uu@i6:1,Tariff,,Tariff,0
+1,010406uu@i6:1,Tariff,,Tariff,0
 
 ; 84
 
-;1,010406uu@i7:1,DCP,,DCP,0
+1,010406uu@i7:1,DCP,,DCP,0
 
 #
 
