@@ -54,7 +54,7 @@ print script: up %upsecs%
 
 1,01040AUUuu@i3:1000,Power Factor ,pu,PowFac,19
 1,01040AxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
-1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,17
+1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
 
 1,=h<hr>
 
