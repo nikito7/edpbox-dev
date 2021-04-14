@@ -29,6 +29,7 @@
     unique_id: EB1_ESP_Temp
     state_topic: "tele/edpbox1/SENSOR"
     value_template: '{{ value_json.ESP32.Temperature }}'
+    unit_of_measurement: "°C"
     device_class: temperature
 
   - platform: mqtt
