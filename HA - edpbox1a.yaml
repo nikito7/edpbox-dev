@@ -55,7 +55,6 @@
     value_template: '{{ value_json.EB1.Clock_H|int }}'
     icon: mdi:clock
     unit_of_measurement: h
-    expire_after: 120
 
   - platform: mqtt
     name: "EB1 Clock M"
@@ -64,7 +63,6 @@
     value_template: '{{ value_json.EB1.Clock_M|int }}'
     icon: mdi:clock
     unit_of_measurement: m
-    expire_after: 120
 
   - platform: mqtt
     name: "EB1 Clock S"
@@ -82,8 +80,7 @@
     value_template: >-
         {{ value_json.EB1.VolL1|float }}
     unit_of_measurement: "V"
-    device_class: voltage 
-    expire_after: 60
+    device_class: voltage
 
   - platform: mqtt
     name: "EB1 Voltage L1-10"
@@ -93,7 +90,6 @@
         {{ value_json.EB1.VolL1 - 10 | float }}
     unit_of_measurement: "V"
     device_class: voltage
-    expire_after: 60
 
   - platform: mqtt
     name: "EB1 Voltage L2"
@@ -103,7 +99,6 @@
         {{ value_json.EB1.VolL2|float }}
     unit_of_measurement: "V"
     device_class: voltage
-    expire_after: 60
 
   - platform: mqtt
     name: "EB1 Voltage L3"
@@ -113,7 +108,6 @@
         {{ value_json.EB1.VolL3|float }}
     unit_of_measurement: "V"
     device_class: voltage
-    expire_after: 60
 
   - platform: mqtt
     name: "EB1 Voltage L3+10"
@@ -123,7 +117,6 @@
         {{ value_json.EB1.VolL3 + 10 | float }}
     unit_of_measurement: "V"
     device_class: voltage
-    expire_after: 60
 
   - platform: mqtt
     name: "EB1 Current"
@@ -133,7 +126,6 @@
         {{ value_json.EB1.Current|float }}
     unit_of_measurement: "A"
     device_class: current
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Current L1"
@@ -143,7 +135,6 @@
         {{ value_json.EB1.CurL1|float }}
     unit_of_measurement: "A"
     device_class: current
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Current L2"
@@ -153,7 +144,6 @@
         {{ value_json.EB1.CurL2|float }} 
     unit_of_measurement: "A"
     device_class: current
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Current L3"
@@ -163,7 +153,6 @@
         {{ value_json.EB1.CurL3|float }}
     unit_of_measurement: "A"
     device_class: current
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Power Factor"
@@ -173,7 +162,6 @@
         {{ value_json.EB1.PowFac|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
-    expire_after: 60
 
   - platform: mqtt
     name: "EB1 Power Factor L1"
@@ -183,7 +171,6 @@
         {{ value_json.EB1.PowFacL1|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
-    expire_after: 60
 
   - platform: mqtt
     name: "EB1 Power Factor L2"
@@ -193,7 +180,6 @@
         {{ value_json.EB1.PowFacL2|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
-    expire_after: 60
 
   - platform: mqtt
     name: "EB1 Power Factor L3"
@@ -203,7 +189,6 @@
         {{ value_json.EB1.PowFacL3|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
-    expire_after: 60
 
 ###
 ##
