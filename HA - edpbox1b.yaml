@@ -8,7 +8,6 @@
         {{ value_json.EB1.ActPow|int }}
     unit_of_measurement: "W"
     device_class: power
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Active Power L1"
@@ -18,7 +17,6 @@
         {{ value_json.EB1.ActPowL1|int }}
     unit_of_measurement: "W"
     device_class: power
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Active Power L2"
@@ -28,7 +26,6 @@
         {{ value_json.EB1.ActPowL2|int }}
     unit_of_measurement: "W"
     device_class: power
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Active Power L3"
@@ -38,7 +35,6 @@
         {{ value_json.EB1.ActPowL3|int }}
     unit_of_measurement: "W"
     device_class: power
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Frequency"
