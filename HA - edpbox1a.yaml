@@ -4,21 +4,14 @@
     name: "EB1 ESP Uptime"
     unique_id: EB1_ESP_Uptime
     state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
-    payload_available: Online
-    payload_not_available: Offline
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:alarm
-    expire_after: 120
 
   - platform: mqtt
     name: "EB1 ESP Free Heap"
     unique_id: EB1_ESP_Heap
     state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
-    payload_available: Online
-    payload_not_available: Offline
     value_template: '{{ value_json.Heap }}'
     unit_of_measurement: "kB"
     icon: mdi:chip
@@ -27,13 +20,16 @@
     name: "EB1 ESP Signal"
     unique_id: EB1_ESP_Signal
     state_topic: "tele/edpbox1/STATE"
-    availability_topic: "tele/edpbox1/LWT"
-    payload_available: Online
-    payload_not_available: Offline
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     device_class: signal_strength
-    expire_after: 120
+
+  - platform: mqtt
+    name: "EB1 ESP32 Temperature"
+    unique_id: EB1_ESP32_Temp
+    state_topic: "tele/edpbox1/STATE"
+    value_template: '{{ value_json.ESP32.Temperature }}'
+    device_class: temperature
 
   - platform: mqtt
     name: "EB1 ESP Vcc"
@@ -56,8 +52,6 @@
     value_template: '{{ value_json.LoadAvg }}'
     unit_of_measurement: "%"
     icon: mdi:chip
-
-# eof esp
 
   - platform: mqtt
     name: "EB1 Clock H"
