@@ -1,0 +1,121 @@
+substitutions:
+
+  dev: EB2
+
+esphome:
+
+  name: edpbox2
+  platform: ESP32
+  board: esp32dev
+
+wifi:
+
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
+
+  ap:
+    ssid: "Fallback ${dev}"
+    password: !secret wifi_key
+
+captive_portal:
+
+web_server:
+
+#logger:
+
+api:
+
+  password: !secret api_key
+
+ota:
+
+  password: !secret ota_key
+
+time:
+
+  - platform: homeassistant
+    id: esptime
+
+switch:
+
+  - platform: restart
+    name: "${dev} ESP Restart"
+
+sensor:
+
+  - platform: template
+    name: "${dev} ESP Free Heap"
+    lambda: |-
+      int heap = ESP.getFreeHeap();
+      return heap / 1024.0;
+    unit_of_measurement: "kB"
+    update_interval: 30s
+    icon: mdi:chip
+
+  - platform: wifi_signal
+    name: "${dev} ESP Signal"
+    update_interval: 30s
+
+  - platform: uptime
+    name: "${dev} ESP Uptime"
+    filters:
+      - lambda: return x/3600;
+    unit_of_measurement: "h"
+    accuracy_decimals: 1
+
+#######
+
+uart:
+
+  id: modbus_serial
+  tx_pin: 17
+  rx_pin: 18
+  baud_rate: 9600
+  stop_bits: 1
+
+modbus:
+
+  id: modbus_ttl
+  # ctrl_pin: 5
+  uart_id: modbus_serial
+
+modbus_controller:
+
+  modbus_id: modbus_ttl
+  command_throttle: 1500ms
+  id: edpbox
+  update_interval: 9s
+  address: 0x1
+  sensors:
+
+### 6C ###
+
+    - id: Voltage_L1
+      name: "${dev} Voltage L1"
+      address: 0x006C
+      offset: 0
+      unit_of_measurement: "V"
+      modbus_functioncode: "read_input_registers"
+      value_type: U_WORD
+      accuracy_decimals: 1
+      filters:
+        - multiply: 0.1
+      device_class: voltage
+
+    - id: Current_L1
+      name: "${dev} Current L1"
+      address: 0x006C
+      offset: 2
+      unit_of_measurement: "A"
+      modbus_functioncode: "read_input_registers"
+      value_type: U_WORD
+      accuracy_decimals: 1
+      filters:
+        - multiply: 0.1
+      device_class: current
+
+#######
+# eof #
+#######
+
+
