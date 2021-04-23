@@ -18,7 +18,7 @@ interval:
   - interval: 9s
     then:
       - lambda: |-
-          if (millis() > 30000) {
+          if (millis() > 15000) {
             id(edpbox).update();
           }
 
@@ -79,7 +79,21 @@ sensor:
     unit_of_measurement: "h"
     accuracy_decimals: 1
 
-#######
+### ### ###
+
+  - platform: template
+    name: "${dev} Voltage L1-10"
+    lambda: 'return id(VolL1).state - 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+  - platform: template
+    name: "${dev} Voltage L3+10"
+    lambda: 'return id(VolL3).state + 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
 
 uart:
 
@@ -428,7 +442,7 @@ modbus_controller:
 # begin 0x0026
 
     - id: TotEneT1
-      name: "${dev} Total Energy T1"
+      name: "${dev} Total Energy T1 Vazio"
       address: 0x0026
       offset: 0
       modbus_functioncode: "read_input_registers"
@@ -440,7 +454,7 @@ modbus_controller:
       icon: "mdi:transmission-tower"
 
     - id: TotEneT2
-      name: "${dev} Total Energy T2"
+      name: "${dev} Total Energy T2 Ponta"
       address: 0x0026
       offset: 4
       modbus_functioncode: "read_input_registers"
@@ -452,7 +466,7 @@ modbus_controller:
       icon: "mdi:transmission-tower"
 
     - id: TotEneT3
-      name: "${dev} Total Energy T3"
+      name: "${dev} Total Energy T3 Cheia"
       address: 0x0026
       offset: 8
       modbus_functioncode: "read_input_registers"
