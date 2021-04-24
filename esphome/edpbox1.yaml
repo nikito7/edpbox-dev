@@ -18,7 +18,7 @@ interval:
   - interval: 9s
     then:
       - lambda: |-
-          if (millis() > 15000) {
+          if (millis() > 5000) {
             id(edpbox).update();
           }
 
@@ -481,8 +481,35 @@ modbus_controller:
 
 ### ### ### 
 
+  text_sensors:
+
+    - id: Firmware_4
+      name: "${dev} Z Firmware 4" 
+      modbus_functioncode: "read_input_registers" 
+      address: 0x0004
+      offset: 0
+      register_count: 1
+      hex_encode: true
+      response_size: 5
+
+    - id: Firmware_5
+      name: "${dev} Z Firmware 5" 
+      modbus_functioncode: "read_input_registers" 
+      address: 0x0005
+      offset: 0
+      register_count: 1
+      hex_encode: true
+      response_size: 5
+
+    - id: Firmware_6
+      name: "${dev} Z Firmware 6" 
+      modbus_functioncode: "read_input_registers" 
+      address: 0x0006
+      offset: 0
+      register_count: 1
+      hex_encode: true
+      response_size: 5
+
 #######
 # eof #
 #######
-
-
