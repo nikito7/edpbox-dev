@@ -1,9 +1,11 @@
 >D
 
+; EB2 mono
+
 >BS
 
 smlj=0
-tper=30
+tper=90
 
 =>sensor53 r
 
