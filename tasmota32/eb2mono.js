@@ -3,7 +3,7 @@
 >BS
 
 smlj=0
-tper=300
+tper=30
 
 =>sensor53 r
 
@@ -13,6 +13,8 @@ if upsecs==50
 then
 smlj=1
 endif
+
+->LedPower 2
 
 print script: up %upsecs%
 
@@ -34,13 +36,9 @@ print script: up %upsecs%
 
 1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,17
 
-1,=h<hr>
-
 1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,17
 
 1,01040ExxxxUUuu@i1:10,Current L1 ,A,CurL1,17
-
-1,=h<hr>
 
 ; 73
 
