@@ -2,21 +2,22 @@
 
 recorder:
 
-  purge_keep_days: 1
+  purge_keep_days: 50
+  db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
 
 utility_meter:
 
-  daily_energy:
+  daily_energy_eb1:
     source: sensor.eb1_total_energy_import
     cycle: daily
 
-  monthly_energy:
-    source: sensor.eb1_total_energy_import
-    cycle: monthly
+  daily_energy_eb2:
+    source: sensor.eb2_total_energy_import
+    cycle: daily
 
 sensor edpbox1a: !include edpbox1a.yaml
 sensor edpbox1b: !include edpbox1b.yaml
-#sensor eb2mono: !include eb2mono.yaml
+sensor eb2mono: !include eb2mono.yaml
 
 ###
 ##
