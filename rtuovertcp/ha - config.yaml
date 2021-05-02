@@ -9,7 +9,7 @@ modbus:
 
     sensors:
         
-      - name: 'Voltage L1'
+      - name: 'RTU Voltage L1'
         slave: 1
         address: 108
         input_type: input
@@ -20,7 +20,7 @@ modbus:
         precision: 1
         data_type: uint
 
-      - name: 'Current L1'
+      - name: 'RTU Current L1'
         slave: 1
         address: 109
         input_type: input
