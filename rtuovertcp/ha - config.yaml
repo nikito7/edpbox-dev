@@ -6,7 +6,6 @@ modbus:
     type: rtuovertcp
     host: 10.1.0.40
     port: 8888
-    timeout: 5
 
     sensors:
         
@@ -29,16 +28,5 @@ modbus:
         scale: 0.1
         precision: 1
         unit_of_measurement: 'A'
-
-      - name: 'RTU Total Energy'
-        slave: 1
-        address: 22
-        input_type: input
-        count: 1
-        data_type: custom
-        structure: ">L"
-        scale: 0.001
-        precision: 1
-        unit_of_measurement: 'kWh'
 
 # EOF
