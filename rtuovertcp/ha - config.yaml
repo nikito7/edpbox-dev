@@ -40,6 +40,7 @@ modbus:
         scale: 0.001
         offset: 0
         precision: 1
-        data_type: uint32
+        data_type: custom
+        structure: ">HH"
 
 # (...)
