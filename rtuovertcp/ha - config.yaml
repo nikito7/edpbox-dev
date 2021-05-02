@@ -6,7 +6,7 @@ modbus:
     type: rtuovertcp
     host: 10.1.0.40
     port: 8888
-    timeout: 10
+    timeout: 5
 
     sensors:
         
@@ -36,9 +36,9 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        structure: "@L"
-        scale: 1
-        precision: 0
+        structure: ">L"
+        scale: 0.001
+        precision: 1
         unit_of_measurement: 'kWh'
 
-# (...)
+# EOF
