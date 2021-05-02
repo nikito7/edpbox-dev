@@ -7,8 +7,6 @@ modbus:
     host: 10.1.0.40
     port: 8888
     timeout: 10
-    delay: 1
-    scan_interval: 10
 
     sensors:
         
