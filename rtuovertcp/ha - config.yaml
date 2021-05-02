@@ -2,21 +2,12 @@
 
 modbus:
 
-  name: edpbox1
-  type: serial
-  method: rtuovertcp
-  baudrate: 9600
-  stopbits: 1
-  bytesize: 8
-  parity: N
-  timeout: 5
+  - name: edpbox1
+    type: rtuovertcp
+    host: 10.1.0.40
+    port: 8888
 
-
-sensor edpboxrtu:
-
-  - platform: modbus
-    scan_interval: 5
-    registers:
+    sensors:
       - name: 'Frequency'
         hub: edpbox1
         slave: 1
@@ -68,6 +59,5 @@ sensor edpboxrtu:
         precision: 3
         # long unsigned
         data_type: uint
-
 
 # (...)
