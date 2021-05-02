@@ -8,22 +8,11 @@ modbus:
     port: 8888
 
     sensors:
-      - name: 'Frequency'
-        slave: 1
-        register: 127
-        register_type: input
-        unit_of_measurement: 'Hz'
-        count: 1
-        scale: 0.1
-        offset: 0
-        precision: 2
-        data_type: uint
         
       - name: 'Voltage L1'
-        hub: edpbox1
         slave: 1
-        register: 108
-        register_type: input
+        address: 108
+        input_type: input
         unit_of_measurement: 'V'
         count: 1
         scale: 0.1
@@ -33,25 +22,13 @@ modbus:
 
       - name: 'Current L1'
         slave: 1
-        register: 109
-        register_type: input
+        address: 109
+        input_type: input
         unit_of_measurement: 'A'
         count: 1
         scale: 0.1
         offset: 0
         precision: 1
-        data_type: uint
-        
-      - name: 'Power factor'
-        hub: edpbox1
-        slave: 1
-        register: 123
-        register_type: input
-        unit_of_measurement: 'pu'
-        count: 1
-        scale: 0.001
-        offset: 0
-        precision: 3
         data_type: uint
 
 # (...)
