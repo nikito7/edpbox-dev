@@ -9,7 +9,6 @@ modbus:
 
     sensors:
       - name: 'Frequency'
-        hub: edpbox1
         slave: 1
         register: 127
         register_type: input
@@ -18,7 +17,6 @@ modbus:
         scale: 0.1
         offset: 0
         precision: 2
-        # long unsigned
         data_type: uint
         
       - name: 'Voltage L1'
@@ -31,11 +29,9 @@ modbus:
         scale: 0.1
         offset: 0
         precision: 1
-        # long unsigned
         data_type: uint
 
       - name: 'Current L1'
-        hub: edpbox1
         slave: 1
         register: 109
         register_type: input
@@ -44,7 +40,6 @@ modbus:
         scale: 0.1
         offset: 0
         precision: 1
-        # long unsigned
         data_type: uint
         
       - name: 'Power factor'
@@ -52,12 +47,11 @@ modbus:
         slave: 1
         register: 123
         register_type: input
-        unit_of_measurement: 'p.u.'
+        unit_of_measurement: 'pu'
         count: 1
         scale: 0.001
         offset: 0
         precision: 3
-        # long unsigned
         data_type: uint
 
 # (...)
