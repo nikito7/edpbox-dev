@@ -31,4 +31,15 @@ modbus:
         precision: 1
         data_type: uint
 
+      - name: 'RTU Total Energy'
+        slave: 1
+        address: 22
+        input_type: input
+        unit_of_measurement: 'kWh'
+        count: 1
+        scale: 0.001
+        offset: 0
+        precision: 1
+        data_type: uint32
+
 # (...)
