@@ -35,7 +35,7 @@ modbus:
         input_type: input
         count: 2
         data_type: custom
-        structure: ">HH"
+        structure: ">2h"
 
 sensor rtux1:
 
@@ -44,7 +44,7 @@ sensor rtux1:
       voltage_l1:
         friendly_name: "RTU X Voltage L1"
         value_template: >-
-          "{{ states(rtu_x108)[1:3]|int/10 }}"
+          {{ states('sensor.rtu_x108').split(',')[1] | int / 10 }}
         unit_of_measurement: 'V'
 
 # EOF
