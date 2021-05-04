@@ -17,6 +17,14 @@ modbus:
         data_type: custom
         structure: ">7h"
 
+      - name: "RTU1 X22"
+        slave: 1
+        address: 22
+        input_type: input
+        count: 2
+        data_type: custom
+        structure: ">4h"
+
 sensor rtu1x:
 
   - platform: template
