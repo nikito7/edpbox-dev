@@ -23,7 +23,7 @@ modbus:
         input_type: input
         count: 2
         data_type: custom
-        structure: ">4h"
+        structure: ">2L"
 
 sensor rtu1x:
 
