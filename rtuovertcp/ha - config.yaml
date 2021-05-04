@@ -15,15 +15,15 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
-        structure: ">7h"
+        structure: ">7H"
 
       - name: "RTU1 X22"
         slave: 1
         address: 22
         input_type: input
-        count: 2
+        count: 1
         data_type: custom
-        structure: ">2L"
+        structure: ">L"
 
 sensor rtu1x:
 
