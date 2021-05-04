@@ -39,11 +39,11 @@ modbus:
 sensor rtux1:
 
   - platform: template
-      sensors:
-        voltage_l1:
-          friendly_name: "RTU X Voltage L1"
-          value_template: >-
-            "{{ states(rtu_x108)[1:3]|int/10 }}"
-          unit_of_measurement: 'V'
+    sensors:
+      voltage_l1:
+        friendly_name: "RTU X Voltage L1"
+        value_template: >-
+          "{{ states(rtu_x108)[1:3]|int/10 }}"
+        unit_of_measurement: 'V'
 
 # EOF
