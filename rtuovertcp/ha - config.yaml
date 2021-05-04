@@ -34,7 +34,8 @@ modbus:
         address: 108
         input_type: input
         count: 2
-        data_type: uint
+        data_type: custom
+        structure: ">HH"
 
 sensor rtux1:
 
