@@ -42,13 +42,13 @@ sensor rtux1:
   - platform: template
     sensors:
 
-      Vol_L1:
+      eb1_vol_l1:
         friendly_name: "RTU X Voltage L1"
         value_template: >-
           {{ states('sensor.rtu_x108').split(',')[0] | int / 10 }}
         unit_of_measurement: 'V'
 
-      Cur_L1:
+      eb1_cur_l1:
         friendly_name: "RTU X Current L1"
         value_template: >-
           {{ states('sensor.rtu_x108').split(',')[1] | int / 10 }}
