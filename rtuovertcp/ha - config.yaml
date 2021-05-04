@@ -8,28 +8,8 @@ modbus:
     port: 8888
 
     sensors:
-        
-      - name: "RTU Voltage L1"
-        slave: 1
-        address: 108
-        input_type: input
-        count: 1
-        data_type: uint
-        scale: 0.1
-        precision: 1
-        unit_of_measurement: "V"
 
-      - name: "RTU Current L1"
-        slave: 1
-        address: 109
-        input_type: input
-        count: 1
-        data_type: uint
-        scale: 0.1
-        precision: 1
-        unit_of_measurement: "A"
-
-      - name: "RTU X108"
+      - name: "RTU1 X108"
         slave: 1
         address: 108
         input_type: input
@@ -37,19 +17,29 @@ modbus:
         data_type: custom
         structure: ">7h"
 
-sensor rtux1:
+      - name: "RTU1 X5"
+        slave: 1
+        address: 5
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">5s"
+
+sensor rtu1x:
 
   - platform: template
     sensors:
 
       eb1_vol_l1:
-        friendly_name: "RTU X Voltage L1"
-        value_template: "{{ states('sensor.rtu_x108').split(',')[0] | int / 10 }}"
+        friendly_name: "RTU1 Voltage L1"
+        value_template: >-
+          {{ states('sensor.rtu1_x108').split(',')[0] | int / 10 }}
         unit_of_measurement: "V"
 
       eb1_cur_l1:
         friendly_name: "RTU X Current L1"
-        value_template: "{{ states('sensor.rtu_x108').split(',')[1] | int / 10 }}"
+        value_template: >-
+          {{ states('sensor.rtu1_x108').split(',')[1] | int / 10 }}
         unit_of_measurement: "A"
 
 # EOF
