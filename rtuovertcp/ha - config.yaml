@@ -9,7 +9,7 @@ modbus:
 
     sensors:
         
-      - name: 'RTU Voltage L1'
+      - name: "RTU Voltage L1"
         slave: 1
         address: 108
         input_type: input
@@ -17,9 +17,9 @@ modbus:
         data_type: uint
         scale: 0.1
         precision: 1
-        unit_of_measurement: 'V'
+        unit_of_measurement: "V"
 
-      - name: 'RTU Current L1'
+      - name: "RTU Current L1"
         slave: 1
         address: 109
         input_type: input
@@ -27,9 +27,9 @@ modbus:
         data_type: uint
         scale: 0.1
         precision: 1
-        unit_of_measurement: 'A'
+        unit_of_measurement: "A"
 
-      - name: 'RTU X108'
+      - name: "RTU X108"
         slave: 1
         address: 108
         input_type: input
@@ -44,14 +44,12 @@ sensor rtux1:
 
       eb1_vol_l1:
         friendly_name: "RTU X Voltage L1"
-        value_template: >-
-          {{ states('sensor.rtu_x108').split(',')[0] | int / 10 }}
-        unit_of_measurement: 'V'
+        value_template: "{{ states('sensor.rtu_x108').split(',')[0] | int / 10 }}"
+        unit_of_measurement: "V"
 
       eb1_cur_l1:
         friendly_name: "RTU X Current L1"
-        value_template: >-
-          {{ states('sensor.rtu_x108').split(',')[1] | int / 10 }}
-        unit_of_measurement: 'A'
+        value_template: "{{ states('sensor.rtu_x108').split(',')[1] | int / 10 }}"
+        unit_of_measurement: "A"
 
 # EOF
