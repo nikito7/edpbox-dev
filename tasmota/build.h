@@ -3,7 +3,7 @@
 
 #undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
-#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
+//#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
 #undef USE_TELEGRAM                              // Disable support for Telegram protocol (+49k code, +7.0k mem and +4.8k additional during connection handshake)
 //#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
@@ -14,7 +14,7 @@
 #undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
 #undef USE_EMULATION_WEMO                        // Disable Belkin WeMo emulation for Alexa (+6k code, +2k mem common)
 //#undef USE_CUSTOM                                // Disable Custom features
-#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
+//#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
 #undef USE_TIMERS                                // Disable support for up to 16 timers
 #undef USE_TIMERS_WEB                            // Disable support for timer webpage
 #undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
@@ -45,7 +45,7 @@
 #undef USE_SONOFF_D1                             // Disable support for Sonoff D1 Dimmer (+0k7 code)
 
 // -- Optional light modules ----------------------
-#undef USE_LIGHT                                 // Disable support for lights
+//#undef USE_LIGHT                                 // Disable support for lights
 #undef USE_WS2812                                // Disable WS2812 Led string using library NeoPixelBus (+5k code, +1k mem, 232 iram) - Disable by //
 #undef USE_MY92X1                                // Disable support for MY92X1 RGBCW led controller as used in Sonoff B1, Ailight and Lohas
 #undef USE_SM16716                               // Disable support for SM16716 RGB LED controller (+0k7 code)
