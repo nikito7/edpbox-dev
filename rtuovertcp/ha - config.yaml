@@ -29,4 +29,20 @@ modbus:
         precision: 1
         unit_of_measurement: 'A'
 
+      - name: 'RTU X108'
+        slave: 1
+        address: 108
+        input_type: input
+        count: 2
+        data_type: uint
+
+sensor rtux1:
+
+  - platform: template
+      voltage_l1:
+        friendly_name: "RTU X Voltage L1"
+        value_template: >-
+          {{ states(rtu_x108)[1:3]|int/10 }}
+        unit_of_measurement: 'V'
+
 # EOF
