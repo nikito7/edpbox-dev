@@ -9,6 +9,7 @@
 // serial to tcp
 
 #define USE_TCP_BRIDGE
+#define TCP_BRIDGE_CONNECTIONS 4
 
 // eof
 
