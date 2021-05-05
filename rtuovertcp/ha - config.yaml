@@ -22,7 +22,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        structure: ">H7BH"
+        structure: ">H7BhB"
 
       - name: "RTU1 X108"
         slave: 1
