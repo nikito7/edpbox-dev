@@ -11,8 +11,18 @@ modbus:
     type: rtuovertcp
     host: 10.1.0.40
     port: 8888
+    timeout: 5
+    delay: 1
 
     sensors:
+
+      - name: "RTU1 X1"
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">H7BH"
 
       - name: "RTU1 X108"
         slave: 1
