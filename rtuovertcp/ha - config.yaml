@@ -2,9 +2,7 @@
 
 logger:
 
-  default: warn
   logs:
-    homeassistant.core: debug
     homeassistant.components.modbus: debug
     pymodbus.client: debug
 
@@ -15,17 +13,8 @@ modbus:
     host: 10.1.0.40
     port: 8888
     timeout: 5
-    delay: 1
 
     sensors:
-
-      - name: "RTU1 X1"
-        slave: 1
-        address: 1
-        input_type: input
-        count: 1
-        data_type: custom
-        structure: ">H7BhB"
 
       - name: "RTU1 X108"
         slave: 1
@@ -42,6 +31,14 @@ modbus:
         count: 1
         data_type: custom
         structure: ">L"
+
+      - name: "RTU1 X1"
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">H7BhB"
 
 sensor rtu1x:
 
