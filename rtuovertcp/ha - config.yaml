@@ -4,7 +4,7 @@ logger:
 
   default: warn
   logs:
-    homeassistan.core: debug
+    homeassistant.core: debug
     homeassistant.components.modbus: debug
     pymodbus.client: debug
 
