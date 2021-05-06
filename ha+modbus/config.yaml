@@ -22,8 +22,8 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        data_size: 1
-        structure: ">B"
+        data_size: 2
+        structure: ">Bx"
 
       - name: "RTU1 X108"
         slave: 1
