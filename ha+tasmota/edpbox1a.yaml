@@ -25,14 +25,6 @@
     device_class: signal_strength
 
   - platform: mqtt
-    name: "EB1 ESP Load"
-    unique_id: EB1_ESP_Load
-    state_topic: "tele/edpbox1/STATE"
-    value_template: '{{ value_json.LoadAvg }}'
-    unit_of_measurement: "%"
-    icon: mdi:chip
-
-  - platform: mqtt
     name: "EB1 Clock H"
     unique_id: EB1_Clock_H
     state_topic: "tele/edpbox1/SENSOR"
