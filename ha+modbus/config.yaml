@@ -22,7 +22,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        data_size: 6
+        register_size: 2
         structure: ">5sx"
 
       - name: "RTU1 Active Tariff"
@@ -31,7 +31,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        data_size: 2
+        register_size: 2
         structure: ">Bx"
 
       - name: "RTU1 X108"
@@ -40,7 +40,7 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
-        data_size: 14
+        register_size: 2
         structure: ">7H"
 
       - name: "RTU1 X22"
@@ -49,7 +49,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        data_size: 4
+        register_size: 4
         structure: ">L"
 
       - name: "RTU1 X1"
@@ -58,7 +58,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        data_size: 12
+        register_size: 12
         structure: ">H7BhB"
 
 sensor rtu1x:
