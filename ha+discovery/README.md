@@ -1,3 +1,3 @@
 Native Tasmota Discovery
 
-New ```SetOption19```
+New ```SetOption19 1```
