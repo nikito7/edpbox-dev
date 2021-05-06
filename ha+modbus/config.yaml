@@ -22,6 +22,7 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
+        data_size: 14
         structure: ">7H"
 
       - name: "RTU1 X22"
@@ -30,6 +31,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
+        data_size: 4
         structure: ">L"
 
       - name: "RTU1 X1"
@@ -38,6 +40,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
+        data_size: 12
         structure: ">H7BhB"
 
 sensor rtu1x:
