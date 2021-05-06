@@ -24,16 +24,6 @@
     unit_of_measurement: "dB"
     device_class: signal_strength
 
-# temperature: only old esp32
-
-  - platform: mqtt
-    name: "EB2 ESP Temperature"
-    unique_id: EB2_ESP_Temp
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: '{{ value_json.ESP32.Temperature }}'
-    unit_of_measurement: "°C"
-    device_class: temperature
-
 # eof esp
 
   - platform: mqtt
@@ -176,42 +166,6 @@
         {{ value_json.EB2.TotEneExp|float }}
     unit_of_measurement: "kWh"
     device_class: energy
-
-  - platform: mqtt
-    name: "EB2 Total Energy Q1"
-    unique_id: eb2energyq1
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: >-
-        {{ value_json.EB2.TotEneQ1|float }}
-    unit_of_measurement: "kVAr"
-    device_class: energy
-
-  - platform: mqtt
-    name: "EB2 Total Energy Q4"
-    unique_id: eb2energyq4
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: >-
-        {{ value_json.EB2.TotEneQ4|float }}
-    unit_of_measurement: "kVAr"
-    device_class: energy
-
-  - platform: mqtt
-    name: "EB2 Tariff"
-    unique_id: eb2tariff
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: >-
-        {{ value_json.EB2.Tariff|int }}
-    unit_of_measurement: "T"
-    icon: 'mdi:counter'
-    
-  - platform: mqtt
-    name: "EB2 DCP"
-    unique_id: eb2dcp
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: >-
-        {{ value_json.EB2.DCP|int }}
-    unit_of_measurement: "S"
-    icon: 'mdi:cog-refresh'
 
 ###
 ##
