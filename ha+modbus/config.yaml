@@ -16,6 +16,15 @@ modbus:
 
     sensors:
 
+      - name: "RTU1 Firmware"
+        slave: 1
+        address: 5
+        input_type: input
+        count: 1
+        data_type: custom
+        data_size: 6
+        structure: ">5sx"
+
       - name: "RTU1 Active Tariff"
         slave: 1
         address: 11
