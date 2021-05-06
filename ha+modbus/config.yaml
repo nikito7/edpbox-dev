@@ -34,7 +34,7 @@ modbus:
         register_size: 2
         structure: ">7H"
 
-      - name: "RTU1 X108"
+      - name: "RTU1 X108v"
         slave: 1
         address: 108
         input_type: input
