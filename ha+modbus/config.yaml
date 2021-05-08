@@ -31,7 +31,6 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
-        register_size: 2
         structure: ">7H"
 
       - name: "RTU1 X108v"
