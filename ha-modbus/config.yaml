@@ -13,6 +13,8 @@ modbus:
     host: 10.1.0.40
     port: 8888
     timeout: 5
+    delay: 1
+  
 
     sensors:
 
@@ -48,7 +50,7 @@ modbus:
         count: 1
         data_type: custom
         register_size: 6
-        structure: ">5sx"
+        structure: ">6s"
 
       - name: "RTU1 X22"
         slave: 1
