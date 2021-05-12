@@ -1,1 +1,1 @@
-```docker exec -t -i homeassistant /bin/bash```
+custom component for home assistant 
