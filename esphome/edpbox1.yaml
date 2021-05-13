@@ -13,13 +13,19 @@ esphome:
   platform: ESP32
   board: esp32dev
 
+  on_boot:
+    priority: -500
+    then:
+      - delay: 5s
+      - switch.turn_on: edpbox_polling
+
 interval:
 
   - interval: 9s
     then:
       - lambda: |-
-          if (millis() > 5000) {
-            id(edpbox).update();
+          if (id(edpbox_polling).state) {
+              id(edpbox).update();
           }
 
 wifi:
@@ -61,7 +67,6 @@ switch:
     name: "${dev} ESP Polling"
     id: "edpbox_polling"
     optimistic: yes
-    # not working yet
 
 sensor:
 
@@ -212,6 +217,17 @@ modbus_controller:
 # eof 0x006C range
 
 # begin 0x0073
+# sorted
+
+    - id: ActPower
+      name: "${dev} Active Power"
+      address: 0x0073
+      offset: 24
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 0
+      device_class: power
+      unit_of_measurement: "W"
 
     - id: ActPowL1
       name: "${dev} Active Power L1"
@@ -276,16 +292,6 @@ modbus_controller:
       unit_of_measurement: "W"
       internal: true # disable sensor
 
-    - id: ActPower
-      name: "${dev} Active Power"
-      address: 0x0073
-      offset: 24
-      modbus_functioncode: "read_input_registers"
-      value_type: U_DWORD
-      accuracy_decimals: 0
-      device_class: power
-      unit_of_measurement: "W"
-
     - id: ActPowExp
       name: "${dev} Active Power Export"
       address: 0x0073
@@ -297,7 +303,7 @@ modbus_controller:
       unit_of_measurement: "W"
       internal: true # disable sensor
 
-# type changes
+# type changes ####
 
     - id: PowFac
       name: "${dev} Power Factor"
@@ -493,7 +499,7 @@ modbus_controller:
       response_size: 12
 
     - id: EBX4
-      name: "${dev} X4" 
+      name: "${dev} Firmware Core" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0004
       offset: 0
@@ -502,7 +508,7 @@ modbus_controller:
       response_size: 6
 
     - id: EBX5
-      name: "${dev} X5" 
+      name: "${dev} Firmware App" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0005
       offset: 0
@@ -511,7 +517,7 @@ modbus_controller:
       response_size: 6
 
     - id: EBX6
-      name: "${dev} X6"
+      name: "${dev} Firmware Com"
       modbus_functioncode: "read_input_registers" 
       address: 0x0006
       offset: 0
