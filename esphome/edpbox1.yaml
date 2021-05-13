@@ -57,6 +57,12 @@ switch:
   - platform: restart
     name: "${dev} ESP Restart"
 
+  - platform: template
+    name: "${dev} ESP Polling"
+    id: "edpbox_polling"
+    optimistic: yes
+    # not working yet
+
 sensor:
 
   - platform: template
@@ -477,31 +483,40 @@ modbus_controller:
 
   text_sensors:
 
-    - id: Firmware_4
-      name: "${dev} Z Firmware 4" 
+    - id: EBX1
+      name: "${dev} X1 Clock" 
+      modbus_functioncode: "read_input_registers" 
+      address: 0x0001
+      offset: 0
+      register_count: 1
+      raw_encode: COMMA
+      response_size: 12
+
+    - id: EBX4
+      name: "${dev} X4" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0004
       offset: 0
       register_count: 1
-      hex_encode: true
+      raw_encode: NONE
       response_size: 6
 
-    - id: Firmware_5
-      name: "${dev} Z Firmware 5" 
+    - id: EBX5
+      name: "${dev} X5" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0005
       offset: 0
       register_count: 1
-      hex_encode: true
+      raw_encode: NONE
       response_size: 6
 
-    - id: Firmware_6
-      name: "${dev} Z Firmware 6" 
+    - id: EBX6
+      name: "${dev} X6"
       modbus_functioncode: "read_input_registers" 
       address: 0x0006
       offset: 0
       register_count: 1
-      hex_encode: true
+      raw_encode: NONE
       response_size: 6
 
 #######
