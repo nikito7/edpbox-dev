@@ -1,6 +1,10 @@
 Info:
 
+https://github.com/martgras/esphome/discussions
+
 https://github.com/martgras/esphome/tree/modbus_component
+
+https://github.com/martgras/esphome/tree/modbus_component/esphome/components/modbus_controller
 
 ```pip uninstall esphome```
 
