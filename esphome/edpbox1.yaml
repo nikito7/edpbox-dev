@@ -103,15 +103,9 @@ uart:
   baud_rate: 9600
   stop_bits: 1
 
-modbus:
-
-  id: modbus_bus
-  # ctrl_pin: 5
-  uart_id: modbus_serial
-
 modbus_controller:
 
-  modbus_id: modbus_bus
+  uart_id: modbus_serial
   command_throttle: 1500ms
   id: edpbox
   update_interval: never
@@ -490,7 +484,7 @@ modbus_controller:
       offset: 0
       register_count: 1
       hex_encode: true
-      response_size: 5
+      response_size: 6
 
     - id: Firmware_5
       name: "${dev} Z Firmware 5" 
@@ -499,7 +493,7 @@ modbus_controller:
       offset: 0
       register_count: 1
       hex_encode: true
-      response_size: 5
+      response_size: 6
 
     - id: Firmware_6
       name: "${dev} Z Firmware 6" 
@@ -508,7 +502,7 @@ modbus_controller:
       offset: 0
       register_count: 1
       hex_encode: true
-      response_size: 5
+      response_size: 6
 
 #######
 # eof #
