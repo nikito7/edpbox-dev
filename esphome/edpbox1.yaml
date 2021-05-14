@@ -132,8 +132,6 @@ modbus_controller:
 # sorted:
 # - voltage
 # - current
-# nao remover registers intermedios de um range
-# apenas desativar com, internal: true
 # dont remove middle registers of a range
 # disable it only with, internal: true
 
@@ -504,7 +502,7 @@ modbus_controller:
       filters:
         - multiply: 0.001
       unit_of_measurement: "kVA"
-      icon: mdi:info
+      icon: mdi:chip
 
     - id: EB_Contract_T2
       name: "${dev} Info: Contract T2"
@@ -516,7 +514,7 @@ modbus_controller:
       filters:
         - multiply: 0.001
       unit_of_measurement: "kVA"
-      icon: mdi:info
+      icon: mdi:chip
 
     - id: EB_Contract_T3
       name: "${dev} Info: Contract T3"
@@ -528,7 +526,7 @@ modbus_controller:
       filters:
         - multiply: 0.001
       unit_of_measurement: "kVA"
-      icon: mdi:info
+      icon: mdi:chip
 
     - id: EB_Contract_T4
       name: "${dev} Info: Contract T4"
@@ -540,7 +538,7 @@ modbus_controller:
       filters:
         - multiply: 0.001
       unit_of_measurement: "kVA"
-      icon: mdi:info
+      icon: mdi:chip
 
     - id: EB_Contract_T5
       name: "${dev} Info: Contract T5"
@@ -552,7 +550,7 @@ modbus_controller:
       filters:
         - multiply: 0.001
       unit_of_measurement: "kVA"
-      icon: mdi:info
+      icon: mdi:chip
 
     - id: EB_Contract_T6
       name: "${dev} Info: Contract T6"
@@ -564,7 +562,19 @@ modbus_controller:
       filters:
         - multiply: 0.001
       unit_of_measurement: "kVA"
-      icon: mdi:info
+      icon: mdi:chip
+
+    - id: EB_Contract_T7
+      name: "${dev} Info: Contract T7"
+      address: 0x000C
+      offset: 24
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: "kVA"
+      icon: mdi:chip 
 
 # eof 0x000C
 
@@ -578,7 +588,7 @@ modbus_controller:
       address: 0x0001
       offset: 0
       register_count: 1
-      raw_encode: COMMA
+      raw_encode: HEXBYTES
       response_size: 12
       icon: mdi:chip
 
