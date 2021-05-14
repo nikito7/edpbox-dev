@@ -1,3 +1,6 @@
+# Config for three phase meter.
+# ESP32 is recommended!
+
 substitutions:
 
   dev: EB1
@@ -489,6 +492,82 @@ modbus_controller:
 
 # eof 0x0026
 
+# begin 0x000C
+
+    - id: EB_Contract_T1
+      name: "${dev} Info: Contract T1"
+      address: 0x000C
+      offset: 0
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: "kVA"
+      icon: mdi:info
+
+    - id: EB_Contract_T2
+      name: "${dev} Info: Contract T2"
+      address: 0x000C
+      offset: 4
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: "kVA"
+      icon: mdi:info
+
+    - id: EB_Contract_T3
+      name: "${dev} Info: Contract T3"
+      address: 0x000C
+      offset: 8
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: "kVA"
+      icon: mdi:info
+
+    - id: EB_Contract_T4
+      name: "${dev} Info: Contract T4"
+      address: 0x000C
+      offset: 12
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: "kVA"
+      icon: mdi:info
+
+    - id: EB_Contract_T5
+      name: "${dev} Info: Contract T5"
+      address: 0x000C
+      offset: 16
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: "kVA"
+      icon: mdi:info
+
+    - id: EB_Contract_T6
+      name: "${dev} Info: Contract T6"
+      address: 0x000C
+      offset: 20
+      modbus_functioncode: "read_input_registers"
+      value_type: U_DWORD
+      accuracy_decimals: 2
+      filters:
+        - multiply: 0.001
+      unit_of_measurement: "kVA"
+      icon: mdi:info
+
+# eof 0x000C
+
 ### ### ### 
 
   text_sensors:
@@ -504,7 +583,7 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EBX4
-      name: "${dev} Firmware Core" 
+      name: "${dev} Info: Firmware Core" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0004
       offset: 0
@@ -514,7 +593,7 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EBX5
-      name: "${dev} Firmware App" 
+      name: "${dev} Info: Firmware App" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0005
       offset: 0
@@ -524,7 +603,7 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EBX6
-      name: "${dev} Firmware Com"
+      name: "${dev} Info: Firmware Com"
       modbus_functioncode: "read_input_registers" 
       address: 0x0006
       offset: 0
@@ -534,23 +613,13 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EB_Tariff
-      name: "${dev} 0d000B Tariff"
+      name: "${dev} 0x000B Tariff"
       modbus_functioncode: "read_input_registers"
       address: 0x000B
       offset: 0
       register_count: 1
       raw_encode: COMMA
       response_size: 2
-      icon: mdi:chip
-
-    - id: EB_0x000C
-      name: "${dev} 0x000C"
-      modbus_functioncode: "read_input_registers"
-      address: 0x000C
-      offset: 0
-      register_count: 1
-      raw_encode: HEXBYTES
-      response_size: 4
       icon: mdi:chip
 
     - id: EBDCP
