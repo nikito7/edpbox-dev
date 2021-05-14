@@ -1,4 +1,4 @@
-Info:
+# Info
 
 https://github.com/martgras/esphome/discussions
 
@@ -10,10 +10,13 @@ https://github.com/martgras/esphome/tree/modbus_component/esphome/components/mod
 
 ```pip install https://github.com/martgras/esphome/archive/refs/heads/modbus_component.zip```
 
-HA:
+# HA
 
 ![img1](img1.jpg)
 
-ESPHOME:
+![img3](img3.jpg)
+
+# ESPHOME
 
 ![img2](img2.jpg)
+
