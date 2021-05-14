@@ -17,10 +17,11 @@ sensor eb1esphm:
         value_template: >-
           {% set ya = states('sensor.eb1_x1_clock').split(',')[1] %}
           {% set yb = states('sensor.eb1_x1_clock').split(',')[2] %}
-          {% set yc = ya + yb %}
+          {% set yc = ya|int(ya,16) + yb|int(yb,16) %}
+          {% set yd = yc|int(yc,2) %}
           {% set d = states('sensor.eb1_x1_clock').split(',')[3]|int %}
           {% set e = states('sensor.eb1_x1_clock').split(',')[4]|int %}
-          {{ yc|int + "-" + '{0:02d}'.format(d) + "-" + '{0:02d}'.format(e) }}
+          {{ yd + "-" + '{0:02d}'.format(d) + "-" + '{0:02d}'.format(e) }}
         icon_template: mdi:calendar
 
 # EOF
