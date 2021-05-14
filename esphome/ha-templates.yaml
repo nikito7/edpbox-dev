@@ -10,6 +10,6 @@ sensor eb1esphm:
           {% set mm = states('sensor.eb1_x1_clock').split(',')[6] %}
           {% set ss = states('sensor.eb1_x1_clock').split(',')[7] %}
           {{ hh + ":" + mm + ":" + ss }}
-        icon_template: mdi:timer
+        icon_template: mdi:clock
 
 # EOF
