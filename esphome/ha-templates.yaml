@@ -17,7 +17,7 @@ sensor eb1esphm:
         value_template: >-
           {% set hh = states('sensor.eb1_x1_clock')[7]|int %}
           {% set mm = states('sensor.eb1_x1_clock')[8]|string %}
-          {% set ss = states('sensor.eb1_x1_clock')[9]|chr %}
+          {% set ss = states('sensor.eb1_x1_clock')[9]|string %}
           {{ hh + mm + ss }}
         icon_template: mdi:clock
 
