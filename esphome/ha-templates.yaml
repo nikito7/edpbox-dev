@@ -3,9 +3,13 @@ sensor eb1esphm:
   - platform: template
     sensors:
 
+      eb1_clock_date:
+        friendly_name: "EB1 Clock Date"
+        value_template: >-
+          {{ states('sensor.eb1_x1_clock').split(',')[1][2] + ":" + states('sensor.eb1_x1_clock').split(',')[3] + ":" + states('sensor.eb1_x1_clock').split(',')[4] }}
+
       eb1_clock_time:
         friendly_name: "EB1 Clock Time"
         value_template: >-
-          {{ {states('sensor.eb1_x1_clock').split(',')[5]|ord}:{states('sensor.eb1_x1_clock').split(',')[6]|ord}:{states('sensor.eb1_x1_clock').split(',')[7]|ord} }}
-
+          {{ states('sensor.eb1_x1_clock').split(',')[5] + ":" + states('sensor.eb1_x1_clock').split(',')[6] + ":" + states('sensor.eb1_x1_clock').split(',')[7] }}
 
