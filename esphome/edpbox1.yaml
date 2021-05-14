@@ -16,7 +16,7 @@ esphome:
   on_boot:
     priority: -500
     then:
-      - delay: 10s
+      - delay: 5s
       - switch.turn_on: edpbox_polling
 
 interval:
@@ -494,7 +494,7 @@ modbus_controller:
   text_sensors:
 
     - id: EBX1
-      name: "${dev} X1 Clock" 
+      name: "${dev} X01 Clock" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0001
       offset: 0
@@ -533,23 +533,23 @@ modbus_controller:
       response_size: 6
       icon: mdi:chip
 
+    - id: EB_Tariff
+      name: "${dev} X0B Tariff"
+      modbus_functioncode: "read_input_registers"
+      address: 0x000B
+      offset: 0
+      register_count: 1
+      raw_encode: HEXBYTES
+      response_size: 2
+      icon: mdi:chip
+
     - id: EBDCP
-      name: "${dev} Status DCP"
+      name: "${dev} X84 DCP"
       modbus_functioncode: "read_input_registers" 
       address: 0x0084
       offset: 0
       register_count: 1
-      raw_encode: COMMA
-      response_size: 2
-      icon: mdi:chip
-
-    - id: EBTariff
-      name: "${dev} Active Tariff"
-      modbus_functioncode: "read_input_registers" 
-      address: 0x000B
-      offset: 0
-      register_count: 1
-      raw_encode: COMMA
+      raw_encode: HEXBYTES
       response_size: 2
       icon: mdi:chip
 
