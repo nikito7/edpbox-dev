@@ -6,10 +6,13 @@ sensor eb1esphm:
       eb1_clock_date:
         friendly_name: "EB1 Clock Date"
         value_template: >-
-          {{ states('sensor.eb1_x1_clock').split(',')[1][2] + ":" + states('sensor.eb1_x1_clock').split(',')[3] + ":" + states('sensor.eb1_x1_clock').split(',')[4] }}
+          {{ states('sensor.eb1_x1_clock').split(',')[0][1] + "/" + states('sensor.eb1_x1_clock').split(',')[2] + "/" + states('sensor.eb1_x1_clock').split(',')[3] }}
+        icon: mdi:calendar
 
       eb1_clock_time:
         friendly_name: "EB1 Clock Time"
         value_template: >-
           {{ states('sensor.eb1_x1_clock').split(',')[5] + ":" + states('sensor.eb1_x1_clock').split(',')[6] + ":" + states('sensor.eb1_x1_clock').split(',')[7] }}
+        icon: mdi:clock
 
+# EOF
