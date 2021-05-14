@@ -15,9 +15,6 @@ sensor eb1esphm:
       eb1_clock_date:
         friendly_name: "EB1 Clock Date"
         value_template: >-
-          {% set a = states('sensor.eb1_x1_clock').split(',')[1] %}
-          {% set b = states('sensor.eb1_x1_clock').split(',')[2] %}
-          {% set c = a + b | int %}
           {% set d = states('sensor.eb1_x1_clock').split(',')[3]|int %}
           {% set e = states('sensor.eb1_x1_clock').split(',')[4]|int %}
           {{ '{0:02d}'.format(d) + "-" + '{0:02d}'.format(e) }}
