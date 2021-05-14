@@ -16,12 +16,12 @@ esphome:
   on_boot:
     priority: -500
     then:
-      - delay: 5s
+      - delay: 10s
       - switch.turn_on: edpbox_polling
 
 interval:
 
-  - interval: 9s
+  - interval: 7s
     then:
       - lambda: |-
           if (id(edpbox_polling).state) {
@@ -117,7 +117,7 @@ uart:
 modbus_controller:
 
   uart_id: modbus_serial
-  command_throttle: 1000ms
+  command_throttle: 500ms
   id: edpbox
   update_interval: never
   address: 0x1
@@ -531,6 +531,26 @@ modbus_controller:
       register_count: 1
       raw_encode: NONE
       response_size: 6
+      icon: mdi:chip
+
+    - id: EBDCP
+      name: "${dev} Status DCP"
+      modbus_functioncode: "read_input_registers" 
+      address: 0x0084
+      offset: 0
+      register_count: 1
+      raw_encode: COMMA
+      response_size: 2
+      icon: mdi:chip
+
+    - id: EBTariff
+      name: "${dev} Active Tariff"
+      modbus_functioncode: "read_input_registers" 
+      address: 0x000B
+      offset: 0
+      register_count: 1
+      raw_encode: COMMA
+      response_size: 2
       icon: mdi:chip
 
 #######
