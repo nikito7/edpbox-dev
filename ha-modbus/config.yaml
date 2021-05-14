@@ -24,7 +24,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        register_size: 12
+        custom_size: 12
         structure: ">H7BhB"
 
       - name: "RTU1 X4"
@@ -34,7 +34,7 @@ modbus:
         input_type: input
         count: 3
         data_type: string
-        register_size: 6
+        custom_size: 6
 
       - name: "RTU1 X11"
         # 0B # Tarifa
@@ -52,7 +52,7 @@ modbus:
         input_type: input
         count: 2
         data_type: custom
-        register_size: 4
+        custom_size: 4
         structure: ">2L"
 
       - name: "RTU1 X108"
