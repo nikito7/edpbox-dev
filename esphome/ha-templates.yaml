@@ -15,7 +15,10 @@ sensor eb1esphm:
       eb1_clock_time:
         friendly_name: "EB1 Clock Time"
         value_template: >-
-          {{ states('sensor.eb1_x1_clock').split(',')[5] + ":" + states('sensor.eb1_x1_clock').split(',')[6] + ":" + states('sensor.eb1_x1_clock').split(',')[7] }}
+          {% set hh = states('sensor.eb1_x1_clock').split(',')[5]|int %}
+          {% set mm = states('sensor.eb1_x1_clock').split(',')[6]|int %}
+          {% set ss = states('sensor.eb1_x1_clock').split(',')[7]|int %}
+          {{ hh + ":" + mm + ":" + ss }}
         icon_template: mdi:clock
 
 # EOF
