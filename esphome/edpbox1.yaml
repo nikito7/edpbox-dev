@@ -494,7 +494,7 @@ modbus_controller:
   text_sensors:
 
     - id: EBX1
-      name: "${dev} X01 Clock" 
+      name: "${dev} 0x0001 Clock" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0001
       offset: 0
@@ -534,24 +534,35 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EB_Tariff
-      name: "${dev} X0B Tariff"
+      name: "${dev} 0d000B Tariff"
       modbus_functioncode: "read_input_registers"
       address: 0x000B
       offset: 0
       register_count: 1
-      raw_encode: HEXBYTES
+      raw_encode: COMMA
       response_size: 2
       icon: mdi:chip
 
+    - id: EB_0x000C
+      name: "${dev} 0x000C"
+      modbus_functioncode: "read_input_registers"
+      address: 0x000C
+      offset: 0
+      register_count: 1
+      raw_encode: HEXBYTES
+      response_size: 4
+      icon: mdi:chip
+
     - id: EBDCP
-      name: "${dev} X84 DCP"
+      name: "${dev} 0x0084 DCP"
       modbus_functioncode: "read_input_registers" 
       address: 0x0084
       offset: 0
       register_count: 1
-      raw_encode: HEXBYTES
+      raw_encode: COMMA
       response_size: 2
       icon: mdi:chip
+
 
 #######
 # eof #
