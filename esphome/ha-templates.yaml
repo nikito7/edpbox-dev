@@ -15,10 +15,12 @@ sensor eb1esphm:
       eb1_clock_date:
         friendly_name: "EB1 Clock Date"
         value_template: >-
-          {% set yy = states('sensor.eb1_x1_clock').split(',')[0:3]|join(',')|int %}
-          {% set mm = states('sensor.eb1_x1_clock').split(',')[3]|int %}
-          {% set dd = states('sensor.eb1_x1_clock').split(',')[4]|int %}
-          {{ yy + "-" + '{0:02d}'.format(mm) + "-" + '{0:02d}'.format(dd) }}
+          {% set a = states('sensor.eb1_x1_clock').split(',')[1] %}
+          {% set a = states('sensor.eb1_x1_clock').split(',')[2] %}
+          {% set c = a + b | int %}
+          {% set d = states('sensor.eb1_x1_clock').split(',')[3]|int %}
+          {% set e = states('sensor.eb1_x1_clock').split(',')[4]|int %}
+          {{ c + "-" + '{0:02d}'.format(d) + "-" + '{0:02d}'.format(e) }}
         icon_template: mdi:clock
 
 # EOF
