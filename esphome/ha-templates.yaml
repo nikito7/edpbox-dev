@@ -6,19 +6,19 @@ sensor eb1esphm:
       eb1_clock_date:
         friendly_name: "EB1 Clock Date"
         value_template: >-
-          {% set x = states('sensor.eb1_x1_clock').split(',')[0][1]|int %}
-          {% set y = states('sensor.eb1_x1_clock').split(',')[2]|int %}
-          {% set z = states('sensor.eb1_x1_clock').split(',')[3]|int %}
-          {{ x + "-" + u + "-" + z }}
+          {% set x = states('sensor.eb1_x1_clock').split(',')[0][1] %}
+          {% set y = states('sensor.eb1_x1_clock').split(',')[2] %}
+          {% set z = states('sensor.eb1_x1_clock').split(',')[3] %}
+          {{ x "-" u "-" z }}
         icon_template: mdi:calendar
 
       eb1_clock_time:
         friendly_name: "EB1 Clock Time"
         value_template: >-
-          {% set hh = states('sensor.eb1_x1_clock').split(',')[5]|int %}
-          {% set mm = states('sensor.eb1_x1_clock').split(',')[6]|int %}
-          {% set ss = states('sensor.eb1_x1_clock').split(',')[7]|int %}
-          {{ hh + ":" + mm + ":" + ss }}
+          {% set hh = states('sensor.eb1_x1_clock').split(',')[5] %}
+          {% set mm = states('sensor.eb1_x1_clock').split(',')[6] %}
+          {% set ss = states('sensor.eb1_x1_clock').split(',')[7] %}
+          {{ hh ":" mm ":" ss }}
         icon_template: mdi:clock
 
 # EOF
