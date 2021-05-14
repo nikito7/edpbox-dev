@@ -1,0 +1,11 @@
+sensor eb1esphm:
+
+  - platform: template
+    sensors:
+
+      eb1_clock_time:
+        friendly_name: "EB1 Clock Time"
+        value_template: >-
+          {{ {states('sensor.eb1_x1_clock').split(',')[5]|ord}:{states('sensor.eb1_x1_clock').split(',')[6]|ord}:{states('sensor.eb1_x1_clock').split(',')[7]|ord} }}
+
+
