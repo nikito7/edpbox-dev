@@ -117,7 +117,7 @@ uart:
 modbus_controller:
 
   uart_id: modbus_serial
-  command_throttle: 1500ms
+  command_throttle: 1000ms
   id: edpbox
   update_interval: never
   address: 0x1
@@ -129,6 +129,10 @@ modbus_controller:
 # sorted:
 # - voltage
 # - current
+# nao remover registers intermedios de um range
+# apenas desativar com, internal: true
+# dont remove middle registers of a range
+# disable it only with, internal: true
 
     - id: VolL1
       name: "${dev} Voltage L1"
@@ -497,6 +501,7 @@ modbus_controller:
       register_count: 1
       raw_encode: COMMA
       response_size: 12
+      icon: mdi:chip
 
     - id: EBX4
       name: "${dev} Firmware Core" 
@@ -506,6 +511,7 @@ modbus_controller:
       register_count: 1
       raw_encode: NONE
       response_size: 6
+      icon: mdi:chip
 
     - id: EBX5
       name: "${dev} Firmware App" 
@@ -515,6 +521,7 @@ modbus_controller:
       register_count: 1
       raw_encode: NONE
       response_size: 6
+      icon: mdi:chip
 
     - id: EBX6
       name: "${dev} Firmware Com"
@@ -524,6 +531,7 @@ modbus_controller:
       register_count: 1
       raw_encode: NONE
       response_size: 6
+      icon: mdi:chip
 
 #######
 # eof #
