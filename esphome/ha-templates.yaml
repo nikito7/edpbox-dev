@@ -7,7 +7,7 @@
         friendly_name: "EB1 Clock"
         unique_id: eb1_clock
         value_template: >-
-          {% if states('sensor.eb1_0x0001_clock') %}
+          {% if states('sensor.eb1_0x0001_clock').split(',')[5] %}
             {% set hh = states('sensor.eb1_0x0001_clock').split(',')[5]|int %}
             {% set mm = states('sensor.eb1_0x0001_clock').split(',')[6]|int %}
             {% set ss = states('sensor.eb1_0x0001_clock').split(',')[7]|int %}
