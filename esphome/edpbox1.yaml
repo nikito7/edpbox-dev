@@ -528,54 +528,6 @@ modbus_controller:
       unit_of_measurement: "kVA"
       icon: mdi:chip
 
-    - id: EB_Contract_T4
-      name: "${dev} Info: Contract T4"
-      address: 0x000C
-      offset: 12
-      modbus_functioncode: "read_input_registers"
-      value_type: U_DWORD
-      accuracy_decimals: 2
-      filters:
-        - multiply: 0.001
-      unit_of_measurement: "kVA"
-      icon: mdi:chip
-
-    - id: EB_Contract_T5
-      name: "${dev} Info: Contract T5"
-      address: 0x000C
-      offset: 16
-      modbus_functioncode: "read_input_registers"
-      value_type: U_DWORD
-      accuracy_decimals: 2
-      filters:
-        - multiply: 0.001
-      unit_of_measurement: "kVA"
-      icon: mdi:chip
-
-    - id: EB_Contract_T6
-      name: "${dev} Info: Contract T6"
-      address: 0x000C
-      offset: 20
-      modbus_functioncode: "read_input_registers"
-      value_type: U_DWORD
-      accuracy_decimals: 2
-      filters:
-        - multiply: 0.001
-      unit_of_measurement: "kVA"
-      icon: mdi:chip
-
-    - id: EB_Contract_T7
-      name: "${dev} Info: Contract T7"
-      address: 0x000C
-      offset: 24
-      modbus_functioncode: "read_input_registers"
-      value_type: U_DWORD
-      accuracy_decimals: 2
-      filters:
-        - multiply: 0.001
-      unit_of_measurement: "kVA"
-      icon: mdi:chip 
-
 # eof 0x000C
 
 ### ### ### 
@@ -588,7 +540,7 @@ modbus_controller:
       address: 0x0001
       offset: 0
       register_count: 1
-      raw_encode: HEXBYTES
+      raw_encode: COMMA
       response_size: 12
       icon: mdi:chip
 
