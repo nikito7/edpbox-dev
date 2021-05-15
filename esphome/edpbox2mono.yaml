@@ -110,7 +110,8 @@ modbus_controller:
   uart_id: modbus_serial
   command_throttle: 500ms
   id: edpbox
-  update_interval: never
+  update_interval: never # if set here,
+  # remove all polling code above
   address: 0x1
   sensors:
 
