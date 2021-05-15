@@ -111,7 +111,7 @@ modbus_controller:
 
 ### ### ###
 
-# 0x006C range
+# 0x006C
 
     - id: VolL1
       name: "${dev} Voltage L1"
@@ -137,7 +137,9 @@ modbus_controller:
       accuracy_decimals: 1
       device_class: current
 
-# 0x0079 range
+# eof 6C
+
+# begin 0x0079
 
     - id: ActPower
       name: "${dev} Active Power"
@@ -172,6 +174,8 @@ modbus_controller:
         - multiply: 0.001
       device_class: power_factor
 
+# eof 79
+
 # 0x007F
 
     - id: Freq
@@ -185,6 +189,8 @@ modbus_controller:
       filters:
         - multiply: 0.1
       icon: "mdi:pulse"
+
+# eof 7F
 
 # begin 0x0016
 
@@ -224,6 +230,8 @@ modbus_controller:
       unit_of_measurement: "kVAr"
       icon: "mdi:transmission-tower"
 
+# eof 16
+
 # begin 0x0026
 
     - id: TotEneT1
@@ -262,12 +270,14 @@ modbus_controller:
       unit_of_measurement: "kWh"
       icon: "mdi:transmission-tower"
 
+# eof 26
+
 ### ### ### 
 
   text_sensors:
 
     - id: EBX1
-      name: "${dev} X1 Clock" 
+      name: "${dev} 0x0001 Clock" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0001
       offset: 0
@@ -277,7 +287,7 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EBX4
-      name: "${dev} Firmware Core" 
+      name: "${dev} Info: Firmware Core" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0004
       offset: 0
@@ -287,7 +297,7 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EBX5
-      name: "${dev} Firmware App" 
+      name: "${dev} Info: Firmware App" 
       modbus_functioncode: "read_input_registers" 
       address: 0x0005
       offset: 0
@@ -297,7 +307,7 @@ modbus_controller:
       icon: mdi:chip
 
     - id: EBX6
-      name: "${dev} Firmware Com"
+      name: "${dev} Info: Firmware Com"
       modbus_functioncode: "read_input_registers" 
       address: 0x0006
       offset: 0
