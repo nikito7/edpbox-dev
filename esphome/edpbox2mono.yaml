@@ -1,3 +1,8 @@
+# Config for mono phase meter.
+# See eb1 yaml for complete config.
+# ESP32 is recommended.
+# Disable logger for esp8266.
+
 substitutions:
 
   dev: EB2
