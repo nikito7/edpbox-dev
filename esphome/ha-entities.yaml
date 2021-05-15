@@ -1,17 +1,15 @@
 type: entities
 entities:
-  - entity: sensor.eb1_esp_uptime
-  - entity: sensor.eb1_esp_signal
+# esp
   - entity: sensor.eb1_esp_free_heap
     secondary_info: last-updated
   - entity: switch.eb1_esp_polling
   - entity: switch.eb1_esp_restart
-  - entity: sensor.eb1_clock_time
+  - entity: sensor.eb1_esp_signal
+  - entity: sensor.eb1_esp_uptime
+# meter va
+  - entity: sensor.eb1_clock
     secondary_info: last-updated
-  - entity: sensor.eb1_firmware_app
-    secondary_info: last-updated
-  - entity: sensor.eb1_firmware_com
-  - entity: sensor.eb1_firmware_core
   - entity: sensor.eb1_voltage_l1
     secondary_info: last-updated
   - entity: sensor.eb1_voltage_l2
@@ -21,28 +19,36 @@ entities:
   - entity: sensor.eb1_current_l1
   - entity: sensor.eb1_current_l2
   - entity: sensor.eb1_current_l3
+# power
   - entity: sensor.eb1_active_power
     secondary_info: last-updated
   - entity: sensor.eb1_active_power_l1
   - entity: sensor.eb1_active_power_l2
   - entity: sensor.eb1_active_power_l3
+  - entity: sensor.eb1_frequency
   - entity: sensor.eb1_power_factor
     secondary_info: last-updated
   - entity: sensor.eb1_power_factor_l1
   - entity: sensor.eb1_power_factor_l2
   - entity: sensor.eb1_power_factor_l3
-  - entity: sensor.eb1_frequency
+# total
   - entity: sensor.eb1_total_energy_t1_vazio
-    secondary_info: last-updated
   - entity: sensor.eb1_total_energy_t2_ponta
-    secondary_info: last-updated
   - entity: sensor.eb1_total_energy_t3_cheia
-    secondary_info: last-updated
-  - entity: sensor.eb1_total_energy_import
   - entity: sensor.eb1_total_energy_export
+  - entity: sensor.eb1_total_energy_import
   - entity: sensor.eb1_total_energy_q1
   - entity: sensor.eb1_total_energy_q2
   - entity: sensor.eb1_total_energy_q3
   - entity: sensor.eb1_total_energy_q4
-
+# misc
+  - entity: sensor.eb1_0x000b_tariff
+  - entity: sensor.eb1_0x0084_dcp
+# info
+  - entity: sensor.eb1_info_contract_t1
+  - entity: sensor.eb1_info_contract_t2
+  - entity: sensor.eb1_info_contract_t3
+  - entity: sensor.eb1_info_firmware_app
+  - entity: sensor.eb1_info_firmware_com
+  - entity: sensor.eb1_info_firmware_core
 # EOF
