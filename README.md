@@ -1,4 +1,4 @@
-Intro to modbus and edpbox:
+Intro:
 
 [```Home_Assistant_EDP_Box``` 🇵🇹](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box/)
 
