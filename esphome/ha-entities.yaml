@@ -42,8 +42,8 @@ entities:
   - entity: sensor.eb1_total_energy_q3
   - entity: sensor.eb1_total_energy_q4
 # misc
-  - entity: sensor.eb1_0x000b_tariff
-  - entity: sensor.eb1_0x0084_dcp
+  - entity: sensor.eb1_tariff
+  - entity: sensor.eb1_dcp
 # info
   - entity: sensor.eb1_info_contract_t1
   - entity: sensor.eb1_info_contract_t2
@@ -51,4 +51,7 @@ entities:
   - entity: sensor.eb1_info_firmware_app
   - entity: sensor.eb1_info_firmware_com
   - entity: sensor.eb1_info_firmware_core
+# debug
+  - entity: sensor.eb1_0x000b_tariff
+  - entity: sensor.eb1_0x0084_dcp
 # EOF
