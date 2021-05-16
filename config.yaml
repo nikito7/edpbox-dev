@@ -18,7 +18,7 @@ utility_meter:
 #sensor edpbox1a: !include edpbox1a.yaml
 #sensor edpbox1b: !include edpbox1b.yaml
 sensor eb2mono: !include eb2mono.yaml
-sensor eb1esphm: !include esphome_eb1.yaml
+sensor eb1esphm: !include esphome-eb1.yaml
 
 ###
 ##
