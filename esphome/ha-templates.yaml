@@ -10,7 +10,9 @@
           {% set hh = states('sensor.eb1_0x0001_clock').split(',')[5]|int %}
           {% set mm = states('sensor.eb1_0x0001_clock').split(',')[6]|int %}
           {% set ss = states('sensor.eb1_0x0001_clock').split(',')[7]|int %}
-          {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+          {% if hh && mm && ss %}
+            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+          {% endif %}
         icon_template: mdi:clock
 
       eb1_dcp:
