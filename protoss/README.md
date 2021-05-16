@@ -1,1 +1,1 @@
-[[ ../ha-modbus/ ]](../ha-modbus)
+[[ ../modbus/ ]](../modbus)
