@@ -8,10 +8,12 @@ recorder:
 utility_meter:
 
   daily_energy_eb1:
+    friendly_name: EB1 Daily Energy
     source: sensor.eb1_total_energy_import
     cycle: daily
 
   daily_energy_eb2:
+    friendly_name: EB2 Daily Energy
     source: sensor.eb2_total_energy_import
     cycle: daily
 
