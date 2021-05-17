@@ -2,20 +2,16 @@ Info:
 
 https://github.com/martgras/esphome/discussions 🇬🇧
 
-https://github.com/martgras/esphome/tree/modbus_component
+https://github.com/martgras/esphome/tree/modbus_component 🇬🇧
 
 https://github.com/martgras/esphome/archive/refs/heads/modbus_component.zip
 
 
 Usage:
 
-```
-pip uninstall esphome
-```
+```pip uninstall esphome```
 
-```
-pip install https://github.com/martgras/esphome/archive/refs/heads/modbus_component.zip
-```
+```pip install https://github.com/nikito7/edpbox/raw/dev/esphome/backup/esphome-21.5.17.zip```
 
 Home Assistant:
 
