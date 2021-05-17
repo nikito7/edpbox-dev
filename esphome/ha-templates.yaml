@@ -10,9 +10,7 @@
           {% set hh = states('sensor.eb1_0x0001_clock').split(',')[5]|int %}
           {% set mm = states('sensor.eb1_0x0001_clock').split(',')[6]|int %}
           {% set ss = states('sensor.eb1_0x0001_clock').split(',')[7]|int %}
-          {% if ss %}
-            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
-          {% endif %}
+          {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
         icon_template: mdi:clock
 
       eb1_dcp:
@@ -20,11 +18,7 @@
         unique_id: eb1_dcp
         value_template: >-
           {% set x = states('sensor.eb1_0x0084_dcp').split(',')[0]|string %}
-          {% if x %}
-            {{ "S" + x }}
-          {% else %}
-            {{ "ERR" }}
-          {% endif %}
+          {{ "S" + x }}
         icon_template: mdi:chip
 
       eb1_tariff:
@@ -32,11 +26,7 @@
         unique_id: eb1_tariff
         value_template: >-
           {% set x = states('sensor.eb1_0x000B_tariff').split(',')[0]|string %}
-          {% if x %}
-            {{ "T" + x }}
-          {% else %}
-            {{ "ERR" }}
-          {% endif %}
+          {{ "T" + x }}
         icon_template: mdi:calendar
 
 # EOF
