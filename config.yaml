@@ -2,8 +2,8 @@
 
 recorder:
 
-  purge_keep_days: 1
-  # external db recommended 
+  purge_keep_days: 8
+  # external db recommended
   db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
 
 utility_meter:
