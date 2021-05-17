@@ -5,12 +5,12 @@ usage:
 ```yaml
   count: 1
   data_type: custom
-  custom_size: 4
+  register_size: 4
   structure: ">L"
 ```
 
 ```yaml
   count: 1
   data_type: string
-  custom_size: 12
+  register_size: 12
 ```
