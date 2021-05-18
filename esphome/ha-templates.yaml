@@ -18,7 +18,9 @@
         unique_id: eb1_dcp
         value_template: >-
           {% set x = states('sensor.eb1_0x0084_dcp').split(',')[0]|string %}
-          {{ "S" + x }}
+          {% if x == 0 or x == 1 or x == 2 %}
+            {{ x }}
+          {% endif %}
         icon_template: mdi:chip
 
       eb1_tariff:
@@ -26,7 +28,13 @@
         unique_id: eb1_tariff
         value_template: >-
           {% set x = states('sensor.eb1_0x000B_tariff').split(',')[0]|string %}
-          {{ "T" + x }}
+          {% if x == 1 %}
+            {{ "Vazio" }}
+          {% elif x == 2 %}
+            {{ "Ponta" }}
+          {% elif x == 3 %}
+            {{ "Cheias" }}
+          {% endif %}
         icon_template: mdi:calendar
 
 # EOF
