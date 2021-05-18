@@ -385,6 +385,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kWh"
       icon: "mdi:transmission-tower"
+      skip_updates: 10
 
     - id: TotEneExp
       name: "${dev} Total Energy Export"
@@ -397,6 +398,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kWh"
       icon: "mdi:transmission-tower"
+      skip_updates: 10
 
     - id: TotEneQ1
       name: "${dev} Total Energy Q1"
@@ -409,6 +411,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kVAr"
       icon: "mdi:transmission-tower"
+      skip_updates: 10
 
     - id: TotEneQ2
       name: "${dev} Total Energy Q2"
@@ -422,6 +425,7 @@ modbus_controller:
       unit_of_measurement: "kVAr"
       icon: "mdi:transmission-tower"
       #internal: true # disable sensor
+      skip_updates: 10
 
     - id: TotEneQ3
       name: "${dev} Total Energy Q3"
@@ -435,6 +439,7 @@ modbus_controller:
       unit_of_measurement: "kVAr"
       icon: "mdi:transmission-tower"
       #internal: true # disable sensor
+      skip_updates: 10
 
     - id: TotEneQ4
       name: "${dev} Total Energy Q4"
@@ -447,6 +452,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kVAr"
       icon: "mdi:transmission-tower"
+      skip_updates: 10
 
 # eof 0x0016
 
@@ -463,6 +469,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kWh"
       icon: "mdi:transmission-tower"
+      skip_updates: 10
 
     - id: TotEneT2
       name: "${dev} Total Energy T2 Ponta"
@@ -475,6 +482,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kWh"
       icon: "mdi:transmission-tower"
+      skip_updates: 10 
 
     - id: TotEneT3
       name: "${dev} Total Energy T3 Cheias"
@@ -487,6 +495,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kWh"
       icon: "mdi:transmission-tower"
+      skip_updates: 10
 
 # eof 0x0026
 
@@ -503,6 +512,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kVA"
       icon: mdi:chip
+      skip_updates: 10 
 
     - id: EB_Contract_T2
       name: "${dev} Info: Contract T2"
@@ -515,6 +525,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kVA"
       icon: mdi:chip
+      skip_updates: 10 
 
     - id: EB_Contract_T3
       name: "${dev} Info: Contract T3"
@@ -527,6 +538,7 @@ modbus_controller:
         - multiply: 0.001
       unit_of_measurement: "kVA"
       icon: mdi:chip
+      skip_updates: 10 
 
 # eof 0x000C
 
@@ -553,6 +565,7 @@ modbus_controller:
       raw_encode: NONE
       response_size: 6
       icon: mdi:chip
+      skip_updates: 23
 
     - id: EBX5
       name: "${dev} Info: Firmware App" 
@@ -563,6 +576,7 @@ modbus_controller:
       raw_encode: NONE
       response_size: 6
       icon: mdi:chip
+      skip_updates: 23 
 
     - id: EBX6
       name: "${dev} Info: Firmware Com"
@@ -573,6 +587,7 @@ modbus_controller:
       raw_encode: NONE
       response_size: 6
       icon: mdi:chip
+      skip_updates: 23 
 
     - id: EB_Tariff
       name: "${dev} 0x000B Tariff"
