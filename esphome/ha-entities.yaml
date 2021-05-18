@@ -7,7 +7,7 @@ entities:
   - entity: switch.eb1_esp_restart
   - entity: sensor.eb1_esp_signal
   - entity: sensor.eb1_esp_uptime
-# meter va
+# meter va clock
   - entity: sensor.eb1_clock
     secondary_info: last-updated
   - entity: sensor.eb1_voltage_l1
@@ -34,7 +34,7 @@ entities:
 # total
   - entity: sensor.eb1_total_energy_t1_vazio
   - entity: sensor.eb1_total_energy_t2_ponta
-  - entity: sensor.eb1_total_energy_t3_cheia
+  - entity: sensor.eb1_total_energy_t3_cheias
   - entity: sensor.eb1_total_energy_export
   - entity: sensor.eb1_total_energy_import
   - entity: sensor.eb1_total_energy_q1
