@@ -17,7 +17,7 @@
         friendly_name: "EB1 DCP"
         unique_id: eb1_dcp
         value_template: >-
-          {% set x = states('sensor.eb1_0x0084_dcp').split(',')[0]|string %}
+          {% set x = states('sensor.eb1_0x0084_dcp').split(',')[0]|int %}
           {% if x == 0 or x == 1 or x == 2 %}
             {{ x }}
           {% endif %}
@@ -27,7 +27,7 @@
         friendly_name: "EB1 Tariff"
         unique_id: eb1_tariff
         value_template: >-
-          {% set x = states('sensor.eb1_0x000B_tariff').split(',')[0]|string %}
+          {% set x = states('sensor.eb1_0x000B_tariff').split(',')[0]|int %}
           {% if x == 1 %}
             {{ "Vazio" }}
           {% elif x == 2 %}
