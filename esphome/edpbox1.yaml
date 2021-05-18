@@ -477,7 +477,7 @@ modbus_controller:
       icon: "mdi:transmission-tower"
 
     - id: TotEneT3
-      name: "${dev} Total Energy T3 Cheia"
+      name: "${dev} Total Energy T3 Cheias"
       address: 0x0026
       offset: 8
       modbus_functioncode: "read_input_registers"
