@@ -7,10 +7,14 @@
         friendly_name: "EB1 Clock"
         unique_id: eb1_clock
         value_template: >-
-          {% set hh = states('sensor.eb1_0x0001_clock').split(',')[5]|int %}
-          {% set mm = states('sensor.eb1_0x0001_clock').split(',')[6]|int %}
-          {% set ss = states('sensor.eb1_0x0001_clock').split(',')[7]|int %}
-          {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+          {% if states('sensor.eb1_0x0001_clock').split(',')[1]|int %}
+            {% set hh = states('sensor.eb1_0x0001_clock').split(',')[5]|int %}
+            {% set mm = states('sensor.eb1_0x0001_clock').split(',')[6]|int %}
+            {% set ss = states('sensor.eb1_0x0001_clock').split(',')[7]|int %}
+            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+          {% else %}
+            {{ }}
+          {% endif %}
         icon_template: mdi:clock
 
       eb1_dcp:
@@ -20,6 +24,8 @@
           {% set x = states('sensor.eb1_0x0084_dcp').split(',')[0]|int %}
           {% if x == 0 or x == 1 or x == 2 %}
             {{ x }}
+          {% else %}
+            {{ }}
           {% endif %}
         icon_template: mdi:chip
 
@@ -34,6 +40,8 @@
             {{ "Ponta" }}
           {% elif x == 3 %}
             {{ "Cheias" }}
+          {% else %}
+            {{ }}
           {% endif %}
         icon_template: mdi:calendar
 
