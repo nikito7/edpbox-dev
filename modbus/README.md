@@ -15,3 +15,12 @@ usage:
   register_size: 12
 ```
 
+install:
+
+```mkdir -p /config/custom_components/modbus/```
+
+```cd /config/custom_components/modbus/```
+
+```wget ...```
+
+```unzip ...```
