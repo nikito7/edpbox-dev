@@ -27,7 +27,7 @@ wget $url
 unzip $file
 rm $file
 ls -a
-sed -ie 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"`${file}`\",/g' manifest.json
+sed -ie 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"21.3\",/g' manifest.json
 ```
 
 ```
