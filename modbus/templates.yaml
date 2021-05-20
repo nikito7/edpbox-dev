@@ -1,4 +1,4 @@
-sensor rtu1x:
+# sensor eb9modbus: !include eb9modbus.yaml
 
   - platform: template
     sensors:
