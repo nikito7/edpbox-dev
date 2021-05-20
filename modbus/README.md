@@ -17,10 +17,11 @@ usage:
 
 install:
 
-```mkdir -p /config/custom_components/modbus/```
-
-```cd /config/custom_components/modbus/```
-
-```wget ...```
-
-```unzip ...```
+```js
+url=
+file=
+mkdir -p /config/custom_components/modbus/
+cd /config/custom_components/modbus/
+wget $url
+unzip $file
+```
