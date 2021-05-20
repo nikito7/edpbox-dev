@@ -25,5 +25,6 @@ cd /config/custom_components/modbus/
 wget $url
 unzip $file
 rm $file
+ls -la
 echo done
 ```
