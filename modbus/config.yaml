@@ -42,7 +42,7 @@ modbus:
         data_type: custom
         structure: ">Bx"
 
-      - name: "EB9 0x0016 Total IE"
+      - name: "EB9 0x0016 Total"
         slave: 1
         address: 22
         input_type: input
