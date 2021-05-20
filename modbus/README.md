@@ -18,10 +18,12 @@ usage:
 install:
 
 ```js
-url=
-file=
+url=https://github.com/nikito7/edpbox/raw/dev/modbus/modbus-v21.3.zip
+file=modbus-v21.3.zip
 mkdir -p /config/custom_components/modbus/
 cd /config/custom_components/modbus/
 wget $url
 unzip $file
+rm $file
+echo done
 ```
