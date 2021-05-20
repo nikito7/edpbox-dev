@@ -3,46 +3,46 @@
   - platform: template
     sensors:
 
-      rtu1_vol_l1:
-        friendly_name: "RTU1 Voltage L1"
+      eb9_vol_l1:
+        friendly_name: "EB9 Voltage L1"
         value_template: >-
-          {{ states('sensor.rtu1_x108').split(',')[0] | int / 10 }}
+          {{ states('sensor.eb9_0x006c_va').split(',')[0] | int / 10 }}
         unit_of_measurement: "V"
 
-      rtu1_cur_l1:
-        friendly_name: "RTU1 Current L1"
+      eb9_cur_l1:
+        friendly_name: "EB9 Current L1"
         value_template: >-
-          {{ states('sensor.rtu1_x108').split(',')[1] | int / 10 }}
+          {{ states('sensor.eb9_0x006c_va').split(',')[1] | int / 10 }}
         unit_of_measurement: "A"
 
-      rtu1_vol_l2:
-        friendly_name: "RTU1 Voltage L2"
+      eb9_vol_l2:
+        friendly_name: "EB9 Voltage L2"
         value_template: >-
-          {{ states('sensor.rtu1_x108').split(',')[2] | int / 10 }}
+          {{ states('sensor.eb9_0x006c_va').split(',')[2] | int / 10 }}
         unit_of_measurement: "V"
 
-      rtu1_cur_l2:
-        friendly_name: "RTU1 Current L2"
+      eb9_cur_l2:
+        friendly_name: "EB9 Current L2"
         value_template: >-
-          {{ states('sensor.rtu1_x108').split(',')[3] | int / 10 }}
+          {{ states('sensor.eb9_0x006c_va').split(',')[3] | int / 10 }}
         unit_of_measurement: "A"
 
-      rtu1_vol_l3:
-        friendly_name: "RTU1 Voltage L3"
+      eb9_vol_l3:
+        friendly_name: "EB9 Voltage L3"
         value_template: >-
-          {{ states('sensor.rtu1_x108').split(',')[4] | int / 10 }}
+          {{ states('sensor.eb9_0x006c_va').split(',')[4] | int / 10 }}
         unit_of_measurement: "V"
 
-      rtu1_cur_l3:
-        friendly_name: "RTU1 Current L3"
+      eb9_cur_l3:
+        friendly_name: "EB9 Current L3"
         value_template: >-
-          {{ states('sensor.rtu1_x108').split(',')[5] | int / 10 }}
+          {{ states('sensor.eb9_0x006c_va').split(',')[5] | int / 10 }}
         unit_of_measurement: "A"
 
-      rtu1_cur_total:
-        friendly_name: "RTU1 Current total"
+      eb9_cur_total:
+        friendly_name: "EB9 Current total"
         value_template: >-
-          {{ states('sensor.rtu1_x108').split(',')[6] | int / 10 }}
+          {{ states('sensor.eb9_0x006c_va').split(',')[6] | int / 10 }}
         unit_of_measurement: "A"
 
 # EOF
