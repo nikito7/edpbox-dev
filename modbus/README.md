@@ -18,8 +18,8 @@ usage:
 install:
 
 ```js
-url=https://github.com/nikito7/edpbox/raw/dev/modbus/modbus-v21.3.zip
-file=modbus-v21.3.zip
+url=https://github.com/nikito7/edpbox/raw/dev/modbus/modbus-v21.4.zip
+file=modbus-v21.4.zip
 mkdir -p /config/custom_components/modbus/
 rm -rf /config/custom_components/modbus/*
 cd /config/custom_components/modbus/
@@ -27,7 +27,7 @@ wget $url
 unzip $file
 rm $file
 ls -a
-sed -ie 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"21.3\",/g' manifest.json
+sed -ie 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"21.4\",/g' manifest.json
 ```
 
 ```
