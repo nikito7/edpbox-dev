@@ -27,8 +27,5 @@ wget $url
 unzip $file
 rm $file
 sed -ie 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"21.4\",/g' manifest.json
-```
-
-```
-ha core restart
+echo do: ha core restart
 ```
