@@ -26,7 +26,6 @@ cd /config/custom_components/modbus/
 wget $url
 unzip $file
 rm $file
-ls -a
 sed -ie 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"21.4\",/g' manifest.json
 ```
 
