@@ -6,43 +6,64 @@
       eb9_vol_l1:
         friendly_name: "EB9 Voltage L1"
         value_template: >-
-          {{ states('sensor.eb9_0x006c_va').split(',')[0] | int / 10 }}
+          {% set x = states('sensor.eb9_0x006c_va').split(',')[0] | int %}
+          {% if x %}
+            {{ x / 10 }}
+          {% endif %}
         unit_of_measurement: "V"
 
       eb9_cur_l1:
         friendly_name: "EB9 Current L1"
         value_template: >-
-          {{ states('sensor.eb9_0x006c_va').split(',')[1] | int / 10 }}
+          {% set x = states('sensor.eb9_0x006c_va').split(',')[1] | int %}
+          {% if x %}
+            {{ x / 10 }}
+          {% endif %}
         unit_of_measurement: "A"
 
       eb9_vol_l2:
         friendly_name: "EB9 Voltage L2"
         value_template: >-
-          {{ states('sensor.eb9_0x006c_va').split(',')[2] | int / 10 }}
+          {% set x = states('sensor.eb9_0x006c_va').split(',')[2] | int %}
+          {% if x %}
+            {{ x / 10 }}
+          {% endif %}
         unit_of_measurement: "V"
 
       eb9_cur_l2:
         friendly_name: "EB9 Current L2"
         value_template: >-
-          {{ states('sensor.eb9_0x006c_va').split(',')[3] | int / 10 }}
+          {% set x = states('sensor.eb9_0x006c_va').split(',')[3] | int %}
+          {% if x %}
+            {{ x / 10 }}
+          {% endif %}
         unit_of_measurement: "A"
 
       eb9_vol_l3:
         friendly_name: "EB9 Voltage L3"
         value_template: >-
-          {{ states('sensor.eb9_0x006c_va').split(',')[4] | int / 10 }}
+          {% set x = states('sensor.eb9_0x006c_va').split(',')[4] | int %}
+          {% if x %}
+            {{ x / 10 }}
+          {% endif %}
         unit_of_measurement: "V"
 
       eb9_cur_l3:
         friendly_name: "EB9 Current L3"
         value_template: >-
-          {{ states('sensor.eb9_0x006c_va').split(',')[5] | int / 10 }}
+          {% set x = states('sensor.eb9_0x006c_va').split(',')[5] | int %}
+          {% if x %}
+            {{ x / 10 }}
+          {% endif %}
         unit_of_measurement: "A"
 
       eb9_cur_total:
         friendly_name: "EB9 Current total"
         value_template: >-
-          {{ states('sensor.eb9_0x006c_va').split(',')[6] | int / 10 }}
+          {% set x = states('sensor.eb9_0x006c_va').split(',')[6] | int %}
+          {% if x %}
+            {{ x / 10 }}
+          {% endif %}
         unit_of_measurement: "A"
 
 # EOF
