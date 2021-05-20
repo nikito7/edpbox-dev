@@ -21,11 +21,15 @@ install:
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/modbus-v21.3.zip
 file=modbus-v21.3.zip
 mkdir -p /config/custom_components/modbus/
-rm /config/custom_components/modbus/*
+rm -rf /config/custom_components/modbus/*
 cd /config/custom_components/modbus/
 wget $url
 unzip $file
 rm $file
 ls -a
-echo done
+sed -ie 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"${file}\",/g' manifest.json
+```
+
+```
+ha core restart
 ```
