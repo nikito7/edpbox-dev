@@ -8,7 +8,7 @@ logger:
 
 modbus:
 
-  - name: edpbox1
+  - name: edpbox9
     type: rtuovertcp
     host: 10.1.0.40
     port: 8888
@@ -17,27 +17,24 @@ modbus:
   
     sensors:
 
-      - name: "RTU1 X1"
-        # 01 # Clock
+      - name: "EB9 0x0001 Clock"
         slave: 1
         address: 1
         input_type: input
         count: 1
         data_type: custom
-        custom_size: 12
+        register_size: 12
         structure: ">H7BhB"
 
-      - name: "RTU1 X4"
-        # 04-06 # Firmwares
+      - name: "EB9 0x0004 Firmware"
         slave: 1
         address: 4
         input_type: input
         count: 3
         data_type: string
-        custom_size: 6
+        register_size: 6
 
-      - name: "RTU1 X11"
-        # 0B # Tarifa
+      - name: "EB9 0x000B Tariff"
         slave: 1
         address: 11
         input_type: input
@@ -45,25 +42,21 @@ modbus:
         data_type: custom
         structure: ">Bx"
 
-      - name: "RTU1 X22"
-        # 16-17 # Total I/E Kwh
+      - name: "EB9 0x0016 Total IE"
         slave: 1
         address: 22
         input_type: input
         count: 2
         data_type: custom
-        custom_size: 4
+        register_size: 4
         structure: ">2L"
 
-      - name: "RTU1 X108"
-        # 6C-72 # V/A
+      - name: "EB9 0x006C VA"
         slave: 1
         address: 108
         input_type: input
         count: 7
         data_type: custom
         structure: ">7H"
-
-####
 
 # EOF
