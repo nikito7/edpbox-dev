@@ -7,8 +7,7 @@
         friendly_name: "EB1 Clock"
         unique_id: eb1_clock
         value_template: >-
-          {% set x = states('sensor.eb1_0x0001_clock')|string %}
-          {% if x|length > 3 %}
+          {% if states('sensor.eb1_0x0001_clock') %}
             {% set hh = states('sensor.eb1_0x0001_clock').split(',')[5]|int %}
             {% set mm = states('sensor.eb1_0x0001_clock').split(',')[6]|int %}
             {% set ss = states('sensor.eb1_0x0001_clock').split(',')[7]|int %}
@@ -32,11 +31,11 @@
         value_template: >-
           {% set x = states('sensor.eb1_0x000B_tariff').split(',')[0]|string %}
           {% if x == "1" %}
-            {{ "Vz" }}
+            {{ "V" }}
           {% elif x == "2" %}
-            {{ "Pt" }}
+            {{ "P" }}
           {% elif x == "3" %}
-            {{ "Ch" }}
+            {{ "C" }}
           {% endif %}
         icon_template: mdi:calendar
 
