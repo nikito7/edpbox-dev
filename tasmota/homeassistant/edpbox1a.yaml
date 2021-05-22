@@ -25,29 +25,15 @@
     device_class: signal_strength
 
   - platform: mqtt
-    name: "EB1 Clock H"
-    unique_id: EB1_Clock_H
+    name: "EB1 Clock"
+    unique_id: EB1_Clock
     state_topic: "tele/edpbox1/SENSOR"
-    value_template: '{{ value_json.EB1.Clock_H|int }}'
+    value_template: >-
+        {% set hh = value_json.EB1.Clock_H|int %}
+        {% set mm = value_json.EB1.Clock_M|int %}
+        {% set ss = value_json.EB1.Clock_S|int %}
+        {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
     icon: mdi:clock
-    unit_of_measurement: h
-
-  - platform: mqtt
-    name: "EB1 Clock M"
-    unique_id: EB1_Clock_M
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: '{{ value_json.EB1.Clock_M|int }}'
-    icon: mdi:clock
-    unit_of_measurement: m
-
-  - platform: mqtt
-    name: "EB1 Clock S"
-    unique_id: EB1_Clock_S
-    state_topic: "tele/edpbox1/SENSOR"
-    value_template: '{{ value_json.EB1.Clock_S|int }}'
-    icon: mdi:clock
-    unit_of_measurement: "s"
-    expire_after: 30
 
   - platform: mqtt
     name: "EB1 Voltage L1"
