@@ -19,6 +19,7 @@ print script: up %upsecs%
 >M 1
 
 ; change to your gpios and mode
+; power off is required 
 ;  v   v             v
 +1,19,mN1,1,9600,EB1,18,9,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
 
