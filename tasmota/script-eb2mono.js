@@ -5,7 +5,7 @@
 >BS
 
 smlj=0
-tper=90
+tper=20
 
 =>sensor53 r
 
@@ -23,6 +23,7 @@ print script: up %upsecs%
 >M 1
 
 ; change to your gpios and mode
+; power off is required 
 ;  v   v             v
 +1,18,mN2,1,9600,EB2,19,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
 
@@ -62,7 +63,7 @@ print script: up %upsecs%
 
 1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TotEneT1,1
 1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TotEneT2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheia ,kWh,TotEneT3,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TotEneT3,1
 
 1,=h<hr>
 
