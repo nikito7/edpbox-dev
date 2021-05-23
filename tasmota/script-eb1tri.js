@@ -1,5 +1,7 @@
 >D
 
+; EB1 tri
+
 >BS
 
 smlj=0
@@ -71,7 +73,7 @@ print script: up %upsecs%
 
 1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TotEneT1,1
 1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TotEneT2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheia ,kWh,TotEneT3,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TotEneT3,1
 
 1,=h<hr>
 
