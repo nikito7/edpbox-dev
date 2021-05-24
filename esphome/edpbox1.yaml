@@ -112,8 +112,8 @@ sensor:
 uart:
 
   id: modbus_serial
+  rx_pin: 19 # from tasmota, first rx
   tx_pin: 18
-  rx_pin: 19
   baud_rate: 9600
   stop_bits: 1
 
