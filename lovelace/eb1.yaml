@@ -5,11 +5,11 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb1_esp_free_heap
     secondary_info: last-updated
+# switch: esphome only
   - entity: sensor.eb1_esp_signal
     secondary_info: last-updated
   - entity: switch.eb1_esp_restart
     secondary_info: last-updated
-# esphome only
   - entity: switch.eb1_esp_polling
     secondary_info: last-updated
 # meter va clock
@@ -72,7 +72,7 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb1_dcp
     secondary_info: last-updated
-# esphome only
+# info: esphome only
   - entity: sensor.eb1_info_contract_t1
     secondary_info: last-updated
   - entity: sensor.eb1_info_contract_t2
@@ -85,7 +85,7 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb1_info_firmware_core
     secondary_info: last-updated
-# debug
+# debug: esphome only
   - entity: sensor.eb1_0x000b_tariff
     secondary_info: last-updated
   - entity: sensor.eb1_0x0084_dcp
