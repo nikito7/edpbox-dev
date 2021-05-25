@@ -24,35 +24,20 @@
     unit_of_measurement: "dB"
     device_class: signal_strength
 
-# eof esp
-
   - platform: mqtt
-    name: "EB2 Clock H"
-    unique_id: EB2_Clock_H
+    name: "EB2 Clock"
+    unique_id: EB2_Clock
     state_topic: "tele/edpbox2/SENSOR"
-    value_template: '{{ value_json.EB2.Clock_H|int }}'
+    value_template: >-
+        {% set hh = value_json.EB2.Clock_H|int %}
+        {% set mm = value_json.EB2.Clock_M|int %}
+        {% set ss = value_json.EB2.Clock_S|int %}
+        {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
     icon: mdi:clock
-    unit_of_measurement: h
-
-  - platform: mqtt
-    name: "EB2 Clock M"
-    unique_id: EB2_Clock_M
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: '{{ value_json.EB2.Clock_M|int }}'
-    icon: mdi:clock
-    unit_of_measurement: m
-
-  - platform: mqtt
-    name: "EB2 Clock S"
-    unique_id: EB2_Clock_S
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: '{{ value_json.EB2.Clock_S|int }}'
-    icon: mdi:clock
-    unit_of_measurement: "s"
 
   - platform: mqtt
     name: "EB2 Voltage L1"
-    unique_id: eb2ten1
+    unique_id: eb2_vol_l1
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.VolL1|float }}
@@ -60,17 +45,8 @@
     device_class: voltage 
 
   - platform: mqtt
-    name: "EB2 Current"
-    unique_id: eb2cursum
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: >-
-        {{ value_json.EB2.Current|float }}
-    unit_of_measurement: "A"
-    device_class: current
-
-  - platform: mqtt
     name: "EB2 Current L1"
-    unique_id: eb2cur1
+    unique_id: eb2_cur_l1
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.CurL1|float }}
@@ -79,7 +55,7 @@
 
   - platform: mqtt
     name: "EB2 Power Factor"
-    unique_id: eb2pfactor
+    unique_id: eb2_powfac
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.PowFac|float }}
@@ -87,17 +63,8 @@
     device_class: power_factor
 
   - platform: mqtt
-    name: "EB2 Power Factor L1"
-    unique_id: eb2pfactorl1
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: >-
-        {{ value_json.EB2.PowFacL1|float }}
-    unit_of_measurement: "pu"
-    device_class: power_factor
-
-  - platform: mqtt
     name: "EB2 Active Power"
-    unique_id: eb2powerp1
+    unique_id: eb2_actpow
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.ActPow|int }}
@@ -105,17 +72,8 @@
     device_class: power
 
   - platform: mqtt
-    name: "EB2 Active Power L1"
-    unique_id: eb2powerl1
-    state_topic: "tele/edpbox2/SENSOR"
-    value_template: >-
-        {{ value_json.EB2.ActPowL1|int }}
-    unit_of_measurement: "W"
-    device_class: power
-
-  - platform: mqtt
     name: "EB2 Frequency"
-    unique_id: eb2freq
+    unique_id: eb2_freq
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.Frequency|float }}
@@ -124,7 +82,7 @@
 
   - platform: mqtt
     name: "EB2 Total Energy T1 Vazio"
-    unique_id: eb2energy1
+    unique_id: eb2_totenet1
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.TotEneT1|float }}
@@ -133,7 +91,7 @@
    
   - platform: mqtt
     name: "EB2 Total Energy T2 Ponta"
-    unique_id: eb2energy2
+    unique_id: eb2_totenet2
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.TotEneT2|float }}
@@ -142,7 +100,7 @@
     
   - platform: mqtt
     name: "EB2 Total Energy T3 Cheia"
-    unique_id: eb2energy3
+    unique_id: eb2_totenet3
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.TotEneT3|float }}
@@ -151,7 +109,7 @@
 
   - platform: mqtt
     name: "EB2 Total Energy Import"
-    unique_id: eb2energysum
+    unique_id: eb2_toteneimp
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.TotEneImp|float }}
@@ -160,7 +118,7 @@
 
   - platform: mqtt
     name: "EB2 Total Energy Export"
-    unique_id: eb2energyexport
+    unique_id: eb2_toteneexp
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
         {{ value_json.EB2.TotEneExp|float }}
