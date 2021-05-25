@@ -1,17 +1,21 @@
 >D
 
-; EB2 mono
+; EB2 mono kaifa example
 
 >BS
 
 smlj=0
-tper=20
+tper=17
 
 =>sensor53 r
 
+>R
+
+smlj=0
+
 >S
 
-if upsecs==50
+if upsecs==55
 then
 smlj=1
 endif
@@ -25,7 +29,7 @@ print script: up %upsecs%
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,18,mN2,1,9600,EB2,19,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
++1,18,mN1,1,9600,EB2,19,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006
 
 ; 01
 
@@ -47,7 +51,7 @@ print script: up %upsecs%
 
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,16
 
-1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,16
+1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,19
 
 1,=h<hr>
 
