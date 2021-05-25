@@ -1,13 +1,17 @@
 >D
 
-; EB1 tri
+; EB1 tri sagemcom example
 
 >BS
 
 smlj=0
-tper=10
+tper=17
 
 =>sensor53 r
+
+>R
+
+smlj=0
 
 >S
 
