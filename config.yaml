@@ -16,6 +16,16 @@ utility_meter:
     source: sensor.eb2_total_energy_import
     cycle: daily
 
+sensor mariadb:
+
+- platform: sql
+  db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
+  queries:
+    - name: DB size mB
+      query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / (1024 * 1024), 1) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
+      column: "value"
+      unit_of_measurement: mB
+
 sensor edpbox1a: !include tasmota-eb1a.yaml
 sensor edpbox1b: !include tasmota-eb1b.yaml
 sensor eb2mono: !include tasmota-eb2mono.yaml
