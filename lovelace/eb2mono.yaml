@@ -29,6 +29,6 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb2_total_energy_t2_ponta
     secondary_info: last-updated
-  - entity: sensor.eb2_total_energy_t3_cheia
+  - entity: sensor.eb2_total_energy_t3_cheias
     secondary_info: last-updated
 # EOF
