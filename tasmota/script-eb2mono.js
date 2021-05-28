@@ -9,18 +9,12 @@ tper=17
 
 =>sensor53 r
 
->R
-
-smlj=0
-
 >S
 
-if upsecs==50
+if upsecs==60
 then
 smlj=1
 endif
-
-print script: up %upsecs%
 
 >M 1
 
