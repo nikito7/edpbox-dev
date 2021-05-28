@@ -20,15 +20,16 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb2_frequency
     secondary_info: last-updated
-# Total
-  - entity: sensor.eb2_total_energy_import
-    secondary_info: last-updated
-  - entity: sensor.eb2_total_energy_export
-    secondary_info: last-updated
+# Total Tariffs
   - entity: sensor.eb2_total_energy_t1_vazio
     secondary_info: last-updated
   - entity: sensor.eb2_total_energy_t2_ponta
     secondary_info: last-updated
   - entity: sensor.eb2_total_energy_t3_cheias
+    secondary_info: last-updated
+# Total
+  - entity: sensor.eb2_total_energy_import
+    secondary_info: last-updated
+  - entity: sensor.eb2_total_energy_export
     secondary_info: last-updated
 # EOF
