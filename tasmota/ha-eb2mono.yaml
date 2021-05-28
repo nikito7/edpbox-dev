@@ -99,7 +99,7 @@
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB2 Total Energy T3 Cheia"
+    name: "EB2 Total Energy T3 Cheias"
     unique_id: eb2_totenet3
     state_topic: "tele/edpbox2/SENSOR"
     value_template: >-
