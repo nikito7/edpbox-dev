@@ -2,7 +2,7 @@
 
 ; EB2 mono kaifa example
 
->BS
+>B
 
 smlj=0
 tper=17
