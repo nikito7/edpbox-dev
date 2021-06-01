@@ -1,4 +1,4 @@
-# edpbox1a
+# edpbox1
 
   - platform: mqtt
     name: "EB1 ESP Uptime"
@@ -151,6 +151,111 @@
         {{ value_json.EB1.PowFacL3|float }}
     unit_of_measurement: "pu"
     device_class: power_factor
+
+  - platform: mqtt
+    name: "EB1 Active Power"
+    unique_id: ebpowerp1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.ActPow|int }}
+    unit_of_measurement: "W"
+    device_class: power
+
+  - platform: mqtt
+    name: "EB1 Active Power L1"
+    unique_id: ebpowerl1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.ActPowL1|int }}
+    unit_of_measurement: "W"
+    device_class: power
+
+  - platform: mqtt
+    name: "EB1 Active Power L2"
+    unique_id: ebpowerl2
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.ActPowL2|int }}
+    unit_of_measurement: "W"
+    device_class: power
+
+  - platform: mqtt
+    name: "EB1 Active Power L3"
+    unique_id: ebpowerl3
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.ActPowL3|int }}
+    unit_of_measurement: "W"
+    device_class: power
+
+  - platform: mqtt
+    name: "EB1 Frequency"
+    unique_id: ebfreq
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {{ value_json.EB1.Frequency|float }}
+    unit_of_measurement: "Hz"
+    icon: mdi:pulse
+
+  - platform: mqtt
+    name: "EB1 Total Energy T1 Vazio"
+    unique_id: ebenergy1
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB1.TotEneT1|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+   
+  - platform: mqtt
+    name: "EB1 Total Energy T2 Ponta"
+    unique_id: ebenergy2
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB1.TotEneT2|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+    
+  - platform: mqtt
+    name: "EB1 Total Energy T3 Cheias"
+    unique_id: ebenergy3
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB1.TotEneT3|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kWh"
+    icon: mdi:transmission-tower
+
+  - platform: mqtt
+    name: "EB1 Total Energy Import"
+    unique_id: ebenergysum
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB1.TotEneImp|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kWh"
+    device_class: energy
+
+  - platform: mqtt
+    name: "EB1 Total Energy Export"
+    unique_id: ebenergyexport
+    state_topic: "tele/edpbox1/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB1.TotEneExp|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kWh"
+    device_class: energy
 
 ###
 ##
