@@ -35,7 +35,7 @@ sensor mariadb:
 sensor eb1tri: !include tasmota-eb1tri.yaml
 sensor eb2mono: !include tasmota-eb2mono.yaml
 #sensor eb1esphm: !include esphome-eb1.yaml
-#sensor modbus1eb: !include modbus-eb1.yaml
+#sensor modbus1eb: !include modbus-eb9.yaml
 
 ###
 ##
