@@ -9,13 +9,9 @@ usage:
   structure: ">L"
 ```
 
-```yaml
-  count: 1
-  data_type: string
-  register_size: 12
-```
-
 install:
+
+HA <= 2021.5
 
 ```js
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/modbus-v21.4.zip
