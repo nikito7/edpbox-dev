@@ -5,13 +5,13 @@
 >B
 
 smlj=0
-tper=17
+tper=11
 
 =>sensor53 r
 
 >S
 
-if upsecs==60
+if upsecs==59
 then
 smlj=1
 endif
