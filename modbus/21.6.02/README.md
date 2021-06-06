@@ -1,5 +1,3 @@
-HA >= 2021.6
-
 usage:
 
 ```yaml
@@ -23,5 +21,3 @@ rm $file
 sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"21.6.02\",/g' manifest.json
 echo do: ha core restart
 ```
-
-BETA
