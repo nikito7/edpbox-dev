@@ -37,7 +37,7 @@
 
   - platform: mqtt
     name: "EB1 Voltage L1"
-    unique_id: ebten1
+    unique_id: EB1_VolL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.VolL1|float }}
@@ -46,7 +46,7 @@
 
   - platform: mqtt
     name: "EB1 Voltage L1-10"
-    unique_id: ebten110
+    unique_id: EB1_VolL1_10
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.VolL1 - 10 | float }}
@@ -55,7 +55,7 @@
 
   - platform: mqtt
     name: "EB1 Voltage L2"
-    unique_id: ebten2
+    unique_id: EB1_VolL2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.VolL2|float }}
@@ -64,7 +64,7 @@
 
   - platform: mqtt
     name: "EB1 Voltage L3"
-    unique_id: ebten3
+    unique_id: EB1_VolL3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.VolL3|float }}
@@ -73,7 +73,7 @@
 
   - platform: mqtt
     name: "EB1 Voltage L3+10"
-    unique_id: ebten310
+    unique_id: EB1_VolL3_10
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.VolL3 + 10 | float }}
@@ -82,7 +82,7 @@
 
   - platform: mqtt
     name: "EB1 Current"
-    unique_id: ebcursum
+    unique_id: EB1_Current
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.Current|float }}
@@ -91,7 +91,7 @@
 
   - platform: mqtt
     name: "EB1 Current L1"
-    unique_id: ebcur1
+    unique_id: EB1_CurL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.CurL1|float }}
@@ -100,7 +100,7 @@
 
   - platform: mqtt
     name: "EB1 Current L2"
-    unique_id: ebcur2
+    unique_id: EB1_CurL2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.CurL2|float }} 
@@ -109,7 +109,7 @@
 
   - platform: mqtt
     name: "EB1 Current L3"
-    unique_id: ebcur3
+    unique_id: EB1_CurL3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.CurL3|float }}
@@ -118,7 +118,7 @@
 
   - platform: mqtt
     name: "EB1 Power Factor"
-    unique_id: ebpfactor
+    unique_id: EB1_PowFac
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.PowFac|float }}
@@ -127,7 +127,7 @@
 
   - platform: mqtt
     name: "EB1 Power Factor L1"
-    unique_id: ebpfactorl1
+    unique_id: EB1_PowFacL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.PowFacL1|float }}
@@ -136,7 +136,7 @@
 
   - platform: mqtt
     name: "EB1 Power Factor L2"
-    unique_id: ebpfactorl2
+    unique_id: EB1_LowFacL2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.PowFacL2|float }}
@@ -145,7 +145,7 @@
 
   - platform: mqtt
     name: "EB1 Power Factor L3"
-    unique_id: ebpfactorl3
+    unique_id: EB1_PowFacL3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.PowFacL3|float }}
@@ -154,7 +154,7 @@
 
   - platform: mqtt
     name: "EB1 Active Power"
-    unique_id: ebpowerp1
+    unique_id: EB1_ActPow
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {{ value_json.EB1.ActPow|int }}
