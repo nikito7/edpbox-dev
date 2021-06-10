@@ -15,12 +15,10 @@ utility_meter:
   daily_energy_eb1:
     source: sensor.eb1_total_energy_import
     cycle: daily
-    unique_id: daily_ene_eb1
 
   daily_energy_eb2:
     source: sensor.eb2_total_energy_import
     cycle: daily
-    unique_id: daily_ene_eb2
 
 ###
 
@@ -33,7 +31,6 @@ sensor mariadb:
       query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / (1024 * 1024), 1) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
       column: "value"
       unit_of_measurement: "MB"
-      icon: "mdi:database"
       unique_id: "maria_db_size"
 
 ###
