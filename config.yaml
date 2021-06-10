@@ -3,11 +3,11 @@
 recorder:
 
   purge_keep_days: 8
-  # external db recommended
   db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
   exclude:
     entities:
-      - sun.sun
+      - sensor.eb1_clock
+      - sensor.eb2_clock
 ###
 
 utility_meter:
@@ -15,10 +15,12 @@ utility_meter:
   daily_energy_eb1:
     source: sensor.eb1_total_energy_import
     cycle: daily
+    unique_id: daily_ene_eb1
 
   daily_energy_eb2:
     source: sensor.eb2_total_energy_import
     cycle: daily
+    unique_id: daily_ene_eb2
 
 ###
 
@@ -27,10 +29,12 @@ sensor mariadb:
 - platform: sql
   db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
   queries:
-    - name: DB Size MB
+    - name: "DB Size MB"
       query: 'SELECT table_schema "database", Round(Sum(data_length + index_length) / (1024 * 1024), 1) "value" FROM information_schema.tables WHERE table_schema="homeassistant" GROUP BY table_schema;'
       column: "value"
-      unit_of_measurement: MB
+      unit_of_measurement: "MB"
+      icon: "mdi:database"
+      unique_id: "maria_db_size"
 
 ###
 
