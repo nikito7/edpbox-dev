@@ -1,5 +1,5 @@
-# Adapt from EB1.
-# edpbox1
+# Based on eb1tri
+# May not be updated
 
   - platform: mqtt
     name: "EB1 ESP Uptime"
