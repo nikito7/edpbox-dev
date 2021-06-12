@@ -4,9 +4,18 @@
 
 >B
 
-tper=11
+tper=60
+smlj=0
 
 =>sensor53 r
+
+>S
+
+if upsecs==59
+then
+tper=11
+smlj=1
+endif
 
 >M 1
 
