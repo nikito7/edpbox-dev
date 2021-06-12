@@ -4,17 +4,9 @@
 
 >B
 
-smlj=0
 tper=11
 
 =>sensor53 r
-
->S
-
-if upsecs==59
-then
-smlj=1
-endif
 
 >M 1
 
