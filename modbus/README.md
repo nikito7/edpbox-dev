@@ -9,3 +9,11 @@ usage:
   structure: ">L"
 ```
 
+dev notes:
+
+```js
+sed -i '.bak' -e 's/\"name\": \"Modbus\"\
+,/\"name\": \"Modbus\",\
+\n  \"version\": \"21.6.02\",/g' \
+manifest.json
+```
