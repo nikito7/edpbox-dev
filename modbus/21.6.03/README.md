@@ -10,8 +10,8 @@
 # Install
 
 ```js
-vv=v21.6.03
-file=modbus-${vv}.zip
+vv=21.6.03
+file=modbus-v${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/${vv}/${file}
 mkdir -p /config/custom_components/modbus/
 rm -rf /config/custom_components/modbus/*
