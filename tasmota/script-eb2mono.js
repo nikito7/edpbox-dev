@@ -22,7 +22,7 @@ endif
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,18,mN1,1,9600,EB2,19,30,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002
++1,18,mN1,1,9600,EB2,19,30,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104002D0003
 
 ; 01
 
@@ -63,6 +63,14 @@ endif
 ; 7F
 
 1,01040aUUuu@i5:10,Frequency ,Hz,Frequency,2
+
+1,=h<hr>
+
+; 2D
+
+1,01040CUUuuUUuu@i6:1000,Total Energy T1 Export ,kWh,TotEneT1Exp,2
+1,01040CxxxxxxxxUUuuUUuu@i6:1000,Total Energy T2 Export ,kWh,TotEneT2Exp,2
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Total Energy T3 Export ,kWh,TotEneT3Exp,2
 
 #
 
