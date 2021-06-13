@@ -9,7 +9,7 @@ usage:
   structure: ">L"
 ```
 
-dev notes:
+notes:
 
 ```js
 vv=21.6.03
