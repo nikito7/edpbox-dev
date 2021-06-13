@@ -15,6 +15,9 @@ file=modbus-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/${vv}/${file}
 mkdir -p /config/custom_components/modbus/
 rm -rf /config/custom_components/modbus/*
+cd /config/custom_components/modbus/
+pwd
+ls -la
 ```
 
 ```js
