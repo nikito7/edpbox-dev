@@ -12,7 +12,7 @@ usage:
 dev notes:
 
 ```js
-sed -i '.bak' -e \
+sed -i -e '.bak' \
 's/\"name\": \"Modbus\"\
 ,/\"name\": \"Modbus\",\n \
 \"version\": \"21.6.02\",/g' \
