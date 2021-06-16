@@ -1,7 +1,9 @@
 From tasmota to esphome:
-- delete tasmota entities first, manually.
+> - delete related yaml
+> - ```ha core restart```
+> - delete entities manually.
 
 From esphome to tasmota:
-- delete device first.
+> - delete device first
 
-Or you get new _2 entities.
+Without this you get duplicate ***_2 entities.
