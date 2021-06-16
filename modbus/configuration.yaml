@@ -9,8 +9,8 @@ logger:
 modbus:
 
   - name: edpbox9
-    type: rtuovertcp
-    host: 10.1.0.40
+    type: tcp
+    host: 10.1.0.48
     port: 8888
     timeout: 5
     delay: 1
