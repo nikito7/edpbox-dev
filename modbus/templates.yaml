@@ -10,7 +10,7 @@
             {% set mm = states('sensor.eb1_0x0001').split(',')[6] | int %}
             {% set ss = states('sensor.eb1_0x0001').split(',')[7] | int %}
             {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
-        icon: mdi:clock
+        icon_template: mdi:clock
 
 ### example ###
 
