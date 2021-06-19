@@ -12,7 +12,7 @@ modbus:
     type: tcp
     host: 10.1.0.53
     port: 8888
-    timeout: 5
+    timeout: 3
     delay: 1
   
     sensors:
