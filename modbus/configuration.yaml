@@ -1,10 +1,10 @@
 # (...)
 
-logger:
-
-  logs:
-    homeassistant.components.modbus: debug
-    pymodbus.client: debug
+#logger:
+#
+#  logs:
+#    homeassistant.components.modbus: debug
+#    pymodbus.client: debug
 
 modbus:
 
@@ -25,6 +25,7 @@ modbus:
         data_type: custom
         register_size: 12
         structure: ">H7BhB"
+        scan_interval: 5
 
       - name: "EB1 0x006C" # V/A
         slave: 1
@@ -34,6 +35,7 @@ modbus:
         data_type: custom
         register_size: 2
         structure: ">7H"
+        scan_interval: 7
 
       - name: "EB1 0x0073" # Power
         slave: 1
@@ -43,6 +45,7 @@ modbus:
         data_type: custom
         register_size: 4
         structure: ">7L"
+        scan_interval: 8
 
       - name: "EB1 0x007B" # PF
         slave: 1
@@ -52,6 +55,7 @@ modbus:
         data_type: custom
         register_size: 2
         structure: ">5H"
+        scan_interval: 9
 
       - name: "EB1 0x0026" # TotEneTx
         slave: 1
@@ -61,6 +65,7 @@ modbus:
         data_type: custom
         register_size: 4
         structure: ">3L"
+        scan_interval: 91
 
       - name: "EB1 0x0016" # TotEne I/E/Q
         slave: 1
@@ -70,6 +75,7 @@ modbus:
         data_type: custom
         register_size: 4
         structure: ">6L"
+        scan_interval: 92
 
       - name: "EB1 0x000B" # Tariff
         slave: 1
@@ -79,5 +85,6 @@ modbus:
         data_type: custom
         register_size: 2
         structure: ">Bx"
+        scan_interval: 31
 
 # EOF
