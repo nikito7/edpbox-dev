@@ -9,9 +9,4 @@ usage:
   structure: ">L"
 ```
 
-```yaml
-  count: 1
-  data_type: string
-  register_size: 6
-```
 
