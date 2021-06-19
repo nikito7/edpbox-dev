@@ -15,68 +15,90 @@
       eb1_voltage_l1:
         friendly_name: "EB1 Voltage L1"
         value_template: >-
-            {% set x = states('sensor.eb1_0x006c').split(',')[0] | int %}
+            {% set x = states('sensor.eb1_0x006c').split(',')[0] | float %}
             {% if x %}
               {{ x / 10 }}
             {% endif %}
         unit_of_measurement: "V"
         device_class: voltage
 
-      eb1_:
+      eb1_voltage_l1_10:
         friendly_name: "EB1 Voltage L1-10"
         value_template: >-
-                {{ value_json.EB1.VolL1 - 10 | float }}
+            {% set x = states('sensor.eb1_0x006c').split(',')[0] | float %}
+            {% if x %}
+              {{ x / 10 - 10 }}
+            {% endif %}
         unit_of_measurement: "V"
         device_class: voltage
 
-      eb1_:
-        friendly_name: "EB1 Voltage L2"
-        value_template: >-
-                {{ value_json.EB1.VolL2|float }}
-        unit_of_measurement: "V"
-        device_class: voltage
-
-      eb1_:
-        friendly_name: "EB1 Voltage L3"
-        value_template: >-
-                {{ value_json.EB1.VolL3|float }}
-        unit_of_measurement: "V"
-        device_class: voltage
-
-      eb1_:
-        friendly_name: "EB1 Voltage L3+10"
-        value_template: >-
-                {{ value_json.EB1.VolL3 + 10 | float }}
-        unit_of_measurement: "V"
-        device_class: voltage
-
-      eb1_:
-        friendly_name: "EB1 Current"
-        value_template: >-
-                {{ value_json.EB1.Current|float }}
-        unit_of_measurement: "A"
-        device_class: current
-
-      eb1_:
+      eb1_current_l1:
         friendly_name: "EB1 Current L1"
         value_template: >-
-                {{ value_json.EB1.CurL1|float }}
+            {% set x = states('sensor.eb1_0x006c').split(',')[1] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
         unit_of_measurement: "A"
         device_class: current
 
-      eb1_:
-        friendly_name: "EB1 Current L2"
-        unique_id: EB1_CurL2
-        state_topic: "tele/edpbox1/SENSOR"
+      eb1_voltage_l2:
+        friendly_name: "EB1 Voltage L2"
         value_template: >-
-                {{ value_json.EB1.CurL2|float }} 
+            {% set x = states('sensor.eb1_0x006c').split(',')[2] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb1_current_l2:
+        friendly_name: "EB1 Current L2"
+        value_template: >-
+            {% set x = states('sensor.eb1_0x006c').split(',')[3] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
         unit_of_measurement: "A"
         device_class: current
 
-      eb1_:
+      eb1_voltage_l3:
+        friendly_name: "EB1 Voltage L3"
+        value_template: >-
+            {% set x = states('sensor.eb1_0x006c').split(',')[4] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb1_voltage_l3_10:
+        friendly_name: "EB1 Voltage L3+10"
+        value_template: >-
+            {% set x = states('sensor.eb1_0x006c').split(',')[4] | float %}
+            {% if x %}
+              {{ x / 10 + 10 }}
+            {% endif %}       
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb1_current_l3:
         friendly_name: "EB1 Current L3"
         value_template: >-
-                {{ value_json.EB1.CurL3|float }}
+            {% set x = states('sensor.eb1_0x006c').split(',')[5] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "A"
+        device_class: current
+
+      eb1_current:
+        friendly_name: "EB1 Current"
+        value_template: >-
+            {% set x = states('sensor.eb1_0x006c').split(',')[6] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
         unit_of_measurement: "A"
         device_class: current
 
