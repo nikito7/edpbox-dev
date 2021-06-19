@@ -24,13 +24,13 @@ rm -rf /config/custom_components/modbus/*
 cd /config/custom_components/modbus/
 pwd
 ls -la
-```
-
-```js
+sleep 3
 cd /config/custom_components/modbus/
 wget $url
 unzip $file
 rm $file
+pwd
+ls -la
 ```
 
 ha core restart
