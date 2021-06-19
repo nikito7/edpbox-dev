@@ -8,6 +8,8 @@ recorder:
     entities:
       - sensor.eb1_clock
       - sensor.eb2_clock
+    entity_globs:
+      - sensor.eb1_0x*
 ###
 
 utility_meter:
@@ -34,10 +36,10 @@ sensor mariadb:
 
 ###
 
-sensor eb1tri: !include tasmota-eb1tri.yaml
-sensor eb2mono: !include tasmota-eb2mono.yaml
-#sensor eb1esphm: !include esphome-eb1.yaml
-#sensor modbus1eb: !include modbus-eb9.yaml
+#sensor eb1tas: !include tasmota-eb1tri.yaml
+sensor eb2tas: !include tasmota-eb2mono.yaml
+#sensor eb1esp: !include esphome-eb1.yaml
+sensor eb1mod: !include modbus-eb1.yaml
 
 ###
 ##
