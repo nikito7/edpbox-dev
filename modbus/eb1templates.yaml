@@ -12,6 +12,19 @@
             {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
         icon_template: mdi:clock
 
+      eb1_tariff:
+        friendly_name: "EB1 Tariff"
+        value_template: >-
+          {% set x = states('sensor.eb1_0x000b')|string %}
+          {% if x == "1" %}
+            {{ "V" }}
+          {% elif x == "2" %}
+            {{ "P" }}
+          {% elif x == "3" %}
+            {{ "C" }}
+          {% endif %}
+        icon_template: mdi:calendar
+
 # 6C
 
       eb1_voltage_l1:
