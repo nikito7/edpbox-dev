@@ -1,1 +1,1 @@
-Test 4 bytes only
+Test: 4 bytes only
