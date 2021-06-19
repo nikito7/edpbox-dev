@@ -18,7 +18,7 @@
         friendly_name: "EB1 Voltage L1"
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[0] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
         unit_of_measurement: "V"
@@ -28,7 +28,7 @@
         friendly_name: "EB1 Voltage L1-10"
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[0] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 10 - 10 }}
             {% endif %}
         unit_of_measurement: "V"
@@ -48,7 +48,7 @@
         friendly_name: "EB1 Voltage L2"
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[2] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
         unit_of_measurement: "V"
@@ -68,7 +68,7 @@
         friendly_name: "EB1 Voltage L3"
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[4] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
         unit_of_measurement: "V"
@@ -78,7 +78,7 @@
         friendly_name: "EB1 Voltage L3+10"
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[4] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 10 + 10 }}
             {% endif %}       
         unit_of_measurement: "V"
@@ -109,7 +109,7 @@
         friendly_name: "EB1 Power Factor"
         value_template: >-
             {% set x = states('sensor.eb1_0x007b').split(',')[0] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 1000 }}
             {% endif %}
         unit_of_measurement: "pu"
@@ -129,7 +129,7 @@
         friendly_name: "EB1 Power Factor L2"
         value_template: >-
             {% set x = states('sensor.eb1_0x007b').split(',')[2] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 1000 }}
             {% endif %}
         unit_of_measurement: "pu"
@@ -139,7 +139,7 @@
         friendly_name: "EB1 Power Factor L3"
         value_template: >-
             {% set x = states('sensor.eb1_0x007b').split(',')[3] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 1000 }}
             {% endif %}
         unit_of_measurement: "pu"
@@ -149,92 +149,105 @@
         friendly_name: "EB1 Frequency"
         value_template: >-
             {% set x = states('sensor.eb1_0x007b').split(',')[4] | float %}
-            {% if x %}
+            {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
         unit_of_measurement: "Hz"
         icon_template: mdi:pulse
 
-      eb1_:
-        friendly_name: "EB1 Active Power"
-        value_template: >-
-                {{ value_json.EB1.ActPow|int }}
-        unit_of_measurement: "W"
-        device_class: power
+# 73
 
-      eb1_:
+      eb1_active_power_l1:
         friendly_name: "EB1 Active Power L1"
         value_template: >-
-                {{ value_json.EB1.ActPowL1|int }}
+            {% set x = states('sensor.eb1_0x0073').split(',')[0] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
         unit_of_measurement: "W"
         device_class: power
 
-      eb1_:
+      eb1_active_power_l2:
         friendly_name: "EB1 Active Power L2"
         value_template: >-
-                {{ value_json.EB1.ActPowL2|int }}
+            {% set x = states('sensor.eb1_0x0073').split(',')[2] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
         unit_of_measurement: "W"
         device_class: power
 
-      eb1_:
+      eb1_active_power_l3:
         friendly_name: "EB1 Active Power L3"
-        unique_id: EB1_ActLowL3
-        state_topic: "tele/edpbox1/SENSOR"
         value_template: >-
-                {{ value_json.EB1.ActPowL3|int }}
+            {% set x = states('sensor.eb1_0x0073').split(',')[4] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
         unit_of_measurement: "W"
         device_class: power
 
+      eb1_active_power:
+        friendly_name: "EB1 Active Power"
+        value_template: >-
+            {% set x = states('sensor.eb1_0x0073').split(',')[6] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
+        unit_of_measurement: "W"
+        device_class: power
 
-      eb1_:
+# 26
+
+      eb1_total_energy_t1_vazio:
         friendly_name: "EB1 Total Energy T1 Vazio"
         value_template: >-
-                {% set x = value_json.EB1.TotEneT1|float %}
-                {% if x > 0 %}
-                  {{ x }}
-                {% endif %}
+            {% set x = states('sensor.eb1_0x0026').split(',')[0] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
    
-      eb1_:
+      eb1_total_energy_t2_ponta:
         friendly_name: "EB1 Total Energy T2 Ponta"
-        unique_id: EB1_TotEneT2
-        state_topic: "tele/edpbox1/SENSOR"
         value_template: >-
-                {% set x = value_json.EB1.TotEneT2|float %}
-                {% if x > 0 %}
-                  {{ x }}
-                {% endif %}
+            {% set x = states('sensor.eb1_0x0026').split(',')[1] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
         
-      eb1_:
+      eb1_total_energy_t3_cheias:
         friendly_name: "EB1 Total Energy T3 Cheias"
         value_template: >-
-                {% set x = value_json.EB1.TotEneT3|float %}
-                {% if x > 0 %}
-                  {{ x }}
-                {% endif %}
+            {% set x = states('sensor.eb1_0x0026').split(',')[2] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
 
-      eb1_:
+# 16
+
+      eb1_total_energy_import:
         friendly_name: "EB1 Total Energy Import"
         value_template: >-
-                {% set x = value_json.EB1.TotEneImp|float %}
-                {% if x > 0 %}
-                  {{ x }}
-                {% endif %}
+            {% set x = states('sensor.eb1_0x0016').split(',')[0] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
 
-      eb1_:
+      eb1_total_energy_export:
         friendly_name: "EB1 Total Energy Export"
         value_template: >-
-                {% set x = value_json.EB1.TotEneExp|float %}
-                {% if x > 0 %}
-                  {{ x }}
-                {% endif %}
+            {% set x = states('sensor.eb1_0x0016').split(',')[1] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
 
