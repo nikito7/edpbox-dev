@@ -8,7 +8,7 @@ logger:
 
 modbus:
 
-  - name: edpbox9
+  - name: edpbox1
     type: tcp
     host: 10.1.0.53
     port: 8888
@@ -17,7 +17,7 @@ modbus:
   
     sensors:
 
-      - name: "EB9 0x0001 Clock"
+      - name: "EB1 0x0001" # Clock
         slave: 1
         address: 1
         input_type: input
@@ -26,15 +26,32 @@ modbus:
         register_size: 12
         structure: ">H7BhB"
 
-      - name: "EB9 0x0004 Firmware"
+      - name: "EB1 0x006C" # V/A
         slave: 1
-        address: 4
+        address: 108
         input_type: input
-        count: 3
-        data_type: string
-        register_size: 6
+        count: 7
+        data_type: custom
+        structure: ">7H"
 
-      - name: "EB9 0x000B Tariff"
+      - name: "EB1 0x0073" # Power
+        slave: 1
+        address: 115
+        input_type: input
+        count: 7
+        data_type: custom
+        structure: ">7L"
+
+      - name: "EB1 0x007B" # PF
+        slave: 1
+        address: 123
+        input_type: input
+        count: 5
+        data_type: custom
+        structure: ">5H"
+
+
+      - name: "EB1 0x000B"
         slave: 1
         address: 11
         input_type: input
@@ -42,7 +59,7 @@ modbus:
         data_type: custom
         structure: ">Bx"
 
-      - name: "EB9 0x0016 Total"
+      - name: "EB1 0x0016"
         slave: 1
         address: 22
         input_type: input
@@ -51,12 +68,6 @@ modbus:
         register_size: 4
         structure: ">2L"
 
-      - name: "EB9 0x006C VA"
-        slave: 1
-        address: 108
-        input_type: input
-        count: 7
-        data_type: custom
-        structure: ">7H"
+
 
 # EOF
