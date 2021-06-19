@@ -53,7 +53,7 @@ modbus:
         register_size: 2
         structure: ">5H"
 
-     - name: "EB1 0x0026" # TotEneTx
+      - name: "EB1 0x0026" # TotEneTx
         slave: 1
         address: 38
         input_type: input
