@@ -32,6 +32,7 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
+        register_size: 2
         structure: ">7H"
 
       - name: "EB1 0x0073" # Power
@@ -40,6 +41,7 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
+        register_size: 4
         structure: ">7L"
 
       - name: "EB1 0x007B" # PF
@@ -48,26 +50,34 @@ modbus:
         input_type: input
         count: 5
         data_type: custom
+        register_size: 2
         structure: ">5H"
 
+     - name: "EB1 0x0026" # TotEneTx
+        slave: 1
+        address: 38
+        input_type: input
+        count: 3
+        data_type: custom
+        register_size: 4
+        structure: ">3L"
 
-      - name: "EB1 0x000B"
+      - name: "EB1 0x0016" # TotEne I/E/Q
+        slave: 1
+        address: 22
+        input_type: input
+        count: 6
+        data_type: custom
+        register_size: 4
+        structure: ">6L"
+
+      - name: "EB1 0x000B" # Tariff
         slave: 1
         address: 11
         input_type: input
         count: 1
         data_type: custom
+        register_size: 2
         structure: ">Bx"
-
-      - name: "EB1 0x0016"
-        slave: 1
-        address: 22
-        input_type: input
-        count: 2
-        data_type: custom
-        register_size: 4
-        structure: ">2L"
-
-
 
 # EOF
