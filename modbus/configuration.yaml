@@ -10,7 +10,7 @@ modbus:
 
   - name: edpbox9
     type: tcp
-    host: 10.1.0.48
+    host: 10.1.0.53
     port: 8888
     timeout: 5
     delay: 1
