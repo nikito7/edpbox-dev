@@ -12,6 +12,8 @@
             {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
         icon_template: mdi:clock
 
+# 6C
+
       eb1_voltage_l1:
         friendly_name: "EB1 Voltage L1"
         value_template: >-
@@ -102,33 +104,56 @@
         unit_of_measurement: "A"
         device_class: current
 
-      eb1_:
+# 7B
+      eb1_power_factor:
         friendly_name: "EB1 Power Factor"
         value_template: >-
-                {{ value_json.EB1.PowFac|float }}
+            {% set x = states('sensor.eb1_0x007b').split(',')[0] | float %}
+            {% if x %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "pu"
         device_class: power_factor
 
-      eb1_:
+      eb1_power_factor_l1:
         friendly_name: "EB1 Power Factor L1"
         value_template: >-
-                {{ value_json.EB1.PowFacL1|float }}
+            {% set x = states('sensor.eb1_0x007b').split(',')[1] | float %}
+            {% if x %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "pu"
         device_class: power_factor
 
-      eb1_:
+      eb1_power_factor_l2:
         friendly_name: "EB1 Power Factor L2"
         value_template: >-
-                {{ value_json.EB1.PowFacL2|float }}
+            {% set x = states('sensor.eb1_0x007b').split(',')[2] | float %}
+            {% if x %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "pu"
         device_class: power_factor
 
-      eb1_:
+      eb1_power_factor_l3:
         friendly_name: "EB1 Power Factor L3"
         value_template: >-
-                {{ value_json.EB1.PowFacL3|float }}
+            {% set x = states('sensor.eb1_0x007b').split(',')[3] | float %}
+            {% if x %}
+              {{ x / 1000 }}
+            {% endif %}
         unit_of_measurement: "pu"
         device_class: power_factor
+
+      eb1_frequency:
+        friendly_name: "EB1 Frequency"
+        value_template: >-
+            {% set x = states('sensor.eb1_0x007b').split(',')[4] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "Hz"
+        icon_template: mdi:pulse
 
       eb1_:
         friendly_name: "EB1 Active Power"
@@ -160,12 +185,6 @@
         unit_of_measurement: "W"
         device_class: power
 
-      eb1_:
-        friendly_name: "EB1 Frequency"
-        value_template: >-
-                {{ value_json.EB1.Frequency|float }}
-        unit_of_measurement: "Hz"
-        icon_template: mdi:pulse
 
       eb1_:
         friendly_name: "EB1 Total Energy T1 Vazio"
