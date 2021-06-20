@@ -25,14 +25,14 @@ url=https://github.com/nikito7/edpbox/raw/dev/modbus/${file}
 mkdir -p /config/custom_components/modbus/
 rm -rf /config/custom_components/modbus/*
 cd /config/custom_components/modbus/
-pwd
 ls -la
+pwd
 sleep 5
 cd /config/custom_components/modbus/
 wget $url
 unzip $file
 rm $file
-pwd
 ls -la
+pwd
 # ha core restart
 ```
