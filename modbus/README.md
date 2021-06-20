@@ -1,6 +1,10 @@
-Custom component for home assistant!
+# Info
 
-Usage:
+- Custom component for HA!
+- Add register_size for modbus
+- Allow non-standard registers size
+
+# Usage
 
 ```yaml
   count: 1
@@ -9,31 +13,10 @@ Usage:
   structure: ">L"
 ```
 
-21.6.03 Install:
-
-```js
-vv=21.6.03
-file=modbus-v${vv}.zip
-url=https://github.com/nikito7/edpbox/raw/dev/modbus/${vv}/${file}
-mkdir -p /config/custom_components/modbus/
-rm -rf /config/custom_components/modbus/*
-cd /config/custom_components/modbus/
-pwd
-ls -la
-sleep 3
-cd /config/custom_components/modbus/
-wget $url
-unzip $file
-rm $file
-pwd
-ls -la
-# ha core restart
-```
-
-21.6.201 Install:
+# 21.6.201
 
 - removed register_size from string
-- updated base
+- updated base code
 
 ```js
 vv=21.6.201
@@ -53,5 +36,3 @@ pwd
 ls -la
 # ha core restart
 ```
-
-EOF
