@@ -217,7 +217,7 @@
         value_template: >-
             {% set x = states('sensor.eb1_0x0026').split(',')[0] | float %}
             {% if x > 0 %}
-              {{ x / 1000 }}
+              {{ x / 1000 | round(2) }}
             {% endif %}
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
@@ -227,7 +227,7 @@
         value_template: >-
             {% set x = states('sensor.eb1_0x0026').split(',')[1] | float %}
             {% if x > 0 %}
-              {{ x / 1000 }}
+              {{ x / 1000 | round(2) }}
             {% endif %}
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
@@ -237,7 +237,7 @@
         value_template: >-
             {% set x = states('sensor.eb1_0x0026').split(',')[2] | float %}
             {% if x > 0 %}
-              {{ x / 1000 }}
+              {{ x / 1000 | round(2) }}
             {% endif %}
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
@@ -249,7 +249,7 @@
         value_template: >-
             {% set x = states('sensor.eb1_0x0016').split(',')[0] | float %}
             {% if x > 0 %}
-              {{ x / 1000 }}
+              {{ x / 1000 | round(2) }}
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
@@ -259,7 +259,7 @@
         value_template: >-
             {% set x = states('sensor.eb1_0x0016').split(',')[1] | float %}
             {% if x > 0 %}
-              {{ x / 1000 }}
+              {{ x / 1000 | round(2) }}
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
