@@ -17,7 +17,7 @@
         data_type: custom
         register_size: 12
         structure: ">H7BhB"
-        scan_interval: 5
+        scan_interval: 7
 
       - name: "EB1 Firmware"
         slave: 1
@@ -26,7 +26,7 @@
         count: 3
         data_type: string
         register_size: 18
-        scan_interval: 309
+        scan_interval: 303
 
       - name: "EB1 0x006C" # V/A
         slave: 1
@@ -34,7 +34,6 @@
         input_type: input
         count: 7
         data_type: custom
-        register_size: 2
         structure: ">7H"
         scan_interval: 8
 
@@ -84,7 +83,6 @@
         input_type: input
         count: 1
         data_type: custom
-        register_size: 2
         structure: ">Bx"
         scan_interval: 31
 
