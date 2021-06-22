@@ -13,13 +13,16 @@
   structure: ">L"
 ```
 
-# 21.6.201
+```yaml
+  count: 1
+  data_type: string
+  register_size: 10
+```
 
-- removed register_size from string
-- updated base code
+# Install
 
 ```js
-vv=21.6.201
+vv=21.6.221
 file=modbus-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/${file}
 mkdir -p /config/custom_components/modbus/
