@@ -35,7 +35,6 @@
         data_type: string
         register_size: 18
         scan_interval: 309
-        icon: "mdi:chip"
 
       - name: "EB1 0x006C" # V/A
         slave: 1
