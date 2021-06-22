@@ -1,11 +1,3 @@
-# configuration.yaml
-
-#logger:
-#
-#  logs:
-#    homeassistant.components.modbus: debug
-#    pymodbus.client: debug
-
 # modbus-base.yaml
 
   - name: edpbox1
