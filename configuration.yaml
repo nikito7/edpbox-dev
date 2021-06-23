@@ -43,8 +43,7 @@ sensor eb2tas: !include tasmota-eb2mono.yaml
 
 ###
 
-modbus eb1base: !include modbus-eb1base.yaml
-#modbus eb3base: !include modbus-eb3base.yaml
+modbus: !include modbus-base.yaml
 
 ###
 ##
