@@ -37,27 +37,25 @@
         structure: ">2H"
         scan_interval: 8
 
-      - name: "EB1 0x0073" # Power
+      - name: "EB1 0x0079" # Power/PF
         slave: 1
-        address: 115
+        address: 121
         input_type: input
-        count: 7
+        count: 3
         data_type: custom
         register_size: 4
-        structure: ">7L"
+        structure: ">3L"
         scan_interval: 9
 
-      - name: "EB1 0x007B" # PF
+      - name: "EB1 0x007F" # Freq
         slave: 1
-        address: 123
+        address: 127
         input_type: input
-        count: 5
-        data_type: custom
-        register_size: 2
-        structure: ">5H"
-        scan_interval: 11
+        count: 1
+        data_type: uint
+        scan_interval: 12
 
-      - name: "EB1 0x0026" # TotEneTx
+      - name: "EB1 0x0026" # TotEneTariff
         slave: 1
         address: 38
         input_type: input
