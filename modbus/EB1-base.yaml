@@ -2,7 +2,7 @@
 
   - name: edpbox1
     type: tcp
-    host: 10.1.0.53
+    host: 10.3.0.223
     port: 8888
     timeout: 3
     delay: 1
