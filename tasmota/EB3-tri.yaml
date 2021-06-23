@@ -41,7 +41,7 @@
     unique_id: EB3_VolL1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.VolL1|float }}
+        {% set x = value_json.EB3.VolL1|float %}
     unit_of_measurement: "V"
     device_class: voltage
 
@@ -50,7 +50,7 @@
     unique_id: EB3_VolL1_10
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.VolL1 - 10 | float }}
+        {% set x = value_json.EB3.VolL1 - 10 | float %}
     unit_of_measurement: "V"
     device_class: voltage
 
@@ -59,7 +59,7 @@
     unique_id: EB3_VolL2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.VolL2|float }}
+        {% set x = value_json.EB3.VolL2|float %}
     unit_of_measurement: "V"
     device_class: voltage
 
@@ -68,7 +68,7 @@
     unique_id: EB3_VolL3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.VolL3|float }}
+        {% set x = value_json.EB3.VolL3|float %}
     unit_of_measurement: "V"
     device_class: voltage
 
@@ -77,7 +77,7 @@
     unique_id: EB3_VolL3_10
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.VolL3 + 10 | float }}
+        {% set x = value_json.EB3.VolL3 + 10 | float %}
     unit_of_measurement: "V"
     device_class: voltage
 
@@ -86,7 +86,7 @@
     unique_id: EB3_Current
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.Current|float }}
+        {% set x = value_json.EB3.Current|float %}
     unit_of_measurement: "A"
     device_class: current
 
@@ -95,7 +95,7 @@
     unique_id: EB3_CurL1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.CurL1|float }}
+        {% set x = value_json.EB3.CurL1|float %}
     unit_of_measurement: "A"
     device_class: current
 
@@ -104,7 +104,7 @@
     unique_id: EB3_CurL2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.CurL2|float }} 
+        {% set x = value_json.EB3.CurL2|float %}
     unit_of_measurement: "A"
     device_class: current
 
@@ -113,7 +113,7 @@
     unique_id: EB3_CurL3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.CurL3|float }}
+        {% set x = value_json.EB3.CurL3|float %}
     unit_of_measurement: "A"
     device_class: current
 
@@ -122,7 +122,7 @@
     unique_id: EB3_PowFac
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.PowFac|float }}
+        {% set x = value_json.EB3.PowFac|float %}
     unit_of_measurement: "pu"
     device_class: power_factor
 
@@ -131,7 +131,7 @@
     unique_id: EB3_PowFacL1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.PowFacL1|float }}
+        {% set x = value_json.EB3.PowFacL1|float %}
     unit_of_measurement: "pu"
     device_class: power_factor
 
@@ -140,7 +140,7 @@
     unique_id: EB3_LowFacL2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.PowFacL2|float }}
+        {% set x = value_json.EB3.PowFacL2|float %}
     unit_of_measurement: "pu"
     device_class: power_factor
 
@@ -149,7 +149,7 @@
     unique_id: EB3_PowFacL3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.PowFacL3|float }}
+        {% set x = value_json.EB3.PowFacL3|float %}
     unit_of_measurement: "pu"
     device_class: power_factor
 
@@ -158,7 +158,7 @@
     unique_id: EB3_ActPow
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.ActPow|int }}
+        {% set x = value_json.EB3.ActPow|int %}
     unit_of_measurement: "W"
     device_class: power
 
@@ -167,7 +167,7 @@
     unique_id: EB3_ActLowL1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.ActPowL1|int }}
+        {% set x = value_json.EB3.ActPowL1|int %}
     unit_of_measurement: "W"
     device_class: power
 
@@ -176,7 +176,10 @@
     unique_id: EB3_ActPowL2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.ActPowL2|int }}
+        {% set x = value_json.EB3.ActPowL2|int %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
     unit_of_measurement: "W"
     device_class: power
 
@@ -185,7 +188,10 @@
     unique_id: EB3_ActLowL3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.ActPowL3|int }}
+        {% set x = value_json.EB3.ActPowL3|int %}
+        {% if x %}
+          {{ x }}
+        {% endif %}
     unit_of_measurement: "W"
     device_class: power
 
@@ -194,7 +200,10 @@
     unique_id: EB3_Frequency
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {{ value_json.EB3.Frequency|float }}
+        {% set x = value_json.EB3.Frequency|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
     unit_of_measurement: "Hz"
     icon: mdi:pulse
 
