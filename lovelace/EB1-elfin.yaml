@@ -6,36 +6,15 @@ entities:
 # v/a
   - entity: sensor.eb1_voltage_l1
     secondary_info: last-updated
-  - entity: sensor.eb1_voltage_l2
-    secondary_info: last-updated
-  - entity: sensor.eb1_voltage_l3
-    secondary_info: last-updated
-  - entity: sensor.eb1_current
-    secondary_info: last-updated
   - entity: sensor.eb1_current_l1
-    secondary_info: last-updated
-  - entity: sensor.eb1_current_l2
-    secondary_info: last-updated
-  - entity: sensor.eb1_current_l3
     secondary_info: last-updated
 # power
   - entity: sensor.eb1_active_power
     secondary_info: last-updated
-  - entity: sensor.eb1_active_power_l1
-    secondary_info: last-updated
-  - entity: sensor.eb1_active_power_l2
-    secondary_info: last-updated
-  - entity: sensor.eb1_active_power_l3
-    secondary_info: last-updated
 # pf
   - entity: sensor.eb1_power_factor
     secondary_info: last-updated
-  - entity: sensor.eb1_power_factor_l1
-    secondary_info: last-updated
-  - entity: sensor.eb1_power_factor_l2
-    secondary_info: last-updated
-  - entity: sensor.eb1_power_factor_l3
-    secondary_info: last-updated
+# freq
   - entity: sensor.eb1_frequency
     secondary_info: last-updated
 # total
