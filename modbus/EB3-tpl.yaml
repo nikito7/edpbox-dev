@@ -1,4 +1,5 @@
 # sensor eb1mod: !include modbus-eb1.yaml
+# todo EB1 to EB3
 
   - platform: template
     sensors:
