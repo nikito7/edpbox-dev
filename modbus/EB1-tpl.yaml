@@ -1,4 +1,4 @@
-# sensor eb1mod: !include modbus-eb1.yaml
+# modbus-eb1.yaml
 
   - platform: template
     sensors:
