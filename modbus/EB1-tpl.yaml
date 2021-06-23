@@ -60,12 +60,12 @@
         unit_of_measurement: "pu"
         device_class: power_factor
 
-#
+# 7F
 
       eb1_frequency:
         friendly_name: "EB1 Frequency"
         value_template: >-
-            {% set x = states('sensor.eb1_0x007b').split(',')[4] | float %}
+            {% set x = states('sensor.eb1_0x007F').split(',')[0] | float %}
             {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
@@ -77,7 +77,7 @@
       eb1_active_power:
         friendly_name: "EB1 Active Power"
         value_template: >-
-            {% set x = states('sensor.eb1_0x0073').split(',')[6] | int %}
+            {% set x = states('sensor.eb1_0x0079').split(',')[0] | int %}
             {% if x %}
               {{ x }}
             {% endif %}
@@ -90,7 +90,7 @@
         friendly_name: "EB1 Total Energy T1 Vazio"
         value_template: >-
             {% set x = states('sensor.eb1_0x0026').split(',')[0] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ (x / 1000) | round(1) }}
             {% endif %}
         unit_of_measurement: "kWh"
@@ -100,7 +100,7 @@
         friendly_name: "EB1 Total Energy T2 Ponta"
         value_template: >-
             {% set x = states('sensor.eb1_0x0026').split(',')[1] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ (x / 1000) | round(1) }}
             {% endif %}
         unit_of_measurement: "kWh"
@@ -110,7 +110,7 @@
         friendly_name: "EB1 Total Energy T3 Cheias"
         value_template: >-
             {% set x = states('sensor.eb1_0x0026').split(',')[2] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ (x / 1000) | round(1) }}
             {% endif %}
         unit_of_measurement: "kWh"
@@ -122,7 +122,7 @@
         friendly_name: "EB1 Total Energy Import"
         value_template: >-
             {% set x = states('sensor.eb1_0x0016').split(',')[0] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ (x / 1000) | round(1) }}
             {% endif %}
         unit_of_measurement: "kWh"
@@ -132,7 +132,7 @@
         friendly_name: "EB1 Total Energy Export"
         value_template: >-
             {% set x = states('sensor.eb1_0x0016').split(',')[1] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ (x / 1000) | round(3) }}
             {% endif %}
         unit_of_measurement: "kWh"
