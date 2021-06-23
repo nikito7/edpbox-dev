@@ -318,11 +318,11 @@
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
         {% set x = value_json.EB3.Tariff|int %}
-        {% if x == "1" %}
+        {% if x == 1 %}
           {{ "Vazio" }}
-        {% elif x == "2" %}
+        {% elif x == 2 %}
           {{ "Ponta" }}
-        {% elif x == "3" %}
+        {% elif x == 3 %}
           {{ "Cheias" }}
         {% endif %}
     icon: mdi:calendar
