@@ -1,3 +1,4 @@
+# tasmota-eb3.yaml
 # edpbox3
 
   - platform: mqtt
