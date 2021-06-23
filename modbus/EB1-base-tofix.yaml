@@ -1,4 +1,5 @@
 # modbus-base.yaml
+# edpbox1
 
   - name: edpbox1
     type: tcp
