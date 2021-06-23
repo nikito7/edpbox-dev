@@ -8,6 +8,7 @@
     port: 8888
     timeout: 5
     delay: 1
+    close_comm_on_error: true
   
     sensors:
 
