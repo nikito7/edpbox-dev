@@ -45,7 +45,7 @@
         count: 3
         data_type: custom
         register_size: 4
-        structure: ">3L"
+        structure: ">2L1H"
         scan_interval: 9
 
       - name: "EB1 0x007F" # Freq
