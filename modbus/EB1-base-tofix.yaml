@@ -32,9 +32,9 @@
         slave: 1
         address: 108
         input_type: input
-        count: 7
+        count: 2
         data_type: custom
-        structure: ">7H"
+        structure: ">2H"
         scan_interval: 8
 
       - name: "EB1 0x0073" # Power
