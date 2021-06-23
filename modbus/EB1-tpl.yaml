@@ -1,5 +1,4 @@
 # sensor eb1mod: !include modbus-eb1.yaml
-# todo: fix tri to mono
 
   - platform: template
     sensors:
@@ -32,7 +31,7 @@
         friendly_name: "EB1 Voltage L1"
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[0] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ x / 10 }}
             {% endif %}
         unit_of_measurement: "V"
@@ -54,7 +53,7 @@
         friendly_name: "EB1 Power Factor"
         value_template: >-
             {% set x = states('sensor.eb1_0x007b').split(',')[0] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ x / 1000 }}
             {% endif %}
         unit_of_measurement: "pu"
@@ -66,7 +65,7 @@
         friendly_name: "EB1 Frequency"
         value_template: >-
             {% set x = states('sensor.eb1_0x007F').split(',')[0] | float %}
-            {% if x > 0 %}
+            {% if x %}
               {{ x / 10 }}
             {% endif %}
         unit_of_measurement: "Hz"
