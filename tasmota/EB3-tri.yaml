@@ -271,7 +271,7 @@
         {% elif x == "3" %}
           {{ "Cheias" }}
         {% endif %}
-    icon_template: mdi:calendar
+    icon: mdi:calendar
 
 ###
 ##
