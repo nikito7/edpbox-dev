@@ -2,12 +2,13 @@
 
 recorder:
 
-  purge_keep_days: 5
+  purge_keep_days: 8
   db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
   exclude:
     entities:
       - sensor.eb1_clock
       - sensor.eb2_clock
+      - sensor.eb3_clock
     entity_globs:
       - sensor.eb1_0x*
 ###
@@ -18,8 +19,8 @@ utility_meter:
     source: sensor.eb1_total_energy_import
     cycle: daily
 
-  daily_energy_eb2:
-    source: sensor.eb2_total_energy_import
+  daily_energy_eb3:
+    source: sensor.eb3_total_energy_import
     cycle: daily
 
 ###
@@ -36,8 +37,9 @@ sensor mariadb:
 
 ###
 
-sensor eb1tas: !include tasmota-eb1tri.yaml
-#sensor eb2tas: !include tasmota-eb2mono.yaml
+sensor eb1tas: !include tasmota-eb1.yaml
+#sensor eb2tas: !include tasmota-eb2.yaml
+#sensor eb3tas: !include tasmota-eb3.yaml
 #sensor eb1esp: !include esphome-eb1.yaml
 #sensor eb1mod: !include modbus-eb1.yaml
 
