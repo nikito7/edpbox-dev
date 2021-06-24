@@ -1,55 +1,55 @@
 type: entities
 entities:
 # clock
-  - entity: sensor.eb1_clock
+  - entity: sensor.eb3_clock
     secondary_info: last-updated
 # v/a
-  - entity: sensor.eb1_voltage_l1
+  - entity: sensor.eb3_voltage_l1
     secondary_info: last-updated
-  - entity: sensor.eb1_voltage_l2
+  - entity: sensor.eb3_voltage_l2
     secondary_info: last-updated
-  - entity: sensor.eb1_voltage_l3
+  - entity: sensor.eb3_voltage_l3
     secondary_info: last-updated
-  - entity: sensor.eb1_current
+  - entity: sensor.eb3_current
     secondary_info: last-updated
-  - entity: sensor.eb1_current_l1
+  - entity: sensor.eb3_current_l1
     secondary_info: last-updated
-  - entity: sensor.eb1_current_l2
+  - entity: sensor.eb3_current_l2
     secondary_info: last-updated
-  - entity: sensor.eb1_current_l3
+  - entity: sensor.eb3_current_l3
     secondary_info: last-updated
 # power
-  - entity: sensor.eb1_active_power
+  - entity: sensor.eb3_active_power
     secondary_info: last-updated
-  - entity: sensor.eb1_active_power_l1
+  - entity: sensor.eb3_active_power_l1
     secondary_info: last-updated
-  - entity: sensor.eb1_active_power_l2
+  - entity: sensor.eb3_active_power_l2
     secondary_info: last-updated
-  - entity: sensor.eb1_active_power_l3
+  - entity: sensor.eb3_active_power_l3
     secondary_info: last-updated
 # pf
-  - entity: sensor.eb1_power_factor
+  - entity: sensor.eb3_power_factor
     secondary_info: last-updated
-  - entity: sensor.eb1_power_factor_l1
+  - entity: sensor.eb3_power_factor_l1
     secondary_info: last-updated
-  - entity: sensor.eb1_power_factor_l2
+  - entity: sensor.eb3_power_factor_l2
     secondary_info: last-updated
-  - entity: sensor.eb1_power_factor_l3
+  - entity: sensor.eb3_power_factor_l3
     secondary_info: last-updated
-  - entity: sensor.eb1_frequency
+  - entity: sensor.eb3_frequency
     secondary_info: last-updated
 # total
-  - entity: sensor.eb1_total_energy_t1_vazio
+  - entity: sensor.eb3_total_energy_t1_vazio
     secondary_info: last-updated
-  - entity: sensor.eb1_total_energy_t2_ponta
+  - entity: sensor.eb3_total_energy_t2_ponta
     secondary_info: last-updated
-  - entity: sensor.eb1_total_energy_t3_cheias
+  - entity: sensor.eb3_total_energy_t3_cheias
     secondary_info: last-updated
-  - entity: sensor.eb1_total_energy_import
+  - entity: sensor.eb3_total_energy_import
     secondary_info: last-updated
-  - entity: sensor.eb1_total_energy_export
+  - entity: sensor.eb3_total_energy_export
     secondary_info: last-updated
 # misc
-  - entity: sensor.eb1_tariff
+  - entity: sensor.eb3_tariff
     secondary_info: last-updated
 # EOF
