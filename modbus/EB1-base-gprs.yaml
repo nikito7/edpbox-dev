@@ -6,9 +6,6 @@
     type: tcp
     host: 10.3.0.223
     port: 8888
-    timeout: 9
-    delay: 2
-    close_comm_on_error: true
   
     sensors:
 
