@@ -1,0 +1,98 @@
+# modbus-base.yaml
+# edpbox1 elfin via gprs/lte
+
+#modbus:
+  - name: edpbox1
+    type: tcp
+    host: 10.3.0.223
+    port: 8888
+    timeout: 9
+    delay: 2
+    close_comm_on_error: true
+  
+    sensors:
+
+      - name: "EB1 0x0001" # Clock
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        register_size: 12
+        structure: ">H7BhB"
+        scan_interval: 21
+
+      - name: "EB1 Firmware"
+        slave: 1
+        address: 4
+        input_type: input
+        count: 3
+        data_type: string
+        register_size: 18
+        scan_interval: 303
+
+      - name: "EB1 0x006C" # V/A
+        slave: 1
+        address: 108
+        input_type: input
+        count: 2
+        data_type: custom
+        structure: ">2H"
+        scan_interval: 22
+
+      - name: "EB1 0x0079" # Power
+        slave: 1
+        address: 121
+        input_type: input
+        count: 2
+        data_type: custom
+        register_size: 4
+        structure: ">2L"
+        scan_interval: 23
+
+      - name: "EB1 0x007B" # PF
+        slave: 1
+        address: 123
+        input_type: input
+        count: 1
+        data_type: uint
+        scan_interval: 24
+
+      - name: "EB1 0x007F" # Freq
+        slave: 1
+        address: 127
+        input_type: input
+        count: 1
+        data_type: uint
+        scan_interval: 25
+
+      - name: "EB1 0x0026" # TotEneTariff
+        slave: 1
+        address: 38
+        input_type: input
+        count: 3
+        data_type: custom
+        register_size: 4
+        structure: ">3L"
+        scan_interval: 301
+
+      - name: "EB1 0x0016" # TotEne I/E/Q
+        slave: 1
+        address: 22
+        input_type: input
+        count: 6
+        data_type: custom
+        register_size: 4
+        structure: ">6L"
+        scan_interval: 302
+
+      - name: "EB1 0x000B" # Tariff
+        slave: 1
+        address: 11
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">Bx"
+        scan_interval: 31
+
+# EOF
