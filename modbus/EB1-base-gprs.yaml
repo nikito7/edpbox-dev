@@ -1,5 +1,6 @@
 # modbus-base.yaml
-# edpbox1 elfin via gprs/lte
+# edpbox1
+# elfin via gprs/lte router
 
 #modbus:
   - name: edpbox1
@@ -17,7 +18,7 @@
         data_type: custom
         register_size: 12
         structure: ">H7BhB"
-        scan_interval: 21
+        scan_interval: 51
 
       - name: "EB1 Firmware"
         slave: 1
@@ -35,7 +36,7 @@
         count: 2
         data_type: custom
         structure: ">2H"
-        scan_interval: 22
+        scan_interval: 52
 
       - name: "EB1 0x0079" # Power
         slave: 1
@@ -45,7 +46,7 @@
         data_type: custom
         register_size: 4
         structure: ">2L"
-        scan_interval: 23
+        scan_interval: 11
 
       - name: "EB1 0x007B" # PF
         slave: 1
@@ -53,7 +54,7 @@
         input_type: input
         count: 1
         data_type: uint
-        scan_interval: 24
+        scan_interval: 54
 
       - name: "EB1 0x007F" # Freq
         slave: 1
@@ -61,7 +62,7 @@
         input_type: input
         count: 1
         data_type: uint
-        scan_interval: 25
+        scan_interval: 55
 
       - name: "EB1 0x0026" # TotEneTariff
         slave: 1
@@ -90,6 +91,6 @@
         count: 1
         data_type: custom
         structure: ">Bx"
-        scan_interval: 31
+        scan_interval: 12
 
 # EOF
