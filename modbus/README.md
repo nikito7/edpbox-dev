@@ -39,5 +39,6 @@ ls -la
 pwd
 sleep 2
 sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
-# ha core restart
+sleep 1
+ha core restart
 ```
