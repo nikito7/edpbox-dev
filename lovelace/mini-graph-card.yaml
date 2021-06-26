@@ -1,6 +1,7 @@
 type: custom:mini-graph-card
 entities:
   - entity: sensor.daily_energy_eb3
+    color: lightblue
 name: Energy EB3
 hours_to_show: 168
 aggregate_func: max
