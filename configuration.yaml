@@ -1,5 +1,10 @@
 # (...)
 
+resources:
+
+  - url: /local/mini-graph-card-bundle.js?v=0.10.0
+    type: module
+
 recorder:
 
   purge_keep_days: 8
