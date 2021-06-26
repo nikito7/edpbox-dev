@@ -1,8 +1,7 @@
 type: custom:mini-graph-card
 entities:
-  - entity: sensor.daily_energy_eb1
   - entity: sensor.daily_energy_eb3
-name: Energy consumption
+name: Energy EB3
 hours_to_show: 168
 aggregate_func: max
 group_by: date
