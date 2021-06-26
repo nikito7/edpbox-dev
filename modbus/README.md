@@ -37,8 +37,8 @@ unzip $file
 rm $file
 ls -la
 pwd
-sleep 2
-sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
 sleep 1
+sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
+sleep 3
 ha core restart
 ```
