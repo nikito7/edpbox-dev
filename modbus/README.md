@@ -22,7 +22,7 @@
 # Install
 
 ```js
-vv=21.6.221
+vv=21.6.261
 file=modbus-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/${file}
 mkdir -p /config/custom_components/modbus/
@@ -37,5 +37,7 @@ unzip $file
 rm $file
 ls -la
 pwd
+sleep 2
+sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
 # ha core restart
 ```
