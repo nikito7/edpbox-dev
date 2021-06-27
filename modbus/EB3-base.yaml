@@ -1,16 +1,13 @@
 # modbus-base.yaml
-# todo EB1 to EB3
 
   - name: edpbox3
     type: tcp
     host: 10.1.0.53
     port: 8888
-    timeout: 3
-    delay: 1
   
     sensors:
 
-      - name: "EB1 0x0001" # Clock
+      - name: "EB3 0x0001" # Clock
         slave: 1
         address: 1
         input_type: input
@@ -20,7 +17,7 @@
         structure: ">H7BhB"
         scan_interval: 7
 
-      - name: "EB1 Firmware"
+      - name: "EB3 Firmware"
         slave: 1
         address: 4
         input_type: input
@@ -29,7 +26,7 @@
         register_size: 18
         scan_interval: 303
 
-      - name: "EB1 0x006C" # V/A
+      - name: "EB3 0x006C" # V/A
         slave: 1
         address: 108
         input_type: input
@@ -38,7 +35,7 @@
         structure: ">7H"
         scan_interval: 8
 
-      - name: "EB1 0x0073" # Power
+      - name: "EB3 0x0073" # Power
         slave: 1
         address: 115
         input_type: input
@@ -48,7 +45,7 @@
         structure: ">7L"
         scan_interval: 9
 
-      - name: "EB1 0x007B" # PF
+      - name: "EB3 0x007B" # PF
         slave: 1
         address: 123
         input_type: input
@@ -58,7 +55,7 @@
         structure: ">5H"
         scan_interval: 11
 
-      - name: "EB1 0x0026" # TotEneTx
+      - name: "EB3 0x0026" # TotEneTx
         slave: 1
         address: 38
         input_type: input
@@ -68,7 +65,7 @@
         structure: ">3L"
         scan_interval: 301
 
-      - name: "EB1 0x0016" # TotEne I/E/Q
+      - name: "EB3 0x0016" # TotEne I/E/Q
         slave: 1
         address: 22
         input_type: input
@@ -78,7 +75,7 @@
         structure: ">6L"
         scan_interval: 302
 
-      - name: "EB1 0x000B" # Tariff
+      - name: "EB3 0x000B" # Tariff
         slave: 1
         address: 11
         input_type: input
