@@ -327,7 +327,7 @@
         {% endif %}
     icon: mdi:calendar
 
-- platform: mqtt
+  - platform: mqtt
     name: "EB3 Fw4"
     unique_id: EB3_Fw4
     state_topic: "tele/edpbox3/SENSOR"
