@@ -42,7 +42,7 @@
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[1] | float %}
             {% if x %}
-              {{ x / 10 }}
+              {{ '{0:01d}'.format(x / 10) }}
             {% endif %}
         unit_of_measurement: "A"
         device_class: current
