@@ -1,6 +1,6 @@
 >D
 
-; EB3 tri sagemcom example
+; EB3 sagemcom example
 
 >B
 
@@ -11,9 +11,9 @@ smlj=0
 
 >S
 
-if upsecs==59
+if upsecs==55
 then
-tper=11
+tper=31
 smlj=1
 endif
 
@@ -22,7 +22,7 @@ endif
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,19,mN1,1,9600,EB3,18,25,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002,r010400040001
++1,19,mN1,1,9600,EB3,18,25,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002
 
 ; 01
 
@@ -84,11 +84,6 @@ endif
 ; 0B
 
 1,010406uu@i6:1,Tariff ,,Tariff,0
-
-; 04
-
-1,010406xxUUuu@i7:1,Fw4.1 ,,Fw41,0
-1,010406xxxxxxUUuu@i7:1,Fw4.2 ,,Fw42,0
 
 #
 
