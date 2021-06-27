@@ -1,4 +1,5 @@
 # modbus-eb1.yaml
+# edpbox mono templates
 
   - platform: template
     sensors:
@@ -42,12 +43,11 @@
         value_template: >-
             {% set x = states('sensor.eb1_0x006c').split(',')[1] | float %}
             {% if x %}
-              {{ '{0:01d}'.format(x / 10) }}
+              {{ (x / 10) | float | round(1) }}
             {% endif %}
         unit_of_measurement: "A"
         device_class: current
 
-      
 # 7B
       eb1_power_factor:
         friendly_name: "EB1 Power Factor"
