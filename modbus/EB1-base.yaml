@@ -3,11 +3,9 @@
 
 #modbus:
   - name: edpbox1
-    type: udp
+    type: tcp
     host: 10.3.0.223
     port: 9988
-    timeout: 9
-    delay: 1
 
     sensors:
 
