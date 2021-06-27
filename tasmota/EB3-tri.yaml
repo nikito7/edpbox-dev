@@ -327,6 +327,16 @@
         {% endif %}
     icon: mdi:calendar
 
+- platform: mqtt
+    name: "EB3 Fw4"
+    unique_id: EB3_Fw4
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB3.Fw41|string %}
+        {% set y = value_json.EB3.Fw42|string %}
+        {{ x + ":" + y }}
+    icon: mdi:calendar
+
 ###
 ##
 #
