@@ -3,13 +3,12 @@
 
 #modbus:
   - name: edpbox1
-    type: tcp
+    type: udp
     host: 10.3.0.223
-    port: 8888
-    timeout: 5
+    port: 9988
+    timeout: 9
     delay: 1
-    close_comm_on_error: true
-  
+
     sensors:
 
       - name: "EB1 0x0001" # Clock
