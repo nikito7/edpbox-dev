@@ -37,7 +37,7 @@ sensor mariadb:
 
 ###
 
-#sensor eb1tas: !include tasmota-eb1.yaml
+sensor eb1tas: !include tasmota-eb1.yaml
 #sensor eb2tas: !include tasmota-eb2.yaml
 sensor eb3tas: !include tasmota-eb3.yaml
 #sensor eb1esp: !include esphome-eb1.yaml
