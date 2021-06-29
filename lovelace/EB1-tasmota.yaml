@@ -33,6 +33,6 @@ entities:
   - entity: sensor.eb1_total_energy_export
     secondary_info: last-updated
 # misc
-  - entity: sensor.eb3_tariff
+  - entity: sensor.eb1_tariff
     secondary_info: last-updated
 # EOF
