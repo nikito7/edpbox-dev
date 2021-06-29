@@ -34,7 +34,7 @@ endif
 
 ; 6C
 
-1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,17
+1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,18
 1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,18
 
 1,=h<hr>
@@ -48,9 +48,9 @@ endif
 
 ; 26
 
-1,01040CUUuuUUuu@i3:1000,Total Energy T1 Vazio ,kWh,TotEneT1,2
-1,01040CxxxxxxxxUUuuUUuu@i3:1000,Total Energy T2 Ponta ,kWh,TotEneT2,2
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Total Energy T3 Cheias ,kWh,TotEneT3,2
+1,01040CUUuuUUuu@i3:1000,Total Energy T1 Vazio ,kWh,TotEneT1,3
+1,01040CxxxxxxxxUUuuUUuu@i3:1000,Total Energy T2 Ponta ,kWh,TotEneT2,3
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Total Energy T3 Cheias ,kWh,TotEneT3,3
 
 1,=h<hr>
 
@@ -72,9 +72,9 @@ endif
 
 ; 2D
 
-1,01040CUUuuUUuu@i7:1000,Total Energy T1 Export ,kWh,TotEneT1Exp,2
-1,01040CxxxxxxxxUUuuUUuu@i7:1000,Total Energy T2 Export ,kWh,TotEneT2Exp,2
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Total Energy T3 Export ,kWh,TotEneT3Exp,2
+1,01040CUUuuUUuu@i7:1000,Total Energy T1 Export ,kWh,TotEneT1Exp,3
+1,01040CxxxxxxxxUUuuUUuu@i7:1000,Total Energy T2 Export ,kWh,TotEneT2Exp,3
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Total Energy T3 Export ,kWh,TotEneT3Exp,3
 
 #
 
