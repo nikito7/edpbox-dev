@@ -6,6 +6,10 @@
     type: tcp
     host: 10.3.0.223
     port: 9988
+    retry_on_empty: true
+    retries: 1
+    timeout: 5
+    delay: 1
 
     sensors:
 
