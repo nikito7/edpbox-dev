@@ -6,10 +6,6 @@
     type: tcp
     host: 10.3.0.223
     port: 9988
-    retry_on_empty: true
-    retries: 1
-    timeout: 5
-    delay: 1
 
     sensors:
 
@@ -21,7 +17,6 @@
         data_type: custom
         register_size: 12
         structure: ">H7BhB"
-        scan_interval: 11
 
       - name: "EB1 0x006C" # V/A
         slave: 1
@@ -30,7 +25,6 @@
         count: 2
         data_type: custom
         structure: ">2H"
-        scan_interval: 51
 
       - name: "EB1 0x0079" # Power
         slave: 1
@@ -40,7 +34,6 @@
         data_type: custom
         register_size: 4
         structure: ">2L"
-        scan_interval: 12
 
       - name: "EB1 0x007B" # PF
         slave: 1
@@ -48,7 +41,6 @@
         input_type: input
         count: 1
         data_type: uint
-        scan_interval: 52
 
       - name: "EB1 0x007F" # Freq
         slave: 1
@@ -56,7 +48,6 @@
         input_type: input
         count: 1
         data_type: uint
-        scan_interval: 53
 
       - name: "EB1 0x0026" # TotEneTariff
         slave: 1
@@ -66,7 +57,6 @@
         data_type: custom
         register_size: 4
         structure: ">3L"
-        scan_interval: 54
 
       - name: "EB1 0x0016" # TotEne I/E/Q
         slave: 1
@@ -76,7 +66,6 @@
         data_type: custom
         register_size: 4
         structure: ">6L"
-        scan_interval: 55
 
       - name: "EB1 0x000B" # Tariff
         slave: 1
@@ -85,7 +74,6 @@
         count: 1
         data_type: custom
         structure: ">Bx"
-        scan_interval: 31
 
       - name: "EB1 Firmware"
         slave: 1
@@ -94,6 +82,5 @@
         count: 3
         data_type: string
         register_size: 18
-        scan_interval: 99
 
 # EOF
