@@ -7,8 +7,8 @@ entities:
     secondary_info: last-updated
 # clock
   - entity: sensor.eb3_clock
-# v/a
     secondary_info: last-updated
+# v/a
   - entity: sensor.eb3_voltage_l1
     secondary_info: last-updated
   - entity: sensor.eb3_voltage_l2
@@ -18,30 +18,20 @@ entities:
   - entity: sensor.eb3_current
     secondary_info: last-updated
   - entity: sensor.eb3_current_l1
-    secondary_info: last-updated
   - entity: sensor.eb3_current_l2
-    secondary_info: last-updated
   - entity: sensor.eb3_current_l3
-    secondary_info: last-updated
 # power
   - entity: sensor.eb3_active_power
     secondary_info: last-updated
   - entity: sensor.eb3_active_power_l1
-    secondary_info: last-updated
   - entity: sensor.eb3_active_power_l2
-    secondary_info: last-updated
   - entity: sensor.eb3_active_power_l3
-    secondary_info: last-updated
   - entity: sensor.eb3_frequency
-    secondary_info: last-updated
   - entity: sensor.eb3_power_factor
     secondary_info: last-updated
   - entity: sensor.eb3_power_factor_l1
-    secondary_info: last-updated
   - entity: sensor.eb3_power_factor_l2
-    secondary_info: last-updated
   - entity: sensor.eb3_power_factor_l3
-    secondary_info: last-updated
 # total
   - entity: sensor.eb3_total_energy_t1_vazio
     secondary_info: last-updated
