@@ -110,14 +110,6 @@
         data_type: custom
         structure: ">Bx"
 
-      - name: "EB1 0x0001" # Clock
-        slave: 1
-        address: 1
-        input_type: input
-        count: 1
-        data_type: custom
-        structure: ">H7BhB"
-
       - name: "EB1 Firmware" # 04 05 06
         slave: 1
         address: 4
