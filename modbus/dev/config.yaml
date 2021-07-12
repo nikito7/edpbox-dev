@@ -75,4 +75,12 @@
         count: 1
         data_type: uint32
 
+      - name: "EB1 Tariff" # 0B
+        slave: 1
+        address: 11
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">Bx"
+
 # EOF
