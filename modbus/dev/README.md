@@ -1,4 +1,4 @@
-ha default modbus dev
+Default HA modbus (dev)
 
 
 ```js
