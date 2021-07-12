@@ -1,8 +1,8 @@
 type: entities
 entities:
 # clock
-  - entity: sensor.eb1_clock
-    secondary_info: last-updated
+#  - entity: sensor.eb1_clock
+#    secondary_info: last-updated
 # v/a
   - entity: sensor.eb1_voltage_l1
     secondary_info: last-updated
@@ -31,4 +31,8 @@ entities:
 # misc
   - entity: sensor.eb1_tariff
     secondary_info: last-updated
+# info
+  - entity: sensor.eb1_firmware_core
+  - entity: sensor.eb1_firmware_app
+  - entity: sensor.eb1_firmware_com
 # EOF
