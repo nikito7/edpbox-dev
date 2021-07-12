@@ -110,11 +110,25 @@
         data_type: custom
         structure: ">Bx"
 
-      - name: "EB1 Firmware" # 04 05 06
+      - name: "EB1 Firmware Core"
         slave: 1
         address: 4
         input_type: input
-        count: 3
+        count: 1
+        data_type: string
+
+      - name: "EB1 Firmware App"
+        slave: 1
+        address: 5
+        input_type: input
+        count: 1
+        data_type: string
+
+      - name: "EB1 Firmware Com"
+        slave: 1
+        address: 6
+        input_type: input
+        count: 1
         data_type: string
 
 # EOF
