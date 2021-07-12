@@ -18,6 +18,9 @@
         input_type: input
         count: 1
         data_type: uint16
+        precision: 1
+        scale: 10
+        unit_of_measurement: V
 
       - name: "EB1 Current L1" # 6D
         slave: 1
