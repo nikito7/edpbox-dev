@@ -68,4 +68,11 @@
         count: 1
         data_type: uint32
 
+      - name: "EB1 Total Energy Import" # 16
+        slave: 1
+        address: 22
+        input_type: input
+        count: 1
+        data_type: uint32
+
 # EOF
