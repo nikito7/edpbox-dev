@@ -28,6 +28,9 @@
         input_type: input
         count: 1
         data_type: uint16
+        precision: 1
+        scale: 10
+        unit_of_measurement: A
 
       - name: "EB1 Active Power" # 79
         slave: 1
@@ -35,6 +38,9 @@
         input_type: input
         count: 1
         data_type: uint32
+        precision: 0
+        scale: 1
+        unit_of_measurement: W
 
       - name: "EB1 Power Factor" # 7B
         slave: 1
@@ -42,6 +48,9 @@
         input_type: input
         count: 1
         data_type: uint16
+        precision: 3
+        scale: 10
+        unit_of_measurement: pu
 
       - name: "EB1 Frequency" # 7F
         slave: 1
@@ -49,6 +58,9 @@
         input_type: input
         count: 1
         data_type: uint16
+        precision: 1
+        scale: 10
+        unit_of_measurement: Hz
 
       - name: "EB1 Total Energy T1 Vazio" # 26
         slave: 1
@@ -56,6 +68,9 @@
         input_type: input
         count: 1
         data_type: uint32
+        precision: 3
+        scale: 1000
+        unit_of_measurement: kWh
 
       - name: "EB1 Total Energy T2 Ponta" # 27
         slave: 1
@@ -63,6 +78,9 @@
         input_type: input
         count: 1
         data_type: uint32
+        precision: 3
+        scale: 1000
+        unit_of_measurement: kWh
 
       - name: "EB1 Total Energy T3 Cheias" # 28
         slave: 1
@@ -70,6 +88,9 @@
         input_type: input
         count: 1
         data_type: uint32
+        precision: 3
+        scale: 1000
+        unit_of_measurement: kWh
 
       - name: "EB1 Total Energy Import" # 16
         slave: 1
@@ -77,6 +98,9 @@
         input_type: input
         count: 1
         data_type: uint32
+        precision: 3
+        scale: 1000
+        unit_of_measurement: kWh
 
       - name: "EB1 Tariff" # 0B
         slave: 1
