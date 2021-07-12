@@ -26,8 +26,8 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb1_total_energy_import
     secondary_info: last-updated
-  - entity: sensor.eb1_total_energy_export
-    secondary_info: last-updated
+#  - entity: sensor.eb1_total_energy_export
+#    secondary_info: last-updated
 # misc
   - entity: sensor.eb1_tariff
     secondary_info: last-updated
