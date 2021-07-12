@@ -49,7 +49,7 @@
         count: 1
         data_type: uint16
         precision: 3
-        scale: 0.1
+        scale: 0.001
         unit_of_measurement: pu
 
       - name: "EB1 Frequency" # 7F
