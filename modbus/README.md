@@ -1,5 +1,7 @@
 # Info
 
+- After HA 2021.8?! This is only needed
+ for templates. Multiple registers. One command.
 - Custom component for HA!
 - Add register_size for modbus
 - Allow non-standard registers size
