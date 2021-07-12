@@ -6,82 +6,66 @@
     type: tcp
     host: 10.3.0.223
     port: 9988
-    timeout: 10
-    retries: 10
+    timeout: 9
+    retries: 9
     retry_on_empty: true
 
     sensors:
 
-      - name: "EB1 6C"
+      - name: "EB1 Voltage L1" # 6C
         slave: 1
         address: 108
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 22
 
-      - name: "EB1 6D"
+      - name: "EB1 Current L1" # 6D
         slave: 1
         address: 109
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 22
 
-      - name: "EB1 79"
+      - name: "EB1 Active Power" # 79
         slave: 1
         address: 121
         input_type: input
         count: 1
         data_type: uint32
-        scan_interval: 23
 
-      - name: "EB1 7A"
-        slave: 1
-        address: 122
-        input_type: input
-        count: 1
-        data_type: uint32
-        scan_interval: 23
-
-      - name: "EB1 7B"
+      - name: "EB1 Power Factor" # 7B
         slave: 1
         address: 123
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 24
 
-      - name: "EB1 7F"
+      - name: "EB1 Frequency" # 7F
         slave: 1
         address: 127
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 25
 
-      - name: "EB1 26"
+      - name: "EB1 Total Energy T1 Vazio" # 26
         slave: 1
         address: 38
         input_type: input
         count: 1
         data_type: uint32
-        scan_interval: 26
 
-      - name: "EB1 27"
+      - name: "EB1 Total Energy T2 Ponta" # 27
         slave: 1
         address: 39
         input_type: input
         count: 1
         data_type: uint32
-        scan_interval: 26
 
-      - name: "EB1 28"
+      - name: "EB1 Total Energy T3 Cheias" # 28
         slave: 1
         address: 40
         input_type: input
         count: 1
         data_type: uint32
-        scan_interval: 26
 
 # EOF
