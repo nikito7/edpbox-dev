@@ -1,3 +1,31 @@
+# MariaDB
 sensor.db_size_mb:
   icon: mdi:database
-#EOF
+# EB1
+sensor.eb1_voltage_l1:
+  icon: mdi:chip
+sensor.eb1_current_l1:
+  icon: mdi:chip
+sensor.eb1_active_power:
+  icon: mdi:chip
+sensor.eb1_power_factor:
+  icon: mdi:chip
+sensor.eb1_frequency:
+  icon: mdi:pulse
+sensor.eb1_total_energy_t1_vazio:
+  icon: mdi:chip
+sensor.eb1_total_energy_t2_ponta:
+  icon: mdi:chip
+sensor.eb1_total_energy_t3_cheias:
+  icon: mdi:chip
+sensor.eb1_total_energy_import:
+  icon: mdi:chip
+sensor.eb1_tariff:
+  icon: mdi:chip
+sensor.eb1_firmware_core:
+  icon: mdi:chip
+sensor.eb1_firmware_app:
+  icon: mdi:chip
+sensor.eb1_firmware_com:
+  icon: mdi:chip
+# EOF
