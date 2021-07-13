@@ -96,6 +96,7 @@
         input_type: input
         count: 1
         data_type: string
+        scan_interval: 901
 
       - name: "EB1 Firmware App"
         slave: 1
@@ -103,6 +104,7 @@
         input_type: input
         count: 1
         data_type: string
+        scan_interval: 902
 
       - name: "EB1 Firmware Com"
         slave: 1
@@ -110,5 +112,6 @@
         input_type: input
         count: 1
         data_type: string
+        scan_interval: 903
 
 # EOF
