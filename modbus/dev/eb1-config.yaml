@@ -131,16 +131,4 @@
         count: 1
         data_type: string
 
-# need custom
-
-      - name: "EB1 0x0026" # TotEneTariff
-        slave: 1
-        address: 38
-        input_type: input
-        count: 3
-        data_type: custom
-        register_size: 4
-        structure: ">3L"
-        scan_interval: 26
-
 # EOF
