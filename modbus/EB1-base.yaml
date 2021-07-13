@@ -1,4 +1,4 @@
-# modbus-base.yaml
+# /config/files/modbus.yaml
 # edpbox1
 
 #modbus:
@@ -6,11 +6,13 @@
     type: tcp
     host: 10.3.0.223
     port: 9988
-    timeout: 10
-    retries: 10
-    retry_on_empty: true
+    timeout: 9
+    retries: 9
+    retry_on_empty: false # bug?
 
     sensors:
+
+# for use in templates
 
       - name: "EB1 0x0001" # Clock
         slave: 1
@@ -86,13 +88,27 @@
         structure: ">Bx"
         scan_interval: 28
 
-      - name: "EB1 Firmware"
+# full sensor
+
+      - name: "EB1 Firmware Core"
         slave: 1
         address: 4
         input_type: input
-        count: 3
+        count: 1
         data_type: string
-        register_size: 18
-        scan_interval: 29
+
+      - name: "EB1 Firmware App"
+        slave: 1
+        address: 5
+        input_type: input
+        count: 1
+        data_type: string
+
+      - name: "EB1 Firmware Com"
+        slave: 1
+        address: 6
+        input_type: input
+        count: 1
+        data_type: string
 
 # EOF
