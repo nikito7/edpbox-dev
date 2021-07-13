@@ -1,4 +1,4 @@
-# modbus-eb1.yaml
+# /config/files/modbus-eb1.yaml
 # edpbox mono templates
 
   - platform: template
