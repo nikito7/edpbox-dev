@@ -1,4 +1,4 @@
-# dev: default
+# dev
 
 - no mod
 
@@ -20,7 +20,7 @@ sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv
 ha core restart
 ```
 
-# dev: custom
+# custom
 
 - register_size
 
