@@ -7,8 +7,8 @@ recorder:
   exclude:
     entities:
       - sensor.eb1_clock
-      - sensor.eb2_clock
       - sensor.eb3_clock
+      - sensor.eb5_clock
     entity_globs:
       - sensor.eb1_0x*
 ###
@@ -44,8 +44,8 @@ sensor eb3tas: !include files/tasmota-eb3.yaml
 
 ###
 
-modbus: !include files/modbus-base.yaml
-#sensor eb1mod: !include files/modbus-eb1.yaml
+modbus: !include files/modbus.yaml
+sensor eb1mod: !include files/modbus-eb1.yaml
 
 ###
 ##
