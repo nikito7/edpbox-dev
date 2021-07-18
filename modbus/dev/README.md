@@ -3,7 +3,8 @@
 - register_size
 
 ```js
-vv=21.7.131
+
+vv=21.7.182
 file=custom-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/dev/${file}
 mkdir -p /config/custom_components/modbus/
@@ -18,4 +19,5 @@ ls -a
 pwd
 sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
 ha core restart
+
 ```
