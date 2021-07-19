@@ -4,7 +4,7 @@
 
 ```js
 
-vv=21.7.182
+vv=21.7.191
 file=custom-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/dev/${file}
 mkdir -p /config/custom_components/modbus/
