@@ -8,7 +8,7 @@
     port: 9988
     timeout: 9
     retries: 9
-    retry_on_empty: false # keep false, pymodbus bug
+    retry_on_empty: true
 
     sensors:
 
