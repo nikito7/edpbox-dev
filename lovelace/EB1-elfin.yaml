@@ -33,6 +33,9 @@ entities:
     secondary_info: last-updated
 # info
   - entity: sensor.eb1_firmware_core
+    secondary_info: last-updated
   - entity: sensor.eb1_firmware_app
+    secondary_info: last-updated
   - entity: sensor.eb1_firmware_com
+    secondary_info: last-updated
 # EOF
