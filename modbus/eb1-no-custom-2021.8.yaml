@@ -1,5 +1,6 @@
 # config/files/modbus.yaml
 # edpbox1 
+# for standard modbus. No custom.
 
 #modbus:
   - name: edpbox1
