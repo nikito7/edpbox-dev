@@ -1,6 +1,7 @@
 # config/files/modbus.yaml
 # edpbox1 
 # for standard modbus. No custom.
+# for 2021.8?
 
 #modbus:
   - name: edpbox1
