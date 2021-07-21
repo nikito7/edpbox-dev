@@ -19,7 +19,9 @@
   register_size: 10
 ```
 
-# Install 2021.6.26.1
+# Install
+
+- 2021.6.26.1
 
 ```js
 vv=21.6.261
