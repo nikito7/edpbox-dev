@@ -4,6 +4,8 @@ sensor.sensor.mmc_3e_temperature:
   friendly_name: ST
 sensor.sensor.mmc_e3_temperature:
   friendly_name: HG
+sensor.sensor.mmc_33_temperature:
+  friendly_name: GN
 
 # MariaDB
 
