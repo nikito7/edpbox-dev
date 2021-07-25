@@ -1,10 +1,24 @@
 # Temp
 
-sensor.mmc_3e_temperature:
+sensor.mmc_3e_temp:
   friendly_name: ST
-sensor.mmc_e3_temperature:
+sensor.mmc_e3_temp:
   friendly_name: HG
-sensor.mmc_33_temperature:
+sensor.mmc_33_temp:
+  friendly_name: GN
+
+sensor.mmc_3e_hum:
+  friendly_name: ST
+sensor.mmc_e3_hum:
+  friendly_name: HG
+sensor.mmc_33_hum:
+  friendly_name: GN
+
+sensor.mmc_3e_batt:
+  friendly_name: ST
+sensor.mmc_e3_batt:
+  friendly_name: HG
+sensor.mmc_33_batt:
   friendly_name: GN
 
 # MariaDB
