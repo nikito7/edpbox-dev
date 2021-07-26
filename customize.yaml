@@ -6,6 +6,8 @@ sensor.mmc_e3_temp:
   friendly_name: HG
 sensor.mmc_33_temp:
   friendly_name: GN
+sensor.clock_3a_temp:
+  friendly_name: FZ
 
 sensor.mmc_3e_hum:
   friendly_name: ST
@@ -13,6 +15,8 @@ sensor.mmc_e3_hum:
   friendly_name: HG
 sensor.mmc_33_hum:
   friendly_name: GN
+sensor.clock_3a_hum:
+  friendly_name: FZ
 
 sensor.mmc_3e_batt:
   friendly_name: ST
@@ -20,6 +24,17 @@ sensor.mmc_e3_batt:
   friendly_name: HG
 sensor.mmc_33_batt:
   friendly_name: GN
+sensor.clock_3a_batt:
+  friendly_name: FZ
+
+sensor.mmc_3e_signal:
+  friendly_name: ST
+sensor.mmc_e3_signal:
+  friendly_name: HG
+sensor.mmc_33_signal:
+  friendly_name: GN
+sensor.clock_3a_signal:
+  friendly_name: FZ
 
 # MariaDB
 
