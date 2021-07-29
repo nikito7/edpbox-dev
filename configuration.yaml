@@ -23,9 +23,7 @@ utility_meter:
     source: sensor.eb3_total_energy_import
     cycle: daily
 
-  ene_eb3_total_d:
-    source: sensor.eb3_total_energy_import
-    cycle: daily
+###
 
   ene_eb3_t1_d:
     source: sensor.eb3_total_energy_t1_vazio
