@@ -21,7 +21,16 @@
         data_type: custom
         register_size: 12
         structure: ">H7BhB"
-        scan_interval: 21
+        scan_interval: 10
+
+      - name: "EB1 0x000B" # Tariff
+        slave: 1
+        address: 11
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">Bx"
+        scan_interval: 11
 
       - name: "EB1 0x006C" # V/A
         slave: 1
@@ -30,7 +39,7 @@
         count: 2
         data_type: custom
         structure: ">2H"
-        scan_interval: 22
+        scan_interval: 21
 
       - name: "EB1 0x0079" # Power
         slave: 1
@@ -40,7 +49,7 @@
         data_type: custom
         register_size: 4
         structure: ">2L"
-        scan_interval: 23
+        scan_interval: 22
 
       - name: "EB1 0x007B" # PF
         slave: 1
@@ -48,7 +57,7 @@
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 24
+        scan_interval: 23
 
       - name: "EB1 0x007F" # Freq
         slave: 1
@@ -56,7 +65,7 @@
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 25
+        scan_interval: 24
 
       - name: "EB1 0x0026" # TotEneTariff
         slave: 1
@@ -66,7 +75,7 @@
         data_type: custom
         register_size: 4
         structure: ">3L"
-        scan_interval: 26
+        scan_interval: 91
 
       - name: "EB1 0x0016" # TotEne I/E/Q
         slave: 1
@@ -76,16 +85,7 @@
         data_type: custom
         register_size: 4
         structure: ">6L"
-        scan_interval: 27
-
-      - name: "EB1 0x000B" # Tariff
-        slave: 1
-        address: 11
-        input_type: input
-        count: 1
-        data_type: custom
-        structure: ">Bx"
-        scan_interval: 28
+        scan_interval: 92
 
 # full sensor
 
