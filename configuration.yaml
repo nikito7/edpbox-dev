@@ -1,5 +1,15 @@
 # (...)
 
+homeassistant:
+
+  customize: !include customize.yaml
+
+http:
+
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.0.0/16
+
 recorder:
 
   purge_keep_days: 8
