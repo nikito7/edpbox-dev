@@ -1,4 +1,15 @@
-# Temp
+###
+
+sensor.em_eb3_vazio:
+  friendly_name: Vazio
+
+sensor.em_eb3_ponta:
+  friendly_name: Ponta
+
+sensor.em_eb3_cheias:
+  friendly_name: Cheias
+
+###
 
 sensor.mmc_3e_temp:
   friendly_name: ST
