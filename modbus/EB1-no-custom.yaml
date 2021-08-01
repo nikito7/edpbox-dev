@@ -4,6 +4,7 @@
 # for 2021.8?
 
 #modbus:
+
   - name: edpbox1
     type: tcp
     host: 10.3.0.223
