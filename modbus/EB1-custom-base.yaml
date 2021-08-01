@@ -11,7 +11,7 @@
     retries: 5
     delay: 1
     retry_on_empty: true # to be fixed
-    #                     in pymodbus 2.5.3?
+    #       #        #  in pymodbus 2.5.3?
 
     sensors:
 
