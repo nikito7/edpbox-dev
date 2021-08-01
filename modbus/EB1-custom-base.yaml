@@ -2,12 +2,15 @@
 # edpbox1
 
 #modbus:
+
   - name: edpbox1
     type: tcp
     host: 10.3.0.223
     port: 9988
-    timeout: 9
-    retries: 9
+    timeout: 5
+    retries: 5
+    retry_on_empty: true # to be fixed
+    #                     in pymodbus 2.5.3?
 
     sensors:
 
