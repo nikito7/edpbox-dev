@@ -7,9 +7,8 @@
     type: tcp
     host: 10.3.0.223
     port: 9988
-    timeout: 5
-    retries: 5
-    delay: 1
+    timeout: 3
+    retries: 9
     retry_on_empty: true # to be fixed
     #       #        #  in pymodbus 2.5.3?
 
@@ -25,7 +24,7 @@
         data_type: custom
         register_size: 12
         structure: ">H7BhB"
-        scan_interval: 10
+        scan_interval: 5
 
       - name: "EB1 0x000B" # Tariff
         slave: 1
