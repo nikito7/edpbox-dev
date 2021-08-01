@@ -1,5 +1,10 @@
 # (...)
 
+logger:
+  logs:
+    homeassistant.components.modbus: debug
+    pymodbus.client: debug
+
 homeassistant:
 
   customize: !include customize.yaml
