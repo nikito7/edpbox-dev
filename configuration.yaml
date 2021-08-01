@@ -35,16 +35,24 @@ utility_meter:
 
 ###
 
-  em_eb3_vazio:
+  em_eb3_t1_vazio:
     source: sensor.eb3_total_energy_t1_vazio
     cycle: daily
 
-  em_eb3_ponta:
+  em_eb3_t2_ponta:
     source: sensor.eb3_total_energy_t2_ponta
     cycle: daily
 
-  em_eb3_cheias:
+  em_eb3_t3_cheias:
     source: sensor.eb3_total_energy_t3_cheias
+    cycle: daily
+
+  em_eb3_ene_import:
+    source: sensor.eb3_total_energy_import
+    cycle: daily
+
+  em_eb3_ene_export:
+    source: sensor.eb3_total_energy_export
     cycle: daily
 
 ###
