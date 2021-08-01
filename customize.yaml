@@ -1,13 +1,19 @@
 ###
 
-sensor.em_eb3_vazio:
-  friendly_name: Vazio
+sensor.em_eb3_t1_vazio:
+  friendly_name: EB3 T1 Vazio
 
-sensor.em_eb3_ponta:
-  friendly_name: Ponta
+sensor.em_eb3_t2_ponta:
+  friendly_name: EB3 T2 Ponta
 
-sensor.em_eb3_cheias:
-  friendly_name: Cheias
+sensor.em_eb3_t3_cheias:
+  friendly_name: EB3 T3 Cheias
+
+sensor.em_eb3_ene_import:
+  friendly_name: EB3 Energy Import
+
+sensor.em_eb3_ene_export:
+  friendly_name: EB3 Energy Export
 
 ###
 
