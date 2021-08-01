@@ -31,12 +31,8 @@ recorder:
 
 utility_meter:
 
-  daily_energy_eb1:
+  em_eb1_ene_import:
     source: sensor.eb1_total_energy_import
-    cycle: daily
-
-  daily_energy_eb3:
-    source: sensor.eb3_total_energy_import
     cycle: daily
 
 ###
