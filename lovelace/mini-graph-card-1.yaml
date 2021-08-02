@@ -1,3 +1,5 @@
+###
+
 type: custom:mini-graph-card
 entities:
   - entity: sensor.daily_energy_eb3
@@ -8,4 +10,5 @@ aggregate_func: max
 group_by: date
 show:
   graph: bar
-#EOF
+
+# EOF
