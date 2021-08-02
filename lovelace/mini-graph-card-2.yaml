@@ -1,0 +1,23 @@
+###
+
+type: custom:mini-graph-card
+entities:
+  - entity: sensor.em_eb3_ene_import
+    color: green
+  - entity: sensor.em_eb3_t1_vazio
+    color: lightblue
+  - entity: sensor.em_eb3_t2_ponta
+    color: red
+  - entity: sensor.em_eb3_t3_cheias
+    color: orange
+name: EB3 Import
+hours_to_show: 192
+aggregate_func: max
+group_by: date
+smoothing: false
+show:
+  graph: line
+  fill: false
+  points: true
+
+# EOF
