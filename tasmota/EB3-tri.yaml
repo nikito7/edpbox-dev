@@ -48,8 +48,8 @@
     unique_id: EB3_Clock
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set hh = EB3_Clock_H.state|int %}
-        {% set mm = EB3_Clock_M.state|int %}
+        {% set hh = states('sensor.EB3_Clock_H')|int %}
+        {% set mm = states('sensor.EB3_Clock_M')|int %}
         {% set ss = value_json.EB3.Clock_S|int %}
         {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
     icon: mdi:clock
