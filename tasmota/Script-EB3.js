@@ -13,8 +13,12 @@ smlj=0
 
 if upsecs==55
 then
-tper=11
 smlj=1
+endif
+
+if upsecs==90
+then
+tper=300
 endif
 
 >M 1
@@ -22,48 +26,48 @@ endif
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,19,mN1,1,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002
++1,19,mN1,1,9600,EB3,18,9,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,0
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,0
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,0
+1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,16
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,16
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,16
 
 1,=h<hr>
 
 ; 6C
 
-1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,1
-1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VolL2,1
-1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VolL3,1
+1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,17
+1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VolL2,17
+1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VolL3,17
 
 1,=h<hr>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,1
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,17
 
-1,01040ExxxxUUuu@i1:10,Current L1 ,A,CurL1,1
-1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CurL2,1
-1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CurL3,1
+1,01040ExxxxUUuu@i1:10,Current L1 ,A,CurL1,17
+1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CurL2,17
+1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CurL3,17
 
 1,=h<hr>
 
 ; 73
 
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,0
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,16
 
-1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,0
-1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,0
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,0
+1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,16
+1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,16
+1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,16
 
 1,=h<hr>
 
 ; 7B
 
-1,01040AUUuu@i3:1000,Power Factor ,pu,PowFac,3
-1,01040AxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,3
-1,01040AxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,3
-1,01040AxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,3
+1,01040AUUuu@i3:1000,Power Factor ,pu,PowFac,19
+1,01040AxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
+1,01040AxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
+1,01040AxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,19
 1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
 
 1,=h<hr>
@@ -83,7 +87,7 @@ endif
 
 ; 0B
 
-1,010406uu@i6:1,Tariff ,,Tariff,0
+1,010406uu@i6:1,Tariff ,,Tariff,16
 
 #
 
