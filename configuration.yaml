@@ -95,11 +95,23 @@ sensor eb1mod: !include files/modbus-eb1.yaml
 
 ###
 
-sensor integral1:
+sensor integral:
 
   - platform: integration
     source: sensor.eb3_active_power_l1
     name: EM EB3 L1
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.eb3_active_power_l2
+    name: EM EB3 L2
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.eb3_active_power_l3
+    name: EM EB3 L3
     unit_prefix: k
     round: 2
 
