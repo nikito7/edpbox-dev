@@ -1,10 +1,46 @@
+# ha config
+
+counter:
+dhcp:
+energy:
+frontend:
+history:
+input_boolean:
+input_datetime:
+input_number:
+input_select:
+input_text:
+logbook:
+map:
+#media_source:
+mobile_app:
+my:
+network:
+person:
+ssdp:
+#sun:
+system_health:
+#tag:
+timer:
+updater:
+webhook:
+zeroconf:
+zone:
+
+# default yaml
+
+group: !include groups.yaml
+automation: !include automations.yaml
+#script: !include scripts.yaml
+#scene: !include scenes.yaml
+
 # (...)
 
-logger:
-
-  logs:
-    homeassistant.components.modbus: debug
-    pymodbus.client: debug
+#logger:
+#
+#  logs:
+#    homeassistant.components.modbus: debug
+#    pymodbus.client: debug
 
 homeassistant:
 
