@@ -27,16 +27,24 @@ recorder:
       - sensor.eb5_clock
     entity_globs:
       - sensor.eb1_0x*
+      - sensor.eb3_clock*
 ###
 
 utility_meter:
 
 ###
 
-  em_eb1_import:
-    name: EM EB1 Import
-    source: sensor.eb1_total_energy_import
+  daily_energy:
+    source: sensor.eb3_total_energy_import
     cycle: daily
+    tariffs:
+      - Normal
+
+  monthly_energy:
+    source: sensor.eb3_total_energy_import
+    cycle: monthly
+    tariffs:
+      - Normal
 
 ###
 
