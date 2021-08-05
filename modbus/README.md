@@ -22,10 +22,8 @@
 
 # Install
 
-- 2021.7.21.1
-
 ```js
-vv=21.7.211
+vv=21.8.051
 file=custom-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/${file}
 mkdir -p /config/custom_components/modbus/
