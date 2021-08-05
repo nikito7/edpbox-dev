@@ -33,12 +33,17 @@ utility_meter:
 
 ###
 
-  em_eb1_ene_import:
+  em_eb1_import:
     name: EM EB1 Import
     source: sensor.eb1_total_energy_import
     cycle: daily
 
 ###
+
+  em_eb3_import:
+    name: EM EB3 Import
+    source: sensor.eb3_total_energy_import
+    cycle: daily
 
   em_eb3_t1_vazio:
     name: EM EB3 T1 Vazio
@@ -53,16 +58,6 @@ utility_meter:
   em_eb3_t3_cheias:
     name: EM EB3 T3 Cheias
     source: sensor.eb3_total_energy_t3_cheias
-    cycle: daily
-
-  em_eb3_ene_import:
-    name: EM EB3 Import
-    source: sensor.eb3_total_energy_import
-    cycle: daily
-
-  em_eb3_ene_export:
-    name: EM EB3 Export
-    source: sensor.eb3_total_energy_export
     cycle: daily
 
 ###
