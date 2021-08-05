@@ -41,7 +41,7 @@
         count: 2
         data_type: custom
         structure: ">2H"
-        scan_interval: 12
+        scan_interval: 11
 
       - name: "EB1 0x0079" # Power
         slave: 1
