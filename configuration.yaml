@@ -87,14 +87,14 @@ utility_meter:
     cycle: daily
     tariffs:
       - Vazio
-      - Fora do Vazio
+      - Fora de Vazio
 
   ez2_monthly:
     source: sensor.eb3_total_energy_import
     cycle: monthly
     tariffs:
       - Vazio
-      - Fora do Vazio
+      - Fora de Vazio
 
   ez3_daily:
     source: sensor.eb3_total_energy_import
