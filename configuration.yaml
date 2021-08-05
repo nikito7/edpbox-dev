@@ -7,8 +7,6 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-# (...)
-
 #logger:
 #
 #  logs:
@@ -152,6 +150,16 @@ sensor integral:
     name: EM EB3 L3
     unit_prefix: k
     round: 2
+
+  - platform: template
+    sensors:
+      u1_power:
+        friendly_name: U1 Power
+        value_template: >-
+            {% set a = states('sensor.u1_nominal_real_power')|int %}
+            {% set b = states('sensor.u1_load')|int %}
+            {{  (a * b / 100)|round(1) }}
+        device_class: power
 
 ###
 ##
