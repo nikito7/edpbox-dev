@@ -34,18 +34,58 @@ utility_meter:
 
 ###
 
-  daily_energy:
+  ez_daily_total:
     source: sensor.eb3_total_energy_import
     cycle: daily
     tariffs:
       - Normal
 
-  monthly_energy:
+  ez_monthly_total:
     source: sensor.eb3_total_energy_import
     cycle: monthly
     tariffs:
       - Normal
+###
 
+  ez_daily_t1_vazio:
+    source: sensor.eb3_total_energy_t1_vazio
+    cycle: daily
+    tariffs:
+      - Vazio
+
+  ez_monthly_t1_vazio:
+    source: sensor.eb3_total_energy_t1_vazio
+    cycle: monthly
+    tariffs:
+      - Vazio
+
+###
+
+  ez_daily_t2_ponta:
+    source: sensor.eb3_total_energy_t2_ponta
+    cycle: daily
+    tariffs:
+      - Ponta
+
+  ez_monthly_t2_ponta:
+    source: sensor.eb3_total_energy_t2_ponta
+    cycle: monthly
+    tariffs:
+      - Ponta
+
+###
+
+  ez_daily_t3_cheias:
+    source: sensor.eb3_total_energy_t3_cheias
+    cycle: daily
+    tariffs:
+      - Cheias
+
+  ez_monthly_t3_cheias:
+    source: sensor.eb3_total_energy_t3_cheias
+    cycle: monthly
+    tariffs:
+      - Cheias
 ###
 
   em_eb3_import:
