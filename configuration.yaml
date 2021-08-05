@@ -158,8 +158,15 @@ sensor integral:
         value_template: >-
             {% set a = states('sensor.u1_nominal_real_power')|int %}
             {% set b = states('sensor.u1_load')|int %}
-            {{  (a * b / 100)|round(1) }}
+            {{  (a * b / 100)|int }}
         device_class: power
+        unit_of_measurement: "W"
+
+  - platform: integration
+    source: sensor.u1_power
+    name: EM UPS U1
+    unit_prefix: k
+    round: 2
 
 ###
 ##
