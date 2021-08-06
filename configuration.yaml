@@ -53,35 +53,11 @@ utility_meter:
     tariffs:
       - Normal
 
-  ez2_daily:
+  ez1_yearly:
     source: sensor.eb3_total_energy_import
-    cycle: daily
+    cycle: yearly
     tariffs:
-      - Vazio
-      - Fora de Vazio
-
-  ez2_monthly:
-    source: sensor.eb3_total_energy_import
-    cycle: monthly
-    tariffs:
-      - Vazio
-      - Fora de Vazio
-
-  ez3_daily:
-    source: sensor.eb3_total_energy_import
-    cycle: daily
-    tariffs:
-      - Vazio
-      - Ponta
-      - Cheias
-
-  ez3_monthly:
-    source: sensor.eb3_total_energy_import
-    cycle: monthly
-    tariffs:
-      - Vazio
-      - Ponta
-      - Cheias
+      - Normal
 
 ###
 
