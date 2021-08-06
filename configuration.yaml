@@ -7,11 +7,11 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-#logger:
-#
-#  logs:
-#    homeassistant.components.modbus: debug
-#    pymodbus.client: debug
+logger:
+
+  logs:
+    homeassistant.components.modbus: debug
+    pymodbus.client: debug
 
 homeassistant:
 
