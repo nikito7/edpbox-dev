@@ -41,26 +41,6 @@ utility_meter:
 
 ###
 
-  ez1_daily:
-    source: sensor.eb3_total_energy_import
-    cycle: daily
-    tariffs:
-      - Normal
-
-  ez1_monthly:
-    source: sensor.eb3_total_energy_import
-    cycle: monthly
-    tariffs:
-      - Normal
-
-  ez1_yearly:
-    source: sensor.eb3_total_energy_import
-    cycle: yearly
-    tariffs:
-      - Normal
-
-###
-
   em_eb3_import:
     name: EM EB3 Import
     source: sensor.eb3_total_energy_import
