@@ -109,6 +109,7 @@ sensor integral:
 
   - platform: template
     sensors:
+
       u1_power:
         friendly_name: U1 Power
         value_template: >-
@@ -118,9 +119,23 @@ sensor integral:
         device_class: power
         unit_of_measurement: "W"
 
+      fake_solar:
+        friendly_name: Fake Solar
+        value_template: >-
+            {% set a = states('sensor.mmc_3e_temp')|int %}
+            {{  ((a - 10) * 100)|int }}
+        device_class: power
+        unit_of_measurement: "W"
+
   - platform: integration
     source: sensor.u1_power
     name: EM UPS U1
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.fake_solar
+    name: EM Fake Solar
     unit_prefix: k
     round: 2
 
