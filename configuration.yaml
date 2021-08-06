@@ -123,7 +123,8 @@ sensor integral:
         friendly_name: Fake Solar
         value_template: >-
             {% set a = states('sensor.mmc_3e_temp')|int %}
-            {{  ((a - 10) * 100)|int }}
+            {% set b = states('sensor.mmc_e3_temp')|int %}
+            {{  ((a - b) * 50)|int }}
         device_class: power
         unit_of_measurement: "W"
 
