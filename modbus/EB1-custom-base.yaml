@@ -13,8 +13,6 @@
 
     sensors:
 
-# for use with templates
-
       - name: "EB1 0x0001" # Clock
         slave: 1
         address: 1
@@ -55,6 +53,7 @@
         input_type: input
         count: 1
         data_type: uint16
+        scan_interval: 5
 
       - name: "EB1 0x007F" # Freq
         slave: 1
@@ -62,6 +61,7 @@
         input_type: input
         count: 1
         data_type: uint16
+        scan_interval: 5
 
       - name: "EB1 0x0026" # TotEneTariff
         slave: 1
@@ -80,31 +80,5 @@
         data_type: custom
         register_size: 4
         structure: ">2L"
-
-# full sensor
-
-#      - name: "EB1 Firmware Core"
-#        slave: 1
-#        address: 4
-#        input_type: input
-#        count: 1
-#        data_type: string
-#        scan_interval: 301
-
-#      - name: "EB1 Firmware App"
-#        slave: 1
-#        address: 5
-#        input_type: input
-#        count: 1
-#        data_type: string
-#        scan_interval: 302
-
-#      - name: "EB1 Firmware Com"
-#        slave: 1
-#        address: 6
-#        input_type: input
-#        count: 1
-#        data_type: string
-#        scan_interval: 303
 
 # EOF
