@@ -124,7 +124,7 @@ sensor eb1mod: !include files/modbus-eb1.yaml
 
 ###
 
-sensor integral:
+sensor:
 
   - platform: integration
     source: sensor.eb3_active_power_l1
@@ -164,11 +164,13 @@ sensor integral:
       fake_solar:
         friendly_name: Fake Solar
         value_template: >-
-            {% set a = states('sensor.mmc_3e_temp')|float %}
+            {% set a = states('sensor.mmc_3e_temp')|float + 10 %}
             {% set b = states('sensor.sun_elevation')|float %}
-            {% set c = (b * a)|int %}
+            {% set c = (b * a * 0.77)|int %}
             {% if c > 0 %}   
               {{ c }}
+            {% else %}
+              {{ 1 }}
             {% endif %}
         device_class: power
         unit_of_measurement: "W"
