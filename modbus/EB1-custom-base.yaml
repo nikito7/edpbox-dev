@@ -39,7 +39,7 @@
         count: 2
         data_type: custom
         structure: ">2H"
-        scan_interval: 5
+        scan_interval: 10
 
       - name: "EB1 0x0079" # Power
         slave: 1
@@ -49,7 +49,7 @@
         data_type: custom
         register_size: 4
         structure: ">2L"
-        scan_interval: 5
+        scan_interval: 10
 
       - name: "EB1 0x007B" # PF
         slave: 1
@@ -57,7 +57,7 @@
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 5
+        scan_interval: 10
 
       - name: "EB1 0x007F" # Freq
         slave: 1
@@ -65,7 +65,7 @@
         input_type: input
         count: 1
         data_type: uint16
-        scan_interval: 5
+        scan_interval: 10
 
       - name: "EB1 0x0026" # TotEneTariff
         slave: 1
@@ -75,7 +75,7 @@
         data_type: custom
         register_size: 4
         structure: ">3L"
-        scan_interval: 5
+        scan_interval: 30
 
       - name: "EB1 0x0016" # TotEne I/E/Q
         slave: 1
@@ -85,6 +85,6 @@
         data_type: custom
         register_size: 4
         structure: ">2L"
-        scan_interval: 5
+        scan_interval: 30
 
 # EOF
