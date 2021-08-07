@@ -37,6 +37,7 @@ zeroconf:
 zone:
 
 ###
+###
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -163,8 +164,8 @@ sensor integral:
       fake_solar:
         friendly_name: Fake Solar
         value_template: >-
-            {% set a = states('sensor.mmc_3e_temp')|int %}
-            {% set b = states('sensor.sun_elevation')|int %}
+            {% set a = states('sensor.mmc_3e_temp')|float %}
+            {% set b = states('sensor.sun_elevation')|float %}
             {% if b > 0 %}   
               {{  (b * a)|int }}
             {% endif %}
