@@ -11,22 +11,18 @@ smlj=0
 
 >S
 
-if upsecs==55
+if upsecs==50
 then
 smlj=1
 endif
 
-if upsecs==90
-then
-tper=300
-endif
 
 >M 1
 
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,19,mN1,1,9600,EB3,18,9,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002
++1,19,mN1,1,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002
 
 ; 01
 
