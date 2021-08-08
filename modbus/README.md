@@ -1,11 +1,4 @@
-# Info
-
-- Custom component for HA!
-- Add register_size for modbus
-- Allow non-standard registers size
-- No needed for single phase meter after HA 2021.8
-
-# Usage
+Usage:
 
 ```yaml
   count: 1
@@ -20,7 +13,7 @@
   register_size: 10
 ```
 
-# Install
+Install:
 
 ```js
 vv=21.8.051
