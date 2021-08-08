@@ -16,7 +16,7 @@ Usage:
 Install:
 
 ```js
-vv=21.8.051
+vv=21.8.081
 file=custom-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/${file}
 mkdir -p /config/custom_components/modbus/
