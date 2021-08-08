@@ -10,7 +10,7 @@
     timeout: 3
     retries: 9
     retry_on_empty: true
-    #message_wait_milliseconds: 100
+    message_wait_milliseconds: 500
 
     sensors:
 
