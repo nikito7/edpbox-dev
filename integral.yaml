@@ -5,15 +5,6 @@
   - platform: template
     sensors:
 
-      z1_test:
-        friendly_name: z1 test
-        icon_template: 'mdi:lightning-bolt'
-        unit_of_measurement: "W"
-        device_class: power
-        value_template: >-
-            {% set updateactivator = states('sensor.eb3_active_power_l3') %}
-            {{ range(601, 605)|random }}
-
       u1_power:
         friendly_name: U1 Power
         value_template: >-
@@ -33,7 +24,7 @@
         value_template: >-
             {% set a = states('sensor.mmc_3e_temp')|float + 10 %}
             {% set b = states('sensor.sun_elevation')|float %}
-            {% set c = (b * a * 0.77)|int %}
+            {% set c = (b * a * 0.55)|int %}
             {% if c > 0 %}   
               {{ c }}
             {% else %}
@@ -71,12 +62,6 @@
   - platform: integration
     source: sensor.fake_solar
     name: EM Fake Solar
-    unit_prefix: k
-    round: 2
-
-  - platform: integration
-    source: sensor.z1_test
-    name: z1 test kwh
     unit_prefix: k
     round: 2
 
