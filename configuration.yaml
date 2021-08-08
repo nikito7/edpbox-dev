@@ -159,6 +159,7 @@ sensor:
         unit_of_measurement: "W"
         device_class: power
         value_template: >-
+            {% set updateactivator = states('sensor.eb3_active_power_l3') %}
             {{ range(601, 605)|random }}
 
       u1_power:
