@@ -158,7 +158,8 @@ sensor:
         icon_template: 'mdi:lightning-bolt'
         unit_of_measurement: "W"
         device_class: power
-        value_template: 600
+        value_template: >-
+            {{ (600 + (range(0.0100, 0.0200) | random))|float }}
 
       u1_power:
         friendly_name: U1 Power
