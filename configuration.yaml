@@ -144,8 +144,21 @@ sensor:
     unit_prefix: k
     round: 2
 
+  - platform: integration
+    source: sensor.z1_test
+    name: z1 test kwh
+    unit_prefix: k
+    round: 2
+
   - platform: template
     sensors:
+
+      z1_test:
+        friendly_name: z1 test
+        icon_template: 'mdi:lightning-bolt'
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: 600
 
       u1_power:
         friendly_name: U1 Power
