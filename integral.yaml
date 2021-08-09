@@ -23,10 +23,11 @@
         friendly_name: Fake Solar
         value_template: >-
             {% set a = states('sensor.mmc_3e_temp')|float + 10 %}
-            {% set b = states('sensor.sun_elevation')|float %}
-            {% set c = (b * a * 0.55)|int %}
+            {% set b = states('sensor.mmc_e3_temp')|float + 10 %}
+            {% set c = states('sensor.sun_elevation')|float %}
+            {% set d = (a * b / 2)|int %}
             {% if c > 0 %}   
-              {{ c }}
+              {{ d }}
             {% else %}
               {{ 1 }}
             {% endif %}
