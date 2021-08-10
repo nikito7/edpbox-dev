@@ -14,11 +14,20 @@
         device_class: power
         unit_of_measurement: "W"
 
+      sun_elevation:
+        friendly_name: Sun Elevation
+        unit_of_measurement: '°'
+        value_template: "{{ state_attr('sun.sun', 'elevation') }}"
+
       fake_solar_pv1:
         friendly_name: Fake Solar PV1
         value_template: >-
             {% set a = states('sensor.mmc_e3_temp')|float + 5.0 %}
-            {{  (a * 9.9)|float }}
+            {% set b = states('sensor.sun_elevation')|float / 10.0 %}
+            {% set c = (a * b)|float %}
+            {% if c > 0 %}
+              {{ c }}
+            {% endif %}
         device_class: power
         unit_of_measurement: "W"
 
@@ -26,7 +35,11 @@
         friendly_name: Fake Solar PV2
         value_template: >-
             {% set a = states('sensor.mmc_3e_temp')|float + 5.0 %}
-            {{  (a * 9.9)|float }}
+            {% set b = states('sensor.sun_elevation')|float / 10.0 %}
+            {% set c = (a * b)|float %}
+            {% if c > 0 %}
+              {{ c }}
+            {% endif %}
         device_class: power
         unit_of_measurement: "W"
 
