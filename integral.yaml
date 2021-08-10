@@ -14,6 +14,22 @@
         device_class: power
         unit_of_measurement: "W"
 
+      fake_solar_pv1:
+        friendly_name: Fake Solar PV1
+        value_template: >-
+            {% set a = states('sensor.mmc_e3_temp')|float + 5.0 %}
+            {{  (a * 9.9)|float }}
+        device_class: power
+        unit_of_measurement: "W"
+
+      fake_solar_pv2:
+        friendly_name: Fake Solar PV2
+        value_template: >-
+            {% set a = states('sensor.mmc_3e_temp')|float + 5.0 %}
+            {{  (a * 9.9)|float }}
+        device_class: power
+        unit_of_measurement: "W"
+
 ###
 
   - platform: integration
@@ -37,6 +53,18 @@
   - platform: integration
     source: sensor.u1_power
     name: EM UPS U1
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.fake_solar_pv1
+    name: EM Fake Solar PV1
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.fake_solar_pv2
+    name: EM Fake Solar PV2
     unit_prefix: k
     round: 2
 
