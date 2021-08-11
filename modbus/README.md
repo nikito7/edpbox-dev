@@ -1,6 +1,6 @@
-Info:
+Custom:
 
-- "register_size" only in custom
+- adds "register_size"
 - not really needed after 2021.8
 - reduce requests in tri phase meter
 
