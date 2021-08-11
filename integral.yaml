@@ -26,7 +26,7 @@
             {% set b = states('sensor.sun_elevation')|float / 10.0 %}
             {% set c = (a * b)|float %}
             {% if c > 0 %}
-              {{ c }}
+              {{ c|round(1) }}
             {% else %}
               {{ 0.0 }}
             {% endif %}
@@ -40,7 +40,7 @@
             {% set b = states('sensor.sun_elevation')|float / 10.0 %}
             {% set c = (a * b)|float %}
             {% if c > 0 %}
-              {{ c }}
+              {{ c|round(1) }}
             {% else %}
               {{ 0.0 }}
             {% endif %}
