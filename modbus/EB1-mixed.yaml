@@ -7,9 +7,9 @@
     type: tcp
     host: 10.3.0.223
     port: 9988
-    timeout: 9
+    timeout: 3
     retries: 3
-    retry_on_empty: true
+    retry_on_empty: false
     message_wait_milliseconds: 1000
 
     sensors:
@@ -126,14 +126,6 @@
         precision: 3
         scale: 0.001
         unit_of_measurement: kWh
-
-      - name: "EB1 Tariff" # 0B
-        slave: 1
-        address: 11
-        input_type: input
-        count: 1
-        data_type: custom
-        structure: ">Bx"
 
 # for testing
 
