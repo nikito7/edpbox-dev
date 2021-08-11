@@ -1,6 +1,8 @@
 Info:
 
-- "register_size" only in custom zip
+- "register_size" only in custom
+- not really needed after 2021.8
+- reduce requests in tri phase meter
 
 Usage:
 
