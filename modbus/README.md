@@ -1,8 +1,6 @@
 Custom:
 
 - adds "register_size"
-- not really needed after 2021.8
-- reduce requests in tri phase meter
 
 Usage:
 
@@ -11,12 +9,6 @@ Usage:
   data_type: custom
   register_size: 4
   structure: ">L"
-```
-
-```yaml
-  count: 1
-  data_type: string
-  register_size: 10
 ```
 
 Install:
