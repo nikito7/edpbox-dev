@@ -27,8 +27,6 @@
             {% set c = (a * b)|float %}
             {% if b > 0 and a > 5 %}
               {{ c|round(1) }}
-            {% else %}
-              {{ 0.0 }}
             {% endif %}
         device_class: power
         unit_of_measurement: "W"
@@ -41,8 +39,6 @@
             {% set c = (a * b)|float %}
             {% if b > 0 and a > 5 %}
               {{ c|round(1) }}
-            {% else %}
-              {{ 0.0 }}
             {% endif %}
         device_class: power
         unit_of_measurement: "W"
