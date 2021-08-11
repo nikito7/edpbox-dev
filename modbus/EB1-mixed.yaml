@@ -1,0 +1,147 @@
+# /config/files/modbus.yaml
+# edpbox1 custom mixed
+
+#modbus:
+
+  - name: edpbox1
+    type: tcp
+    host: 10.3.0.223
+    port: 9988
+    timeout: 9
+    retries: 3
+    retry_on_empty: true
+    message_wait_milliseconds: 1000
+
+    sensors:
+
+### custom required + templates
+
+      - name: "EB1 0x0001" # Clock
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        register_size: 12
+        structure: ">H7BhB"
+        scan_interval: 11
+
+      - name: "EB1 0x000B" # Tariff
+        slave: 1
+        address: 11
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">Bx"
+        scan_interval: 11
+
+### no custom
+
+      - name: "EB1 Voltage L1" # 6C
+        slave: 1
+        address: 108
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: V
+
+      - name: "EB1 Current L1" # 6D
+        slave: 1
+        address: 109
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: A
+
+      - name: "EB1 Active Power" # 79
+        slave: 1
+        address: 121
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 0
+        scale: 1
+        unit_of_measurement: W
+
+      - name: "EB1 Power Factor" # 7B
+        slave: 1
+        address: 123
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: pu
+
+      - name: "EB1 Frequency" # 7F
+        slave: 1
+        address: 127
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: Hz
+
+      - name: "EB1 Total Energy T1 Vazio" # 26
+        slave: 1
+        address: 38
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kWh
+
+      - name: "EB1 Total Energy T2 Ponta" # 27
+        slave: 1
+        address: 39
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kWh
+
+      - name: "EB1 Total Energy T3 Cheias" # 28
+        slave: 1
+        address: 40
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kWh
+
+      - name: "EB1 Total Energy Import" # 16
+        slave: 1
+        address: 22
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kWh
+
+      - name: "EB1 Tariff" # 0B
+        slave: 1
+        address: 11
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">Bx"
+
+# for testing
+
+      - name: "EB1 Firmware Core"
+        slave: 1
+        address: 4
+        input_type: input
+        count: 1
+        data_type: string
+
+# EOF
