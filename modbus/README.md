@@ -1,3 +1,7 @@
+Info:
+
+- "register_size" only in custom zip
+
 Usage:
 
 ```yaml
