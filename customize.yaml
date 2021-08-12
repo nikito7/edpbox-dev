@@ -1,7 +1,38 @@
-###
+# MariaDB
 
+sensor.db_size_mb:
+  icon: mdi:database
 
-###
+# EB1
+
+sensor.eb1_voltage_l1:
+  icon: mdi:chip
+sensor.eb1_current_l1:
+  icon: mdi:chip
+sensor.eb1_active_power:
+  icon: mdi:chip
+sensor.eb1_power_factor:
+  icon: mdi:chip
+sensor.eb1_frequency:
+  icon: mdi:pulse
+sensor.eb1_total_energy_t1_vazio:
+  icon: mdi:chip
+sensor.eb1_total_energy_t2_ponta:
+  icon: mdi:chip
+sensor.eb1_total_energy_t3_cheias:
+  icon: mdi:chip
+sensor.eb1_total_energy_import:
+  icon: mdi:chip
+sensor.eb1_tariff:
+  icon: mdi:chip
+sensor.eb1_firmware_core:
+  icon: mdi:chip
+sensor.eb1_firmware_app:
+  icon: mdi:chip
+sensor.eb1_firmware_com:
+  icon: mdi:chip
+
+# temp
 
 sensor.mmc_3e_temp:
   friendly_name: ST
@@ -12,6 +43,8 @@ sensor.mmc_33_temp:
 sensor.clock_3a_temp:
   friendly_name: FZ
 
+# hum
+
 sensor.mmc_3e_hum:
   friendly_name: ST
 sensor.mmc_e3_hum:
@@ -20,6 +53,8 @@ sensor.mmc_33_hum:
   friendly_name: GN
 sensor.clock_3a_hum:
   friendly_name: FZ
+
+# batt
 
 sensor.mmc_3e_batt:
   friendly_name: ST
@@ -30,6 +65,8 @@ sensor.mmc_33_batt:
 sensor.clock_3a_batt:
   friendly_name: FZ
 
+# signal
+
 sensor.mmc_3e_signal:
   friendly_name: ST
 sensor.mmc_e3_signal:
@@ -38,39 +75,5 @@ sensor.mmc_33_signal:
   friendly_name: GN
 sensor.clock_3a_signal:
   friendly_name: FZ
-
-# MariaDB
-
-sensor.db_size_mb:
-  icon: mdi:database
-
-# EB1
-
-#sensor.eb1_voltage_l1:
-#  icon: mdi:chip
-#sensor.eb1_current_l1:
-#  icon: mdi:chip
-#sensor.eb1_active_power:
-#  icon: mdi:chip
-#sensor.eb1_power_factor:
-#  icon: mdi:chip
-#sensor.eb1_frequency:
-#  icon: mdi:pulse
-#sensor.eb1_total_energy_t1_vazio:
-#  icon: mdi:chip
-#sensor.eb1_total_energy_t2_ponta:
-#  icon: mdi:chip
-#sensor.eb1_total_energy_t3_cheias:
-#  icon: mdi:chip
-#sensor.eb1_total_energy_import:
-#  icon: mdi:chip
-#sensor.eb1_tariff:
-#  icon: mdi:chip
-#sensor.eb1_firmware_core:
-#  icon: mdi:chip
-#sensor.eb1_firmware_app:
-#  icon: mdi:chip
-#sensor.eb1_firmware_com:
-#  icon: mdi:chip
 
 # EOF
