@@ -89,6 +89,4 @@ entities:
     secondary_info: last-updated
   - entity: switch.eb3_esp_restart
     secondary_info: last-updated
-  - entity: switch.eb3_esp_polling
-    secondary_info: last-updated
 # EOF
