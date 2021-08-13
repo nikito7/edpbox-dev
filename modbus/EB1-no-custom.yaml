@@ -1,5 +1,5 @@
 # /config/files/modbus.yaml
-# edpbox1 custom mixed
+# edpbox1 no custom needed > 2021.8.x
 
 #modbus:
 
@@ -8,34 +8,11 @@
     host: 10.3.0.223
     port: 9988
     timeout: 3
-    retries: 3
-    retry_on_empty: false
-    message_wait_milliseconds: 500
+    retries: 9
+    retry_on_empty: true
+    message_wait_milliseconds: 200
 
     sensors:
-
-### custom required + templates
-
-      - name: "EB1 0x0001" # Clock
-        slave: 1
-        address: 1
-        input_type: input
-        count: 1
-        data_type: custom
-        register_size: 12
-        structure: ">H7BhB"
-        scan_interval: 11
-
-      - name: "EB1 0x000B" # Tariff
-        slave: 1
-        address: 11
-        input_type: input
-        count: 1
-        data_type: custom
-        structure: ">Bx"
-        scan_interval: 11
-
-### no custom
 
       - name: "EB1 Voltage L1" # 6C
         slave: 1
@@ -126,6 +103,17 @@
         precision: 3
         scale: 0.001
         unit_of_measurement: kWh
+
+# for tariff template
+
+      - name: "EB1 0x000B" # Tariff
+        slave: 1
+        address: 11
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">Bx"
+        scan_interval: 11
 
 # for testing
 
