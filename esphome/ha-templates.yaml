@@ -1,4 +1,6 @@
-# sensor eb1esphm: !include esphome-eb1.yaml
+# /config/files/esphome-eb3.yaml
+
+#sensor:
 
   - platform: template
     sensors:
