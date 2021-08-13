@@ -5,39 +5,39 @@
   - platform: template
     sensors:
 
-      eb1_clock:
-        friendly_name: "EB1 Clock"
-        unique_id: eb1_clock
+      eb3_clock:
+        friendly_name: "EB3 Clock"
+        unique_id: eb3_clock
         value_template: >-
-          {% if states('sensor.eb1_0x0001_clock') %}
-            {% set hh = states('sensor.eb1_0x0001_clock').split(',')[5]|int %}
-            {% set mm = states('sensor.eb1_0x0001_clock').split(',')[6]|int %}
-            {% set ss = states('sensor.eb1_0x0001_clock').split(',')[7]|int %}
+          {% if states('sensor.eb3_0x0001_clock') %}
+            {% set hh = states('sensor.eb3_0x0001_clock').split(',')[5]|int %}
+            {% set mm = states('sensor.eb3_0x0001_clock').split(',')[6]|int %}
+            {% set ss = states('sensor.eb3_0x0001_clock').split(',')[7]|int %}
             {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
           {% endif %}
         icon_template: mdi:clock
 
-      eb1_dcp:
-        friendly_name: "EB1 DCP"
-        unique_id: eb1_dcp
+      eb3_dcp:
+        friendly_name: "EB3 DCP"
+        unique_id: eb3_dcp
         value_template: >-
-          {% set x = states('sensor.eb1_0x0084_dcp').split(',')[0]|string %}
+          {% set x = states('sensor.eb3_0x0084_dcp').split(',')[0]|string %}
           {% if x == "0" or x == "1" or x == "2" %}
             {{ x }}
           {% endif %}
         icon_template: mdi:chip
 
-      eb1_tariff:
-        friendly_name: "EB1 Tariff"
-        unique_id: eb1_tariff
+      eb3_tariff:
+        friendly_name: "EB3 Tariff"
+        unique_id: eb3_tariff
         value_template: >-
-          {% set x = states('sensor.eb1_0x000B_tariff').split(',')[0]|string %}
+          {% set x = states('sensor.eb3_0x000B_tariff').split(',')[0]|string %}
           {% if x == "1" %}
-            {{ "V" }}
+            {{ "Vazio" }}
           {% elif x == "2" %}
-            {{ "P" }}
+            {{ "Ponta" }}
           {% elif x == "3" %}
-            {{ "C" }}
+            {{ "Cheias" }}
           {% endif %}
         icon_template: mdi:calendar
 
