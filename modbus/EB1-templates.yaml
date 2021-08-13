@@ -4,15 +4,6 @@
   - platform: template
     sensors:
 
-      eb1_clock:
-        friendly_name: "EB1 Clock"
-        value_template: >-
-            {% set hh = states('sensor.eb1_0x0001').split(',')[4] | int %}
-            {% set mm = states('sensor.eb1_0x0001').split(',')[5] | int %}
-            {% set ss = states('sensor.eb1_0x0001').split(',')[6] | int %}
-            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
-        icon_template: mdi:clock
-
       eb1_tariff:
         friendly_name: "EB1 Tariff"
         value_template: >-
