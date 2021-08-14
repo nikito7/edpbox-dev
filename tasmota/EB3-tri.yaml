@@ -268,8 +268,11 @@
           {{ x }}
         {% endif %}
     unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
-   
+    device_class: energy
+    state_class: measurement
+    last_reset_value_template: >-
+        {{ "1970-01-01T00:00:00+00:00" }}
+
   - platform: mqtt
     name: "EB3 Total Energy T2 Ponta"
     unique_id: EB3_TotEneT2
