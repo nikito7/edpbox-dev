@@ -2,7 +2,7 @@
 
 type: custom:mini-graph-card
 entities:
-  - entity: sensor.daily_energy_eb3
+  - entity: sensor.em_eb3_ene_import
     color: lightblue
 name: Energy EB3
 hours_to_show: 168
