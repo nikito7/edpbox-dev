@@ -115,7 +115,7 @@ sensor mariadb:
 #sensor eb1tas: !include files/tasmota-eb1.yaml
 #sensor eb2tas: !include files/tasmota-eb2.yaml
 #sensor eb3tas: !include files/tasmota-eb3.yaml
-sensor eb3esp: !include files/esphome-eb3.yaml
+#sensor eb3esp: !include files/esphome-eb3.yaml
 
 ###
 
