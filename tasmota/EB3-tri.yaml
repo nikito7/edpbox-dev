@@ -1,4 +1,4 @@
-# tasmota-eb3.yaml
+# config/files/tasmota-eb3.yaml
 # edpbox3
 
   - platform: mqtt
@@ -259,7 +259,7 @@
     icon: mdi:pulse
 
   - platform: mqtt
-    name: "EB3 Total Energy T1 Vazio"
+    name: "EB3 Energy T1 Vazio"
     unique_id: EB3_TotEneT1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -275,7 +275,7 @@
     last_reset_topic: "tele/edpbox3/STATE"
 
   - platform: mqtt
-    name: "EB3 Total Energy T2 Ponta"
+    name: "EB3 Energy T2 Ponta"
     unique_id: EB3_TotEneT2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -291,7 +291,7 @@
     last_reset_topic: "tele/edpbox3/STATE"
 
   - platform: mqtt
-    name: "EB3 Total Energy T3 Cheias"
+    name: "EB3 Energy T3 Cheias"
     unique_id: EB3_TotEneT3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -307,7 +307,7 @@
     last_reset_topic: "tele/edpbox3/STATE"
 
   - platform: mqtt
-    name: "EB3 Total Energy Import"
+    name: "EB3 Energy Import"
     unique_id: EB3_TotEneImp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -323,7 +323,7 @@
     last_reset_topic: "tele/edpbox3/STATE"
 
   - platform: mqtt
-    name: "EB3 Total Energy Export"
+    name: "EB3 Energy Export"
     unique_id: EB3_TotEneExp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
