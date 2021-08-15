@@ -2,9 +2,9 @@
 
 type: custom:mini-graph-card
 entities:
-  - entity: sensor.em_eb3_ene_import
+  - entity: sensor.utm_eb3_import
     color: lightblue
-name: Energy EB3
+name: UTM EB3 Import
 hours_to_show: 168
 aggregate_func: max
 group_by: date
