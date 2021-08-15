@@ -76,26 +76,9 @@ recorder:
 
 utility_meter:
 
-###
-
-  em_eb3_import:
-    name: EM EB3 Import
+  utm_eb3_import:
+    name: UTM EB3 Import
     source: sensor.eb3_total_energy_import
-    cycle: daily
-
-  em_eb3_t1_vazio:
-    name: EM EB3 T1 Vazio
-    source: sensor.eb3_total_energy_t1_vazio
-    cycle: daily
-
-  em_eb3_t2_ponta:
-    name: EM EB3 T2 Ponta
-    source: sensor.eb3_total_energy_t2_ponta
-    cycle: daily
-
-  em_eb3_t3_cheias:
-    name: EM EB3 T3 Cheias
-    source: sensor.eb3_total_energy_t3_cheias
     cycle: daily
 
 ###
