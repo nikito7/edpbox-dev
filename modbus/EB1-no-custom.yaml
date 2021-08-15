@@ -10,7 +10,7 @@
     port: 9988
     timeout: 3
     retries: 9
-    retry_on_empty: true
+    retry_on_empty: false
     message_wait_milliseconds: 200
 
     sensors:
@@ -65,7 +65,7 @@
         scale: 0.1
         unit_of_measurement: Hz
 
-      - name: "EB1 Total Energy T1 Vazio" # 26
+      - name: "EB1 Energy T1 Vazio" # 26
         slave: 1
         address: 38
         input_type: input
@@ -75,7 +75,7 @@
         scale: 0.001
         unit_of_measurement: kWh
 
-      - name: "EB1 Total Energy T2 Ponta" # 27
+      - name: "EB1 Energy T2 Ponta" # 27
         slave: 1
         address: 39
         input_type: input
@@ -85,7 +85,7 @@
         scale: 0.001
         unit_of_measurement: kWh
 
-      - name: "EB1 Total Energy T3 Cheias" # 28
+      - name: "EB1 Energy T3 Cheias" # 28
         slave: 1
         address: 40
         input_type: input
@@ -95,7 +95,7 @@
         scale: 0.001
         unit_of_measurement: kWh
 
-      - name: "EB1 Total Energy Import" # 16
+      - name: "EB1 Energy Import" # 16
         slave: 1
         address: 22
         input_type: input
