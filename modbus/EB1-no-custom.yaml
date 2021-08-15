@@ -105,6 +105,16 @@
         scale: 0.001
         unit_of_measurement: kWh
 
+      - name: "EB1 Energy Export" # 17
+        slave: 1
+        address: 23
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kWh
+
 # for tariff template
 
       - name: "EB1 0x000B" # Tariff
