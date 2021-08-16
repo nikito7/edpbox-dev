@@ -1,12 +1,12 @@
 # Striped config for mono phase meter.
-# See edpbox1.yaml for more configs.
+# See EB3 yaml for more configs.
 # ESP32 is recommended.
 # Disable logger for esp8266.
 
 substitutions:
 
-  dev: EB2
-  name: edpbox1 # testing 1, then 2
+  dev: EB1
+  name: edpbox1
 
 esphome:
 
