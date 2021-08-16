@@ -81,6 +81,14 @@ utility_meter:
     source: sensor.eb3_energy_import
     cycle: daily
 
+  utm_tariffs:
+    source: sensor.eb3_energy_import
+    cycle: daily
+    tariffs:
+      - Vazio
+      - Ponta
+      - Cheias
+
 ###
 
 sensor mariadb:
