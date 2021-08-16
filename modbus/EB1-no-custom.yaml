@@ -143,4 +143,14 @@
         count: 1
         data_type: string
 
+# dev stuff
+
+      - name: "EB1 0x0016" # TotEne I/E
+        slave: 1
+        address: 22
+        input_type: input
+        count: 2
+        data_type: custom
+        structure: ">2L"
+
 # EOF
