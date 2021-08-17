@@ -22,7 +22,7 @@
       fake_solar_pv1:
         friendly_name: Fake Solar PV1
         value_template: >-
-            {% set a = states('sensor.mmc_e3_temp')|float + 5.0 %}
+            {% set a = states('sensor.mmc_3e_temp')|float + 5.0 %}
             {% set b = states('sensor.sun_elevation')|float / 10.0 %}
             {% set c = (a * b)|float %}
             {% if b > 0 and a > 5 %}
@@ -31,14 +31,13 @@
         device_class: power
         unit_of_measurement: "W"
 
-      fake_solar_pv2:
-        friendly_name: Fake Solar PV2
+      fake_grid_export:
+        friendly_name: Fake Grid Export
         value_template: >-
-            {% set a = states('sensor.mmc_3e_temp')|float + 5.0 %}
-            {% set b = states('sensor.sun_elevation')|float / 10.0 %}
-            {% set c = (a * b)|float %}
-            {% if b > 0 and a > 5 %}
-              {{ c|round(1) }}
+            {% set a = states('sensor.fake_solar_pv1')|float %}
+            {% set b = (a * 0.8)|float %}
+            {% if b > 0 %}
+              {{ b|round(1) }}
             {% endif %}
         device_class: power
         unit_of_measurement: "W"
@@ -76,8 +75,8 @@
     round: 2
 
   - platform: integration
-    source: sensor.fake_solar_pv2
-    name: EM Fake Solar PV2
+    source: sensor.fake_grid_export
+    name: EM Fake Grid
     unit_prefix: k
     round: 2
 
