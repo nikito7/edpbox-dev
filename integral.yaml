@@ -26,7 +26,7 @@
             {% set b = states('sensor.sun_elevation')|float / 10.0 %}
             {% set c = (a * b)|float %}
             {% if b > 0 and a > 5 %}
-              {{ c|round(1) }}
+              {{ c|round(2) }}
             {% endif %}
         device_class: power
         unit_of_measurement: "W"
@@ -70,7 +70,7 @@
 
   - platform: integration
     source: sensor.fake_solar
-    name: EM Fake Solar PV1
+    name: EM Fake Solar
     unit_prefix: k
     round: 2
 
