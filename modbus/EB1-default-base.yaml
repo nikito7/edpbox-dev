@@ -7,10 +7,10 @@
   - name: edpbox1
     type: tcp
     host: 10.3.0.223
-    port: 9988
+    port: 9502
     timeout: 3
-    retries: 9
-    retry_on_empty: false
+    retries: 3
+    retry_on_empty: true
     message_wait_milliseconds: 200
 
     sensors:
