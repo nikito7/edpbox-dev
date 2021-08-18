@@ -10,7 +10,7 @@
     port: 9502
     timeout: 3
     retries: 3
-    retry_on_empty: true
+    retry_on_empty: false
     message_wait_milliseconds: 200
 
     sensors:
