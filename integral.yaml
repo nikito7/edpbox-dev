@@ -35,7 +35,7 @@
         friendly_name: Fake Grid
         value_template: >-
             {% set a = states('sensor.fake_solar')|float %}
-            {% set b = (a * 0.555)|float %}
+            {% set b = (a * 0.33)|float %}
             {% if b > 0 %}
               {{ b|round(2) }}
             {% endif %}
