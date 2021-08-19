@@ -8,8 +8,9 @@
     type: tcp
     host: 10.3.0.223
     port: 9502
-    timeout: 3
-    retries: 3
+    delay: 1
+    timeout: 5
+    retries: 5
     retry_on_empty: false
     message_wait_milliseconds: 200
 
