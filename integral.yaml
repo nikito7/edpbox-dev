@@ -19,8 +19,8 @@
         unit_of_measurement: '°'
         value_template: "{{ state_attr('sun.sun', 'elevation') }}"
 
-      fake_solar:
-        friendly_name: Fake Solar
+      fake_solar_w:
+        friendly_name: Fake Solar W
         value_template: >-
             {% set a = states('sensor.mmc_3e_temp')|float + 10.0 %}
             {% set b = states('sensor.sun_elevation')|float %}
@@ -31,8 +31,8 @@
         device_class: power
         unit_of_measurement: "W"
 
-      fake_export:
-        friendly_name: Fake Export
+      fake_export_w:
+        friendly_name: Fake Export W
         value_template: >-
             {% set a = states('sensor.fake_solar')|float %}
             {% set b = (a * 0.33)|float %}
@@ -69,13 +69,13 @@
     round: 2
 
   - platform: integration
-    source: sensor.fake_solar
+    source: sensor.fake_solar_w
     name: Fake Solar
     unit_prefix: k
     round: 2
 
   - platform: integration
-    source: sensor.fake_export
+    source: sensor.fake_export_w
     name: Fake Export
     unit_prefix: k
     round: 2
