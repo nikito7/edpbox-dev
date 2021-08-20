@@ -259,7 +259,7 @@
     icon: mdi:pulse
 
   - platform: mqtt
-    name: "EB3 Energy T1 Vazio"
+    name: "EB3 Ene T1 Vazio"
     unique_id: EB3_TotEneT1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -275,7 +275,7 @@
     last_reset_topic: "tele/edpbox3/STATE"
 
   - platform: mqtt
-    name: "EB3 Energy T2 Ponta"
+    name: "EB3 Ene T2 Ponta"
     unique_id: EB3_TotEneT2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -291,7 +291,7 @@
     last_reset_topic: "tele/edpbox3/STATE"
 
   - platform: mqtt
-    name: "EB3 Energy T3 Cheias"
+    name: "EB3 Ene T3 Cheias"
     unique_id: EB3_TotEneT3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
