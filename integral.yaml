@@ -31,8 +31,8 @@
         device_class: power
         unit_of_measurement: "W"
 
-      fake_grid:
-        friendly_name: Fake Grid
+      fake_export:
+        friendly_name: Fake Export
         value_template: >-
             {% set a = states('sensor.fake_solar')|float %}
             {% set b = (a * 0.33)|float %}
@@ -46,37 +46,37 @@
 
   - platform: integration
     source: sensor.eb3_active_power_l1
-    name: EM EB3 L1
+    name: EM3 L1
     unit_prefix: k
     round: 2
 
   - platform: integration
     source: sensor.eb3_active_power_l2
-    name: EM EB3 L2
+    name: EM3 L2
     unit_prefix: k
     round: 2
 
   - platform: integration
     source: sensor.eb3_active_power_l3
-    name: EM EB3 L3
+    name: EM3 L3
     unit_prefix: k
     round: 2
 
   - platform: integration
     source: sensor.u1_power
-    name: EM UPS U1
+    name: EM UPS1
     unit_prefix: k
     round: 2
 
   - platform: integration
     source: sensor.fake_solar
-    name: EM Fake Solar
+    name: Fake Solar
     unit_prefix: k
     round: 2
 
   - platform: integration
-    source: sensor.fake_grid
-    name: EM Fake Grid
+    source: sensor.fake_export
+    name: Fake Export
     unit_prefix: k
     round: 2
 
