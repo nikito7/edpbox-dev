@@ -42,8 +42,6 @@ sensor.mmc_e3_batt:
   friendly_name: HG
 sensor.mmc_33_batt:
   friendly_name: GN
-sensor.clock_3a_batt:
-  friendly_name: FZ
 
 # signal
 
@@ -53,7 +51,5 @@ sensor.mmc_e3_signal:
   friendly_name: HG
 sensor.mmc_33_signal:
   friendly_name: GN
-sensor.clock_3a_signal:
-  friendly_name: FZ
 
 # EOF
