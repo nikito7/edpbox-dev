@@ -1,5 +1,7 @@
 >D
 
+; only teleperiod
+
 >B
 
 tper=60
