@@ -97,8 +97,8 @@ sensor eb3tas: !include files/tasmota-eb3.yaml
 
 ###
 
-##modbus: !include files/modbus.yaml
-##sensor eb1mod: !include files/modbus-eb1.yaml
+modbus: !include files/modbus.yaml
+sensor eb1mod: !include files/modbus-eb1.yaml
 
 ###
 
