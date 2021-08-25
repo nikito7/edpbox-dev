@@ -35,7 +35,7 @@
         friendly_name: Fake Export W
         value_template: >-
             {% set a = states('sensor.fake_solar_w')|float %}
-            {% set b = (a * 0.033)|float %}
+            {% set b = (a * 0.299)|float %}
             {% if b > 0 %}
               {{ b|round(2) }}
             {% endif %}
