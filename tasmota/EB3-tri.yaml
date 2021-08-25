@@ -269,10 +269,7 @@
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
-    state_class: measurement
-    last_reset_value_template: >-
-        {{ "1970-01-01T00:00:00+00:00" }}
-    last_reset_topic: "tele/edpbox3/STATE"
+    state_class: total_increasing
 
   - platform: mqtt
     name: "EB3 T2 Ponta"
@@ -285,10 +282,7 @@
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
-    state_class: measurement
-    last_reset_value_template: >-
-        {{ "1970-01-01T00:00:00+00:00" }}
-    last_reset_topic: "tele/edpbox3/STATE"
+    state_class: total_increasing
 
   - platform: mqtt
     name: "EB3 T3 Cheias"
@@ -301,10 +295,7 @@
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
-    state_class: measurement
-    last_reset_value_template: >-
-        {{ "1970-01-01T00:00:00+00:00" }}
-    last_reset_topic: "tele/edpbox3/STATE"
+    state_class: total_increasing
 
   - platform: mqtt
     name: "EB3 Energy Import"
@@ -317,10 +308,7 @@
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
-    state_class: measurement
-    last_reset_value_template: >-
-        {{ "1970-01-01T00:00:00+00:00" }}
-    last_reset_topic: "tele/edpbox3/STATE"
+    state_class: total_increasing
 
   - platform: mqtt
     name: "EB3 Energy Export"
@@ -333,10 +321,7 @@
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
-    state_class: measurement
-    last_reset_value_template: >-
-        {{ "1970-01-01T00:00:00+00:00" }}
-    last_reset_topic: "tele/edpbox3/STATE"
+    state_class: total_increasing
 
   - platform: mqtt
     name: "EB3 Tariff"
