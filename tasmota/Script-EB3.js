@@ -22,7 +22,7 @@ endif
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,19,mN1,1,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0002
++1,19,mN1,1,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0004
 
 ; 01
 
@@ -81,9 +81,15 @@ endif
 1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,1
 1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,3
 
+1,=h<hr>
+
 ; 0B
 
-1,010406uu@i6:1,Tariff ,,Tariff,16
+1,01040euu@i6:1,Tariff ,,Tariff,16
+
+1,01040exxUUuuUUuu@i6:1000,Contract T1 ,kVA,ConT1,2
+1,01040exxxxxxxxxxUUuuUUuu@i6:1000,Contract T2 ,kVA,ConT2,2
+1,01040exxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Contract T3 ,kVA,ConT3,2
 
 #
 
