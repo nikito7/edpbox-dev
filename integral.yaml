@@ -40,6 +40,27 @@
         device_class: power
         unit_of_measurement: "W"
 
+      fake_batt_in_w:
+        friendly_name: Fake Batt In W
+        value_template: >-
+            {% set a = states('sensor.fake_solar_w')|float %}
+            {% set b = (a * 0.299)|float %}
+            {% if b > 0 %}
+              {{ b|round(2) }}
+            {% endif %}
+        device_class: power
+        unit_of_measurement: "W"
+
+      fake_batt_out_w:
+        friendly_name: Fake Batt Out W
+        value_template: >-
+            {% set a = ( states('sensor.sun_elevation')|float * 5 ) | float %}
+            {% if a < 0 %}
+              {{ a|round(2) }}
+            {% endif %}
+        device_class: power
+        unit_of_measurement: "W"
+
 ###
 
   - platform: integration
@@ -75,6 +96,18 @@
   - platform: integration
     source: sensor.fake_export_w
     name: Fake Export
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.fake_batt_in_w
+    name: Fake Batt In
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.fake_batt_out_w
+    name: Fake Batt Out
     unit_prefix: k
     round: 2
 
