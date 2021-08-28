@@ -49,6 +49,17 @@
         unit_of_measurement: W
         device_class: power
 
+      - name: "EB1 Power Export" # 7A
+        slave: 1
+        address: 122
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 0
+        scale: 1
+        unit_of_measurement: W
+        device_class: power
+
       - name: "EB1 Power Factor" # 7B
         slave: 1
         address: 123
