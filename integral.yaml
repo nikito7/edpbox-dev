@@ -22,7 +22,7 @@
       fake_solar_w:
         friendly_name: Fake Solar W
         value_template: >-
-            {% set a = ( states('sensor.sun_elevation')|float * 10 ) | float %}
+            {% set a = ( states('sensor.sun_elevation')|float * 5 * 8 ) | float %}
             {% if a > 0 %}
               {{ a|round(2) }}
             {% endif %}
@@ -33,7 +33,7 @@
         friendly_name: Fake Export W
         value_template: >-
             {% set a = states('sensor.fake_solar_w')|float %}
-            {% set b = (a * 0.299)|float %}
+            {% set b = (a * 0.199)|float %}
             {% if b > 0 %}
               {{ b|round(2) }}
             {% endif %}
@@ -44,7 +44,7 @@
         friendly_name: Fake Batt In W
         value_template: >-
             {% set a = states('sensor.fake_solar_w')|float %}
-            {% set b = (a * 0.299)|float %}
+            {% set b = (a * 0.599)|float %}
             {% if b > 0 %}
               {{ b|round(2) }}
             {% endif %}
