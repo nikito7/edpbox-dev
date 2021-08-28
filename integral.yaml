@@ -54,9 +54,9 @@
       fake_batt_out_w:
         friendly_name: Fake Batt Out W
         value_template: >-
-            {% set a = ( states('sensor.sun_elevation')|float * 5 ) | float %}
+            {% set a = states('sensor.sun_elevation')|float %}
             {% if a < 0 %}
-              {{ a|round(2) }}
+              {{ states('sensor.eb3_active_power')|float }}
             {% endif %}
         device_class: power
         unit_of_measurement: "W"
