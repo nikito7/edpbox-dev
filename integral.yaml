@@ -25,7 +25,7 @@
             {% set a = states('sensor.sun_elevation') | float %}
             {% set b = (states('sensor.mmc_3e_temp')|float + 5.0) | float %}
             {% set c = (b*10*8)|float %}
-            {% if a > 0 and c > 0 %}
+            {% if a > 0 and b > 5 %}
               {{ c|round(2) }}
             {% endif %}
         device_class: power
