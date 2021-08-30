@@ -26,7 +26,7 @@
             {% set x = states('sensor.mmc_3e_temp') %}
             {% set b = states('sensor.mmc_3e_temp')|float + 10.0 %}
             {% set c =  (a * 5) + ( b * 15) %}
-            {% if a > 0 and x is valid %}
+            {% if a > 0 and x|length %}
               {{ c|round(2) }}
             {% endif %}
         device_class: power
