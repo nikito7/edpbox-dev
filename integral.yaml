@@ -24,7 +24,7 @@
         value_template: >-
             {% set a = states('sensor.sun_elevation') | float %}
             {% set b = (states('sensor.mmc_3e_temp')|float + 5.0) | float %}
-            {% set c = (a / 10 * b * b / 2)|float %}
+            {% set c = (a / 10 * b * b / 4)|float %}
             {% if a > 0 and b > 5 %}
               {{ c|round(2) }}
             {% endif %}
