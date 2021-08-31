@@ -76,6 +76,13 @@ utility_meter:
     source: sensor.eb3_energy_import
     cycle: daily
 
+  utm_eb3_erse:
+    name: UTM EB3 Erse
+    source: sensor.eb3_energy_import
+    cycle: daily
+    tariffs:
+      - Normal
+
 ###
 
 sensor mariadb:
