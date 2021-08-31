@@ -104,6 +104,30 @@ sensor eb3tas: !include files/tasmota-eb3.yaml
 
 sensor integral: !include files/integral.yaml
 
+### new templates test
+
+template bla1:
+
+  - sensor:
+
+      - name: "AA1"
+        unit_of_measurement: "°C"
+        state: >
+          {{ 99 }}
+
+      - name: "AA2"
+        unit_of_measurement: "°C"
+        state: >
+          {{ 99 }}
+
+template bla2:
+
+  - sensor:
+
+      - name: "BB1"
+        unit_of_measurement: "°C"
+        state: >
+          {{ 99 }}
 ###
 ##
 #
