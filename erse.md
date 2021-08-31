@@ -9,4 +9,6 @@ unzip master.zip
 mv ha_erse-master/custom_components/erse/* .
 rm master.zip
 rm -rf ha_erse-master
+ls -a
+ha core restart
 ```
