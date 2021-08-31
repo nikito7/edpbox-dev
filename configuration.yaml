@@ -83,6 +83,14 @@ utility_meter:
     tariffs:
       - Normal
 
+  utm_eb3_erse_tri:
+    name: UTM EB3 Erse Tri
+    source: sensor.eb3_energy_import
+    cycle: daily
+    tariffs:
+      - Vazio
+      - Ponta
+      - Cheias
 ###
 
 sensor mariadb:
