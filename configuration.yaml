@@ -106,7 +106,7 @@ sensor integral: !include files/integral.yaml
 
 ### new templates test
 
-template bla1:
+template:
 
   - sensor:
 
