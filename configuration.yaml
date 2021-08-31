@@ -120,14 +120,6 @@ template:
         state: >
           {{ 99 }}
 
-template bla2:
-
-  - sensor:
-
-      - name: "BB1"
-        unit_of_measurement: "°C"
-        state: >
-          {{ 99 }}
 ###
 ##
 #
