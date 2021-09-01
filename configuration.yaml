@@ -63,7 +63,6 @@ recorder:
     entities:
       - sensor.eb1_clock
       - sensor.eb3_clock
-      - sensor.eb5_clock
     entity_globs:
       - sensor.eb1_0x*
       - sensor.eb3_clock*
@@ -77,21 +76,6 @@ utility_meter:
     cycle: daily
 
 ###
-
-  utm_erse_daily:
-    name: UTM Erse Daily
-    source: sensor.eb3_energy_import
-    cycle: daily
-    tariffs:
-      - Normal
-
-  utm_erse_monthly:
-    name: UTM Erse Monthly
-    source: sensor.eb3_energy_import
-    cycle: monthly
-    tariffs:
-      - Normal
-
 ###
 
 sensor mariadb:
