@@ -113,28 +113,12 @@ sensor eb3tas: !include files/tasmota-eb3.yaml
 
 ###
 
-##modbus: !include files/modbus.yaml
-##sensor eb1mod: !include files/modbus-eb1.yaml
+modbus: !include files/modbus.yaml
+sensor eb1mod: !include files/modbus-eb1.yaml
 
 ###
 
 sensor integral: !include files/integral.yaml
-
-### new templates test
-
-template:
-
-  - sensor:
-
-      - name: "AA1"
-        unit_of_measurement: "°C"
-        state: >
-          {{ 99 }}
-
-      - name: "AA2"
-        unit_of_measurement: "°C"
-        state: >
-          {{ 99 }}
 
 ###
 ##
