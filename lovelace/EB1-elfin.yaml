@@ -15,15 +15,15 @@ entities:
   - entity: sensor.eb1_frequency
     secondary_info: last-updated
 # total
-  - entity: sensor.eb1_energy_t1_vazio
+  - entity: sensor.eb1_t1_vazio
     secondary_info: last-updated
-  - entity: sensor.eb1_energy_t2_ponta
+  - entity: sensor.eb1_t2_ponta
     secondary_info: last-updated
-  - entity: sensor.eb1_energy_t3_cheias
+  - entity: sensor.eb1_t3_cheias
     secondary_info: last-updated
-  - entity: sensor.eb1_energy_import
+  - entity: sensor.eb1_import
     secondary_info: last-updated
-  - entity: sensor.eb1_energy_export
+  - entity: sensor.eb1_export
     secondary_info: last-updated
 # misc
   - entity: sensor.eb1_tariff
