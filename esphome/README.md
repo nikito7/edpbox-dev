@@ -15,5 +15,7 @@ Last > 21.8.x:
 
 ```
 pip uninstall esphome
+```
+```
 pip install https://github.com/martgras/esphome/archive/refs/heads/modbus_controller.zip
 ```
