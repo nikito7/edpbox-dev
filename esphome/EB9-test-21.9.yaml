@@ -3,8 +3,8 @@
 
 substitutions:
 
-  dev: EB3
-  name: edpbox3
+  dev: EB9
+  name: edpbox9
 
 esphome:
 
@@ -34,6 +34,7 @@ captive_portal:
 web_server:
 
 logger:
+  level: verbose
 
 api:
 
@@ -139,6 +140,28 @@ sensor:
     state_class: measurement
     device_class: energy
     last_reset_type: auto
+
+### ### ###
+
+text_sensor:
+
+  - platform: modbus_controller
+    name: "${dev} 0x0001 Clock" 
+    modbus_functioncode: "read_input_registers" 
+    address: 0x0001
+    offset: 0
+    raw_encode: COMMA
+    response_size: 12
+    icon: mdi:chip
+
+  - platform: modbus_controller 
+    name: "${dev} Info: Firmware Core" 
+    modbus_functioncode: "read_input_registers" 
+    address: 0x0004
+    offset: 0
+    raw_encode: NONE
+    response_size: 6
+    icon: mdi:chip
 
 #######
 # eof #
