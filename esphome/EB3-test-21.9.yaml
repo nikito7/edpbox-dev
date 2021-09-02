@@ -1,0 +1,618 @@
+# Config for three phase meter.
+# ESP32 is recommended!
+
+substitutions:
+
+  dev: EB3
+  name: edpbox3
+
+esphome:
+
+  name: ${name}
+
+  #platform: ESP8266
+  #board: esp01_1m
+
+  platform: ESP32
+  board: esp32dev
+
+external_components:
+
+  - source:
+      type: git
+      url: https://github.com/martgras/esphome
+      ref: modbus_controller
+    components: [ modbus_controller, modbus ]
+
+wifi:
+
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
+#  ssid: my_wifi
+#  password: edpbox323
+
+  ap:
+    ssid: "Fallback ${dev}"
+    password: edpbox323
+
+captive_portal:
+
+web_server:
+
+#logger:
+
+api:
+
+  password: !secret api_key
+
+ota:
+
+  password: !secret ota_key
+
+time:
+
+  - platform: homeassistant
+    id: esptime
+
+switch:
+
+  - platform: restart
+    name: "${dev} ESP Restart"
+
+sensor:
+
+  - platform: template
+    name: "${dev} ESP Free Heap"
+    lambda: |-
+      int heap = ESP.getFreeHeap();
+      return heap / 1024.0;
+    unit_of_measurement: "kB"
+    update_interval: 30s
+    icon: mdi:chip
+
+  - platform: wifi_signal
+    name: "${dev} ESP Signal"
+    update_interval: 30s
+
+  - platform: uptime
+    name: "${dev} ESP Uptime"
+    filters:
+      - lambda: return x/3600;
+    unit_of_measurement: "h"
+    accuracy_decimals: 1
+
+### ### ###
+
+  - platform: template
+    name: "${dev} Voltage L1-10"
+    lambda: 'return id(VolL1).state - 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+  - platform: template
+    name: "${dev} Voltage L3+10"
+    lambda: 'return id(VolL3).state + 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+uart:
+
+  id: modbus_serial
+  rx_pin: 19 # from tasmota, first rx
+  tx_pin: 18
+  baud_rate: 9600
+  stop_bits: 1
+
+modbus:
+
+  #flow_control_pin: 5
+  id: modbus1
+  uart_id: modbus_serial
+
+modbus_controller:
+
+  - id: edpbox3
+    command_throttle: 100ms
+    modbus_id: modbus1
+    update_interval: 9s
+    address: 0x1
+    sensors:
+
+### ### ###
+
+# begin 0x006C range
+# sorted:
+# - voltage
+# - current
+# dont remove middle registers of a range
+# disable it only with, internal: true
+
+      - id: VolL1
+        name: "${dev} Voltage L1"
+        address: 0x006C
+        offset: 0
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
+        device_class: voltage
+
+
+      - id: VolL2
+        name: "${dev} Voltage L2"
+        address: 0x006C
+        offset: 4
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
+        device_class: voltage
+
+      - id: VolL3
+        name: "${dev} Voltage L3"
+        address: 0x006C
+        offset: 8
+        unit_of_measurement: "V"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
+        device_class: voltage
+
+      - id: Cur
+        name: "${dev} Current"
+        address: 0x006C
+        offset: 12
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        filters:
+          - multiply: 0.1
+        accuracy_decimals: 1
+        device_class: current
+
+      - id: CurL1
+        name: "${dev} Current L1"
+        address: 0x006C
+        offset: 2
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
+        device_class: current
+
+      - id: CurL2
+        name: "${dev} Current L2"
+        address: 0x006C
+        offset: 6
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
+        device_class: current
+
+      - id: CurL3
+        name: "${dev} Current L3"
+        address: 0x006C
+        offset: 10
+        unit_of_measurement: "A"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
+        device_class: current
+
+# eof 0x006C range
+
+# begin 0x0073
+# sorted
+
+      - id: ActPower
+        name: "${dev} Active Power"
+        address: 0x0073
+        offset: 24
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowL1
+        name: "${dev} Active Power L1"
+        address: 0x0073
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowL1Exp
+        name: "${dev} Active Power L1 Export"
+        address: 0x0073
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+      - id: ActPowL2
+        name: "${dev} Active Power L2"
+        address: 0x0073
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowL2Exp
+        name: "${dev} Active Power L2 Export"
+        address: 0x0073
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+      - id: ActPowL3
+        name: "${dev} Active Power L3"
+        address: 0x0073
+        offset: 16
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+
+      - id: ActPowL3Exp
+        name: "${dev} Active Power L3 Export"
+        address: 0x0073
+        offset: 20
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+      - id: ActPowExp
+        name: "${dev} Active Power Export"
+        address: 0x0073
+        offset: 28
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 0
+        device_class: power
+        unit_of_measurement: "W"
+        internal: true # disable sensor
+
+# type changes ####
+
+      - id: PowFac
+        name: "${dev} Power Factor"
+        address: 0x0073
+        offset: 32
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        filters:
+          - multiply: 0.001
+        device_class: power_factor
+
+      - id: PowFacL1
+        name: "${dev} Power Factor L1"
+        address: 0x0073
+        offset: 34
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        filters:
+          - multiply: 0.001
+        device_class: power_factor
+
+      - id: PowFacL2
+        name: "${dev} Power Factor L2"
+        address: 0x0073
+        offset: 36
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        filters:
+          - multiply: 0.001
+        device_class: power_factor
+
+      - id: PowFacL3
+        name: "${dev} Power Factor L3"
+        address: 0x0073
+        offset: 38
+        unit_of_measurement: "pu"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 3
+        filters:
+          - multiply: 0.001
+        device_class: power_factor
+
+      - id: Freq
+        name: "${dev} Frequency"
+        address: 0x0073
+        offset: 40
+        unit_of_measurement: "Hz"
+        modbus_functioncode: "read_input_registers"
+        value_type: U_WORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.1
+        icon: "mdi:pulse"
+
+# eof 0x0073
+
+### ### ### 
+
+#  - id: edpbox_slow_polling
+#    command_throttle: 500ms
+#    modbus_id: modbus1
+#    update_interval: 90s
+#    address: 0x1
+#    sensors:
+
+### ### ###
+
+# begin 0x0016
+
+      - id: TotEneImp
+        name: "${dev} Total Energy Import"
+        address: 0x0016
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kWh"
+        state_class: measurement
+        device_class: energy
+        last_reset_type: auto
+
+      - id: TotEneExp
+        name: "${dev} Total Energy Export"
+        address: 0x0016
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 3
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kWh"
+        state_class: measurement
+        device_class: energy
+        last_reset_type: auto
+
+      - id: TotEneQ1
+        name: "${dev} Total Energy Q1"
+        address: 0x0016
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+      - id: TotEneQ2
+        name: "${dev} Total Energy Q2"
+        address: 0x0016
+        offset: 12
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 3
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+        #internal: true # disable sensor
+
+      - id: TotEneQ3
+        name: "${dev} Total Energy Q3"
+        address: 0x0016
+        offset: 16
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 3
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+        #internal: true # disable sensor
+
+      - id: TotEneQ4
+        name: "${dev} Total Energy Q4"
+        address: 0x0016
+        offset: 20
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kVAr"
+        icon: "mdi:transmission-tower"
+
+# eof 0x0016
+
+# begin 0x0026
+
+      - id: TotEneT1
+        name: "${dev} Total Energy T1 Vazio"
+        address: 0x0026
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kWh"
+        state_class: measurement
+        device_class: energy
+        last_reset_type: auto
+
+      - id: TotEneT2
+        name: "${dev} Total Energy T2 Ponta"
+        address: 0x0026
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kWh"
+        state_class: measurement
+        device_class: energy
+        last_reset_type: auto
+
+      - id: TotEneT3
+        name: "${dev} Total Energy T3 Cheias"
+        address: 0x0026
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 1
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kWh"
+        state_class: measurement
+        device_class: energy
+        last_reset_type: auto
+
+# eof 0x0026
+
+# begin 0x000C
+
+      - id: EB_Contract_T1
+        name: "${dev} Info: Contract T1"
+        address: 0x000C
+        offset: 0
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 2
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kVA"
+        icon: mdi:chip
+
+      - id: EB_Contract_T2
+        name: "${dev} Info: Contract T2"
+        address: 0x000C
+        offset: 4
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 2
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kVA"
+        icon: mdi:chip
+
+      - id: EB_Contract_T3
+        name: "${dev} Info: Contract T3"
+        address: 0x000C
+        offset: 8
+        modbus_functioncode: "read_input_registers"
+        value_type: U_DWORD
+        accuracy_decimals: 2
+        filters:
+          - multiply: 0.001
+        unit_of_measurement: "kVA"
+        icon: mdi:chip
+
+# eof 0x000C
+
+### ### ###
+
+    text_sensors:
+
+      - id: EBX1
+        name: "${dev} 0x0001 Clock" 
+        modbus_functioncode: "read_input_registers" 
+        address: 0x0001
+        offset: 0
+        register_count: 1
+        raw_encode: COMMA
+        response_size: 12
+        icon: mdi:chip
+
+      - id: EBX4
+        name: "${dev} Info: Firmware Core" 
+        modbus_functioncode: "read_input_registers" 
+        address: 0x0004
+        offset: 0
+        register_count: 1
+        raw_encode: NONE
+        response_size: 6
+        icon: mdi:chip
+        skip_updates: 23
+
+      - id: EBX5
+        name: "${dev} Info: Firmware App" 
+        modbus_functioncode: "read_input_registers" 
+        address: 0x0005
+        offset: 0
+        register_count: 1
+        raw_encode: NONE
+        response_size: 6
+        icon: mdi:chip
+        skip_updates: 23 
+
+      - id: EBX6
+        name: "${dev} Info: Firmware Com"
+        modbus_functioncode: "read_input_registers" 
+        address: 0x0006
+        offset: 0
+        register_count: 1
+        raw_encode: NONE
+        response_size: 6
+        icon: mdi:chip
+        skip_updates: 23 
+
+      - id: EB_Tariff
+        name: "${dev} 0x000B Tariff"
+        modbus_functioncode: "read_input_registers"
+        address: 0x000B
+        offset: 0
+        register_count: 1
+        raw_encode: COMMA
+        response_size: 2
+        icon: mdi:chip
+
+      - id: EBDCP
+        name: "${dev} 0x0084 DCP"
+        modbus_functioncode: "read_input_registers" 
+        address: 0x0084
+        offset: 0
+        register_count: 1
+        raw_encode: COMMA
+        response_size: 2
+        icon: mdi:chip
+
+#######
+# eof #
+#######
