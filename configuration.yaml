@@ -93,6 +93,22 @@ utility_meter:
 
 ###
 
+  utm_ups1_daily:
+    name: UTM UPS1 Daily
+    source: sensor.em_ups1
+    cycle: daily
+    tariffs:
+      - Normal
+
+  utm_ups1_monthly:
+    name: UTM UPS1 Monthly
+    source: sensor.em_ups1
+    cycle: monthly
+    tariffs:
+      - Normal
+
+###
+
 sensor mariadb:
 
 - platform: sql
