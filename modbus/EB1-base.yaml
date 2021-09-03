@@ -91,7 +91,6 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        state_class: total_increasing
 
       - name: "EB1 T2 Ponta" # 27
         slave: 1
@@ -103,7 +102,6 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        state_class: total_increasing
 
       - name: "EB1 T3 Cheias" # 28
         slave: 1
@@ -115,7 +113,6 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        state_class: total_increasing
 
       - name: "EB1 Import" # 16
         slave: 1
@@ -127,7 +124,6 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        state_class: total_increasing
 
       - name: "EB1 Export" # 17
         slave: 1
@@ -139,7 +135,6 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        state_class: total_increasing
 
 # for tariff template
 
