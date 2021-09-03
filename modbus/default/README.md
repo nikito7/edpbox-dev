@@ -1,7 +1,7 @@
 - default/dev
 
 ```js
-vv=21.9.023
+vv=21.9.03
 file=default-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/default/${file}
 mkdir -p /config/custom_components/modbus/
