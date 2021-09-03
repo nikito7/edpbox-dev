@@ -298,7 +298,7 @@
     state_class: total_increasing
 
   - platform: mqtt
-    name: "EB3 Energy Import"
+    name: "EB3 Import"
     unique_id: EB3_TotEneImp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -311,7 +311,7 @@
     state_class: total_increasing
 
   - platform: mqtt
-    name: "EB3 Energy Export"
+    name: "EB3 Export"
     unique_id: EB3_TotEneExp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
@@ -336,7 +336,7 @@
         {% elif x == 3 %}
           {{ "Cheias" }}
         {% endif %}
-    icon: mdi:calendar
+    icon: mdi:counter
 
 ###
 ##
