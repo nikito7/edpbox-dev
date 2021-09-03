@@ -18,7 +18,7 @@ input_number:
 input_select:
 input_text:
 logbook:
-#map:
+map:
 #media_source:
 mobile_app:
 my:
@@ -76,6 +76,23 @@ utility_meter:
     cycle: daily
 
 ###
+
+  utm_home_daily:
+    name: UTM Home Daily
+    source: sensor.eb3_import
+    cycle: daily
+    tariffs:
+      - Vazio
+      - Fora de Vazio
+
+  utm_home_monthly:
+    name: UTM Home Monthly
+    source: sensor.eb3_import
+    cycle: monthly
+    tariffs:
+      - Vazio
+      - Fora de Vazio
+
 ###
 
 sensor mariadb:
