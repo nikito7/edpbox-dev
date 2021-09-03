@@ -79,7 +79,7 @@ utility_meter:
 
   utm_home_daily:
     name: UTM Home Daily
-    source: sensor.eb3_import
+    source: sensor.eb3_energy_import
     cycle: daily
     tariffs:
       - Vazio
@@ -87,7 +87,7 @@ utility_meter:
 
   utm_home_monthly:
     name: UTM Home Monthly
-    source: sensor.eb3_import
+    source: sensor.eb3_energy_import
     cycle: monthly
     tariffs:
       - Vazio
