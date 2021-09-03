@@ -21,7 +21,7 @@ endif
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007B0005,r010400260003,r010400160006,r0104000B0004
++1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004
 
 ; 01
 
@@ -51,19 +51,22 @@ endif
 
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,16
 
+
 1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,16
 1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,16
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,16
 
 1,=h<hr>
 
-; 7B
+; 7A
 
-1,01040AUUuu@i3:1000,Power Factor ,pu,PowFac,19
-1,01040AxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
-1,01040AxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
-1,01040AxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,19
-1,01040AxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
+1,01040eUUuuUUuu@i3:1,Active Power Export,W,ActPowExp,16
+
+1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PowFac,19
+1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
+1,01040exxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
+1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,19
+1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
 
 1,=h<hr>
 
