@@ -72,24 +72,22 @@ utility_meter:
 
   utm_eb3_import:
     name: UTM EB3 Import
-    source: sensor.eb3_energy_import
+    source: sensor.eb3_import
     cycle: daily
+    tariffs:
+      - Normal
 
 ###
 
   utm_home_daily:
     name: UTM Home Daily
-    source: sensor.eb3_energy_import
+    source: sensor.eb3_import
     cycle: daily
-    tariffs:
-      - Normal
 
   utm_home_monthly:
     name: UTM Home Monthly
-    source: sensor.eb3_energy_import
+    source: sensor.eb3_import
     cycle: monthly
-    tariffs:
-      - Normal
 
 ###
 
@@ -97,15 +95,11 @@ utility_meter:
     name: UTM UPS1 Daily
     source: sensor.em_ups1
     cycle: daily
-    tariffs:
-      - Normal
 
   utm_ups1_monthly:
     name: UTM UPS1 Monthly
     source: sensor.em_ups1
     cycle: monthly
-    tariffs:
-      - Normal
 
 ###
 
