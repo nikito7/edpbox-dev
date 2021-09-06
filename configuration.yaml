@@ -1,49 +1,11 @@
 # /config/configuration.yaml
 
-#default_config:
+default_config:
 
-###
-# https://github.com/home-assistant/core/blob/dev/homeassistant/components/default_config/manifest.json
-
-automation:
-#cloud:
-counter:
-dhcp:
-energy:
-frontend:
-history:
-input_boolean:
-input_datetime:
-input_number:
-input_select:
-input_text:
-logbook:
-map:
-#media_source:
-mobile_app:
-my:
-network:
-person:
-scene:
-script:
-ssdp:
-sun:
-system_health:
-tag:
-timer:
-updater:
-webhook:
-zeroconf:
-zone:
-
-###
-###
-
-logger:
-
-  logs:
-    homeassistant.components.modbus: debug
-    pymodbus.client: debug
+#logger:
+#  logs:
+#    homeassistant.components.modbus: debug
+#    pymodbus.client: debug
 
 homeassistant:
 
@@ -74,26 +36,6 @@ utility_meter:
     name: UTM EB3 Import
     source: sensor.eb3_import
     cycle: daily
-
-###
-
-  utm_home_daily:
-    name: UTM Home Daily
-    source: sensor.eb3_import
-    cycle: daily
-    tariffs:
-      - Vazio
-      - Ponta
-      - Cheias
-
-  utm_home_monthly:
-    name: UTM Home Monthly
-    source: sensor.eb3_import
-    cycle: monthly
-    tariffs:
-      - Vazio
-      - Ponta
-      - Cheias
 
 ###
 
