@@ -55,6 +55,15 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb3_export
     secondary_info: last-updated
+# q1-q4
+  - entity: sensor.eb3_q1
+    secondary_info: last-updated
+  - entity: sensor.eb3_q2
+    secondary_info: last-updated
+  - entity: sensor.eb3_q3
+    secondary_info: last-updated
+  - entity: sensor.eb3_q4
+    secondary_info: last-updated
 # misc
   - entity: sensor.eb3_tariff
     secondary_info: last-updated
