@@ -339,5 +339,51 @@
     icon: mdi:counter
 
 ###
+
+  - platform: mqtt
+    name: "EB3 Q1"
+    unique_id: EB3_Q1
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB3.TotEneQ1|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kVAr"
+
+  - platform: mqtt
+    name: "EB3 Q2"
+    unique_id: EB3_Q2
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB3.TotEneQ2|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kVAr"
+
+  - platform: mqtt
+    name: "EB3 Q3"
+    unique_id: EB3_Q3
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB3.TotEneQ3|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kVAr"
+
+  - platform: mqtt
+    name: "EB3 Q4"
+    unique_id: EB3_Q4
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB3.TotEneQ4|float %}
+        {% if x > 0 %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "kVAr"
+
+###
 ##
 #
