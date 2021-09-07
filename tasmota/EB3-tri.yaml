@@ -350,6 +350,7 @@
           {{ x }}
         {% endif %}
     unit_of_measurement: "kVAr"
+    icon: mdi:compass
 
   - platform: mqtt
     name: "EB3 Q2"
@@ -361,6 +362,7 @@
           {{ x }}
         {% endif %}
     unit_of_measurement: "kVAr"
+    icon: mdi:compass
 
   - platform: mqtt
     name: "EB3 Q3"
@@ -372,6 +374,7 @@
           {{ x }}
         {% endif %}
     unit_of_measurement: "kVAr"
+    icon: mdi:compass
 
   - platform: mqtt
     name: "EB3 Q4"
@@ -383,6 +386,7 @@
           {{ x }}
         {% endif %}
     unit_of_measurement: "kVAr"
+    icon: mdi:compass
 
 ###
 ##
