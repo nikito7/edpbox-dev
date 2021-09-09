@@ -33,22 +33,18 @@ recorder:
 utility_meter:
 
   utm_eb3_daily:
-    name: UTM EB3 Daily
     source: sensor.eb3_import
     cycle: daily
 
   utm_eb3_weekly:
-    name: UTM EB3 Weekly
     source: sensor.eb3_import
     cycle: weekly
 
   utm_eb3_monthly:
-    name: UTM EB3 Monthly
     source: sensor.eb3_import
     cycle: monthly
 
   utm_eb3_yearly:
-    name: UTM EB3 Yearly
     source: sensor.eb3_import
     cycle: yearly
 
