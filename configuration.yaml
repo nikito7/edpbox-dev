@@ -48,6 +48,10 @@ utility_meter:
     source: sensor.eb3_import
     cycle: yearly
 
+  utm_test:
+    source: sensor.em_ups1
+    cycle: yearly
+
 ###
 
 sensor mariadb:
