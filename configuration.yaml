@@ -32,7 +32,7 @@ recorder:
 
 utility_meter:
 
-  utm_eb3_daily:
+  utm_eb3_daily1:
     source: sensor.eb3_import
     cycle: daily
 
@@ -46,10 +46,6 @@ utility_meter:
 
   utm_eb3_yearly:
     source: sensor.eb3_import
-    cycle: yearly
-
-  utm_test:
-    source: sensor.em_ups1
     cycle: yearly
 
 ###
