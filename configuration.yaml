@@ -2,7 +2,7 @@
 
 default_config:
 
-automations: !include automations.yaml
+automation: !include automations.yaml
 
 #logger:
 #  logs:
