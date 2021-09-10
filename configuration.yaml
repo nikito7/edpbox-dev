@@ -2,6 +2,8 @@
 
 default_config:
 
+automations: !include automations.yaml
+
 #logger:
 #  logs:
 #    homeassistant.components.modbus: debug
