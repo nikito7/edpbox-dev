@@ -136,6 +136,52 @@
         unit_of_measurement: kWh
         device_class: energy
 
+###
+
+      - name: "EB1 Q1"
+        slave: 1
+        address: 24
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kVAr
+        scan_interval: 30
+
+      - name: "EB1 Q2"
+        slave: 1
+        address: 25
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kVAr
+        scan_interval: 30
+
+      - name: "EB1 Q3"
+        slave: 1
+        address: 26
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kVAr
+        scan_interval: 30
+
+      - name: "EB1 Q4"
+        slave: 1
+        address: 27
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kVAr
+        scan_interval: 30
+
 # for tariff template
 
       - name: "EB1 0x000B" # Tariff
