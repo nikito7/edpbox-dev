@@ -113,7 +113,7 @@ template:
           {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
           {% set saldo = import - export %} 
           {% if saldo > 0 %}
-            {{ counter + saldo }}
+            {{ (counter + saldo)|round(2) }}
           {% else %}
             {{ counter }}
            {% endif %}
@@ -126,7 +126,7 @@ template:
           {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
           {% set saldo = import - export %} 
           {% if saldo < 0 %}
-            {{ counter + (saldo * -1) }}
+            {{ (counter + (saldo * -1))|round(2) }}
           {% else %}
             {{ counter }}
            {% endif %}
