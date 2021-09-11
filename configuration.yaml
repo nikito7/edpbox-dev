@@ -103,7 +103,9 @@ template:
     sensor:
       - name: UPAC Import
         state: >
-          {{ 1 }}
+          {% var a = state_attr('sensor.utm_upac_import', 'last_value')|float %}
+          {% var b = states('sensor.upac_import')|float %}
+            {{ a + b }}
         unit_of_measurement: "kWh"
 
 ###
