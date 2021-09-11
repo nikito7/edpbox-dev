@@ -52,6 +52,12 @@ utility_meter:
 
 ###
 
+  utm_upac_import:
+    source: sensor.eb3_import
+    cycle: quartly
+
+###
+
 sensor mariadb:
 
 - platform: sql
