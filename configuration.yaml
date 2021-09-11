@@ -57,7 +57,7 @@ utility_meter:
     cycle: quarter-hourly
 
   utm_upac_export:
-    source: sensor.eb3_export
+    source: sensor.fake_export_kwh
     cycle: quarter-hourly
 
 ###
