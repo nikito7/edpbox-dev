@@ -85,5 +85,27 @@ sensor eb1mod: !include files/modbus-eb1.yaml
 sensor integral: !include files/integral.yaml
 
 ###
+
+template:
+  - trigger:
+      - platform: time_pattern
+        hours: *
+        minutes: 1
+      - platform: time_pattern
+        hours: *
+        minutes: 16
+      - platform: time_pattern
+        hours: *
+        minutes: 31
+      - platform: time_pattern
+        hours: *
+        minutes: 46
+    sensor:
+      - name: UPAC Import
+        state: >
+          {{ 1 }}
+        unit_of_measurement: "kWh"
+
+###
 ##
 #
