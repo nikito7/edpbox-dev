@@ -56,6 +56,10 @@ utility_meter:
     source: sensor.eb3_import
     cycle: quarter-hourly
 
+  utm_upac_export:
+    source: sensor.eb3_export
+    cycle: quarter-hourly
+
 ###
 
 sensor mariadb:
@@ -104,16 +108,28 @@ template:
 
       - name: UPAC Import
         state: >
-          {% set a = state_attr('sensor.utm_upac_import', 'last_period')|float %}
-          {% set b = states('sensor.upac_import')|float %}
-            {{ a + b }}
+          {% set counter = states('sensor.upac_import')|float %}
+          {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
+          {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
+          {% set saldo = import - export %} 
+          {% if saldo > 0 %}
+            {{ counter + saldo }}
+          {% else %}
+            {{ counter }}
+           {% endif %}
         unit_of_measurement: "kWh"
 
       - name: UPAC Export
         state: >
-          {% set a = state_attr('sensor.utm_upac_import', 'last_period')|float %}
-          {% set b = states('sensor.upac_import')|float %}
-            {{ a + b }}
+          {% set counter = states('sensor.upac_export')|float %}
+          {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
+          {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
+          {% set saldo = import - export %} 
+          {% if saldo < 0 %}
+            {{ counter + (saldo * -1) }}
+          {% else %}
+            {{ counter }}
+           {% endif %}
         unit_of_measurement: "kWh"
 
 ###
