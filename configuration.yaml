@@ -89,16 +89,16 @@ sensor integral: !include files/integral.yaml
 template:
   - trigger:
       - platform: time_pattern
-        hours: *
+        hours: "*"
         minutes: 1
       - platform: time_pattern
-        hours: *
+        hours: "*"
         minutes: 16
       - platform: time_pattern
-        hours: *
+        hours: "*"
         minutes: 31
       - platform: time_pattern
-        hours: *
+        hours: "*"
         minutes: 46
     sensor:
       - name: UPAC Import
