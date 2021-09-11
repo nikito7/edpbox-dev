@@ -101,9 +101,17 @@ template:
         hours: "*"
         minutes: 46
     sensor:
+
       - name: UPAC Import
         state: >
-          {% set a = state_attr('sensor.utm_upac_import', 'last_value')|float %}
+          {% set a = state_attr('sensor.utm_upac_import', 'last_period')|float %}
+          {% set b = states('sensor.upac_import')|float %}
+            {{ a + b }}
+        unit_of_measurement: "kWh"
+
+      - name: UPAC Export
+        state: >
+          {% set a = state_attr('sensor.utm_upac_import', 'last_period')|float %}
           {% set b = states('sensor.upac_import')|float %}
             {{ a + b }}
         unit_of_measurement: "kWh"
