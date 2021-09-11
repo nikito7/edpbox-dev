@@ -54,7 +54,7 @@ utility_meter:
 
   utm_upac_import:
     source: sensor.eb3_import
-    cycle: quarterly
+    cycle: quarter-hourly
 
 ###
 
