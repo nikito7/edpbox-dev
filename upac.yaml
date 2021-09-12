@@ -37,6 +37,6 @@ action:
         {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
         {% set saldo = (import - export)|float %}
         {% if saldo < 0 %}
-          {{ (counter + (saldo * -1))|float|round(2) }}
+          {{ (counter + (saldo * -1.0))|float|round(2) }}
         {% endif %}
 mode: single
