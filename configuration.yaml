@@ -52,13 +52,21 @@ utility_meter:
 
 ###
 
-  n7_utm_upac_import:
+  utm_upac_pre_import:
     source: sensor.eb3_import
     cycle: quarter-hourly
 
-  n7_utm_upac_export:
+  utm_upac_pre_export:
     source: sensor.fake_export_kwh
     cycle: quarter-hourly
+
+  utm_upac_import_daily:
+    source: input_number.upac_import
+    cycle: daily
+
+  utm_upac_import_monthly:
+    source: input_number.upac_import
+    cycle: monthly
 
 ###
 
