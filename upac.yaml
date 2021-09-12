@@ -20,22 +20,23 @@ action:
       entity_id: input_number.upac_import
     data:
       value: >
-        {% set counter = states('input_number.upac_import') %}
+        {% set counter = states('input_number.upac_import')|float %}
         {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
         {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
-        {% set saldo = (import - export) %}  {% if saldo > 0 and counter is not none %}
-          {{ (counter|float + saldo)|round(2) }}
+        {% set saldo = (import - export)|float %}
+        {% if saldo > 0 %}
+          {{ (counter + saldo)|float|round(2) }}
         {% endif %}
   - service: input_number.set_value
     target:
       entity_id: input_number.upac_export
     data:
       value: >
-        {% set counter = states('input_number.upac_export') %} 
+        {% set counter = states('input_number.upac_export')|float %} 
         {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
         {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
-        {% set saldo = (import - export) %}
-        {% if saldo < 0 and counter is not none %}
-          {{ (counter|float + (saldo * -1)|float)|round(2) }}
+        {% set saldo = (import - export)|float %}
+        {% if saldo < 0 %}
+          {{ (counter + (saldo * -1))|float|round(2) }}
         {% endif %}
 mode: single
