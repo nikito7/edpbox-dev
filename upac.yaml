@@ -1,4 +1,4 @@
-alias: UPAC Update
+alias: N7 UPAC Update
 description: ''
 trigger:
   - platform: time_pattern
@@ -25,9 +25,9 @@ action:
         {% set export = state_attr('sensor.n7_utm_upac_export', 'last_period')|float %}
         {% set saldo = (import - export)|float %}
         {% if saldo > 0 %}
-          {{ (counter + saldo)|float|round(2) }}
+          {{ (counter|float + saldo)|float|round(2) }}
         {% else %}
-          {{ counter }}
+          {{ counter|float }}
         {% endif %}
   - service: input_number.set_value
     target:
@@ -39,8 +39,8 @@ action:
         {% set export = state_attr('sensor.n7_utm_upac_export', 'last_period')|float %}
         {% set saldo = (import - export)|float %}
         {% if saldo < 0 %}
-          {{ (counter + (saldo * -1))|float|round(2) }}
+          {{ (counter|float + (saldo * -1))|float|round(2) }}
         {% else %}
-          {{ counter }}
+          {{ counter|float }}
         {% endif %}
 mode: single
