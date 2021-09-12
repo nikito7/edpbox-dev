@@ -26,7 +26,7 @@
             {% if a > 0 %}
               {{ (a * 20)|round(1) }}
             {% else %}
-              {{ 100 }}
+              {{ 1 }}
             {% endif %}
         device_class: power
         unit_of_measurement: "W"
