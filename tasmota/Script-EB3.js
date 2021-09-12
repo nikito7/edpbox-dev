@@ -21,7 +21,7 @@ endif
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r010400840003
++1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r010400840003,r010400120001
 
 ; 01
 
@@ -94,17 +94,26 @@ endif
 
 1,01040euu@i6:1,Tariff ,,Tariff,16
 
-1,01040exxUUuuUUuu@i6:1000,Contract T1 ,kVA,ConT1,2
-1,01040exxxxxxxxxxUUuuUUuu@i6:1000,Contract T2 ,kVA,ConT2,2
-1,01040exxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,Contract T3 ,kVA,ConT3,2
+1,01040exxUUuuUUuu@i6:1000,T1 Max Vazio ,kVA,ConT1,2
+1,01040exxxxxxxxxxUUuuUUuu@i6:1000,T2 Max Ponta ,kVA,ConT2,2
+1,01040exxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,T3 Max Cheias ,kVA,ConT3,2
 
 1,=h<hr>
 
 ; 84
 
-1,01040auu@i7:1,DCP ,,DCP,0
-1,01040axxUUuuUUuu@i7:1,DCP Q ,,DCP_Q,0
-1,01040axxxxxxxxxxUUuuUUuu@i7:1,DCP K ,%,DCP_K,0
+1,01040auu@i7:1,ICP Status ,,ICP_Status,0
+1,01040axxUUuuUUuu@i7:1,ICP Q ,,ICP_Q,0
+1,01040axxxxxxxxxxUUuuUUuu@i7:1,ICP K ,%,ICP_K,0
+
+1,=h<hr>
+
+; 12
+
+1,=h<small>Potencia Contratada</small>
+1,010404UUuuUUuu@i8:1000,Max Power ,kVA,Max_Power,2
+
+1,=h<hr>
 
 #
 
