@@ -1,0 +1,42 @@
+alias: UPAC Update
+description: ''
+trigger:
+  - platform: time_pattern
+    hours: '*'
+    minutes: '1'
+  - platform: time_pattern
+    hours: '*'
+    minutes: '16'
+  - platform: time_pattern
+    hours: '*'
+    minutes: '31'
+  - platform: time_pattern
+    hours: '*'
+    minutes: '46'
+condition: []
+action:
+  - service: input_number.set_value
+    target:
+      entity_id: input_number.upac_import
+    data:
+      value: >
+        {% set counter = states('input_number.upac_import') %} {% set import =
+        state_attr('sensor.utm_upac_import', 'last_period')|float %} {% set
+        export = state_attr('sensor.utm_upac_export', 'last_period')|float %} {%
+        set saldo = (import - export) %}  {% if saldo > 0 and counter is not
+        none %}
+          {{ (counter|float + saldo)|round(2) }}
+        {% endif %}
+  - service: input_number.set_value
+    target:
+      entity_id: input_number.upac_export
+    data:
+      value: >
+        {% set counter = states('input_number.upac_export') %} {% set import =
+        state_attr('sensor.utm_upac_import', 'last_period')|float %} {% set
+        export = state_attr('sensor.utm_upac_export', 'last_period')|float %} {%
+        set saldo = (import - export) %}  {% if saldo < 0 and counter is not
+        none %}
+          {{ (counter|float + (saldo * -1))|round(2) }}
+        {% endif %}
+mode: single
