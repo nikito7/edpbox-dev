@@ -19,7 +19,7 @@ action:
     target:
       entity_id: input_number.upac_import
     data:
-      value: >-
+      value: >
         {% set counter = states('input_number.upac_import')|float %}
         {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
         {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
@@ -31,7 +31,7 @@ action:
     target:
       entity_id: input_number.upac_export
     data:
-      value: >-
+      value: >
         {% set counter = states('input_number.upac_export')|float %} 
         {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
         {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
