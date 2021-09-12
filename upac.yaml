@@ -17,12 +17,12 @@ condition: []
 action:
   - service: input_number.set_value
     target:
-      entity_id: input_number.upac_import
+      entity_id: input_number.n7_upac_import
     data:
       value: >
-        {% set counter = states('input_number.upac_import')|float %}
-        {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
-        {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
+        {% set counter = states('input_number.n7_upac_import') %}
+        {% set import = state_attr('sensor.n7_utm_upac_import', 'last_period')|float %}
+        {% set export = state_attr('sensor.n7_utm_upac_export', 'last_period')|float %}
         {% set saldo = (import - export)|float %}
         {% if saldo > 0 %}
           {{ (counter + saldo)|float|round(2) }}
@@ -31,12 +31,12 @@ action:
         {% endif %}
   - service: input_number.set_value
     target:
-      entity_id: input_number.upac_export
+      entity_id: input_number.n7_upac_export
     data:
       value: >
-        {% set counter = states('input_number.upac_export')|float %} 
-        {% set import = state_attr('sensor.utm_upac_import', 'last_period')|float %}
-        {% set export = state_attr('sensor.utm_upac_export', 'last_period')|float %}
+        {% set counter = states('input_number.n7_upac_export') %} 
+        {% set import = state_attr('sensor.n7_utm_upac_import', 'last_period')|float %}
+        {% set export = state_attr('sensor.n7_utm_upac_export', 'last_period')|float %}
         {% set saldo = (import - export)|float %}
         {% if saldo < 0 %}
           {{ (counter + (saldo * -1))|float|round(2) }}
