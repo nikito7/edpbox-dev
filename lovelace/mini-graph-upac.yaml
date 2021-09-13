@@ -6,9 +6,8 @@ entities:
     color: lightblue
   - entity: input_number.upac_import
     color: red
-name: UPAc
+name: UPAC
 hours_to_show: 24
-group_by: date
 show:
   graph: bar
 
