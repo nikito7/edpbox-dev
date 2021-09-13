@@ -78,6 +78,14 @@ utility_meter:
     source: input_number.upac_import
     cycle: daily
 
+  utm_upac_monthly_export:
+    source: input_number.upac_export
+    cycle: monthly
+
+  utm_upac_monthly_import:
+    source: input_number.upac_import
+    cycle: monthly
+
 ###
 
 sensor mariadb:
