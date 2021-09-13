@@ -2,14 +2,14 @@
 
 type: custom:mini-graph-card
 entities:
-  - entity: sensor.utm_upac_15min_export
-    color: lightblue
   - entity: sensor.utm_upac_15min_import
     color: red
+  - entity: sensor.utm_upac_15min_export
+    color: lightblue
 name: UPAC
 hours_to_show: 24
 points_per_hour: 4
 show:
-  graph: bar
+  graph: line
 
 # EOF
