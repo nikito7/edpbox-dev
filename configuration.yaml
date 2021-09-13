@@ -60,12 +60,30 @@ utility_meter:
     source: sensor.fake_export_kwh
     cycle: quarter-hourly
 
+  utm_upac_import_15min:
+    source: input_number.upac_import
+    cycle: quarter-hourly
+
+  utm_upac_export_15min:
+    source: input_number.upac_export
+    cycle: quarter-hourly
+
+###
+
   utm_upac_import_daily:
     source: input_number.upac_import
     cycle: daily
 
   utm_upac_import_monthly:
     source: input_number.upac_import
+    cycle: monthly
+
+  utm_upac_export_daily:
+    source: input_number.upac_export
+    cycle: daily
+
+  utm_upac_export_monthly:
+    source: input_number.upac_export
     cycle: monthly
 
 ###
