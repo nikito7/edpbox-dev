@@ -8,6 +8,7 @@ entities:
     color: red
 name: UPAC
 hours_to_show: 24
+points_per_hour: 4
 show:
   graph: bar
 
