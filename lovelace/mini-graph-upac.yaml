@@ -1,0 +1,15 @@
+###
+
+type: custom:mini-graph-card
+entities:
+  - entity: input_number.upac_export
+    color: lightblue
+  - entity: input_number.upac_import
+    color: red
+name: UPAc
+hours_to_show: 24
+group_by: date
+show:
+  graph: bar
+
+# EOF
