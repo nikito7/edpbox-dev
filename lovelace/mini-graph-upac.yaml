@@ -2,9 +2,9 @@
 
 type: custom:mini-graph-card
 entities:
-  - entity: sensor.utm_upac_pre_export
+  - entity: sensor.utm_upac_15min_export
     color: lightblue
-  - entity: sensor.utm_upac_pre_import
+  - entity: sensor.utm_upac_15min_import
     color: red
 name: UPAC
 hours_to_show: 24
