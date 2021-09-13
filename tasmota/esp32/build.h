@@ -6,4 +6,8 @@
 #define USE_SML_M
 #define SML_MAX_VARS 50
 
+// tcp
+
+#define USE_TCP_BRIDGE
+
 // eof
