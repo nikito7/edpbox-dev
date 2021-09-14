@@ -80,6 +80,7 @@
         precision: 1
         scale: 0.1
         unit_of_measurement: Hz
+        scan_interval: 30
 
       - name: "EB1 T1 Vazio" # 26
         slave: 1
@@ -91,6 +92,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
+        scan_interval: 30
 
       - name: "EB1 T2 Ponta" # 27
         slave: 1
@@ -102,6 +104,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
+        scan_interval: 30
 
       - name: "EB1 T3 Cheias" # 28
         slave: 1
@@ -113,6 +116,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
+        scan_interval: 30
 
       - name: "EB1 Import" # 16
         slave: 1
@@ -124,6 +128,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
+        scan_interval: 30
 
       - name: "EB1 Export" # 17
         slave: 1
@@ -135,45 +140,13 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
+        scan_interval: 30
 
 ###
 
       - name: "EB1 Q1"
         slave: 1
         address: 24
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kVAr
-        scan_interval: 30
-
-      - name: "EB1 Q2"
-        slave: 1
-        address: 25
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kVAr
-        scan_interval: 30
-
-      - name: "EB1 Q3"
-        slave: 1
-        address: 26
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kVAr
-        scan_interval: 30
-
-      - name: "EB1 Q4"
-        slave: 1
-        address: 27
         input_type: input
         count: 1
         data_type: uint32
@@ -191,6 +164,7 @@
         count: 1
         data_type: custom
         structure: ">Bx"
+        scan_interval: 30
 
 # for testing
 
@@ -200,5 +174,6 @@
         input_type: input
         count: 1
         data_type: string
+        scan_interval: 30
 
 # EOF
