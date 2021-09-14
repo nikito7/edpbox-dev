@@ -29,15 +29,6 @@ entities:
   - entity: sensor.eb1_q1
     secondary_info: last-updated
     icon: mdi:compass
-  - entity: sensor.eb1_q2
-    secondary_info: last-updated
-    icon: mdi:compass
-  - entity: sensor.eb1_q3
-    secondary_info: last-updated
-    icon: mdi:compass
-  - entity: sensor.eb1_q4
-    secondary_info: last-updated
-    icon: mdi:compass
 # misc
   - entity: sensor.eb1_tariff
     secondary_info: last-updated
