@@ -7,9 +7,9 @@ entities:
   - entity: sensor.utm_upac_15min_export
     color: lightblue
 name: UPAC
-hours_to_show: 24
+hours_to_show: 8
 points_per_hour: 4
 show:
-  graph: line
+  graph: bar
 
 # EOF
