@@ -2,7 +2,7 @@
 
 default_config:
 
-automation: !include automations.yaml
+#automation: !include automations.yaml
 
 #logger:
 #  logs:
@@ -51,8 +51,6 @@ utility_meter:
     cycle: monthly
     tariffs:
       - Normal
-
-###
 
 ###
 
