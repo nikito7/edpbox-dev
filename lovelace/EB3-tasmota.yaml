@@ -3,6 +3,9 @@ entities:
 # esp
   - entity: sensor.eb3_esp_uptime
     secondary_info: last-updated
+  - entity: switch.eb3_esp_restart
+    secondary_info: last-updated
+    icon: mdi:power
   - entity: sensor.eb3_esp_free_heap
     secondary_info: last-updated
   - entity: sensor.eb3_esp_signal
