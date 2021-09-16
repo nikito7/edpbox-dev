@@ -1,3 +1,6 @@
+gui: raw
+
+```yaml
 alias: UPAC Update
 description: 'UPAC Counters'
 trigger:
@@ -44,3 +47,43 @@ action:
           {{ counter|float }}
         {% endif %}
 mode: single
+```
+
+yaml
+
+```yaml
+  utm_upac_pre_export:
+    source: sensor.fake_export_kwh
+    cycle: quarter-hourly
+
+  utm_upac_pre_import:
+    source: sensor.eb3_import
+    cycle: quarter-hourly
+
+  utm_upac_15min_export:
+    source: input_number.upac_export
+    cycle: quarter-hourly
+
+  utm_upac_15min_import:
+    source: input_number.upac_import
+    cycle: quarter-hourly
+
+###
+
+  utm_upac_daily_export:
+    source: input_number.upac_export
+    cycle: daily
+
+  utm_upac_daily_import:
+    source: input_number.upac_import
+    cycle: daily
+
+  utm_upac_monthly_export:
+    source: input_number.upac_export
+    cycle: monthly
+
+  utm_upac_monthly_import:
+    source: input_number.upac_import
+    cycle: monthly
+
+```
