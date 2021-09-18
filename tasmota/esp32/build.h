@@ -11,5 +11,6 @@
 
 // misc
 #define USE_SCRIPT_WEB_DISPLAY
+#define USE_SML_SCRIPT_CMD
 
 // eof
