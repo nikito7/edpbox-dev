@@ -119,7 +119,7 @@ ss=sml[3]
 
 1,01040auu@i7:1,ICP Status ,,ICP_Status,0
 1,01040axxUUuuUUuu@i7:1,ICP Q ,,ICP_Q,0
-1,01040axxxxxxxxxxUUuuUUuu@i7:1,ICP K ,%,ICP_K,0
+1,01040axxxxxxxxxxUUuuUUuu@i7:1,ICP K ,%%,ICP_K,0
 
 1,=h<hr>
 
