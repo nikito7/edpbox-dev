@@ -12,5 +12,7 @@
 // misc
 #define USE_SCRIPT_WEB_DISPLAY
 #define USE_SML_SCRIPT_CMD
+#define SML_REPLACE_VARS
+#define MAX_METERS 2
 
 // eof
