@@ -7,7 +7,9 @@
 #define SML_MAX_VARS 50
 
 // tcp
-
 #define USE_TCP_BRIDGE
+
+// misc
+#define USE_SCRIPT_WEB_DISPLAY
 
 // eof
