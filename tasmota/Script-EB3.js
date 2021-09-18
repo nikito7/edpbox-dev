@@ -1,6 +1,10 @@
 >D
 
-; EB3
+initvars="bug fix"
+hh=0
+mm=0
+ss=0
+name="EB3"
 
 >BS
 
@@ -16,10 +20,16 @@ then
 smlj=1
 endif
 
+hh=sml[1]
+mm=sml[2]
+ss=sml[3]
+
 >W
 
-@<b>Local Time</b> %tstamp%
-@<hr>
+@ <b>Local Time</b> %tstamp%
+@ Name: %name%
+@ Clock: %0hh%:%0mm%:%0ss%
+@ <hr>
 
 >M 1
 
