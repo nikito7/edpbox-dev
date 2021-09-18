@@ -16,6 +16,11 @@ then
 smlj=1
 endif
 
+>W
+
+@<b>Local Time</b> %tstamp%
+@<hr>
+
 >M 1
 
 ; change to your gpios and mode
