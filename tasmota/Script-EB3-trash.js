@@ -1,3 +1,13 @@
+###
+
+; 0B
+
+1,01040euu@i6:1,Tariff ,,Tariff,16
+
+1,01040exxUUuuUUuu@i6:1000,T1 Max Vazio ,kVA,ConT1,2
+1,01040exxxxxxxxxxUUuuUUuu@i6:1000,T2 Max Ponta ,kVA,ConT2,2
+1,01040exxxxxxxxxxxxxxxxxxUUuuUUuu@i6:1000,T3 Max Cheias ,kVA,ConT3,2
+
 ### r010400840003,r010400120001
 
 1,=h<hr>
