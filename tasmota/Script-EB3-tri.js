@@ -26,9 +26,9 @@ ss=sml[3]
 
 >W
 
-@ <b>Local Time:</b> %tstamp%
-@ Name: %name%
-@ Clock: %0hh%:%0mm%:%0ss%
+@ <b>Local Time: </b> %tstamp%
+@ <b>Name: </b> %name%
+@ <b>Clock: </b> %0hh%:%0mm%:%0ss%
 @ <hr>
 
 >M 1
