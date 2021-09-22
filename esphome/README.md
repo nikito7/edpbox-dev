@@ -2,9 +2,6 @@ Info:
 
 https://github.com/martgras/esphome/discussions 🇬🇧
 
-https://github.com/martgras/esphome/tree/modbus_component 🇬🇧
-
-
 Usage:
 
 ```
