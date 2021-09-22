@@ -157,19 +157,7 @@
 
 # eof 0x0073
 
-### ### ### 
-
-#  - id: edpbox_slow_polling
-#    command_throttle: 500ms
-#    modbus_id: modbus1
-#    update_interval: 90s
-#    address: 0x1
-#    sensors:
-
-### ### ###
-
-# begin 0x0016
-
+###
       - id: TotEneImp
         name: "${dev} Total Energy Import"
         address: 0x0016
@@ -186,7 +174,7 @@
 
       - id: TotEneExp
         name: "${dev} Total Energy Export"
-        address: 0x0016
+        address: 0x0017
         offset: 4
         modbus_functioncode: "read_input_registers"
         value_type: U_DWORD
@@ -198,147 +186,13 @@
         device_class: energy
         last_reset_type: auto
 
-      - id: TotEneQ1
-        name: "${dev} Total Energy Q1"
-        address: 0x0016
-        offset: 8
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 1
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVAr"
-        icon: "mdi:transmission-tower"
-
-      - id: TotEneQ2
-        name: "${dev} Total Energy Q2"
-        address: 0x0016
-        offset: 12
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 3
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVAr"
-        icon: "mdi:transmission-tower"
-        #internal: true # disable sensor
-
-      - id: TotEneQ3
-        name: "${dev} Total Energy Q3"
-        address: 0x0016
-        offset: 16
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 3
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVAr"
-        icon: "mdi:transmission-tower"
-        #internal: true # disable sensor
-
-      - id: TotEneQ4
-        name: "${dev} Total Energy Q4"
-        address: 0x0016
-        offset: 20
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 1
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVAr"
-        icon: "mdi:transmission-tower"
 
 # eof 0x0016
 
-# begin 0x0026
 
-      - id: TotEneT1
-        name: "${dev} Total Energy T1 Vazio"
-        address: 0x0026
-        offset: 0
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 1
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kWh"
-        state_class: measurement
-        device_class: energy
-        last_reset_type: auto
+        
 
-      - id: TotEneT2
-        name: "${dev} Total Energy T2 Ponta"
-        address: 0x0026
-        offset: 4
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 1
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kWh"
-        state_class: measurement
-        device_class: energy
-        last_reset_type: auto
-
-      - id: TotEneT3
-        name: "${dev} Total Energy T3 Cheias"
-        address: 0x0026
-        offset: 8
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 1
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kWh"
-        state_class: measurement
-        device_class: energy
-        last_reset_type: auto
-
-# eof 0x0026
-
-# begin 0x000C
-
-      - id: EB_Contract_T1
-        name: "${dev} Info: Contract T1"
-        address: 0x000C
-        offset: 0
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 2
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVA"
-        icon: mdi:chip
-
-      - id: EB_Contract_T2
-        name: "${dev} Info: Contract T2"
-        address: 0x000C
-        offset: 4
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 2
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVA"
-        icon: mdi:chip
-
-      - id: EB_Contract_T3
-        name: "${dev} Info: Contract T3"
-        address: 0x000C
-        offset: 8
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 2
-        filters:
-          - multiply: 0.001
-        unit_of_measurement: "kVA"
-        icon: mdi:chip
-
-# eof 0x000C
-
-### ### ###
-
-    text_sensors:
+text_sensor:
 
       - id: EBX1
         name: "${dev} 0x0001 Clock" 
@@ -360,28 +214,6 @@
         response_size: 6
         icon: mdi:chip
         skip_updates: 23
-
-      - id: EBX5
-        name: "${dev} Info: Firmware App" 
-        modbus_functioncode: "read_input_registers" 
-        address: 0x0005
-        offset: 0
-        register_count: 1
-        raw_encode: NONE
-        response_size: 6
-        icon: mdi:chip
-        skip_updates: 23 
-
-      - id: EBX6
-        name: "${dev} Info: Firmware Com"
-        modbus_functioncode: "read_input_registers" 
-        address: 0x0006
-        offset: 0
-        register_count: 1
-        raw_encode: NONE
-        response_size: 6
-        icon: mdi:chip
-        skip_updates: 23 
 
       - id: EB_Tariff
         name: "${dev} 0x000B Tariff"
