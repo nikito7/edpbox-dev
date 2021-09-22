@@ -33,8 +33,8 @@ captive_portal:
 
 web_server:
 
-logger:
-  level: verbose
+#logger:
+#  level: verbose
 
 api:
 
@@ -71,7 +71,6 @@ modbus:
 modbus_controller:
 
   - id: edpbox3
-    modbus_id: modbus1
     update_interval: 9s
     address: 0x1
 
@@ -109,9 +108,9 @@ sensor:
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
-    state_class: measurement
     device_class: energy
-    last_reset_type: auto
+    state_class: total_increasing
+
 
   - platform: modbus_controller
     name: "${dev} T2 Ponta"
@@ -123,9 +122,8 @@ sensor:
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
-    state_class: measurement
     device_class: energy
-    last_reset_type: auto
+    state_class: total_increasing
 
   - platform: modbus_controller
     name: "${dev} T3 Cheias"
@@ -137,9 +135,8 @@ sensor:
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
-    state_class: measurement
     device_class: energy
-    last_reset_type: auto
+    state_class: total_increasing
 
 ### ### ###
 
