@@ -102,8 +102,9 @@ sensor:
     name: "${dev} T1 Vazio"
     address: 0x0026
     offset: 0
-    register_type: read
+    modbus_functioncode: read_input_registers
     value_type: U_DWORD
+    register_count: 1
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
@@ -116,8 +117,9 @@ sensor:
     name: "${dev} T2 Ponta"
     address: 0x0026
     offset: 4
-    register_type: read
+    modbus_functioncode: read_input_registers
     value_type: U_DWORD
+    register_count: 1
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
@@ -129,8 +131,9 @@ sensor:
     name: "${dev} T3 Cheias"
     address: 0x0026
     offset: 8
-    register_type: read
+    modbus_functioncode: read_input_registers
     value_type: U_DWORD
+    register_count: 1
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
@@ -144,7 +147,7 @@ text_sensor:
 
   - platform: modbus_controller
     name: "${dev} 0x0001 Clock" 
-    register_type: read
+    modbus_functioncode: read_input_registers
     address: 0x0001
     offset: 0
     raw_encode: COMMA
@@ -153,7 +156,7 @@ text_sensor:
 
   - platform: modbus_controller 
     name: "${dev} Info: Firmware Core" 
-    register_type: read
+    modbus_functioncode: read_input_registers
     address: 0x0004
     offset: 0
     raw_encode: NONE
