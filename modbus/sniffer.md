@@ -1,3 +1,6 @@
+minicom
+
+
 ```sh
-sed -i -e 's/\n//g' -e 's/0104/\n(01)(04)/g' log.txt
+sed -i -e 's/ 01 04 /\n (01) (04) /g' ttyUSB0.log
 ```
