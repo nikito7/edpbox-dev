@@ -3,8 +3,8 @@
 
 substitutions:
 
-  dev: EB9
-  name: edpbox9
+  dev: EB3
+  name: edpbox3
 
 esphome:
 
@@ -19,6 +19,7 @@ esphome:
 wifi:
 
   domain: .lan
+  use_address: 10.1.0.40 # fix ota dns error
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
@@ -57,7 +58,7 @@ switch:
 uart:
 
   id: modbus_serial
-  rx_pin: 19 # from tasmota, first rx
+  rx_pin: 19
   tx_pin: 18
   baud_rate: 9600
   stop_bits: 1
@@ -70,9 +71,11 @@ modbus:
 
 modbus_controller:
 
-  - id: edpbox3
+  - id: edpbox
     update_interval: 9s
-    address: 0x1
+    address: 0x01
+    command_throttle: 1s
+    setup_priority: -100
 
 sensor:
 
@@ -112,7 +115,6 @@ sensor:
     device_class: energy
     state_class: total_increasing
 
-
   - platform: modbus_controller
     name: "${dev} T2 Ponta"
     address: 0x0026
@@ -140,28 +142,6 @@ sensor:
     unit_of_measurement: "kWh"
     device_class: energy
     state_class: total_increasing
-
-### ### ###
-
-text_sensor:
-
-  - platform: modbus_controller
-    name: "${dev} 0x0001 Clock" 
-    modbus_functioncode: read_input_registers
-    address: 0x0001
-    offset: 0
-    raw_encode: COMMA
-    response_size: 12
-    icon: mdi:chip
-
-  - platform: modbus_controller 
-    name: "${dev} Info: Firmware Core" 
-    modbus_functioncode: read_input_registers
-    address: 0x0004
-    offset: 0
-    raw_encode: NONE
-    response_size: 6
-    icon: mdi:chip
 
 #######
 # eof #
