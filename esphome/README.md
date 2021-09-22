@@ -18,5 +18,5 @@ pip install https://github.com/nikito7/edpbox/raw/dev/esphome/backup/esphome-21.
 Dev:
 
 ```
-pip install https://github.com/martgras/esphome/archive/refs/heads/modbus_component.zip
+pip install https://github.com/martgras/esphome/archive/refs/heads/modbus_controller.zip
 ```
