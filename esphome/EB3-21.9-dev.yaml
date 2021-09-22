@@ -73,9 +73,9 @@ modbus_controller:
 
   - id: edpbox
     update_interval: 9s
-    address: 0x01
+    address: 0x1
     command_throttle: 1s
-    setup_priority: -100
+    setup_priority: -10
 
 sensor:
 
@@ -90,6 +90,7 @@ sensor:
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
+    unit_of_measurement: "dBm"
     update_interval: 30s
 
   - platform: uptime
@@ -99,49 +100,132 @@ sensor:
     unit_of_measurement: "h"
     accuracy_decimals: 1
 
-### ### ###
+### Active Power
+
+  - platform: modbus_controller
+    name: "${dev} Active Power L1"
+    address: 0x0073
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Active Power L1 Export"
+    address: 0x0074
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    internal: true # disable sensor
+
+  - platform: modbus_controller
+    name: "${dev} Active Power L2"
+    address: 0x0075
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Active Power L2 Export"
+    address: 0x0076
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    internal: true # disable sensor
+
+  - platform: modbus_controller
+    name: "${dev} Active Power L3"
+    address: 0x0077
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Active Power L3 Export"
+    address: 0x0078
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    internal: true # disable sensor
+
+  - platform: modbus_controller
+    name: "${dev} Active Power"
+    address: 0x0079
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Active Power Export"
+    address: 0x007A
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    internal: true # disable sensor
+
+### Total Energy Tariffs
 
   - platform: modbus_controller
     name: "${dev} T1 Vazio"
     address: 0x0026
-    offset: 0
-    modbus_functioncode: read_input_registers
+    register_type: read
     value_type: U_DWORD
     register_count: 1
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
-    device_class: energy
     state_class: total_increasing
+    device_class: energy
 
-  - platform: modbus_controller
+  - platform: modbus_controller 
     name: "${dev} T2 Ponta"
-    address: 0x0026
-    offset: 4
-    modbus_functioncode: read_input_registers
+    address: 0x0027
+    register_type: read
     value_type: U_DWORD
     register_count: 1
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
-    device_class: energy
     state_class: total_increasing
+    device_class: energy
 
   - platform: modbus_controller
     name: "${dev} T3 Cheias"
-    address: 0x0026
-    offset: 8
-    modbus_functioncode: read_input_registers
+    address: 0x0028
+    register_type: read
     value_type: U_DWORD
     register_count: 1
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
-    device_class: energy
     state_class: total_increasing
+    device_class: energy
 
 #######
 # eof #
