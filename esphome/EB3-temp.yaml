@@ -91,98 +91,13 @@
 
 # eof 0x006C range
 
-# begin 0x0073
-# sorted
 
-      - id: ActPower
-        name: "${dev} Active Power"
-        address: 0x0073
-        offset: 24
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-
-      - id: ActPowL1
-        name: "${dev} Active Power L1"
-        address: 0x0073
-        offset: 0
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-
-      - id: ActPowL1Exp
-        name: "${dev} Active Power L1 Export"
-        address: 0x0073
-        offset: 4
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
-
-      - id: ActPowL2
-        name: "${dev} Active Power L2"
-        address: 0x0073
-        offset: 8
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-
-      - id: ActPowL2Exp
-        name: "${dev} Active Power L2 Export"
-        address: 0x0073
-        offset: 12
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
-
-      - id: ActPowL3
-        name: "${dev} Active Power L3"
-        address: 0x0073
-        offset: 16
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-
-      - id: ActPowL3Exp
-        name: "${dev} Active Power L3 Export"
-        address: 0x0073
-        offset: 20
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
-
-      - id: ActPowExp
-        name: "${dev} Active Power Export"
-        address: 0x0073
-        offset: 28
-        modbus_functioncode: "read_input_registers"
-        value_type: U_DWORD
-        accuracy_decimals: 0
-        device_class: power
-        unit_of_measurement: "W"
-        internal: true # disable sensor
 
 # type changes ####
 
       - id: PowFac
         name: "${dev} Power Factor"
-        address: 0x0073
+        address: 0x007B
         offset: 32
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -194,7 +109,7 @@
 
       - id: PowFacL1
         name: "${dev} Power Factor L1"
-        address: 0x0073
+        address: 0x007C
         offset: 34
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -206,7 +121,7 @@
 
       - id: PowFacL2
         name: "${dev} Power Factor L2"
-        address: 0x0073
+        address: 0x007D
         offset: 36
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -218,7 +133,7 @@
 
       - id: PowFacL3
         name: "${dev} Power Factor L3"
-        address: 0x0073
+        address: 0x007E
         offset: 38
         unit_of_measurement: "pu"
         modbus_functioncode: "read_input_registers"
@@ -230,7 +145,7 @@
 
       - id: Freq
         name: "${dev} Frequency"
-        address: 0x0073
+        address: 0x007F
         offset: 40
         unit_of_measurement: "Hz"
         modbus_functioncode: "read_input_registers"
