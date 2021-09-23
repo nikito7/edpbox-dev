@@ -3,13 +3,13 @@ entities:
 # esp
   - entity: sensor.eb3_esp_uptime
     secondary_info: last-updated
-  - entity: switch.eb3_esp_restart
-    secondary_info: last-updated
-    icon: mdi:power
-  - entity: sensor.eb3_esp_free_heap
-    secondary_info: last-updated
   - entity: sensor.eb3_esp_signal
     secondary_info: last-updated
+  - entity: sensor.eb3_esp_free_heap
+    secondary_info: last-updated
+  - entity: switch.eb3_tasmota_restart
+    secondary_info: last-updated
+    icon: mdi:power
 # clock
   - entity: sensor.eb3_clock
     secondary_info: last-updated
@@ -57,15 +57,6 @@ entities:
   - entity: sensor.eb3_import
     secondary_info: last-updated
   - entity: sensor.eb3_export
-    secondary_info: last-updated
-# q1-q4
-  - entity: sensor.eb3_q1
-    secondary_info: last-updated
-  - entity: sensor.eb3_q2
-    secondary_info: last-updated
-  - entity: sensor.eb3_q3
-    secondary_info: last-updated
-  - entity: sensor.eb3_q4
     secondary_info: last-updated
 # misc
   - entity: sensor.eb3_tariff
