@@ -405,7 +405,7 @@ text_sensor:
     icon: mdi:chip
 
   - platform: modbus_controller
-    name: "${dev} Info: Firmware Core" 
+    name: "${dev} Firmware Core" 
     register_type: read
     address: 0x0004
     register_count: 1
