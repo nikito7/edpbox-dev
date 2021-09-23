@@ -227,6 +227,85 @@ sensor:
     state_class: total_increasing
     device_class: energy
 
+### Voltage & Current
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L1"
+    address: 0x006C
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current L1"
+    address: 0x006D
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L2"
+    address: 0x006E
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current L2"
+    address: 0x006F
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L3"
+    address: 0x0070
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+     - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current L3"
+    address: 0x0071
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+     - multiply: 0.1
+    device_class: current
+
+  - platform: modbus_controller
+    name: "${dev} Current"
+    address: 0x0072
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    filters:
+      - multiply: 0.1
+    accuracy_decimals: 1
+    device_class: current
+
 #######
 # eof #
 #######
