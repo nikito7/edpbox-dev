@@ -306,6 +306,123 @@ sensor:
     accuracy_decimals: 1
     device_class: current
 
+### Power Factor & Frequency
+
+  - platform: modbus_controller
+    name: "${dev} Power Factor"
+    address: 0x007B
+    unit_of_measurement: "pu"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    device_class: power_factor
+
+  - platform: modbus_controller
+    name: "${dev} Power Factor L1"
+    address: 0x007C
+    unit_of_measurement: "pu"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    device_class: power_factor
+
+  - platform: modbus_controller
+    name: "${dev} Power Factor L2"
+    address: 0x007D
+    unit_of_measurement: "pu"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    device_class: power_factor
+
+  - platform: modbus_controller
+    name: "${dev} Power Factor L3"
+    address: 0x007E
+    unit_of_measurement: "pu"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    device_class: power_factor
+
+  - platform: modbus_controller
+    name: "${dev} Frequency"
+    address: 0x007F
+    unit_of_measurement: "Hz"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    icon: "mdi:pulse"
+
+### Total Energy
+
+  - platform: modbus_controller
+    name: "${dev} Import"
+    address: 0x0016
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller
+    name: "${dev} Export"
+    address: 0x0017
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+### ### ###
+
+text_sensor:
+
+  - platform: modbus_controller
+    name: "${dev} 0x0001 Clock" 
+    register_type: read
+    address: 0x0001
+    register_count: 1
+    raw_encode: COMMA
+    response_size: 12
+    icon: mdi:chip
+
+  - platform: modbus_controller
+    name: "${dev} Info: Firmware Core" 
+    register_type: read
+    address: 0x0004
+    register_count: 1
+    raw_encode: NONE
+    response_size: 6
+    icon: mdi:chip
+    skip_updates: 23
+
+  - platform: modbus_controller
+    name: "${dev} 0x000B Tariff"
+    register_type: read
+    address: 0x000B
+    register_count: 1
+    raw_encode: COMMA
+    response_size: 2
+    icon: mdi:chip
+
 #######
 # eof #
 #######
