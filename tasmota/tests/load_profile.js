@@ -12,11 +12,8 @@ smlj=0
 +1,19,mN1,0,9600,EB99,18,15,r010400820001,r010400830001,014503000011bc01
 
 ; 82
-
 1,010404UUuuUUuu@i0:1,Entries in Use ,,*,0
-
 ; 83
-
 1,010404UUuuUUuu@i1:1,Profile Entries ,,*,0
 
 1,=h<hr>
@@ -24,9 +21,9 @@ smlj=0
 
 1,014511UUuu@i2:1,Year ,,*,0
 
-1,014511xxxxxxxxxxuu@i0:1,Time ,h,*,0
-1,014511xxxxxxxxxxxxuu@i0:1,Time ,m,*,0
-1,014511xxxxxxxxxxxxxxuu@i0:1,Time ,s,*,0
+1,014511xxxxxxxxxxuu@i2:1,Time Stamp ,h,*,0
+1,014511xxxxxxxxxxxxuu@i2:1,Time Stamp ,m,*,0
+1,014511xxxxxxxxxxxxxxuu@i2:1,Time Stamp ,s,*,0
 
 
 1,=h<hr>
