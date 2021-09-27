@@ -22,7 +22,7 @@ smlj=0
 1,=h<hr>
 1,=hExample:
 
-1,014525UUuuUUuu@i2:1,Year ,,*,0
+1,014525UUuu@i2:1,Year ,,*,0
 
 
 1,=h<hr>
