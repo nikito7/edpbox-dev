@@ -24,6 +24,8 @@ smlj=0
 
 1,014525UUuu@i2:1,Year ,,*,0
 
+1,=h not working here
+1,=h 'sensor53 d1' only
 
 1,=h<hr>
 
