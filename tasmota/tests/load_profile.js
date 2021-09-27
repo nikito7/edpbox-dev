@@ -24,6 +24,11 @@ smlj=0
 
 1,014511UUuu@i2:1,Year ,,*,0
 
+1,014511xxxxxxxxxxuu@i0:1,Time ,h,*,0
+1,014511xxxxxxxxxxxxuu@i0:1,Time ,m,*,0
+1,014511xxxxxxxxxxxxxxuu@i0:1,Time ,s,*,0
+
+
 1,=h<hr>
 
 ; eof M
