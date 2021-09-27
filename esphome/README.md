@@ -1,6 +1,8 @@
 Info:
 
-https://github.com/martgras/esphome/discussions 🇬🇧
+https://github.com/martgras/esphome/discussions
+
+https://next.esphome.io/components/modbus_controller.html
 
 Usage:
 
