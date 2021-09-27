@@ -31,6 +31,10 @@
 1,014511xxxxxxxxxxxxuu@i2:1,Timestamp ,m,*,0
 1,014511xxxxxxxxxxxxxxuu@i2:1,Timestamp ,s,*,0
 
+1,014511xxxxxxxxxxxxxxxxxxxxxxuu@i2:1,Clock Status ,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxxxuu@i2:1,AMR Status ,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,value ,kWh,*,0
+
 
 1,=h<hr>
 
