@@ -3,7 +3,7 @@
 =>sensor53 r
 >M 1
 
-+1,19,mN1,0,9600,EB99,18,15,r010400800001,r010400810003,014503000011bc01
++1,19,mN1,0,9600,EB99,18,15,r010400800001,r010400810003,014503000011bc01,0145030000000101
 
 ; 80
 
@@ -23,7 +23,7 @@
 1,01040cxxxxxxxxxxxxxxxxUUuuUUuu@i1:1,Profile Entries ,,*,0
 
 1,=h<hr>
-1,=hExample:
+1,=hExample: newest line
 
 1,014511UUuu@i2:1,Year ,,*,0
 1,014511xxxxuu@i2:1,Month ,,*,0
@@ -37,6 +37,23 @@
 1,014511xxxxxxxxxxxxxxxxxxxxxxuu@i2:1,Summer/Winter ,,*,0
 1,014511xxxxxxxxxxxxxxxxxxxxxxxxuu@i2:1,AMR Status ,,*,0
 1,014511xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,Value ID 9 ,kWh,*,3
+
+
+1,=h<hr>
+1,=hExample: oldest line
+
+1,014511UUuu@i3:1,Year ,,*,0
+1,014511xxxxuu@i3:1,Month ,,*,0
+1,014511xxxxxxuu@i3:1,Day ,,*,0
+1,014511xxxxxxxxuu@i3:1,Week Day ,,*,0
+1,014511xxxxxxxxxxuu@i3:1,Timestamp ,h,*,0
+1,014511xxxxxxxxxxxxuu@i3:1,Timestamp ,m,*,0
+1,014511xxxxxxxxxxxxxxuu@i3:1,Timestamp ,s,*,0
+1,014511xxxxxxxxxxxxxxxxuu@i3:1,T ,hs,*,0
+1,014511xxxxxxxxxxxxxxxxxxUUuu@i3:1,GMT Deviation,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxuu@i3:1,Summer/Winter ,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxxxuu@i3:1,AMR Status ,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Value ID 9 ,kWh,*,3
 
 
 1,=h<hr>
