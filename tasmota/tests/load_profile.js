@@ -32,13 +32,11 @@
 1,014511xxxxxxxxxxuu@i2:1,Timestamp ,h,*,0
 1,014511xxxxxxxxxxxxuu@i2:1,Timestamp ,m,*,0
 1,014511xxxxxxxxxxxxxxuu@i2:1,Timestamp ,s,*,0
-1,014511xxxxxxxxxxxxxxxxuu@i2:1,T ,ns,*,0
-1,014511xxxxxxxxxxxxxxxxxxuu@i2:1,T ,,*,0
-1,014511xxxxxxxxxxxxxxxxxxxxuu@i2:1,T ,,*,0
-1,014511xxxxxxxxxxxxxxxxxxxxxxuu@i2:1,T ,,*,0
-1,014511xxxxxxxxxxxxxxxxxxxxxxxxuu@i2:1,Clock Status ,,*,0
-1,014511xxxxxxxxxxxxxxxxxxxxxxxxxxuu@i2:1,AMR Status ,,*,0
-1,014511xxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,value ,kWh,*,0
+1,014511xxxxxxxxxxxxxxxxuu@i2:1,T ,gs,*,0
+1,014511xxxxxxxxxxxxxxxxxxUUuu@i2:1,GMT Deviation,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxuu@i2:1,Summer/Winter ,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxxxuu@i2:1,AMR Status ,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,value ,Wh,*,0
 
 
 1,=h<hr>
