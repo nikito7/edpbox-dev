@@ -3,7 +3,7 @@
 =>sensor53 r
 >M 1
 
-+1,19,mN1,0,9600,EB99,18,15,r010400800001,r010400810003,014509000011bc01
++1,19,mN1,0,9600,EB99,18,15,r010400800001,r010400810003,014503000011bc01
 
 ; 80
 
@@ -30,6 +30,9 @@
 1,014511xxxxxxxxxxuu@i2:1,Timestamp ,h,*,0
 1,014511xxxxxxxxxxxxuu@i2:1,Timestamp ,m,*,0
 1,014511xxxxxxxxxxxxxxuu@i2:1,Timestamp ,s,*,0
+1,014511xxxxxxxxxxxxxxxxuu@i2:1,T ,ns,*,0
+1,014511xxxxxxxxxxxxxxxxxxuu@i2:1,T ,,*,0
+1,014511xxxxxxxxxxxxxxxxxxxxuu@i2:1,T ,,*,0
 
 1,014511xxxxxxxxxxxxxxxxxxxxxxuu@i2:1,Clock Status ,,*,0
 1,014511xxxxxxxxxxxxxxxxxxxxxxxxuu@i2:1,AMR Status ,,*,0
