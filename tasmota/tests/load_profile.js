@@ -7,9 +7,14 @@
 
 ; 80
 
-1,010408uu@i0:1,Config ID 1 ,,*,0
-1,010408xxuu@i0:1,Config ID  2 ,,*,0
-1,010408xxxxuu@i0:1,Config ID 3 ,,*,0
+1,010408uu@i0:1,Config ID .1 ,,*,0
+1,010408xxuu@i0:1,Config ID  .2 ,,*,0
+1,010408xxxxuu@i0:1,Config ID .3 ,,*,0
+1,010408xxxxxxuu@i0:1,Config ID .4 ,,*,0
+1,010408xxxxxxxxuu@i0:1,Config ID .5 ,,*,0
+1,010408xxxxxxxxxxuu@i0:1,Config ID .6 ,,*,0
+1,010408xxxxxxxxxxxxuu@i0:1,Config ID .7 ,,*,0
+1,010408xxxxxxxxxxxxxxuu@i0:1,Config ID .8 ,,*,0
 
 ; 81/82/83
 
