@@ -22,10 +22,7 @@ smlj=0
 1,=h<hr>
 1,=hExample:
 
-1,014525UUuu@i2:1,Year ,,*,0
-
-1,=h not working here
-1,=h 'sensor53 d1' only
+1,014511UUuu@i2:1,Year ,,*,0
 
 1,=h<hr>
 
