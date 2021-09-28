@@ -4,10 +4,11 @@ default_config:
 
 #automation: !include automations.yaml
 
-#logger:
-#  logs:
-#    homeassistant.components.modbus: debug
-#    pymodbus.client: debug
+logger:
+  logs:
+    homeassistant.components.modbus: debug
+    pymodbus.client: debug
+    custom_components.modbus.modbus: debug
 
 homeassistant:
 
