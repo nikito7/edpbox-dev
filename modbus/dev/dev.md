@@ -2,7 +2,7 @@
 
 ```js
 vv=001
-file=core-dev.zip
+file=dev.zip
 url=https://github.com/home-assistant/core/archive/refs/heads/dev.zip
 mkdir -p /config/custom_components/modbus/
 rm -rf /config/custom_components/modbus/*
