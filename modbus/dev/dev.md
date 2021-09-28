@@ -10,8 +10,8 @@ cd /config/custom_components/modbus/
 ls -a
 pwd
 wget $url
-unzip $file homeassistant/components/modbus/* -j -d .
-###rm $file
+unzip $file core-dev/homeassistant/components/modbus/* -j -d .
+rm $file
 ls -a
 pwd
 sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
