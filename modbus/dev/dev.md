@@ -10,7 +10,7 @@ cd /config/custom_components/modbus/
 ls -a
 pwd
 wget $url
-unzip $file
+unzip $file homeassistant/components/modbus/* -j -d .
 rm $file
 ls -a
 pwd
