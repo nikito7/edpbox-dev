@@ -11,9 +11,9 @@ ls -a
 pwd
 wget $url
 unzip $file homeassistant/components/modbus/* -j -d .
-rm $file
+###rm $file
 ls -a
 pwd
 sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
-ha core restart
+###ha core restart
 ```
