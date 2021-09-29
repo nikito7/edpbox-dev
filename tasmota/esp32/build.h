@@ -4,7 +4,7 @@
 #undef USE_RULES
 #define USE_SCRIPT
 #define USE_SML_M
-#define SML_MAX_VARS 50
+#define SML_MAX_VARS 100
 
 // tcp
 
@@ -19,9 +19,9 @@
 // long lines
 
 #define MAX_METERS 1
-#define SML_BSIZ 256
-#define TMSBSIZ 512
-#define SML_DUMP_SIZE 512
+#define SML_BSIZ 1024
+#define TMSBSIZ 2048
+#define SML_DUMP_SIZE 1024
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
 
