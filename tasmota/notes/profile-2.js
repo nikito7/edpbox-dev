@@ -1,7 +1,7 @@
 >D
 
 initvars="bugfix"
-g1="1,01451c"
+g1="1,01451d"
 
 >B
 
@@ -42,8 +42,11 @@ g1="1,01451c"
 %g1%xxxxxxxxxxxxxxxxxxUUuu@i2:1,GMT Deviation,,*,0
 %g1%xxxxxxxxxxxxxxxxxxxxxxuu@i2:1,Summer/Winter ,,*,0
 %g1%xxxxxxxxxxxxxxxxxxxxxxxxuu@i2:1,AMR Status ,,*,0
-%g1%xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,Value ID 9 ,kWh,*,3
 
+%g1%xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,Value ID 9 ,kWh,*,3
+%g1%xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,Value ID 11 (+Ri) ,kVAr,*,3
+%g1%xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,Value ID 14 (-Ri) ,kVAr,*,3
+%g1%xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1000,Value ID 10 ,kWh,*,3
 
 1,=h<hr>
 
