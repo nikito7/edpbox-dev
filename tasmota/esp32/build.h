@@ -21,5 +21,6 @@
 #define MAX_METERS 1
 #define SML_BSIZ 128
 #define TMSBSIZ 256
+#define SML_DUMP_SIZE 256
 
 // eof
