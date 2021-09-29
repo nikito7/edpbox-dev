@@ -7,12 +7,19 @@
 #define SML_MAX_VARS 50
 
 // tcp
+
 #define USE_TCP_BRIDGE
 
 // misc
+
 #define USE_SCRIPT_WEB_DISPLAY
 #define USE_SML_SCRIPT_CMD
 #define SML_REPLACE_VARS
-#define MAX_METERS 2
+
+// long lines
+
+#define MAX_METERS 1
+#define SML_BSIZ 128
+#define TMSBSIZ 256
 
 // eof
