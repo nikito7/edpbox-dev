@@ -22,5 +22,7 @@
 #define SML_BSIZ 256
 #define TMSBSIZ 512
 #define SML_DUMP_SIZE 512
+#define LARGE_ARRAYS
+#define SCRIPT_LARGE_VNBUFF
 
 // eof
