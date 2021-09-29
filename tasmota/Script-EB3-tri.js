@@ -1,6 +1,6 @@
 >D
 
-initvars="bug fix"
+initvars="bugfix"
 hh=0
 mm=0
 ss=0
