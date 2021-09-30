@@ -1,18 +1,18 @@
 >D
 
 initvars="bugfix"
-hh="-1"
-mm="-1"
-ss="-1"
+hh=0
+mm=0
+ss=0
 name="EB3"
-upacyr="-1"
-upacmt="-1"
-upacdy="-1"
-upachh="-1"
-upacmm="-1"
-upacss="-1"
-upacim="-1"
-upacex="-1"
+upacyr=0
+upacmt=0
+upacdy=0
+upachh=0
+upacmm=0
+upacss=0
+upacim=0
+upacex=0
 
 >BS
 
