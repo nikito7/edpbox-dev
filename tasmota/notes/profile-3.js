@@ -127,16 +127,16 @@ ss=sml[3]
 1,=h<hr>
 1,=hExample: lastest entry
 
-1,014421UUuu@i9:1,Year ,,*,0
-1,014421xxxxuu@i9:1,Month ,,*,0
-1,014421xxxxxxuu@i9:1,Day ,,*,0
-1,014421xxxxxxxxxxuu@i9:1,HH ,h,*,0
-1,014421xxxxxxxxxxxxuu@i9:1,MM ,m,*,0
-1,014421xxxxxxxxxxxxxxuu@i9:1,SS ,s,*,0
-1,014421xxxxxxxxxxxxxxxxxxUUuu@i9:1,GMT Deviation,,*,0
-1,014421xxxxxxxxxxxxxxxxxxxxxxuu@i9:1,Summer/Winter ,,*,0
-1,014421xxxxxxxxxxxxxxxxxxxxxxxxuu@i9:1,AMR Status ,,*,0
-1,014421xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i9:1000,ID 9 ,kWh,*,3
+1,01441dUUuu@i9:1,Year ,,*,0
+1,01441dxxxxuu@i9:1,Month ,,*,0
+1,01441dxxxxxxuu@i9:1,Day ,,*,0
+1,01441dxxxxxxxxxxuu@i9:1,HH ,h,*,0
+1,01441dxxxxxxxxxxxxuu@i9:1,MM ,m,*,0
+1,01441dxxxxxxxxxxxxxxuu@i9:1,SS ,s,*,0
+1,01441dxxxxxxxxxxxxxxxxxxUUuu@i9:1,GMT Deviation,,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxuu@i9:1,Summer/Winter ,,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxuu@i9:1,AMR Status ,,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i9:1000,ID 9 ,kWh,*,3
 
 
 #
