@@ -32,14 +32,14 @@ hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
-upacyr=-1
-upacmt=-1
-upacdy=-1
-upachh=-1
-upacmm=-1
-upacss=-1
-upacim=-1
-upacex=-1
+upacyr=sml[38]
+upacmt=sml[39]
+upacdy=sml[40]
+upachh=sml[41]
+upacmm=sml[42]
+upacss=sml[43]
+upacim=sml[47]
+upacex=sml[48]
 
 >W
 
