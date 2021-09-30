@@ -5,6 +5,14 @@ hh=0
 mm=0
 ss=0
 name="EB3"
+upacyr=-1
+upacmt=-1
+upacdy=-1
+upachh=-1
+upacmm=-1
+upacss=-1
+upacim=-1
+upacex=-1
 
 >BS
 
@@ -23,6 +31,15 @@ endif
 hh=sml[1]
 mm=sml[2]
 ss=sml[3]
+
+upacyr=-1
+upacmt=-1
+upacdy=-1
+upachh=-1
+upacmm=-1
+upacss=-1
+upacim=-1
+upacex=-1
 
 >W
 
