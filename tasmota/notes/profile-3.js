@@ -36,7 +36,8 @@ ss=sml[3]
 ; change to your gpios and mode
 ; power off is required
 ;  v   v             v
-+1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004
++1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r010400800001,r010400810003,r01440601
+
 
 ; 01
 
@@ -105,6 +106,38 @@ ss=sml[3]
 1,01040euu@i6:1,Tariff ,,Tariff,16
 
 1,=h<hr>
+
+; 80
+
+1,010408uu@i7:1,Config ID Byte 1 ,,*,0
+1,010408xxuu@i7:1,Config ID  Byte 2 ,,*,0
+1,010408xxxxuu@i7:1,Config ID Byte 3 ,,*,0
+1,010408xxxxxxuu@i7:1,Config ID Byte 4 ,,*,0
+1,010408xxxxxxxxuu@i7:1,Config ID Byte 5 ,,*,0
+1,010408xxxxxxxxxxuu@i7:1,Config ID Byte 6 ,,*,0
+1,010408xxxxxxxxxxxxuu@i7:1,Config ID Byte 7 ,,*,0
+1,010408xxxxxxxxxxxxxxuu@i7:1,Config ID Byte 8 ,,*,0
+
+; 81/82/83
+
+1,01040cUUuuUUuu@i8:1,Capture Period ,s,*,0
+1,01040cxxxxxxxxUUuuUUuu@i8:1,Entries in Use ,,*,0
+1,01040cxxxxxxxxxxxxxxxxUUuuUUuu@i8:1,Profile Entries ,,*,0
+
+1,=h<hr>
+1,=hExample: lastest entry
+
+1,014421UUuu@i9:1,Year ,,*,0
+1,014421xxxxuu@i9:1,Month ,,*,0
+1,014421xxxxxxuu@i9:1,Day ,,*,0
+1,014421xxxxxxxxxxuu@i9:1,HH ,h,*,0
+1,014421xxxxxxxxxxxxuu@i9:1,MM ,m,*,0
+1,014421xxxxxxxxxxxxxxuu@i9:1,SS ,s,*,0
+1,014421xxxxxxxxxxxxxxxxxxUUuu@i9:1,GMT Deviation,,*,0
+1,014421xxxxxxxxxxxxxxxxxxxxxxuu@i9:1,Summer/Winter ,,*,0
+1,014421xxxxxxxxxxxxxxxxxxxxxxxxuu@i9:1,AMR Status ,,*,0
+1,014421xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i9:1000,ID 9 ,kWh,*,3
+
 
 #
 
