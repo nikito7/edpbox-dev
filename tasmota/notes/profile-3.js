@@ -1,18 +1,18 @@
 >D
 
 initvars="bugfix"
-hh=-1
-mm=-1
-ss=-1
+hh="-1"
+mm="-1"
+ss="-1"
 name="EB3"
-upacyr=-1
-upacmt=-1
-upacdy=-1
-upachh=-1
-upacmm=-1
-upacss=-1
-upacim=-1
-upacex=-1
+upacyr="-1"
+upacmt="-1"
+upacdy="-1"
+upachh="-1"
+upacmm="-1"
+upacss="-1"
+upacim="-1"
+upacex="-1"
 
 >BS
 
@@ -49,7 +49,7 @@ endif
 @ <b>Local Time: </b> %tstamp%
 @ <b>Name: </b> %name%
 @ <b>Clock: </b> %0hh%:%0mm%:%0ss%
-@ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy%-%0upachh%-%0upacmm%-%0upacss% Import %upacim% Export %upacex% EOF
+@ <b>UPAC: </b> "/%0upacyr%/%0upacmt%/%0upacdy%/%0upachh%/%0upacmm%/%0upacss%/%3upacim%/%3upacex%/"
 @ <hr>
 
 >M 1
