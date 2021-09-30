@@ -1,9 +1,9 @@
 >D
 
 initvars="bugfix"
-hh=0
-mm=0
-ss=0
+hh=-1
+mm=-1
+ss=-1
 name="EB3"
 upacyr=-1
 upacmt=-1
@@ -32,6 +32,8 @@ hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
+if upsecs>30
+then
 upacyr=sml[38]
 upacmt=sml[39]
 upacdy=sml[40]
@@ -40,13 +42,14 @@ upacmm=sml[42]
 upacss=sml[43]
 upacim=sml[47]
 upacex=sml[48]
+endif
 
 >W
 
 @ <b>Local Time: </b> %tstamp%
 @ <b>Name: </b> %name%
 @ <b>Clock: </b> %0hh%:%0mm%:%0ss%
-@ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy%-%0upachh%-%0upacmm%-%0upacss% I %0upacim% E %0upacex% EOF
+@ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy%-%0upachh%-%0upacmm%-%0upacss% Import %upacim% Export %upacex% EOF
 @ <hr>
 
 >M 1
