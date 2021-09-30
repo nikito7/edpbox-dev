@@ -46,6 +46,7 @@ upacex=sml[48]
 @ <b>Local Time: </b> %tstamp%
 @ <b>Name: </b> %name%
 @ <b>Clock: </b> %0hh%:%0mm%:%0ss%
+@ <b>UPAC: </b> %upacyr%-%upacmt%-%upacdy% %upachh%:%upacmm%:%upacss% I:%upacim% E:%upacex%
 @ <hr>
 
 >M 1
