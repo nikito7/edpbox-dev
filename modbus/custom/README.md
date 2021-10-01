@@ -14,9 +14,9 @@ Usage:
 Install:
 
 ```js
-vv=21.8.081
-file=custom-${vv}.zip
-url=https://github.com/nikito7/edpbox/raw/dev/modbus/${file}
+vv=2021.10-011
+file=c-${vv}.zip
+url=https://github.com/nikito7/edpbox/raw/dev/modbus/custom/${file}
 mkdir -p /config/custom_components/modbus/
 rm -rf /config/custom_components/modbus/*
 cd /config/custom_components/modbus/
