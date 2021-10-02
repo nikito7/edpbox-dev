@@ -69,7 +69,7 @@ def run_sync_client():
     # ------------------------------------------------------------------------#
 
     from pymodbus.transaction import ModbusRtuFramer
-    client = ModbusClient('10.1.0.40', port=8888, framer=ModbusRtuFramer)
+    client = ModbusClient('10.1.0.40', port=8888, framer=ModbusRtuFramer, strict=True)
     client.connect()
 
     log.debug("Read input registers")
