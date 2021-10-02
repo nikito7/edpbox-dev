@@ -3,6 +3,7 @@
 initvars="bugfix"
 res=0
 cnt=4100
+end=4000
 hex=""
 cmd=""
 sec=0
@@ -14,7 +15,7 @@ sec=0
 
 >F
 
-if cnt>3000
+if cnt>end
 then
 hex=hx(cnt)
 cmd="014506"+hex+"01"
@@ -25,7 +26,7 @@ endif
 
 >S
 
-if cnt>3000
+if cnt>end
 then
 sec+=1
 endif
