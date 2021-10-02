@@ -15,6 +15,9 @@ sec=0
 
 >F
 
+; todo: slowdown
+; 100ms too fast, incomplete lines
+
 if cnt>end
 then
 hex=hx(cnt)
