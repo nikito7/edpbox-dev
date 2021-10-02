@@ -67,7 +67,7 @@ def run_sync_client():
     #
     #    client = ModbusClient('localhost', retries=3, retry_on_empty=True)
     # ------------------------------------------------------------------------#
-    client = ModbusClient('10.3.0.232', port=9502)
+    client = ModbusClient('10.3.0.223', port=9502)
     # from pymodbus.transaction import ModbusRtuFramer
     # client = ModbusClient('localhost', port=5020, framer=ModbusRtuFramer)
     # client = ModbusClient(method='binary', port='/dev/ptyp0', timeout=1)
