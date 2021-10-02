@@ -77,11 +77,8 @@ def run_sync_client():
     client.connect()
 
 
-
-
-
     log.debug("Read input registers")
-    rr = client.read_input_registers(1, 8, unit=UNIT)
+    rr = client.read_input_registers(1, 1, unit=UNIT)
     assert(not rr.isError())     # test that we are not an error
 
     
