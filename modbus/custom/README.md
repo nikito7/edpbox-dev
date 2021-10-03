@@ -1,14 +1,19 @@
 Custom:
 
-- adds "register_size"
+- adds "register_size" in bytes
 
 Usage:
 
 ```yaml
-  count: 1
-  data_type: custom
-  register_size: 4
-  structure: ">L"
+      - name: "EB1 0x0001"
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        register_size: 12
+        structure: ">H7BhB"
+        scan_interval: 7
 ```
 
 Install:
