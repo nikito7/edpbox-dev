@@ -60,7 +60,8 @@
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
         {% set x = value_json.Time|string %}
-        {{  }}
+        {% set x = x.split('T')[1]|string %}
+        {{ x }}
     icon: mdi:clock
 
   - platform: mqtt
