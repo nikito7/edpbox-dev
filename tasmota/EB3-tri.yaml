@@ -55,6 +55,15 @@
     icon: mdi:clock
 
   - platform: mqtt
+    name: "EB3 Clock Tasmota"
+    unique_id: EB3_Clock_Tasmota
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set x = value_json.Time|string %}
+        {{  }}
+    icon: mdi:clock
+
+  - platform: mqtt
     name: "EB3 Voltage L1"
     unique_id: EB3_VolL1
     state_topic: "tele/edpbox3/SENSOR"
