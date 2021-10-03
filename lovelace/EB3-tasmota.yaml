@@ -10,7 +10,7 @@ entities:
   - entity: switch.eb3_tasmota_restart
     secondary_info: last-updated
     icon: mdi:power
-  - entity: switch.eb3_clock_tasmota
+  - entity: sensor.eb3_clock_tasmota
     secondary_info: last-updated
 # clock
   - entity: sensor.eb3_clock
