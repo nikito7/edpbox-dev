@@ -215,12 +215,12 @@
 
       - name: "EB1 Model"
         slave: 1
-        address: 3
+        address: 2
         input_type: input
         count: 1
         data_type: custom
-        register_size: 6
-        structure: ">6s"
+        register_size: 10
+        structure: ">10s"
         scan_interval: 30
 
       - name: "EB1 Firmware Core"
