@@ -218,7 +218,9 @@
         address: 3
         input_type: input
         count: 1
-        data_type: string
+        data_type: custom
+        register_size: 6
+        structure: ">ssssss"
         scan_interval: 30
 
       - name: "EB1 Firmware Core"
