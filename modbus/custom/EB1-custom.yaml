@@ -188,7 +188,7 @@
         count: 1
         data_type: custom
         register_size: 8
-        structure: ">8B"
+        structure: ">6Bxx"
         scan_interval: 30
 
       - name: "EB1 0x0081"
@@ -212,16 +212,6 @@
         scan_interval: 30
 
 # strings
-
-      - name: "EB1 Model"
-        slave: 1
-        address: 2
-        input_type: input
-        count: 1
-        data_type: custom
-        register_size: 10
-        structure: ">10s"
-        scan_interval: 30
 
       - name: "EB1 Firmware Core"
         slave: 1
