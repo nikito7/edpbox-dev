@@ -5,6 +5,7 @@ hh=0
 mm=0
 ss=0
 name="EB3"
+time="--:--:--"
 
 >BS
 
@@ -24,11 +25,12 @@ hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
+time=st(tstamp T 2)
+
 >W
 
-@ <b>Local Time: </b> %tstamp%
-@ <b>Name: </b> %name%
-@ <b>Clock: </b> %0hh%:%0mm%:%0ss%
+@ <b>Tasmota: </b> %time%
+@ <b>%name% Clock: </b> %0hh%:%0mm%:%0ss%
 @ <hr>
 
 >M 1
