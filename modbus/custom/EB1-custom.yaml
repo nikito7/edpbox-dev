@@ -187,6 +187,7 @@
         input_type: input
         count: 1
         data_type: custom
+        register_size: 8
         structure: ">8B"
         scan_interval: 30
 
@@ -196,6 +197,7 @@
         input_type: input
         count: 1
         data_type: custom
+        register_size: 4
         structure: ">I"
         scan_interval: 30
 
@@ -205,6 +207,7 @@
         input_type: input
         count: 2
         data_type: custom
+        register_size: 8
         structure: ">2I"
         scan_interval: 30
 
