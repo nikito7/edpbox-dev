@@ -220,7 +220,7 @@
         count: 1
         data_type: custom
         register_size: 6
-        structure: ">ssssss"
+        structure: ">6s"
         scan_interval: 30
 
       - name: "EB1 Firmware Core"
