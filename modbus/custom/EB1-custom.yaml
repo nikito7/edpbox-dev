@@ -160,7 +160,7 @@
         unit_of_measurement: kVAr
         scan_interval: 900
 
-# for templates
+# templates
 
       - name: "EB1 0x0001" # Clock
         slave: 1
@@ -181,7 +181,34 @@
         structure: ">Bx"
         scan_interval: 30
 
-# for testing
+      - name: "EB1 0x0080"
+        slave: 1
+        address: 128
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">8B"
+        scan_interval: 30
+
+      - name: "EB1 0x0081"
+        slave: 1
+        address: 129
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">I"
+        scan_interval: 30
+
+      - name: "EB1 0x0082"
+        slave: 1
+        address: 130
+        input_type: input
+        count: 2
+        data_type: custom
+        structure: ">2I"
+        scan_interval: 30
+
+# strings
 
       - name: "EB1 Firmware Core"
         slave: 1
