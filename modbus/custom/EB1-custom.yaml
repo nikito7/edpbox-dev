@@ -213,6 +213,14 @@
 
 # strings
 
+      - name: "EB1 Model"
+        slave: 1
+        address: 3
+        input_type: input
+        count: 1
+        data_type: string
+        scan_interval: 30
+
       - name: "EB1 Firmware Core"
         slave: 1
         address: 4
