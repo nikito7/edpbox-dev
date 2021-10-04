@@ -207,7 +207,7 @@
         input_type: input
         count: 2
         data_type: custom
-        register_size: 8
+        register_size: 4
         structure: ">2I"
         scan_interval: 30
 
