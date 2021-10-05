@@ -25,14 +25,14 @@ smlj=0
 
 ; 80
 
-1,010408uu@i0:1,Config ID Byte 1 ,,*,0
-1,010408xxuu@i0:1,Config ID  Byte 2 ,,*,0
-1,010408xxxxuu@i0:1,Config ID Byte 3 ,,*,0
-1,010408xxxxxxuu@i0:1,Config ID Byte 4 ,,*,0
-1,010408xxxxxxxxuu@i0:1,Config ID Byte 5 ,,*,0
-1,010408xxxxxxxxxxuu@i0:1,Config ID Byte 6 ,,*,0
-1,010408xxxxxxxxxxxxuu@i0:1,Config ID Byte 7 ,,*,0
-1,010408xxxxxxxxxxxxxxuu@i0:1,Config ID Byte 8 ,,*,0
+1,010408uu@i1:1,Config ID Byte 1 ,,*,0
+1,010408xxuu@i1:1,Config ID  Byte 2 ,,*,0
+1,010408xxxxuu@i1:1,Config ID Byte 3 ,,*,0
+1,010408xxxxxxuu@i1:1,Config ID Byte 4 ,,*,0
+1,010408xxxxxxxxuu@i1:1,Config ID Byte 5 ,,*,0
+1,010408xxxxxxxxxxuu@i1:1,Config ID Byte 6 ,,*,0
+1,010408xxxxxxxxxxxxuu@i1:1,Config ID Byte 7 ,,*,0
+1,010408xxxxxxxxxxxxxxuu@i1:1,Config ID Byte 8 ,,*,0
 
 ; 81/82/83
 
