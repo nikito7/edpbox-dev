@@ -7,19 +7,12 @@ smlj=0
 
 =>sensor53 r
 
->S
-
-if upsecs==50
-then
-smlj=1
-endif
-
 >M 1
 
 ; change to your gpios and mode
 ; power off is required
 ;  v   v             v
-+1,19,mN1,0,9600,EB3,18,15,r010400010001,r010400800001,r010400810003,r01440601
++1,19,mN1,0,9600,EB99,18,15,r010400010001,r010400800001,r010400810003,r01440601
 
 
 ; 01
