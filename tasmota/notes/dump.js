@@ -6,6 +6,7 @@ cnt=4100
 end=4000
 hex=""
 cmd=""
+sleep=0
 sec=0
 
 >BS
@@ -15,16 +16,21 @@ sec=0
 
 >F
 
-; todo: slowdown
-; 100ms too fast, incomplete lines
-
 if cnt>end
+and sleep==1
 then
 hex=hx(cnt)
 cmd="014506"+hex+"01"
 print dump: %0cnt% %cmd%
 res=sml(1 1 cmd)
 cnt-=1
+endif
+
+sleep+=1
+
+if sleep>1
+then
+sleep=0
 endif
 
 >S
