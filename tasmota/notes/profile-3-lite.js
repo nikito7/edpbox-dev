@@ -36,9 +36,9 @@ smlj=0
 
 ; 81/82/83
 
-1,01040cUUuuUUuu@i8:2,Capture Period ,s,*,0
-1,01040cxxxxxxxxUUuuUUuu@i8:2,Entries in Use ,,*,0
-1,01040cxxxxxxxxxxxxxxxxUUuuUUuu@i8:2,Profile Entries ,,*,0
+1,01040cUUuuUUuu@i2:1,Capture Period ,s,*,0
+1,01040cxxxxxxxxUUuuUUuu@i2:1,Entries in Use ,,*,0
+1,01040cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Profile Entries ,,*,0
 
 1,=h<hr>
 1,=hExample: lastest entry
