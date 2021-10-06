@@ -79,10 +79,10 @@ def inc(data):
 carga = open("carga.csv", "w+")
 
 # write colum names
-carga.write("Time,AMR,A+,+Ri,-Rc,-A,-Ri,+Rc\n") 
+carga.write("Date,Import,Ri,Rc,Export,Ri,Rc\n") 
 
-#start = "0145000000000001"
-start = sys.argv[1]
+start = "0145000000000001"
+#start = sys.argv[1]
 c = 1
 while c <= int(sys.argv[2]):
     print("Colecting register " + start)
@@ -101,15 +101,14 @@ while c <= int(sys.argv[2]):
         reg.append(int(resp[22:24], 16))
         reg.append(hex(int(resp[24:28], 16)))
         reg.append(hex(int(resp[28:30], 16)))
-        reg.append(int(resp[30:34], 16))
-        reg.append(int(resp[34:42], 16))
-        reg.append(int(resp[42:50], 16))
-        reg.append(int(resp[50:58], 16))
-        reg.append(int(resp[58:66], 16))
-        reg.append(int(resp[66:74], 16))
-        reg.append(int(resp[74:82], 16))
+        reg.append(int(resp[30:32], 16))
+        reg.append(int(resp[32:40], 16))
+        reg.append(int(resp[40:48], 16))
+        reg.append(int(resp[48:56], 16))
+        reg.append(int(resp[56:64], 16))
+        reg.append(int(resp[64:72], 16))
+        reg.append(int(resp[72:80], 16))
         carga.write(str(reg[0]) + "-" + str(reg[1]) + "-" + str(reg[2]) + "T" + str(reg[4]) + ":" + str(reg[5]) + ",")
-        carga.write(str(reg[10]) + ",")
         carga.write(str(reg[11]) + ",")
         carga.write(str(reg[12]) + ",")
         carga.write(str(reg[13]) + ",")
