@@ -6,6 +6,7 @@ initvars="bugfix"
 hh=0
 mm=0
 ss=0
+zz=0
 time=""
 
 >BS
@@ -26,12 +27,9 @@ hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
-ss=s(ss)
+zz=sl(ss)
 
-if sl(ss)==1
-then
-ss="0"+ss
-endif
+print Z %0zz%
 
 time=st(tstamp T 2)
 
