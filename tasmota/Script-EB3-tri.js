@@ -1,10 +1,11 @@
 >D
 
+; EB3
+
 initvars="bugfix"
 hh=0
 mm=0
 ss=0
-name="EB3"
 time=""
 
 >BS
