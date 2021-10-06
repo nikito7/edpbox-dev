@@ -8,6 +8,9 @@
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:alarm
+    availability_topic: "tele/edpbox3/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   - platform: mqtt
     name: "EB3 ESP Free Heap"
@@ -16,6 +19,9 @@
     value_template: '{{ value_json.Heap }}'
     unit_of_measurement: "kB"
     icon: mdi:chip
+    availability_topic: "tele/edpbox3/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   - platform: mqtt
     name: "EB3 ESP Signal"
@@ -24,6 +30,11 @@
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     device_class: signal_strength
+    availability_topic: "tele/edpbox3/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+###
 
   - platform: mqtt
     name: "EB3 Clock H"
@@ -63,6 +74,8 @@
         {% set x = x.split('T')[1]|string %}
         {{ x }}
     icon: mdi:clock
+
+###
 
   - platform: mqtt
     name: "EB3 Voltage L1"
@@ -347,10 +360,6 @@
           {{ "Cheias" }}
         {% endif %}
     icon: mdi:counter
-
-###
-
-
 
 ###
 ##
