@@ -32,7 +32,7 @@ date=st(tstamp T 1)
 
 >W
 
-@ <b>Local: </b> %time% <b>Date
+@ <b>Local: </b> %time% <b>Date</b> %date%
 @ <b>Meter: </b> %0hh%:%0mm%:%0ss%
 @ <hr>
 
