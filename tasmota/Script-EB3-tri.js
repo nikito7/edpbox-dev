@@ -6,8 +6,8 @@ initvars="bugfix"
 hh=0
 mm=0
 ss=0
-time=""
-date=""
+time="0:0:0"
+date="0-0-0"
 
 >BS
 
@@ -28,7 +28,7 @@ mm=sml[2]
 ss=sml[3]
 
 time=st(tstamp T 2)
-time=st(tstamp T 1)
+date=st(tstamp T 1)
 
 >W
 
