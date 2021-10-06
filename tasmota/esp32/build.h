@@ -25,5 +25,6 @@
 #define SML_DUMP_SIZE 256
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
+#define MAXSVARS 10
 
 // eof
