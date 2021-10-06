@@ -6,8 +6,8 @@ initvars="bugfix"
 hh=0
 mm=0
 ss=0
-zz=0
 time=""
+date=""
 
 >BS
 
@@ -27,16 +27,13 @@ hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
-zz=sl(ss)
-
-print Z %0zz%
-
 time=st(tstamp T 2)
+time=st(tstamp T 1)
 
 >W
 
-@ <b>Local : </b> %time%
-@ <b>Meter : </b> %0hh%:%0mm%:%0ss%
+@ <b>Local: </b> %time% <b>Date
+@ <b>Meter: </b> %0hh%:%0mm%:%0ss%
 @ <hr>
 
 >M 1
