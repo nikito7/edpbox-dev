@@ -8,6 +8,7 @@ mm=0
 ss=0
 time="0:0:0"
 date="0-0-0"
+cnt=0
 
 >BS
 
@@ -18,7 +19,7 @@ smlj=0
 
 >S
 
-if upsecs==50
+if cnt==50
 then
 smlj=1
 endif
@@ -30,9 +31,11 @@ ss=sml[3]
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
+cnt+=1
+
 >W
 
-@ <b>Local: </b> %time% <b>Date</b> %date%
+@ <b>Local: </b> %time% %date%
 @ <b>Meter: </b> %0hh%:%0mm%:%0ss%
 @ <hr>
 
