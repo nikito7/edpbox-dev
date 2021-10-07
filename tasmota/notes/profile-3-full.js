@@ -55,7 +55,9 @@ endif
 
 >J
 
-,"LoadProfile":"%0upacyr%-%0upacmt%-%0upacdy%,%0upachh%-%0upacmm%-%0upacss%,%3upacim%,%3upacex%"
+,"UPAC":{
+"LoadProfile":"%0upacyr%%0upacmt%%0upacdy%,%0upachh%%0upacmm%%0upacss%,%3upacim%,%3upacex%"
+}
 
 >M 1
 
