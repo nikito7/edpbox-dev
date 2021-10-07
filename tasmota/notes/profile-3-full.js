@@ -1,10 +1,6 @@
 >D 48
 
 initvars="bugfix"
-hh=0
-mm=0
-ss=0
-name="EB3"
 upacyr=0
 upacmt=0
 upacdy=0
@@ -13,6 +9,7 @@ upacmm=0
 upacss=0
 upacim=0
 upacex=0
+cnt=0
 
 >BS
 
@@ -23,16 +20,14 @@ smlj=0
 
 >S
 
-if upsecs==50
+cnt+=1
+
+if cnt>10
 then
 smlj=1
 endif
 
-hh=sml[1]
-mm=sml[2]
-ss=sml[3]
-
-if upsecs>30
+if cnt>30
 then
 upacyr=sml[38]
 upacmt=sml[39]
@@ -47,17 +42,13 @@ endif
 >W
 
 @ <b>Local Time: </b> %tstamp%
-@ <b>Name: </b> %name%
-@ <b>Clock: </b> %0hh%:%0mm%:%0ss%
 @ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy% %0upachh%-%0upacmm%-%0upacss%
 @ <b>UPAC: </b> IMP %3upacim% EXP %3upacex% EOF
 @ <hr>
 
 >J
 
-,"UPAC":{
-"LoadProfile":"%0upacyr%%0upacmt%%0upacdy%,%0upachh%%0upacmm%%0upacss%,%3upacim%,%3upacex%"
-}
+"LoadProfile":"%0upacyr%,%0upacmt%,%0upacdy%,%0upachh%,%0upacmm%,%0upacss%,%3upacim%,%3upacex%"
 
 >M 1
 
