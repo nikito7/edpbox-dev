@@ -13,7 +13,7 @@ cnt=0
 
 >BS
 
-tper=60
+tper=30
 smlj=0
 
 =>sensor53 r
@@ -22,7 +22,7 @@ smlj=0
 
 cnt+=1
 
-if cnt>10
+if cnt>15
 then
 smlj=1
 endif
@@ -48,7 +48,7 @@ endif
 
 >J
 
-"LoadProfile":"%0upacyr%,%0upacmt%,%0upacdy%,%0upachh%,%0upacmm%,%0upacss%,%3upacim%,%3upacex%"
+,"LoadProfile":"%0upacyr%,%0upacmt%,%0upacdy%,%0upachh%,%0upacmm%,%0upacss%,%3upacim%,%3upacex%"
 
 >M 1
 
@@ -152,8 +152,6 @@ endif
 1,01441dxxxxxxxxxxuu@i9:1,HH ,h,*,0
 1,01441dxxxxxxxxxxxxuu@i9:1,MM ,m,*,0
 1,01441dxxxxxxxxxxxxxxuu@i9:1,SS ,s,*,0
-1,01441dxxxxxxxxxxxxxxxxxxUUuu@i9:1,GMT Deviation,,*,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxuu@i9:1,Summer/Winter ,,*,0
 1,01441dxxxxxxxxxxxxxxxxxxxxxxxxuu@i9:1,AMR Status ,,*,0
 1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i9:1000,ID 9 Import Inc ,kWh,*,3
 1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i9:1000,ID x ,kVAr,*,3
