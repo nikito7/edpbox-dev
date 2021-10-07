@@ -6,8 +6,8 @@ initvars="bugfix"
 hh=0
 mm=0
 ss=0
-time="0:0:0"
-date="0-0-0"
+time=""
+date=""
 cnt=0
 
 >BS
