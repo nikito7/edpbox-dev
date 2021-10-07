@@ -3,8 +3,8 @@
     unique_id: EB3_Load_Profile
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.LoadProfile|string %}
-        {% if x is not None %}
+        {% if value_json.LoadProfile %}
+          {% set x = value_json.LoadProfile|string %}
           {% set yy = x.split(',')[0]|int %}
           {% set mt = x.split(',')[1]|int %}
           {% set dd = x.split(',')[2]|int %}
