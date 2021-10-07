@@ -3,7 +3,7 @@
     unique_id: EB3_Load_Profile
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% if value_json.LoadProfile %}
+        {% if value_json.LoadProfile is defined %}
           {% set x = value_json.LoadProfile|string %}
           {% set yy = x.split(',')[0]|int %}
           {% set mt = x.split(',')[1]|int %}
@@ -14,6 +14,8 @@
           {% set im = x.split(',')[6]|string %}
           {% set ex = x.split(',')[7]|string %}
           {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "T" + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) + "," + im + "," + ex }}
+        {% else %}
+          {{ states('sensor.eb3_load_profile') }}
         {% endif %}
     icon: mdi:graph
 
