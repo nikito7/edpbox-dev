@@ -4,7 +4,7 @@
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
         {% set x = value_json.LoadProfile|string %}
-        {% if x %}
+        {% if x is not None %}
           {% set yy = x.split(',')[0]|int %}
           {% set mt = x.split(',')[1]|int %}
           {% set dd = x.split(',')[2]|int %}
