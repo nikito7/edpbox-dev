@@ -1,29 +1,31 @@
 >D
 
 initvars="bugfix"
-res=0
-cnt=4540
-end=4530
 hex=""
 cmd=""
+res=0
 sleep=0
 sec=0
-begin=cnt
-now=cnt
+cnt=0
+now=0
+begin=4540
+end=4440
 
->BS
+>B
 
-=>sensor53 r
+cnt=begin
+
 =>sensor53 d1
+=>sensor53 r
 
 >F
 
 if cnt>end
 and sleep==1
 then
+now=cnt
 hex=hx(cnt)
 cmd="014506"+hex+"01"
-print dump: %0cnt% %cmd%
 res=sml(1 1 cmd)
 cnt-=1
 endif
@@ -44,14 +46,14 @@ endif
 
 >W
 
-@ <b>Local Time: </b> %tstamp%
-@ <b>Begin: </b> %0begin%
-@ <b>Now: </b> %0cnt%
-@ <b>End: </b> %0end%
+@ <b>Local: </b> %tstamp%
+@ <b>Begin: </b> %0begin% lines
+@ <b>Now: </b> %0cnt% lines
+@ <b>End: </b> %0end% lines
 @ <b>Elapsed: </b> %0sec%s
 @ <hr> 
 
 >M 1
-+1,19,mN1,0,9600,EB99,18
++1,19,mN1,0,9600,Dump,18
 #
 ; eof
