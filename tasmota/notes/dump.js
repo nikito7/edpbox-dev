@@ -8,6 +8,8 @@ hex=""
 cmd=""
 sleep=0
 sec=0
+begin=cnt
+now=cnt
 
 >BS
 
@@ -43,7 +45,9 @@ endif
 >W
 
 @ <b>Local Time: </b> %tstamp%
-@ <b>Dump: </b> %0cnt%
+@ <b>Begin: </b> %0begin%
+@ <b>Now: </b> %0cnt%
+@ <b>End: </b> %0end%
 @ <b>Elapsed: </b> %0sec%s
 @ <hr> 
 
