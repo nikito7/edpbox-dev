@@ -2,8 +2,8 @@
 
 initvars="bugfix"
 res=0
-cnt=4100
-end=4000
+cnt=4540
+end=4530
 hex=""
 cmd=""
 sleep=0
