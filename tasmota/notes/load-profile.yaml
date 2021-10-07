@@ -1,0 +1,10 @@
+  - platform: mqtt
+    name: "EB3 Load Profile"
+    unique_id: EB3_Load_Profile
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set yy = value_json.LoadProfile|split(1)|int %}
+        {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+    icon: mdi:graph
+
+#EOF
