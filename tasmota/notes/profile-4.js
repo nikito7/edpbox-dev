@@ -1,4 +1,4 @@
->D 48
+>D
 
 initvars="bugfix"
 upacyr=0
