@@ -1,4 +1,4 @@
->D
+>D 48
 
 initvars="bugfix"
 hh=0
@@ -52,6 +52,10 @@ endif
 @ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy% %0upachh%-%0upacmm%-%0upacss%
 @ <b>UPAC: </b> IMP %3upacim% EXP %3upacex% EOF
 @ <hr>
+
+>J
+
+,"LoadProfile":"%0upacyr%-%0upacmt%-%0upacdy%,%0upachh%-%0upacmm%-%0upacss%,%3upacim%,%3upacex%"
 
 >M 1
 
