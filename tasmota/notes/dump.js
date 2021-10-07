@@ -3,6 +3,8 @@
 initvars="bugfix"
 hex=""
 cmd=""
+date=""
+time=""
 res=0
 sleep=0
 sec=0
@@ -39,6 +41,9 @@ endif
 
 >S
 
+time=st(tstamp T 2)
+date=st(tstamp T 1)
+
 if cnt>end
 then
 sec+=1
@@ -46,7 +51,7 @@ endif
 
 >W
 
-@ <b>Local: </b> %tstamp%
+@ <b>Local: </b> %date% %time%
 @ <b>Begin: </b> %0begin% lines
 @ <b>Now: </b> %0cnt% lines
 @ <b>End: </b> %0end% lines
