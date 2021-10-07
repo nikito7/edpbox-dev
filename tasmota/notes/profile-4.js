@@ -10,6 +10,8 @@ upacss=0
 upacim=0
 upacex=0
 cnt=0
+date=""
+time=""
 
 >BS
 
@@ -22,7 +24,7 @@ smlj=0
 
 cnt+=1
 
-if cnt>15
+if cnt==25
 then
 smlj=1
 endif
@@ -39,9 +41,12 @@ upacim=sml[47]
 upacex=sml[48]
 endif
 
+time=st(tstamp T 2)
+date=st(tstamp T 1)
+
 >W
 
-@ <b>Local Time: </b> %tstamp%
+@ <b>Local: </b> %time% %date%
 @ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy% %0upachh%:%0upacmm%:%0upacss%
 @ <b>UPAC: </b> IMP %3upacim% EXP %3upacex% EOF
 @ <hr>
