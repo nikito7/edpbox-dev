@@ -42,7 +42,7 @@ endif
 >W
 
 @ <b>Local Time: </b> %tstamp%
-@ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy% %0upachh%-%0upacmm%-%0upacss%
+@ <b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy% %0upachh%:%0upacmm%:%0upacss%
 @ <b>UPAC: </b> IMP %3upacim% EXP %3upacex% EOF
 @ <hr>
 
