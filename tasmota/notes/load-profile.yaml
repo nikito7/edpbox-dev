@@ -13,7 +13,7 @@
           {% set ss = x.split(',')[5]|int %}
           {% set im = x.split(',')[6]|string %}
           {% set ex = x.split(',')[7]|string %}
-          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "T" + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) + "," + im + "," + ex }}
+          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) + "," + im + "," + ex }}
         {% else %}
           {{ states('sensor.eb3_load_profile') }}
         {% endif %}
