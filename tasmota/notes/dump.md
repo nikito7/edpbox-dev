@@ -12,8 +12,9 @@ Parsing:
 
 ```sh
 cp dump.txt work.txt
-sed -i -e 's/edpbox/\n\n/g' work.txt
-cat work.txt
+sed -i -e 's/edpbox/\n/g' work.txt
+cat work.txt | grep "ESP-:" > work2.txt
+cat work2.txt
 ```
 
 <hr>
