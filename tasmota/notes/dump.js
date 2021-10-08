@@ -10,8 +10,8 @@ sleep=0
 sec=0
 cnt=0
 now=0
-begin=4540
-end=4440
+begin=4550
+end=0
 
 >B
 
