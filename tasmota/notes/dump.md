@@ -12,6 +12,7 @@ Parsing:
 
 ```sh
 cp dump.txt work.txt
+sed -i -e 's/edp/\nedp/g' work.txt
 ```
 
 <hr>
