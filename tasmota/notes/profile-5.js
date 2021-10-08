@@ -31,14 +31,14 @@ endif
 
 if cnt>30
 then
-upacyr=sml[38]
-upacmt=sml[39]
-upacdy=sml[40]
-upachh=sml[41]
-upacmm=sml[42]
-upacss=sml[43]
-upacim=sml[47]
-upacex=sml[48]
+upacyr=sml[27]
+upacmt=sml[28]
+upacdy=sml[29]
+upachh=sml[30]
+upacmm=sml[31]
+upacss=sml[32]
+upacim=sml[33]
+upacex=sml[34]
 endif
 
 time=st(tstamp T 2)
