@@ -17,7 +17,7 @@ crc16 = crcmod.mkCrcFun(0x18005, rev=True, initCrc=0xFFFF, xorOut=0x0000)
 
 # configure serial port
 ser = serial.Serial(
-            port='/dev/ttyUSB0',          # your serial device ID
+            port='COM4',          # your serial device ID
             baudrate=9600,                # serial speed
             parity=serial.PARITY_NONE,    # no parity for Kaifa
             stopbits=serial.STOPBITS_ONE, # one stop bit
@@ -79,9 +79,9 @@ reg = []                     # array to receive extrated data
 reg.append(int(resp[6:10],  16)) # reg-0  Year
 reg.append(int(resp[10:12], 16)) # reg-1  Month
 reg.append(int(resp[12:14], 16)) # reg-2  Day
-reg.append(int(resp[16:18], 16)) # reg-3  Hour
-reg.append(int(resp[18:20], 16)) # reg-4  Mimutes
-reg.append(int(resp[20:22], 16)) # reg-5  Seconds
+reg.append(int(resp[14:16], 16)) # reg-3  Weekday
+reg.append(int(resp[16:18], 16)) # reg-4  HH
+reg.append(int(resp[18:20], 16)) # reg-5  MM
 
 print(str(reg[0]) + "/" + str(reg[1]) + "/" + str(reg[2]) + "-" + str(reg[4]) + ":" + str(reg[5]))
 
