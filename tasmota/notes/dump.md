@@ -13,6 +13,8 @@ Parsing:
 ```sh
 cp dump.txt work.txt
 sed -i -e 's/edp/\nedp/g' work.txt
+cat work.txt | grep "ESP-:" | awk -F : '{ print $2 }' > work2.txt
+sed -i -e 's/\n//g' work2.txt
 ```
 
 <hr>
