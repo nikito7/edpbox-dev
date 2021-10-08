@@ -37,8 +37,8 @@ upacdy=sml[29]
 upachh=sml[30]
 upacmm=sml[31]
 upacss=sml[32]
-upacim=sml[33]
-upacex=sml[34]
+upacim=sml[34]
+upacex=sml[35]
 endif
 
 time=st(tstamp T 2)
