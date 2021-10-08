@@ -12,7 +12,8 @@ Parsing:
 
 ```sh
 cp dump.txt work.txt
-sed -i -e 's/edpbox/edp\nbox/g' work.txt
+sed -i -e 's/edpbox/\/g' work.txt
+cat work.txt
 ```
 
 <hr>
