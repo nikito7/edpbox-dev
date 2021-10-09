@@ -66,6 +66,8 @@
           {% set mm = states('sensor.eb3_clock_m')|int %}
           {% set ss = value_json.EB3.Clock_S|int %}
           {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+        {% else %}
+          {{ states('sensor.eb3_clock') }}
         {% endif %}
     icon: mdi:clock
 
@@ -76,7 +78,9 @@
     value_template: >-
         {% if value_json.Time is defined %}
           {{ value_json.Time.split('T')[1]|string }}
-        {% endif %}}
+        {% else %}
+          {{ states('sensor.eb3_clock_tasmota') }}
+        {% endif %}
     icon: mdi:clock
 
 ###
