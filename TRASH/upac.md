@@ -1,3 +1,7 @@
+*** replaced with direct access to meter values ***
+
+<hr>
+
 gui: raw
 
 ```yaml
