@@ -41,8 +41,9 @@
     unique_id: EB3_Clock_H
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.Clock_H|int %}        
-        {{ x }}
+        {% if value_json.EB3.Clock_H is defined %}        
+          {{ if value_json.EB3.Clock_H }}
+        {% endif %}
     icon: mdi:clock
 
   - platform: mqtt
@@ -50,8 +51,9 @@
     unique_id: EB3_Clock_M
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.Clock_M|int %}        
-        {{ x }}
+        {% if value_json.EB3.Clock_M is defined %}        
+          {{ value_json.EB3.Clock_M }}
+        {% endif %}
     icon: mdi:clock
 
   - platform: mqtt
@@ -59,10 +61,12 @@
     unique_id: EB3_Clock
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set hh = states('sensor.eb3_clock_h')|int %}
-        {% set mm = states('sensor.eb3_clock_m')|int %}
-        {% set ss = value_json.EB3.Clock_S|int %}
-        {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+        {% if value_json.EB3.Clock_S is defined %}
+          {% set hh = states('sensor.eb3_clock_h')|int %}
+          {% set mm = states('sensor.eb3_clock_m')|int %}
+          {% set ss = value_json.EB3.Clock_S|int %}
+          {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+        {% endif %}
     icon: mdi:clock
 
   - platform: mqtt
@@ -70,9 +74,9 @@
     unique_id: EB3_Clock_Tasmota
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.Time|string %}
-        {% set x = x.split('T')[1]|string %}
-        {{ x }}
+        {% if value_json.Time is defined %}
+          {{ value_json.Time.split('T')[1]|string }}
+        {% endif %}}
     icon: mdi:clock
 
 ###
