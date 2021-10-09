@@ -42,7 +42,7 @@
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
         {% if value_json.EB3.Clock_H is defined %}        
-          {{ if value_json.EB3.Clock_H }}
+          {{ value_json.EB3.Clock_H }}
         {% endif %}
     icon: mdi:clock
 
