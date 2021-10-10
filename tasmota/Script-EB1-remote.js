@@ -12,6 +12,12 @@ smlj=0
 
 =>sensor53 r
 
+>W
+
+@<b>Local:</b> %tstamp%
+@<b>Vars:</b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
+@<hr>
+
 >S
 
 if cnt==50
