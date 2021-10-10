@@ -1,6 +1,6 @@
 >D
 
-initvars="bugfix"
+bugfix="vars"
 upacyr=0
 upacmt=0
 upacdy=0
@@ -31,14 +31,14 @@ endif
 
 if cnt>30
 then
-upacyr=sml[27]
-upacmt=sml[28]
-upacdy=sml[29]
-upachh=sml[30]
-upacmm=sml[31]
-upacss=sml[32]
-upacim=sml[34]
-upacex=sml[35]
+upacyr=sml[1]
+upacmt=sml[2]
+upacdy=sml[3]
+upachh=sml[4]
+upacmm=sml[5]
+upacss=sml[6]
+upacim=sml[8]
+upacex=sml[9]
 endif
 
 time=st(tstamp T 2)
@@ -62,6 +62,21 @@ date=st(tstamp T 1)
 ;  v   v             v
 +1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
+1,=hLoad Profile: Lastest
+
+1,01441dUUuu@i7:1,Year ,,*,0
+1,01441dxxxxuu@i7:1,Month ,,*,0
+1,01441dxxxxxxuu@i7:1,Day ,,*,0
+1,01441dxxxxxxxxxxuu@i7:1,HH ,h,*,0
+1,01441dxxxxxxxxxxxxuu@i7:1,MM ,m,*,0
+1,01441dxxxxxxxxxxxxxxuu@i7:1,SS ,s,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Status ,,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID 9 Import Inc ,kWh,*,3
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID x ,kVAr,*,3
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID x ,kVAr,*,3
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID x Export Inc ,kWh,*,3
+
+1,=h<hr>
 
 ; 01
 
@@ -127,22 +142,6 @@ date=st(tstamp T 1)
 ; 0B
 
 1,01040euu@i6:1,Tariff ,,Tariff,16
-
-1,=h<hr>
-
-1,=hLoad Profile: Lastest
-
-1,01441dUUuu@i7:1,Year ,,*,0
-1,01441dxxxxuu@i7:1,Month ,,*,0
-1,01441dxxxxxxuu@i7:1,Day ,,*,0
-1,01441dxxxxxxxxxxuu@i7:1,HH ,h,*,0
-1,01441dxxxxxxxxxxxxuu@i7:1,MM ,m,*,0
-1,01441dxxxxxxxxxxxxxxuu@i7:1,SS ,s,*,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Status ,,*,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID 9 Import Inc ,kWh,*,3
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID x ,kVAr,*,3
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID x ,kVAr,*,3
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,ID x Export Inc ,kWh,*,3
 
 #
 
