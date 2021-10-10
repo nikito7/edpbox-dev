@@ -32,7 +32,7 @@ cnt+=1
 ; change to your gpios and mode
 ; power off is required 
 ;  v   v             v
-+1,19,mN1,1,9600,EB1,18,50,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002,r0104002D0003
++1,19,mN1,1,9600,EB1,18,50,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002
 
 ; 01
 
@@ -44,8 +44,8 @@ cnt+=1
 
 ; 6C
 
-1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,18
-1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,18
+1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,1
+1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,2
 
 1,=h<hr>
 
@@ -67,8 +67,8 @@ cnt+=1
 ; 79
 
 1,01040aUUuuUUuu@i4:1,Active Power ,W,ActPow,16
-1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,ActPowExp,16
-1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,pu,PowFac,19
+1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,ActPowExp,0
+1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,pu,PowFac,3
 
 ; 7F
 
