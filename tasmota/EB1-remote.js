@@ -2,7 +2,10 @@
 
 ; EB1 via gsm
 
->B
+bugfix="vars"
+cnt=0
+
+>BS
 
 tper=60
 smlj=0
@@ -11,11 +14,18 @@ smlj=0
 
 >S
 
-if upsecs==55
+if cnt==30
 then
-tper=21
+tper=11
 smlj=1
 endif
+
+if cnt==90
+then
+tper=301
+endif
+
+cnt+=1
 
 >M 1
 
@@ -67,14 +77,6 @@ endif
 ; 0B
 
 1,010406uu@i6:1,Tariff ,,Tariff,0
-
-1,=h<hr>
-
-; 2D
-
-1,01040CUUuuUUuu@i7:1000,Total Energy T1 Export ,kWh,TotEneT1Exp,3
-1,01040CxxxxxxxxUUuuUUuu@i7:1000,Total Energy T2 Export ,kWh,TotEneT2Exp,3
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Total Energy T3 Export ,kWh,TotEneT3Exp,3
 
 #
 
