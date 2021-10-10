@@ -14,13 +14,13 @@ smlj=0
 
 >S
 
-if cnt==30
+if cnt==50
 then
 tper=11
 smlj=1
 endif
 
-if cnt==90
+if cnt==120
 then
 tper=301
 endif
