@@ -4,6 +4,8 @@
 
 bugfix="vars"
 cnt=0
+date=""
+time=""
 
 >BS
 
@@ -14,7 +16,7 @@ smlj=0
 
 >W
 
-@<b>Local:</b> %tstamp%
+@<b>Local:</b> %date% %time%
 @<b>Vars:</b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<hr>
 
@@ -30,6 +32,9 @@ if cnt==120
 then
 tper=301
 endif
+
+time=st(tstamp T 2)
+date=st(tstamp T 1)
 
 cnt+=1
 
