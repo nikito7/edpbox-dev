@@ -21,7 +21,13 @@ smlj=0
 
 if cnt==50
 then
+tper=11
 smlj=1
+endif
+
+if cnt==120
+then
+tper=301
 endif
 
 hh=sml[1]
