@@ -2,7 +2,7 @@
 
 ; EB3
 
-initvars="bugfix"
+bugfix="vars"
 hh=0
 mm=0
 ss=0
@@ -35,9 +35,10 @@ cnt+=1
 
 >W
 
-@ <b>Local: </b> %time% %date%
-@ <b>Meter: </b> %0hh%:%0mm%:%0ss%
-@ <hr>
+@<b>Local: </b> %time% %date%
+@<b>Meter: </b> %0hh%:%0mm%:%0ss%
+@<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
+@<hr>
 
 >M 1
 
