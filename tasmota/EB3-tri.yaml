@@ -43,6 +43,8 @@
     value_template: >-
         {% if value_json.EB3.Clock_H is defined %}        
           {{ value_json.EB3.Clock_H }}
+        {% else %}
+          {{ states('sensor.eb3_clock_h') }}
         {% endif %}
     icon: mdi:clock
 
@@ -53,6 +55,8 @@
     value_template: >-
         {% if value_json.EB3.Clock_M is defined %}        
           {{ value_json.EB3.Clock_M }}
+        {% else %}
+          {{ states('sensor.eb3_clock_m') }}
         {% endif %}
     icon: mdi:clock
 
