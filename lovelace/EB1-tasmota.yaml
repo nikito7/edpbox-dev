@@ -7,7 +7,12 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb1_esp_signal
     secondary_info: last-updated
-# Meter
+  - entity: switch.eb3_tasmota_restart
+    secondary_info: last-updated
+    icon: mdi:power
+  - entity: sensor.eb3_clock_tasmota
+    secondary_info: last-updated
+# EB
   - entity: sensor.eb1_clock
     secondary_info: last-updated
   - entity: sensor.eb1_voltage_l1
