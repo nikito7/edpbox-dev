@@ -22,14 +22,7 @@ smlj=0
 
 >S
 
-cnt+=1
-
-if cnt==25
-then
-smlj=1
-endif
-
-if cnt>30
+if cnt>40
 then
 upacyr=sml[1]
 upacmt=sml[2]
@@ -41,8 +34,15 @@ upacim=sml[8]
 upacex=sml[9]
 endif
 
+if cnt==50
+then
+smlj=1
+endif
+
 time=st(tstamp T 2)
 date=st(tstamp T 1)
+
+cnt+=1
 
 >W
 
