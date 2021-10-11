@@ -36,7 +36,10 @@ endif
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
+if cnt<300
+then
 cnt+=1
+endif
 
 >M 1
 
