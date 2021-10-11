@@ -15,7 +15,7 @@ time=""
 
 >BS
 
-tper=30
+tper=60
 smlj=0
 
 =>sensor53 r
@@ -37,12 +37,16 @@ endif
 if cnt==50
 then
 smlj=1
+tper=30
 endif
 
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
+if cnt<300
+then
 cnt+=1
+endif
 
 >W
 
