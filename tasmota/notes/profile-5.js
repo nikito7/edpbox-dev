@@ -49,7 +49,6 @@ cnt+=1
 @<b>UPAC: </b> %0upacyr%-%0upacmt%-%0upacdy% %0upachh%:%0upacmm%:%0upacss%
 @<b>UPAC: </b> %3upacim% %3upacex%
 @<b>Local: </b> %time% %date%
-@<b>Meter: </b> %0hh%:%0mm%:%0ss%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<hr>
 
