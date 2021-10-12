@@ -1,4 +1,4 @@
 Work from ```Moacir Ferreira```.
 
-Get ```Load Profile``` from EDPBOX to file.
+Get ```Load Profile``` from EDPBOX.
 
