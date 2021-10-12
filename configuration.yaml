@@ -116,16 +116,6 @@ switch:
     payload_available: "Online"
     payload_not_available: "Offline"
 
-  - platform: mqtt
-    name: "EB3 Tasmota Script"
-    state_topic: "tele/edpbox3/LWT"
-    command_topic: "cmnd/edpbox3/script"
-    availability_topic: "tele/edpbox3/LWT"
-    payload_on: "1"
-    payload_off: "0"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-
 ###
 ##
 #
