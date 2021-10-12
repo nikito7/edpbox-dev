@@ -19,15 +19,15 @@ smlj=0
 
 >S
 
-if cnt==50
+if cnt==45
 then
-tper=11
+tper=10
 smlj=1
 endif
 
-if cnt==120
+if cnt==90
 then
-tper=301
+tper=60
 endif
 
 hh=sml[1]
@@ -37,7 +37,10 @@ ss=sml[3]
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
+if cnt<300
+then
 cnt+=1
+endif
 
 >W
 
