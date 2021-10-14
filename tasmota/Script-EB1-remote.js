@@ -80,7 +80,7 @@ endif
 
 ; 79
 
-1,01040aUUuuUUuu@i4:1,Active Power ,W,ActPow,16
+1,01040aUUuuUUuu@i4:1,Active Power ,W,ActPow,0
 1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,ActPowExp,0
 1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,pu,PowFac,3
 
