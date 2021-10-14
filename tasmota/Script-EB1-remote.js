@@ -22,13 +22,13 @@ smlj=0
 
 >S
 
-if cnt==50
+if cnt==35
 then
 tper=11
 smlj=1
 endif
 
-if cnt==120
+if cnt==90
 then
 tper=301
 endif
@@ -36,7 +36,7 @@ endif
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
-if cnt<300
+if cnt<150
 then
 cnt+=1
 endif
@@ -50,9 +50,9 @@ endif
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,16
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,16
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,16
+1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,0
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,0
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,0
 
 1,=h<hr>
 
