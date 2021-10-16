@@ -12,7 +12,7 @@ cnt=0
 
 >BS
 
-tper=61
+tper=60
 smlj=0
 
 =>sensor53 r
@@ -21,13 +21,13 @@ smlj=0
 
 if cnt==45
 then
-tper=11
+tper=10
 smlj=1
 endif
 
 if cnt==90
 then
-tper=61
+tper=60
 endif
 
 hh=sml[1]
@@ -37,7 +37,7 @@ ss=sml[3]
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
-if cnt<150
+if cnt<99
 then
 cnt+=1
 endif
