@@ -222,13 +222,59 @@ cmd_04 = [
 [ '206', "Number of overvoltages in phase L3 1",                                  "long",      "-",    "-"  ],
 [ '207', "Duration of overvoltages in phase L3 1",                                "double",    "s",    "0"  ],
 [ '208', "Number of overvoltages for average voltage in all 3 phases 1",          "long",      "-",    "-"  ],
-[ '209', "Duration of overvoltages for average voltage in all 3 phases 1",        "double",    "s",    "0"]]
+[ '209', "Duration of overvoltages for average voltage in all 3 phases 1",        "double",    "s",    "0"],
+[ '210', "Not described in the manual", "X", "-", "0"],
+[ '211', "Not described in the manual", "X", "-", "0"],
+[ '212', "Not described in the manual", "X", "-", "0"],
+[ '213', "Not described in the manual", "X", "-", "0"],
+[ '214', "Not described in the manual", "X", "-", "0"],
+[ '215', "Not described in the manual", "X", "-", "0"],
+[ '216', "Not described in the manual", "X", "-", "0"],
+[ '217', "Not described in the manual", "X", "-", "0"],
+[ '218', "Not described in the manual", "X", "-", "0"],
+[ '219', "Not described in the manual", "X", "-", "0"],
+[ '220', "Not described in the manual", "X", "-", "0"],
+[ '221', "Not described in the manual", "X", "-", "0"],
+[ '222', "Not described in the manual", "X", "-", "0"],
+[ '223', "Not described in the manual", "X", "-", "0"],
+[ '224', "Not described in the manual", "X", "-", "0"],
+[ '225', "Not described in the manual", "X", "-", "0"],
+[ '226', "Not described in the manual", "X", "-", "0"],
+[ '227', "Not described in the manual", "X", "-", "0"],
+[ '228', "Not described in the manual", "X", "-", "0"],
+[ '229', "Not described in the manual", "X", "-", "0"],
+[ '230', "Not described in the manual", "X", "-", "0"],
+[ '231', "Not described in the manual", "X", "-", "0"],
+[ '232', "Not described in the manual", "X", "-", "0"],
+[ '233', "Not described in the manual", "X", "-", "0"],
+[ '234', "Not described in the manual", "X", "-", "0"],
+[ '235', "Not described in the manual", "X", "-", "0"],
+[ '236', "Not described in the manual", "X", "-", "0"],
+[ '237', "Not described in the manual", "X", "-", "0"],
+[ '238', "Not described in the manual", "X", "-", "0"],
+[ '239', "Not described in the manual", "X", "-", "0"],
+[ '240', "Not described in the manual", "X", "-", "0"],
+[ '241', "Not described in the manual", "X", "-", "0"],
+[ '242', "Not described in the manual", "X", "-", "0"],
+[ '243', "Not described in the manual", "X", "-", "0"],
+[ '244', "Not described in the manual", "X", "-", "0"],
+[ '245', "Not described in the manual", "X", "-", "0"],
+[ '246', "Not described in the manual", "X", "-", "0"],
+[ '247', "Not described in the manual", "X", "-", "0"],
+[ '248', "Not described in the manual", "X", "-", "0"],
+[ '249', "Not described in the manual", "X", "-", "0"],
+[ '250', "Not described in the manual", "X", "-", "0"],
+[ '251', "Not described in the manual", "X", "-", "0"],
+[ '252', "Not described in the manual", "X", "-", "0"],
+[ '253', "Not described in the manual", "X", "-", "0"],
+[ '254', "Not described in the manual", "X", "-", "0"],
+[ '255', "Not described in the manual", "X", "-", "0"]]
 
 # configure CRC calculation
 crc16 = crcmod.mkCrcFun(0x18005, rev=True, initCrc=0xFFFF, xorOut=0x0000)
 
 ############################################################
-HOST = '172.16.7.37' # The remote host
+HOST = '127.0.0.1'   # The remote host
 PORT = 3000          # The port to connect to
 ser = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ser.connect((HOST, PORT))
@@ -245,27 +291,30 @@ def get_data(data):
     cmd = bytearray.fromhex(add_crc(data))  # add CRC to the command
     get = True                              # main loop, get data
     while get:
-        ser.sendall(cmd)    # write request to serial
-        time.sleep(0.5)                     # wait a while before reading modbus response...
-        resp = ser.recv(1).hex()            # read 1 byte from serial
-        found = False
-        while found == False:               # search for requested response
-            c = 0                           # counter to prevent loops
-            while resp != data[0:2]:        # check if response comes from the slave you request data
-                resp = ser.recv(1).hex()    # if not, keep reading serial buffer
-                c += 1                      # prevent looping forever
-                if c == 32:                 # after reading 32 bytes break the loop if not found
-                    break                   # break inner loop
-            if c == 32:                     # check if got the loop limit
-                break                       # breal outer loop and send command again, restarting the process
-
-            resp = resp + ser.recv(1).hex() # found slave number response corret so add the comand and check it
-            if resp == data[0:4]:           # break the loop if the response includes the requested sent command
-                found = True                # found it, set the variable to break the main loop
-            else:
-
-                if resp == data[0:2] + "c5":        # response was an error, expose exception code
-                    resp = resp + ser.recv(1).hex() # so get the error number
+        ser.sendall(cmd)                        # write request to serial
+        time.sleep(0.8)                         # wait a while before reading modbus response...
+        resp = ser.recv(1).hex()                # read 1 byte from the socket
+        found = False                           # control loop variable
+        while found == False:                   # search for requested response
+            c = 0                               # counter to prevent looping forever
+            while resp != data[0:2]:            # check 32 bytes if response comes from the slave you request data
+                resp = ser.recv(1).hex()        # if not, keep reading serial buffer
+                c += 1                          # prevent looping forever
+                if c == 32:                     # there was a loop, start from beginning
+                    break
+            resp = resp + ser.recv(1).hex()     # found slave number response corret so add the comand and check it
+            if resp == data[0:4]:               # break the loop if the response includes the requested sent command
+                found = True
+                resp = resp + ser.recv(1).hex()        # get how many bytes are there to retrieve
+                get_more = int(resp[4:6], 16) + 2      # set the number of additional bytes to read and do it, includding CRC
+                resp = resp + ser.recv(get_more).hex() # get the remaining data
+                crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
+                if crc == 0:                           # check if CRC is ok
+                    get = False                        # if ok, break the main get data loop and return data
+            if resp == "01c5" or resp == "0184":
+                resp = resp + ser.recv(6).hex()
+                crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
+                if crc == 0:                           # check if CRC is ok
                     error = ""
                     x = resp[4:6]
                     if x == "01":
@@ -284,31 +333,18 @@ def get_data(data):
                         error = "Entry does not exist."
                     if x == "84":
                         error = "Data to retrieve exceeded."
-
                     ser.close()
-                    sys.exit("\nError: " + error + "\n")
-
-                resp == ser.recv(1).hex()          # was not an error, reset response buffer and start reading from serial again
-        if found == True:                          # slave and command response were ok, continue
-            resp = resp + ser.recv(1).hex()        # get how many bytes are there to retrieve
-            get_more = int(resp[4:6], 16) + 2      # set the number of additional bytes to read and do it, includding CRC
-            resp = resp + ser.recv(get_more).hex() # get the remaining data
-            crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
-            if crc == 0:                           # check if CRC is ok
-                get = False                        # If ok, break the main get data loop and return data
-
-    ser.close()                                    # close serial port
-    return(resp)                                   # return colected response
+                    sys.exit(error)
+    ser.close()                              # close socket
+    return(resp)                             # return colected response
 
 if len(sys.argv) == 1 or len(sys.argv) > 2:
-    print("Help")
+    print("This script reads only one register at a time.")
+    print("I.e. ./TCP_read_register.py 1")
     sys.exit(-1)
 
 # get the register to be read from command line
 cmd = int(sys.argv[1])
-
-if cmd < 0 or cmd > 209:
-    sys.exit("\nThe register number is out of range.\n")
 
 # define the kind of requested data
 name_   = cmd_04[cmd][1]              # get register name
@@ -322,9 +358,7 @@ if scaler_ != "-":                    # if there is a scaler, then process it
         base_ = 1
 
 # print initial data about the request
-print("\nRegister: " + "{:0>3d}".format(cmd) + " (" + "0x{:04x}".format(cmd) + ")")
-print("Name:     " + name_)
-print("Type:     " + type_ + "   " + "Unity: " + unit_ + "   " + "Scaler: " + scaler_)
+print("{:0>3d}".format(cmd) + "," + name_ + "," + type_ + "," + unit_ + "," + scaler_ + ",", end='')
 
 # build hex command to be sent over serial port
 hex_cmd = "0104" + "{:04x}".format(cmd) + "0001"
@@ -367,10 +401,10 @@ if type_ == "clock":       # process clock
     if reg[9]  == 255:
         reg[9] = "Not epecified"
 
-    print("Date: " + str(reg[0]) + "-" + str(reg[1]) + "-" + str(reg[2]))
-    print("Time: " + str(reg[4]) + ":" + str(reg[5]) + ":" + str(reg[6]))
-    print("GMT distance: " + reg[8])
-    print("Weekday: " + str(reg[3]) + "\nClock status: " + reg[9])
+    print(str(reg[0]) + "-" + str(reg[1]) + "-" + str(reg[2]), end='')
+    print(" " + str(reg[4]) + ":" + str(reg[5]) + ":" + str(reg[6]))
+#    print("GMT distance: " + reg[8])
+#    print("Weekday: " + str(reg[3]) + "\nClock status: " + reg[9])
     sys.exit(0)
 
 if type_ == "unsigned":    # process unsigned
@@ -378,16 +412,15 @@ if type_ == "unsigned":    # process unsigned
 
 ######## TO BE DONE ###########################
 if type_ == "disconnect":  # process disconnect
-    print("Sorry! This script is not yet prepared to process this kind of response...")
+    print(resp + ", not parsed")
     sys.exit()
 
 if type_ == "octet":       # process octect
-    print("Sorry! This script is not yet prepared to process this kind of response...")
-    print("Anyway, your request was: " + hex_cmd + " and the response was: " + resp)
+    print(resp + ", not parsed")
     sys.exit()
 
 if type_ == "bitString":   # process bitString
-    print("Sorry! This script is not yet prepared to process this kind of response...")
+    print(resp + ", not parsed")
     sys.exit()
 ######## END OF TO BE DONE ####################
 
@@ -401,6 +434,6 @@ if unit_ == "-":           # if there is no unity, remove "-" from it
     unit_ = ""
 
 # print generic data
-print("Value: " + str(reg[0]) + unit_ + "\n")
+print(str(reg[0]))
 
 sys.exit(0)
