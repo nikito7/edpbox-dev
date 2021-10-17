@@ -44,7 +44,7 @@ endif
 
 >W
 
-@<b>Local:</b> %date% %time%
+@<b>Local:</b> %time% %date%
 @<b>Meter: </b> %0hh%:%0mm%:%0ss%
 @<b>Vars:</b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<hr>
