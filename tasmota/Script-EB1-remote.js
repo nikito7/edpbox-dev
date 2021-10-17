@@ -6,6 +6,9 @@ bugfix="vars"
 cnt=0
 date=""
 time=""
+hh=0
+mm=0
+ss=0
 
 >BS
 
@@ -13,12 +16,6 @@ tper=60
 smlj=0
 
 =>sensor53 r
-
->W
-
-@<b>Local:</b> %date% %time%
-@<b>Vars:</b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<hr>
 
 >S
 
@@ -33,6 +30,10 @@ then
 tper=300
 endif
 
+hh=sml[1]
+mm=sml[2]
+ss=sml[3]
+
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
@@ -40,6 +41,13 @@ if cnt<99
 then
 cnt+=1
 endif
+
+>W
+
+@<b>Local:</b> %date% %time%
+@<b>Meter: </b> %0hh%:%0mm%:%0ss%
+@<b>Vars:</b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
+@<hr>
 
 >M 1
 
