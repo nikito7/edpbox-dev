@@ -24,19 +24,19 @@ smlj=0
 
 if cnt==35
 then
-tper=11
+tper=10
 smlj=1
 endif
 
 if cnt==90
 then
-tper=301
+tper=300
 endif
 
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
-if cnt<150
+if cnt<99
 then
 cnt+=1
 endif
