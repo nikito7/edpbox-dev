@@ -49,7 +49,7 @@ endif
 >M 1
 
 ;  RX                TX
-+1,19,mN1,1,9600,EB9,18,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002,r01440301
++1,19,mN1,1,9600,EB1,18,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002,r01440301
 
 ; import: r01440301
 ; import+export: r01440601
@@ -107,7 +107,8 @@ endif
 1,0144%lp%xxxxxxxxxxuu@i7:1,HH ,h,LP_HH,16
 1,0144%lp%xxxxxxxxxxxxuu@i7:1,MM ,m,LP_MM,16
 1,0144%lp%xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Import Inc ,kWh,LP_IMP,19
-1,0144%lp%xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kWh,LP_EXP,19
+
+;1,0144%lp%xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kWh,LP_EXP,19
 
 1,=h<hr>
 
