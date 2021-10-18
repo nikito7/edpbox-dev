@@ -2,17 +2,14 @@
 
 ; EB1 via gsm
 
-bugfix="vars"
+bug="fix"
 cnt=0
 date=""
 time=""
-hh=0
-mm=0
-ss=0
 
 >BS
 
-tper=60
+tper=55
 smlj=0
 
 =>sensor53 r
@@ -30,10 +27,6 @@ then
 tper=300
 endif
 
-hh=sml[1]
-mm=sml[2]
-ss=sml[3]
-
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
@@ -44,16 +37,13 @@ endif
 
 >W
 
-@<b>Local:</b> %time% %date%
-@<b>Meter: </b> %0hh%:%0mm%:%0ss%
+@<b>NTP:</b> %time% %date%
 @<b>Vars:</b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<hr>
 
 >M 1
 
-; change to your gpios and mode
-; power off is required 
-;  v   v             v
+;  RX                TX
 +1,19,mN1,1,9600,EB1,18,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002
 
 ; 01
