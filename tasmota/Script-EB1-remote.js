@@ -42,7 +42,7 @@ endif
 
 >W
 
-@<b>NTP:</b> %time% %date%
+@<b>NTP:</b> %date% %time%
 @<b>Vars:</b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<hr>
 
