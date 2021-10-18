@@ -2,17 +2,15 @@
 
 ; EB3
 
-bugfix="vars"
-hh=0
-mm=0
-ss=0
+bug="fix"
 time=""
 date=""
 cnt=0
+lp="1d"
 
 >BS
 
-tper=60
+tper=55
 smlj=0
 
 =>sensor53 r
@@ -30,10 +28,6 @@ then
 tper=60
 endif
 
-hh=sml[1]
-mm=sml[2]
-ss=sml[3]
-
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
@@ -44,8 +38,7 @@ endif
 
 >W
 
-@<b>Local: </b> %time% %date%
-@<b>Meter: </b> %0hh%:%0mm%:%0ss%
+@<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<hr>
 
@@ -54,7 +47,7 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v   v             v
-+1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004
++1,19,mN1,0,9600,EB3,18,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
 ; 01
 
@@ -121,6 +114,18 @@ endif
 ; 0B
 
 1,01040euu@i6:1,Tariff ,,Tariff,16
+
+1,=h<hr>
+1,=hLoad Profile: Lastest
+
+1,0144%lp%UUuu@i7:1,Y ,,LP_Y,16
+1,0144%lp%xxxxuu@i7:1,M ,,LP_M,16
+1,0144%lp%xxxxxxuu@i7:1,D ,,LP_D,16
+1,0144%lp%xxxxxxxxxxuu@i7:1,HH ,h,LP_HH,16
+1,0144%lp%xxxxxxxxxxxxuu@i7:1,MM ,m,LP_MM,16
+1,0144%lp%xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Import Inc ,kWh,LP_IMP,19
+
+;1,0144%lp%xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kWh,LP_EXP,19
 
 1,=h<hr>
 
