@@ -32,8 +32,8 @@ cmd_04 = [
 [  '16', "Active demand control threshold T5",                                    "double",    "VA",   "0"  ],
 [  '17', "Active demand control threshold T6",                                    "double",    "VA",   "0"  ],
 [  '18', "Currently apparent power threshold",                                    "double",    "VA",   "0"  ],
-[  '19', "Demand management status",                                              "Demand",    "-",    "-"  ],
-[  '20', "Demand management period definition",                                   "Demand",    "-",    "-"  ],
+[  '19', "Demand management status",                                              "demand",    "-",    "-"  ],
+[  '20', "Demand management period definition",                                   "demand",    "-",    "-"  ],
 [  '21', "Residual power threshold",                                              "double",    "VA",   "0"  ],
 [  '22', "Active energy import (+A)",                                             "double",    "Wh",   "0"  ],
 [  '23', "Active energy export (-A)",                                             "double",    "Wh",   "0"  ],
@@ -141,7 +141,7 @@ cmd_04 = [
 [ '125', "Instantaneous Power factor L2",                                         "long",      "-",    "-3" ],
 [ '126', "Instantaneous Power factor L3",                                         "long",      "-",    "-3" ],
 [ '127', "Instantaneous Frequency",                                               "long",      "Hz",   "-1" ],
-[ '128', "Load profile - Configured measurements",                                "Array",     "-",    "-"  ],
+[ '128', "Load profile - Configured measurements",                                "array",     "-",    "-"  ],
 [ '129', "Load profile - Capture period",                                         "double",    "s",    "0"  ],
 [ '130', "Load profile - Entries in use",                                         "double",    "-",    "-"  ],
 [ '131', "Load profile - Profile entries",                                        "double",    "-",    "-"  ],
@@ -289,52 +289,49 @@ def add_crc(data):
 # function to get registers
 def get_data(data):
     cmd = bytearray.fromhex(add_crc(data))  # add CRC to the command
-    get = True                              # main loop, get data
-    while get:
-        ser.sendall(cmd)                        # write request to serial
-        time.sleep(0.8)                         # wait a while before reading modbus response...
-        resp = ser.recv(1).hex()                # read 1 byte from the socket
-        found = False                           # control loop variable
-        while found == False:                   # search for requested response
-            c = 0                               # counter to prevent looping forever
-            while resp != data[0:2]:            # check 32 bytes if response comes from the slave you request data
-                resp = ser.recv(1).hex()        # if not, keep reading serial buffer
-                c += 1                          # prevent looping forever
-                if c == 32:                     # there was a loop, start from beginning
-                    break
-            resp = resp + ser.recv(1).hex()     # found slave number response corret so add the comand and check it
-            if resp == data[0:4]:               # break the loop if the response includes the requested sent command
-                found = True
-                resp = resp + ser.recv(1).hex()        # get how many bytes are there to retrieve
-                get_more = int(resp[4:6], 16) + 2      # set the number of additional bytes to read and do it, includding CRC
-                resp = resp + ser.recv(get_more).hex() # get the remaining data
-                crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
-                if crc == 0:                           # check if CRC is ok
-                    get = False                        # if ok, break the main get data loop and return data
-            if resp == "01c5" or resp == "0184":
-                resp = resp + ser.recv(6).hex()
-                crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
-                if crc == 0:                           # check if CRC is ok
-                    error = ""
-                    x = resp[4:6]
-                    if x == "01":
-                        error = "Illigal function."
-                    if x == "02":
-                        error = "Illigal address."
-                    if x == "03":
-                        error = "Illigal data values."
-                    if x == "04":
-                        error = "Slave device failure."
-                    if x == "81":
-                        error = "Access denied."
-                    if x == "82":
-                        error = "Measurement does not exist."
-                    if x == "83":
-                        error = "Entry does not exist."
-                    if x == "84":
-                        error = "Data to retrieve exceeded."
-                    ser.close()
-                    sys.exit(error)
+    got = 1                                 # main loop, get data
+    while got:                              # loop until get valid response to command
+        ser.sendall(cmd)                    # write request to serial
+        time.sleep(0.8)                     # wait a while before reading modbus response...
+        resp = ser.recv(1).hex()            # read 1 byte from the socket
+        c = 0                               # counter to prevent looping forever
+        while resp != data[0:2]:            # check up to 32 bytes if response comes from the right slave
+            resp = ser.recv(1).hex()        # if not, keep reading serial buffer
+            c += 1                          # prevent looping forever
+            if c == 32:                     # there was a loop, start from beginning
+                break
+        resp = resp + ser.recv(1).hex()     # possibly found slave number response corret so add the comand and check it
+        if resp == "0104":                  # break the loop if the response includes the requested sent command
+            resp = resp + ser.recv(1).hex()        # get how many bytes are there to retrieve
+            get_more = int(resp[4:6], 16) + 2      # set the number of additional bytes to read and do it, includding CRC
+            resp = resp + ser.recv(get_more).hex() # get the remaining data
+            crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
+            if crc == 0:                           # check if CRC is ok
+                got = 0                            # got good data, break the main get data loop and return data
+        if resp == "01c5" or resp == "0184":       # if it was not a "04" command response, check if it was an exception
+            resp = resp + ser.recv(6).hex()        # if so, get the exception number
+            crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
+            error = "Unknown error code: "
+            if crc == 0:                           # check if CRC is ok
+                x = resp[4:6]
+                if x == "01":
+                    error = "Illigal function. Error code: "
+                if x == "02":
+                    error = "Illigal address. Error code: "
+                if x == "03":
+                    error = "Illigal data values. Error code: "
+                if x == "04":
+                    error = "Slave device failure. Error code: "
+                if x == "81":
+                    error = "Access denied. Error code: "
+                if x == "82":
+                    error = "Measurement does not exist. Error code: "
+                if x == "83":
+                    error = "Entry does not exist. Error code: "
+                if x == "84":
+                    error = "Data to retrieve exceeded. Error code: "
+            ser.close()
+            sys.exit(error + resp)
     ser.close()                              # close socket
     return(resp)                             # return colected response
 
@@ -411,6 +408,11 @@ if type_ == "unsigned":    # process unsigned
     reg.append(int(resp[6:8],  16))
 
 ######## TO BE DONE ###########################
+###############################################
+if type_ == "array":  # process disconnect
+    print(resp + ", not parsed")
+    sys.exit()
+
 if type_ == "disconnect":  # process disconnect
     print(resp + ", not parsed")
     sys.exit()
@@ -422,7 +424,12 @@ if type_ == "octet":       # process octect
 if type_ == "bitString":   # process bitString
     print(resp + ", not parsed")
     sys.exit()
+
+if type_ == "demand":  # process disconnect
+    print(resp + ", not parsed")
+    sys.exit()
 ######## END OF TO BE DONE ####################
+###############################################
 
 # prepare for generic printing results
 ######################################
