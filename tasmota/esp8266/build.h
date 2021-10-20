@@ -1,6 +1,6 @@
 // copy to user_config_override.h
 // sml at the end of file
-
+// based in 10.0.0 lite
 
 #undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
