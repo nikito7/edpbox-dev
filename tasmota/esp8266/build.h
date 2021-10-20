@@ -6,10 +6,10 @@
 #undef USE_DOMOTICZ                              // Disable Domoticz
 #undef USE_HOME_ASSISTANT                        // Disable Home Assistant
 #define USE_TASMOTA_DISCOVERY                    // Enable Tasmota Discovery support (+2k code)
-#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
+//#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
-#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
+//#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
 #undef USE_WEBSEND_RESPONSE                      // Disable command WebSend response message (+1k code)
 //#undef USE_EMULATION                             // Disable Wemo or Hue emulation
 //#undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
@@ -19,8 +19,8 @@
 //#undef USE_TIMERS                                // Disable support for up to 16 timers
 //#undef USE_TIMERS_WEB                            // Disable support for timer webpage
 //#undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
-//#undef USE_RULES                                 // Disable support for rules
-#undef USE_SCRIPT                                  // Add support for script (+17k code)
+#undef USE_RULES                                 // Disable support for rules
+//#undef USE_SCRIPT                                  // Add support for script (+17k code)
 
 // -- Optional modules -------------------------
 #undef ROTARY_V1                                 // Disable support for MI Desk Lamp
