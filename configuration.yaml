@@ -2,13 +2,7 @@
 
 default_config:
 
-automation: !include automations.yaml
-
-notify:
-  - name: loadprofile
-    platform: file
-    filename: /config/loadprofile.csv
-    timestamp: false
+#automation: !include automations.yaml
 
 #logger:
 #  logs:
@@ -32,8 +26,8 @@ recorder:
   db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
   exclude:
     entities:
-      - sensor.eb1_clock
-      - sensor.eb3_clock
+      - sensor.eb1_esp_clock
+      - sensor.eb3_esp_clock
     entity_globs:
       - sensor.eb1_0x*
       - sensor.eb1_clock*
@@ -53,20 +47,6 @@ utility_meter:
   utm_eb3_monthly:
     source: sensor.eb3_import
     cycle: monthly
-
-  utm_eb3_erse:
-    source: sensor.eb3_import
-    cycle: monthly
-    tariffs:
-      - Normal
-
-  utm_eb3_erse_tri:
-    source: sensor.eb3_import
-    cycle: monthly
-    tariffs:
-      - Vazio
-      - Ponta
-      - Cheias
 
 ###
 
