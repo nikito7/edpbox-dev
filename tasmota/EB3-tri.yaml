@@ -76,14 +76,14 @@
     icon: mdi:clock
 
   - platform: mqtt
-    name: "EB3 Clock Tasmota"
-    unique_id: EB3_Clock_Tasmota
+    name: "EB3 ESP Clock"
+    unique_id: EB3_ESP_Clock
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
         {% if value_json.Time is defined %}
           {{ value_json.Time.split('T')[1]|string }}
         {% else %}
-          {{ states('sensor.eb3_clock_tasmota') }}
+          {{ states('sensor.eb3_esp_clock') }}
         {% endif %}
     icon: mdi:clock
 
