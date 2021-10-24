@@ -1,5 +1,6 @@
 # Config for three phase meter.
 # ESP32 is recommended!
+# ESPHome >= 2021.10
 
 substitutions:
 
@@ -19,7 +20,7 @@ esphome:
 wifi:
 
   domain: .lan
-  use_address: 10.1.0.40 # fix ota dns error
+  #use_address: 10.1.0.40 # fix ota dns error
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
