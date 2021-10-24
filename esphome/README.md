@@ -2,17 +2,8 @@ Info:
 
 https://github.com/martgras/esphome/discussions
 
-https://next.esphome.io/components/modbus_controller.html
-
-Usage:
+https://esphome.io/components/modbus_controller.html
 
 ```
-pip uninstall esphome
+ESPHome >= 2021.10
 ```
-
-```
-pip install https://github.com/esphome/esphome/archive/refs/heads/dev.zip
-```
-
-> ```https://github.com/esphome/esphome/archive/refs/heads/dev.zip```
-
