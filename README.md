@@ -1,8 +1,8 @@
 # Intro
 
-[```Home_Assistant_EDP_Box``` 🇵🇹](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box/)
+[```tiagofreire/ha``` 🇵🇹](https://github.com/tiagofreire-pt/Home_Assistant_EDP_Box/)
 
-[```DEF-C44-509.pdf``` (2020-07) 🇬🇧](https://github.com/nikito7/edpbox/raw/dev/DEF-C44-509.pdf)
+[```e-redes/DEF-C44-509.pdf``` (2020) 🇬🇧](https://github.com/nikito7/edpbox/raw/dev/DEF-C44-509.pdf)
 
 # Erro 81
 
