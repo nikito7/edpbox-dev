@@ -1,0 +1,233 @@
+# ESPHome >= 2021.10
+
+substitutions:
+
+  dev: EB1test
+  name: edpbox1test
+
+esphome:
+
+  name: ${name}
+
+  platform: ESP8266
+  board: esp01_1m
+
+  #platform: ESP32
+  #board: esp32dev
+
+wifi:
+
+  domain: .lan
+  #use_address: 10.1.0.40 # fix ota dns error
+
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
+#  ssid: my_wifi
+#  password: edpbox123
+
+  ap:
+    ssid: "Fallback ${dev}"
+    password: edpbox123
+
+captive_portal:
+
+#web_server:
+
+#logger:
+#  level: verbose
+
+api:
+
+  password: !secret api_key
+
+ota:
+
+  password: !secret ota_key
+
+time:
+
+  - platform: homeassistant
+    id: esptime
+
+switch:
+
+  - platform: restart
+    name: "${dev} ESP Restart"
+
+uart:
+
+  id: modbus_serial
+  rx_pin: 1
+  tx_pin: 3
+  baud_rate: 9600
+  stop_bits: 1
+
+modbus:
+
+  #flow_control_pin: 5
+  id: modbus1
+  uart_id: modbus_serial
+
+modbus_controller:
+
+  - id: edpbox
+    update_interval: 15s
+    address: 0x1
+    command_throttle: 1s
+    setup_priority: -10
+
+sensor:
+
+  - platform: template
+    name: "${dev} ESP Free Heap"
+    lambda: |-
+      int heap = ESP.getFreeHeap();
+      return heap / 1024.0;
+    unit_of_measurement: "kB"
+    update_interval: 30s
+    icon: mdi:chip
+
+  - platform: wifi_signal
+    name: "${dev} ESP Signal"
+    unit_of_measurement: "dBm"
+    update_interval: 30s
+
+  - platform: uptime
+    name: "${dev} ESP Uptime"
+    filters:
+      - lambda: return x/3600;
+    unit_of_measurement: "h"
+    accuracy_decimals: 1
+
+### Active Power
+
+  - platform: modbus_controller
+    name: "${dev} Active Power"
+    address: 0x0079
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Active Power Export"
+    address: 0x007A
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    internal: true # disable sensor
+
+### Total Energy Tariffs
+
+  - platform: modbus_controller
+    name: "${dev} T1 Vazio"
+    address: 0x0026
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller 
+    name: "${dev} T2 Ponta"
+    address: 0x0027
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller
+    name: "${dev} T3 Cheias"
+    address: 0x0028
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+### Voltage & Current
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L1"
+    address: 0x006C
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current L1"
+    address: 0x006D
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+### Power Factor
+
+  - platform: modbus_controller
+    name: "${dev} Power Factor"
+    address: 0x007B
+    unit_of_measurement: "pu"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    device_class: power_factor
+
+### Total Energy
+
+  - platform: modbus_controller
+    name: "${dev} Import"
+    address: 0x0016
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller
+    name: "${dev} Export"
+    address: 0x0017
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+#######
+# eof #
+#######
