@@ -98,5 +98,14 @@ switch:
     payload_not_available: "Offline"
 
 ###
+
+sensor monitor:
+
+  - platform: systemmonitor
+    resources:
+      - type: memory_free
+      - type: processor_use
+
+###
 ##
 #
