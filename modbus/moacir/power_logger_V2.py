@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# load necessary Python modules
+# load all necessary Python modules
 import serial
 import crcmod
 import time
@@ -10,17 +10,21 @@ import datetime
 from os.path import exists
 import os
 import syslog
+import json
 
 ### CHANGE TO MATCH YOUR SYSTEM ######################################
-MQTT_SERVER   ="127.0.0.1"         # MQTT broker address
+MQTT_SERVER   =""        # MQTT broker address
 MQTT_USER     =""             # MQTT user name to be used
-MQTT_PASSWORD =""           # MQTT user password
-MQTT_TOPIC_1  ="kaifa/diagram"        # topic to publish load map
+MQTT_PASSWORD ="VerySecret"           # MQTT user password
+MQTT_TOPIC_1  ="kaifa/diagram"        # topic to publish the load map
 MQTT_TOPIC_2  ="kaifa/counters"       # topic to publish common data
+DEVICE_NAME   ="Kaifa"                # name on Json set
 SERIAL_PORT   ='/dev/ttyUSB0'         # serial port to be used
 BAUD_RATE     ='9600'                 # baudrate to be used
-FILE_DIR      ="./data/"  # directory to save data
+FILE_DIR      ="./"        # directory to save data
 ######################################################################
+
+DEBUG = False # enable to get messages printed on screen
 
 # configure, open and close serial port
 try:
@@ -36,13 +40,13 @@ except IOError:                               # error, report it
     sys.exit(-1)
 ser.close()                                   # close serial for now
 
-# create a last month file name to save data locally
+# create the last month file name to save data locally
 LAST_MONTH = (FILE_DIR +
             "{:0>2d}".format(datetime.datetime.today().year)      +
             "{:0>2d}".format(datetime.datetime.today().month - 1) +
             ".csv")
 
-# create a current month file name to save data locally
+# create the current month file name to save data locally
 THIS_MONTH  = (FILE_DIR +
             "{:0>2d}".format(datetime.datetime.today().year)  +
             "{:0>2d}".format(datetime.datetime.today().month) +
@@ -71,34 +75,66 @@ def add_crc(data):
 
 # function to get register data
 def get_data(data):
-    ser.open()                              # open serial port
-    ser.flushOutput                         # clear serial output buffer
-    ser.flushInput                          # clear serial intput buffer
     cmd = bytearray.fromhex(add_crc(data))  # add CRC to the command
+    ser.open()                              # open serial port
     got = 1                                 # main loop, get data
-    loop = 1                                # counter to prevent main for looping forever
+    loop = 0                                # setup a counter to prevent main loop for looping forever
     while got:                              # main loop until get valid response to command
+        if DEBUG: print("The commad was: " + data)
+        ser.flushOutput                     # clear serial output buffer
+        ser.flushInput                      # clear serial intput buffer
         ser.write(serial.to_bytes(cmd))     # write request to serial
+        time.sleep(0.3)                     # wait a while before reading response that may take few miliseconds
         resp = ser.read(1).hex()            # read 1 byte from the serial
-        c = 0                               # counter to prevent sub loop for looping forever
-        while resp != data[0:2]:            # check up if response comes from the right slave
+        c = 0                               # setup a counter to prevent sub loop for looping forever
+        while resp != data[0:2]:            # check up if response comes from the right slave number
             time.sleep(0.1)                 # wait a while before reading a modbus response...
-            resp = ser.read(1).hex()        # if not, keep reading serial buffer
-            c += 1                          # prevent looping forever
+            resp = ser.read(1).hex()        # if not found, keep reading serial buffer
+            c += 1                          # prevent inner loop for looping forever
+            if DEBUG: print("Inner Counter is: " + str(c))
             if c == 10:                     # it is a loop or something is wrong, so break this loop
                 break
-        resp = resp + ser.read(1).hex()     # possibly found slave number response corret so add the command and check it
+        time.sleep(0.1)                     # found message from slave, wait a while before reading more
+        resp = resp + ser.read(1).hex()     # found slave number response corret so add the command and check it
         if resp == data[0:4]:               # break the loop if the response includes the requested sent command
             resp = resp + ser.read(1).hex()        # get how many bytes are there to retrieve
             get_more = int(resp[4:6], 16) + 2      # set the number of additional bytes to read and do it, includding CRC
             resp = resp + ser.read(get_more).hex() # get the remaining data
             crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
             if crc == 0:                           # check if CRC is ok
-                got = 0                            # got good data, break the main get data loop and return data
+                got = 0                            # got good data, break the main loop and return data
+### Error process ###
+        if resp == "01c5" or resp == "0184":       # if response was an error, process it
+            resp = resp + ser.read(6).hex()        # get the error number
+            crc = crc16(bytearray.fromhex(resp))   # check CRC response sanity
+            if crc == 0:                           # check if CRC is ok
+                error = ""
+                x = resp[4:6]
+                if x == "01":
+                    error = "Illigal function."
+                if x == "02":
+                    error = "Illigal address."
+                if x == "03":
+                    error = "Illigal data values."
+                if x == "04":
+                    error = "Slave device failure."
+                if x == "81":
+                    error = "Access denied."
+                if x == "82":
+                    error = "Measurement does not exist."
+                if x == "83":
+                    error = "Entry does not exist."
+                if x == "84":
+                    error = "Data to retrieve exceeded."
+                syslog.syslog(syslog.LOG_ERR, "Violation: " + error)
+                ser.close()
+                sys.exit(error)
+#####################
         loop += 1                            # increment main loop counter
-        if loop == 10:                       # reach maximum tries, break entire script and log it on syslog
+        if DEBUG: print("Outer Counter is: " + str(loop))
+        if loop == 9:                        # reach maximum tries, break entire script and log it on syslog
             syslog.syslog(syslog.LOG_ERR, "There was a loop or RS485 read failure")
-            sys.exit(-1)        
+            sys.exit(-1)
     ser.close()                              # close serial port
     return(resp)                             # return colected data
 
@@ -129,12 +165,13 @@ reg.append(int(resp[14:22], 16)) # reg-13 exported contract 2 (ponta)
 reg.append(int(resp[22:30], 16)) # reg-14 exported contract 3 (cheia)
 
 resp = get_data("0104006C0001")  # request voltage
-reg.append(int(resp[6:10], 16))  # reg-15 voltage
+reg.append(int(resp[6:10], 16)/10)  # reg-15 voltage
 
-resp = get_data("010400740001")  # request Instantaneous active power on L1
-reg.append(int(resp[6:10], 16))  # reg-16 production power
+resp = get_data("010400790002")  # request instantaneous power
+reg.append(int(resp[6:14], 16))  # reg-16 importing power
+reg.append(int(resp[14:22],16))  # reg-17 exporting power
 
-# assemble data to be written to the file and MQTT topic 1
+# assemble data to be written to the file
 msg_1 = ("{:0>4d}".format( reg[0])  +
          "{:0>2d}".format( reg[1])  +
          "{:0>2d}".format( reg[2])  + "," +
@@ -143,8 +180,9 @@ msg_1 = ("{:0>4d}".format( reg[0])  +
          "{:0>12d}".format(reg[5])  + "," +
          "{:0>12d}".format(reg[6])
         )
+if DEBUG: print(msg_1)
 
-# assemble data to be written to MQTT topic 2
+'''# assemble data to be written to MQTT topic 2
 msg_2 = ("{:0>12d}".format(reg[7])  + "," +
          "{:0>12d}".format(reg[8])  + "," +
          "{:0>12d}".format(reg[9])  + "," +
@@ -153,10 +191,38 @@ msg_2 = ("{:0>12d}".format(reg[7])  + "," +
          "{:0>12d}".format(reg[12]) + "," +
          "{:0>12d}".format(reg[13]) + "," +
          "{:0>12d}".format(reg[14]) + "," +
-         "{:0>4d}".format(reg[15])  + "," +
-         "{:0>12d}".format(reg[15])
+         str(reg[15])  + "," +
+         "{:0>12d}".format(reg[16]) + "," +
+         "{:0>12d}".format(reg[17])
          )
-print(msg_2)
+if DEBUG: print(msg_2)
+'''
+# create a Json string for topic 1 (load diagram)
+j_str1 = {'Time':datetime.datetime.today().strftime("%Y-%m-%dT%H:%M:%S"),
+        DEVICE_NAME:{'reading_date':"{:0>4d}".format(reg[0]) + "{:0>2d}".format(reg[1]) + "{:0>2d}".format(reg[2]),
+        'reading_time':"{:0>2d}".format( reg[3])  + "{:0>2d}".format( reg[4]),
+        'imported':reg[5],
+        'exported':reg[6]}}
+
+js1 = json.dumps(j_str1, sort_keys = True, separators = (',', ':'))
+if DEBUG: print(js1)
+
+# create a Json string for topic 2 (remaining data)
+j_str2 = {'Time':datetime.datetime.today().strftime("%Y-%m-%dT%H:%M:%S"),
+        DEVICE_NAME:{'imported_total':reg[7],
+        'exported_total':reg[8],
+        'imported_contract_1':reg[9],
+        'imported_contract_2':reg[10],
+        'imported_contract_3':reg[11],
+        'exported_contract_1':reg[12],
+        'exported_contract_2':reg[13],
+        'exported_contract_3':reg[14],
+        'voltage':reg[15],
+        'importing_power':reg[16],
+        'exporting_power':reg[17]}}
+
+js2 = json.dumps(j_str2, sort_keys = True, separators = (',', ':'))
+if DEBUG: print(js2)
 
 # process load map
 # check time to write the last load map record on last month file
@@ -189,7 +255,7 @@ else:                                   # if not,
         sys.exit(-1)
     else:
         client.username_pw_set(username=MQTT_USER,password=MQTT_PASSWORD)
-        client.publish(MQTT_TOPIC_1, msg_1, 0) # publish data
+        client.publish(MQTT_TOPIC_1, js1, 0) # publish data
         client.disconnect()                    # close MQTT connection
 
 # publish remaining data via MQTT
@@ -199,7 +265,7 @@ if client.connect(MQTT_SERVER, 1883, 60) != 0:
     sys.exit(-1)
 else:
     client.username_pw_set(username=MQTT_USER,password=MQTT_PASSWORD)
-    client.publish(MQTT_TOPIC_2, msg_2, 0) # publish data
-    client.disconnect()                    # close MQTT connection
+    client.publish(MQTT_TOPIC_2, js2, 0) # publish data
+    client.disconnect()                  # close MQTT connection
 
 sys.exit(0)
