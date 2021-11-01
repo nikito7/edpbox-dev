@@ -11,11 +11,12 @@ from os.path import exists
 import os
 import syslog
 import json
+import platform
 
 ### CHANGE TO MATCH YOUR SYSTEM ######################################
 MQTT_SERVER   =""        # MQTT broker address
 MQTT_USER     =""             # MQTT user name to be used
-MQTT_PASSWORD ="VerySecret"           # MQTT user password
+MQTT_PASSWORD =""           # MQTT user password
 MQTT_TOPIC_1  ="kaifa/diagram"        # topic to publish the load map
 MQTT_TOPIC_2  ="kaifa/counters"       # topic to publish common data
 DEVICE_NAME   ="Kaifa"                # name on Json set
@@ -36,7 +37,9 @@ try:
                 bytesize=serial.EIGHTBITS,    # data is eight bits long
                 timeout=0)                    # no time out
 except IOError:                               # error, report it
-    syslog.syslog(syslog.LOG_ERR, "Could not open serial port " + SERIAL_PORT)
+    if platform.system() == "Linux":
+        syslog.syslog(syslog.LOG_ERR, "Could not open serial port " + SERIAL_PORT)
+    else: print("Could not open serial port " + SERIAL_PORT)
     sys.exit(-1)
 ser.close()                                   # close serial for now
 
@@ -56,7 +59,9 @@ THIS_MONTH  = (FILE_DIR +
 try:
     load_map = open(THIS_MONTH, "a+") # open file
 except IOError:                       # error, report it
-    syslog.syslog(syslog.LOG_ERR, "Could not open file " + THIS_MONTH)
+    if platform.system() == "Linux":
+        syslog.syslog(syslog.LOG_ERR, "Could not open file " + THIS_MONTH)
+    else: print("Could not open file " + THIS_MONTH)
     sys.exit(-1)
 load_map.seek(0, os.SEEK_SET)         # go to the first line of the file
 first_line = load_map.readline()      # read the first line (headers)
@@ -126,14 +131,18 @@ def get_data(data):
                     error = "Entry does not exist."
                 if x == "84":
                     error = "Data to retrieve exceeded."
-                syslog.syslog(syslog.LOG_ERR, "Violation: " + error)
+                if platform.system() == "Linux":
+                    syslog.syslog(syslog.LOG_ERR, "Violation: " + error)
+                else: print("Violation: " + error)
                 ser.close()
                 sys.exit(error)
 #####################
         loop += 1                            # increment main loop counter
         if DEBUG: print("Outer Counter is: " + str(loop))
         if loop == 9:                        # reach maximum tries, break entire script and log it on syslog
-            syslog.syslog(syslog.LOG_ERR, "There was a loop or RS485 read failure")
+            if platform.system() == "Linux":
+                syslog.syslog(syslog.LOG_ERR, "There was a loop or RS485 read failure")
+            else: print("There was a loop or RS485 read failure")
             sys.exit(-1)
     ser.close()                              # close serial port
     return(resp)                             # return colected data
@@ -237,7 +246,9 @@ else:
 try:
     load_map = open(FILE, "a+")         # open file
 except IOError:                         # error, report it
-    syslog.syslog(syslog.LOG_ERR, "Could not open file " + FILE)
+    if platform.system() == "Linux":
+        syslog.syslog(syslog.LOG_ERR, "Could not open file " + FILE)
+    else: print("Could not open file " + FILE)
     sys.exit(-1)
 load_map.seek(0, os.SEEK_SET)           # go to the first line of the file
 last_line = load_map.readlines() [-1:]  # read the last line of the file
@@ -251,7 +262,9 @@ else:                                   # if not,
     # publish data via MQTT
     client = paho.Client("PowerReader") # open MQTT handle
     if client.connect(MQTT_SERVER, 1883, 60) != 0:
-        syslog.syslog(syslog.LOG_ERR, "Could not connect to MQTT broker")
+        if platform.system() == "Linux":
+            syslog.syslog(syslog.LOG_ERR, "Could not connect to MQTT broker")
+        else: print("Could not connect to MQTT broker")
         sys.exit(-1)
     else:
         client.username_pw_set(username=MQTT_USER,password=MQTT_PASSWORD)
@@ -261,7 +274,9 @@ else:                                   # if not,
 # publish remaining data via MQTT
 client = paho.Client("PowerReader")     # open MQTT connection
 if client.connect(MQTT_SERVER, 1883, 60) != 0:
-    syslog.syslog(syslog.LOG_ERR, "Could not connect to MQTT broker")
+    if platform.system() == "Linux":
+        syslog.syslog(syslog.LOG_ERR, "Could not connect to MQTT broker")
+    else: print("Could not connect to MQTT broker")
     sys.exit(-1)
 else:
     client.username_pw_set(username=MQTT_USER,password=MQTT_PASSWORD)
