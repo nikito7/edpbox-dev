@@ -122,8 +122,8 @@ endif
 1,01441dxxxxxxuu@i7:1,D ,,LP_D,16
 1,01441dxxxxxxxxxxuu@i7:1,HH ,h,LP_HH,16
 1,01441dxxxxxxxxxxxxuu@i7:1,MM ,m,LP_MM,16
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Import Inc ,kWh,LP_IMP,19
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kWh,LP_EXP,19
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Import Inc ,kW,LP_IMP,19
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kW,LP_EXP,19
 
 1,=h<hr>
 
