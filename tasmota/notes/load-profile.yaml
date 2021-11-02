@@ -3,17 +3,15 @@
     unique_id: EB3_Load_Profile
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% if value_json.LoadProfile is defined %}
-          {% set x = value_json.LoadProfile|string %}
-          {% set yy = x.split(',')[0]|int %}
-          {% set mt = x.split(',')[1]|int %}
-          {% set dd = x.split(',')[2]|int %}
-          {% set hh = x.split(',')[3]|int %}
-          {% set mm = x.split(',')[4]|int %}
-          {% set ss = x.split(',')[5]|int %}
-          {% set im = x.split(',')[6]|string %}
-          {% set ex = x.split(',')[7]|string %}
-          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) + "," + im + "," + ex }}
+        {% if value_json.LP_MM is defined %}
+          {% set yy = value_json.LP_Y|int %}
+          {% set mt = value_json.LP_M|int %}
+          {% set dd = value_json.LP_D|int %}
+          {% set hh = value_json.LP_HH|int %}
+          {% set mm = value_json.LP_MM|int %}
+          {% set im = value_json.LP_IMP|string %}
+          {% set ex = value_json.LP_EXP|string %}
+          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + "," + im + "," + ex }}
         {% else %}
           {{ states('sensor.eb3_load_profile') }}
         {% endif %}
