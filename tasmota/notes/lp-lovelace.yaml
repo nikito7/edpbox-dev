@@ -1,6 +1,12 @@
 ###
 type: entities
 entities:
+###
+  - entity: sensor.eb3_esp_clock
+    secondary_info: last-updated
+  - entity: sensor.eb3_clock
+    secondary_info: last-updated
+###
   - entity: sensor.eb3_lp_y
     secondary_info: last-updated
   - entity: sensor.eb3_lp_m
