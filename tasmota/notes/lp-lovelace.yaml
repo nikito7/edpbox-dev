@@ -2,10 +2,17 @@
 type: entities
 entities:
   - entity: sensor.eb3_lp_y
+    secondary_info: last-updated
   - entity: sensor.eb3_lp_m
+    secondary_info: last-updated
   - entity: sensor.eb3_lp_d
+    secondary_info: last-updated
   - entity: sensor.eb3_lp_hh
+    secondary_info: last-updated
   - entity: sensor.eb3_lp_mm
+    secondary_info: last-updated
   - entity: sensor.eb3_lp_imp
+    secondary_info: last-updated
   - entity: sensor.eb3_lp_exp
+    secondary_info: last-updated
 #EOF
