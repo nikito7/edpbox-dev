@@ -11,11 +11,20 @@
           {% set mm = value_json.EB3.LP_MM|int %}
           {% set im = value_json.EB3.LP_IMP|string %}
           {% set ex = value_json.EB3.LP_EXP|string %}
-          {% set ti = value_json.EB3.TotEneImp|string %}
-          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + "," + im + "," + ex + "," + ti }}
+          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + "," + im + "," + ex }}
         {% else %}
           {{ states('sensor.eb3_load_profile') }}
         {% endif %}
     icon: mdi:graph
+
+  - platform: template
+    sensors:
+
+      lp_save:
+        friendly_name: LP Save
+        value_template: >-
+            {% set a = states('sensor.eb3_import')|string %}
+            {% set b = states('sensor.eb3_load_profile')|string %}
+            {{ b + ',' + a }}
 
 #EOF
