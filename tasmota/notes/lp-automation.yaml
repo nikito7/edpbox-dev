@@ -1,0 +1,15 @@
+- id: 'load_profile'
+  alias: Load Profile
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.eb3_load_profile
+  condition: []
+  action:
+  - service: notify.loadprofile
+    data:
+      message: >
+        {{ states('sensor.lp_save')|string }}
+  mode: single
+
+#EOF
