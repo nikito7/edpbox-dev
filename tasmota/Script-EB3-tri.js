@@ -6,7 +6,6 @@ bug="fix"
 time=""
 date=""
 cnt=0
-lp="1d"
 
 >BS
 
@@ -118,13 +117,13 @@ endif
 1,=h<hr>
 1,=hLoad Profile: Lastest
 
-1,0144%lp%UUuu@i7:1,Y ,,LP_Y,16
-1,0144%lp%xxxxuu@i7:1,M ,,LP_M,16
-1,0144%lp%xxxxxxuu@i7:1,D ,,LP_D,16
-1,0144%lp%xxxxxxxxxxuu@i7:1,HH ,h,LP_HH,16
-1,0144%lp%xxxxxxxxxxxxuu@i7:1,MM ,m,LP_MM,16
-1,0144%lp%xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Import Inc ,kWh,LP_IMP,19
-1,0144%lp%xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kWh,LP_EXP,19
+1,01441dUUuu@i7:1,Y ,,LP_Y,16
+1,01441dxxxxuu@i7:1,M ,,LP_M,16
+1,01441dxxxxxxuu@i7:1,D ,,LP_D,16
+1,01441dxxxxxxxxxxuu@i7:1,HH ,h,LP_HH,16
+1,01441dxxxxxxxxxxxxuu@i7:1,MM ,m,LP_MM,16
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Import Inc ,kWh,LP_IMP,19
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kWh,LP_EXP,19
 
 1,=h<hr>
 
