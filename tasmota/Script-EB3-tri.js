@@ -105,8 +105,8 @@ endif
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,3
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,3
+1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,19
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,19
 
 1,=h<hr>
 
