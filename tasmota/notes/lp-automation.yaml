@@ -1,9 +1,14 @@
-- id: 'load_profile'
+- id: 'load_profile_eb3'
   alias: Load Profile
   description: ''
   trigger:
   - platform: state
     entity_id: sensor.eb3_lp_mm
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
   condition: []
   action:
   - service: notify.loadprofile
