@@ -3,13 +3,21 @@
   description: ''
   trigger:
   - platform: state
-    entity_id: sensor.eb3_load_profile
+    entity_id: sensor.eb3_lp_mm
   condition: []
   action:
   - service: notify.loadprofile
     data:
-      message: >
-        {{ states('sensor.lp_save')|string }}
+      message: >-
+        {% set yy = states('sensor.eb3_lp_y') %}
+        {% set mt = states('sensor.eb3_lp_m') %}
+        {% set dd = states('sensor.eb3_lp_d') %}
+        {% set hh = states('sensor.eb3_lp_hh') %}
+        {% set mm = states('sensor.eb3_lp_mm') %}
+        {% set im = states('sensor.eb3_lp_imp')|string %}
+        {% set ex = states('sensor.eb3_lp_exp')|string %}
+        {% set ti = states('sensor.eb3_import')|string %}
+        {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + "," + im + "," + ex + "," + ti }}
   mode: single
 
 #EOF
