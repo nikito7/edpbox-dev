@@ -28,4 +28,83 @@
             {{ b + ',' + a }}
         icon_template: mdi:graph
 
+###
+
+  - platform: mqtt
+    name: "EB3 LP Y"
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% if value_json.EB3.LP_Y is defined %}
+          {{ value_json.EB3.LP_Y }}
+        {% else %}
+          {{ states('sensor.eb3_lp_y') }}
+        {% endif %}
+    icon: mdi:graph
+
+  - platform: mqtt
+    name: "EB3 LP M"
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% if value_json.EB3.LP_M is defined %}
+          {{ value_json.EB3.LP_M }}
+        {% else %}
+          {{ states('sensor.eb3_lp_m') }}
+        {% endif %}
+    icon: mdi:graph
+
+  - platform: mqtt
+    name: "EB3 LP D"
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% if value_json.EB3.LP_D is defined %}
+          {{ value_json.EB3.LP_D }}
+        {% else %}
+          {{ states('sensor.eb3_lp_d') }}
+        {% endif %}
+    icon: mdi:graph
+
+  - platform: mqtt
+    name: "EB3 LP HH"
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% if value_json.EB3.LP_HH is defined %}
+          {{ value_json.EB3.LP_HH }}
+        {% else %}
+          {{ states('sensor.eb3_lp_hh') }}
+        {% endif %}
+    icon: mdi:graph
+
+  - platform: mqtt
+    name: "EB3 LP MM"
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% if value_json.EB3.LP_MM is defined %}
+          {{ value_json.EB3.LP_MM }}
+        {% else %}
+          {{ states('sensor.eb3_lp_mm') }}
+        {% endif %}
+    icon: mdi:graph
+
+  - platform: mqtt
+    name: "EB3 LP Imp"
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% if value_json.EB3.LP_IMP is defined %}
+          {{ value_json.EB3.LP_IMP }}
+        {% else %}
+          {{ states('sensor.eb3_lp_imp') }}
+        {% endif %}
+    icon: mdi:graph
+
+  - platform: mqtt
+    name: "EB3 LP Exp"
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% if value_json.EB3.LP_EXP is defined %}
+          {{ value_json.EB3.LP_EXP }}
+        {% else %}
+          {{ states('sensor.eb3_lp_exp') }}
+        {% endif %}
+    icon: mdi:graph
+
 #EOF
