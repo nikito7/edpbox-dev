@@ -3,7 +3,7 @@
     unique_id: EB3_Load_Profile
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% if value_json.EB3.LP_MM is defined %}
+        {% if value_json.EB3.LP_MM is defined and value_json.EB3.LP_IMP is defined %}
           {% set yy = value_json.EB3.LP_Y|int %}
           {% set mt = value_json.EB3.LP_M|int %}
           {% set dd = value_json.EB3.LP_D|int %}
@@ -26,5 +26,6 @@
             {% set a = states('sensor.eb3_import')|string %}
             {% set b = states('sensor.eb3_load_profile')|string %}
             {{ b + ',' + a }}
+      icon: mdi:graph
 
 #EOF
