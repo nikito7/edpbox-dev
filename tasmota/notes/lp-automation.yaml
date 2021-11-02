@@ -9,11 +9,11 @@
   - service: notify.loadprofile
     data:
       message: >-
-        {% set yy = states('sensor.eb3_lp_y') %}
-        {% set mt = states('sensor.eb3_lp_m') %}
-        {% set dd = states('sensor.eb3_lp_d') %}
-        {% set hh = states('sensor.eb3_lp_hh') %}
-        {% set mm = states('sensor.eb3_lp_mm') %}
+        {% set yy = states('sensor.eb3_lp_y')|int %}
+        {% set mt = states('sensor.eb3_lp_m')|int %}
+        {% set dd = states('sensor.eb3_lp_d')|int %}
+        {% set hh = states('sensor.eb3_lp_hh')|int %}
+        {% set mm = states('sensor.eb3_lp_mm')|int %}
         {% set im = states('sensor.eb3_lp_imp')|string %}
         {% set ex = states('sensor.eb3_lp_exp')|string %}
         {% set ti = states('sensor.eb3_import')|string %}
