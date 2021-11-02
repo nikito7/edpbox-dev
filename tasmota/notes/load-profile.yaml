@@ -26,6 +26,6 @@
             {% set a = states('sensor.eb3_import')|string %}
             {% set b = states('sensor.eb3_load_profile')|string %}
             {{ b + ',' + a }}
-      icon: mdi:graph
+        icon: mdi:graph
 
 #EOF
