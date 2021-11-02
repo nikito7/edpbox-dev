@@ -1,3 +1,5 @@
+###
+
   - platform: mqtt
     name: "EB3 LP Y"
     state_topic: "tele/edpbox3/SENSOR"
