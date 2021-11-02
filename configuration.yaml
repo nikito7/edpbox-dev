@@ -2,7 +2,13 @@
 
 default_config:
 
-#automation: !include automations.yaml
+automation: !include automations.yaml
+
+notify:
+  - name: loadprofile
+    platform: file
+    filename: /config/loadprofile.csv
+    timestamp: false
 
 #logger:
 #  logs:
