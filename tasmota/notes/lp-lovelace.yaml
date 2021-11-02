@@ -1,6 +1,11 @@
 ###
-
-
+type: entities
+entities:
+  - entity: sensor.eb3_lp_y
+  - entity: sensor.eb3_lp_m
+  - entity: sensor.eb3_lp_d
+  - entity: sensor.eb3_lp_hh
+  - entity: sensor.eb3_lp_mm
+  - entity: sensor.eb3_lp_imp
+  - entity: sensor.eb3_lp_exp
 #EOF
-
-
