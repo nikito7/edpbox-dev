@@ -11,7 +11,8 @@
           {% set mm = value_json.EB3.LP_MM|int %}
           {% set im = value_json.EB3.LP_IMP|string %}
           {% set ex = value_json.EB3.LP_EXP|string %}
-          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + "," + im + "," + ex }}
+          {% set ti = value_json.EB3.TotEneImp|string %}
+          {{ '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + "," + im + "," + ex + "," + ti }}
         {% else %}
           {{ states('sensor.eb3_load_profile') }}
         {% endif %}
