@@ -43,6 +43,7 @@
           {{ states('sensor.eb3_lp_hh') }}
         {% endif %}
     icon: mdi:graph
+    unit_of_measurement: "h"
 
   - platform: mqtt
     name: "EB3 LP MM"
@@ -54,6 +55,7 @@
           {{ states('sensor.eb3_lp_mm') }}
         {% endif %}
     icon: mdi:graph
+    unit_of_measurement: "m"
 
   - platform: mqtt
     name: "EB3 LP Imp"
@@ -65,6 +67,7 @@
           {{ states('sensor.eb3_lp_imp') }}
         {% endif %}
     icon: mdi:graph
+    unit_of_measurement: "kW"
 
   - platform: mqtt
     name: "EB3 LP Exp"
@@ -76,5 +79,6 @@
           {{ states('sensor.eb3_lp_exp') }}
         {% endif %}
     icon: mdi:graph
+    unit_of_measurement: "kW"
 
 #EOF
