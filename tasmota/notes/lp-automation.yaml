@@ -19,9 +19,9 @@
         {% set dd = states('sensor.eb3_lp_d')|int %}
         {% set hh = states('sensor.eb3_lp_hh')|int %}
         {% set mm = states('sensor.eb3_lp_mm')|int %}
-        {% set im = ((states('sensor.eb3_lp_imp')|float)/1000)|float|string %}
-        {% set ex = ((states('sensor.eb3_lp_exp')|float)/1000)|float|string %}
-        {% set ti = ((states('sensor.eb3_import')|float)/1000)|float|string %}
+        {% set im = ((states('sensor.eb3_lp_imp')|float)*1000)|float|string %}
+        {% set ex = ((states('sensor.eb3_lp_exp')|float)*1000)|float|string %}
+        {% set ti = ((states('sensor.eb3_import')|float)*1000)|float|string %}
         {{ "," + '{0:04d}'.format(yy) + "-" + '{0:02d}'.format(mt) + "-" + '{0:02d}'.format(dd) + "," + '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + "," + im + "," + ex + "," + ti }}
   mode: single
 
