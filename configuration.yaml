@@ -7,8 +7,8 @@ automation: !include automations.yaml
 notify:
   - name: loadprofile
     platform: file
-    filename: /config/loadprofile.csv
-    timestamp: false
+    filename: /config/loadprofile-1.csv
+    timestamp: true
 
 #logger:
 #  logs:
