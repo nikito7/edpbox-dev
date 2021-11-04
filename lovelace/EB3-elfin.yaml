@@ -39,15 +39,15 @@ entities:
   - entity: sensor.eb3_frequency
     secondary_info: last-updated
 # total
-  - entity: sensor.eb3_total_energy_t1_vazio
+  - entity: sensor.eb3_t1_vazio
     secondary_info: last-updated
-  - entity: sensor.eb3_total_energy_t2_ponta
+  - entity: sensor.eb3_t2_ponta
     secondary_info: last-updated
-  - entity: sensor.eb3_total_energy_t3_cheias
+  - entity: sensor.eb3_t3_cheias
     secondary_info: last-updated
-  - entity: sensor.eb3_total_energy_import
+  - entity: sensor.eb3_import
     secondary_info: last-updated
-  - entity: sensor.eb3_total_energy_export
+  - entity: sensor.eb3_export
     secondary_info: last-updated
 # misc
   - entity: sensor.eb3_tariff
