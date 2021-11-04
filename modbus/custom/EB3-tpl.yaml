@@ -1,6 +1,6 @@
-# sensor eb3mod: !include modbus-eb3.yaml
+#template eb3mod: !include modbus-eb3.yaml
 
-template:
+#template:
   - sensor:
     - name: "EB3 Clock"
       state: >-
