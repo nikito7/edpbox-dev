@@ -17,6 +17,12 @@
       icon: mdi:clock
 
 ###
+
+#sensor:
+
+  - platform: template
+    sensors:
+
       eb3_tariff:
         friendly_name: "EB3 Tariff"
         value_template: >-
