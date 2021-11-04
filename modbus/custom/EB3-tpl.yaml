@@ -225,7 +225,7 @@
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
-        state_class: total_increasing
+        state_class: measurement
    
       eb3_t2_ponta:
         friendly_name: "EB3 T2 Ponta"
@@ -236,7 +236,7 @@
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
-        state_class: total_increasing
+        state_class: measurement
 
       eb3_t3_cheias:
         friendly_name: "EB3 T3 Cheias"
@@ -247,7 +247,7 @@
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
-        state_class: total_increasing
+        state_class: measurement
 
 # 16
 
@@ -260,7 +260,7 @@
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
-        state_class: total_increasing
+        state_class: measurement
 
       eb3_export:
         friendly_name: "EB3 Export"
@@ -271,6 +271,6 @@
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
-        state_class: total_increasing
+        state_class: measurement
 
 # EOF
