@@ -238,28 +238,5 @@
         device_class: energy
         state_class: measurement
 
-# 16
-
-      eb3_import:
-        friendly_name: "EB3 Import"
-        value_template: >-
-            {% set x = states('sensor.eb3_0x0016').split(',')[0] | float %}
-            {% if x > 0 %}
-              {{ (x / 1000) | round(1) }}
-            {% endif %}
-        unit_of_measurement: "kWh"
-        device_class: energy
-        state_class: measurement
-
-      eb3_export:
-        friendly_name: "EB3 Export"
-        value_template: >-
-            {% set x = states('sensor.eb3_0x0016').split(',')[1] | float %}
-            {% if x > 0 %}
-              {{ (x / 1000) | round(3) }}
-            {% endif %}
-        unit_of_measurement: "kWh"
-        device_class: energy
-        state_class: measurement
 
 # EOF
