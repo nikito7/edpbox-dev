@@ -1,0 +1,45 @@
+# EB3 template sensor (new style)
+# template: !include files/template.yaml
+
+#template:
+
+  - sensor:
+
+    - name: "EB3 Clock"
+      state: >-
+        {% if states('sensor.eb3_0x0001') is defined %}
+          {% set hh = states('sensor.eb3_0x0001').split(',')[4] | int %}
+          {% set mm = states('sensor.eb3_0x0001').split(',')[5] | int %}
+          {% set ss = states('sensor.eb3_0x0001').split(',')[6] | int %}
+          {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+        {% else %}
+          {{ states('sensor.eb3_clock') }}
+        {% endif %}
+      icon: mdi:clock
+
+
+# 16
+
+      eb3_import:
+        friendly_name: "EB3 Import"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x0016').split(',')[0] | float %}
+            {% if x > 0 %}
+              {{ (x / 1000) | round(1) }}
+            {% endif %}
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: measurement
+
+      eb3_export:
+        friendly_name: "EB3 Export"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x0016').split(',')[1] | float %}
+            {% if x > 0 %}
+              {{ (x / 1000) | round(3) }}
+            {% endif %}
+        unit_of_measurement: "kWh"
+        device_class: energy
+        state_class: measurement
+
+# EOF
