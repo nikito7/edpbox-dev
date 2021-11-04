@@ -4,6 +4,11 @@
     type: tcp
     host: 10.1.0.50
     port: 9502
+    delay: 1
+    timeout: 5
+    retries: 5
+    retry_on_empty: true
+    message_wait_milliseconds: 200
   
     sensors:
 
@@ -21,10 +26,10 @@
         slave: 1
         address: 4
         input_type: input
-        count: 3
+        count: 2
         data_type: string
-        register_size: 18
-        scan_interval: 303
+        register_size: 6
+        scan_interval: 35
 
       - name: "EB3 0x006C" # V/A
         slave: 1
@@ -63,7 +68,7 @@
         data_type: custom
         register_size: 4
         structure: ">3L"
-        scan_interval: 301
+        scan_interval: 31
 
       - name: "EB3 0x0016" # TotEne I/E/Q
         slave: 1
@@ -73,7 +78,7 @@
         data_type: custom
         register_size: 4
         structure: ">6L"
-        scan_interval: 302
+        scan_interval: 32
 
       - name: "EB3 0x000B" # Tariff
         slave: 1
@@ -82,6 +87,6 @@
         count: 1
         data_type: custom
         structure: ">Bx"
-        scan_interval: 31
+        scan_interval: 33
 
 # EOF
