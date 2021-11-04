@@ -1,9 +1,9 @@
-# modbus-base.yaml
+# modbus.yaml
 
   - name: edpbox3
     type: tcp
-    host: 10.1.0.53
-    port: 8888
+    host: 10.1.0.50
+    port: 9502
   
     sensors:
 
