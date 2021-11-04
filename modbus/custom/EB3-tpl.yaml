@@ -244,7 +244,7 @@
 
 # 16
 
-      eb3__import:
+      eb3_import:
         friendly_name: "EB3 Import"
         value_template: >-
             {% set x = states('sensor.eb3_0x0016').split(',')[0] | float %}
