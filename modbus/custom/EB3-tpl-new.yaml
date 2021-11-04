@@ -5,6 +5,15 @@
 
   - sensor:
 
+###
+
+    - name: "EB3 HA Clock"
+      state: >-
+        {% if states('sensor.eb3_0x0001') is defined %}
+          {{ now().strftime('%H:%M:%S') }}
+        {% endif %}
+      icon: mdi:calendar-clock
+
     - name: "EB3 Clock"
       state: >-
         {% if states('sensor.eb3_0x0001') is defined %}
