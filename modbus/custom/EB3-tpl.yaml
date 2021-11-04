@@ -1,7 +1,9 @@
 #template eb3mod: !include modbus-eb3.yaml
 
 #template:
+
   - sensor:
+
     - name: "EB3 Clock"
       state: >-
         {% if states('sensor.eb3_0x0001') is defined %}
