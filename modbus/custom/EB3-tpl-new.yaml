@@ -17,29 +17,30 @@
         {% endif %}
       icon: mdi:clock
 
-
 # 16
 
-      eb3_import:
-        friendly_name: "EB3 Import"
-        value_template: >-
-            {% set x = states('sensor.eb3_0x0016').split(',')[0] | float %}
-            {% if x > 0 %}
-              {{ (x / 1000) | round(1) }}
-            {% endif %}
-        unit_of_measurement: "kWh"
-        device_class: energy
-        state_class: measurement
+    - name: "EB3 Import"
+      state: >-
+        {% if states('sensor.eb3_0x0016') is defined %}
+          {% set x = states('sensor.eb3_0x0016').split(',')[0] | float %}
+          {{ (x / 1000) | round(1) }}
+        {% else %}
+          {{ states('sensor.eb3_import') }}
+        {% endif %}
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
 
-      eb3_export:
-        friendly_name: "EB3 Export"
-        value_template: >-
-            {% set x = states('sensor.eb3_0x0016').split(',')[1] | float %}
-            {% if x > 0 %}
-              {{ (x / 1000) | round(3) }}
-            {% endif %}
-        unit_of_measurement: "kWh"
-        device_class: energy
-        state_class: measurement
+    - name: "EB3 Export"
+      state: >-
+        {% if states('sensor.eb3_0x0016') is defined %}
+          {% set x = states('sensor.eb3_0x0016').split(',')[1] | float %}
+          {{ (x / 1000) | round(3) }}
+        {% else %}
+          {{ states('sensor.eb3_export') }}
+        {% endif %}
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
 
 # EOF
