@@ -48,7 +48,7 @@
       
     - name: "EB3 T1 Vazio"
       state: >-
-        {{ if states('sensor.eb3_0x0026') is defined %}
+        {% if states('sensor.eb3_0x0026') is defined %}
           {% set x = states('sensor.eb3_0x0026').split(',')[0] | float %}
             {{ (x / 1000) | round(1) }}
         {% else %}
@@ -60,7 +60,7 @@
 
     - name: "EB3 T2 Ponta"
       state: >-
-        {{ if states('sensor.eb3_0x0026') is defined %}
+        {% if states('sensor.eb3_0x0026') is defined %}
           {% set x = states('sensor.eb3_0x0026').split(',')[1] | float %}
           {{ (x / 1000) | round(1) }}
         {% else %}
@@ -72,7 +72,7 @@
 
     - name: "EB3 T3 Cheias"
       state: >-
-        {{ if states('sensor.eb3_0x0026') is defined %}
+        {% if states('sensor.eb3_0x0026') is defined %}
           {% set x = states('sensor.eb3_0x0026').split(',')[2] | float %}
           {{ (x / 1000) | round(1) }}
         {% else %}
