@@ -76,7 +76,7 @@ sensor eb1tas: !include files/tasmota-eb1.yaml
 
 modbus: !include files/modbus.yaml
 #sensor eb1mod: !include files/modbus-eb1.yaml
-sensor eb3mod: !include files/modbus-eb3.yaml
+template eb3mod: !include files/modbus-eb3.yaml
 
 ###
 
