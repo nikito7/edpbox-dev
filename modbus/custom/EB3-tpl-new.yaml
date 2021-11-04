@@ -51,6 +51,8 @@
         {{ if states('sensor.eb3_0x0026') is defined %}
           {% set x = states('sensor.eb3_0x0026').split(',')[0] | float %}
             {{ (x / 1000) | round(1) }}
+        {% else %}
+          {{ states('sensor.eb3_t1_vazio') }}
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
@@ -61,6 +63,8 @@
         {{ if states('sensor.eb3_0x0026') is defined %}
           {% set x = states('sensor.eb3_0x0026').split(',')[1] | float %}
           {{ (x / 1000) | round(1) }}
+        {% else %}
+          {{ states('sensor.eb3_t2_ponta') }}
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
@@ -71,6 +75,8 @@
         {{ if states('sensor.eb3_0x0026') is defined %}
           {% set x = states('sensor.eb3_0x0026').split(',')[2] | float %}
           {{ (x / 1000) | round(1) }}
+        {% else %}
+          {{ states('sensor.eb3_t3_cheias') }}
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
