@@ -6,10 +6,14 @@
       eb3_clock:
         friendly_name: "EB3 Clock"
         value_template: >-
-            {% set hh = states('sensor.eb3_0x0001').split(',')[4] | int %}
-            {% set mm = states('sensor.eb3_0x0001').split(',')[5] | int %}
-            {% set ss = states('sensor.eb3_0x0001').split(',')[6] | int %}
-            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+            {% if states('sensor.eb3_0x0001') is defined %}
+              {% set hh = states('sensor.eb3_0x0001').split(',')[4] | int %}
+              {% set mm = states('sensor.eb3_0x0001').split(',')[5] | int %}
+              {% set ss = states('sensor.eb3_0x0001').split(',')[6] | int %}
+              {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+            {% else %}
+              {{ states('sensor.eb3_clock') }}
+            {% endif %}
         icon_template: mdi:clock
 
       eb3_tariff:
@@ -23,7 +27,7 @@
           {% elif x == "3" %}
             {{ "Cheias" }}
           {% endif %}
-        icon_template: mdi:calendar
+        icon_template: mdi:counter
 
 # 6C
 
@@ -220,7 +224,8 @@
               {{ (x / 1000) | round(1) }}
             {% endif %}
         unit_of_measurement: "kWh"
-        icon_template: mdi:transmission-tower
+        device_class: energy
+        state_class: total_increasing
    
       eb3_t2_ponta:
         friendly_name: "EB3 T2 Ponta"
@@ -230,8 +235,9 @@
               {{ (x / 1000) | round(1) }}
             {% endif %}
         unit_of_measurement: "kWh"
-        icon_template: mdi:transmission-tower
-        
+        device_class: energy
+        state_class: total_increasing
+
       eb3_t3_cheias:
         friendly_name: "EB3 T3 Cheias"
         value_template: >-
@@ -240,7 +246,8 @@
               {{ (x / 1000) | round(1) }}
             {% endif %}
         unit_of_measurement: "kWh"
-        icon_template: mdi:transmission-tower
+        device_class: energy
+        state_class: total_increasing
 
 # 16
 
@@ -253,6 +260,7 @@
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
+        state_class: total_increasing
 
       eb3_export:
         friendly_name: "EB3 Export"
@@ -263,5 +271,6 @@
             {% endif %}
         unit_of_measurement: "kWh"
         device_class: energy
+        state_class: total_increasing
 
 # EOF
