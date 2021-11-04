@@ -203,40 +203,4 @@
         unit_of_measurement: "W"
         device_class: power
 
-# 26
-
-      eb3_t1_vazio:
-        friendly_name: "EB3 T1 Vazio"
-        value_template: >-
-            {% set x = states('sensor.eb3_0x0026').split(',')[0] | float %}
-            {% if x > 0 %}
-              {{ (x / 1000) | round(1) }}
-            {% endif %}
-        unit_of_measurement: "kWh"
-        device_class: energy
-        state_class: measurement
-   
-      eb3_t2_ponta:
-        friendly_name: "EB3 T2 Ponta"
-        value_template: >-
-            {% set x = states('sensor.eb3_0x0026').split(',')[1] | float %}
-            {% if x > 0 %}
-              {{ (x / 1000) | round(1) }}
-            {% endif %}
-        unit_of_measurement: "kWh"
-        device_class: energy
-        state_class: measurement
-
-      eb3_t3_cheias:
-        friendly_name: "EB3 T3 Cheias"
-        value_template: >-
-            {% set x = states('sensor.eb3_0x0026').split(',')[2] | float %}
-            {% if x > 0 %}
-              {{ (x / 1000) | round(1) }}
-            {% endif %}
-        unit_of_measurement: "kWh"
-        device_class: energy
-        state_class: measurement
-
-
 # EOF
