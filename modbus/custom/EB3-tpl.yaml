@@ -212,8 +212,8 @@
 
 # 26
 
-      eb3_total_energy_t1_vazio:
-        friendly_name: "EB3 Total Energy T1 Vazio"
+      eb3_t1_vazio:
+        friendly_name: "EB3 T1 Vazio"
         value_template: >-
             {% set x = states('sensor.eb3_0x0026').split(',')[0] | float %}
             {% if x > 0 %}
@@ -222,8 +222,8 @@
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
    
-      eb3_total_energy_t2_ponta:
-        friendly_name: "EB3 Total Energy T2 Ponta"
+      eb3_t2_ponta:
+        friendly_name: "EB3 T2 Ponta"
         value_template: >-
             {% set x = states('sensor.eb3_0x0026').split(',')[1] | float %}
             {% if x > 0 %}
@@ -232,8 +232,8 @@
         unit_of_measurement: "kWh"
         icon_template: mdi:transmission-tower
         
-      eb3_total_energy_t3_cheias:
-        friendly_name: "EB3 Total Energy T3 Cheias"
+      eb3_t3_cheias:
+        friendly_name: "EB3 T3 Cheias"
         value_template: >-
             {% set x = states('sensor.eb3_0x0026').split(',')[2] | float %}
             {% if x > 0 %}
@@ -244,8 +244,8 @@
 
 # 16
 
-      eb3_total_energy_import:
-        friendly_name: "EB3 Total Energy Import"
+      eb3__import:
+        friendly_name: "EB3 Import"
         value_template: >-
             {% set x = states('sensor.eb3_0x0016').split(',')[0] | float %}
             {% if x > 0 %}
@@ -254,8 +254,8 @@
         unit_of_measurement: "kWh"
         device_class: energy
 
-      eb3_total_energy_export:
-        friendly_name: "EB3 Total Energy Export"
+      eb3_export:
+        friendly_name: "EB3 Export"
         value_template: >-
             {% set x = states('sensor.eb3_0x0016').split(',')[1] | float %}
             {% if x > 0 %}
