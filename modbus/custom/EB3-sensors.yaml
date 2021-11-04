@@ -1,22 +1,4 @@
-#template eb3mod: !include modbus-eb3.yaml
-
-#template:
-
-  - sensor:
-
-    - name: "EB3 Clock"
-      state: >-
-        {% if states('sensor.eb3_0x0001') is defined %}
-          {% set hh = states('sensor.eb3_0x0001').split(',')[4] | int %}
-          {% set mm = states('sensor.eb3_0x0001').split(',')[5] | int %}
-          {% set ss = states('sensor.eb3_0x0001').split(',')[6] | int %}
-          {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
-        {% else %}
-          {{ states('sensor.eb3_clock') }}
-        {% endif %}
-      icon: mdi:clock
-
-###
+# eb3 sensor templates (old style)
 
 #sensor:
 
