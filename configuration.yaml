@@ -36,6 +36,7 @@ recorder:
       - sensor.eb3_esp_clock
     entity_globs:
       - sensor.eb1_0x*
+      - sensor.eb3_0x*
       - sensor.eb1_clock*
       - sensor.eb3_clock*
 ###
