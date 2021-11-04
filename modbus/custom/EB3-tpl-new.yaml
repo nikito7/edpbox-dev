@@ -43,4 +43,37 @@
       device_class: energy
       state_class: measurement
 
+# 26
+
+      
+    - name: "EB3 T1 Vazio"
+      state: >-
+        {{ if states('sensor.eb3_0x0026') is defined %}
+          {% set x = states('sensor.eb3_0x0026').split(',')[0] | float %}
+            {{ (x / 1000) | round(1) }}
+        {% endif %}
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
+
+    - name: "EB3 T2 Ponta"
+      state: >-
+        {{ if states('sensor.eb3_0x0026') is defined %}
+          {% set x = states('sensor.eb3_0x0026').split(',')[1] | float %}
+          {{ (x / 1000) | round(1) }}
+        {% endif %}
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
+
+    - name: "EB3 T3 Cheias"
+      state: >-
+        {{ if states('sensor.eb3_0x0026') is defined %}
+          {% set x = states('sensor.eb3_0x0026').split(',')[2] | float %}
+          {{ (x / 1000) | round(1) }}
+        {% endif %}
+      unit_of_measurement: "kWh"
+      device_class: energy
+      state_class: measurement
+
 # EOF
