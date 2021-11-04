@@ -2,13 +2,13 @@
 
 default_config:
 
-automation: !include automations.yaml
+#automation: !include automations.yaml
 
-notify:
-  - name: loadprofile
-    platform: file
-    filename: /config/loadprofile-1.csv
-    timestamp: true
+#notify:
+#  - name: loadprofile
+#    platform: file
+#    filename: /config/loadprofile-1.csv
+#    timestamp: true
 
 #logger:
 #  logs:
@@ -69,7 +69,7 @@ sensor mariadb:
 ###
 
 sensor eb1tas: !include files/tasmota-eb1.yaml
-sensor eb3tas: !include files/tasmota-eb3.yaml
+#sensor eb3tas: !include files/tasmota-eb3.yaml
 #sensor eb3esp: !include files/esphome-eb3.yaml
 
 ###
