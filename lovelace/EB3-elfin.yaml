@@ -1,6 +1,8 @@
 type: entities
 entities:
 # clock
+  - entity: sensor.eb3_ha_clock
+    secondary_info: last-updated
   - entity: sensor.eb3_clock
     secondary_info: last-updated
 # v/a
