@@ -159,6 +159,7 @@ template:
       unit_of_measurement: "kWh"
       device_class: energy
       state_class: measurement
+      last_reset: 0
 
     - name: "EB3 T2 Ponta"
       state: >-
