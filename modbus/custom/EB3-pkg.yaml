@@ -1,4 +1,4 @@
-# modbus.yaml
+### EB3 modbus package ###
 
 modbus:
 
@@ -91,4 +91,5 @@ modbus:
         structure: ">Bx"
         scan_interval: 33
 
-# EOF
+### ### ###
+
