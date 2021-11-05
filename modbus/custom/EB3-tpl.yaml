@@ -1,6 +1,6 @@
 # eb3 sensor templates (old style)
 
-#sensor:
+sensor:
 
   - platform: template
     sensors:
