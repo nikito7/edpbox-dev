@@ -106,7 +106,7 @@ template:
         {% if states('sensor.eb3_0x0001') is defined %}
           {{ now().strftime('%H:%M:%S') }}
         {% endif %}
-      icon: mdi:calendar-clock
+      icon: mdi:clock
 
     - name: "EB3 Clock"
       state: >-
@@ -132,7 +132,7 @@ template:
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
-      state_class: measurement
+      state_class: total_increasing
 
     - name: "EB3 Export"
       state: >-
@@ -144,7 +144,7 @@ template:
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
-      state_class: measurement
+      state_class: total_increasing
 
 # 26
 
@@ -158,8 +158,7 @@ template:
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
-      state_class: measurement
-      last_reset: 0
+      state_class: total_increasing
 
     - name: "EB3 T2 Ponta"
       state: >-
@@ -171,7 +170,7 @@ template:
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
-      state_class: measurement
+      state_class: total_increasing
 
     - name: "EB3 T3 Cheias"
       state: >-
@@ -183,7 +182,7 @@ template:
         {% endif %}
       unit_of_measurement: "kWh"
       device_class: energy
-      state_class: measurement
+      state_class: total_increasing
 
 ### ### ###
 
