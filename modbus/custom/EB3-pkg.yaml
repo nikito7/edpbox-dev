@@ -94,7 +94,6 @@ modbus:
 ### ### ###
 
 # EB3 template sensor (new style)
-# template: !include files/template.yaml
 
 template:
 
@@ -149,7 +148,6 @@ template:
 
 # 26
 
-      
     - name: "EB3 T1 Vazio"
       state: >-
         {% if states('sensor.eb3_0x0026') is defined %}
@@ -186,4 +184,212 @@ template:
       device_class: energy
       state_class: measurement
 
-# EOF
+### ### ###
+
+# eb3 sensor templates (old style)
+
+sensor:
+
+  - platform: template
+    sensors:
+
+      eb3_tariff:
+        friendly_name: "EB3 Tariff"
+        value_template: >-
+          {% set x = states('sensor.eb3_0x000b')|string %}
+          {% if x == "1" %}
+            {{ "Vazio" }}
+          {% elif x == "2" %}
+            {{ "Ponta" }}
+          {% elif x == "3" %}
+            {{ "Cheias" }}
+          {% endif %}
+        icon_template: mdi:counter
+
+# 6C
+
+      eb3_voltage_l1:
+        friendly_name: "EB3 Voltage L1"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[0] | float %}
+            {% if x > 0 %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb3_voltage_l1_10:
+        friendly_name: "EB3 Voltage L1-10"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[0] | float %}
+            {% if x > 0 %}
+              {{ x / 10 - 10 }}
+            {% endif %}
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb3_current_l1:
+        friendly_name: "EB3 Current L1"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[1] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "A"
+        device_class: current
+
+      eb3_voltage_l2:
+        friendly_name: "EB3 Voltage L2"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[2] | float %}
+            {% if x > 0 %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb3_current_l2:
+        friendly_name: "EB3 Current L2"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[3] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "A"
+        device_class: current
+
+      eb3_voltage_l3:
+        friendly_name: "EB3 Voltage L3"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[4] | float %}
+            {% if x > 0 %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb3_voltage_l3_10:
+        friendly_name: "EB3 Voltage L3+10"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[4] | float %}
+            {% if x > 0 %}
+              {{ x / 10 + 10 }}
+            {% endif %}       
+        unit_of_measurement: "V"
+        device_class: voltage
+
+      eb3_current_l3:
+        friendly_name: "EB3 Current L3"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[5] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "A"
+        device_class: current
+
+      eb3_current:
+        friendly_name: "EB3 Current"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x006c').split(',')[6] | float %}
+            {% if x %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "A"
+        device_class: current
+
+# 7B
+      eb3_power_factor:
+        friendly_name: "EB3 Power Factor"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x007b').split(',')[0] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
+        unit_of_measurement: "pu"
+        device_class: power_factor
+
+      eb3_power_factor_l1:
+        friendly_name: "EB3 Power Factor L1"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x007b').split(',')[1] | float %}
+            {% if x %}
+              {{ x / 1000 }}
+            {% endif %}
+        unit_of_measurement: "pu"
+        device_class: power_factor
+
+      eb3_power_factor_l2:
+        friendly_name: "EB3 Power Factor L2"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x007b').split(',')[2] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
+        unit_of_measurement: "pu"
+        device_class: power_factor
+
+      eb3_power_factor_l3:
+        friendly_name: "EB3 Power Factor L3"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x007b').split(',')[3] | float %}
+            {% if x > 0 %}
+              {{ x / 1000 }}
+            {% endif %}
+        unit_of_measurement: "pu"
+        device_class: power_factor
+
+      eb3_frequency:
+        friendly_name: "EB3 Frequency"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x007b').split(',')[4] | float %}
+            {% if x > 0 %}
+              {{ x / 10 }}
+            {% endif %}
+        unit_of_measurement: "Hz"
+        icon_template: mdi:pulse
+
+# 73
+
+      eb3_active_power_l1:
+        friendly_name: "EB3 Active Power L1"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x0073').split(',')[0] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
+        unit_of_measurement: "W"
+        device_class: power
+
+      eb3_active_power_l2:
+        friendly_name: "EB3 Active Power L2"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x0073').split(',')[2] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
+        unit_of_measurement: "W"
+        device_class: power
+
+      eb3_active_power_l3:
+        friendly_name: "EB3 Active Power L3"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x0073').split(',')[4] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
+        unit_of_measurement: "W"
+        device_class: power
+
+      eb3_active_power:
+        friendly_name: "EB3 Active Power"
+        value_template: >-
+            {% set x = states('sensor.eb3_0x0073').split(',')[6] | int %}
+            {% if x %}
+              {{ x }}
+            {% endif %}
+        unit_of_measurement: "W"
+        device_class: power
+###
+##
+#
