@@ -1,7 +1,7 @@
 # EB3 template sensor (new style)
 # template: !include files/template.yaml
 
-#template:
+template:
 
   - sensor:
 
