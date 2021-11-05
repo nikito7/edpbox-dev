@@ -1,5 +1,7 @@
 # modbus.yaml
 
+modbus:
+
   - name: edpbox3
     type: tcp
     host: 10.1.0.50
