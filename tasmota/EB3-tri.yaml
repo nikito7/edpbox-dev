@@ -1,5 +1,6 @@
-# config/files/tasmota-eb3.yaml
-# edpbox3
+# edpbox3 tasmota package
+
+sensor:
 
   - platform: mqtt
     name: "EB3 ESP Uptime"
