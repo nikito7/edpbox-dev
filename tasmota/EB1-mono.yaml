@@ -1,5 +1,19 @@
-# tasmota-eb1.yaml
-# edpbox1
+# edpbox1 tasmota package
+
+switch:
+
+  - platform: mqtt
+    name: "EB1 ESP Restart"
+    state_topic: "tele/edpbox1/LWT"
+    command_topic: "cmnd/edpbox1/restart"
+    availability_topic: "tele/edpbox1/LWT"
+    payload_on: "1"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+
+###
+
+sensor:
 
   - platform: mqtt
     name: "EB1 ESP Uptime"
