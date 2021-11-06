@@ -20,6 +20,7 @@ homeassistant:
 
   customize: !include files/customize.yaml
   packages:
+    eb1tasmota: !include pkg/eb1tasmota.yaml
     #eb3modbus: !include pkg/eb3modbus.yaml
     eb3tasmota: !include pkg/eb3tasmota.yaml
 
@@ -72,19 +73,8 @@ sensor mariadb:
 
 ###
 
-sensor eb1tas: !include files/tasmota-eb1.yaml
-#sensor eb3tas: !include files/tasmota-eb3.yaml
-#sensor eb3esp: !include files/esphome-eb3.yaml
-
-###
-
-#sensor eb1mod: !include files/modbus-eb1.yaml
-
-###
-
 sensor integral: !include files/integral.yaml
 
-###
 ###
 
 sensor monitor:
@@ -93,6 +83,7 @@ sensor monitor:
     resources:
       - type: memory_free
       - type: processor_use
+
 ###
 
 sensor cmd:
