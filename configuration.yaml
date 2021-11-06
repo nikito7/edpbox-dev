@@ -20,7 +20,8 @@ homeassistant:
 
   customize: !include files/customize.yaml
   packages:
-    eb3modbus: !include pkg/eb3modbus.yaml
+    #eb3modbus: !include pkg/eb3modbus.yaml
+    eb3tasmota: !include pkg/eb3tasmota.yaml
 
 http:
 
