@@ -9,7 +9,7 @@ cnt=0
 
 >BS
 
-tper=55
+tper=60
 smlj=0
 
 =>sensor53 r
@@ -105,8 +105,8 @@ endif
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,19
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,19
+1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,17
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,17
 
 1,=h<hr>
 
@@ -117,13 +117,13 @@ endif
 1,=h<hr>
 1,=hLoad Profile: Lastest
 
-1,01441dUUuu@i7:1,Y ,,LP_Y,16
-1,01441dxxxxuu@i7:1,M ,,LP_M,16
-1,01441dxxxxxxuu@i7:1,D ,,LP_D,16
-1,01441dxxxxxxxxxxuu@i7:1,HH ,h,LP_HH,16
-1,01441dxxxxxxxxxxxxuu@i7:1,MM ,m,LP_MM,16
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Import Inc ,kW,LP_IMP,19
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Export Inc ,kW,LP_EXP,19
+1,01441dUUuu@i7:1,Y ,,LP_Y,0
+1,01441dxxxxuu@i7:1,M ,,LP_M,0
+1,01441dxxxxxxuu@i7:1,D ,,LP_D,0
+1,01441dxxxxxxxxxxuu@i7:1,HH ,h,LP_HH,0
+1,01441dxxxxxxxxxxxxuu@i7:1,MM ,m,LP_MM,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
 
 1,=h<hr>
 
