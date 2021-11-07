@@ -319,6 +319,8 @@ sensor:
           {% if x > 0 %}
             {{ x }}
           {% endif %}
+        {% else %}
+          {{ states('sensor.eb3_t1_vazio') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -334,6 +336,8 @@ sensor:
           {% if x > 0 %}
             {{ x }}
           {% endif %}
+        {% else %}
+          {{ states('sensor.eb3_t2_ponta') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -349,6 +353,8 @@ sensor:
           {% if x > 0 %}
             {{ x }}
           {% endif %}
+        {% else %}
+          {{ states('sensor.eb3_t3_cheias') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -366,6 +372,8 @@ sensor:
           {% if x > 0 %}
             {{ x }}
           {% endif %}
+        {% else %}
+          {{ states('sensor.eb3_import') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -381,6 +389,8 @@ sensor:
           {% if x > 0 %}
             {{ x }}
           {% endif %}
+        {% else %}
+          {{ states('sensor.eb3_export') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
