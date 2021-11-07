@@ -307,6 +307,8 @@ sensor:
     unit_of_measurement: "Hz"
     icon: mdi:pulse
 
+###
+
   - platform: mqtt
     name: "EB3 T1 Vazio"
     unique_id: EB3_TotEneT1
@@ -346,6 +348,8 @@ sensor:
     device_class: energy
     state_class: total_increasing
 
+###
+
   - platform: mqtt
     name: "EB3 Import"
     unique_id: EB3_TotEneImp
@@ -371,6 +375,8 @@ sensor:
     unit_of_measurement: "kWh"
     device_class: energy
     state_class: total_increasing
+
+###
 
   - platform: mqtt
     name: "EB3 Tariff"
