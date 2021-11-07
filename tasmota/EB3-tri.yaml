@@ -314,9 +314,11 @@ sensor:
     unique_id: EB3_TotEneT1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneT1|float %}
-        {% if x > 0 %}
-          {{ x }}
+        {% if value_json.EB3.TotEneT1 is defined %}
+          {% set x = value_json.EB3.TotEneT1|float %}
+          {% if x > 0 %}
+            {{ x }}
+          {% endif %}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -327,9 +329,11 @@ sensor:
     unique_id: EB3_TotEneT2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneT2|float %}
-        {% if x > 0 %}
-          {{ x }}
+        {% if value_json.EB3.TotEneT2 is defined %}
+          {% set x = value_json.EB3.TotEneT2|float %}
+          {% if x > 0 %}
+            {{ x }}
+          {% endif %}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -340,9 +344,11 @@ sensor:
     unique_id: EB3_TotEneT3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneT3|float %}
-        {% if x > 0 %}
-          {{ x }}
+        {% if value_json.EB3.TotEneT3 is defined %}
+          {% set x = value_json.EB3.TotEneT3|float %}
+          {% if x > 0 %}
+            {{ x }}
+          {% endif %}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -355,9 +361,11 @@ sensor:
     unique_id: EB3_TotEneImp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneImp|float %}
-        {% if x > 0 %}
-          {{ x }}
+        {% if value_json.EB3.TotEneImp is defined %}
+          {% set x = value_json.EB3.TotEneImp|float %}
+          {% if x > 0 %}
+            {{ x }}
+          {% endif %}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -368,9 +376,11 @@ sensor:
     unique_id: EB3_TotEneExp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneExp|float %}
-        {% if x > 0 %}
-          {{ x }}
+        {% if value_json.EB3.TotEneExp is defined %}
+          {% set x = value_json.EB3.TotEneExp|float %}
+          {% if x > 0 %}
+            {{ x }}
+          {% endif %}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
