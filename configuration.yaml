@@ -85,15 +85,5 @@ sensor monitor:
       - type: processor_use
 
 ###
-
-sensor cmd:
-
-  - platform: command_line
-    name: CMD Date
-    command: "date"
-    unit_of_measurement: ""
-    value_template: "{{ value|string }}"
-
-###
 ##
 #
