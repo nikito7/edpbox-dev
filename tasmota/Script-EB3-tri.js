@@ -16,7 +16,7 @@ smlj=0
 
 >S
 
-if cnt==45
+if cnt==60
 then
 tper=10
 smlj=1
@@ -46,7 +46,7 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v   v             v
-+1,19,mN1,1,9600,EB3,18,50,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
++1,19,mN1,1,9600,EB3,18,90,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
 ; 01
 
@@ -115,7 +115,7 @@ endif
 1,01040euu@i6:1,Tariff ,,Tariff,16
 
 1,=h<hr>
-1,=hLoad Profile: Lastest
+1,=hLoad Profile
 
 1,01441dUUuu@i7:1,Y ,,LP_Y,0
 1,01441dxxxxuu@i7:1,M ,,LP_M,0
