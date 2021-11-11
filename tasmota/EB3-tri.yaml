@@ -379,8 +379,7 @@ sensor:
         {% set x = value_json.EB3.TotEneExp|float(default=-1) %}
         {% if x > 0 %}
           {{ x }}
-        {% endif %}
-      {% else %}
+        {% else %}
           {{ states('sensor.eb3_export') }}
         {% endif %}
     unit_of_measurement: "kWh"
