@@ -45,22 +45,6 @@ recorder:
       - sensor.eb3_clock*
 ###
 
-utility_meter:
-
-  utm_eb3_daily1:
-    source: sensor.eb3_import
-    cycle: daily
-
-  utm_eb3_weekly:
-    source: sensor.eb3_import
-    cycle: weekly
-
-  utm_eb3_monthly:
-    source: sensor.eb3_import
-    cycle: monthly
-
-###
-
 sensor mariadb:
 
 - platform: sql
