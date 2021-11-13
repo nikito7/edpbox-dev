@@ -410,7 +410,7 @@ text_sensor:
     on_value:
       then:
         - lambda: |-
-            id(tpl_clock).publish_state("Hello");
+            id(tpl_clock).publish_state(x);
 
   - platform: modbus_controller
     name: "${dev} Firmware Core" 
