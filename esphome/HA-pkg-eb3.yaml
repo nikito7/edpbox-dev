@@ -5,18 +5,6 @@ sensor:
   - platform: template
     sensors:
 
-      eb3_clock:
-        friendly_name: "EB3 Clock"
-        unique_id: eb3_clock
-        value_template: >-
-          {% if states('sensor.eb3_0x0001_clock') %}
-            {% set hh = states('sensor.eb3_0x0001_clock').split(',')[5]|int %}
-            {% set mm = states('sensor.eb3_0x0001_clock').split(',')[6]|int %}
-            {% set ss = states('sensor.eb3_0x0001_clock').split(',')[7]|int %}
-            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
-          {% endif %}
-        icon_template: mdi:clock
-
       eb3_dcp:
         friendly_name: "EB3 DCP"
         unique_id: eb3_dcp
