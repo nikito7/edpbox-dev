@@ -412,7 +412,7 @@ text_sensor:
             auto hh = strtok(&x[4], ",");
             auto mm = strtok(&x[5], ",");
             auto ss = strtok(&x[6], ",");
-            auto clock = "test";
+            auto clock = hh;
             id(tpl_clock).publish_state(clock);
 
   - platform: modbus_controller
