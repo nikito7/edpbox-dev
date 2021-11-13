@@ -1,6 +1,6 @@
-# /config/files/esphome-eb3.yaml
+# esphome eb3 package
 
-#sensor:
+sensor:
 
   - platform: template
     sensors:
