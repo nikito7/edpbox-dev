@@ -238,17 +238,6 @@ sensor:
     device_class: voltage
 
   - platform: modbus_controller
-    name: "${dev} Current L1"
-    address: 0x006D
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: current
-
-  - platform: modbus_controller
     name: "${dev} Voltage L2"
     address: 0x006E
     unit_of_measurement: "V"
@@ -260,17 +249,6 @@ sensor:
     device_class: voltage
 
   - platform: modbus_controller
-    name: "${dev} Current L2"
-    address: 0x006F
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: current
-
-  - platform: modbus_controller
     name: "${dev} Voltage L3"
     address: 0x0070
     unit_of_measurement: "V"
@@ -280,6 +258,28 @@ sensor:
     filters:
      - multiply: 0.1
     device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current L1"
+    address: 0x006D
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+  - platform: modbus_controller
+    name: "${dev} Current L2"
+    address: 0x006F
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
 
   - platform: modbus_controller
     name: "${dev} Current L3"
@@ -395,6 +395,7 @@ text_sensor:
   - platform: template
     name: "${dev} Clock"
     id: tpl_clock
+    icon: mdi:clock
 
   - platform: modbus_controller
     register_type: read
@@ -404,7 +405,7 @@ text_sensor:
     raw_encode: COMMA
     response_size: 12
     internal: true
-    lambda: !lambda "{ return x ;}"
+    #lambda: !lambda "{ return x ;}"
 
     on_value:
       then:
