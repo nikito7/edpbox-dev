@@ -402,9 +402,10 @@ text_sensor:
     icon: mdi:chip
     internal: true
     on_value:
-      - text_sensor.template.publish:
-        id: clock
-        state: !lambda 'return "Hello World";'
+      then:
+        - text_sensor.template.publish:
+          id: clock
+          state: !lambda 'return "Hello World";'
 
   - platform: template
     name: "${dev} Clock"
