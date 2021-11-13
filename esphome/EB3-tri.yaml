@@ -405,12 +405,15 @@ text_sensor:
     raw_encode: COMMA
     response_size: 12
     internal: true
-    #lambda: !lambda "{ return x ;}"
 
     on_value:
       then:
         - lambda: |-
-            id(tpl_clock).publish_state(x);
+            string hh = strtok(&x[4], ",");
+            string mm = strtok(&x[5], ",");
+            string ss = strtok(&x[6], ",");
+            string clock = hh + ":" + mm + ":" + ss;
+            id(tpl_clock).publish_state(clock);
 
   - platform: modbus_controller
     name: "${dev} Firmware Core" 
