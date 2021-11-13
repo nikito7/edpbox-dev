@@ -392,24 +392,23 @@ sensor:
 
 text_sensor:
 
+  - platform: template
+    name: "${dev} Clock"
+    id: tpl_clock
+
   - platform: modbus_controller
-    name: "${dev} 0x0001 Clock" 
     register_type: read
     address: 0x0001
     register_count: 1
     raw_encode: COMMA
     response_size: 12
-    icon: mdi:chip
     internal: true
     lambda: !lambda "{ return x ;}"
+
     on_value:
       then:
         - lambda: |-
-            id(clock).publish_state("Hello");
-
-  - platform: template
-    name: "${dev} Clock"
-    id: "clock"
+            id(tpl_clock).publish_state("Hello");
 
   - platform: modbus_controller
     name: "${dev} Firmware Core" 
