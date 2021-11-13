@@ -7,7 +7,7 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb3_esp_signal
     secondary_info: last-updated
-  - entity: switch.eb3_esp_restart_2
+  - entity: switch.eb3_esp_restart
     secondary_info: last-updated
 # meter va clock
   - entity: sensor.eb3_clock
