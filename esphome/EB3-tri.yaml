@@ -402,6 +402,10 @@ text_sensor:
     icon: mdi:chip
     internal: true
 
+  - platform: template
+    name: "${dev} Clock" 
+
+
   - platform: modbus_controller
     name: "${dev} Firmware Core" 
     register_type: read
