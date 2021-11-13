@@ -404,8 +404,8 @@ text_sensor:
     on_value:
       then:
         - text_sensor.template.publish:
-          id: clock
-          state: !lambda 'return "Hello World";'
+            id: clock
+            state: !lambda 'return "Hello World";'
 
   - platform: template
     name: "${dev} Clock"
