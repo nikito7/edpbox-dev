@@ -398,6 +398,7 @@ text_sensor:
 
   - platform: modbus_controller
     register_type: read
+    id: reg_clock
     address: 0x0001
     register_count: 1
     raw_encode: COMMA
