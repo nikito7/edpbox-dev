@@ -431,13 +431,13 @@ text_sensor:
     skip_updates: 3
 
   - platform: modbus_controller
-    name: "${dev} 0x000B Tariff"
+    name: "${dev} Tariff"
     register_type: read
     address: 0x000B
     register_count: 1
-    raw_encode: COMMA
+    raw_encode: NONE
     response_size: 2
-    icon: mdi:chip
+    icon: mdi:counter
 
 #######
 # eof #
