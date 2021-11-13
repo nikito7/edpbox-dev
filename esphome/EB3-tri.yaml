@@ -10,10 +10,6 @@ substitutions:
 esphome:
 
   name: ${name}
-
-  #platform: ESP8266
-  #board: esp01_1m
-
   platform: ESP32
   board: esp32dev
 
@@ -404,6 +400,7 @@ text_sensor:
     raw_encode: COMMA
     response_size: 12
     icon: mdi:chip
+    internal: true
 
   - platform: modbus_controller
     name: "${dev} Firmware Core" 
@@ -413,7 +410,7 @@ text_sensor:
     raw_encode: NONE
     response_size: 6
     icon: mdi:chip
-    skip_updates: 23
+    skip_updates: 3
 
   - platform: modbus_controller
     name: "${dev} 0x000B Tariff"
