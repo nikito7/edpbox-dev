@@ -401,6 +401,7 @@ text_sensor:
     response_size: 12
     icon: mdi:chip
     internal: true
+    lambda: !lambda "{ return x ;}"
     on_value:
       then:
         - lambda: |-
