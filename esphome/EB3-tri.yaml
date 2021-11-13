@@ -409,10 +409,10 @@ text_sensor:
     on_value:
       then:
         - lambda: |-
-            string hh = strtok(&x[4], ",");
-            string mm = strtok(&x[5], ",");
-            string ss = strtok(&x[6], ",");
-            string clock = hh + ":" + mm + ":" + ss;
+            auto hh = strtok(&x[4], ",");
+            auto mm = strtok(&x[5], ",");
+            auto ss = strtok(&x[6], ",");
+            auto clock = "test";
             id(tpl_clock).publish_state(clock);
 
   - platform: modbus_controller
