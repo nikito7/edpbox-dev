@@ -4,8 +4,8 @@
 
 substitutions:
 
-  dev: EB3test
-  name: edpbox3test
+  dev: EB3
+  name: edpbox3
 
 esphome:
 
@@ -73,9 +73,9 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 9s
+    update_interval: 15s
     address: 0x1
-    command_throttle: 1s
+    command_throttle: 200ms
     setup_priority: -10
 
 sensor:
