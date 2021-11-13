@@ -401,10 +401,14 @@ text_sensor:
     response_size: 12
     icon: mdi:chip
     internal: true
+    on_value:
+      - text_sensor.template.publish:
+        id: clock
+        state: !lambda 'return "Hello World";'
 
   - platform: template
-    name: "${dev} Clock" 
-
+    name: "${dev} Clock"
+    id: "clock"
 
   - platform: modbus_controller
     name: "${dev} Firmware Core" 
