@@ -392,43 +392,22 @@ sensor:
 
 text_sensor:
 
-###
-
-  - platform: template
-    name: "${dev} Clock"
-    id: tpl_clock
-    icon: mdi:clock
-
   - platform: modbus_controller
+    name: "${dev} Clock"
     register_type: read
-    id: reg_clock
     address: 0x0001
     register_count: 1
     raw_encode: HEXBYTES
     response_size: 12
-    internal: true
-    on_value:
-      then:
-        - lambda: |-
-            uint8_t hh=0,mm=0,ss=0;
-            hh = esphome::modbus_controller::byte_from_hex_str(x,5);
-            mm = esphome::modbus_controller::byte_from_hex_str(x,6);
-            ss = esphome::modbus_controller::byte_from_hex_str(x,7);
-            char buffer[20];
-            sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
-            id(tpl_clock).publish_state(buffer);
-
-###
-
-  - platform: modbus_controller
-    name: "${dev} Firmware Core" 
-    register_type: read
-    address: 0x0004
-    register_count: 1
-    raw_encode: NONE
-    response_size: 6
-    icon: mdi:chip
-    skip_updates: 3
+    icon: mdi:clock
+    lambda: |-
+        uint8_t hh=0,mm=0,ss=0;
+        hh = esphome::modbus_controller::byte_from_hex_str(x,5);
+        mm = esphome::modbus_controller::byte_from_hex_str(x,6);
+        ss = esphome::modbus_controller::byte_from_hex_str(x,7);
+        char buffer[20];
+        sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
+        return {buffer};
 
 ###
 
