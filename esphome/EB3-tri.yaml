@@ -441,9 +441,9 @@ text_sensor:
     response_size: 2
     icon: mdi:counter
     lambda: |-
-        if (x == "1,0") { return {"Vazio"}; }
-        if (x == "2,0") { return {"Ponta"}; }
-        if (x == "3,0") { return {"Cheias"}; }
+        if (x == "1,0") return {"Vazio"};
+        elseif (x == "2,0") return {"Ponta"};
+        elseif (x == "3,0") return {"Cheias"};
 
 #######
 # eof #
