@@ -197,6 +197,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 3
 
   - platform: modbus_controller 
     name: "${dev} T2 Ponta"
@@ -210,6 +211,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 3
 
   - platform: modbus_controller
     name: "${dev} T3 Cheias"
@@ -223,6 +225,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 3
 
 ### Voltage & Current
 
@@ -374,6 +377,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 3
 
   - platform: modbus_controller
     name: "${dev} Export"
@@ -387,6 +391,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 3
 
 ### ### ###
 
@@ -419,6 +424,7 @@ text_sensor:
     raw_encode: COMMA
     response_size: 2
     icon: mdi:counter
+    skip_updates: 3
     lambda: |-
         auto z = "null";
         if (x == "1,0") z = "Vazio";
