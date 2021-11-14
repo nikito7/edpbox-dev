@@ -442,8 +442,8 @@ text_sensor:
     icon: mdi:counter
     lambda: |-
         if (x == "1,0") return {"Vazio"};
-        elseif (x == "2,0") return {"Ponta"};
-        elseif (x == "3,0") return {"Cheias"};
+        else if (x == "2,0") return {"Ponta"};
+        else if (x == "3,0") return {"Cheias"};
 
 #######
 # eof #
