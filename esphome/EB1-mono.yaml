@@ -72,7 +72,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 15s
+    update_interval: 61s
     address: 0x1
     command_throttle: 200ms
     setup_priority: -10
@@ -130,12 +130,13 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 2
 
   - platform: modbus_controller 
     name: "${dev} T2 Ponta"
@@ -143,12 +144,13 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 2
 
   - platform: modbus_controller
     name: "${dev} T3 Cheias"
@@ -156,12 +158,13 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 2
 
 ### Voltage & Current
 
@@ -208,12 +211,13 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 2
 
   - platform: modbus_controller
     name: "${dev} Export"
@@ -227,6 +231,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+    skip_updates: 2
 
 ### ### ###
 
@@ -257,7 +262,7 @@ text_sensor:
     raw_encode: COMMA
     response_size: 2
     icon: mdi:counter
-    skip_updates: 3
+    skip_updates: 2
     lambda: |-
         auto z = "Null";
         if (x == "1,0") z = "Vazio";
