@@ -30,7 +30,7 @@ wifi:
 captive_portal:
 
 web_server:
-  css_url: https://nikito7.github.io/s/edpbox-v1.css?1
+  css_url: https://nikito7.github.io/s/edpbox-v1.css?2
 
 #logger:
 #  level: verbose
