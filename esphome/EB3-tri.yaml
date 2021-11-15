@@ -247,6 +247,7 @@ sensor:
 
   - platform: modbus_controller
     name: "${dev} Voltage L1"
+    id: VolL1
     address: 0x006C
     unit_of_measurement: "V"
     register_type: read
@@ -269,6 +270,7 @@ sensor:
 
   - platform: modbus_controller
     name: "${dev} Voltage L3"
+    id: VolL3
     address: 0x0070
     unit_of_measurement: "V"
     register_type: read
