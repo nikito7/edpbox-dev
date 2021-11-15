@@ -98,7 +98,33 @@ sensor:
     unit_of_measurement: "h"
     accuracy_decimals: 1
 
+###
+
+  - platform: template
+    name: "${dev} Voltage L1-10"
+    lambda: 'return id(VolL1).state - 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+  - platform: template
+    name: "${dev} Voltage L3+10"
+    lambda: 'return id(VolL3).state + 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
 ### Active Power
+
+  - platform: modbus_controller
+    name: "${dev} Active Power"
+    address: 0x0079
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
 
   - platform: modbus_controller
     name: "${dev} Active Power L1"
@@ -164,16 +190,6 @@ sensor:
     internal: true # disable sensor
 
   - platform: modbus_controller
-    name: "${dev} Active Power"
-    address: 0x0079
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    accuracy_decimals: 0
-    device_class: power
-    unit_of_measurement: "W"
-
-  - platform: modbus_controller
     name: "${dev} Active Power Export"
     address: 0x007A
     register_type: read
@@ -182,7 +198,6 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
-    internal: true # disable sensor
 
 ### Total Energy Tariffs
 
@@ -264,6 +279,17 @@ sensor:
     device_class: voltage
 
   - platform: modbus_controller
+    name: "${dev} Current"
+    address: 0x0072
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    filters:
+      - multiply: 0.1
+    accuracy_decimals: 1
+    device_class: current
+
+  - platform: modbus_controller
     name: "${dev} Current L1"
     address: 0x006D
     unit_of_measurement: "A"
@@ -294,17 +320,6 @@ sensor:
     accuracy_decimals: 1
     filters:
      - multiply: 0.1
-    device_class: current
-
-  - platform: modbus_controller
-    name: "${dev} Current"
-    address: 0x0072
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    filters:
-      - multiply: 0.1
-    accuracy_decimals: 1
     device_class: current
 
 ### Power Factor & Frequency
@@ -415,8 +430,6 @@ text_sensor:
         sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
         return {buffer};
 
-###
-
   - platform: modbus_controller
     name: "${dev} Tariff"
     register_type: read
@@ -427,7 +440,7 @@ text_sensor:
     icon: mdi:counter
     skip_updates: 3
     lambda: |-
-        auto z = "null";
+        auto z = "Null";
         if (x == "1,0") z = "Vazio";
         else if (x == "2,0") z = "Ponta";
         else if (x == "3,0") z = "Cheias";
