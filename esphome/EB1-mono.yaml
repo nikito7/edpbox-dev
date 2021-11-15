@@ -1,4 +1,5 @@
 # ESPHome >= 2021.10
+# Change to your wifi and gpios
 
 substitutions:
 
@@ -100,7 +101,33 @@ sensor:
     unit_of_measurement: "h"
     accuracy_decimals: 1
 
-### Active Power
+### ### ###
+
+### Voltage & Current
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L1"
+    address: 0x006C
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current L1"
+    address: 0x006D
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+### Active Power & Power Factor
 
   - platform: modbus_controller
     name: "${dev} Active Power"
@@ -121,6 +148,30 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Power Factor"
+    address: 0x007B
+    unit_of_measurement: "pu"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    device_class: power_factor
+
+### Frequency
+
+  - platform: modbus_controller
+    name: "${dev} Frequency"
+    address: 0x007F
+    unit_of_measurement: "Hz"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    icon: "mdi:pulse"
 
 ### Total Energy Tariffs
 
@@ -165,43 +216,6 @@ sensor:
     state_class: total_increasing
     device_class: energy
     skip_updates: 2
-
-### Voltage & Current
-
-  - platform: modbus_controller
-    name: "${dev} Voltage L1"
-    address: 0x006C
-    unit_of_measurement: "V"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: voltage
-
-  - platform: modbus_controller
-    name: "${dev} Current L1"
-    address: 0x006D
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: current
-
-### Power Factor
-
-  - platform: modbus_controller
-    name: "${dev} Power Factor"
-    address: 0x007B
-    unit_of_measurement: "pu"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 3
-    filters:
-      - multiply: 0.001
-    device_class: power_factor
 
 ### Total Energy
 
