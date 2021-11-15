@@ -18,7 +18,7 @@ esphome:
 wifi:
 
   domain: .lan
-  #use_address: 10.1.0.40 # fix ota dns error
+  use_address: 10.3.0.142 # fix ota dns error
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
@@ -31,7 +31,7 @@ wifi:
 
 captive_portal:
 
-#web_server:
+web_server:
 
 #logger:
 #  level: verbose
@@ -120,7 +120,6 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
-    internal: true # disable sensor
 
 ### Total Energy Tariffs
 
@@ -227,6 +226,43 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
+
+### ### ###
+
+text_sensor:
+
+  - platform: modbus_controller
+    name: "${dev} Clock"
+    register_type: read
+    address: 0x0001
+    register_count: 1
+    raw_encode: HEXBYTES
+    response_size: 12
+    icon: mdi:clock
+    lambda: |-
+        uint8_t hh=0,mm=0,ss=0;
+        hh = esphome::modbus_controller::byte_from_hex_str(x,5);
+        mm = esphome::modbus_controller::byte_from_hex_str(x,6);
+        ss = esphome::modbus_controller::byte_from_hex_str(x,7);
+        char buffer[20];
+        sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
+        return {buffer};
+
+  - platform: modbus_controller
+    name: "${dev} Tariff"
+    register_type: read
+    address: 0x000B
+    register_count: 1
+    raw_encode: COMMA
+    response_size: 2
+    icon: mdi:counter
+    skip_updates: 3
+    lambda: |-
+        auto z = "Null";
+        if (x == "1,0") z = "Vazio";
+        else if (x == "2,0") z = "Ponta";
+        else if (x == "3,0") z = "Cheias";
+        return {z};
 
 #######
 # eof #
