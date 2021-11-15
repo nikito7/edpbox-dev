@@ -1,5 +1,5 @@
 # ESPHome >= 2021.10
-# Change to your wifi and gpios
+# Change to your wifi and uart pins.
 
 substitutions:
 
