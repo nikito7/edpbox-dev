@@ -98,7 +98,7 @@ sensor:
     unit_of_measurement: "h"
     accuracy_decimals: 1
 
-###
+### ### ###
 
   - platform: template
     name: "${dev} Voltage L1-10"
@@ -114,7 +114,90 @@ sensor:
     update_interval: 10s
     device_class: voltage
 
-### Active Power
+### ### ###
+
+### Voltage & Current
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L1"
+    id: VolL1
+    address: 0x006C
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L2"
+    address: 0x006E
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L3"
+    id: VolL3
+    address: 0x0070
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+     - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current"
+    address: 0x0072
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    filters:
+      - multiply: 0.1
+    accuracy_decimals: 1
+    device_class: current
+
+  - platform: modbus_controller
+    name: "${dev} Current L1"
+    address: 0x006D
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+  - platform: modbus_controller
+    name: "${dev} Current L2"
+    address: 0x006F
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+  - platform: modbus_controller
+    name: "${dev} Current L3"
+    address: 0x0071
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+     - multiply: 0.1
+    device_class: current
+
+### Active Power & Export
 
   - platform: modbus_controller
     name: "${dev} Active Power"
@@ -199,131 +282,6 @@ sensor:
     device_class: power
     unit_of_measurement: "W"
 
-### Total Energy Tariffs
-
-  - platform: modbus_controller
-    name: "${dev} T1 Vazio"
-    address: 0x0026
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.001
-    unit_of_measurement: "kWh"
-    state_class: total_increasing
-    device_class: energy
-    skip_updates: 3
-
-  - platform: modbus_controller 
-    name: "${dev} T2 Ponta"
-    address: 0x0027
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.001
-    unit_of_measurement: "kWh"
-    state_class: total_increasing
-    device_class: energy
-    skip_updates: 3
-
-  - platform: modbus_controller
-    name: "${dev} T3 Cheias"
-    address: 0x0028
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.001
-    unit_of_measurement: "kWh"
-    state_class: total_increasing
-    device_class: energy
-    skip_updates: 3
-
-### Voltage & Current
-
-  - platform: modbus_controller
-    name: "${dev} Voltage L1"
-    id: VolL1
-    address: 0x006C
-    unit_of_measurement: "V"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: voltage
-
-  - platform: modbus_controller
-    name: "${dev} Voltage L2"
-    address: 0x006E
-    unit_of_measurement: "V"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: voltage
-
-  - platform: modbus_controller
-    name: "${dev} Voltage L3"
-    id: VolL3
-    address: 0x0070
-    unit_of_measurement: "V"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-     - multiply: 0.1
-    device_class: voltage
-
-  - platform: modbus_controller
-    name: "${dev} Current"
-    address: 0x0072
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    filters:
-      - multiply: 0.1
-    accuracy_decimals: 1
-    device_class: current
-
-  - platform: modbus_controller
-    name: "${dev} Current L1"
-    address: 0x006D
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: current
-
-  - platform: modbus_controller
-    name: "${dev} Current L2"
-    address: 0x006F
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: current
-
-  - platform: modbus_controller
-    name: "${dev} Current L3"
-    address: 0x0071
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-     - multiply: 0.1
-    device_class: current
-
 ### Power Factor & Frequency
 
   - platform: modbus_controller
@@ -380,6 +338,50 @@ sensor:
     filters:
       - multiply: 0.1
     icon: "mdi:pulse"
+
+### Total Energy Tariffs
+
+  - platform: modbus_controller
+    name: "${dev} T1 Vazio"
+    address: 0x0026
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+    skip_updates: 3
+
+  - platform: modbus_controller 
+    name: "${dev} T2 Ponta"
+    address: 0x0027
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+    skip_updates: 3
+
+  - platform: modbus_controller
+    name: "${dev} T3 Cheias"
+    address: 0x0028
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+    skip_updates: 3
 
 ### Total Energy
 
