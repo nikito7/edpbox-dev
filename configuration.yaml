@@ -19,7 +19,7 @@ default_config:
 homeassistant:
 
   customize: !include customize.yaml
-  packages:
+  #packages:
     #eb1tasmota: !include pkg/eb1tasmota.yaml
     #eb3modbus: !include pkg/eb3modbus.yaml
     #eb3tasmota: !include pkg/eb3tasmota.yaml
