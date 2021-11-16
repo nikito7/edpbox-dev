@@ -32,8 +32,8 @@ captive_portal:
 web_server:
   css_url: https://nikito7.github.io/s/edpbox-v1.css?2
 
-#logger:
-#  level: verbose
+logger:
+  level: verbose
 
 api:
 
@@ -442,7 +442,6 @@ text_sensor:
     raw_encode: COMMA
     response_size: 2
     icon: mdi:counter
-    skip_updates: 3
     lambda: |-
         auto z = "Null";
         if (x == "1,0") z = "Vazio";
@@ -465,10 +464,10 @@ text_sensor:
       // this is the handler that will receive the response 
       auto on_response = [](esphome::modbus_controller::ModbusRegisterType, uint16_t, const std::vector<uint8_t> &data) {
         // parse data - usually byte 3 contains the length of the response
-        char first = data[0];
+        char first = data[1];
         // .. add your parsing code
         // convert the result to a string
-        std::string result = {data[0]};
+        std::string result = {first};
         // publish the parsed code
         id(custom_modbus_cmd).publish_state(result);
       };
