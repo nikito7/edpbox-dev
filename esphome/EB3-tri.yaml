@@ -468,7 +468,7 @@ text_sensor:
         char first = data[0];
         // .. add your parsing code
         // convert the result to a string
-        std::string result = "something";
+        std::string result = data;
         // publish the parsed code
         id(custom_modbus_cmd).publish_state(result);
       };
