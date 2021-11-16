@@ -457,13 +457,13 @@ text_sensor:
     lambda: |-
       esphome::modbus_controller::ModbusController *controller = id(edpbox);
       std::vector<uint8_t> payload;
-      payload.push_back(0x01);
+      payload.push_back(0x1);
       payload.push_back(0x44);
-      payload.push_back(0x00);
-      payload.push_back(0x01);
-      // this is the handler that will receive the response 
+      payload.push_back(0);
+      payload.push_back(0x1);
+
       auto on_response = [](esphome::modbus_controller::ModbusRegisterType, uint16_t, const std::vector<uint8_t> &data) {
-        // parse data - usually byte 3 contains the length of the response
+
         char first = data[1];
         // .. add your parsing code
         // convert the result to a string
@@ -471,6 +471,7 @@ text_sensor:
         // publish the parsed code
         id(custom_modbus_cmd).publish_state(result);
       };
+
       // Create the custom_command 
       esphome::modbus_controller::ModbusCommandItem custom_command = esphome::modbus_controller::ModbusCommandItem::create_custom_command(controller,payload,on_response);
       // Submit the command to the send queue
