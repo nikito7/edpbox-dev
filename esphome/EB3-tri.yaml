@@ -100,22 +100,6 @@ sensor:
 
 ### ### ###
 
-  - platform: template
-    name: "${dev} Voltage L1-10"
-    lambda: 'return id(VolL1).state - 10.0;'
-    unit_of_measurement: "V"
-    update_interval: 10s
-    device_class: voltage
-
-  - platform: template
-    name: "${dev} Voltage L3+10"
-    lambda: 'return id(VolL3).state + 10.0;'
-    unit_of_measurement: "V"
-    update_interval: 10s
-    device_class: voltage
-
-### ### ###
-
 ### Voltage & Current
 
   - platform: modbus_controller
@@ -415,6 +399,22 @@ sensor:
 
 ### ### ###
 
+  - platform: template
+    name: "${dev} Voltage L1-10"
+    lambda: 'return id(VolL1).state - 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+  - platform: template
+    name: "${dev} Voltage L3+10"
+    lambda: 'return id(VolL3).state + 10.0;'
+    unit_of_measurement: "V"
+    update_interval: 10s
+    device_class: voltage
+
+### ### ###
+
 text_sensor:
 
   - platform: modbus_controller
@@ -433,6 +433,8 @@ text_sensor:
         char buffer[20];
         sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
         return {buffer};
+
+###
 
   - platform: modbus_controller
     name: "${dev} Tariff"
@@ -467,7 +469,7 @@ text_sensor:
         char m = data[2]; // month
         char d = data[3]; // day
 
-        std::string result = {m};
+        std::string result = {"test"};
 
         id(custom_modbus_cmd).publish_state(result);
       };
