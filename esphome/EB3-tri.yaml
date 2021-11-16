@@ -32,8 +32,8 @@ captive_portal:
 web_server:
   css_url: https://nikito7.github.io/s/edpbox-v1.css?2
 
-logger:
-  level: verbose
+#logger:
+#  level: verbose
 
 api:
 
@@ -464,17 +464,15 @@ text_sensor:
 
       auto on_response = [](esphome::modbus_controller::ModbusRegisterType, uint16_t, const std::vector<uint8_t> &data) {
 
-        char first = data[1];
-        // .. add your parsing code
-        // convert the result to a string
-        std::string result = {first};
-        // publish the parsed code
+        char m = data[2]; // month
+        char d = data[3]; // day
+
+        std::string result = {m};
+
         id(custom_modbus_cmd).publish_state(result);
       };
 
-      // Create the custom_command 
       esphome::modbus_controller::ModbusCommandItem custom_command = esphome::modbus_controller::ModbusCommandItem::create_custom_command(controller,payload,on_response);
-      // Submit the command to the send queue
       edpbox->queue_command(custom_command);
       ESP_LOGI("ModbusLambda", "Custom command send");
       return {};
