@@ -1,11 +1,14 @@
 # Config for three phase meter.
-# ESP32 is recommended!
+# ESP32 is required!
 # ESPHome >= 2021.10
 
 substitutions:
 
   dev: EB3
   name: edpbox3
+  ebloop: 11s
+  ebrx: 19
+  ebtx: 18
 
 esphome:
 
@@ -30,7 +33,7 @@ wifi:
 captive_portal:
 
 web_server:
-  css_url: https://nikito7.github.io/s/edpbox-v1.css?2
+  css_url: https://nikito7.github.io/s/edpbox-v1.css?3
 
 #logger:
 #  level: verbose
@@ -56,8 +59,8 @@ switch:
 uart:
 
   id: modbus_serial
-  rx_pin: 19
-  tx_pin: 18
+  rx_pin: ${ebrx}
+  tx_pin: ${ebtx}
   baud_rate: 9600
   stop_bits: 1
 
@@ -70,7 +73,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 15s
+    update_interval: ${ebloop}
     address: 0x1
     command_throttle: 200ms
     setup_priority: -10
@@ -466,8 +469,13 @@ text_sensor:
 
       auto on_response = [](esphome::modbus_controller::ModbusRegisterType, uint16_t, const std::vector<uint8_t> &data) {
 
-        char m = data[2]; // month
-        char d = data[3]; // day
+        // data[0] year 20
+        // data[1] year 21
+        // char m = data[2]; // month
+        // char d = data[3]; // day
+        // ...
+        // data[x-y] uint32 import 4bytes
+        // data[x-y] uint32 export 4bytes
 
         std::string result = {"test"};
 
