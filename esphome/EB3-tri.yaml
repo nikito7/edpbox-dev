@@ -7,8 +7,8 @@ substitutions:
   dev: EB3
   name: edpbox3
   ebloop: 11s
-  ebrx: 19
-  ebtx: 18
+  ebrx: "19"
+  ebtx: "18"
 
 esphome:
 
