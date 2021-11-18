@@ -424,8 +424,7 @@ text_sensor:
     name: "${dev} ESP Clock"
     icon: mdi:clock
     lambda: |-
-        char buffer[20] = strftime("%H:%M:%S", id(esptime).now());
-        return {buffer};
+        return strftime("%H:%M:%S", id(esptime).now());
 
 ###
 
