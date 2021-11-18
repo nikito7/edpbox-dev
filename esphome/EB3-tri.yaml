@@ -422,13 +422,8 @@ text_sensor:
 
   - platform: template
     name: "${dev} ESP Clock"
+    id: esp_clock
     icon: mdi:clock
-    update_interval: ${ebloop}
-    lambda: |-
-        char str[25];
-        time_t currTime = id(esptime).now().timestamp;
-        strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
-        return (std::string) str;
 
 ###
 
@@ -448,6 +443,13 @@ text_sensor:
         char buffer[20];
         sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
         return {buffer};
+     on_value:
+       - then:
+         - lambda: |-
+             char str[25];
+             time_t currTime = id(esptime).now().timestamp;
+             strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
+             id(esp_clock).publish_state({str});
 
 ###
 
@@ -470,7 +472,7 @@ text_sensor:
 
   - platform: template
     id: custom_modbus_cmd
-    name: "Load Profile"
+    name: "${dev} Load Profile"
     lambda: |-
       esphome::modbus_controller::ModbusController *controller = id(edpbox);
       std::vector<uint8_t> payload;
