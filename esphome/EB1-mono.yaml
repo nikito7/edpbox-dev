@@ -251,6 +251,13 @@ sensor:
 
 text_sensor:
 
+  - platform: template
+    name: "${dev} ESP Clock"
+    id: esp_clock
+    icon: mdi:clock
+
+###
+
   - platform: modbus_controller
     name: "${dev} Clock"
     register_type: read
@@ -267,6 +274,15 @@ text_sensor:
         char buffer[20];
         sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
         return {buffer};
+    on_value:
+      - then:
+        - lambda: |-
+            char str[25];
+            time_t currTime = id(esptime).now().timestamp;
+            strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
+            id(esp_clock).publish_state({str});
+
+###
 
   - platform: modbus_controller
     name: "${dev} Tariff"
@@ -276,13 +292,14 @@ text_sensor:
     raw_encode: COMMA
     response_size: 2
     icon: mdi:counter
-    skip_updates: 2
     lambda: |-
         auto z = "Null";
         if (x == "1,0") z = "Vazio";
         else if (x == "2,0") z = "Ponta";
         else if (x == "3,0") z = "Cheias";
         return {z};
+
+###
 
 #######
 # eof #
