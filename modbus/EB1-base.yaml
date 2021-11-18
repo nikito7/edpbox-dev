@@ -26,7 +26,7 @@
         scale: 0.1
         unit_of_measurement: V
         device_class: voltage
-        scan_interval: 30
+        scan_interval: 21
 
       - name: "EB1 Current L1" # 6D
         slave: 1
@@ -38,7 +38,7 @@
         scale: 0.1
         unit_of_measurement: A
         device_class: current
-        scan_interval: 30
+        scan_interval: 22
 
       - name: "EB1 Active Power" # 79
         slave: 1
@@ -50,7 +50,7 @@
         scale: 1
         unit_of_measurement: W
         device_class: power
-        scan_interval: 30
+        scan_interval: 23
 
       - name: "EB1 Power Export" # 7A
         slave: 1
@@ -62,7 +62,7 @@
         scale: 1
         unit_of_measurement: W
         device_class: power
-        scan_interval: 30
+        scan_interval: 24
 
       - name: "EB1 Power Factor" # 7B
         slave: 1
@@ -74,7 +74,7 @@
         scale: 0.001
         unit_of_measurement: pu
         device_class: power_factor
-        scan_interval: 30
+        scan_interval: 25
 
       - name: "EB1 Frequency" # 7F
         slave: 1
@@ -85,7 +85,7 @@
         precision: 1
         scale: 0.1
         unit_of_measurement: Hz
-        scan_interval: 300
+        scan_interval: 26
 
       - name: "EB1 T1 Vazio" # 26
         slave: 1
@@ -97,7 +97,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 300
+        scan_interval: 61
 
       - name: "EB1 T2 Ponta" # 27
         slave: 1
@@ -109,7 +109,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 300
+        scan_interval: 62
 
       - name: "EB1 T3 Cheias" # 28
         slave: 1
@@ -121,7 +121,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 300
+        scan_interval: 63
 
       - name: "EB1 Import" # 16
         slave: 1
@@ -133,7 +133,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 300
+        scan_interval: 64
 
       - name: "EB1 Export" # 17
         slave: 1
@@ -145,7 +145,7 @@
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 300
+        scan_interval: 65
 
 ###
 
@@ -158,7 +158,7 @@
         precision: 3
         scale: 0.001
         unit_of_measurement: kVAr
-        scan_interval: 300
+        scan_interval: 66
 
 # for tariff template
 
@@ -169,7 +169,7 @@
         count: 1
         data_type: custom
         structure: ">Bx"
-        scan_interval: 30
+        scan_interval: 67
 
 # for testing
 
@@ -179,6 +179,6 @@
         input_type: input
         count: 1
         data_type: string
-        scan_interval: 300
+        scan_interval: 68
 
 # EOF
