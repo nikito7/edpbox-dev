@@ -9,6 +9,8 @@ entities:
     secondary_info: last-updated
   - entity: switch.eb3_esp_restart
     secondary_info: last-updated
+  - entity: sensor.eb3_esp_clock
+    secondary_info: last-updated
 # meter va clock
   - entity: sensor.eb3_clock
     secondary_info: last-updated
@@ -59,10 +61,8 @@ entities:
 # misc
   - entity: sensor.eb3_tariff
     secondary_info: last-updated
-# info
-  - entity: sensor.eb3_firmware_core
+  - entity: sensor.eb3_firmware
     secondary_info: last-updated
-# debug
-  - entity: sensor.eb3_0x000b_tariff
+  - entity: sensor.eb3_load_profile
     secondary_info: last-updated
 # EOF
