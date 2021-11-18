@@ -420,7 +420,7 @@ sensor:
 
 text_sensor:
 
-  - platform: modbus_controller
+  - platform: template
     name: "${dev} ESP Clock"
     icon: mdi:clock
     lambda: |-
