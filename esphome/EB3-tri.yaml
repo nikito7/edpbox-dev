@@ -423,6 +423,7 @@ text_sensor:
   - platform: template
     name: "${dev} ESP Clock"
     icon: mdi:clock
+    update_interval: ${ebloop}
     lambda: |-
         char str[25];
         time_t currTime = id(esptime).now().timestamp;
