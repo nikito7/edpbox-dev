@@ -443,13 +443,13 @@ text_sensor:
         char buffer[20];
         sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
         return {buffer};
-     on_value:
-       - then:
-         - lambda: |-
-             char str[25];
-             time_t currTime = id(esptime).now().timestamp;
-             strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
-             id(esp_clock).publish_state({str});
+    on_value:
+      - then:
+        - lambda: |-
+            char str[25];
+            time_t currTime = id(esptime).now().timestamp;
+            strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
+            id(esp_clock).publish_state({str});
 
 ###
 
