@@ -424,10 +424,7 @@ text_sensor:
     name: "${dev} ESP Clock"
     icon: mdi:clock
     lambda: |-
-        uint8_t hh=0,mm=0,ss=0;
-
-        char buffer[20];
-        sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
+        char buffer[20] = strftime("%H:%M:%S", id(esptime).now());
         return {buffer};
 
 ###
