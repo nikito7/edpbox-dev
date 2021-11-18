@@ -424,7 +424,7 @@ text_sensor:
     name: "${dev} ESP Clock"
     icon: mdi:clock
     lambda: |-
-        auto x = strftime("%H:%M:%S", id(esptime).now());
+        std::string x = strftime("%H:%M:%S", id(esptime).now());
         return {x};
 
 ###
