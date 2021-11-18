@@ -424,8 +424,10 @@ text_sensor:
     name: "${dev} ESP Clock"
     icon: mdi:clock
     lambda: |-
-        std::string x = strftime("%H:%M:%S", id(esptime).now());
-        return {x};
+        char str[25];
+        time_t currTime = id(esptime).now().timestamp;
+        strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
+        return (std::string) str;
 
 ###
 
