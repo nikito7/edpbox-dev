@@ -421,6 +421,18 @@ sensor:
 text_sensor:
 
   - platform: modbus_controller
+    name: "${dev} ESP Clock"
+    icon: mdi:clock
+    lambda: |-
+        uint8_t hh=0,mm=0,ss=0;
+
+        char buffer[20];
+        sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
+        return {buffer};
+
+###
+
+  - platform: modbus_controller
     name: "${dev} Clock"
     register_type: read
     address: 0x0001
