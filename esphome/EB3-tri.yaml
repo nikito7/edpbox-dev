@@ -6,7 +6,7 @@ substitutions:
 
   dev: EB3
   name: edpbox3
-  ebloop: 11s
+  ebloop: 15s
   ebrx: "19"
   ebtx: "18"
 
