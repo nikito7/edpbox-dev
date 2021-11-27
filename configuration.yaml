@@ -75,7 +75,7 @@ switch:
   - platform: command_line
     switches:
       backups_scp:
-        command_on: "/usr/bin/scp /backup/* root@10.1.0.79:/root/ha/"
+        command_on: '/usr/bin/scp /backup/* root@10.1.0.79:/root/ha/'
 
 ###
 ##
