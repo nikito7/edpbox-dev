@@ -70,13 +70,6 @@ sensor monitor:
 
 ###
 
-switch:
-
-  - platform: command_line
-    switches:
-      backups_scp:
-        command_on: '/usr/bin/scp -i /config/ssh/id_rsa -o UserKnownHostsFile=/config/ssh/known_hosts /backup/* root@10.1.0.79:/root/ha/'
-
 ###
 ##
 #
