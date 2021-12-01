@@ -1,3 +1,8 @@
+Last working: ⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+```
+pip install esphome==2021.10.3
+```
+
 Info:
 
 https://github.com/martgras/esphome/discussions
