@@ -192,6 +192,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -202,6 +203,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -212,6 +214,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -223,6 +226,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -233,6 +237,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -244,6 +249,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -254,6 +260,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -265,6 +272,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -334,6 +342,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
@@ -348,6 +357,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
@@ -362,6 +372,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
@@ -378,6 +389,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 1
     filters:
       - multiply: 0.001
@@ -392,6 +404,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
@@ -432,8 +445,8 @@ text_sensor:
     register_type: read
     address: 0x0001
     register_count: 1
-    raw_encode: HEXBYTES
     response_size: 12
+    raw_encode: HEXBYTES
     icon: mdi:clock
     lambda: |-
         uint8_t hh=0,mm=0,ss=0;
@@ -458,8 +471,8 @@ text_sensor:
     register_type: read
     address: 0x000B
     register_count: 1
-    raw_encode: COMMA
     response_size: 2
+    raw_encode: COMMA
     icon: mdi:counter
     lambda: |-
         auto z = "Null";
