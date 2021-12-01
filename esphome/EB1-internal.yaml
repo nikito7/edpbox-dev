@@ -1,4 +1,4 @@
-# ESPHome >= 2021.10
+# ESPHome >= 2021.internal
 # Change to your wifi and uart pins.
 
 substitutions:
@@ -73,7 +73,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 61s
+    update_interval: 21s
     address: 0x1
     command_throttle: 200ms
     setup_priority: -10
@@ -135,6 +135,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -145,6 +146,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
@@ -181,6 +183,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
@@ -195,6 +198,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
@@ -209,6 +213,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
@@ -225,6 +230,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
@@ -239,6 +245,7 @@ sensor:
     register_type: read
     value_type: U_DWORD
     register_count: 1
+    response_size: 4
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
