@@ -6,33 +6,12 @@ substitutions:
 
   dev: EB3
   name: edpbox3
-  ebrx: "19"
-  ebtx: "18"
-
-interval:
-
-  - interval: 9s
-    then:
-      - lambda: |-
-          if (id(edpbox_polling).state) {
-              id(edpbox).update();
-          }
 
 esphome:
 
   name: ${name}
   platform: ESP32
   board: esp32dev
-
-  on_boot:
-    priority: -500
-    then:
-      - delay: 5s
-      - switch.turn_on: edpbox_polling
-
-# enable for first usb flash, 
-# to create a bigger partition
-#esp32_ble_tracker:
 
 wifi:
 
@@ -74,16 +53,11 @@ switch:
   - platform: restart
     name: "${dev} ESP Restart"
 
-  - platform: template
-    name: "${dev} ESP Polling"
-    id: "edpbox_polling"
-    optimistic: yes
-
 uart:
 
   id: modbus_serial
-  rx_pin: ${ebrx}
-  tx_pin: ${ebtx}
+  rx_pin: 19
+  tx_pin: 18
   baud_rate: 9600
   stop_bits: 1
 
@@ -96,7 +70,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: never
+    update_interval: 9s
     address: 0x1
     command_throttle: 300ms
     setup_priority: -10
