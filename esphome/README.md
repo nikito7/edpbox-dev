@@ -4,7 +4,7 @@ Last working: ⚠️⚠️⚠️
 
 Or
 
-```pip install https://github.com/nikito7/edpbox/raw/dev/esphome/esphome-dev.zip```
+```pip install https://github.com/nikito7/edpbox/raw/dev/esphome/esphome-dev.1.zip```
 
 Info:
 
