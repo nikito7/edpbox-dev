@@ -1,4 +1,4 @@
-Last working: ⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+Last working: ⚠️⚠️⚠️
 
 ```pip install esphome==2021.10.3```
 
