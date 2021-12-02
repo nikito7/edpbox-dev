@@ -16,6 +16,10 @@ esphome:
   platform: ESP32
   board: esp32dev
 
+# enable for first usb flash
+# to create a bigger partition
+esp32_ble_tracker:
+
 wifi:
 
   domain: .lan
