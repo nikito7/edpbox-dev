@@ -1,12 +1,12 @@
 # Config for three phase meter.
 # ESP32 is required!
-# ESPHome >= 2021.int
+# ESPHome >= 2021.dev.2021.12.02
 
 substitutions:
 
   dev: EB3
   name: edpbox3
-  ebloop: 15s
+  ebloop: 9s
   ebrx: "19"
   ebtx: "18"
 
@@ -16,7 +16,7 @@ esphome:
   platform: ESP32
   board: esp32dev
 
-# enable for first usb flash
+# enable for first usb flash, 
 # to create a bigger partition
 esp32_ble_tracker:
 
@@ -37,7 +37,7 @@ wifi:
 captive_portal:
 
 web_server:
-  css_url: https://nikito7.github.io/s/edpbox-v1.css?3
+  css_url: https://nikito7.github.io/s/edpbox-v1.css?4
 
 #logger:
 #  level: verbose
@@ -79,7 +79,7 @@ modbus_controller:
   - id: edpbox
     update_interval: ${ebloop}
     address: 0x1
-    command_throttle: 200ms
+    command_throttle: 300ms
     setup_priority: -10
 
 sensor:
