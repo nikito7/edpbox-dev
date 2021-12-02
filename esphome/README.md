@@ -1,7 +1,10 @@
 Last working: ⚠️⚠️⚠️⚠️⚠️⚠️⚠️
-```
-pip install esphome==2021.10.3
-```
+
+```pip install esphome==2021.10.3```
+
+Or
+
+```pip install https://github.com/nikito7/edpbox/raw/dev/esphome/esphome-dev.zip```
 
 Info:
 
