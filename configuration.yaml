@@ -72,11 +72,12 @@ sensor monitor:
 
 utility_meter:
 
-  utm_eb3_monthly:
+  utm_eb3_test:
     source: sensor.eb3_import
     cycle: monthly
     tariffs:
-      - Normal
+      - Fora de Vazio
+      - Vazio
 
 ###
 ##
