@@ -8,8 +8,3 @@
 
 [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
 
-# Erro 81
-
-![erro 81](./erro81.jpg)
-
-- Formulário > [``` e-redes.pt ```](https://www.e-redes.pt/)
