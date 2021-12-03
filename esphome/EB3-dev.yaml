@@ -147,6 +147,7 @@ sensor:
       - multiply: 0.1
     accuracy_decimals: 1
     device_class: current
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Current L1"
@@ -193,6 +194,7 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Active Power L1"
@@ -204,6 +206,7 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Active Power L1 Export"
@@ -227,6 +230,7 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Active Power L2 Export"
@@ -250,6 +254,7 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Active Power L3 Export"
@@ -273,6 +278,7 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+    state_class: measurement
 
 ### Power Factor & Frequency
 
