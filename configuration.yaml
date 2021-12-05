@@ -19,10 +19,10 @@ automation: !include automations.yaml
 homeassistant:
 
   customize: !include customize.yaml
-  packages:
+  #packages:
     #eb1tasmota: !include pkg/eb1tasmota.yaml
     #eb3modbus: !include pkg/eb3modbus.yaml
-    eb3tasmota: !include pkg/eb3tasmota.yaml
+    #eb3tasmota: !include pkg/eb3tasmota.yaml
 
 http:
 
@@ -72,7 +72,9 @@ sensor monitor:
 
 utility_meter:
 
-  utm_eb3_test:
+# example for erse users
+
+  utm_erse_m:
     source: sensor.eb3_import
     cycle: monthly
     tariffs:
