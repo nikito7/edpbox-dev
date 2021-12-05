@@ -70,9 +70,9 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 9s
+    update_interval: 7s
     address: 0x1
-    command_throttle: 300ms
+    command_throttle: 1000ms
     setup_priority: -10
 
 sensor:
