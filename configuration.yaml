@@ -74,9 +74,16 @@ utility_meter:
 
 # example for erse users
 
-  utm_erse_m:
+  utm_mensal:
     source: sensor.eb3_import
     cycle: monthly
+    tariffs:
+      - Fora de Vazio
+      - Vazio
+
+  utm_diario:
+    source: sensor.eb3_import
+    cycle: daily
     tariffs:
       - Fora de Vazio
       - Vazio
