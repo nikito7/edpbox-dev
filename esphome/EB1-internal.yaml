@@ -1,4 +1,4 @@
-# ESPHome >= 2021.internal
+# ESPHome >= 2021.dev
 # Change to your wifi and uart pins.
 
 substitutions:
@@ -73,9 +73,9 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 21s
+    update_interval: 20s
     address: 0x1
-    command_throttle: 200ms
+    command_throttle: 1000ms
     setup_priority: -10
 
 sensor:
