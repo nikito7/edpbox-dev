@@ -70,7 +70,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 7s
+    update_interval: 20s
     address: 0x1
     command_throttle: 1000ms
     setup_priority: -10
