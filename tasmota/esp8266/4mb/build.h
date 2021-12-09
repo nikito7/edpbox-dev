@@ -1,3 +1,7 @@
+// board = esp8266_4M2M
+
+
+
 // ufs
 
 #define USE_UFILESYS
