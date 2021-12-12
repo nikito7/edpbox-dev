@@ -89,6 +89,21 @@ utility_meter:
       - Vazio
 
 ###
+
+climate:
+
+  - platform: generic_thermostat
+    name: Athom P1 TH
+    heater: switch.athom_p1
+    target_sensor: sensor.mho_7c_temp
+    min_temp: 15
+    max_temp: 21
+    ac_mode: false
+    target_temp: 19
+    cold_tolerance: 0.3
+    hot_tolerance: 0.5
+
+###
 ##
 #
 
