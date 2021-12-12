@@ -93,14 +93,32 @@ utility_meter:
 climate:
 
   - platform: generic_thermostat
-    name: Athom P1 TH
+    name: Athom P1 7C
     heater: switch.athom_p1
     target_sensor: sensor.mho_7c_temp
     min_temp: 15
     max_temp: 21
     ac_mode: false
-    target_temp: 19
-    cold_tolerance: 0.5
+    target_temp: 18
+    cold_tolerance: 0.2
+    hot_tolerance: 0.2
+    min_cycle_duration:
+      seconds: 5
+    keep_alive:
+      minutes: 2
+    initial_hvac_mode: "off"
+    away_temp: 16
+    precision: 0.1
+
+  - platform: generic_thermostat
+    name: Athom P1 GN
+    heater: switch.athom_p1
+    target_sensor: sensor.mmc_33_temp
+    min_temp: 15
+    max_temp: 21
+    ac_mode: false
+    target_temp: 18
+    cold_tolerance: 0.2
     hot_tolerance: 0.2
     min_cycle_duration:
       seconds: 5
