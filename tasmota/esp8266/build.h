@@ -2,10 +2,10 @@
 // sml at the end of file
 // based in 10.0.0 lite
 
-#undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
+//#undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
 #undef USE_HOME_ASSISTANT                        // Disable Home Assistant
-#define USE_TASMOTA_DISCOVERY                    // Enable Tasmota Discovery support (+2k code)
+//#define USE_TASMOTA_DISCOVERY                    // Enable Tasmota Discovery support (+2k code)
 //#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
@@ -127,7 +127,7 @@
 #define USE_SCRIPT
 #define USE_SML_M
 #define USE_SML_SCRIPT_CMD
-#define SML_MAX_VARS 75
+#define SML_MAX_VARS 50
 #define SML_REPLACE_VARS
 
 // tcp
