@@ -16,7 +16,7 @@ smlj=0
 
 >S
 
-if cnt==60
+if cnt==50
 then
 tper=10
 smlj=1
