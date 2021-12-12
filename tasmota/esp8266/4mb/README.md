@@ -1,5 +1,5 @@
 - disable script
-- reboot
+- restart
 - upgrade minimal
 - upgrade normal
 
