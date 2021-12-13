@@ -6,6 +6,8 @@ bug="fix"
 time=""
 date=""
 cnt=0
+res=0
+trf=""
 
 >B
 
@@ -15,6 +17,24 @@ smlj=0
 =>sensor53 r
 
 >S
+
+res=0
+res=sml[26]
+
+if res==1
+then
+trf="Vazio"
+endif
+
+if res==2
+then
+trf="Ponta"
+endif
+
+if res==3
+then
+trf="Cheias"
+endif
 
 if cnt==50
 then
@@ -39,6 +59,7 @@ endif
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
+@<b>Tarifa: </b> %trf
 @<hr>
 
 >M 1
