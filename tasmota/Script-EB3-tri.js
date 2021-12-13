@@ -6,8 +6,6 @@ bug="fix"
 time=""
 date=""
 cnt=0
-res=0
-trf=""
 
 >B
 
@@ -18,31 +16,13 @@ smlj=0
 
 >S
 
-res=0
-res=sml[26]
-
-if res==1
-then
-trf="Vazio"
-endif
-
-if res==2
-then
-trf="Ponta"
-endif
-
-if res==3
-then
-trf="Cheias"
-endif
-
-if cnt==50
+if cnt==30
 then
 tper=10
 smlj=1
 endif
 
-if cnt==90
+if cnt==50
 then
 tper=60
 endif
@@ -50,11 +30,11 @@ endif
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
-if cnt<150
+if cnt<600
 then
 cnt+=1
 else
-cnt=30
+cnt=0
 smlj=0
 =>sensor53 r
 endif
@@ -63,12 +43,7 @@ endif
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Tarifa: </b> %trf%
 @<hr>
-
->J
-
-,"Misc":{"Tariff":"%trf%"}
 
 >M 1
 
@@ -104,7 +79,6 @@ endif
 ; 73
 
 1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,16
-
 
 1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,16
 1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,16
@@ -144,7 +118,6 @@ endif
 1,01040euu@i6:1,Tariff ,,Tariff,16
 
 1,=h<hr>
-1,=hLoad Profile
 
 1,01441dUUuu@i7:1,Y ,,LP_Y,0
 1,01441dxxxxuu@i7:1,M ,,LP_M,0
