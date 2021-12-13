@@ -54,7 +54,8 @@ if cnt<150
 then
 cnt+=1
 else
-cnt=100
+cnt=30
+smlj=0
 =>sensor53 r
 endif
 
