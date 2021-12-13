@@ -62,6 +62,10 @@ endif
 @<b>Tarifa: </b> %trf%
 @<hr>
 
+>J
+
+,"Misc":{"Tariff":"%trf%"}
+
 >M 1
 
 ; change to your gpios and mode
