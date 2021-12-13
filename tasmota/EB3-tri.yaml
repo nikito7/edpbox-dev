@@ -258,6 +258,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "W"
     device_class: power
+    state_class: measurement
 
   - platform: mqtt
     name: "EB3 Active Power L1"
@@ -270,6 +271,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "W"
     device_class: power
+    state_class: measurement
 
   - platform: mqtt
     name: "EB3 Active Power L2"
@@ -282,6 +284,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "W"
     device_class: power
+    state_class: measurement
 
   - platform: mqtt
     name: "EB3 Active Power L3"
@@ -294,6 +297,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "W"
     device_class: power
+    state_class: measurement
 
   - platform: mqtt
     name: "EB3 Frequency"
