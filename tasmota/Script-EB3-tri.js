@@ -59,7 +59,7 @@ endif
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Tarifa: </b> %trf
+@<b>Tarifa: </b> %trf%
 @<hr>
 
 >M 1
