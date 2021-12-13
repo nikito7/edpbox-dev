@@ -5,12 +5,12 @@ sensor.db_size_mb:
 
 # EB1
 
-sensor.eb1_frequency:
-  icon: mdi:pulse
-sensor.eb1_tariff:
-  icon: mdi:counter
-sensor.eb1_firmware_core:
-  icon: mdi:chip
+#sensor.eb1_frequency:
+#  icon: mdi:pulse
+#sensor.eb1_tariff:
+#  icon: mdi:counter
+#sensor.eb1_firmware_core:
+#  icon: mdi:chip
 
 # temp
 
@@ -20,8 +20,6 @@ sensor.mmc_e3_temp:
   friendly_name: HG
 sensor.mmc_33_temp:
   friendly_name: GN
-sensor.clock_3a_temp:
-  friendly_name: FZ
 
 # hum
 
@@ -31,8 +29,6 @@ sensor.mmc_e3_hum:
   friendly_name: HG
 sensor.mmc_33_hum:
   friendly_name: GN
-sensor.clock_3a_hum:
-  friendly_name: FZ
 
 # batt
 
