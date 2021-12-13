@@ -115,7 +115,7 @@ endif
 1,01040euu@i6:1,Tariff ,,Tariff,16
 
 1,=h<hr>
-1,=h<small>Load Profile</small>
+1,=hLoad Profile
 
 1,01441dUUuu@i7:1,Y ,,LP_Y,0
 1,01441dxxxxuu@i7:1,M ,,LP_M,0
