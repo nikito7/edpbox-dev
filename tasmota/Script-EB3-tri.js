@@ -32,7 +32,7 @@ endif
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
-ntp=st(time - 2)
+ntp=st(time : 2)
 clk=sml[2]
 
 if cnt<99
