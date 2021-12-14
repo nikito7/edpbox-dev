@@ -38,6 +38,11 @@ clk=sml[2]
 if cnt<99
 then
 cnt+=1
+else
+if ntp<50 and ntp>10 and ntp-clk>5
+then
+=>SetSensor53 1
+endif
 endif
 
 >W
