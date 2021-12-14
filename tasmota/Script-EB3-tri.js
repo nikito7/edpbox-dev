@@ -30,13 +30,9 @@ endif
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
-if cnt<600
+if cnt<99
 then
 cnt+=1
-else
-cnt=0
-smlj=0
-=>sensor53 r
 endif
 
 >W
