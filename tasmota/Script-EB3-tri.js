@@ -8,6 +8,7 @@ date=""
 cnt=0
 ntp=0
 clk=0
+dif=0
 
 >B
 
@@ -34,12 +35,13 @@ date=st(tstamp T 1)
 
 ntp=st(time : 2)
 clk=sml[2]
+dif=ntp-clk
 
 if cnt<99
 then
 cnt+=1
 else
-if ntp<50 and ntp>10 and ntp-clk>5
+if (ntp<50 and ntp>10 and dif>5)
 then
 =>SetSensor53 1
 endif
@@ -49,7 +51,7 @@ endif
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Vars: </b> ntp=%0ntp% clk=%0clk%
+@<b>Vars: </b> ntp=%0ntp% clk=%0clk% dif=%0dif%
 @<hr>
 
 >M 1
