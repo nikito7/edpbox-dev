@@ -41,8 +41,11 @@ if cnt<99
 then
 cnt+=1
 else
-if (ntp<50 and ntp>10 and dif>5)
+if dif>3
+and ntp>10
+and ntp<50
 then
+=>SetSensor53 0
 =>SetSensor53 1
 endif
 endif
