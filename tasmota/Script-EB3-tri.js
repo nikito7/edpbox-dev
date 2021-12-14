@@ -6,6 +6,8 @@ bug="fix"
 time=""
 date=""
 cnt=0
+ntp=0
+clk=0
 
 >B
 
@@ -30,6 +32,9 @@ endif
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
+ntp=st(time - 2)
+clk=sml[2]
+
 if cnt<99
 then
 cnt+=1
@@ -39,6 +44,7 @@ endif
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
+@<b>Vars: </b> ntp=%0ntp% clk=%0clk%
 @<hr>
 
 >M 1
