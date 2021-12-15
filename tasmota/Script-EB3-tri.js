@@ -45,7 +45,7 @@ if dif>3
 and ntp>10
 and ntp<50
 then
-print modbus is dead again :(
+=>print modbus is dead again :(
 endif
 endif
 
