@@ -45,7 +45,7 @@ if dif>3
 and ntp>10
 and ntp<50
 then
-=>BackLog Script 0; Delay 50; Restart 1
+print modbus is dead again :(
 endif
 endif
 
