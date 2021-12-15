@@ -40,13 +40,6 @@ dif=ntp-clk
 if cnt<99
 then
 cnt+=1
-else
-if dif>3
-and ntp>10
-and ntp<50
-then
-=>print modbus is dead again :(
-endif
 endif
 
 >W
