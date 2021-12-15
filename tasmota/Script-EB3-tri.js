@@ -40,6 +40,11 @@ dif=ntp-clk
 if cnt<99
 then
 cnt+=1
+else
+if dif>3
+then
+=>BackLog SetSensor53 0; Delay 50; Delay 50; SetSensor53 1
+endif
 endif
 
 >W
