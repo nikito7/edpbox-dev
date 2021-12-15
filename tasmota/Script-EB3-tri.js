@@ -6,9 +6,9 @@ bug="fix"
 time=""
 date=""
 cnt=0
-ntp=0
 clk=0
-dif=0
+cnt2=0
+old=0
 
 >B
 
@@ -33,17 +33,29 @@ endif
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
-ntp=st(time : 2)
-clk=sml[2]
-dif=ntp-clk
+clk=sml[3]
 
 if cnt<99
 then
 cnt+=1
-else
-if dif>3
+endif
+
+if cnt==99
 then
-=>BackLog SetSensor53 0; Delay 50; Delay 50; SetSensor53 1
+cnt2+=1
+endif
+
+if cnt2==1
+then
+old=sml[3]
+endif
+
+if cnt2==30
+then
+cnt2=0
+if old==clk
+then
+=>BackLog SetSensor53 0; Delay 30; Delay 50; SetSensor53 1
 endif
 endif
 
@@ -51,7 +63,7 @@ endif
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Vars: </b> ntp=%0ntp% clk=%0clk% dif=%0dif%
+@<b>Vars: </b> cnt2=%0cnt2% clk=%0clk% old=%0old%
 @<hr>
 
 >M 1
