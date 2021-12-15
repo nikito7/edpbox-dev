@@ -45,8 +45,7 @@ if dif>3
 and ntp>10
 and ntp<50
 then
-=>SetSensor53 0
-=>SetSensor53 1
+=>BackLog Script 0; Delay 50; Restart 1
 endif
 endif
 
