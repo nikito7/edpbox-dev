@@ -6,7 +6,7 @@
 #undef USE_DOMOTICZ                              // Disable Domoticz
 #undef USE_HOME_ASSISTANT                        // Disable Home Assistant
 //#define USE_TASMOTA_DISCOVERY                    // Enable Tasmota Discovery support (+2k code)
-//#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
+#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
 //#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
@@ -45,7 +45,7 @@
 
 // -- Optional light modules ----------------------
 #undef USE_LIGHT_VIRTUAL_CT                      // Disable support for Virtual White Color Temperature (SO106)
-//#undef USE_LIGHT                                 // Also disable all Dimmer/Light support
+#undef USE_LIGHT                                 // Also disable all Dimmer/Light support
 #undef USE_WS2812                                // Disable WS2812 Led string using library NeoPixelBus (+5k code, +1k mem, 232 iram) - Disable by //
 #undef USE_MY92X1                                // Disable support for MY92X1 RGBCW led controller as used in Sonoff B1, Ailight and Lohas
 #undef USE_SM16716                               // Disable support for SM16716 RGB LED controller (+0k7 code)
@@ -128,17 +128,17 @@
 #define USE_SML_M
 #define USE_SML_SCRIPT_CMD
 #define SML_MAX_VARS 50
-#define SML_REPLACE_VARS
+//#define SML_REPLACE_VARS
 
 // tcp
 
-#define USE_TCP_BRIDGE
+//#define USE_TCP_BRIDGE
 
 // misc
 
 #define USE_SCRIPT_WEB_DISPLAY
-#define USE_SCRIPT_JSON_EXPORT
-#define MAX_METERS 1
-#define MAXSVARS 10
+//#define USE_SCRIPT_JSON_EXPORT
+//#define MAX_METERS 1
+//#define MAXSVARS 10
 
 // eof
