@@ -7,7 +7,7 @@ time=""
 date=""
 cnt=0
 clk=0
-cnt2=0
+wtd=0
 old=0
 
 >B
@@ -18,6 +18,8 @@ smlj=0
 =>sensor53 r
 
 >S
+
+; delay modbus mqtt
 
 if cnt==30
 then
@@ -30,6 +32,8 @@ then
 tper=60
 endif
 
+; some vars
+
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
@@ -40,19 +44,21 @@ then
 cnt+=1
 endif
 
+; modbus watchdog
+
 if cnt==99
 then
-cnt2+=1
+wtd+=1
 endif
 
-if cnt2==1
+if wtd==1
 then
 old=sml[3]
 endif
 
-if cnt2==30
+if wtd==30
 then
-cnt2=0
+wtd=0
 if old==clk
 then
 =>BackLog SetSensor53 0; Delay 30; Delay 50; SetSensor53 1
@@ -63,7 +69,7 @@ endif
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Vars: </b> cnt2=%0cnt2% clk=%0clk% old=%0old%
+@<b>Vars: </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<hr>
 
 >M 1
