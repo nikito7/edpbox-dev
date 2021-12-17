@@ -15,7 +15,7 @@ old=0
 tper=60
 smlj=0
 
-=>sensor53 r
+=>Sensor53 r
 
 >S
 
@@ -61,7 +61,10 @@ then
 wtd=0
 if old==clk
 then
-=>BackLog SetSensor53 0; Delay 30; Delay 50; SetSensor53 1
+=>SetSensor53 0
+delay(100)
+delay(100)
+=>SetSensor53 1
 endif
 endif
 
