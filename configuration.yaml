@@ -93,9 +93,9 @@ utility_meter:
 climate:
 
   - platform: generic_thermostat
-    name: Athom P1 7C
+    name: Athom P1 CB
     heater: switch.athom_p1
-    target_sensor: sensor.mho_7c_temp
+    target_sensor: sensor.clock_3a_temp
     min_temp: 15
     max_temp: 21
     ac_mode: false
