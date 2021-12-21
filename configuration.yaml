@@ -70,32 +70,32 @@ sensor monitor:
 
 ###
 
-utility_meter:
+#utility_meter:
 
 # example for erse users
 
-  utm_mensal:
-    source: sensor.eb3_import
-    cycle: monthly
-    tariffs:
-      - Fora de Vazio
-      - Vazio
+#  utm_mensal:
+#    source: sensor.eb3_import
+#    cycle: monthly
+#    tariffs:
+#      - Fora de Vazio
+#      - Vazio
 
-  utm_diario:
-    source: sensor.eb3_import
-    cycle: daily
-    tariffs:
-      - Fora de Vazio
-      - Vazio
+#  utm_diario:
+#    source: sensor.eb3_import
+#    cycle: daily
+#    tariffs:
+#      - Fora de Vazio
+#      - Vazio
 
 ###
 
 climate:
 
   - platform: generic_thermostat
-    name: Athom P1 CB
+    name: Athom P1 7C
     heater: switch.athom_p1
-    target_sensor: sensor.clock_3a_temp
+    target_sensor: sensor.mho_7c_temp
     min_temp: 15
     max_temp: 21
     ac_mode: false
