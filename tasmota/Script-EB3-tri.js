@@ -19,8 +19,6 @@ smlj=0
 
 >S
 
-; delay modbus mqtt
-
 if cnt==30
 then
 tper=10
@@ -32,12 +30,8 @@ then
 tper=60
 endif
 
-; some vars
-
 time=st(tstamp T 2)
 date=st(tstamp T 1)
-
-clk=sml[3]
 
 if cnt<99
 then
@@ -45,6 +39,8 @@ cnt+=1
 endif
 
 ; modbus watchdog
+
+clk=sml[3]
 
 if cnt==99
 then
@@ -61,9 +57,10 @@ then
 wtd=0
 if old==clk
 then
+; 
 print modbus error
 ; 
-; Backlog SetSensor53 0; SetSensor53 1
+=> Restart -3
 ; 
 endif
 endif
