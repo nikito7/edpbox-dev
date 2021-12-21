@@ -61,10 +61,10 @@ then
 wtd=0
 if old==clk
 then
-=>SetSensor53 0
-delay(100)
-delay(100)
-=>SetSensor53 1
+print modbus error
+; 
+; Backlog SetSensor53 0; SetSensor53 1
+; 
 endif
 endif
 
