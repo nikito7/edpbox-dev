@@ -134,7 +134,6 @@ endif
 1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Total Energy T3 Export ,kWh,TotEneT3Exp,3
 
 1,=h<hr>
-1,=hLoad Profile: Lastest
 
 ; import: 11
 ; import+export: 1d
