@@ -91,8 +91,8 @@ endif
 
 ; 6C
 
-1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,18
-1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,18
+1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,17
+1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,17
 
 1,=h<hr>
 
