@@ -59,7 +59,7 @@
 
   - platform: integration
     source: sensor.fake_export_w
-    name: Fake Export kWh
+    name: Fake Export 2 kWh
     unit_prefix: k
     round: 2
 
