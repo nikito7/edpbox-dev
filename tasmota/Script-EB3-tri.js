@@ -2,7 +2,6 @@
 
 ; EB3
 
-bug="fix"
 time=""
 date=""
 cnt=0
