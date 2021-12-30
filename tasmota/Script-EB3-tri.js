@@ -57,6 +57,7 @@ then
 wtd=0
 if old==clk
 then
+; 
 print modbus error
 ; 
 =>Restart -3
@@ -104,11 +105,11 @@ endif
 
 ; 73
 
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power ,W,ActPow,16
+1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,ActPow,16
 
 1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,16
-1,01041cxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,16
-1,01041cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,16
+1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,16
+1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,16
 
 1,=h<hr>
 
@@ -118,7 +119,7 @@ endif
 
 1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PowFac,19
 1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
-1,01040exxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
+1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
 1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,19
 1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
 
@@ -126,16 +127,16 @@ endif
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TotEneT1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TotEneT2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TotEneT3,1
+1,01040CUUuuUUuu@i4:1000,Energy T1 Vazio ,kWh,TotEneT1,1
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Energy T2 Ponta ,kWh,TotEneT2,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energy T3 Cheias ,kWh,TotEneT3,1
 
 1,=h<hr>
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TotEneImp,17
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TotEneExp,19
+1,010418UUuuUUuu@i5:1000,Energy Import ,kWh,TotEneImp,17
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Energy Export ,kWh,TotEneExp,19
 
 1,=h<hr>
 
