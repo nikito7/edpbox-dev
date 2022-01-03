@@ -136,7 +136,7 @@ generic_hygrostat:
     humidifier: switch.athom_p1
     target_sensor: sensor.mmc_33_hum
     min_humidity: 50
-    max_humidity: 70
+    max_humidity: 90
     target_humidity: 55
     dry_tolerance: 2
     wet_tolerance: 2
@@ -145,7 +145,7 @@ generic_hygrostat:
       seconds: 5
     keep_alive:
       minutes: 5
-    initial_state: false
+    initial_state: true
     away_humidity: 35
     away_fixed: true
     sensor_stale_duration: 00:15:00
