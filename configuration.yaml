@@ -137,7 +137,7 @@ generic_hygrostat:
     target_sensor: sensor.mmc_33_hum
     min_humidity: 50
     max_humidity: 90
-    target_humidity: 55
+    target_humidity: 70
     dry_tolerance: 2
     wet_tolerance: 2
     device_class: "dehumidifier"
