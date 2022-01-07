@@ -93,7 +93,7 @@ sensor monitor:
 climate:
 
   - platform: generic_thermostat
-    name: Heat P1:7C
+    name: Heat P1 7C
     heater: switch.athom_p1
     target_sensor: sensor.mho_7c_temp
     min_temp: 15
@@ -111,7 +111,7 @@ climate:
     precision: 0.1
 
   - platform: generic_thermostat
-    name: Heat P1:GN
+    name: Heat P1 GN
     heater: switch.athom_p1
     target_sensor: sensor.mmc_33_temp
     min_temp: 15
@@ -132,7 +132,7 @@ climate:
 
 generic_hygrostat:
 
-  - name: Humi P1:GN
+  - name: Humi P1 GN
     humidifier: switch.athom_p1
     target_sensor: sensor.mmc_33_hum
     min_humidity: 50
