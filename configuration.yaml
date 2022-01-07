@@ -93,13 +93,13 @@ sensor monitor:
 climate:
 
   - platform: generic_thermostat
-    name: Athom P1 7C
+    name: Heat P1:7C
     heater: switch.athom_p1
     target_sensor: sensor.mho_7c_temp
     min_temp: 15
     max_temp: 21
     ac_mode: false
-    target_temp: 18
+    target_temp: 18.5
     cold_tolerance: 0.2
     hot_tolerance: 0.2
     min_cycle_duration:
@@ -111,13 +111,13 @@ climate:
     precision: 0.1
 
   - platform: generic_thermostat
-    name: Athom P1 GN
+    name: Heat P1:GN
     heater: switch.athom_p1
     target_sensor: sensor.mmc_33_temp
     min_temp: 15
     max_temp: 21
     ac_mode: false
-    target_temp: 18
+    target_temp: 18.5
     cold_tolerance: 0.2
     hot_tolerance: 0.2
     min_cycle_duration:
@@ -132,12 +132,12 @@ climate:
 
 generic_hygrostat:
 
-  - name: Athom P1 GN
+  - name: Humi P1:GN
     humidifier: switch.athom_p1
     target_sensor: sensor.mmc_33_hum
     min_humidity: 50
     max_humidity: 90
-    target_humidity: 65
+    target_humidity: 55
     dry_tolerance: 2
     wet_tolerance: 2
     device_class: "dehumidifier"
@@ -148,7 +148,7 @@ generic_hygrostat:
     initial_state: false
     away_humidity: 50
     away_fixed: true
-    sensor_stale_duration: 02:15:00
+    sensor_stale_duration: 01:15:00
 
 ###
 ##
