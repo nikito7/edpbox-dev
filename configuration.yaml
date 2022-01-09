@@ -4,6 +4,7 @@ default_config:
 
 automation: !include automations.yaml
 scene: !include scenes.yaml
+script: !include scripts.yaml
 
 #notify:
 #  - name: loadprofile
