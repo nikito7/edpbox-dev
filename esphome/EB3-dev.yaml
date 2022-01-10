@@ -16,7 +16,7 @@ esphome:
   #board: esp32dev
 
   platform: ESP8266
-  board: esp07 # 4MB
+  board: esp07s # 4MB
 
 wifi:
 
