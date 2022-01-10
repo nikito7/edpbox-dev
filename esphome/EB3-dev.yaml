@@ -1,6 +1,7 @@
 # Config for three phase meter.
 # ESP32 is required!
 # ESPHome >= 2021.dev.2021.12.02
+# Change to your wifi and uart pins.
 
 substitutions:
 
