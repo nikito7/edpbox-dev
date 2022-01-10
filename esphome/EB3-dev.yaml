@@ -10,9 +10,12 @@ substitutions:
 esphome:
 
   name: ${name}
-  platform: ESP32
+
+  #platform: ESP32
   #board: esp32dev
-  board: esp07 # 4MB esp8266
+
+  platform: ESP8266
+  board: esp07 # 4MB
 
 wifi:
 
