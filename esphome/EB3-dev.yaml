@@ -4,14 +4,15 @@
 
 substitutions:
 
-  dev: EB3
-  name: edpbox3
+  dev: EB3test
+  name: edpbox3test
 
 esphome:
 
   name: ${name}
   platform: ESP32
-  board: esp32dev
+  #board: esp32dev
+  board: esp07 # 4MB esp8266
 
 wifi:
 
@@ -56,8 +57,8 @@ switch:
 uart:
 
   id: modbus_serial
-  rx_pin: 19
-  tx_pin: 18
+  rx_pin: 3
+  tx_pin: 1
   baud_rate: 9600
   stop_bits: 1
 
@@ -70,7 +71,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 20s
+    update_interval: 9s
     address: 0x1
     command_throttle: 1000ms
     setup_priority: -10
