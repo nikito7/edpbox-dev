@@ -10,11 +10,11 @@ esphome:
 
   name: ${name}
 
-  #platform: ESP8266
-  #board: esp01_1m
+  platform: ESP8266
+  board: esp01_1m
 
-  platform: ESP32
-  board: esp32dev
+  #platform: ESP32
+  #board: esp32dev
 
 wifi:
 
@@ -59,8 +59,8 @@ switch:
 uart:
 
   id: modbus_serial
-  rx_pin: 19
-  tx_pin: 18
+  rx_pin: 3
+  tx_pin: 1
   baud_rate: 9600
   stop_bits: 1
 
@@ -73,7 +73,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 20s
+    update_interval: 9s
     address: 0x1
     command_throttle: 1000ms
     setup_priority: -10
