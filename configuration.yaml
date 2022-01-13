@@ -158,8 +158,8 @@ template:
   - sensor:
     - name: "door test"
       state: >-
-        {% set x = states('input_text.porta_aberta')|as_timestamp %}
-        {{ (as_timestamp(now()) - x) | timestamp_custom('%H:%M:%S', false) }}
+        {% set x = states('input_text.porta_aberta') %}
+        {{ (as_timestamp(now()) - as_timestamp(x)) | timestamp_custom('%H:%M:%S', false) }}
       icon: mdi:door
 
 ###
