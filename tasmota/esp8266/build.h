@@ -128,7 +128,7 @@
 #define USE_SML_M
 #define USE_SML_SCRIPT_CMD
 #define SML_MAX_VARS 50
-//#define SML_REPLACE_VARS
+#define SML_REPLACE_VARS
 
 // tcp
 
@@ -137,8 +137,8 @@
 // misc
 
 #define USE_SCRIPT_WEB_DISPLAY
-//#define USE_SCRIPT_JSON_EXPORT
-//#define MAX_METERS 1
-//#define MAXSVARS 10
+#define USE_SCRIPT_JSON_EXPORT
+#define MAX_METERS 2
+#define MAXSVARS 10
 
 // eof
