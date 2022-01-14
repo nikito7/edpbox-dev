@@ -312,13 +312,14 @@ sensor:
     icon: mdi:pulse
 
 ###
+###
 
   - platform: mqtt
     name: "EB3 T1 Vazio"
     unique_id: EB3_TotEneT1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneT1|float(default=-1) %}
+        {% set x = float(value_json.EB3.TotEneT1,-1) %}
         {% if x > 0 %}
           {{ x }}
         {% else %}
