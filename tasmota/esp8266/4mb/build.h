@@ -9,5 +9,7 @@
 #define UFSYS_SIZE 8192
 
 // (...)
-
+//
+// same as 1MB
+// 
 // eof
