@@ -13,6 +13,8 @@
 ; sensor53 d1
 ; sensor53 d0
 
+1,010420uu@i0:1,Test,Test,Test,0
+
 #
 
 ; eof
