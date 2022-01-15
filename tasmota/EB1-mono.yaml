@@ -154,8 +154,10 @@ sensor:
     unit_of_measurement: "Hz"
     icon: mdi:pulse
 
+###
+
   - platform: mqtt
-    name: "EB1 Total Energy T1 Vazio"
+    name: "EB1 T1 Vazio"
     unique_id: EB1_TotEneT1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -167,7 +169,7 @@ sensor:
     icon: mdi:transmission-tower
    
   - platform: mqtt
-    name: "EB1 Total Energy T2 Ponta"
+    name: "EB1 T2 Ponta"
     unique_id: EB1_TotEneT2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -179,7 +181,7 @@ sensor:
     icon: mdi:transmission-tower
     
   - platform: mqtt
-    name: "EB1 Total Energy T3 Cheias"
+    name: "EB1 T3 Cheias"
     unique_id: EB1_TotEneT3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -190,8 +192,10 @@ sensor:
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
 
+###
+
   - platform: mqtt
-    name: "EB1 Total Energy Import"
+    name: "EB1 Import"
     unique_id: EB1_TotEneImp
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -203,7 +207,7 @@ sensor:
     device_class: energy
 
   - platform: mqtt
-    name: "EB1 Total Energy Export"
+    name: "EB1 Export"
     unique_id: EB1_TotEneExp
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
@@ -213,6 +217,8 @@ sensor:
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
+
+###
 
   - platform: mqtt
     name: "EB1 Tariff"
