@@ -13,6 +13,9 @@ esphome:
   #platform: ESP8266
   #board: esp01_1m
 
+  #platform: ESP8266
+  #board: esp07s # 4MB
+
   platform: ESP32
   board: esp32dev
 
@@ -23,17 +26,15 @@ wifi:
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
-#  ssid: my_wifi
-#  password: edpbox123
 
   ap:
     ssid: "Fallback ${dev}"
-    password: edpbox123
+    password: !secret wifi_key
 
 captive_portal:
 
 web_server:
-  css_url: https://nikito7.github.io/s/edpbox-v1.css?2
+  css_url: https://nikito7.github.io/s/edpbox-v1.css?3
 
 #logger:
 #  level: verbose
@@ -59,8 +60,8 @@ switch:
 uart:
 
   id: modbus_serial
-  rx_pin: 3
-  tx_pin: 1
+  rx_pin: 19
+  tx_pin: 18
   baud_rate: 9600
   stop_bits: 1
 
