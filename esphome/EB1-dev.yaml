@@ -10,11 +10,11 @@ esphome:
 
   name: ${name}
 
-  platform: ESP8266
-  board: esp01_1m
+  #platform: ESP8266
+  #board: esp01_1m
 
-  #platform: ESP32
-  #board: esp32dev
+  platform: ESP32
+  board: esp32dev
 
 wifi:
 
