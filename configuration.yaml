@@ -154,14 +154,6 @@ generic_hygrostat:
 
 ###
 
-template:
-  - sensor:
-    - name: "door test"
-      state: >-
-        {% set x = states('input_text.porta_aberta') %}
-        {{ ( as_timestamp(now())|int(0) - as_timestamp(x)|int(0) ) | int(0) | timestamp_custom('%H:%M:%S', false) }}
-      icon: mdi:door
-
 ###
 ##
 #
