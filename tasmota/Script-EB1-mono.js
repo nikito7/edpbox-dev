@@ -75,10 +75,7 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;   v  v             v
-+1,19,mN1,1,9600,EB1,18,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002,r0104002D0003,r01440601
-
-; import: r01440301
-; import+export: r01440601
++1,19,mN1,1,9600,EB1,18,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002
 
 ; 01
 
@@ -97,16 +94,16 @@ endif
 
 ; 16
 
-1,010408UUuuUUuu@i2:1000,Total Energy Import ,kWh,TotEneImp,1
-1,010408xxxxxxxxUUuuUUuu@i2:1000,Total Energy Export ,kWh,TotEneExp,1
+1,010408UUuuUUuu@i2:1000,Energy Import ,kWh,TotEneImp,3
+1,010408xxxxxxxxUUuuUUuu@i2:1000,Energy Export ,kWh,TotEneExp,3
 
 1,=h<hr>
 
 ; 26
 
-1,01040CUUuuUUuu@i3:1000,Total Energy T1 Vazio ,kWh,TotEneT1,1
-1,01040CxxxxxxxxUUuuUUuu@i3:1000,Total Energy T2 Ponta ,kWh,TotEneT2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Total Energy T3 Cheias ,kWh,TotEneT3,1
+1,01040CUUuuUUuu@i3:1000,Energy T1 Vazio ,kWh,TotEneT1,3
+1,01040CxxxxxxxxUUuuUUuu@i3:1000,Energy T2 Ponta ,kWh,TotEneT2,3
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Energy T3 Cheias ,kWh,TotEneT3,3
 
 1,=h<hr>
 
@@ -125,26 +122,6 @@ endif
 1,010406uu@i6:1,Tariff ,,Tariff,0
 
 1,=h<hr>
-
-; 2D
-
-1,01040CUUuuUUuu@i7:1000,Total Energy T1 Export ,kWh,TotEneT1Exp,3
-1,01040CxxxxxxxxUUuuUUuu@i7:1000,Total Energy T2 Export ,kWh,TotEneT2Exp,3
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,Total Energy T3 Export ,kWh,TotEneT3Exp,3
-
-1,=h<hr>
-
-; import: 11
-; import+export: 1d
-
-1,01441dUUuu@i8:1,Y ,,LP_Y,0
-1,01441dxxxxuu@i8:1,M ,,LP_M,0
-1,01441dxxxxxxuu@i8:1,D ,,LP_D,0
-1,01441dxxxxxxxxxxuu@i8:1,HH ,h,LP_HH,0
-1,01441dxxxxxxxxxxxxuu@i8:1,MM ,m,LP_MM,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i8:1000,Import Inc ,kWh,LP_IMP,3
-
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i8:1000,Export Inc ,kWh,LP_EXP,3
 
 #
 
