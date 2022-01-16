@@ -51,7 +51,7 @@ then
 old=sml[3]
 endif
 
-if wtd==99
+if wtd==50
 then
 wtd=0
 if old==clk
