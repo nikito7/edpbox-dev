@@ -160,6 +160,13 @@ sensor gps:
   - platform: gpsd
     host: 10.1.0.79
 
+  - platform: template
+    sensors:
+      gps_altitude:
+        friendly_name: "Altitude"
+        unit_of_measurement: m
+        value_template: "{{ state_attr('sensor.gps', 'altitude') | round(0) }}"
+
 ###
 ##
 #
