@@ -155,6 +155,11 @@ generic_hygrostat:
 
 ###
 
+sensor gps:
+
+  - platform: gpsd
+    host: 10.1.0.78
+
 ###
 ##
 #
