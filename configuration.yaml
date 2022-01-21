@@ -165,7 +165,7 @@ sensor gps:
       gps_elevation:
         friendly_name: "Elevation"
         unit_of_measurement: m
-        value_template: "{{ state_attr('sensor.gps', 'elevation') | round(0) }}"
+        value_template: "{{ state_attr('sensor.gps', 'elevation') | round(1) }}"
 
 ###
 ##
