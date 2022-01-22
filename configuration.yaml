@@ -73,23 +73,29 @@ sensor monitor:
 
 ###
 
-#utility_meter:
+utility_meter:
 
 # example for erse users
 
-#  utm_mensal:
-#    source: sensor.eb3_import
-#    cycle: monthly
-#    tariffs:
-#      - Fora de Vazio
-#      - Vazio
+  utm_mensal:
+    source: sensor.eb3_import
+    cycle: monthly
+    tariffs:
+      - Fora de Vazio
+      - Vazio
 
-#  utm_diario:
-#    source: sensor.eb3_import
-#    cycle: daily
-#    tariffs:
-#      - Fora de Vazio
-#      - Vazio
+  utm_mensal_simples:
+    source: sensor.eb3_import
+    cycle: monthly
+    tariffs:
+      - Normal
+
+  utm_diario:
+    source: sensor.eb3_import
+    cycle: daily
+    tariffs:
+      - Fora de Vazio
+      - Vazio
 
 ###
 
@@ -154,18 +160,6 @@ generic_hygrostat:
     sensor_stale_duration: 01:15:00
 
 ###
-
-sensor gps:
-
-  - platform: gpsd
-    host: 10.1.0.79
-
-  - platform: template
-    sensors:
-      gps_elevation:
-        friendly_name: "Elevation"
-        unit_of_measurement: m
-        value_template: "{{ state_attr('sensor.gps', 'elevation') | round(1) }}"
 
 ###
 ##
