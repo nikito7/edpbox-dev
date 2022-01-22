@@ -9,5 +9,7 @@ rm master.zip
 mkdir translations
 mv en.json translations/
 mv pt.json translations/
-ls -a && ha core restart
+ls -a
+sleep 1
+ha core restart
 ```
