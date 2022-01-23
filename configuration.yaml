@@ -168,7 +168,7 @@ sensor gps:
       gps_accuracy:
         friendly_name: "GPS Accuracy"
         unit_of_measurement: m
-        value_template: "{{ state_attr('device_tracker.s7', 'GPS Accuracy') | int }}"
+        value_template: "{{ state_attr('device_tracker.s7', 'GPS accuracy') | int(-1) }}"
 
 ###
 ##
