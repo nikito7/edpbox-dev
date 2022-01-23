@@ -161,6 +161,15 @@ generic_hygrostat:
 
 ###
 
+sensor gps:
+
+  - platform: template
+    sensors:
+      gps_elevation:
+        friendly_name: "Elevation"
+        unit_of_measurement: m
+        value_template: "{{ state_attr('device_tracker.s7', 'GPS Accuracy') | int }}"
+
 ###
 ##
 #
