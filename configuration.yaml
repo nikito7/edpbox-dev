@@ -167,9 +167,9 @@ sensor gps:
     sensors:
       gps_accuracy:
         friendly_name: "GPS Accuracy"
-        unit_of_measurement: m
+        unit_of_measurement: "m"
         value_template: "{{ state_attr('device_tracker.s7', 'gps_accuracy') | int(0) }}"
-        icon_template: mdi:radar
+        icon_template: "mdi:bullseye"
 
 ###
 
