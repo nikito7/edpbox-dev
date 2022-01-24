@@ -5,11 +5,8 @@
 time=""
 date=""
 cnt=0
-clk=0
-wtd=0
-old=0
 
->B
+>BS
 
 tper=60
 smlj=0
@@ -26,7 +23,7 @@ endif
 
 if cnt==50
 then
-tper=60
+tper=30
 endif
 
 time=st(tstamp T 2)
@@ -37,38 +34,10 @@ then
 cnt+=1
 endif
 
-; modbus watchdog
-
-clk=sml[3]
-
-if cnt==99
-then
-wtd+=1
-endif
-
-if wtd==1
-then
-old=sml[3]
-endif
-
-if wtd==50
-then
-wtd=0
-if old==clk
-then
-; 
-print modbus error
-; 
-=>Restart -3
-; 
-endif
-endif
-
 >W
 
 @<b>NTP: </b> %date% %time%
 @<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Vars: </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<hr>
 
 >M 1
