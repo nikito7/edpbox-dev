@@ -168,31 +168,10 @@ sensor gps:
       gps_accuracy:
         friendly_name: "GPS Accuracy"
         unit_of_measurement: m
-        value_template: "{{ state_attr('device_tracker.s7', 'gps_accuracy') | int(-1) }}"
+        value_template: "{{ state_attr('device_tracker.s7', 'gps_accuracy') | int(0) }}"
+        icon_template: mdi:radar
 
 ###
-
-modbus:
-
-  - name: test
-    type: tcp
-    host: 10.1.0.38
-    port: 9502
-    delay: 1
-    timeout: 3
-    retries: 3
-    retry_on_empty: true
-    message_wait_milliseconds: 200
-  
-    sensors:
-
-      - name: "EB99 test"
-        slave: 1
-        address: 1
-        input_type: input
-        count: 1
-        data_type: uint16
-        scan_interval: 5
 
 ###
 ##
