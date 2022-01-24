@@ -48,7 +48,8 @@ sensor:
     state_topic: "tele/edpbox3/STATE"
     value_template: '{{ value_json.Vcc|float(0.0) }}'
     unit_of_measurement: "V"
-    device_class: voltage 
+    device_class: voltage
+    state_class: measurement
 
 ###
 
