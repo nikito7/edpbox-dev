@@ -171,6 +171,31 @@ sensor gps:
         value_template: "{{ state_attr('device_tracker.s7', 'gps_accuracy') | int(-1) }}"
 
 ###
+
+modbus:
+
+  - name: test
+    type: tcp
+    host: 10.1.0.38
+    port: 9502
+    delay: 1
+    timeout: 3
+    retries: 3
+    retry_on_empty: true
+    message_wait_milliseconds: 200
+  
+    sensors:
+
+      - name: "EB3 0x0001" # Clock
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">H7BhB"
+        scan_interval: 5
+
+###
 ##
 #
 
