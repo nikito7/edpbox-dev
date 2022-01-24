@@ -186,7 +186,7 @@ modbus:
   
     sensors:
 
-      - name: "EB3 0x0001" # Clock
+      - name: "EB99 0x0001" # Clock
         slave: 1
         address: 1
         input_type: input
