@@ -33,9 +33,6 @@ sensor:
     value_template: '{{ value_json.Heap }}'
     unit_of_measurement: "kB"
     icon: mdi:chip
-    availability_topic: "tele/edpbox3/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
 
   - platform: mqtt
     name: "EB3 ESP Signal"
@@ -44,9 +41,14 @@ sensor:
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     device_class: signal_strength
-    availability_topic: "tele/edpbox3/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+
+  - platform: mqtt
+    name: "EB3 ESP Vcc"
+    unique_id: EB3_ESP_Vcc
+    state_topic: "tele/edpbox3/STATE"
+    value_template: '{{ value_json.Vcc|float(0.0) }}'
+    unit_of_measurement: "V"
+    device_class: voltage 
 
 ###
 
