@@ -22,7 +22,7 @@ homeassistant:
 
   customize: !include customize.yaml
   packages:
-    eb1tasmota: !include pkg/eb1tasmota.yaml
+    #eb1tasmota: !include pkg/eb1tasmota.yaml
     #eb3modbus: !include pkg/eb3modbus.yaml
     eb3tasmota: !include pkg/eb3tasmota.yaml
     private: !include pkg/private.yaml
@@ -35,7 +35,7 @@ http:
 
 recorder:
 
-  purge_keep_days: 3
+  purge_keep_days: 2
   db_url: mysql://hassio:hassio@10.1.0.71/homeassistant?charset=utf8
   exclude:
     entities:
