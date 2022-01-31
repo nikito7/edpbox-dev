@@ -1,7 +1,5 @@
 >D
 
-; EB1 mono
-
 time=""
 date=""
 cnt=0
