@@ -1,7 +1,7 @@
 Install:
 
 ```js
-vv=2022.2-015
+vv=2022.2.017
 file=c-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/custom/${file}
 mkdir -p /config/custom_components/modbus/
