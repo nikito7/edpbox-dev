@@ -1,6 +1,6 @@
 Custom:
 
-- adds "register_size" in bytes
+- adds "standard_size" yes/no
 
 Usage:
 
@@ -11,7 +11,7 @@ Usage:
         input_type: input
         count: 1
         data_type: custom
-        register_size: 12
+        standard_size: no
         structure: ">H7BhB"
         scan_interval: 7
 ```
@@ -19,7 +19,7 @@ Usage:
 Install:
 
 ```js
-vv=21.10.012
+vv=2022.2-011
 file=c-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/custom/${file}
 mkdir -p /config/custom_components/modbus/
