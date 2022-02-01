@@ -24,7 +24,7 @@ homeassistant:
   packages:
     #eb1tasmota: !include pkg/eb1tasmota.yaml
     #eb3modbus: !include pkg/eb3modbus.yaml
-    eb3tasmota: !include pkg/eb3tasmota.yaml
+    #eb3tasmota: !include pkg/eb3tasmota.yaml
     private: !include pkg/private.yaml
 
 http:
@@ -136,28 +136,6 @@ climate:
     initial_hvac_mode: "off"
     away_temp: 16
     precision: 0.1
-
-###
-
-generic_hygrostat:
-
-  - name: Humi P1 GN
-    humidifier: switch.athom_p1
-    target_sensor: sensor.mmc_33_hum
-    min_humidity: 50
-    max_humidity: 90
-    target_humidity: 55
-    dry_tolerance: 2
-    wet_tolerance: 2
-    device_class: "dehumidifier"
-    min_cycle_duration:
-      seconds: 5
-    keep_alive:
-      minutes: 3
-    initial_state: false
-    away_humidity: 50
-    away_fixed: true
-    sensor_stale_duration: 01:15:00
 
 ###
 
