@@ -4,7 +4,7 @@ modbus:
 
   - name: edpbox3
     type: tcp
-    host: 10.1.0.50
+    host: 10.1.0.47
     port: 9502
     delay: 1
     timeout: 5
