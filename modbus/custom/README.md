@@ -1,6 +1,6 @@
 Custom:
 
-- adds "standard_size" yes/no
+- adds "standard_size": yes/no.
 
 Usage:
 
