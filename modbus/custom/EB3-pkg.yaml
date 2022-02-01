@@ -20,9 +20,8 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        register_size: 12
+        standard_size: no
         structure: ">H7BhB"
-        scan_interval: 7
 
       - name: "EB3 Firmware"
         slave: 1
@@ -30,8 +29,8 @@ modbus:
         input_type: input
         count: 2
         data_type: string
-        register_size: 6
-        scan_interval: 35
+        standard_size: no
+        scan_interval: 30
 
       - name: "EB3 0x006C" # V/A
         slave: 1
@@ -48,7 +47,7 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
-        register_size: 4
+        standard_size: no
         structure: ">7L"
         scan_interval: 9
 
@@ -58,7 +57,6 @@ modbus:
         input_type: input
         count: 5
         data_type: custom
-        register_size: 2
         structure: ">5H"
         scan_interval: 11
 
@@ -68,7 +66,7 @@ modbus:
         input_type: input
         count: 3
         data_type: custom
-        register_size: 4
+        standard_size: no
         structure: ">3L"
         scan_interval: 31
 
@@ -78,7 +76,7 @@ modbus:
         input_type: input
         count: 6
         data_type: custom
-        register_size: 4
+        standard_size: no
         structure: ">6L"
         scan_interval: 32
 
