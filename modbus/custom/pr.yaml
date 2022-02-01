@@ -18,6 +18,7 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
+        standard_size: yes # default
         structure: ">7H"
 
       - name: "EB3 0x0073" # Power
@@ -26,6 +27,16 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
+        standard_size: no
         structure: ">7L"
+
+      - name: "EB3 0x0001" # Clock
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        standard_size: no
+        structure: ">H7BhB"
 
 #
