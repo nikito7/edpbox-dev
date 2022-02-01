@@ -1,3 +1,7 @@
+Info:
+
+ - Adds 'standard_size': yes/no.
+
 Install:
 
 ```js
