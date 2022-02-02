@@ -23,7 +23,7 @@ homeassistant:
   customize: !include customize.yaml
   packages:
     #eb1tasmota: !include pkg/eb1tasmota.yaml
-    eb3modbus: !include pkg/eb3modbus.yaml
+    modbus3: !include pkg/modbus3.yaml
     #eb3tasmota: !include pkg/eb3tasmota.yaml
     private: !include pkg/private.yaml
 
