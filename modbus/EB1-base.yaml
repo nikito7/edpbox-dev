@@ -6,7 +6,7 @@
 
   - name: edpbox1
     type: tcp
-    host: 10.3.0.223
+    host: 10.1.0.47
     port: 9502
     delay: 2
     timeout: 5
