@@ -1,11 +1,7 @@
-Info:
-
- - Adds 'register_size'
-
 Install:
 
 ```js
-vv=2022.2.022
+vv=2022.2.023
 file=c-${vv}.zip
 url=https://github.com/nikito7/edpbox/raw/dev/modbus/custom/${file}
 mkdir -p /config/custom_components/modbus/
@@ -19,7 +15,7 @@ rm $file
 ls -a
 pwd
 sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
-ha core restart
+#ha core restart
 ```
 
 
