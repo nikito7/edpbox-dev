@@ -53,7 +53,7 @@ modbus:
 
       - name: "EBpr Power 2"
         slave: 1
-        address: 121
+        address: 122
         input_type: input
         count: 1
         data_type: uint32
@@ -65,7 +65,7 @@ modbus:
 
       - name: "EBpr Power 3"
         slave: 1
-        address: 115
+        address: 123
         input_type: input
         count: 1
         data_type: custom
