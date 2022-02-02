@@ -168,7 +168,7 @@
         input_type: input
         count: 1
         data_type: custom
-        register_size: 12
+        standard_size: no
         structure: ">H7BhB"
         scan_interval: 7
 
@@ -187,7 +187,7 @@
         input_type: input
         count: 1
         data_type: custom
-        register_size: 8
+        standard_size: no
         structure: ">6Bxx"
         scan_interval: 30
 
@@ -197,7 +197,7 @@
         input_type: input
         count: 1
         data_type: custom
-        register_size: 4
+        standard_size: no
         structure: ">I"
         scan_interval: 30
 
@@ -207,7 +207,7 @@
         input_type: input
         count: 2
         data_type: custom
-        register_size: 4
+        standard_size: no
         structure: ">2I"
         scan_interval: 30
 
