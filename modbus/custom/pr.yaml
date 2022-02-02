@@ -45,7 +45,7 @@ modbus:
         address: 38
         input_type: input
         count: 1
-        data_type: uint32
+        data_type: uint32 # Just work. Default
         precision: 0
         scale: 1
         unit_of_measurement: W
@@ -57,7 +57,7 @@ modbus:
         input_type: input
         count: 1
         data_type: uint32
-        register_size: 3
+        register_size: 3 # no error, its ignored
         precision: 0
         scale: 1
         unit_of_measurement: W
