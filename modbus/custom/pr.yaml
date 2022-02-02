@@ -78,7 +78,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        register_size: 3
+        register_size: 4 # 3 to fail
         structure: ">L"
 
       - name: "EBpr Power 5"
@@ -87,6 +87,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
+        register_size: 4 # remove line to fail
         structure: ">L"
 
 #
