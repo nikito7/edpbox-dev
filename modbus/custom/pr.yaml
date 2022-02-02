@@ -38,4 +38,55 @@ modbus:
         register_size: 12
         structure: ">H7BhB"
 
+# tests
+
+      - name: "EBpr Power 1"
+        slave: 1
+        address: 121
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 0
+        scale: 1
+        unit_of_measurement: W
+        device_class: power
+
+      - name: "EBpr Power 2"
+        slave: 1
+        address: 121
+        input_type: input
+        count: 1
+        data_type: uint32
+        register_size: 3
+        precision: 0
+        scale: 1
+        unit_of_measurement: W
+        device_class: power
+
+      - name: "EBpr Power 3"
+        slave: 1
+        address: 115
+        input_type: input
+        count: 1
+        data_type: custom
+        register_size: 4
+        structure: ">L"
+
+      - name: "EBpr Power 4"
+        slave: 1
+        address: 115
+        input_type: input
+        count: 1
+        data_type: custom
+        register_size: 3
+        structure: ">L"
+
+      - name: "EBpr Power 5"
+        slave: 1
+        address: 115
+        input_type: input
+        count: 1
+        data_type: custom
+        structure: ">L"
+
 #
