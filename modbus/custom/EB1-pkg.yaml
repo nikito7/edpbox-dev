@@ -167,7 +167,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        standard_size: no
+        register_size: 12
         structure: ">H7BhB"
         scan_interval: 5
 
@@ -186,7 +186,7 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        standard_size: no
+        register_size: 8
         structure: ">6Bxx"
         scan_interval: 32
 
@@ -196,8 +196,8 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        standard_size: no
-        structure: ">I"
+        register_size: 4
+        structure: ">L"
         scan_interval: 33
 
       - name: "EB1 0x0082"
@@ -206,8 +206,8 @@ modbus:
         input_type: input
         count: 2
         data_type: custom
-        standard_size: no
-        structure: ">2I"
+        register_size: 4
+        structure: ">2L"
         scan_interval: 34
 
 # strings
