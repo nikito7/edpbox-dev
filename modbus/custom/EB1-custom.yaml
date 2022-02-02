@@ -1,12 +1,12 @@
-# /config/files/modbus.yaml
+# package
 # edpbox1
 # custom
 
-#modbus:
+modbus:
 
   - name: edpbox1
     type: tcp
-    host: 10.3.0.223
+    host: 10.1.0.47
     port: 9502
     delay: 1
     timeout: 5
@@ -220,5 +220,37 @@
         count: 1
         data_type: string
         scan_interval: 900
+
+
+# edpbox mono templates custom
+
+sensor:
+
+  - platform: template
+    sensors:
+
+      eb1_tariff:
+        friendly_name: "EB1 Tariff"
+        value_template: >-
+          {% set x = states('sensor.eb1_0x000b')|string %}
+          {% if x == "1" %}
+            {{ "Vazio" }}
+          {% elif x == "2" %}
+            {{ "Ponta" }}
+          {% elif x == "3" %}
+            {{ "Cheias" }}
+          {% endif %}
+        icon_template: mdi:counter
+
+      eb1_clock:
+        friendly_name: "EB1 Clock"
+        value_template: >-
+            {% set hh = states('sensor.eb1_0x0001').split(',')[4] | int %}
+            {% set mm = states('sensor.eb1_0x0001').split(',')[5] | int %}
+            {% set ss = states('sensor.eb1_0x0001').split(',')[6] | int %}
+            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+        icon_template: mdi:clock
+
+# EOF
 
 # EOF
