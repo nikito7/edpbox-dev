@@ -74,7 +74,7 @@ modbus:
 
       - name: "EBpr Power 4"
         slave: 1
-        address: 115
+        address: 38
         input_type: input
         count: 1
         data_type: custom
@@ -83,7 +83,7 @@ modbus:
 
       - name: "EBpr Power 5"
         slave: 1
-        address: 115
+        address: 39
         input_type: input
         count: 1
         data_type: custom
