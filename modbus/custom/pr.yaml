@@ -26,7 +26,6 @@ modbus:
         input_type: input
         count: 7
         data_type: custom
-        register_size: 4
         structure: ">7L"
 
       - name: "EBpr 0x0001" # Clock
@@ -35,59 +34,5 @@ modbus:
         input_type: input
         count: 1
         data_type: custom
-        register_size: 12
         structure: ">H7BhB"
-
-# tests
-
-      - name: "EBpr Power 1"
-        slave: 1
-        address: 38
-        input_type: input
-        count: 1
-        data_type: uint32 # Just work. Default
-        precision: 0
-        scale: 1
-        unit_of_measurement: W
-        device_class: power
-
-      - name: "EBpr Power 2"
-        slave: 1
-        address: 39
-        input_type: input
-        count: 1
-        data_type: uint32
-        register_size: 3 # no error, its ignored
-        precision: 0
-        scale: 1
-        unit_of_measurement: W
-        device_class: power
-
-      - name: "EBpr Power 3"
-        slave: 1
-        address: 40
-        input_type: input
-        count: 1
-        data_type: custom
-        register_size: 4
-        structure: ">L"
-
-#      - name: "EBpr Power 4"
-#        slave: 1
-#        address: 38
-#        input_type: input
-#        count: 1
-#        data_type: custom
-#        register_size: 4 # 3 to fail
-#        structure: ">L"
-
-#      - name: "EBpr Power 5"
-#        slave: 1
-#        address: 39
-#        input_type: input
-#        count: 1
-#        data_type: custom
-#        register_size: 4 # remove line to fail
-#        structure: ">L"
-
 #
