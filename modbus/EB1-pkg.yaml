@@ -7,11 +7,11 @@ modbus:
     type: tcp
     host: 10.1.0.47
     port: 9502
-    delay: 2
-    timeout: 5
-    retries: 5
-    retry_on_empty: false
-    message_wait_milliseconds: 200
+    delay: 1
+    timeout: 3
+    retries: 3
+    retry_on_empty: true
+    message_wait_milliseconds: 750
 
     sensors:
 
@@ -199,7 +199,5 @@ sensor tpleb1:
             {{ "Cheias" }}
           {% endif %}
         icon_template: mdi:calendar
-
-# EOF
 
 # EOF
