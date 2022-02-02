@@ -180,4 +180,26 @@ modbus:
         data_type: string
         scan_interval: 44
 
+# edpbox mono templates
+
+sensor tpleb1:
+
+  - platform: template
+    sensors:
+
+      eb1_tariff:
+        friendly_name: "EB1 Tariff"
+        value_template: >-
+          {% set x = states('sensor.eb1_0x000b')|string %}
+          {% if x == "1" %}
+            {{ "Vazio" }}
+          {% elif x == "2" %}
+            {{ "Ponta" }}
+          {% elif x == "3" %}
+            {{ "Cheias" }}
+          {% endif %}
+        icon_template: mdi:calendar
+
+# EOF
+
 # EOF
