@@ -1,5 +1,4 @@
-# package
-# edpbox1
+# edpbox1 package
 # custom
 
 modbus:
@@ -9,10 +8,10 @@ modbus:
     host: 10.1.0.47
     port: 9502
     delay: 1
-    timeout: 5
-    retries: 5
+    timeout: 3
+    retries: 3
     retry_on_empty: true
-    message_wait_milliseconds: 200
+    message_wait_milliseconds: 750
 
     sensors:
 
@@ -26,7 +25,7 @@ modbus:
         scale: 0.1
         unit_of_measurement: V
         device_class: voltage
-        scan_interval: 300
+        scan_interval: 31
 
       - name: "EB1 Current L1" # 6D
         slave: 1
@@ -38,7 +37,7 @@ modbus:
         scale: 0.1
         unit_of_measurement: A
         device_class: current
-        scan_interval: 300
+        scan_interval: 32
 
       - name: "EB1 Active Power" # 79
         slave: 1
@@ -50,7 +49,7 @@ modbus:
         scale: 1
         unit_of_measurement: W
         device_class: power
-        scan_interval: 300
+        scan_interval: 33
 
       - name: "EB1 Power Export" # 7A
         slave: 1
@@ -62,7 +61,7 @@ modbus:
         scale: 1
         unit_of_measurement: W
         device_class: power
-        scan_interval: 300
+        scan_interval: 34
 
       - name: "EB1 Power Factor" # 7B
         slave: 1
@@ -74,7 +73,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: pu
         device_class: power_factor
-        scan_interval: 300
+        scan_interval: 35
 
       - name: "EB1 Frequency" # 7F
         slave: 1
@@ -85,7 +84,7 @@ modbus:
         precision: 1
         scale: 0.1
         unit_of_measurement: Hz
-        scan_interval: 900
+        scan_interval: 50
 
       - name: "EB1 T1 Vazio" # 26
         slave: 1
@@ -97,7 +96,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 900
+        scan_interval: 51
 
       - name: "EB1 T2 Ponta" # 27
         slave: 1
@@ -109,7 +108,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 900
+        scan_interval: 52
 
       - name: "EB1 T3 Cheias" # 28
         slave: 1
@@ -121,7 +120,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 900
+        scan_interval: 53
 
       - name: "EB1 Import" # 16
         slave: 1
@@ -133,7 +132,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 900
+        scan_interval: 54
 
       - name: "EB1 Export" # 17
         slave: 1
@@ -145,7 +144,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
-        scan_interval: 900
+        scan_interval: 55
 
 ###
 
@@ -158,7 +157,7 @@ modbus:
         precision: 3
         scale: 0.001
         unit_of_measurement: kVAr
-        scan_interval: 900
+        scan_interval: 56
 
 # templates
 
@@ -170,7 +169,7 @@ modbus:
         data_type: custom
         standard_size: no
         structure: ">H7BhB"
-        scan_interval: 7
+        scan_interval: 5
 
       - name: "EB1 0x000B" # Tariff
         slave: 1
@@ -179,7 +178,7 @@ modbus:
         count: 1
         data_type: custom
         structure: ">Bx"
-        scan_interval: 30
+        scan_interval: 31
 
       - name: "EB1 0x0080"
         slave: 1
@@ -189,7 +188,7 @@ modbus:
         data_type: custom
         standard_size: no
         structure: ">6Bxx"
-        scan_interval: 30
+        scan_interval: 32
 
       - name: "EB1 0x0081"
         slave: 1
@@ -199,7 +198,7 @@ modbus:
         data_type: custom
         standard_size: no
         structure: ">I"
-        scan_interval: 30
+        scan_interval: 33
 
       - name: "EB1 0x0082"
         slave: 1
@@ -209,7 +208,7 @@ modbus:
         data_type: custom
         standard_size: no
         structure: ">2I"
-        scan_interval: 30
+        scan_interval: 34
 
 # strings
 
@@ -219,7 +218,7 @@ modbus:
         input_type: input
         count: 1
         data_type: string
-        scan_interval: 900
+        scan_interval: 35
 
 
 # edpbox mono templates custom
@@ -250,7 +249,5 @@ sensor:
             {% set ss = states('sensor.eb1_0x0001').split(',')[6] | int %}
             {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
         icon_template: mdi:clock
-
-# EOF
 
 # EOF
