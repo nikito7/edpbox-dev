@@ -12,7 +12,7 @@ modbus:
   
     sensors:
 
-      - name: "EB3 0x006C" # V/A
+      - name: "EBpr 0x006C" # V/A
         slave: 1
         address: 108
         input_type: input
@@ -20,7 +20,7 @@ modbus:
         data_type: custom
         structure: ">7H"
 
-      - name: "EB3 0x0073" # Power
+      - name: "EBpr 0x0073" # Power
         slave: 1
         address: 115
         input_type: input
@@ -29,7 +29,7 @@ modbus:
         register_size: 4
         structure: ">7L"
 
-      - name: "EB3 0x0001" # Clock
+      - name: "EBpr 0x0001" # Clock
         slave: 1
         address: 1
         input_type: input
