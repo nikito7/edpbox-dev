@@ -42,7 +42,7 @@ modbus:
 
       - name: "EBpr Power 1"
         slave: 1
-        address: 121
+        address: 38
         input_type: input
         count: 1
         data_type: uint32
@@ -53,7 +53,7 @@ modbus:
 
       - name: "EBpr Power 2"
         slave: 1
-        address: 122
+        address: 39
         input_type: input
         count: 1
         data_type: uint32
@@ -65,29 +65,29 @@ modbus:
 
       - name: "EBpr Power 3"
         slave: 1
-        address: 123
+        address: 40
         input_type: input
         count: 1
         data_type: custom
         register_size: 4
         structure: ">L"
 
-      - name: "EBpr Power 4"
-        slave: 1
-        address: 38
-        input_type: input
-        count: 1
-        data_type: custom
-        register_size: 4 # 3 to fail
-        structure: ">L"
+#      - name: "EBpr Power 4"
+#        slave: 1
+#        address: 38
+#        input_type: input
+#        count: 1
+#        data_type: custom
+#        register_size: 4 # 3 to fail
+#        structure: ">L"
 
-      - name: "EBpr Power 5"
-        slave: 1
-        address: 39
-        input_type: input
-        count: 1
-        data_type: custom
-        register_size: 4 # remove line to fail
-        structure: ">L"
+#      - name: "EBpr Power 5"
+#        slave: 1
+#        address: 39
+#        input_type: input
+#        count: 1
+#        data_type: custom
+#        register_size: 4 # remove line to fail
+#        structure: ">L"
 
 #
