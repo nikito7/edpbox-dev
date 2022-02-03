@@ -10,6 +10,8 @@ switch:
     payload_on: "1"
     payload_available: "Online"
     payload_not_available: "Offline"
+    device:
+      identifiers: "ha_device_001"
 
 ###
 
