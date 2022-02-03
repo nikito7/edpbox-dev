@@ -11,8 +11,6 @@ switch:
     payload_on: "1"
     payload_available: "Online"
     payload_not_available: "Offline"
-    device:
-      identifiers: "eb_discovery"
 
 ###
 
@@ -25,8 +23,6 @@ sensor:
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:alarm
-    device:
-      identifiers: "eb_discovery"
 
   - platform: mqtt
     name: "EB1 ESP Free Heap"
@@ -35,8 +31,6 @@ sensor:
     value_template: '{{ value_json.Heap }}'
     unit_of_measurement: "kB"
     icon: mdi:chip
-    device:
-      identifiers: "eb_discovery"
 
   - platform: mqtt
     name: "EB1 ESP Signal"
@@ -45,8 +39,6 @@ sensor:
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     device_class: signal_strength
-    device:
-      identifiers: "eb_discovery"
 
 ###
 
