@@ -109,9 +109,9 @@ template:
     - name: "EB3 Clock"
       state: >-
         {% if states('sensor.eb3_0x0001') is defined %}
-          {% set hh = states('sensor.eb3_0x0001').split(',')[4] | int %}
-          {% set mm = states('sensor.eb3_0x0001').split(',')[5] | int %}
-          {% set ss = states('sensor.eb3_0x0001').split(',')[6] | int %}
+          {% set hh = states('sensor.eb3_0x0001').split(',')[4] | int(0) %}
+          {% set mm = states('sensor.eb3_0x0001').split(',')[5] | int(0) %}
+          {% set ss = states('sensor.eb3_0x0001').split(',')[6] | int(0) %}
           {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
         {% else %}
           {{ states('sensor.eb3_clock') }}
@@ -122,7 +122,7 @@ template:
 
     - name: "EB3 Import"
       state: >-
-        {% set x = states('sensor.eb3_0x0016').split(',')[0] | float %}
+        {% set x = states('sensor.eb3_0x0016').split(',')[0] | float(0) %}
         {% if x > 0 %}
           {{ (x / 1000) | round(1) }}
         {% else %}
@@ -134,7 +134,7 @@ template:
 
     - name: "EB3 Export"
       state: >-
-        {% set x = states('sensor.eb3_0x0016').split(',')[1] | float %}
+        {% set x = states('sensor.eb3_0x0016').split(',')[1] | float(0) %}
         {% if x > 0 %}
           {{ (x / 1000) | round(3) }}
         {% else %}
@@ -148,7 +148,7 @@ template:
 
     - name: "EB3 T1 Vazio"
       state: >-
-        {% set x = states('sensor.eb3_0x0026').split(',')[0] | float %}
+        {% set x = states('sensor.eb3_0x0026').split(',')[0] | float(0) %}
         {% if x > 0 %}
             {{ (x / 1000) | round(1) }}
         {% else %}
@@ -160,7 +160,7 @@ template:
 
     - name: "EB3 T2 Ponta"
       state: >-
-        {% set x = states('sensor.eb3_0x0026').split(',')[1] | float %}
+        {% set x = states('sensor.eb3_0x0026').split(',')[1] | float(0) %}
         {% if x > 0 %}
           {{ (x / 1000) | round(1) }}
         {% else %}
@@ -172,7 +172,7 @@ template:
 
     - name: "EB3 T3 Cheias"
       state: >-
-        {% set x = states('sensor.eb3_0x0026').split(',')[2] | float %}
+        {% set x = states('sensor.eb3_0x0026').split(',')[2] | float(0) %}
         {% if x > 0 %}
           {{ (x / 1000) | round(1) }}
         {% else %}
@@ -209,7 +209,7 @@ sensor:
       eb3_voltage_l1:
         friendly_name: "EB3 Voltage L1"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[0] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[0] | float(0) %}
             {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
@@ -219,7 +219,7 @@ sensor:
       eb3_voltage_l1_10:
         friendly_name: "EB3 Voltage L1-10"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[0] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[0] | float(0) %}
             {% if x > 0 %}
               {{ x / 10 - 10 }}
             {% endif %}
@@ -229,7 +229,7 @@ sensor:
       eb3_current_l1:
         friendly_name: "EB3 Current L1"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[1] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[1] | float(0) %}
             {% if x %}
               {{ x / 10 }}
             {% endif %}
@@ -239,7 +239,7 @@ sensor:
       eb3_voltage_l2:
         friendly_name: "EB3 Voltage L2"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[2] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[2] | float(0) %}
             {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
@@ -249,7 +249,7 @@ sensor:
       eb3_current_l2:
         friendly_name: "EB3 Current L2"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[3] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[3] | float(0) %}
             {% if x %}
               {{ x / 10 }}
             {% endif %}
@@ -259,7 +259,7 @@ sensor:
       eb3_voltage_l3:
         friendly_name: "EB3 Voltage L3"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[4] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[4] | float(0) %}
             {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
@@ -269,7 +269,7 @@ sensor:
       eb3_voltage_l3_10:
         friendly_name: "EB3 Voltage L3+10"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[4] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[4] | float(0) %}
             {% if x > 0 %}
               {{ x / 10 + 10 }}
             {% endif %}       
@@ -279,7 +279,7 @@ sensor:
       eb3_current_l3:
         friendly_name: "EB3 Current L3"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[5] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[5] | float(0) %}
             {% if x %}
               {{ x / 10 }}
             {% endif %}
@@ -289,7 +289,7 @@ sensor:
       eb3_current:
         friendly_name: "EB3 Current"
         value_template: >-
-            {% set x = states('sensor.eb3_0x006c').split(',')[6] | float %}
+            {% set x = states('sensor.eb3_0x006c').split(',')[6] | float(0) %}
             {% if x %}
               {{ x / 10 }}
             {% endif %}
@@ -300,7 +300,7 @@ sensor:
       eb3_power_factor:
         friendly_name: "EB3 Power Factor"
         value_template: >-
-            {% set x = states('sensor.eb3_0x007b').split(',')[0] | float %}
+            {% set x = states('sensor.eb3_0x007b').split(',')[0] | float(0) %}
             {% if x > 0 %}
               {{ x / 1000 }}
             {% endif %}
@@ -310,7 +310,7 @@ sensor:
       eb3_power_factor_l1:
         friendly_name: "EB3 Power Factor L1"
         value_template: >-
-            {% set x = states('sensor.eb3_0x007b').split(',')[1] | float %}
+            {% set x = states('sensor.eb3_0x007b').split(',')[1] | float(0) %}
             {% if x %}
               {{ x / 1000 }}
             {% endif %}
@@ -320,7 +320,7 @@ sensor:
       eb3_power_factor_l2:
         friendly_name: "EB3 Power Factor L2"
         value_template: >-
-            {% set x = states('sensor.eb3_0x007b').split(',')[2] | float %}
+            {% set x = states('sensor.eb3_0x007b').split(',')[2] | float(0) %}
             {% if x > 0 %}
               {{ x / 1000 }}
             {% endif %}
@@ -330,7 +330,7 @@ sensor:
       eb3_power_factor_l3:
         friendly_name: "EB3 Power Factor L3"
         value_template: >-
-            {% set x = states('sensor.eb3_0x007b').split(',')[3] | float %}
+            {% set x = states('sensor.eb3_0x007b').split(',')[3] | float(0) %}
             {% if x > 0 %}
               {{ x / 1000 }}
             {% endif %}
@@ -340,7 +340,7 @@ sensor:
       eb3_frequency:
         friendly_name: "EB3 Frequency"
         value_template: >-
-            {% set x = states('sensor.eb3_0x007b').split(',')[4] | float %}
+            {% set x = states('sensor.eb3_0x007b').split(',')[4] | float(0) %}
             {% if x > 0 %}
               {{ x / 10 }}
             {% endif %}
@@ -352,7 +352,7 @@ sensor:
       eb3_active_power_l1:
         friendly_name: "EB3 Active Power L1"
         value_template: >-
-            {% set x = states('sensor.eb3_0x0073').split(',')[0] | int %}
+            {% set x = states('sensor.eb3_0x0073').split(',')[0] | int(0) %}
             {% if x %}
               {{ x }}
             {% endif %}
@@ -363,7 +363,7 @@ sensor:
       eb3_active_power_l2:
         friendly_name: "EB3 Active Power L2"
         value_template: >-
-            {% set x = states('sensor.eb3_0x0073').split(',')[2] | int %}
+            {% set x = states('sensor.eb3_0x0073').split(',')[2] | int(0) %}
             {% if x %}
               {{ x }}
             {% endif %}
@@ -374,7 +374,7 @@ sensor:
       eb3_active_power_l3:
         friendly_name: "EB3 Active Power L3"
         value_template: >-
-            {% set x = states('sensor.eb3_0x0073').split(',')[4] | int %}
+            {% set x = states('sensor.eb3_0x0073').split(',')[4] | int(0) %}
             {% if x %}
               {{ x }}
             {% endif %}
@@ -385,7 +385,7 @@ sensor:
       eb3_active_power:
         friendly_name: "EB3 Active Power"
         value_template: >-
-            {% set x = states('sensor.eb3_0x0073').split(',')[6] | int %}
+            {% set x = states('sensor.eb3_0x0073').split(',')[6] | int(0) %}
             {% if x %}
               {{ x }}
             {% endif %}
