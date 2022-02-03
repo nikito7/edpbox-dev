@@ -8,7 +8,7 @@ modbus:
     timeout: 3
     retries: 3
     retry_on_empty: true
-    message_wait_milliseconds: 750
+    message_wait_milliseconds: 250
 
     sensors:
 
