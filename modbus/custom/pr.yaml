@@ -1,0 +1,52 @@
+modbus:
+
+  - name: edpbox1pr
+    type: tcp
+    host: 10.1.0.47
+    port: 9502
+    delay: 1
+    timeout: 3
+    retries: 3
+    retry_on_empty: true
+    message_wait_milliseconds: 750
+
+    sensors:
+
+      - name: "EB1 0x0001"
+        slave: 1
+        address: 1
+        input_type: input
+        count: 1
+        data_type: custom
+        expert_mode: true
+        structure: ">H7BhB"
+        scan_interval: 5
+
+      - name: "EBpr 0x0080"
+        slave: 1
+        address: 128
+        input_type: input
+        count: 1
+        data_type: custom
+        expert_mode: true
+        structure: ">6Bxx"
+
+      - name: "EBpr 0x0081"
+        slave: 1
+        address: 129
+        input_type: input
+        count: 1
+        data_type: custom
+        expert_mode: true
+        structure: ">L"
+
+      - name: "EBpr 0x0082"
+        slave: 1
+        address: 130
+        input_type: input
+        count: 2
+        data_type: custom
+        expert_mode: true
+        structure: ">2L"
+
+#
