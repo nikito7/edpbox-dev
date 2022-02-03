@@ -1,6 +1,6 @@
 # Info
 
-Custom adds ```expert_mode: true``` to bypass size check
+Custom adds ```expert_mode: true``` to bypass register size check
 
 # Install
 
