@@ -358,7 +358,7 @@ sensor:
             {% endif %}
         unit_of_measurement: "W"
         device_class: power
-        state_class: measurement
+        #state_class: measurement
 
       eb3_active_power_l2:
         friendly_name: "EB3 Active Power L2"
@@ -369,7 +369,7 @@ sensor:
             {% endif %}
         unit_of_measurement: "W"
         device_class: power
-        state_class: measurement
+        #state_class: measurement
 
       eb3_active_power_l3:
         friendly_name: "EB3 Active Power L3"
@@ -380,7 +380,7 @@ sensor:
             {% endif %}
         unit_of_measurement: "W"
         device_class: power
-        state_class: measurement
+        #state_class: measurement
 
       eb3_active_power:
         friendly_name: "EB3 Active Power"
@@ -391,7 +391,7 @@ sensor:
             {% endif %}
         unit_of_measurement: "W"
         device_class: power
-        state_class: measurement
+        #state_class: measurement
 
 ###
 ##
