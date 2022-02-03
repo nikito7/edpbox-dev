@@ -1,4 +1,8 @@
-Install:
+# Info
+
+Custom adds ```expert_mode: true``` to bypass size check
+
+# Install
 
 ```js
 vv=2022.2.031
