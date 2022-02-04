@@ -24,7 +24,7 @@ homeassistant:
   packages:
     #tasmota1: !include pkg/tasmota1.yaml
     #modbus3: !include pkg/modbus3.yaml
-    #tasmota3: !include pkg/tasmota3.yaml
+    tasmota3: !include pkg/tasmota3.yaml
     private: !include pkg/private.yaml
 
 http:
