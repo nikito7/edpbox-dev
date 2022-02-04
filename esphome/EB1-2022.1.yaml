@@ -1,4 +1,4 @@
-# ESPHome >= 2021.dev
+# ESPHome 2022.1
 # Change to your wifi and uart pins.
 
 substitutions:
