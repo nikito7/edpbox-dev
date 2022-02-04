@@ -1,4 +1,4 @@
-Default Home Assistant Modbus:
+Standard Home Assistant Modbus:
 
 - Modbus TCP
 - HF Elfin
