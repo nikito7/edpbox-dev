@@ -1,5 +1,5 @@
 # edpbox1 package
-# no custom needed > 2021.8.x
+# standard modbus
 
 modbus:
 
@@ -11,7 +11,7 @@ modbus:
     timeout: 3
     retries: 3
     retry_on_empty: true
-    message_wait_milliseconds: 750
+    message_wait_milliseconds: 250
 
     sensors:
 
