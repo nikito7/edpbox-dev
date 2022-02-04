@@ -10,19 +10,19 @@ esphome:
 
   name: ${name}
 
-  #platform: ESP8266
-  #board: esp01_1m
+  platform: ESP8266
+  board: esp01_1m
 
   #platform: ESP8266
   #board: esp07s # 4MB
 
-  platform: ESP32
-  board: esp32dev
+  #platform: ESP32
+  #board: esp32dev
 
 wifi:
 
   domain: .lan
-  use_address: 10.3.0.142 # fix ota dns error
+  #use_address: 10.3.0.142 # fix ota dns error
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
