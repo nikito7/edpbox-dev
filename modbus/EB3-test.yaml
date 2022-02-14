@@ -202,7 +202,7 @@ sensor:
   - platform: template
     sensors:
 
-      eb1_tariff:
+      eb3_tariff:
         friendly_name: "EB3 Tariff"
         value_template: >-
           {% set x = states('sensor.eb3_0x000b')|string %}
@@ -214,5 +214,14 @@ sensor:
             {{ "Cheias" }}
           {% endif %}
         icon_template: mdi:calendar
+
+      eb3_clock_test:
+        friendly_name: "EB3 Clock Test"
+        value_template: >-
+          {% set x = states('sensor.eb3_0x0001')|string %}
+          {% if x %}
+            {{ x }}
+          {% endif %}
+        icon_template: mdi:clock
 
 # EOF
