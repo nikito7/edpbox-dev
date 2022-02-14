@@ -125,7 +125,7 @@ modbus:
 
       - name: "EB3 Active Power L1"
         slave: 1
-        address: 118
+        address: 115
         input_type: input
         count: 1
         data_type: uint32
@@ -138,7 +138,7 @@ modbus:
 
       - name: "EB3 Active Power L2"
         slave: 1
-        address: 119
+        address: 117
         input_type: input
         count: 1
         data_type: uint32
@@ -151,7 +151,7 @@ modbus:
 
       - name: "EB3 Active Power L3"
         slave: 1
-        address: 120
+        address: 119
         input_type: input
         count: 1
         data_type: uint32
