@@ -92,19 +92,7 @@ modbus:
 
 ### ### ###
 
-
-      - name: "EB3 Frequency" # 7F
-        slave: 1
-        address: 127
-        input_type: input
-        count: 1
-        data_type: uint16
-        precision: 1
-        scale: 0.1
-        unit_of_measurement: Hz
-        scan_interval: 31
-
-      - name: "EB3 Voltage L1" # 6C
+      - name: "EB3 Voltage L1" # 0x006C (108)
         slave: 1
         address: 108
         input_type: input
@@ -127,6 +115,8 @@ modbus:
         unit_of_measurement: A
         device_class: current
         scan_interval: 33
+
+### ### ###
 
       - name: "EB3 Active Power" # 79
         slave: 1
@@ -164,8 +154,16 @@ modbus:
         device_class: power_factor
         scan_interval: 36
 
-
-
+      - name: "EB3 Frequency" # 7F
+        slave: 1
+        address: 127
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: Hz
+        scan_interval: 31
 
 
 # for tariff template
@@ -179,19 +177,27 @@ modbus:
         structure: ">Bx"
         scan_interval: 43
 
-# for testing
+### for testing
 
-      - name: "EB3 Firmware Core"
+      - name: "EB3 0x0004" # Firmwares
         slave: 1
-        address: 4
+        address: 3
+        input_type: input
+        count: 3
+        data_type: string
+        scan_interval: 44
+
+      - name: "EB3 0x0001" # Clock
+        slave: 1
+        address: 0
         input_type: input
         count: 1
         data_type: string
         scan_interval: 44
 
-# edpbox mono templates
+### edpbox templates
 
-sensor tpleb3:
+sensor:
 
   - platform: template
     sensors:
