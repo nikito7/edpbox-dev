@@ -11,11 +11,11 @@ modbus:
     timeout: 3
     retries: 3
     retry_on_empty: true
-    message_wait_milliseconds: 250
+    message_wait_milliseconds: 750
 
     sensors:
 
-### ### ### critical sensors #
+### ### ###
 
       - name: "EB3 T1 Vazio" # 26
         slave: 1
@@ -54,6 +54,44 @@ modbus:
         scan_interval: 39
 
 ### ### ###
+
+      - name: "EB3 Import" # 16
+        slave: 1
+        address: 22
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kWh
+        device_class: energy
+        scan_interval: 40
+
+      - name: "EB3 Export" # 17
+        slave: 1
+        address: 23
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kWh
+        device_class: energy
+        scan_interval: 41
+
+      - name: "EB3 Q1"
+        slave: 1
+        address: 24
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: kVAr
+        scan_interval: 42
+
+### ### ###
+
 
       - name: "EB3 Frequency" # 7F
         slave: 1
@@ -128,42 +166,7 @@ modbus:
 
 
 
-      - name: "EB3 Import" # 16
-        slave: 1
-        address: 22
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        scan_interval: 40
 
-      - name: "EB3 Export" # 17
-        slave: 1
-        address: 23
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        scan_interval: 41
-
-###
-
-      - name: "EB3 Q1"
-        slave: 1
-        address: 24
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kVAr
-        scan_interval: 42
 
 # for tariff template
 
