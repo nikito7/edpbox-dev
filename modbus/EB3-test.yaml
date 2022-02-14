@@ -15,6 +15,46 @@ modbus:
 
     sensors:
 
+### ### ### critical sensors #
+
+      - name: "EB3 T1 Vazio" # 26
+        slave: 1
+        address: 38
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 1
+        scale: 0.001
+        unit_of_measurement: kWh
+        device_class: energy
+        scan_interval: 37
+
+      - name: "EB3 T2 Ponta" # 27
+        slave: 1
+        address: 39
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 1
+        scale: 0.001
+        unit_of_measurement: kWh
+        device_class: energy
+        scan_interval: 38
+
+      - name: "EB3 T3 Cheias" # 28
+        slave: 1
+        address: 40
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 1
+        scale: 0.001
+        unit_of_measurement: kWh
+        device_class: energy
+        scan_interval: 39
+
+### ### ###
+
       - name: "EB3 Frequency" # 7F
         slave: 1
         address: 127
@@ -86,41 +126,7 @@ modbus:
         device_class: power_factor
         scan_interval: 36
 
-      - name: "EB3 T1 Vazio" # 26
-        slave: 1
-        address: 38
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        scan_interval: 37
 
-      - name: "EB3 T2 Ponta" # 27
-        slave: 1
-        address: 39
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        scan_interval: 38
-
-      - name: "EB3 T3 Cheias" # 28
-        slave: 1
-        address: 40
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        scan_interval: 39
 
       - name: "EB3 Import" # 16
         slave: 1
