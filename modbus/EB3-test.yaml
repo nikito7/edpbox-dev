@@ -64,7 +64,7 @@ modbus:
         input_type: input
         count: 1
         data_type: uint32
-        precision: 3
+        precision: 1
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
