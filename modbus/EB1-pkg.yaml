@@ -1,20 +1,3 @@
-# Adapted from EB3
-# 
-# Keep:
-# - Voltage L1
-# - Current L1
-# 
-# Remove:
-# - Total, L2, L3
-# 
-# Keep:
-# - Active Power (total)
-# - Power Factor (total)
-# 
-# Remove:
-# - L1, L2, L3
-#
-
 # edpbox1 package
 # standard modbus
 
