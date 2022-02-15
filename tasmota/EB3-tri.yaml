@@ -25,6 +25,7 @@ sensor:
     availability_topic: "tele/edpbox3/LWT"
     payload_available: "Online"
     payload_not_available: "Offline"
+    state_class: none
 
   - platform: mqtt
     name: "EB3 ESP Free Heap"
@@ -41,6 +42,7 @@ sensor:
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     device_class: signal_strength
+    state_class: none
 
   - platform: mqtt
     name: "EB3 ESP Vcc"
@@ -174,6 +176,7 @@ sensor:
         {{ value_json.EB3.Current|float }}
     unit_of_measurement: "A"
     device_class: current
+    state_class: measurement
 
   - platform: mqtt
     name: "EB3 Current L1"
