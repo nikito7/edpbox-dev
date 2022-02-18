@@ -26,6 +26,7 @@ homeassistant:
     #modbus3: !include pkg/modbus3.yaml
     #tasmota3: !include pkg/tasmota3.yaml
     test4test: !include pkg/test.yaml
+    speedtest: !include pkg/speedtest.yaml
 
 http:
 
