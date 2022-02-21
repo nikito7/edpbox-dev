@@ -27,6 +27,7 @@ homeassistant:
     tasmota3: !include pkg/tasmota3.yaml
     testxxxxx: !include pkg/test.yaml
     speedtest: !include pkg/speedtest.yaml
+    utmxxxxxx: !include pkg/utm.yaml
 
 http:
 
