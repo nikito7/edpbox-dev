@@ -3,7 +3,6 @@ utility_meter:
   utm_daily:
     source: sensor.eb3_import
     cycle: daily
-    net_consumption: true
     tariffs:
       - Normal
 
@@ -24,5 +23,18 @@ utility_meter:
     cycle: yearly
     tariffs:
       - Normal
+
+###
+
+template:
+
+  - sensor:
+
+    - name: "Demo1 Daily"
+      state: >-
+        {{ states('sensor.utm_daily_normal') }}
+      icon: mdi:counter
+      unit_of_measurement: kWh
+      state_class: measurement
 
 #EOF
