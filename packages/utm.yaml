@@ -5,7 +5,7 @@ utility_meter:
     cycle: daily
     tariffs:
       - Normal
-    cron: "23 59 * * *"
+    cron: "59 23 * * *"
 
   utm_weekly:
     source: sensor.eb3_import
@@ -33,14 +33,14 @@ template:
 
     - name: "Demo1 Daily"
       state: >-
-        {{ states('sensor.utm_daily_normal') }}
+        {{ states('sensor.utm_daily_normal')|float(0) }}
       icon: mdi:counter
       unit_of_measurement: kWh
       state_class: measurement
 
     - name: "Dummy1 Daily"
       state: >-
-        {{ states('sensor.utm_daily_normal') / 1000 }}
+        {{ states('sensor.utm_daily_normal')|float(0) / 1000 }}
       icon: mdi:counter
       unit_of_measurement: kWh
       state_class: measurement
