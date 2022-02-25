@@ -1,0 +1,21 @@
+utility_meter:
+
+  utm_daily:
+    source: sensor.eb3_import
+    cron: "59 23 * * *"
+    tariffs:
+      - Normal
+
+  utm_weekly:
+    source: sensor.eb3_import
+    cycle: weekly
+    tariffs:
+      - Normal
+
+  utm_monthly:
+    source: sensor.eb3_import
+    cycle: monthly
+    tariffs:
+      - Normal
+
+#EOF
