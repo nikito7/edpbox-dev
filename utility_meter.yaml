@@ -4,7 +4,7 @@ utility_meter:
 
   utm_daily:
     source: sensor.eb3_import
-    cron: "59 23 * * *"
+    cycle: daily
     tariffs:
       - Normal
 
