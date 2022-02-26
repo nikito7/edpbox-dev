@@ -26,5 +26,5 @@ sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv
 sed -i -e 's/bytecount != size/size != size/g' validators.py
 #
 #
-#ha core restart
+ha core restart
 ```
