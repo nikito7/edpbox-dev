@@ -1,5 +1,6 @@
 
 ```sh
+vv=2022.001
 file=master.zip
 url=https://github.com/home-assistant/core/archive/refs/heads/${file}
 #
