@@ -1,4 +1,3 @@
-https://github.com/home-assistant/core/archive/refs/heads/master.zip
 
 ```sh
 file=master.zip
@@ -11,12 +10,19 @@ ls -a
 pwd
 #
 wget $url
-unzip $file
+unzip -j master.zip core-master/homeassistant/components/modbus/* -d .
 rm $file
 ls -a
 pwd
+#
 # version
+#
 sed -i -e 's/\"name\": \"Modbus\",/\"name\": \"Modbus\",\n  \"version\": \"'${vv}'\",/g' manifest.json
+#
 # tweak
+#
+sed -i -e 's/bytecount != size/size != size/g' validators.py
+#
+#
 #ha core restart
 ```
