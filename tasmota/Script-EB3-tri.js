@@ -21,8 +21,8 @@ then
 smlj=1
 endif
 
-;time=WebTime 10,18
-;date=WebTime 0,10
+;time=st(tstamp T 2)
+;date=st(tstamp T 1)
 
 if cnt<99
 then
