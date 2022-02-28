@@ -4,8 +4,8 @@
 
 //#undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
 #undef USE_DOMOTICZ                              // Disable Domoticz
-#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
-//#define USE_TASMOTA_DISCOVERY                    // Enable Tasmota Discovery support (+2k code)
+//#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
+#define USE_TASMOTA_DISCOVERY                    // Enable Tasmota Discovery support (+2k code)
 #undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
@@ -56,7 +56,7 @@
 #undef USE_SHELLY_DIMMER                         // Disable support for Shelly Dimmer (+3k code)
 
 #undef USE_COUNTER                               // Disable counters
-//#define USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
+#define USE_ADC_VCC                              // Display Vcc in Power status. Disable for use as Analog input on selected devices
 #undef USE_DS18x20                               // Disable DS18x20 sensor
 #undef USE_I2C                                   // Disable all I2C sensors and devices
 #undef USE_SPI                                   // Disable all SPI devices
@@ -132,7 +132,7 @@
 
 // tcp
 
-//#define USE_TCP_BRIDGE
+#define USE_TCP_BRIDGE
 
 // misc
 
