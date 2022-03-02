@@ -21,8 +21,8 @@ then
 smlj=1
 endif
 
-;time=st(tstamp T 2)
-;date=st(tstamp T 1)
+time=st(tstamp T 2)
+date=st(tstamp T 1)
 
 if cnt<99
 then
@@ -55,17 +55,18 @@ print modbus error
 endif
 endif
 
-;>W
-;
-;@<b>NTP: </b> %date% %time%
-;@<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-;@<b>Vars: </b> wtd=%0wtd% clk=%0clk% old=%0old%
-;@<hr>
+>W
 
-; Below registers only work in EB3 !
+@<b>NTP: </b> %date% %time%
+@<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
+@<b>Vars: </b> wtd=%0wtd% clk=%0clk% old=%0old%
+@<hr>
+
 
 >M 1
 
+; Below registers only work in EB3 !
+; 
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
