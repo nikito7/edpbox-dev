@@ -7,7 +7,7 @@ clk=0
 wtd=0
 old=0
 
->B
+>BS
 
 tper=60
 smlj=0
@@ -18,13 +18,7 @@ smlj=0
 
 if cnt==30
 then
-tper=10
 smlj=1
-endif
-
-if cnt==50
-then
-tper=60
 endif
 
 time=st(tstamp T 2)
