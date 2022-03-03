@@ -62,11 +62,10 @@ endif
 @<b>Vars: </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<hr>
 
+; Below registers only work in EB3 !
 
 >M 1
-
-; Below registers only work in EB3 !
-; 
+ 
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
