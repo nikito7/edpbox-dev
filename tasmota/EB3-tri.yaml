@@ -6,8 +6,6 @@ switch:
     name: "EB3 ESP Restart"
     command_topic: "cmnd/edpbox3/restart"
     payload_on: "1"
-    entity_category: "config"
-    device_class: "restart"
 
 ###
 
