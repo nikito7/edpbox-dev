@@ -1,11 +1,11 @@
 # edpbox3 tasmota package
 
-button:
+switch:
 
   - platform: mqtt
     name: "EB3 ESP Restart"
     command_topic: "cmnd/edpbox3/restart"
-    payload_press: "1"
+    payload_on: "1"
     entity_category: "config"
     device_class: "restart"
 
