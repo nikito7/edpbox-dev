@@ -20,6 +20,6 @@ utility_meter:
     tariffs:
       - Normal
     offset:
-      - days: 4
+      days: 4
 
 #EOF
