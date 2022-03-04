@@ -19,5 +19,7 @@ utility_meter:
     cycle: monthly
     tariffs:
       - Normal
+    offset:
+      - days: 4
 
 #EOF
