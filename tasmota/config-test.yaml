@@ -5,7 +5,7 @@ name="EB3"
 
 if cnt==9
 then
-->Publish2 homeassistant/sensor/%id%/uptime/config {"stat_t":"tele/%id%/STATE","unit_of_meas":"h","name":"%name% ESP Uptime","val_tpl":"{{ (value_json.UptimeSec/3600)|round(1) }}","unique_id":"%id%_upt","dev":{"ids":"%id%-tas","name":"%name%","model":"Tasmota"}}
+=>Publish2 homeassistant/sensor/%id%/uptime/config {"stat_t":"tele/%id%/STATE","unit_of_meas":"h","name":"%name% ESP Uptime","val_tpl":"{{ (value_json.UptimeSec/3600)|round(1) }}","unique_id":"%id%_upt","dev":{"ids":"%id%-tas","name":"%name%","model":"Tasmota"}}
 endif
 
 
