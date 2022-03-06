@@ -5,19 +5,8 @@ name="EB3"
 
 if cnt==10
 then
-=>Publish2 homeassistant/sensor/%id%/uptime/config {"stat_t":"tele/%id%/STATE","unit_of_meas":"h","name":"%name% Uptime","val_tpl":"{{ (value_json.UptimeSec/3600)|round(1) }}","unique_id":"%id%_upt","dev":{"ids":"%id%-tas","name":"%name%"}}
+=>Publish2 homeassistant/sensor/%id%/uptime/config {"ic":"mdi:alarm","stat_t":"tele/%id%/STATE","unit_of_meas":"h","name":"%name% ESP Uptime","val_tpl":"{{ (value_json.UptimeSec/3600)|round(1) }}","unique_id":"%id%_upt","dev":{"ids":"%id%-tas","name":"%name%","model":"Tasmota"}}
 endif
 
-
-  - platform: mqtt
-    name: "EB3 ESP Uptime"
-    unique_id: EB3_ESP_Uptime
-    state_topic: "tele/edpbox3/STATE"
-    value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
-    unit_of_measurement: "h"
-    icon: mdi:alarm
-    availability_topic: "tele/edpbox3/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
 
 #EOF
