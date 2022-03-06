@@ -4,7 +4,7 @@ name="EB3"
 
 if cnt==10
 then
-=>Publish homeassistant/binary_sensor/%id%/%id%_status/config {"device_class":"connectivity","payload_on":"Online","payload_off":"Offline","name":"%name% Status","state_topic":"tele/%id%/LWT","availability_topic":"tele/%id%/LWT","unique_id":"%id%_status","device":{"identifiers":"%id%_000_000","name":"%name% by Nikito","model":""}}
+=>Publish homeassistant/binary_sensor/%id%/status/config {"device_class":"connectivity","payload_on":"Online","payload_off":"Offline","name":"%name% Status","unique_id":"%id%_status","device":{"identifiers":"%id%_000_000","name":"%name% by Nikito","model":""}}
 endif
 
 
