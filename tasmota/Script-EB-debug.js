@@ -2,7 +2,7 @@
 
 >B
 
-=>sensor53 r
+=>Sensor53 r
 
 >M 1
 
@@ -14,6 +14,8 @@
 ;
 ; sensor53 d1
 ; sensor53 d0
+
+1,h<hr>
 
 1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,*,0
 1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,*,0
