@@ -5,8 +5,7 @@ name="EB3"
 
 if cnt==10
 then
-=>Publish2 homeassistant/binary_sensor/%id%/status/config {"payload_on":"Online","payload_off":"Offline","state_topic":"tele/%id%/LWT","name":"%name% Status", "unique_id":"%id%_status","device":{"ids":"%id%-tas","name":"%name%"}}
-=>Publish2 homeassistant/sensor/%id%/uptime/config {"stat_t":"tele/%id%/STATE","unit_of_mea":"h","name":"%name% Uptime","val_tpl":"[[ (value_json.UptimeSec/3600)|round(1) ]]","unique_id":"%id%_upt","dev":{"ids":"%id%-tas","name":"%name%"}}
+=>Publish2 homeassistant/sensor/%id%/uptime/config {"stat_t":"tele/%id%/STATE","unit_of_mea":"h","name":"%name% Uptime","val_tpl":"{{ (value_json.UptimeSec/3600)|round(1) }}","unique_id":"%id%_upt","dev":{"ids":"%id%-tas","name":"%name%"}}
 endif
 
 #EOF
