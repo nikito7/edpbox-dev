@@ -16,6 +16,14 @@ switch:
 sensor:
 
   - platform: mqtt
+    name: "EB3 ESP Uptime"
+    unique_id: EB3_ESP_Uptime
+    state_topic: "tele/edpbox3/STATE"
+    value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
+    unit_of_measurement: "h"
+    icon: mdi:alarm
+
+  - platform: mqtt
     name: "EB3 ESP Free Heap"
     unique_id: EB3_ESP_Heap
     state_topic: "tele/edpbox3/STATE"
