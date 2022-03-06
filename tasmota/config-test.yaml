@@ -4,7 +4,7 @@ name="EB3"
 
 if cnt==10
 then
-=>Publish2 homeassistant/binary_sensor/%id%/status/config {"name":"%name% Status","unique_id":"%id%_status","device":{"identifiers":"%id%-tasmota","name":"%name% by Nikito"}}
+=>Publish2 homeassistant/binary_sensor/%id%/status/config {"state_topic":"tele/%id%/LWT","name":"%name% Status","device":{"identifiers":"%id%-tasmota","name":"%name% by Nikito"}}
 endif
 
 
