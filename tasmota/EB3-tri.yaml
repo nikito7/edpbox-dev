@@ -146,6 +146,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "V"
     device_class: voltage
+    state_class: measurement
 
   - platform: mqtt
     name: "EB3 Current"
