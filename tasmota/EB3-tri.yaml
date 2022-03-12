@@ -7,18 +7,12 @@ switch:
     unique_id: EB3_ESP_Switch
     command_topic: "cmnd/edpbox3/restart"
     payload_on: "1"
-    availability_topic: "tele/edpbox3/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
 
   - platform: mqtt
     name: "EB3 ESP Restart -3"
     unique_id: EB3_ESP_Switch_3
     command_topic: "cmnd/edpbox3/restart"
     payload_on: "-3"
-    availability_topic: "tele/edpbox3/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
 
 ###
 
@@ -31,6 +25,9 @@ sensor:
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:alarm
+    availability_topic: "tele/edpbox3/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   - platform: mqtt
     name: "EB3 ESP Free Heap"
