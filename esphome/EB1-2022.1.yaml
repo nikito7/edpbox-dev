@@ -4,11 +4,10 @@
 substitutions:
 
   dev: EB1test
-  name: EB1test
 
 esphome:
 
-  name: ${name}
+  name: ${dev}
 
   #platform: ESP8266
   #board: esp01_1m
