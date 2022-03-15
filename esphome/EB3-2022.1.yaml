@@ -1,5 +1,5 @@
 # Config for three phase meter.
-# ESP32 is required!
+# ESP32 is recommended!
 # ESPHome 2022.1
 # Change to your wifi and uart pins.
 
