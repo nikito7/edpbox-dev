@@ -10,11 +10,11 @@ esphome:
 
   name: ${name}
 
-  platform: ESP8266
-  board: esp01_1m
-
   #platform: ESP8266
-  #board: esp07s # 4MB
+  #board: esp01_1m
+
+  platform: ESP8266
+  board: esp07s # 4MB
 
   #platform: ESP32
   #board: esp32dev
@@ -36,8 +36,9 @@ captive_portal:
 web_server:
   css_url: https://nikito7.github.io/s/edpbox-v1.css?3
 
-#logger:
-#  level: verbose
+logger:
+  level: verbose
+  baud_rate: 0
 
 api:
 
@@ -60,8 +61,8 @@ switch:
 uart:
 
   id: modbus_serial
-  rx_pin: 14
-  tx_pin: 5
+  rx_pin: 3
+  tx_pin: 1
   baud_rate: 9600
   stop_bits: 1
 
@@ -74,9 +75,9 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 9s
+    update_interval: 15s
     address: 0x1
-    command_throttle: 1000ms
+    command_throttle: 250ms
     setup_priority: -10
 
 sensor:
