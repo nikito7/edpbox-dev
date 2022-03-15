@@ -3,8 +3,8 @@
 
 substitutions:
 
-  dev: EB1
-  name: edpbox1
+  dev: EB1test
+  name: edpbox1test
 
 esphome:
 
