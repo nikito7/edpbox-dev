@@ -36,9 +36,9 @@ captive_portal:
 web_server:
   css_url: https://nikito7.github.io/s/edpbox-v1.css?3
 
-logger:
-  level: verbose
-  baud_rate: 0
+#logger:
+#  level: verbose
+#  baud_rate: 0
 
 api:
 
