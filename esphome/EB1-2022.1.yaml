@@ -1,13 +1,14 @@
-# ESPHome 2022.1
+# ESPHome 2022.2
 # Change to your wifi and uart pins.
 
 substitutions:
 
   dev: EB1test
+  name: edpbox1test
 
 esphome:
 
-  name: ${dev}
+  name: ${name}
 
   #platform: ESP8266
   #board: esp01_1m
