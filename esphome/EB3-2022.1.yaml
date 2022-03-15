@@ -39,6 +39,7 @@ web_server:
 
 #logger:
 #  level: verbose
+#  baud_rate: 0
 
 api:
 
@@ -75,9 +76,9 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 9s
+    update_interval: 15s
     address: 0x1
-    command_throttle: 1000ms
+    command_throttle: 250ms
     setup_priority: -10
 
 sensor:
@@ -420,22 +421,6 @@ sensor:
     state_class: total_increasing
     device_class: energy
     skip_updates: 3
-
-### ### ###
-
-  - platform: template
-    name: "${dev} Voltage L1-10"
-    lambda: 'return id(VolL1).state - 10.0;'
-    unit_of_measurement: "V"
-    update_interval: 10s
-    device_class: voltage
-
-  - platform: template
-    name: "${dev} Voltage L3+10"
-    lambda: 'return id(VolL3).state + 10.0;'
-    unit_of_measurement: "V"
-    update_interval: 10s
-    device_class: voltage
 
 ### ### ###
 
