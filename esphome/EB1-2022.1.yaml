@@ -4,7 +4,7 @@
 substitutions:
 
   dev: EB1test
-  name: edpbox1test
+  name: EB1test
 
 esphome:
 
