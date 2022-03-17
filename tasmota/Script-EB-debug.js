@@ -1,6 +1,7 @@
 >D
 >B
 
+=>SerialLog 0
 =>Sensor53 r
 =>Sensor53 d0
 
