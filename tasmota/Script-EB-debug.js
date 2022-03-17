@@ -2,7 +2,6 @@
 >B
 
 =>Sensor53 r
-=>Sensor53 d1
 
 >M 1
 
