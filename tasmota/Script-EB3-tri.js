@@ -12,7 +12,6 @@ old=0
 tper=60
 smlj=0
 
-=>SetOption19 1
 =>Sensor53 r
 
 >S
@@ -20,7 +19,6 @@ smlj=0
 if cnt==30
 then
 smlj=1
-=>SetOption19 0
 endif
 
 time=st(tstamp T 2)
@@ -145,3 +143,4 @@ endif
 #
 
 ; eof
+
