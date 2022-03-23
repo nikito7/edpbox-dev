@@ -60,6 +60,10 @@ switch:
 
 uart:
 
+# esp32 19/18
+# esp8266 3/1
+# tfreire 14/5
+
   id: modbus_serial
   rx_pin: 3
   tx_pin: 1
