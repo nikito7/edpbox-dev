@@ -65,6 +65,8 @@ endif
 >M 1
 
 ; esp32 19/18
+; esp8266 3/1
+: tfreire 14/5
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
