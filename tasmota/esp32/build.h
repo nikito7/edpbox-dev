@@ -10,7 +10,7 @@
 
 // tcp
 
-//#define USE_TCP_BRIDGE
+#define USE_TCP_BRIDGE
 
 // misc
 
