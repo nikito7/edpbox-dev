@@ -64,6 +64,7 @@ endif
 
 >M 1
 
+; esp32 19/18
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
