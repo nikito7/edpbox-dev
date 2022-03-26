@@ -7,6 +7,12 @@
 
 >M 1
 
+; esp32 19/18
+; esp8266 3/1
+; change to your gpios and mode
+; power off is required
+; rx                tx time
+;  v  v              v  v
 +1,3,mN1,1,9300,Test,1,30,r010400010001
 ;+1,3,mN2,1,9300,Test,1,30,r010400010001
 ;+1,3,mN1,1,9600,Test,1,30,r010400010001
