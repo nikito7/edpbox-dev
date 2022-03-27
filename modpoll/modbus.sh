@@ -16,7 +16,7 @@ function four()
 result=$(four 38 3)
 result=${result}$(four 22 2)
 
-echo data: $result
+echo $result | sed -e 's/\n//g'
 
 
 ##
