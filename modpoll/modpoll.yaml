@@ -1,56 +1,22 @@
-# speedtest-cli ookla bin
+#/config/pkg/modpool.yaml
 
 sensor:
 
   - platform: command_line
-    name: "Ookla Data"
-    command: "/config/apps/speedtest -f json --accept-license --accept-gdpr"
-    scan_interval: 1833
-    command_timeout: 30
-    value_template: >-
-        {% set ping = value_json.ping.latency|string %}
-        {% set dn = value_json.download.bandwidth|string %}
-        {% set up = value_json.upload.bandwidth|string %}
-        {{ ping + "," + dn + "," + up }}
-
+    name: "modpoll data"
+    command: "/config/apps/modpoll.sh"
+    scan_interval: 20
+    command_timeout: 10
+    
 template:
 
   - sensor:
 
-    - name: "Ookla Ping"
+    - name: "modpool test"
       state: >-
-        {% set x = states('sensor.ookla_data').split(',')[0] | float(0) %}
+        {% set x = states('sensor.modpoll_data').split(',')[0] | float(0) %}
         {% if x > 0 %}
-          {{ x|round(2) }}
-        {% else %}
-          {{ states('sensor.ookla_ping') }}
+          {{ (x/1000)|round(1) }}
         {% endif %}
-      icon: mdi:gauge
-      unit_of_measurement: ms
-      state_class: measurement
-
-    - name: "Ookla Download"
-      state: >-
-        {% set x = states('sensor.ookla_data').split(',')[1] | float(0) %}
-        {% if x > 0 %}
-          {{ (x / 1024 / 1024 * 8)|round(2) }}
-        {% else %}
-          {{ states('sensor.ookla_download') }}
-        {% endif %}
-      icon: mdi:gauge
-      unit_of_measurement: Mbps
-      state_class: measurement
-
-    - name: "Ookla Upload"
-      state: >-
-        {% set x = states('sensor.ookla_data').split(',')[2] | float(0) %}
-        {% if x > 0 %}
-          {{ (x / 1024 / 1024 * 8)|round(2) }}
-        {% else %}
-          {{ states('sensor.ookla_upload') }}
-        {% endif %}
-      icon: mdi:gauge
-      unit_of_measurement: Mbps
-      state_class: measurement
 
 #eof
