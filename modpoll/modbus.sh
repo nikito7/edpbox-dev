@@ -13,9 +13,10 @@ function four()
 
 }
 
-four 38 3
-four 22 2
+result=$(four 38 3)
+result=${result}$(four 22 2)
 
+echo data: $result
 
 
 ##
