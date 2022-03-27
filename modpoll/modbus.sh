@@ -8,13 +8,14 @@ HOST="-m enc -p 9502 10.1.0.37"
 
 function four()
 {
-/config/apps/modpoll -a 1 -0 -1 -r $1 -c 1 -t 3:int -e $HOST \
+/config/apps/modpoll -a 1 -0 -1 -r $1 -c $2 -t 3:int -e $HOST \
 | grep '^\[' | awk -F ": " '{ print $2 "," }'
 
 }
 
-four 22
-four 23
+four 38 3
+four 22 2
+
 
 
 ##
