@@ -6,8 +6,12 @@ HOST="-m enc -p 9502 10.1.0.37"
 # serial
 #HOST="-m rtu /tty...."
 
-/config/apps/modpoll -a 1 -0 -1 -r 22 -c 1 -t 3:int -e $HOST 
+function four()
+{
+/config/apps/modpoll -a 1 -0 -1 -r $1 -c 1 -t 3:int -e $HOST 
+}
 
+four 22
 
 
 ##
