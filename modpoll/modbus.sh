@@ -11,7 +11,7 @@ function four()
 /config/apps/modpoll -a 1 -0 -1 -r $1 -c 1 -t 3:int -e $HOST 
 }
 
-four 22
+four 22 | grep '^\['
 
 
 ##
