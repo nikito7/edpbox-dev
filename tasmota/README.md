@@ -11,3 +11,9 @@ Disable recovery mode:
 > immediately 
 > or you'll end up with firmware default
 > devices after a brownout event.
+
+Timezone:
+
+```
+Backlog TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0
+```
