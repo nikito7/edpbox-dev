@@ -5,12 +5,10 @@ switch:
   - platform: mqtt
     name: "EB1 ESP Restart"
     unique_id: EB1_ESP_Switch
-    state_topic: "tele/edpbox1/LWT"
     command_topic: "cmnd/edpbox1/restart"
-    availability_topic: "tele/edpbox1/LWT"
     payload_on: "1"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    payload_off: "1"
+
 
 ###
 
@@ -100,43 +98,46 @@ sensor:
     unique_id: EB1_VolL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.VolL1|float %}
+        {% set x = value_json.EB1.VolL1|float(-1) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
     unit_of_measurement: "V"
     device_class: voltage
+    state_class: measurement
 
   - platform: mqtt
     name: "EB1 Current L1"
     unique_id: EB1_CurL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.CurL1|float %}
+        {% set x = value_json.EB1.CurL1|float(0.0) %}
         {% if x %}
           {{ x }}
         {% endif %}
     unit_of_measurement: "A"
     device_class: current
+    state_class: measurement
 
   - platform: mqtt
     name: "EB1 Power Factor"
     unique_id: EB1_PowFac
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.PowFac|float %}
+        {% set x = value_json.EB1.PowFac|float(-1) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
     unit_of_measurement: "pu"
     device_class: power_factor
+    state_class: measurement
 
   - platform: mqtt
     name: "EB1 Active Power"
     unique_id: EB1_ActPow
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.ActPow|int %}
+        {% set x = value_json.EB1.ActPow|int(0) %}
         {% if x %}
           {{ x }}
         {% endif %}
@@ -148,12 +149,13 @@ sensor:
     unique_id: EB1_Frequency
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Frequency|float %}
+        {% set x = value_json.EB1.Frequency|float(-1) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
     unit_of_measurement: "Hz"
-    icon: mdi:pulse
+    device_class: frequency
+    state_class: measurement
 
 ###
 
