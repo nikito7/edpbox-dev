@@ -9,8 +9,6 @@ entities:
     secondary_info: last-updated
   - entity: switch.eb3_esp_restart
     secondary_info: last-updated
-  - entity: switch.eb3_esp_restart_3
-    secondary_info: last-updated
   - entity: sensor.eb3_esp_vcc
     secondary_info: last-updated
   - entity: sensor.eb3_esp_clock
