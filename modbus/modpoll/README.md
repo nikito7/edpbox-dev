@@ -6,6 +6,8 @@ https://www.modbusdriver.com/modpoll.html
 
 ./modpoll -m enc -a 1 -0 -1 -r 108 -c 1 -t 3 -p 9502 10.1.0.37
 
+modpoll.exe -m rtu -a 1 -0 -1 -r 108 -c 1 -t 3 -P none COM4
+
 <hr>
 
 4 bytes: Total Energy Import:
