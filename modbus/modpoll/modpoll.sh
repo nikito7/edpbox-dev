@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # rtu over tcp
-#HOST="-m enc -p 9502 10.1.0.37"
+HOST="-m enc -p 9502 10.1.0.37"
 
 # serial
 #TTY="/dev/ttyS3"
