@@ -1,10 +1,12 @@
 #!/bin/sh
 
 # rtu over tcp
-HOST="-m enc -p 9502 10.1.0.37"
+#HOST="-m enc -p 9502 10.1.0.37"
 
 # serial
-#HOST="-m rtu /tty...."
+#TTY="/dev/ttyS3"
+#stty -F $TTY cs8 9600
+#HOST="-b 9600 -p none -m rtu $TTY"
 
 function four()
 {
