@@ -8,16 +8,12 @@ Standard Modbus:
 
 EB3 to EB1:
 
->Keep:
->- Voltage L1
->- Current L1
->
->Remove:
->- Total, L2, L3
+```
+- Voltage L1
+- Current L1
+- Active Power (total)
+- Power Factor (total)
+...
+```
 
->Keep:
->- Active Power (total)
->- Power Factor (total)
->
->Remove:
->- L1, L2, L3
+<hr>
