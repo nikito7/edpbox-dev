@@ -24,11 +24,11 @@ wifi:
   domain: .lan
   #use_address: 10.3.0.142 # fix ota dns error
 
-  #ssid: !secret wifi_ssid
-  #password: !secret wifi_key
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
 
   ap:
-    ssid: "CPHA.PT ${dev}"
+    ssid: "Fallback ${dev}"
     password: !secret wifi_key
 
 captive_portal:
