@@ -14,7 +14,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB99 T1 Vazio" # 0x0026
+      - name: "EB99 reg38 c3" # 0x0026
         slave: 1
         address: 38
         input_type: input
@@ -23,9 +23,6 @@ modbus:
         data_type: uint32
         precision: 1
         scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
         scan_interval: 15
 
 # EOF
