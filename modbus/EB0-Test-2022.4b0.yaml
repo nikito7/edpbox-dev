@@ -29,7 +29,6 @@ modbus:
         state_class: total_increasing
         scan_interval: 91
 
-
 ### ### ###
 
       - name: "EB9 reg22 c6" # 0x0016
@@ -52,7 +51,7 @@ modbus:
         slave: 1
         address: 108
         input_type: input
-        count: 1
+        count: 7
         slave_count: 6
         data_type: uint16
         precision: 1
@@ -77,42 +76,6 @@ modbus:
         state_class: measurement
         scan_interval: 21
 
-      - name: "EB9 Power Export" # 0x007A
-        slave: 1
-        address: 122
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 0
-        scale: 1
-        unit_of_measurement: W
-        device_class: power
-        scan_interval: 37
-
-      - name: "EB9 Power Factor" # 0x007B
-        slave: 1
-        address: 123
-        input_type: input
-        count: 1
-        data_type: uint16
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: pu
-        device_class: power_factor
-        scan_interval: 38
-
-      - name: "EB9 Frequency" # 0x007F
-        slave: 1
-        address: 127
-        input_type: input
-        count: 1
-        data_type: uint16
-        precision: 1
-        scale: 0.1
-        unit_of_measurement: Hz
-        scan_interval: 39
-
-
 # for tariff template
 
       - name: "EB9 0x000B" # Tariff
@@ -123,38 +86,5 @@ modbus:
         data_type: custom
         structure: ">Bx"
         scan_interval: 43
-
-### for testing
-
-      - name: "EB9 Firmware" # 0x0004
-        slave: 1
-        address: 4
-        input_type: input
-        count: 3
-        data_type: string
-        scan_interval: 44
-
-### edpbox templates
-
-sensor:
-
-  - platform: template
-    sensors:
-
-      eb3_tariff:
-        friendly_name: "EB9 Tariff"
-        value_template: >-
-          {% set x = states('sensor.eb9_0x000b')|string %}
-          {% if x == "1" %}
-            {{ "Vazio" }}
-          {% elif x == "2" %}
-            {{ "Ponta" }}
-          {% elif x == "3" %}
-            {{ "Cheias" }}
-          {% endif %}
-        icon_template: mdi:calendar
-
-# EOF
-
 
 # EOF
