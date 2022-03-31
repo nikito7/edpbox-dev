@@ -3,8 +3,8 @@
 
 substitutions:
 
-  dev: EB1test
-  name: edpbox1test
+  dev: EB1dev
+  name: edpbox1
 
 esphome:
 
@@ -24,11 +24,11 @@ wifi:
   domain: .lan
   #use_address: 10.3.0.142 # fix ota dns error
 
-  ssid: !secret wifi_ssid
-  password: !secret wifi_key
+  #ssid: !secret wifi_ssid
+  #password: !secret wifi_key
 
   ap:
-    ssid: "Fallback ${dev}"
+    ssid: "CPHA.PT ${dev}"
     password: !secret wifi_key
 
 captive_portal:
@@ -97,8 +97,7 @@ sensor:
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
-    unit_of_measurement: "dBm"
-    update_interval: 30s
+    unit_of_measurement: "dB"
 
   - platform: uptime
     name: "${dev} ESP Uptime"
@@ -243,7 +242,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 2
+    skip_updates: 10
 
   - platform: modbus_controller
     name: "${dev} Export"
@@ -258,7 +257,7 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 2
+    skip_updates: 10
 
 ### ### ###
 
