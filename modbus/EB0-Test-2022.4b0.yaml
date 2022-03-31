@@ -63,7 +63,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB3 reg115 c4"
+      - name: "EB9 reg115 c4"
         slave: 1
         address: 115
         input_type: input
@@ -77,7 +77,7 @@ modbus:
         state_class: measurement
         scan_interval: 21
 
-      - name: "EB3 Power Export" # 0x007A
+      - name: "EB9 Power Export" # 0x007A
         slave: 1
         address: 122
         input_type: input
@@ -89,7 +89,7 @@ modbus:
         device_class: power
         scan_interval: 37
 
-      - name: "EB3 Power Factor" # 0x007B
+      - name: "EB9 Power Factor" # 0x007B
         slave: 1
         address: 123
         input_type: input
@@ -101,7 +101,7 @@ modbus:
         device_class: power_factor
         scan_interval: 38
 
-      - name: "EB3 Frequency" # 0x007F
+      - name: "EB9 Frequency" # 0x007F
         slave: 1
         address: 127
         input_type: input
@@ -115,7 +115,7 @@ modbus:
 
 # for tariff template
 
-      - name: "EB3 0x000B" # Tariff
+      - name: "EB9 0x000B" # Tariff
         slave: 1
         address: 11
         input_type: input
@@ -126,7 +126,7 @@ modbus:
 
 ### for testing
 
-      - name: "EB3 Firmware" # 0x0004
+      - name: "EB9 Firmware" # 0x0004
         slave: 1
         address: 4
         input_type: input
@@ -142,9 +142,9 @@ sensor:
     sensors:
 
       eb3_tariff:
-        friendly_name: "EB3 Tariff"
+        friendly_name: "EB9 Tariff"
         value_template: >-
-          {% set x = states('sensor.eb3_0x000b')|string %}
+          {% set x = states('sensor.eb9_0x000b')|string %}
           {% if x == "1" %}
             {{ "Vazio" }}
           {% elif x == "2" %}
