@@ -70,9 +70,9 @@ sensor:
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
         {% if value_json.EB1.Clock_S is defined %}
-          {% set hh = states('sensor.eb1_clock_h')|int %}
-          {% set mm = states('sensor.eb1_clock_m')|int %}
-          {% set ss = value_json.EB1.Clock_S|int %}
+          {% set hh = states('sensor.eb1_clock_h')|int(0) %}
+          {% set mm = states('sensor.eb1_clock_m')|int(0) %}
+          {% set ss = value_json.EB1.Clock_S|int(0) %}
           {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
         {% else %}
           {{ states('sensor.eb1_clock') }}
@@ -98,7 +98,7 @@ sensor:
     unique_id: EB1_VolL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.VolL1|float(-1) %}
+        {% set x = value_json.EB1.VolL1|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -124,7 +124,7 @@ sensor:
     unique_id: EB1_PowFac
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.PowFac|float(-1) %}
+        {% set x = value_json.EB1.PowFac|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -149,7 +149,7 @@ sensor:
     unique_id: EB1_Frequency
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Frequency|float(-1) %}
+        {% set x = value_json.EB1.Frequency|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -164,7 +164,7 @@ sensor:
     unique_id: EB1_TotEneT1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneT1|float %}
+        {% set x = value_json.EB1.TotEneT1|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -176,7 +176,7 @@ sensor:
     unique_id: EB1_TotEneT2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneT2|float %}
+        {% set x = value_json.EB1.TotEneT2|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -188,7 +188,7 @@ sensor:
     unique_id: EB1_TotEneT3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneT3|float %}
+        {% set x = value_json.EB1.TotEneT3|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -202,7 +202,7 @@ sensor:
     unique_id: EB1_TotEneImp
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneImp|float %}
+        {% set x = value_json.EB1.TotEneImp|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -214,7 +214,7 @@ sensor:
     unique_id: EB1_TotEneExp
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneExp|float %}
+        {% set x = value_json.EB1.TotEneExp|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -228,7 +228,7 @@ sensor:
     unique_id: EB1_Tariff
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Tariff|int %}
+        {% set x = value_json.EB1.Tariff|int(0) %}
         {% if x == 1 %}
           {{ "Vazio" }}
         {% elif x == 2 %}
