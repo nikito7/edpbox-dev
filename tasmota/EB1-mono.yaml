@@ -29,6 +29,7 @@ sensor:
     value_template: '{{ value_json.Heap }}'
     unit_of_measurement: "kB"
     icon: mdi:chip
+    state_class: measurement
 
   - platform: mqtt
     name: "EB1 ESP Signal"
@@ -37,6 +38,7 @@ sensor:
     value_template: '{{ value_json.Wifi.Signal }}'
     unit_of_measurement: "dB"
     device_class: signal_strength
+    state_class: measurement
 
 ###
 
@@ -143,6 +145,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "W"
     device_class: power
+    state_class: measurement
 
   - platform: mqtt
     name: "EB1 Frequency"
@@ -170,6 +173,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "kWh"
     icon: mdi:transmission-tower
+
    
   - platform: mqtt
     name: "EB1 T2 Ponta"
