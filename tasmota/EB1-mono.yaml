@@ -160,7 +160,7 @@ sensor:
     device_class: frequency
     state_class: measurement
 
-###
+### ### ###
 
   - platform: mqtt
     name: "EB1 T1 Vazio"
@@ -172,9 +172,9 @@ sensor:
           {{ x }}
         {% endif %}
     unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
+    device_class: energy
+    state_class: total_increasing
 
-   
   - platform: mqtt
     name: "EB1 T2 Ponta"
     unique_id: EB1_TotEneT2
@@ -185,7 +185,8 @@ sensor:
           {{ x }}
         {% endif %}
     unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
+    device_class: energy
+    state_class: total_increasing
     
   - platform: mqtt
     name: "EB1 T3 Cheias"
@@ -197,9 +198,10 @@ sensor:
           {{ x }}
         {% endif %}
     unit_of_measurement: "kWh"
-    icon: mdi:transmission-tower
+    device_class: energy
+    state_class: total_increasing
 
-###
+### ### ###
 
   - platform: mqtt
     name: "EB1 Import"
@@ -212,6 +214,7 @@ sensor:
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
+    state_class: total_increasing
 
   - platform: mqtt
     name: "EB1 Export"
@@ -224,8 +227,9 @@ sensor:
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
+    state_class: total_increasing
 
-###
+### ### ###
 
   - platform: mqtt
     name: "EB1 Tariff"
