@@ -113,10 +113,7 @@ sensor:
     unique_id: EB1_CurL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.CurL1|float(0.0) %}
-        {% if x %}
-          {{ x }}
-        {% endif %}
+        {{ value_json.EB1.CurL1|float(0.0) }}
     unit_of_measurement: "A"
     device_class: current
     state_class: measurement
@@ -160,7 +157,8 @@ sensor:
     device_class: frequency
     state_class: measurement
 
-### ### ###
+###
+###
 
   - platform: mqtt
     name: "EB1 T1 Vazio"
@@ -201,7 +199,8 @@ sensor:
     device_class: energy
     state_class: total_increasing
 
-### ### ###
+###
+###
 
   - platform: mqtt
     name: "EB1 Import"
@@ -229,7 +228,8 @@ sensor:
     device_class: energy
     state_class: total_increasing
 
-### ### ###
+###
+###
 
   - platform: mqtt
     name: "EB1 Tariff"
