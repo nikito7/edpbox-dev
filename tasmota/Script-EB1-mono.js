@@ -113,7 +113,7 @@ endif
 
 ; 7F
 
-1,01040aUUuu@i5:10,Frequency ,Hz,Frequency,2
+1,01040aUUuu@i5:10,Frequency ,Hz,Frequency,1
 
 ; 0B
 
