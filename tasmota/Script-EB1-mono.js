@@ -77,16 +77,16 @@ endif
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,16
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,16
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,16
+1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,0
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,0
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,0
 
 1,=h<hr>
 
 ; 6C
 
-1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,17
-1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,17
+1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,1
+1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,1
 
 1,=h<hr>
 
@@ -107,9 +107,9 @@ endif
 
 ; 79
 
-1,01040aUUuuUUuu@i4:1,Active Power ,W,ActPow,16
-1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,ActPowExp,16
-1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,pu,PowFac,19
+1,01040aUUuuUUuu@i4:1,Active Power ,W,ActPow,0
+1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,ActPowExp,0
+1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,pu,PowFac,3
 
 ; 7F
 
