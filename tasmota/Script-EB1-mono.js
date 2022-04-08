@@ -19,6 +19,7 @@ smlj=0
 if cnt==30
 then
 smlj=1
+tper=12
 endif
 
 time=st(tstamp T 2)
@@ -29,7 +30,7 @@ then
 cnt+=1
 endif
 
-; modbus watchdog
+; modbus watchdog block begin
 
 clk=sml[3]
 
@@ -55,6 +56,8 @@ print modbus error
 endif
 endif
 
+; modbus watchdog block end
+
 >W
 
 @<b>NTP: </b> %date% %time%
@@ -71,8 +74,6 @@ endif
 ; power off is required
 ;  v  v             v
 +1,3,mN1,1,9600,EB1,1,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002
-
-1,=h<hr>
 
 ; 01
 
