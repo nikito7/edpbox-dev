@@ -19,7 +19,7 @@ smlj=0
 if cnt==30
 then
 smlj=1
-tper=12
+tper=10
 endif
 
 time=st(tstamp T 2)
@@ -75,13 +75,13 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,EB3,1,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004
++1,3,mN1,1,9600,EB3,1,12,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004
 
 ; 01
 
 1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,0
 1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,0
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,0
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,16
 
 1,=h<hr>
 
