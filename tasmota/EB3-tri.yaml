@@ -8,8 +8,10 @@ switch:
     command_topic: "cmnd/edpbox3/restart"
     payload_off: "1"
     payload_on: "1"
+    state_on: "1"
+    state_off: "1"
+    optimistic: false
     icon: mdi:restart
-    assumed_state: false
 
 ###
 
