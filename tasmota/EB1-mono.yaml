@@ -8,9 +8,7 @@ switch:
     command_topic: "cmnd/edpbox1/restart"
     payload_on: "1"
     payload_off: "1"
-    availability_topic: "tele/edpbox1/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    device_class: switch
 
 ###
 
@@ -23,6 +21,9 @@ sensor:
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
     icon: mdi:alarm
+    availability_topic: "tele/edpbox1/LWT"
+    payload_available: "Online"
+    payload_not_available: "Offline"
 
   - platform: mqtt
     name: "EB1 ESP Free Heap"
