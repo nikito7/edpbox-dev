@@ -1,5 +1,5 @@
-// .ini
-// board = esp8266_4M2M
+//
+// tasmota4M
 
 // user_config_override.h
 
