@@ -85,14 +85,14 @@ endif
 
 ; 6C
 
-1,010404UUuu@i1:10,Voltage L1 ,V,VolL1,1
-1,010404xxxxUUuu@i1:10,Current L1 ,A,CurL1,1
+1,010404UUuu@i1:10,Voltage L1 ,V,Voltage,1
+1,010404xxxxUUuu@i1:10,Current L1 ,A,Current,1
 
 1,=h<hr>
 
 ; 16
 
-1,010408UUuuUUuu@i2:1000,Energy Import ,kWh,TotEneImp,2
+1,010408UUuuUUuu@i2:1000,Energy Import ,kWh,Energy,2
 1,010408xxxxxxxxUUuuUUuu@i2:1000,Energy Export ,kWh,TotEneExp,2
 
 1,=h<hr>
@@ -107,9 +107,9 @@ endif
 
 ; 79
 
-1,01040aUUuuUUuu@i4:1,Active Power ,W,ActPow,0
+1,01040aUUuuUUuu@i4:1,Active Power ,W,Active_Power,0
 1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,ActPowExp,0
-1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,pu,PowFac,3
+1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,pu,Power_Factor,3
 
 ; 7F
 
