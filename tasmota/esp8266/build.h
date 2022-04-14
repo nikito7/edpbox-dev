@@ -112,6 +112,14 @@
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #undef USE_AC_ZERO_CROSS_DIMMER                  // Disable support for AC_ZERO_CROSS_DIMMER
 
+// ### ### ###
+
+// tasmota4M
+//#define USE_UFILESYS
+//#define UFSYS_SIZE 8192
+
+// ### ### ###
+
 // user_config_override.h
 // sml configs
 
