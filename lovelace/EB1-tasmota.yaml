@@ -9,7 +9,6 @@ entities:
     secondary_info: last-updated
   - entity: switch.eb1_esp_restart
     secondary_info: last-updated
-    icon: mdi:power
   - entity: sensor.eb1_esp_clock
     secondary_info: last-updated
 # EB
