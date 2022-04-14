@@ -8,25 +8,25 @@
 #undef USE_INFLUXDB                              // Disable influxdb support (+5k code)
 #undef USE_DOMOTICZ                              // Disable Domoticz
 #undef USE_HOME_ASSISTANT                        // Disable Home Assistant
-#undef USE_TASMOTA_DISCOVERY                     // Disable Tasmota Discovery support (+2k code)
+//#undef USE_TASMOTA_DISCOVERY                     // Disable Tasmota Discovery support (+2k code)
 #undef USE_TELEGRAM                              // Disable support for Telegram protocol (+49k code, +7.0k mem and +4.8k additional during connection handshake)
 //#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
-#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
+//#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
 #undef USE_WEBSEND_RESPONSE                      // Disable command WebSend response message (+1k code)
 #undef USE_EMULATION                             // Disable Wemo or Hue emulation
 #undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
 #undef USE_EMULATION_WEMO                        // Disable Belkin WeMo emulation for Alexa (+6k code, +2k mem common)
-#undef USE_CUSTOM                                // Disable Custom features
-#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
+//#undef USE_CUSTOM                                // Disable Custom features
+//#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
 #undef USE_TIMERS                                // Disable support for up to 16 timers
 #undef USE_TIMERS_WEB                            // Disable support for timer webpage
 #undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
 #undef USE_PING                                  // Disable Ping command (+2k code)
 #undef USE_UNISHOX_COMPRESSION                   // Disable support for string compression in Rules or Scripts
 #undef USE_RULES                                 // Disable support for rules
-#undef USE_SCRIPT                                // Disable support for script
+//#undef USE_SCRIPT                                // Disable support for script
 
 // -- Optional modules ----------------------------
 #undef ROTARY_V1                                 // Disable support for MI Desk Lamp
