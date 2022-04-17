@@ -17,6 +17,7 @@ esphome:
 
 wifi:
 
+  output_power: 15db
   domain: .lan
   #use_address: 10.1.0.36 # fix ota dns error
 
