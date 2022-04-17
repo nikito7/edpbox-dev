@@ -1,4 +1,8 @@
-# Change to your wifi and uart pins.
+# Change to your:
+# - board
+# - adc sensor
+# - wifi
+# - uart pins
 
 substitutions:
 
