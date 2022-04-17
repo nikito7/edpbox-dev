@@ -30,9 +30,6 @@ wifi:
 captive_portal:
 
 web_server:
-  js_include: "./.0/www_v2.js"
-  js_url: ""
-  version: 2
 
 #logger:
 #  level: verbose
@@ -91,10 +88,12 @@ sensor:
       return heap / 1024.0;
     unit_of_measurement: "kB"
     icon: mdi:chip
+    entity_category: diagnostic
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
     unit_of_measurement: "dB"
+    entity_category: diagnostic
 
   - platform: uptime
     name: "${dev} ESP Uptime"
@@ -102,6 +101,7 @@ sensor:
       - lambda: return x/3600;
     unit_of_measurement: "h"
     accuracy_decimals: 1
+    entity_category: diagnostic
 
 ### ### ###
 
