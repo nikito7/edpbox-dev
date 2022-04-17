@@ -81,6 +81,11 @@ modbus_controller:
 
 sensor:
 
+  - platform: adc
+    pin: VCC
+    name: "${dev} ESP VCC"
+    # esp8266 only
+
   - platform: template
     name: "${dev} ESP Free Heap"
     lambda: |-
