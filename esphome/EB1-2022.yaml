@@ -1,9 +1,12 @@
-# ESPHome 2022.2
-# Change to your wifi and uart pins.
+# Change to your:
+# - board
+# - sensor vcc
+# - wifi
+# - uart pins
 
 substitutions:
 
-  dev: EB1dev
+  dev: EB1
   name: edpbox1
 
 esphome:
@@ -13,11 +16,11 @@ esphome:
   #platform: ESP8266
   #board: esp01_1m
 
-  platform: ESP8266
-  board: esp07s # 4MB
+  #platform: ESP8266
+  #board: esp07s # 4MB
 
-  #platform: ESP32
-  #board: esp32dev
+  platform: ESP32
+  board: esp32dev
 
 wifi:
 
@@ -34,7 +37,6 @@ wifi:
 captive_portal:
 
 web_server:
-  css_url: https://nikito7.github.io/s/edpbox-v1.css?3
 
 #logger:
 #  level: verbose
@@ -65,8 +67,8 @@ uart:
 # tfreire 14/5
 
   id: modbus_serial
-  rx_pin: 3
-  tx_pin: 1
+  rx_pin: 19
+  tx_pin: 18
   baud_rate: 9600
   stop_bits: 1
 
@@ -79,12 +81,17 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 15s
+    update_interval: 30s
     address: 0x1
     command_throttle: 250ms
     setup_priority: -10
 
 sensor:
+
+#  - platform: adc
+#    pin: VCC
+#    name: "${dev} ESP VCC"
+#    # esp8266 only
 
   - platform: template
     name: "${dev} ESP Free Heap"
@@ -92,7 +99,6 @@ sensor:
       int heap = ESP.getFreeHeap();
       return heap / 1024.0;
     unit_of_measurement: "kB"
-    update_interval: 30s
     icon: mdi:chip
 
   - platform: wifi_signal
