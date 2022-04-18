@@ -368,7 +368,7 @@ sensor:
     accuracy_decimals: 1
     filters:
       - multiply: 0.1
-    device_class: frequency
+    icon: "mdi:pulse"
     state_class: measurement
 
 ### Total Energy Tariffs
