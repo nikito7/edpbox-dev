@@ -87,9 +87,15 @@ modbus_controller:
 sensor:
 
   - platform: adc
+    filters:
+      - multiply: 3.3
     pin: A0
     name: "${dev} ESP VCC"
-    # esp8266 only
+    # internal vcc esp8266 only
+    accuracy_decimals: 3
+    entity_category: diagnostic
+    device_class: voltage
+    state_class: measurement
 
   - platform: template
     name: "${dev} ESP Free Heap"
