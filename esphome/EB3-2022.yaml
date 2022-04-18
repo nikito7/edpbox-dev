@@ -79,7 +79,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 15s
+    update_interval: 11s
     address: 0x1
     command_throttle: 250ms
     setup_priority: -10
@@ -87,7 +87,7 @@ modbus_controller:
 sensor:
 
   - platform: adc
-    pin: VCC
+    pin: A0
     name: "${dev} ESP VCC"
     # esp8266 only
 
