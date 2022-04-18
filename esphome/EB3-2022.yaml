@@ -21,7 +21,7 @@ esphome:
 
 wifi:
 
-  output_power: 15db
+  output_power: 12db
   domain: .lan
   #use_address: 10.1.0.36 # fix ota dns error
 
@@ -89,13 +89,14 @@ sensor:
   - platform: adc
     filters:
       - multiply: 3.3
+    # internal VCC esp8266 only
     pin: A0
     name: "${dev} ESP VCC"
-    # internal vcc esp8266 only
-    accuracy_decimals: 3
+    accuracy_decimals: 2
     entity_category: diagnostic
     device_class: voltage
     state_class: measurement
+    update_interval: 12s
 
   - platform: template
     name: "${dev} ESP Free Heap"
@@ -106,6 +107,7 @@ sensor:
     icon: mdi:chip
     entity_category: diagnostic
     state_class: measurement
+    update_interval: 12s
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
