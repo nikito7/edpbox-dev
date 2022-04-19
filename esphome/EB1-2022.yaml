@@ -1,6 +1,6 @@
 # Change to your:
 # - board
-# - adc sensor
+# - adc sensor ( or remove )
 # - wifi
 # - uart pins
 
@@ -24,9 +24,10 @@ esphome:
 
 wifi:
 
-  output_power: 15db
+  output_power: 10db
   domain: .lan
-  #use_address: 10.3.0.142 # fix ota dns error
+  # use_address: 10.3.0.142
+  # fix ota dns error
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
@@ -84,7 +85,7 @@ modbus_controller:
   - id: edpbox
     update_interval: 30s
     address: 0x1
-    command_throttle: 250ms
+    command_throttle: 150ms
     setup_priority: -10
 
 sensor:
@@ -115,7 +116,7 @@ sensor:
 
 ### ### ###
 
-### Voltage & Current
+### Voltage & Current ###
 
   - platform: modbus_controller
     name: "${dev} Voltage L1"
@@ -139,7 +140,7 @@ sensor:
       - multiply: 0.1
     device_class: current
 
-### Active Power & Power Factor
+### Active Power & Power Factor ###
 
   - platform: modbus_controller
     name: "${dev} Active Power"
@@ -174,7 +175,7 @@ sensor:
       - multiply: 0.001
     device_class: power_factor
 
-### Frequency
+### Frequency ###
 
   - platform: modbus_controller
     name: "${dev} Frequency"
@@ -187,7 +188,7 @@ sensor:
       - multiply: 0.1
     icon: "mdi:pulse"
 
-### Total Energy Tariffs
+### Total Energy Tariffs ###
 
   - platform: modbus_controller
     name: "${dev} T1 Vazio"
@@ -217,7 +218,6 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 2
 
   - platform: modbus_controller
     name: "${dev} T3 Cheias"
@@ -232,9 +232,8 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 2
 
-### Total Energy
+### Total Energy ###
 
   - platform: modbus_controller
     name: "${dev} Import"
@@ -249,7 +248,6 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 10
 
   - platform: modbus_controller
     name: "${dev} Export"
@@ -264,7 +262,6 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 10
 
 ### ### ###
 
@@ -317,8 +314,6 @@ text_sensor:
         else if (x == "2,0") z = "Ponta";
         else if (x == "3,0") z = "Cheias";
         return {z};
-
-###
 
 #######
 # eof #
