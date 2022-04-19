@@ -13,11 +13,11 @@ esphome:
 
   name: ${name}
 
-  #platform: ESP32
-  #board: esp32dev
+  platform: ESP32
+  board: esp32dev
 
-  platform: ESP8266
-  board: esp07s # 4MB
+  #platform: ESP8266
+  #board: esp07s # 4MB
 
 wifi:
 
@@ -65,8 +65,8 @@ uart:
 # tfreire 14/5
 
   id: modbus_serial
-  rx_pin: 3
-  tx_pin: 1
+  rx_pin: 19
+  tx_pin: 18
   baud_rate: 9600
   stop_bits: 1
 
