@@ -23,7 +23,8 @@ wifi:
 
   output_power: 10db
   domain: .lan
-  #use_address: 10.1.0.36 # fix ota dns error
+  # use_address: 10.1.0.36
+  # fix ota dns error
 
   ssid: !secret wifi_ssid
   password: !secret wifi_key
@@ -81,7 +82,7 @@ modbus_controller:
   - id: edpbox
     update_interval: 11s
     address: 0x1
-    command_throttle: 250ms
+    command_throttle: 150ms
     setup_priority: -10
 
 sensor:
@@ -93,7 +94,6 @@ sensor:
     pin: A0
     name: "${dev} ESP VCC"
     accuracy_decimals: 2
-    entity_category: diagnostic
     device_class: voltage
     state_class: measurement
     update_interval: 12s
@@ -105,14 +105,12 @@ sensor:
       return heap / 1024.0;
     unit_of_measurement: "kB"
     icon: mdi:chip
-    entity_category: diagnostic
     state_class: measurement
     update_interval: 12s
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
     unit_of_measurement: "dB"
-    entity_category: diagnostic
     state_class: measurement
 
   - platform: uptime
@@ -121,11 +119,10 @@ sensor:
       - lambda: return x/3600;
     unit_of_measurement: "h"
     accuracy_decimals: 1
-    entity_category: diagnostic
 
 ### ### ###
 
-### Voltage & Current
+### Voltage & Current ###
 
   - platform: modbus_controller
     name: "${dev} Voltage L1"
@@ -213,7 +210,7 @@ sensor:
     device_class: current
     state_class: measurement
 
-### Active Power & Export
+### Active Power & Export ###
 
   - platform: modbus_controller
     name: "${dev} Active Power"
@@ -240,18 +237,6 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
-    name: "${dev} Active Power L1 Export"
-    address: 0x0074
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    response_size: 4
-    accuracy_decimals: 0
-    device_class: power
-    unit_of_measurement: "W"
-    internal: true # disable sensor
-
-  - platform: modbus_controller
     name: "${dev} Active Power L2"
     address: 0x0075
     register_type: read
@@ -262,18 +247,6 @@ sensor:
     device_class: power
     unit_of_measurement: "W"
     state_class: measurement
-
-  - platform: modbus_controller
-    name: "${dev} Active Power L2 Export"
-    address: 0x0076
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    response_size: 4
-    accuracy_decimals: 0
-    device_class: power
-    unit_of_measurement: "W"
-    internal: true # disable sensor
 
   - platform: modbus_controller
     name: "${dev} Active Power L3"
@@ -288,18 +261,6 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
-    name: "${dev} Active Power L3 Export"
-    address: 0x0078
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    response_size: 4
-    accuracy_decimals: 0
-    device_class: power
-    unit_of_measurement: "W"
-    internal: true # disable sensor
-
-  - platform: modbus_controller
     name: "${dev} Active Power Export"
     address: 0x007A
     register_type: read
@@ -311,7 +272,7 @@ sensor:
     unit_of_measurement: "W"
     state_class: measurement
 
-### Power Factor & Frequency
+### Power Factor & Frequency ###
 
   - platform: modbus_controller
     name: "${dev} Power Factor"
@@ -373,7 +334,7 @@ sensor:
     icon: "mdi:pulse"
     state_class: measurement
 
-### Total Energy Tariffs
+### Total Energy Tariffs ###
 
   - platform: modbus_controller
     name: "${dev} T1 Vazio"
@@ -388,7 +349,6 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 3
 
   - platform: modbus_controller 
     name: "${dev} T2 Ponta"
@@ -403,7 +363,6 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 3
 
   - platform: modbus_controller
     name: "${dev} T3 Cheias"
@@ -418,9 +377,8 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 3
 
-### Total Energy
+### Total Energy ###
 
   - platform: modbus_controller
     name: "${dev} Import"
@@ -435,7 +393,6 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 3
 
   - platform: modbus_controller
     name: "${dev} Export"
@@ -450,7 +407,6 @@ sensor:
     unit_of_measurement: "kWh"
     state_class: total_increasing
     device_class: energy
-    skip_updates: 3
 
 ### ### ###
 
@@ -503,8 +459,6 @@ text_sensor:
         else if (x == "2,0") z = "Ponta";
         else if (x == "3,0") z = "Cheias";
         return {z};
-
-###
 
 #######
 # eof #
