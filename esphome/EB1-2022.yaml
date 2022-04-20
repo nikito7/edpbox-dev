@@ -24,7 +24,7 @@ esphome:
 
 wifi:
 
-  output_power: 10db
+  output_power: 15db
   domain: .lan
   # use_address: 10.3.0.142
   # fix ota dns error
@@ -83,7 +83,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 30s
+    update_interval: 31s
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
