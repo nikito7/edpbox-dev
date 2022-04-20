@@ -88,10 +88,8 @@ modbus_controller:
 sensor:
 
   - platform: adc
-    filters:
-      - multiply: 3.3
     # internal VCC esp8266 only
-    pin: A0
+    pin: VCC
     name: "${dev} ESP VCC"
     accuracy_decimals: 2
     device_class: voltage
