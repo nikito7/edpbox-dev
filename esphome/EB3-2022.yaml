@@ -21,7 +21,7 @@ esphome:
 
 wifi:
 
-  output_power: 10db
+  output_power: 15db
   domain: .lan
   # use_address: 10.1.0.36
   # fix ota dns error
@@ -66,8 +66,8 @@ uart:
 # tfreire 14/5
 
   id: modbus_serial
-  rx_pin: 3
-  tx_pin: 1
+  rx_pin: 1
+  tx_pin: 3
   baud_rate: 9600
   stop_bits: 1
 
@@ -91,7 +91,7 @@ sensor:
     # internal VCC esp8266 only
     pin: VCC
     name: "${dev} ESP VCC"
-    accuracy_decimals: 2
+    accuracy_decimals: 3
     device_class: voltage
     state_class: measurement
     update_interval: 12s
