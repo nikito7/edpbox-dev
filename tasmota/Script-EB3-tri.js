@@ -79,8 +79,8 @@ endif
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,0
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,0
+1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,16
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,16
 1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,16
 
 1,=h<hr>
