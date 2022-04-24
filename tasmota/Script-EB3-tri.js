@@ -9,7 +9,7 @@ old=0
 
 >BS
 
-tper=60
+tper=10
 smlj=0
 
 =>Sensor53 r
@@ -19,7 +19,6 @@ smlj=0
 if cnt==30
 then
 smlj=1
-tper=10
 endif
 
 time=st(tstamp T 2)
