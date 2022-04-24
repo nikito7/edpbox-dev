@@ -311,11 +311,9 @@ sensor:
     unique_id: EB3_TotEneT1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneT1|float(-999) %}
+        {% set x = value_json.EB3.TotEneT1|float(-1) %}
         {% if x > 0 %}
           {{ x }}
-        {% else %}
-          {{ states('sensor.eb3_t1_vazio') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -326,11 +324,9 @@ sensor:
     unique_id: EB3_TotEneT2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneT2|float(-999) %}
+        {% set x = value_json.EB3.TotEneT2|float(-1) %}
         {% if x > 0 %}
           {{ x }}
-        {% else %}
-          {{ states('sensor.eb3_t2_ponta') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -341,11 +337,9 @@ sensor:
     unique_id: EB3_TotEneT3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneT3|float(-999) %}
+        {% set x = value_json.EB3.TotEneT3|float(-1) %}
         {% if x > 0 %}
           {{ x }}
-        {% else %}
-          {{ states('sensor.eb3_t3_cheias') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -359,11 +353,9 @@ sensor:
     unique_id: EB3_TotEneImp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneImp|float(-999) %}
+        {% set x = value_json.EB3.TotEneImp|float(-1) %}
         {% if x > 0 %}
           {{ x }}
-        {% else %}
-          {{ states('sensor.eb3_import') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
@@ -374,11 +366,9 @@ sensor:
     unique_id: EB3_TotEneExp
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.TotEneExp|float(-999) %}
+        {% set x = value_json.EB3.TotEneExp|float(-1) %}
         {% if x > 0 %}
           {{ x }}
-        {% else %}
-          {{ states('sensor.eb3_export') }}
         {% endif %}
     unit_of_measurement: "kWh"
     device_class: energy
