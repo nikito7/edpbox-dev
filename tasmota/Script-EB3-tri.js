@@ -12,6 +12,8 @@ old=0
 tper=10
 smlj=0
 
+=>SerialLog 0
+=>SensorRetain 1
 =>Sensor53 r
 
 >S
