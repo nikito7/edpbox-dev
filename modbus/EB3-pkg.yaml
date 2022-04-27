@@ -265,6 +265,50 @@ modbus:
         device_class: power_factor
         scan_interval: 38
 
+### L1
+
+      - name: "EB3 Power Factor L1"
+        slave: 1
+        address: 124
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: pu
+        device_class: power_factor
+        scan_interval: 38
+
+### L2
+
+      - name: "EB3 Power Factor L2" 
+        slave: 1
+        address: 125
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: pu
+        device_class: power_factor
+        scan_interval: 38
+
+### L3
+
+      - name: "EB3 Power Factor L3"
+        slave: 1
+        address: 126
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 3
+        scale: 0.001
+        unit_of_measurement: pu
+        device_class: power_factor
+        scan_interval: 38
+
+### Freq
+
       - name: "EB3 Frequency" # 0x007F
         slave: 1
         address: 127
@@ -275,7 +319,6 @@ modbus:
         scale: 0.1
         unit_of_measurement: Hz
         scan_interval: 39
-
 
 # for tariff template
 
