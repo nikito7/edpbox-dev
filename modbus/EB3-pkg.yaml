@@ -95,7 +95,7 @@ modbus:
         unit_of_measurement: kVAr
         scan_interval: 96
 
-### ### ###
+### L1
 
       - name: "EB3 Voltage L1" # 0x006C
         slave: 1
@@ -112,6 +112,72 @@ modbus:
       - name: "EB3 Current L1" # 0x006D
         slave: 1
         address: 109
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: A
+        device_class: current
+        scan_interval: 32
+
+### L2
+
+      - name: "EB3 Voltage L2" 
+        slave: 1
+        address: 110
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: V
+        device_class: voltage
+        scan_interval: 31
+
+      - name: "EB3 Current L2" 
+        slave: 1
+        address: 111
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: A
+        device_class: current
+        scan_interval: 32
+
+### L3
+
+      - name: "EB3 Voltage L3" 
+        slave: 1
+        address: 112
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: V
+        device_class: voltage
+        scan_interval: 31
+
+      - name: "EB3 Current L3"
+        slave: 1
+        address: 113
+        input_type: input
+        count: 1
+        data_type: uint16
+        precision: 1
+        scale: 0.1
+        unit_of_measurement: A
+        device_class: current
+        scan_interval: 32
+
+###
+
+      - name: "EB3 Current"
+        slave: 1
+        address: 114
         input_type: input
         count: 1
         data_type: uint16
