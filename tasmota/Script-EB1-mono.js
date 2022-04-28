@@ -7,19 +7,27 @@ clk=0
 wtd=0
 old=0
 
->BS
+>B
 
-tper=60
+tper=20
 smlj=0
 
+=>WiFi 0
+=>SerialLog 0
+=>SensorRetain 1
 =>Sensor53 r
 
 >S
 
+if cnt==10
+then
+=>WiFi 1
+tper=10
+endif
+
 if cnt==30
 then
 smlj=1
-tper=12
 endif
 
 time=st(tstamp T 2)
@@ -65,6 +73,8 @@ endif
 @<b>Vars: </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<hr>
 
+; EB1
+
 >M 1
 
 ; esp32 19/18
@@ -73,7 +83,7 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,EB1,1,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002
++1,3,mN1,1,9600,EB1,1,12,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002
 
 ; 01
 
