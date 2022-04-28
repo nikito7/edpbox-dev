@@ -7,16 +7,23 @@ clk=0
 wtd=0
 old=0
 
->BS
+>B
 
-tper=10
+tper=20
 smlj=0
 
+=>WiFi 0
 =>SerialLog 0
 =>SensorRetain 1
 =>Sensor53 r
 
 >S
+
+if cnt==10
+then
+=>WiFi 1
+tper=10
+endif
 
 if cnt==30
 then
