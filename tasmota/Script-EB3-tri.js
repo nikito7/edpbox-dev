@@ -9,25 +9,19 @@ old=0
 
 >B
 
-tper=20
+tper=60
 smlj=0
 
-=>WiFi 0
 =>SerialLog 0
 =>SensorRetain 1
 =>Sensor53 r
 
 >S
 
-if cnt==10
-then
-=>WiFi 1
-tper=10
-endif
-
 if cnt==30
 then
 smlj=1
+tper=10
 endif
 
 time=st(tstamp T 2)
@@ -83,7 +77,7 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,EB3,1,12,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004
++1,3,mN1,1,9600,EB3,1,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004
 
 ; 01
 
