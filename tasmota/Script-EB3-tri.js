@@ -14,9 +14,13 @@ smlj=0
 
 =>SerialLog 0
 =>SensorRetain 1
-=>Sensor53 r
 
 >S
+
+if cnt==5
+then
+=>Sensor53 r
+endif
 
 if cnt==30
 then
