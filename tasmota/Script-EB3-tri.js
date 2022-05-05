@@ -25,7 +25,6 @@ endif
 if cnt==30
 then
 smlj=1
-tper=10
 endif
 
 time=st(tstamp T 2)
@@ -93,33 +92,33 @@ endif
 
 ; 6C
 
-1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,1
-1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VolL2,1
-1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VolL3,1
+1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,17
+1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VolL2,17
+1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VolL3,17
 
 1,=h<hr>
 
 1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,1
 
-1,01040ExxxxUUuu@i1:10,Current L1 ,A,CurL1,1
-1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CurL2,1
-1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CurL3,1
+1,01040ExxxxUUuu@i1:10,Current L1 ,A,CurL1,17
+1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CurL2,17
+1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CurL3,17
 
 1,=h<hr>
 
 ; 73
 
-1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,ActPow,0
+1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,ActPow,16
 
-1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,0
-1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,0
-1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,0
+1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,16
+1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,16
+1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,16
 
 1,=h<hr>
 
 ; 7A
 
-1,01040eUUuuUUuu@i3:1,Active Power Export,W,ActPowExp,0
+1,01040eUUuuUUuu@i3:1,Active Power Export,W,ActPowExp,16
 
 1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PowFac,3
 1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,3
