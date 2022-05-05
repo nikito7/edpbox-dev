@@ -3,7 +3,7 @@
 
 =>SerialLog 0
 =>Sensor53 r
-=>Sensor53 d0
+=>Sensor53 d1
 
 >M 1
 
