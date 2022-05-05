@@ -90,7 +90,7 @@ endif
 1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
 1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
 1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,19
-1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,19
+1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,17
 
 1,=h<hr>
 
