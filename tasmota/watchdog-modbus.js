@@ -1,3 +1,5 @@
+; modbus watchdog block begin
+
 clk=sml[3]
 
 if cnt==99
@@ -21,3 +23,5 @@ print modbus error
 ; 
 endif
 endif
+
+; modbus watchdog block end
