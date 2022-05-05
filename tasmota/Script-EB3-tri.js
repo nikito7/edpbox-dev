@@ -14,18 +14,9 @@ smlj=0
 
 =>SerialLog 0
 =>SensorRetain 1
+=>Sensor53 r
 
 >S
-
-if cnt==5
-then
-=>Sensor53 r
-endif
-
-if cnt==30
-then
-smlj=1
-endif
 
 time=st(tstamp T 2)
 date=st(tstamp T 1)
@@ -98,7 +89,7 @@ endif
 
 1,=h<hr>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,1
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,17
 
 1,01040ExxxxUUuu@i1:10,Current L1 ,A,CurL1,17
 1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CurL2,17
@@ -120,32 +111,32 @@ endif
 
 1,01040eUUuuUUuu@i3:1,Active Power Export,W,ActPowExp,16
 
-1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PowFac,3
-1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,3
-1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,3
-1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,3
-1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
+1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PowFac,19
+1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,19
+1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,19
+1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,19
+1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,19
 
 1,=h<hr>
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Energy T1 Vazio ,kWh,TotEneT1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Energy T2 Ponta ,kWh,TotEneT2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energy T3 Cheias ,kWh,TotEneT3,1
+1,01040CUUuuUUuu@i4:1000,Energy T1 Vazio ,kWh,TotEneT1,17
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Energy T2 Ponta ,kWh,TotEneT2,17
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energy T3 Cheias ,kWh,TotEneT3,17
 
 1,=h<hr>
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Energy Import ,kWh,TotEneImp,1
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Energy Export ,kWh,TotEneExp,3
+1,010418UUuuUUuu@i5:1000,Energy Import ,kWh,TotEneImp,17
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Energy Export ,kWh,TotEneExp,19
 
 1,=h<hr>
 
 ; 0B
 
-1,01040euu@i6:1,Tariff ,,Tariff,0
+1,01040euu@i6:1,Tariff ,,Tariff,16
 
 #
 
