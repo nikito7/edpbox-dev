@@ -8,10 +8,13 @@
 
 # Erro 84/81
 
+> Em decimal: 132/129. 
+> (pymodbus...)
+
 ![erro 84 81](./tasmota/erro81.jpg)
 
-- contactar a e-redes
-
-> se na rede inteligente, é resolvido remotamente.
-
-> caso contrário, é trocado o contador.
+> contactar a e-redes.
+>
+>> se na rede inteligente, é resolvido remotamente.
+>>
+>> caso contrário, é trocado o contador.
