@@ -3,7 +3,7 @@
 
 =>SerialLog 0
 =>Sensor53 r
-=>Sensor53 d1
+=>Sensor53 d0
 
 >M 1
 
@@ -28,6 +28,10 @@
 1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,*,0
 1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,*,0
 1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,*,0
+
+1,=h<hr>
+
+1,0184uu@i0:1,Error ,,*,0
 
 1,=h<hr>
 
