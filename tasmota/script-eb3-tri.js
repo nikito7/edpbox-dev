@@ -33,7 +33,7 @@ endif
 
 ; modbus watchdog block begin
 
-clk=sml[1]""sml[2]""sml[3]
+clk=sml[1]+sml[2]+sml[3]
 
 if cnt==99
 then
