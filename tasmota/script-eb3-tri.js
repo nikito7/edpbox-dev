@@ -51,14 +51,14 @@ then
 old=clk
 endif
 
-if wtd==50
+if wtd==300
 then
 wtd=0
 if old==clk
 then
 print modbus error
 ; 
-;=>Restart -3
+=>Restart -3
 ; 
 endif
 endif
@@ -67,9 +67,9 @@ endif
 
 >W
 
-@<b>NTP: </b> %date% %time%
-@<b>Vars: </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Vars: </b> wtd=%0wtd% clk=%0clk% old=%0old%
+@<b>NTP </b> %date% %time%
+@<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
+@<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<hr>
 
 ; Below registers only work in EB3 !
