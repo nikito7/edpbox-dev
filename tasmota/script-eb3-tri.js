@@ -3,9 +3,9 @@
 time=""
 date=""
 cnt=0
-clk=0
 wtd=0
-old=0
+clk=""
+old=""
 
 >B
 
@@ -13,7 +13,7 @@ tper=60
 smlj=0
 
 =>SerialLog 0
-=>SensorRetain 1
+=>SensorRetain 0
 =>Sensor53 r
 
 >S
@@ -32,6 +32,31 @@ cnt+=1
 endif
 
 ; modbus watchdog block begin
+
+clk=sml[1] + sml[2] + sml[3]
+
+if cnt==99
+then
+wtd+=1
+endif
+
+if wtd==1
+then
+old=clk
+endif
+
+if wtd==50
+then
+wtd=0
+if old==clk
+then
+print modbus error
+; 
+=>Restart -3
+; 
+endif
+endif
+
 ; modbus watchdog block end
 
 >W
