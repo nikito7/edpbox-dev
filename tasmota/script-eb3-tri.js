@@ -12,7 +12,7 @@ ss=0
 
 >B
 
-tper=0
+tper=10
 smlj=0
 
 =>SerialLog 0
@@ -30,7 +30,6 @@ ss=sml[3]
 if cnt==30
 then
 smlj=1
-tper=10
 endif
 
 if cnt<99
