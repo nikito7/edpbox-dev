@@ -21,6 +21,11 @@ smlj=0
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 
+if cnt==30
+then
+smlj=1
+endif
+
 if cnt<99
 then
 cnt+=1
