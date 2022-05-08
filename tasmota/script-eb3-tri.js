@@ -6,6 +6,9 @@ cnt=0
 wtd=0
 clk=""
 old=""
+hh=0
+mm=0
+ss=0
 
 >B
 
@@ -20,6 +23,9 @@ smlj=0
 
 time=st(tstamp T 2)
 date=st(tstamp T 1)
+hh=sml[1]
+mm=sml[2]
+ss=sml[3]
 
 if cnt==30
 then
@@ -33,7 +39,7 @@ endif
 
 ; modbus watchdog block begin
 
-clk=sml[1]+sml[2]+sml[3]
+clk=hh+mm+ss
 
 if cnt==99
 then
