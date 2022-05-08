@@ -65,16 +65,16 @@ endif
 
 ; 16
 
-1,010408UUuuUUuu@i2:1000,Energy Import ,kWh,Energy,18
-1,010408xxxxxxxxUUuuUUuu@i2:1000,Energy Export ,kWh,TotEneExp,18
+1,010408UUuuUUuu@i2:1000,Energy Import ,kWh,Energy,19
+1,010408xxxxxxxxUUuuUUuu@i2:1000,Energy Export ,kWh,TotEneExp,19
 
 1,=h<hr>
 
 ; 26
 
-1,01040CUUuuUUuu@i3:1000,Energy T1 Vazio ,kWh,TotEneT1,18
-1,01040CxxxxxxxxUUuuUUuu@i3:1000,Energy T2 Ponta ,kWh,TotEneT2,18
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Energy T3 Cheias ,kWh,TotEneT3,18
+1,01040CUUuuUUuu@i3:1000,Energy T1 Vazio ,kWh,TotEneT1,19
+1,01040CxxxxxxxxUUuuUUuu@i3:1000,Energy T2 Ponta ,kWh,TotEneT2,19
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Energy T3 Cheias ,kWh,TotEneT3,19
 
 1,=h<hr>
 
