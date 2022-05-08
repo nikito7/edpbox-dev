@@ -24,11 +24,8 @@ smlj=0
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 hh=sml[1]
-hh=s(2.0hh)
 mm=sml[2]
-mm=(2.0mm)
 ss=sml[3]
-ss=(2.0ss)
 
 if cnt==30
 then
@@ -42,7 +39,7 @@ endif
 
 ; modbus watchdog block begin
 
-clk=hh+mm+ss
+clk=s(hh)+s(mm)+s(ss)
 
 if cnt==99
 then
