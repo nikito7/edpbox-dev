@@ -11,7 +11,7 @@ modbus:
     timeout: 3
     retries: 3
     retry_on_empty: true
-    message_wait_milliseconds: 750
+    message_wait_milliseconds: 250
 
     sensors:
 
@@ -84,17 +84,6 @@ modbus:
         state_class: total_increasing
         scan_interval: 95
 
-      - name: "EB1 Q1"
-        slave: 1
-        address: 24
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kVAr
-        scan_interval: 96
-
 ### ### ###
 
       - name: "EB1 Voltage L1" # 0x006C
@@ -134,7 +123,7 @@ modbus:
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        scan_interval: 36
+        scan_interval: 11
 
       - name: "EB1 Power Export" # 0x007A
         slave: 1
@@ -146,7 +135,7 @@ modbus:
         scale: 1
         unit_of_measurement: W
         device_class: power
-        scan_interval: 37
+        scan_interval: 12
 
       - name: "EB1 Power Factor" # 0x007B
         slave: 1
