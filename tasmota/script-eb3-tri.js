@@ -51,7 +51,7 @@ then
 old=clk
 endif
 
-if wtd==300
+if wtd==90
 then
 wtd=0
 if old==clk
@@ -86,62 +86,62 @@ endif
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,Clock_H,0
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,Clock_M,0
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,Clock_S,0
+1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,CH,0
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,CM,0
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,CS,0
 
 1,=h<hr>
 
 ; 6C
 
-1,01040EUUuu@i1:10,Voltage L1 ,V,VolL1,1
-1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VolL2,1
-1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VolL3,1
+1,01040EUUuu@i1:10,Voltage L1 ,V,VL1,1
+1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VL2,1
+1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VL3,1
 
 1,=h<hr>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,Current,1
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,CT,1
 
-1,01040ExxxxUUuu@i1:10,Current L1 ,A,CurL1,1
-1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CurL2,1
-1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CurL3,1
+1,01040ExxxxUUuu@i1:10,Current L1 ,A,CL1,1
+1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CL2,1
+1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CL3,1
 
 1,=h<hr>
 
 ; 73
 
-1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,ActPow,0
+1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,API,0
 
-1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,ActPowL1,0
-1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,ActPowL2,0
-1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,ActPowL3,0
+1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,APL1,0
+1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,APL2,0
+1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,APL3,0
 
 1,=h<hr>
 
 ; 7A
 
-1,01040eUUuuUUuu@i3:1,Active Power Export,W,ActPowExp,0
+1,01040eUUuuUUuu@i3:1,Active Power Export,W,APE,0
 
-1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PowFac,3
-1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PowFacL1,3
-1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PowFacL2,3
-1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PowFacL3,3
-1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,Frequency,1
+1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PF,3
+1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PFL1,3
+1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PFL2,3
+1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PFL3,3
+1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,FR,1
 
 1,=h<hr>
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Energy T1 Vazio ,kWh,TotEneT1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Energy T2 Ponta ,kWh,TotEneT2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Energy T3 Cheias ,kWh,TotEneT3,1
+1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TET1,1
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TET2,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TET3,1
 
 1,=h<hr>
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Energy Import ,kWh,TotEneImp,1
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Energy Export ,kWh,TotEneExp,3
+1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TEI,1
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TEE,3
 
 1,=h<hr>
 
