@@ -39,7 +39,7 @@ endif
 
 ; modbus watchdog block begin
 
-clk=s(2.0hh)+":"+s(2.0mm)+":"+s(2.0ss)
+clk=s(2.0hh)+s(2.0mm)+s(2.0ss)
 
 if cnt==99
 then
@@ -51,7 +51,7 @@ then
 old=clk
 endif
 
-if wtd==300
+if wtd==90
 then
 wtd=0
 if old==clk
