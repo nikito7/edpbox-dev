@@ -50,8 +50,8 @@ sensor:
     unique_id: EB1_Clock_H
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% if value_json.EB1.Clock_H is defined %}        
-          {{ value_json.EB1.Clock_H }}
+        {% if value_json.EB1.CH is defined %}        
+          {{ value_json.EB1.CH }}
         {% else %}
           {{ states('sensor.eb1_clock_h') }}
         {% endif %}
@@ -62,8 +62,8 @@ sensor:
     unique_id: EB1_Clock_M
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% if value_json.EB1.Clock_M is defined %}        
-          {{ value_json.EB1.Clock_M }}
+        {% if value_json.EB1.CM is defined %}        
+          {{ value_json.EB1.CM }}
         {% else %}
           {{ states('sensor.eb1_clock_m') }}
         {% endif %}
@@ -74,10 +74,10 @@ sensor:
     unique_id: EB1_Clock
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% if value_json.EB1.Clock_S is defined %}
+        {% if value_json.EB1.CS is defined %}
           {% set hh = states('sensor.eb1_clock_h')|int(0) %}
           {% set mm = states('sensor.eb1_clock_m')|int(0) %}
-          {% set ss = value_json.EB1.Clock_S|int(0) %}
+          {% set ss = value_json.EB1.CS|int(0) %}
           {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
         {% else %}
           {{ states('sensor.eb1_clock') }}
@@ -103,7 +103,7 @@ sensor:
     unique_id: EB1_VolL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Voltage|float(0) %}
+        {% set x = value_json.EB1.VL1|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -116,7 +116,7 @@ sensor:
     unique_id: EB1_CurL1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.Current|float(0.0) }}
+        {{ value_json.EB1.CL1|float(0.0) }}
     unit_of_measurement: "A"
     device_class: current
     state_class: measurement
@@ -126,7 +126,7 @@ sensor:
     unique_id: EB1_PowFac
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Power_Factor|float(0) %}
+        {% set x = value_json.EB1.PF|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -139,7 +139,7 @@ sensor:
     unique_id: EB1_ActPow
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Active_Power|int(0) %}
+        {% set x = value_json.EB1.AP|int(0) %}
         {% if x %}
           {{ x }}
         {% endif %}
@@ -152,7 +152,7 @@ sensor:
     unique_id: EB1_Frequency
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Frequency|float(0) %}
+        {% set x = value_json.EB1.FR|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -168,7 +168,7 @@ sensor:
     unique_id: EB1_TotEneT1
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneT1|float(0) %}
+        {% set x = value_json.EB1.TET1|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -181,7 +181,7 @@ sensor:
     unique_id: EB1_TotEneT2
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneT2|float(0) %}
+        {% set x = value_json.EB1.TET2|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -194,7 +194,7 @@ sensor:
     unique_id: EB1_TotEneT3
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.TotEneT3|float(0) %}
+        {% set x = value_json.EB1.TET3|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -210,7 +210,7 @@ sensor:
     unique_id: EB1_TotEneImp
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {% set x = value_json.EB1.Energy|float(0) %}
+        {% set x = value_json.EB1.TEI|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -223,7 +223,7 @@ sensor:
     unique_id: EB1_TotEneExp
     state_topic: "tele/edpbox1/SENSOR"
     value_template: >-
-        {{ value_json.EB1.TotEneExp|float(0.0) }}
+        {{ value_json.EB1.TEE|float(0.0) }}
     unit_of_measurement: "kWh"
     device_class: energy
     state_class: total_increasing
