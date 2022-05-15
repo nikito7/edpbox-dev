@@ -110,7 +110,7 @@ endif
 
 ; 73
 
-1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,API,0
+1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,AP,0
 
 1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,APL1,0
 1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,APL2,0
