@@ -43,6 +43,15 @@ sensor:
     device_class: signal_strength
     state_class: measurement
 
+  - platform: mqtt
+    name: "EB1 ESP Vcc"
+    unique_id: EB1_ESP_Vcc
+    state_topic: "tele/edpbox1/STATE"
+    value_template: '{{ value_json.Vcc|float(0.000) }}'
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+
 ###
 
   - platform: mqtt
