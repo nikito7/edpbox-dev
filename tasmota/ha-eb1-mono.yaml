@@ -20,6 +20,7 @@ sensor:
     state_topic: "tele/edpbox1/STATE"
     value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
     unit_of_measurement: "h"
+    state_class: measurement
     icon: mdi:alarm
     availability_topic: "tele/edpbox1/LWT"
     payload_available: "Online"
