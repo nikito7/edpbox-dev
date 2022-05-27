@@ -1,7 +1,3 @@
-Warning:
-
-- Não usar o minimal com esphome.
-
 Info:
 
 https://tasmota.github.io/docs/Smart-Meter-Interface/ 
