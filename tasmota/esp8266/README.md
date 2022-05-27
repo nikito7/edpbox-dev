@@ -5,7 +5,9 @@
 
 If all fails, flash normal with USB.
 
+---
+
 Warning:
 
-- Não usar o minimal com esphome. ⚠️
+- Não usar o minimal na mudança do esphome para tasmota. ⚠️
 
