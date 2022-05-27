@@ -34,12 +34,12 @@ web_server:
 
 api:
 
-  password: !secret edpbox123
+  password: edpbox123
   reboot_timeout: 45min
 
 ota:
 
-  password: !secret edpbox123
+  password: edpbox123
 
 time:
 
