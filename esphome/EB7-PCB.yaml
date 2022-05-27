@@ -17,8 +17,8 @@ wifi:
 
   output_power: 15db
 
-  ssid: edpbox-dev
-  password: edpbox123
+  #ssid: edpbox-dev
+  #password: edpbox123
 
   ap:
     ssid: "Fallback ${dev}"
