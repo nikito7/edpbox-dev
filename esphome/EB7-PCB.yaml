@@ -35,6 +35,7 @@ web_server:
 api:
 
   password: !secret edpbox123
+  reboot_timeout: 45min
 
 ota:
 
