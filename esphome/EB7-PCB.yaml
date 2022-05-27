@@ -1,13 +1,7 @@
-# Change to your:
-# - board
-# - adc sensor ( or remove )
-# - wifi
-# - uart pins
-
 substitutions:
 
-  dev: EB1
-  name: edpbox1
+  dev: EB7
+  name: edpbox7
 
 esphome:
 
@@ -16,25 +10,19 @@ esphome:
   #platform: ESP8266
   #board: esp01_1m
 
-  #platform: ESP8266
-  #board: esp07s # 4MB
-
-  platform: ESP32
-  board: esp32dev
+  platform: ESP8266
+  board: esp07s # 4MB
 
 wifi:
 
   output_power: 15db
-  domain: .lan
-  # use_address: 10.3.0.142
-  # fix ota dns error
 
-  ssid: !secret wifi_ssid
-  password: !secret wifi_key
+  ssid: edpbox-dev
+  password: edpbox123
 
   ap:
     ssid: "Fallback ${dev}"
-    password: !secret wifi_key
+    password: edpbox123
 
 captive_portal:
 
@@ -46,11 +34,11 @@ web_server:
 
 api:
 
-  password: !secret api_key
+  password: !secret edpbox123
 
 ota:
 
-  password: !secret ota_key
+  password: !secret edpbox123
 
 time:
 
@@ -64,36 +52,30 @@ switch:
 
 uart:
 
-# esp32 19/18
-# esp8266 3/1
-# tfreire 14/5
-
   id: modbus_serial
-  rx_pin: 19
-  tx_pin: 18
+  rx_pin: 3
+  tx_pin: 1
   baud_rate: 9600
   stop_bits: 1
 
 modbus:
 
-  #flow_control_pin: 5
   id: modbus1
   uart_id: modbus_serial
 
 modbus_controller:
 
   - id: edpbox
-    update_interval: 31s
+    update_interval: 15s
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
 
 sensor:
 
-#  - platform: adc
-#    pin: VCC
-#    name: "${dev} ESP VCC"
-#    # esp8266 only
+  - platform: adc
+    pin: VCC
+    name: "${dev} ESP VCC"
 
   - platform: template
     name: "${dev} ESP Free Heap"
