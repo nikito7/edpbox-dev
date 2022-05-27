@@ -1,0 +1,320 @@
+# Change to your:
+# - board
+# - adc sensor ( or remove )
+# - wifi
+# - uart pins
+
+substitutions:
+
+  dev: EB1
+  name: edpbox1
+
+esphome:
+
+  name: ${name}
+
+  #platform: ESP8266
+  #board: esp01_1m
+
+  #platform: ESP8266
+  #board: esp07s # 4MB
+
+  platform: ESP32
+  board: esp32dev
+
+wifi:
+
+  output_power: 15db
+  domain: .lan
+  # use_address: 10.3.0.142
+  # fix ota dns error
+
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
+
+  ap:
+    ssid: "Fallback ${dev}"
+    password: !secret wifi_key
+
+captive_portal:
+
+web_server:
+
+#logger:
+#  level: verbose
+#  baud_rate: 0
+
+api:
+
+  password: !secret api_key
+
+ota:
+
+  password: !secret ota_key
+
+time:
+
+  - platform: homeassistant
+    id: esptime
+
+switch:
+
+  - platform: restart
+    name: "${dev} ESP Restart"
+
+uart:
+
+# esp32 19/18
+# esp8266 3/1
+# tfreire 14/5
+
+  id: modbus_serial
+  rx_pin: 19
+  tx_pin: 18
+  baud_rate: 9600
+  stop_bits: 1
+
+modbus:
+
+  #flow_control_pin: 5
+  id: modbus1
+  uart_id: modbus_serial
+
+modbus_controller:
+
+  - id: edpbox
+    update_interval: 31s
+    address: 0x1
+    command_throttle: 150ms
+    setup_priority: -10
+
+sensor:
+
+#  - platform: adc
+#    pin: VCC
+#    name: "${dev} ESP VCC"
+#    # esp8266 only
+
+  - platform: template
+    name: "${dev} ESP Free Heap"
+    lambda: |-
+      int heap = ESP.getFreeHeap();
+      return heap / 1024.0;
+    unit_of_measurement: "kB"
+    icon: mdi:chip
+
+  - platform: wifi_signal
+    name: "${dev} ESP Signal"
+    unit_of_measurement: "dB"
+
+  - platform: uptime
+    name: "${dev} ESP Uptime"
+    filters:
+      - lambda: return x/3600;
+    unit_of_measurement: "h"
+    accuracy_decimals: 1
+
+### ### ###
+
+### Voltage & Current ###
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L1"
+    address: 0x006C
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+
+  - platform: modbus_controller
+    name: "${dev} Current L1"
+    address: 0x006D
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: current
+
+### Active Power & Power Factor ###
+
+  - platform: modbus_controller
+    name: "${dev} Active Power"
+    address: 0x0079
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Active Power Export"
+    address: 0x007A
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+
+  - platform: modbus_controller
+    name: "${dev} Power Factor"
+    address: 0x007B
+    unit_of_measurement: "pu"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    device_class: power_factor
+
+### Frequency ###
+
+  - platform: modbus_controller
+    name: "${dev} Frequency"
+    address: 0x007F
+    unit_of_measurement: "Hz"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    icon: "mdi:pulse"
+
+### Total Energy Tariffs ###
+
+  - platform: modbus_controller
+    name: "${dev} T1 Vazio"
+    address: 0x0026
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+    skip_updates: 2
+
+  - platform: modbus_controller 
+    name: "${dev} T2 Ponta"
+    address: 0x0027
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller
+    name: "${dev} T3 Cheias"
+    address: 0x0028
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+### Total Energy ###
+
+  - platform: modbus_controller
+    name: "${dev} Import"
+    address: 0x0016
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller
+    name: "${dev} Export"
+    address: 0x0017
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+### ### ###
+
+text_sensor:
+
+  - platform: template
+    name: "${dev} ESP Clock"
+    id: esp_clock
+    icon: mdi:clock
+
+###
+
+  - platform: modbus_controller
+    name: "${dev} Clock"
+    register_type: read
+    address: 0x0001
+    register_count: 1
+    response_size: 12
+    raw_encode: HEXBYTES
+    icon: mdi:clock
+    lambda: |-
+        uint8_t hh=0,mm=0,ss=0;
+        hh = esphome::modbus_controller::byte_from_hex_str(x,5);
+        mm = esphome::modbus_controller::byte_from_hex_str(x,6);
+        ss = esphome::modbus_controller::byte_from_hex_str(x,7);
+        char buffer[20];
+        sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
+        return {buffer};
+    on_value:
+      - then:
+        - lambda: |-
+            char str[25];
+            time_t currTime = id(esptime).now().timestamp;
+            strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
+            id(esp_clock).publish_state({str});
+
+###
+
+  - platform: modbus_controller
+    name: "${dev} Tariff"
+    register_type: read
+    address: 0x000B
+    register_count: 1
+    response_size: 2
+    raw_encode: COMMA
+    icon: mdi:counter
+    lambda: |-
+        auto z = "Null";
+        if (x == "1,0") z = "Vazio";
+        else if (x == "2,0") z = "Ponta";
+        else if (x == "3,0") z = "Cheias";
+        return {z};
+
+#######
+# eof #
+#######
