@@ -8,14 +8,14 @@ Mais info via Discord.
 
 # Generic ESP8266
 
-[- ```cpha.pt/tutorial```](https://forum.cpha.pt/t/integrar-contador-edp-ziv-com-tasmota-parte-1-3/7689)
+- [```cpha.pt/tutorial```](https://forum.cpha.pt/t/integrar-contador-edp-ziv-com-tasmota-parte-1-3/7689)
 
-[- ```youtube```](https://youtu.be/RhYSgaTymT8)
+- [```youtube/francisco```](https://youtu.be/RhYSgaTymT8)
 
 
 # Discord
 
-[```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
+- [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
 
 # Erro 84/81
 
