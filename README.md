@@ -1,4 +1,10 @@
-# Intro
+# PCB
+
+![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
+
+Mais info via Discord.
+
+# Generic ESP8266
 
 [```cpha.pt/tutorial```](https://forum.cpha.pt/t/integrar-contador-edp-ziv-com-tasmota-parte-1-3/7689)
 
