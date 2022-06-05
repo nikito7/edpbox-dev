@@ -32,13 +32,21 @@ entities:
   - entity: sensor.eb3_current_l3
     secondary_info: last-updated
 # power
-  - entity: sensor.eb3_active_power
+  - entity: sensor.eb3_active_power_import
+    secondary_info: last-updated
+  - entity: sensor.eb3_active_power_export
     secondary_info: last-updated
   - entity: sensor.eb3_active_power_l1
     secondary_info: last-updated
   - entity: sensor.eb3_active_power_l2
     secondary_info: last-updated
   - entity: sensor.eb3_active_power_l3
+    secondary_info: last-updated
+  - entity: sensor.eb3_active_power_l1_export
+    secondary_info: last-updated
+  - entity: sensor.eb3_active_power_l2_export
+    secondary_info: last-updated
+  - entity: sensor.eb3_active_power_l3_export
     secondary_info: last-updated
   - entity: sensor.eb3_frequency
     secondary_info: last-updated
