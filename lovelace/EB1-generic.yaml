@@ -20,7 +20,9 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb1_current_l1
     secondary_info: last-updated
-  - entity: sensor.eb1_active_power
+  - entity: sensor.eb1_active_power_import
+    secondary_info: last-updated
+  - entity: sensor.eb1_active_power_export
     secondary_info: last-updated
   - entity: sensor.eb1_power_factor
     secondary_info: last-updated
