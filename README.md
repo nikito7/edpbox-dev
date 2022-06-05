@@ -1,4 +1,4 @@
-# PCB
+# Easy PCB Box
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
@@ -11,7 +11,7 @@ Mais info via mensagem no Discord.
 **Testado** (alimentação directa na HAN):
 - ```Kaifa``` (sem plc ativo, sem modem)
 - ```Janz GPRS``` (gsm ativo)
-- ```Landys``` (sem plc ativo, sem modem)
+- ```Landis``` (sem plc ativo, sem modem)
 - ```Sagemcom CX-2000``` (sem plc ativo, sem modem)
 
 # Generic ESP8266
