@@ -1,4 +1,4 @@
-# Easy PCB Box
+# Easy HAN Box
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
