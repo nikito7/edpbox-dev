@@ -127,7 +127,7 @@ sensor:
 ### Active Power & Power Factor ###
 
   - platform: modbus_controller
-    name: "${dev} Active Power"
+    name: "${dev} Active Power Import"
     address: 0x0079
     register_type: read
     value_type: U_DWORD
