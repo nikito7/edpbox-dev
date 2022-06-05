@@ -1,109 +1,102 @@
 # edpbox3 tasmota package
 
-switch:
+mqtt:
+#
+  switch:
+#
+    - name: "EB3 ESP Restart"
+      unique_id: EB3_ESP_Restart
+      command_topic: "cmnd/edpbox3/restart"
+      payload_off: "1"
+      payload_on: "1"
+      icon: mdi:restart
 
-  - platform: mqtt
-    name: "EB3 ESP Restart"
-    unique_id: EB3_ESP_Restart
-    command_topic: "cmnd/edpbox3/restart"
-    payload_off: "1"
-    payload_on: "1"
-    icon: mdi:restart
+###
+#
+  sensor:
+#
+    - name: "EB3 ESP Uptime"
+      unique_id: EB3_ESP_Uptime
+      state_topic: "tele/edpbox3/STATE"
+      value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
+      unit_of_measurement: "h"
+      icon: mdi:alarm
+      availability_topic: "tele/edpbox3/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+
+    - name: "EB3 ESP Free Heap"
+      unique_id: EB3_ESP_Heap
+      state_topic: "tele/edpbox3/STATE"
+      value_template: '{{ value_json.Heap }}'
+      unit_of_measurement: "kB"
+      icon: mdi:chip
+      state_class: measurement
+
+    - name: "EB3 ESP Signal"
+      unique_id: EB3_ESP_Signal
+      state_topic: "tele/edpbox3/STATE"
+      value_template: '{{ value_json.Wifi.Signal }}'
+      unit_of_measurement: "dB"
+      device_class: signal_strength
+      state_class: measurement
+
+    - name: "EB3 ESP Vcc"
+      unique_id: EB3_ESP_Vcc
+      state_topic: "tele/edpbox3/STATE"
+      value_template: '{{ value_json.Vcc|float(0.000) }}'
+      unit_of_measurement: "V"
+      device_class: voltage
+      state_class: measurement
 
 ###
 
-sensor:
+    - name: "EB3 Clock H"
+      unique_id: EB3_Clock_H
+      state_topic: "tele/edpbox3/SENSOR"
+      value_template: >-
+          {% if value_json.EB3.CH is defined %}        
+            {{ value_json.EB3.CH }}
+          {% else %}
+            {{ states('sensor.eb3_clock_h') }}
+          {% endif %}
+      icon: mdi:clock
 
-  - platform: mqtt
-    name: "EB3 ESP Uptime"
-    unique_id: EB3_ESP_Uptime
-    state_topic: "tele/edpbox3/STATE"
-    value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
-    unit_of_measurement: "h"
-    icon: mdi:alarm
-    availability_topic: "tele/edpbox3/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "EB3 Clock M"
+      unique_id: EB3_Clock_M
+      state_topic: "tele/edpbox3/SENSOR"
+      value_template: >-
+          {% if value_json.EB3.CM is defined %}        
+            {{ value_json.EB3.CM }}
+          {% else %}
+            {{ states('sensor.eb3_clock_m') }}
+          {% endif %}
+      icon: mdi:clock
 
-  - platform: mqtt
-    name: "EB3 ESP Free Heap"
-    unique_id: EB3_ESP_Heap
-    state_topic: "tele/edpbox3/STATE"
-    value_template: '{{ value_json.Heap }}'
-    unit_of_measurement: "kB"
-    icon: mdi:chip
-    state_class: measurement
+    - name: "EB3 Clock"
+      unique_id: EB3_Clock
+      state_topic: "tele/edpbox3/SENSOR"
+      value_template: >-
+          {% if value_json.EB3.CS is defined %}
+            {% set hh = states('sensor.eb3_clock_h')|int(0) %}
+            {% set mm = states('sensor.eb3_clock_m')|int(0) %}
+            {% set ss = value_json.EB3.CS|int(0) %}
+            {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
+          {% else %}
+            {{ states('sensor.eb3_clock') }}
+          {% endif %}
+      icon: mdi:clock
 
-  - platform: mqtt
-    name: "EB3 ESP Signal"
-    unique_id: EB3_ESP_Signal
-    state_topic: "tele/edpbox3/STATE"
-    value_template: '{{ value_json.Wifi.Signal }}'
-    unit_of_measurement: "dB"
-    device_class: signal_strength
-    state_class: measurement
-
-  - platform: mqtt
-    name: "EB3 ESP Vcc"
-    unique_id: EB3_ESP_Vcc
-    state_topic: "tele/edpbox3/STATE"
-    value_template: '{{ value_json.Vcc|float(0.000) }}'
-    unit_of_measurement: "V"
-    device_class: voltage
-    state_class: measurement
-
-###
-
-  - platform: mqtt
-    name: "EB3 Clock H"
-    unique_id: EB3_Clock_H
-    state_topic: "tele/edpbox3/SENSOR"
-    value_template: >-
-        {% if value_json.EB3.CH is defined %}        
-          {{ value_json.EB3.CH }}
-        {% else %}
-          {{ states('sensor.eb3_clock_h') }}
-        {% endif %}
-    icon: mdi:clock
-
-  - platform: mqtt
-    name: "EB3 Clock M"
-    unique_id: EB3_Clock_M
-    state_topic: "tele/edpbox3/SENSOR"
-    value_template: >-
-        {% if value_json.EB3.CM is defined %}        
-          {{ value_json.EB3.CM }}
-        {% else %}
-          {{ states('sensor.eb3_clock_m') }}
-        {% endif %}
-    icon: mdi:clock
-
-  - platform: mqtt
-    name: "EB3 Clock"
-    unique_id: EB3_Clock
-    state_topic: "tele/edpbox3/SENSOR"
-    value_template: >-
-        {% if value_json.EB3.CS is defined %}
-          {% set hh = states('sensor.eb3_clock_h')|int(0) %}
-          {% set mm = states('sensor.eb3_clock_m')|int(0) %}
-          {% set ss = value_json.EB3.CS|int(0) %}
-          {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
-        {% else %}
-          {{ states('sensor.eb3_clock') }}
-        {% endif %}
-    icon: mdi:clock
-
-  - platform: mqtt
-    name: "EB3 ESP Clock"
-    unique_id: EB3_ESP_Clock
-    state_topic: "tele/edpbox3/SENSOR"
-    value_template: >-
-        {% if value_json.Time is defined %}
-          {{ value_json.Time.split('T')[1]|string }}
-        {% else %}
-          {{ states('sensor.eb3_esp_clock') }}
-        {% endif %}
-    icon: mdi:clock
+    - name: "EB3 ESP Clock"
+      unique_id: EB3_ESP_Clock
+      state_topic: "tele/edpbox3/SENSOR"
+      value_template: >-
+          {% if value_json.Time is defined %}
+            {{ value_json.Time.split('T')[1]|string }}
+          {% else %}
+            {{ states('sensor.eb3_esp_clock') }}
+          {% endif %}
+      icon: mdi:clock
 
 ###
 
