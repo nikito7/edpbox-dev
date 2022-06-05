@@ -116,7 +116,7 @@ mqtt:
     - name: "EB1 Current L1"
       unique_id: EB1_CurL1
       state_topic: "tele/edpbox1/SENSOR"
-        value_template: >-
+      value_template: >-
         {{ value_json.EB1.CL1|float(0.0) }}
       unit_of_measurement: "A"
       device_class: current
