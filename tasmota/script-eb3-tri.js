@@ -116,9 +116,9 @@ endif
 1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,API2,0
 1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,API3,0
 
-1,01041cx8UUuuUUuu@i2:1,Active Power L1 Export ,W,APE1,0
-1,01041cx8x8UUuuUUuu@i2:1,Active Power L2 Export ,W,APE2,0
-1,01041cx8x8x8UUuuUUuu@i2:1,Active Power L3 Export ,W,APE3,0
+1,01041cx4UUuuUUuu@i2:1,Active Power L1 Export ,W,APE1,0
+1,01041cx8x4UUuuUUuu@i2:1,Active Power L2 Export ,W,APE2,0
+1,01041cx8x8x4UUuuUUuu@i2:1,Active Power L3 Export ,W,APE3,0
 
 1,=h<hr>
 
