@@ -204,7 +204,7 @@ sensor:
     unique_id: EB3_PowFacL1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.PFL1|float(0) %}
+        {% set x = value_json.EB3.PF1|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -217,7 +217,7 @@ sensor:
     unique_id: EB3_LowFacL2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.PFL2|float(0) %}
+        {% set x = value_json.EB3.PF2|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -230,7 +230,7 @@ sensor:
     unique_id: EB3_PowFacL3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.PFL3|float(0) %}
+        {% set x = value_json.EB3.PF3|float(0) %}
         {% if x > 0 %}
           {{ x }}
         {% endif %}
@@ -239,11 +239,24 @@ sensor:
     state_class: measurement
 
   - platform: mqtt
-    name: "EB3 Active Power"
+    name: "EB3 Active Power Import"
     unique_id: EB3_ActPow
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.AP|int(0) %}
+        {% set x = value_json.EB3.API|int(0) %}
+        {% if x %}
+          {{ x }}
+        {% endif %}
+    unit_of_measurement: "W"
+    device_class: power
+    state_class: measurement
+
+  - platform: mqtt
+    name: "EB3 Active Power Export"
+    unique_id: EB3_ActPowExp
+    state_topic: "tele/edpbox3/SENSOR"
+    value_template: >-
+        {% set x = value_json.EB3.APE|int(0) %}
         {% if x %}
           {{ x }}
         {% endif %}
@@ -256,7 +269,7 @@ sensor:
     unique_id: EB3_ActLowL1
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.APL1|int(0) %}
+        {% set x = value_json.EB3.API1|int(0) %}
         {% if x %}
           {{ x }}
         {% endif %}
@@ -269,7 +282,7 @@ sensor:
     unique_id: EB3_ActPowL2
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.APL2|int(0) %}
+        {% set x = value_json.EB3.API2|int(0) %}
         {% if x %}
           {{ x }}
         {% endif %}
@@ -282,7 +295,7 @@ sensor:
     unique_id: EB3_ActLowL3
     state_topic: "tele/edpbox3/SENSOR"
     value_template: >-
-        {% set x = value_json.EB3.APL3|int(0) %}
+        {% set x = value_json.EB3.API3|int(0) %}
         {% if x %}
           {{ x }}
         {% endif %}
