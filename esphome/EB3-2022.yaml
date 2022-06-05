@@ -161,7 +161,7 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
-    name: "${dev} Current"
+    name: "${dev} Current Total"
     address: 0x0072
     unit_of_measurement: "A"
     register_type: read
@@ -211,7 +211,7 @@ sensor:
 ### Active Power & Export ###
 
   - platform: modbus_controller
-    name: "${dev} Active Power"
+    name: "${dev} Active Power Import"
     address: 0x0079
     register_type: read
     value_type: U_DWORD
