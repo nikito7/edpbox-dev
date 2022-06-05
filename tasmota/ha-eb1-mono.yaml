@@ -1,30 +1,28 @@
 # edpbox1 tasmota package
 
-switch:
-
-  - platform: mqtt
-    name: "EB1 ESP Restart"
-    unique_id: EB1_ESP_Switch
-    command_topic: "cmnd/edpbox1/restart"
-    payload_on: "1"
-    payload_off: "1"
-    icon: mdi:restart
+mqtt:
+  switch:
+    - name: "EB1 ESP Restart"
+      unique_id: EB1_ESP_Switch
+      command_topic: "cmnd/edpbox1/restart"
+      payload_on: "1"
+      payload_off: "1"
+      icon: mdi:restart
 
 ###
 
-sensor:
+  sensor:
 
-  - platform: mqtt
-    name: "EB1 ESP Uptime"
-    unique_id: EB1_ESP_Uptime
-    state_topic: "tele/edpbox1/STATE"
-    value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
-    unit_of_measurement: "h"
-    state_class: measurement
-    icon: mdi:alarm
-    availability_topic: "tele/edpbox1/LWT"
-    payload_available: "Online"
-    payload_not_available: "Offline"
+    - name: "EB1 ESP Uptime"
+      unique_id: EB1_ESP_Uptime
+      state_topic: "tele/edpbox1/STATE"
+      value_template: '{{ ( value_json.UptimeSec / 3600 ) | round(1) }}'
+      unit_of_measurement: "h"
+      state_class: measurement
+      icon: mdi:alarm
+      availability_topic: "tele/edpbox1/LWT"
+      payload_available: "Online"
+      payload_not_available: "Offline"
 
   - platform: mqtt
     name: "EB1 ESP Free Heap"
