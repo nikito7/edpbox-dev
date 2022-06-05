@@ -153,6 +153,8 @@ mqtt:
           {% set x = value_json.EB1.APE|int(0) %}
           {% if x %}
             {{ x }}
+          {% else %}
+            {{ 0 }}
           {% endif %}
       unit_of_measurement: "W"
       device_class: power
