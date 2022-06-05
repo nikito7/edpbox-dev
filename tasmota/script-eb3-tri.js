@@ -76,9 +76,9 @@ endif
 
 >M 1
 
-; esp32 19/18
-; esp8266 3/1
-: tfreire 14/5
+; esp32 19/18 (hardware serial)
+; esp8266 3/1 (hardware serial)
+: tfreire 14/5 (software serial)
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
@@ -100,7 +100,7 @@ endif
 
 1,=h<hr>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current ,A,CT,1
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current Total ,A,CT,1
 
 1,01040ExxxxUUuu@i1:10,Current L1 ,A,CL1,1
 1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CL2,1
@@ -110,11 +110,11 @@ endif
 
 ; 73
 
-1,01041cx8x8x8UUuuUUuu@i2:1,Active Power ,W,AP,0
+1,01041cx8x8x8UUuuUUuu@i2:1,Active Power Import ,W,API,0
 
-1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,APL1,0
-1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,APL2,0
-1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,APL3,0
+1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,API1,0
+1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,API2,0
+1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,API3,0
 
 1,=h<hr>
 
@@ -123,18 +123,18 @@ endif
 1,01040eUUuuUUuu@i3:1,Active Power Export,W,APE,0
 
 1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PF,3
-1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PFL1,3
-1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PFL2,3
-1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PFL3,3
+1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PF1,3
+1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PF2,3
+1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PF3,3
 1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,FR,1
 
 1,=h<hr>
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TET1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TET2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TET3,1
+1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TE1,1
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TE2,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TE3,1
 
 1,=h<hr>
 
