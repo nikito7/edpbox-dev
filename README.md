@@ -41,4 +41,4 @@ Monofásicos:
 
 Trifásicos:
 
-```Janz GPRS``` (gsm ativo) 
+```Janz GPRS``` (gsm ativo, modem integrado) 
