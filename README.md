@@ -31,8 +31,14 @@ Mais info via mensagem no Discord.
 
 ---
 
-**Testado** (alimentação directa na HAN):
+**Alimentação directa na HAN: Testados**
 
-- ```Kaifa``` (sem plc ativo, sem modem)
-- ```Janz GPRS``` (gsm ativo)
-- ```Landis``` (sem plc ativo, sem modem)
+Monofásicos:
+
+```Kaifa``` (plc=0, modem=0) 
+
+```Landis``` (plc=0, modem=0) 
+
+Trifásicos:
+
+```Janz GPRS``` (gsm=1) 
