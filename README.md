@@ -35,10 +35,10 @@ Mais info via mensagem no Discord.
 
 Monofásicos:
 
-```Kaifa``` (plc=0, modem=0) 
+```Kaifa``` (plc inativo, sem modem) 
 
-```Landis``` (plc=0, modem=0) 
+```Landis``` (plc inativo, sem modem) 
 
 Trifásicos:
 
-```Janz GPRS``` (gsm=1) 
+```Janz GPRS``` (gsm ativo) 
