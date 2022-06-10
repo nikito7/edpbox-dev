@@ -1,4 +1,4 @@
-# Generic ESP8266
+# DIY ESP8266 + TTL RS485
 
 - [```cpha.pt/tutorial```](https://forum.cpha.pt/t/integrar-contador-edp-ziv-com-tasmota-parte-1-3/7689)
 
