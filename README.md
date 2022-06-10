@@ -21,11 +21,11 @@
 >>
 >> caso contrário, é trocado o contador.
 
-# Easy HAN RS485
+# Easy HAN Box
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
-![edpbox: han to wifi board gateway](./edpbox2.gif)
+![edpbox: han to wifi gateway](./edpbox2.gif)
 
 Mais info via mensagem no Discord.
 
