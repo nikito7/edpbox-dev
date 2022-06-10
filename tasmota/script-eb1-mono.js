@@ -12,6 +12,12 @@ ss=0
 
 >B
 
+if upsecs<5
+then
+print Easy HAN: disabling wifi...
+=>Wifi 0
+endif
+
 tper=15
 smlj=0
 
@@ -26,6 +32,12 @@ date=st(tstamp T 1)
 hh=sml[1]
 mm=sml[2]
 ss=sml[3]
+
+if cnt==5
+then
+print Easy HAN: enabling wifi...
+=>Wifi 1
+endif
 
 if cnt==30
 then
@@ -56,7 +68,7 @@ then
 wtd=0
 if old==clk
 then
-print modbus error
+print Easy HAN: modbus error !!!
 ; 
 ; =>Restart -3
 ; 
