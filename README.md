@@ -37,10 +37,12 @@ Mais info via mensagem no Discord.
 
 Monofásicos:
 
-```Kaifa``` (plc inativo, led vermelho) 
+```Kaifa``` (plc led vermelho) 
 
-```Landis``` (plc inativo, led vermelho) 
+```Kaifa MA109P``` (plc led verde)
+
+```Landis+Gyr``` (plc led vermelho) 
 
 Trifásicos:
 
-```Janz GPRS``` (gsm ativo, led verde) 
+```Janz GPRS``` (gsm led verde) 
