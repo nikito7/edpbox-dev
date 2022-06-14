@@ -1,6 +1,11 @@
 type: entities
 entities:
 # esp
+  - entity: sensor.eb3_esp_loadavg
+    secondary_info: last-updated
+  - entity: sensor.eb3_esp_sleep
+    secondary_info: last-updated
+###
   - entity: sensor.eb3_esp_uptime
     secondary_info: last-updated
   - entity: sensor.eb3_esp_signal
