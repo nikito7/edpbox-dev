@@ -21,7 +21,7 @@
 >>
 >> caso contrário, é trocado o contador.
 
-# Easy HAN Box
+# Easy HAN ™
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
