@@ -5,7 +5,7 @@
 #undef USE_IMPROV                                // Disable support for IMPROV serial protocol as used by esp-web-tools (+2k code)
 #undef USE_TASMESH                               // Disable Tasmota Mesh using ESP-NOW (+11k code)
 #undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
-#undef USE_INFLUXDB                              // Disable influxdb support (+5k code)
+//#undef USE_INFLUXDB                              // Disable influxdb support (+5k code)
 #undef USE_DOMOTICZ                              // Disable Domoticz
 //#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
 //#undef USE_TASMOTA_DISCOVERY                     // Disable Tasmota Discovery support (+2k code)
@@ -14,7 +14,7 @@
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
 //#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
-#undef USE_WEBSEND_RESPONSE                      // Disable command WebSend response message (+1k code)
+//#undef USE_WEBSEND_RESPONSE                      // Disable command WebSend response message (+1k code)
 #undef USE_EMULATION                             // Disable Wemo or Hue emulation
 #undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
 #undef USE_EMULATION_WEMO                        // Disable Belkin WeMo emulation for Alexa (+6k code, +2k mem common)
@@ -40,7 +40,7 @@
 #undef USE_BUZZER                                // Disable support for a buzzer (+0k6 code)
 #undef USE_ARILUX_RF                             // Disable support for Arilux RF remote controller
 #undef USE_SHUTTER                               // Disable Shutter support for up to 4 shutter with different motortypes (+6k code)
-#undef USE_DEEPSLEEP                             // Disable support for deepsleep (+1k code)
+//#undef USE_DEEPSLEEP                             // Disable support for deepsleep (+1k code)
 #undef USE_EXS_DIMMER                            // Disable support for EX-Store WiFi Dimmer
 #undef USE_HOTPLUG                               // Disable support for HotPlug
 #undef USE_DEVICE_GROUPS                         // Disable support for device groups (+3k5 code)
@@ -107,7 +107,7 @@
 #undef USE_HRE                                   // Disable support for Badger HR-E Water Meter (+1k4 code)
 #undef USE_A4988_STEPPER                         // Disable support for A4988_Stepper
 #undef USE_THERMOSTAT                            // Disable support for Thermostat
-#undef USE_PROMETHEUS                            // Disable support for https://prometheus.io/ metrics exporting over HTTP /metrics endpoint
+// #undef USE_PROMETHEUS                            // Disable support for https://prometheus.io/ metrics exporting over HTTP /metrics endpoint
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #undef USE_AC_ZERO_CROSS_DIMMER                  // Disable support for AC_ZERO_CROSS_DIMMER
