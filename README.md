@@ -7,6 +7,9 @@
 # Discord
 
 - [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
+- [![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
+
+
 
 # Erro 84/81
 
