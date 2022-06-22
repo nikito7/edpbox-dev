@@ -9,8 +9,6 @@
 - [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
 - [![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
 
-
-
 # Erro 84/81
 
 > Em decimal: 132/129. 
@@ -45,6 +43,8 @@ Monofásicos:
 ```Kaifa MA109P``` (plc led verde)
 
 ```Landis+Gyr``` (plc led vermelho) 
+
+```Sagemcom CX1000``` (plc led verde)
 
 Trifásicos:
 
