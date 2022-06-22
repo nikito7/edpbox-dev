@@ -17,8 +17,8 @@ wifi:
 
   output_power: 15db
 
-  #ssid: edpbox-dev
-  #password: edpbox123
+  ssid: edpbox-dev
+  password: edpbox123
 
   ap:
     ssid: "Fallback ${dev}"
@@ -58,7 +58,8 @@ uart:
   rx_pin: 3
   tx_pin: 1
   baud_rate: 9600
-  stop_bits: 1
+  #stop_bits: 1
+  stop_bits: 2
 
 modbus:
 
