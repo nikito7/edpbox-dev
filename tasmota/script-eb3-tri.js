@@ -10,15 +10,9 @@ hh=0
 mm=0
 ss=0
 
->B
+>BS
 
-if upsecs<5
-then
-print Easy HAN: disabling wifi...
-=>Wifi 0
-endif
-
-tper=15
+tper=20
 smlj=0
 
 =>SerialLog 0
@@ -33,15 +27,10 @@ hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
-if cnt==5
-then
-print Easy HAN: enabling wifi...
-=>Wifi 1
-endif
-
 if cnt==30
 then
 smlj=1
+tper=15
 endif
 
 if cnt<99
