@@ -127,7 +127,7 @@ endif
 
 1,01040eUUuuUUuu@i3:1,Active Power Export,W,APE,0
 
-1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,pu,PF,3
+1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,ϕ,PF,3
 1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,pu,PF1,3
 1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,pu,PF2,3
 1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,pu,PF3,3
