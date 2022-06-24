@@ -1,3 +1,6 @@
-```
 {"NAME":"Easy HAN","GPIO":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],"FLAG":0,"BASE":18}
-```
+
+
+WebLog 4
+
+SerialLog 0
