@@ -30,8 +30,6 @@
 
 Mais info via mensagem no Discord.
 
-*** **Sem Stock** ***
-
 ---
 
 **Alimentação directa na HAN: Testados**
