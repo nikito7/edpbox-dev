@@ -71,7 +71,6 @@ endif
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
-@<b>Vars </b> mqtts=%0mqqts%
 @<hr>
 
 ; Below registers only work in EB3 !
