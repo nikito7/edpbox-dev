@@ -1,6 +1,8 @@
 // copy to user_config_override.h
-// sml at the end of file
-// based in 11.1.0 lite
+// sml at the end of file.
+// based in 11.1.0 lite.
+// allow ota for 1M.
+// freeup ram !
 
 #undef USE_IMPROV                                // Disable support for IMPROV serial protocol as used by esp-web-tools (+2k code)
 #undef USE_TASMESH                               // Disable Tasmota Mesh using ESP-NOW (+11k code)
@@ -115,8 +117,9 @@
 // ### ### ###
 
 // tasmota4M
-//#define USE_UFILESYS
-//#define UFSYS_SIZE 8192
+
+#define USE_UFILESYS
+#define UFSYS_SIZE 8192
 
 // ### ### ###
 
