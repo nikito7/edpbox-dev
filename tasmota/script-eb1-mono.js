@@ -145,7 +145,7 @@ endif
 1,014411xxxxxxxxxxuu@i7:1,Hour ,h,LP_HH,0
 1,014411xxxxxxxxxxxxuu@i7:1,Minute ,m,LP_MM,0
 1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
-1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
+; 1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
 
 ; eof load profile
 
