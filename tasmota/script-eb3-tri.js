@@ -174,7 +174,4 @@ endif
 
 #
 
-; eof
-; script
-
-
+; eof script
