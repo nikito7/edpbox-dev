@@ -154,7 +154,27 @@ endif
 
 1,01040euu@i6:1,Tariff ,,Tariff,0
 
+; load profile
+
+1,=h<hr>
+
+1,01441dUUuu@i7:1,Year ,,LP_Y,0
+1,01441dxxxxuu@i7:1,Month ,,LP_M,0
+1,01441dxxxxxxuu@i7:1,Day ,,LP_D,0
+1,01441dxxxxxxxxxxuu@i7:1,Hour ,h,LP_HH,0
+1,01441dxxxxxxxxxxxxuu@i7:1,Minute ,m,LP_MM,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
+
+; eof load profile
+
+1,=h<hr>
+
+; eof meter
+
 #
 
 ; eof
+; script
+
 
