@@ -137,15 +137,15 @@ endif
 1,=h<hr>
 
 ; 01441d Imp+Exp
-; 014416 Imp
+; 014411 Imp
 
-1,014416UUuu@i7:1,Year ,,LP_Y,0
-1,014416xxxxuu@i7:1,Month ,,LP_M,0
-1,014416xxxxxxuu@i7:1,Day ,,LP_D,0
-1,014416xxxxxxxxxxuu@i7:1,Hour ,h,LP_HH,0
-1,014416xxxxxxxxxxxxuu@i7:1,Minute ,m,LP_MM,0
-1,014416xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
-1,014416xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
+1,014411UUuu@i7:1,Year ,,LP_Y,0
+1,014411xxxxuu@i7:1,Month ,,LP_M,0
+1,014411xxxxxxuu@i7:1,Day ,,LP_D,0
+1,014411xxxxxxxxxxuu@i7:1,Hour ,h,LP_HH,0
+1,014411xxxxxxxxxxxxuu@i7:1,Minute ,m,LP_MM,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
 
 ; eof load profile
 
