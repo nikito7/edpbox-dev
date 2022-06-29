@@ -83,7 +83,7 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,EB1,1,20,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002,r01440601
++1,3,mN1,1,9600,EB1,1,20,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002,r01440301
 
 ; r01440601 Imp+Exp
 ; r01440301 Imp
@@ -132,8 +132,27 @@ endif
 
 1,010406uu@i6:1,Tariff ,,Tariff,0
 
+; load profile
+
 1,=h<hr>
+
+; 01441d Imp+Exp
+; 014416 Imp
+
+1,014416UUuu@i7:1,Year ,,LP_Y,0
+1,014416xxxxuu@i7:1,Month ,,LP_M,0
+1,014416xxxxxxuu@i7:1,Day ,,LP_D,0
+1,014416xxxxxxxxxxuu@i7:1,Hour ,h,LP_HH,0
+1,014416xxxxxxxxxxxxuu@i7:1,Minute ,m,LP_MM,0
+1,014416xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
+1,014416xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
+
+; eof load profile
+
+1,=h<hr>
+
+; eof meter
 
 #
 
-; eof
+; eof script
