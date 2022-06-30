@@ -1,19 +1,18 @@
-# Discord
-
-- [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
-- [![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
-
 # Easy HAN RS485
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
 ![edpbox: han to wifi gateway](./edpbox2.gif)
 
-Mais info via mensagem no Discord.
+Mais info via mensagem no Discord
 
----
+[```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
 
-**Alimentação directa na HAN: Testados**
+[![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
+
+# Testados
+
+**Alimentação directa na HAN**
 
 Monofásicos:
 
