@@ -2,8 +2,6 @@
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
-![edpbox: han to wifi gateway](./edpbox2.gif)
-
 Mais info via mensagem no Discord
 
 [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
