@@ -2,11 +2,7 @@
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
-Mais info via mensagem no Discord
-
-[```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
-
-[![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
+Mais info [```aqui```](https://forum.cpha.pt/t/easy-han-edpbox-rs485/10279).
 
 # Testados
 
@@ -25,3 +21,9 @@ Monofásicos:
 Trifásicos:
 
 ```Janz B2801 GPRS``` (gsm led verde) 
+
+# Discord
+
+[```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
+
+[![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
