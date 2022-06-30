@@ -2,7 +2,9 @@
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
 
-Mais info [```aqui```](https://forum.cpha.pt/t/easy-han-edpbox-rs485/10279).
+<i>Imagem demonstrativa</i>
+
+Mais info [```aqui```](https://forum.cpha.pt/t/easy-han-edpbox-rs485/10279)
 
 # Testados
 
