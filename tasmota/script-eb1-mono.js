@@ -2,10 +2,11 @@
 
 time=""
 date=""
-cnt=0
-wtd=0
 clk=""
 old=""
+wfc=""
+cnt=0
+wtd=0
 hh=0
 mm=0
 ss=0
@@ -18,6 +19,11 @@ smlj=0
 =>SerialLog 0
 =>SensorRetain 0
 =>Sensor53 r
+=>WifiConfig
+
+>E
+
+wfc=WifiConfig#?
 
 >S
 
@@ -71,6 +77,7 @@ endif
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
+@<b>WifiConfig </b> %wfc%
 @<hr>
 
 ; EB1
