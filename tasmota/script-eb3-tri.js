@@ -2,14 +2,14 @@
 
 time=""
 date=""
-cnt=0
-wtd=0
 clk=""
 old=""
+wfc=""
+cnt=0
+wtd=0
 hh=0
 mm=0
 ss=0
-wfcfg=""
 
 >BS
 
@@ -23,7 +23,7 @@ smlj=0
 
 >E
 
-wfcfg=#WifiConfig
+wfc=#WifiConfig?
 
 >S
 
@@ -77,7 +77,7 @@ endif
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
-@WifiConfig: %wfcfg%
+@<b>WifiConfig </b> %wfc%
 @<hr>
 
 ; Below registers only work in EB3 !
