@@ -23,7 +23,7 @@ smlj=0
 
 >E
 
-wfc=#WifiConfig?
+wfc=WifiConfig#?
 
 >S
 
