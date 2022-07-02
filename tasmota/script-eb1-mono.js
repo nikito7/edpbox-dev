@@ -101,21 +101,21 @@ endif
 1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,CM,0
 1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,CS,0
 
-1,=h<hr>
+1,=h<br>
 
 ; 6C
 
 1,010404UUuu@i1:10,Voltage L1 ,V,VL1,1
 1,010404xxxxUUuu@i1:10,Current L1 ,A,CL1,1
 
-1,=h<hr>
+1,=h<br>
 
 ; 16
 
 1,010408UUuuUUuu@i2:1000,Total Energy Import ,kWh,TEI,3
 1,010408xxxxxxxxUUuuUUuu@i2:1000,Total Energy Export ,kWh,TEE,3
 
-1,=h<hr>
+1,=h<br>
 
 ; 26
 
@@ -123,7 +123,7 @@ endif
 1,01040CxxxxxxxxUUuuUUuu@i3:1000,Total Energy T2 Ponta ,kWh,TET2,3
 1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Total Energy T3 Cheias ,kWh,TET3,3
 
-1,=h<hr>
+1,=h<br>
 
 ; 79
 
@@ -141,7 +141,7 @@ endif
 
 ; load profile
 
-1,=h<hr>
+1,=h<br>
 
 ; 01441d Imp+Exp
 ; 014411 Imp
@@ -155,8 +155,6 @@ endif
 ; 1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
 
 ; eof load profile
-
-1,=h<hr>
 
 ; eof meter
 
