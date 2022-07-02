@@ -78,7 +78,6 @@ endif
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<b>Wifi </b> %wfc%
-@<hr>
 
 ; Below registers only work in EB3 !
 
@@ -98,7 +97,7 @@ endif
 1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,CM,0
 1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,CS,0
 
-1,=h<br><br>
+1,=h<br>
 
 ; 6C
 
@@ -106,7 +105,7 @@ endif
 1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VL2,1
 1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VL3,1
 
-1,=h<br><br>
+1,=h<br>
 
 1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current Total ,A,CT,1
 
@@ -114,7 +113,7 @@ endif
 1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CL2,1
 1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CL3,1
 
-1,=h<br><br>
+1,=h<br>
 
 ; 73
 
@@ -128,7 +127,7 @@ endif
 1,01041cx8x4UUuuUUuu@i2:1,Active Power L2 Export ,W,APE2,0
 1,01041cx8x8x4UUuuUUuu@i2:1,Active Power L3 Export ,W,APE3,0
 
-1,=h<br><br>
+1,=h<br>
 
 ; 7A
 
@@ -140,7 +139,7 @@ endif
 1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,φ,PF3,3
 1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,FR,1
 
-1,=h<br><br>
+1,=h<br>
 
 ; 26
 
@@ -148,14 +147,14 @@ endif
 1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TET2,1
 1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TET3,1
 
-1,=h<br><br>
+1,=h<br>
 
 ; 16
 
 1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TEI,1
 1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TEE,3
 
-1,=h<br><br>
+1,=h<br>
 
 ; 0B
 
@@ -163,7 +162,7 @@ endif
 
 ; load profile
 
-1,=h<br><br>Load Profile (15min)<br><br>
+1,=h<br>Load Profile (15min)<br><br>
 
 1,01441dUUuu@i7:1,Year ,,LP_Y,0
 1,01441dxxxxuu@i7:1,Month ,,LP_M,0
