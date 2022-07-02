@@ -171,12 +171,13 @@ endif
 1,01441dxxxxxxuu@i7:1,Day,,LPD,0
 1,01441dxxxxxxxxxxuu@i7:1,Hour,h,LPHH,0
 1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,LPMM,0
-1,01441dxxx4x8UUuuUUuu@i7:1,Import Inc,Wh,LPIMP,0
-1,01441dxxx4x8xxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,*,0
-1,01441dxxx4x8xxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,*,0
-1,01441dxxx4x8xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LPEXP,0
-1,01441dxxx4x8xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R3 Inc,VArh,*,0
-1,01441dxxx4x8xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R4 Inc,VArh,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
+1,01441dxxx8x8x8UUuuUUuu@i7:1,Import Inc,Wh,LPIMP,0
+1,01441dxxx8x8x8xxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,*,0
+1,01441dxxx8x8x8xxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,*,0
+1,01441dxxx8x8x8xxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LPEXP,0
+1,01441dxxx8x8x8xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R3 Inc,VArh,*,0
+1,01441dxxx8x8x8xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R4 Inc,VArh,*,0
 
 ; eof load profile
 
