@@ -163,7 +163,7 @@ endif
 
 ; load profile
 
-1,=h<hr><br>Load Profile (15min)
+1,=h<hr><br>Load Profile (15min)<br>
 
 1,01441dUUuu@i7:1,Year ,,LP_Y,0
 1,01441dxxxxuu@i7:1,Month ,,LP_M,0
@@ -174,8 +174,6 @@ endif
 1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
 
 ; eof load profile
-
-1,=h<hr>
 
 ; eof meter
 
