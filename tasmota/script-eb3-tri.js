@@ -7,7 +7,6 @@ old=""
 wfc=""
 cnt=0
 wtd=0
-hh=0
 mm=0
 ss=0
 
@@ -29,7 +28,6 @@ wfc=WifiConfig#?
 
 time=st(tstamp T 2)
 date=st(tstamp T 1)
-hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
@@ -46,7 +44,7 @@ endif
 
 ; modbus watchdog block begin
 
-clk=s(2.0hh)+s(2.0mm)+s(2.0ss)
+clk=s(2.0mm)+s(2.0ss)
 
 if cnt==99
 then
@@ -64,6 +62,8 @@ wtd=0
 if old==clk
 then
 print Easy HAN: modbus error !!!
+print Easy HAN: modbus error !!!
+print Easy HAN: modbus error !!!
 ; 
 ; =>Restart -3
 ; 
@@ -77,7 +77,7 @@ endif
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
-@<b>WifiConfig </b> %wfc%
+@<b>Wifi </b> %wfc%
 @<hr>
 
 ; Below registers only work in EB3 !
@@ -163,7 +163,7 @@ endif
 
 ; load profile
 
-1,=h<hr>
+1,=h<hr><br>Load Profile (15min)
 
 1,01441dUUuu@i7:1,Year ,,LP_Y,0
 1,01441dxxxxuu@i7:1,Month ,,LP_M,0
