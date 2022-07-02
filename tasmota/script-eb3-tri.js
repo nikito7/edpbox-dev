@@ -65,7 +65,7 @@ print Easy HAN: modbus error !!!
 print Easy HAN: modbus error !!!
 print Easy HAN: modbus error !!!
 ; 
-; =>Restart -3
+=>Restart -3
 ; 
 endif
 endif
@@ -78,7 +78,8 @@ endif
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<b>Wifi </b> %wfc%
-@<hr>
+@<br>
+@<br>
 
 ; Below registers only work in EB3 !
 
