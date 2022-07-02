@@ -78,6 +78,7 @@ endif
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<b>Wifi </b> %wfc%
+@<br>
 
 ; Below registers only work in EB3 !
 
@@ -93,39 +94,39 @@ endif
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,CH,0
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,CM,0
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,CS,0
+1,01040Cxxxxxxxxxxuu@i0:1,Clock,h,CH,0
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock,m,CM,0
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock,s,CS,0
 
 1,=h<br>
 
 ; 6C
 
-1,01040EUUuu@i1:10,Voltage L1 ,V,VL1,1
-1,01040ExxxxxxxxUUuu@i1:10,Voltage L2 ,V,VL2,1
-1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3 ,V,VL3,1
+1,01040EUUuu@i1:10,Voltage L1,V,VL1,1
+1,01040ExxxxxxxxUUuu@i1:10,Voltage L2,V,VL2,1
+1,01040ExxxxxxxxxxxxxxxxUUuu@i1:10,Voltage L3,V,VL3,1
 
 1,=h<br>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current Total ,A,CT,1
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current Total,A,CT,1
 
-1,01040ExxxxUUuu@i1:10,Current L1 ,A,CL1,1
-1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2 ,A,CL2,1
-1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3 ,A,CL3,1
+1,01040ExxxxUUuu@i1:10,Current L1,A,CL1,1
+1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2,A,CL2,1
+1,01040ExxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current L3,A,CL3,1
 
 1,=h<br>
 
 ; 73
 
-1,01041cx8x8x8UUuuUUuu@i2:1,Active Power Import ,W,API,0
+1,01041cx8x8x8UUuuUUuu@i2:1,Active Power Import,W,API,0
 
-1,01041cUUuuUUuu@i2:1,Active Power L1 ,W,API1,0
-1,01041cx8UUuuUUuu@i2:1,Active Power L2 ,W,API2,0
-1,01041cx8x8UUuuUUuu@i2:1,Active Power L3 ,W,API3,0
+1,01041cUUuuUUuu@i2:1,Active Power L1,W,API1,0
+1,01041cx8UUuuUUuu@i2:1,Active Power L2,W,API2,0
+1,01041cx8x8UUuuUUuu@i2:1,Active Power L3,W,API3,0
 
-1,01041cx4UUuuUUuu@i2:1,Active Power L1 Export ,W,APE1,0
-1,01041cx8x4UUuuUUuu@i2:1,Active Power L2 Export ,W,APE2,0
-1,01041cx8x8x4UUuuUUuu@i2:1,Active Power L3 Export ,W,APE3,0
+1,01041cx4UUuuUUuu@i2:1,Active Power L1 Export,W,APE1,0
+1,01041cx8x4UUuuUUuu@i2:1,Active Power L2 Export,W,APE2,0
+1,01041cx8x8x4UUuuUUuu@i2:1,Active Power L3 Export,W,APE3,0
 
 1,=h<br>
 
@@ -133,44 +134,47 @@ endif
 
 1,01040eUUuuUUuu@i3:1,Active Power Export,W,APE,0
 
-1,01040exxxxxxxxUUuu@i3:1000,Power Factor ,φ,PF,3
-1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1 ,φ,PF1,3
-1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2 ,φ,PF2,3
-1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3 ,φ,PF3,3
-1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency ,Hz,FR,1
+1,01040exxxxxxxxUUuu@i3:1000,Power Factor,φ,PF,3
+1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1,φ,PF1,3
+1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2,φ,PF2,3
+1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3,φ,PF3,3
+1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency,Hz,FR,1
 
 1,=h<br>
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio ,kWh,TET1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta ,kWh,TET2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias ,kWh,TET3,1
+1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio,kWh,TET1,1
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta,kWh,TET2,1
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias,kWh,TET3,1
 
 1,=h<br>
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Total Energy Import ,kWh,TEI,1
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export ,kWh,TEE,3
+1,010418UUuuUUuu@i5:1000,Total Energy Import,kWh,TEI,1
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export,kWh,TEE,3
 
 1,=h<br>
 
 ; 0B
 
-1,01040euu@i6:1,Tariff ,,Tariff,0
+1,01040euu@i6:1,Tariff,,Tariff,0
 
 ; load profile
 
-1,=h<br>Load Profile (15min)<br><br>
+1,=h<br>Load Profile (15min)<br>
+1,=h<br>
 
-1,01441dUUuu@i7:1,Year ,,LP_Y,0
-1,01441dxxxxuu@i7:1,Month ,,LP_M,0
-1,01441dxxxxxxuu@i7:1,Day ,,LP_D,0
-1,01441dxxxxxxxxxxuu@i7:1,Hour ,h,LP_HH,0
-1,01441dxxxxxxxxxxxxuu@i7:1,Minute ,m,LP_MM,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
+1,01441dUUuu@i7:1,Year,y,LP_Y,0
+1,01441dxxxxuu@i7:1,Month,m,LP_M,0
+1,01441dxxxxxxuu@i7:1,Day,d,LP_D,0
+1,01441dxxxxxxxxxxuu@i7:1,Hour,h,LP_HH,0
+1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,LP_MM,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,LP_IMP,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R1 Inc,VAr,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R2 Inc,VAr,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP_EXP,0
 
 ; eof load profile
 
