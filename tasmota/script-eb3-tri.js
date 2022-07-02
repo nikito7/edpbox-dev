@@ -17,8 +17,8 @@ smlj=0
 
 =>SerialLog 0
 =>SensorRetain 0
-=>Sensor53 r
 =>WifiConfig
+=>Sensor53 r
 
 >E
 
