@@ -77,7 +77,8 @@ endif
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
-@<b>Wifi </b> %wfc% <br>
+@<b>Wifi </b> %wfc%
+@<hr>
 
 ; Below registers only work in EB3 !
 
@@ -90,6 +91,8 @@ endif
 ; power off is required
 ;  v  v             v
 +1,3,mN1,1,9600,EB3,1,20,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
+
+1,=h<br>
 
 ; 01
 
