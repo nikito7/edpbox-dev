@@ -77,8 +77,7 @@ endif
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
-@<b>Wifi </b> %wfc%
-@<b>Topic </b> %topic%
+@<b>Wifi </b> %wfc% <b> Topic </b> %topic%
 @<br>
 
 ; Below registers only work in EB3 !
@@ -176,7 +175,7 @@ endif
 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R1 Inc,VArh,*,0
 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R2 Inc,VArh,*,0
 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LPEXP,0
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R3 Inc,VArh,*,0
+; 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R3 Inc,VArh,*,0
 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R4 Inc,VArh,*,0
 
 ; eof load profile
