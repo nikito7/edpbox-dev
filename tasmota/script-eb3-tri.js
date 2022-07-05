@@ -10,7 +10,13 @@ wtd=0
 mm=0
 ss=0
 
->BS
+>B
+
+if upsecs<10
+then
+print Easy HAN: disabling wifi...
+=>WiFi 0
+endif
 
 tper=20
 smlj=0
@@ -25,6 +31,12 @@ smlj=0
 wfc=WifiConfig#?
 
 >S
+
+if cnt==10
+then
+print Easy HAN: enabling wifi...
+=>WiFi 1
+endif
 
 time=st(tstamp T 2)
 date=st(tstamp T 1)
@@ -61,7 +73,6 @@ then
 wtd=0
 if old==clk
 then
-print Easy HAN: modbus error !!!
 print Easy HAN: modbus error !!!
 print Easy HAN: modbus error !!!
 ; 
