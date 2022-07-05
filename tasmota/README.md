@@ -25,3 +25,10 @@ Discord:
 
 
 [![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA)
+
+Rename:
+
+```
+sed -i -e 's/edpbox3/edpbox5/g' /config/pkg/tasmota5.yaml
+sed -i -e 's/EB3/EB5/g' /config/pkg/tasmota5.yaml
+```
