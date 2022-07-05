@@ -32,7 +32,7 @@ wfc=WifiConfig#?
 
 >S
 
-print Loop cnt=%0cnt%
+print Loop cnt=%0cnt% wtd=%0wtd%
 
 if cnt==5
 then
@@ -179,17 +179,15 @@ endif
 1,=h<br>Load Profile (15min)<br>
 1,=h<br>
 
-1,01441dUUuu@i7:1,Year,,LPY,0
-1,01441dxxxxuu@i7:1,Month,,LPM,0
-1,01441dxxxxxxuu@i7:1,Day,,LPD,0
-1,01441dxxxxxxxxxxuu@i7:1,Hour,h,LPHH,0
-1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,LPMM,0
-1,01441dx4xxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,LPIMP,0
+1,01441dUUuu@i7:1,Year,,LP_Y,0
+1,01441dxxxxuu@i7:1,Month,,LP_M,0
+1,01441dxxxxxxuu@i7:1,Day,,LP_D,0
+1,01441dxxxxxxxxxxuu@i7:1,Hour,h,LP_HH,0
+1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,LP_MM,0
+1,01441dx4xxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,LP_IMP,0
 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R1 Inc,VArh,*,0
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R2 Inc,VArh,*,0
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LPEXP,0
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,R3 Inc,kVArh,*,3
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R4 Inc,VArh,*,0
+1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP_EXP,0
+1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,R2 Inc,kVArh,*,3
 
 ; eof load profile
 
