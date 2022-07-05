@@ -160,13 +160,17 @@ endif
 ; 01441d Imp+Exp
 ; 014411 Imp
 
-1,014411UUuu@i7:1,Year ,,LP_Y,0
-1,014411xxxxuu@i7:1,Month ,,LP_M,0
-1,014411xxxxxxuu@i7:1,Day ,,LP_D,0
-1,014411xxxxxxxxxxuu@i7:1,Hour ,h,LP_HH,0
-1,014411xxxxxxxxxxxxuu@i7:1,Minute ,m,LP_MM,0
-1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc ,Wh,LP_IMP,0
-; 1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc ,Wh,LP_EXP,0
+1,014411UUuu@i7:1,Year,,L_Y,0
+1,014411xxxxuu@i7:1,Month,,L_M,0
+1,014411xxxxxxuu@i7:1,Day,,L_D,0
+1,014411xxxxxxxxxxuu@i7:1,Hour,h,L_HH,0
+1,014411xxxxxxxxxxxxuu@i7:1,Minute,m,L_MM,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxuu@i7:1,Summer,,*,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Profile Status,,*,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,L_IMP,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,*,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,*,0
+;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,L_EXP,0
 
 ; eof load profile
 
