@@ -184,6 +184,7 @@ endif
 1,01441dxxxxxxuu@i7:1,Day,,LP_D,0
 1,01441dxxxxxxxxxxuu@i7:1,Hour,h,LP_HH,0
 1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,LP_MM,0
+1,01441dx4xxxxxxxxxxxxxxUUuu@i7:1,Summer,,*,0
 1,01441dx4xxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,LP_IMP,0
 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R1 Inc,VArh,*,0
 1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP_EXP,0
