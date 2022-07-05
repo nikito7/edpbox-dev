@@ -18,13 +18,15 @@ Monofásicos:
 
 ```Landis+Gyr``` (plc led vermelho) 
 
-```Sagemcom CX1000-6``` (plc led verde)
+```Sagemcom CX1000*``` (plc led verde)
 
 Trifásicos:
 
 ```Janz B2801 GPRS``` (gsm led verde) 
 
-```Sagemcom CX2000-9``` (plc led vermelho)
+```Sagemcom CX2000*``` (plc led vermelho)
+
+```*``` Poderá requerer alimentação externa para configurar wifi.
 
 # Discord
 
