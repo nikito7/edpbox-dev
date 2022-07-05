@@ -18,7 +18,7 @@ Monofásicos:
 
 ```Landis+Gyr``` (plc led vermelho) 
 
-```Sagemcom CX1000``` (plc led verde)
+```Sagemcom CX1000-6``` (plc led verde)
 
 Trifásicos:
 
