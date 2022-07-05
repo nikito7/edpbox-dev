@@ -168,8 +168,8 @@ endif
 1,014411xxxxxxxxxxxxxxxxxxxxxxuu@i7:1,Summer,,*,0
 1,014411xxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Profile Status,,*,0
 1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,L_IMP,0
-1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,*,0
-1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,*,0
+;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,*,0
+;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,*,0
 ;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,L_EXP,0
 
 ; eof load profile
