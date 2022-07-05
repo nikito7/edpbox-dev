@@ -28,6 +28,8 @@ Trifásicos:
 
 ```*``` Poderá requerer alimentação externa para configurar wifi.
 
+```*``` Algo instável. 
+
 # Discord
 
 [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
