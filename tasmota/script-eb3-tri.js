@@ -179,16 +179,16 @@ endif
 1,=h<br>Load Profile (15min)<br>
 1,=h<br>
 
-1,01441dUUuu@i7:1,Year,,LP_Y,0
-1,01441dxxxxuu@i7:1,Month,,LP_M,0
-1,01441dxxxxxxuu@i7:1,Day,,LP_D,0
-1,01441dxxxxxxxxxxuu@i7:1,Hour,h,LP_HH,0
-1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,LP_MM,0
-1,01441dx4xxxxxxxxxxxxxxUUuu@i7:1,Summer,,*,0
-1,01441dx4xxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,LP_IMP,0
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R1 Inc,VArh,*,0
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP_EXP,0
-1,01441dx4xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,R2 Inc,kVArh,*,3
+1,01441dUUuu@i7:1,Year,,L_Y,0
+1,01441dxxxxuu@i7:1,Month,,L_M,0
+1,01441dxxxxxxuu@i7:1,Day,,L_D,0
+1,01441dxxxxxxxxxxuu@i7:1,Hour,h,L_HH,0
+1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,L_MM,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxUUuu@i7:1,Summer,,*,0
+1,01441dxxxxxcccxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,L_IMP,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,R1 Inc,VArh,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,L_EXP,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1000,R2 Inc,kVArh,*,3
 
 ; eof load profile
 
