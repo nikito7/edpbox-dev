@@ -32,6 +32,8 @@ wfc=WifiConfig#?
 
 >S
 
+print Loop cnt=%0cnt%
+
 if cnt==10
 then
 print Easy HAN: enabling wifi...
