@@ -12,7 +12,7 @@ ss=0
 
 >B
 
-if upsecs<10
+if upsecs<5
 then
 print Easy HAN: disabling wifi...
 =>WiFi 0
@@ -34,7 +34,7 @@ wfc=WifiConfig#?
 
 print Loop cnt=%0cnt%
 
-if cnt==10
+if cnt==5
 then
 print Easy HAN: enabling wifi...
 =>WiFi 1
