@@ -24,6 +24,8 @@ Trifásicos:
 
 ```Janz B2801 GPRS``` (gsm led verde) 
 
+```Sagemcom CX2000-9``` (plc led vermelho)
+
 # Discord
 
 [```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
