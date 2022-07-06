@@ -29,7 +29,7 @@ Discord:
 Rename:
 
 ```
-sed -i -e 's/edpbox3/edpbox5/g' /config/pkg/tasmota5.yaml
-sed -i -e 's/EB3/EB5/g' /config/pkg/tasmota5.yaml
-sed -i -e 's/eb3/eb5/g' /config/pkg/tasmota5.yaml
+sed -i -e 's/edpbox3/edpbox5/g' tasmota5.yaml
+sed -i -e 's/EB3/EB5/g' tasmota5.yaml
+sed -i -e 's/eb3/eb5/g' tasmota5.yaml
 ```
