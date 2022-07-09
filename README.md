@@ -26,8 +26,6 @@ Trifásicos:
 
 ```Sagemcom CX2000*``` (plc led vermelho)
 
-```*``` Poderá requerer alimentação externa para configurar wifi.
-
 ```*``` Algo instável. 
 
 # Discord
