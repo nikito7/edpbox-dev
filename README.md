@@ -4,7 +4,7 @@
 
 <i>Imagem demonstrativa</i>
 
-Mais info [```aqui```](https://forum.cpha.pt/t/easy-han-edpbox-rs485/10279)
+Mais info no [```discord```](https://discord.gg/6DtJnSXc7B)
 
 # Testados
 
@@ -29,9 +29,3 @@ Trifásicos:
 Notas:
 
 ```*``` Algo instável. 
-
-# Discord
-
-[```cpha.pt/discord```](https://discord.gg/Mh9mTEA)
-
-[![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
