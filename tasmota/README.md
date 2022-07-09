@@ -21,11 +21,6 @@ Erro 84/81:
 
 ![erro 84 81](./erro81.jpg)
 
-Discord:
-
-
-[![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA)
-
 Rename:
 
 ```
