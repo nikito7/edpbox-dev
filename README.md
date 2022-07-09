@@ -26,6 +26,8 @@ Trifásicos:
 
 ```Sagemcom CX2000*``` (plc led vermelho)
 
+Notas:
+
 ```*``` Algo instável. 
 
 # Discord
