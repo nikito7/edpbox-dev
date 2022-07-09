@@ -12,19 +12,19 @@ Mais info no [```discord```](https://discord.gg/6DtJnSXc7B)
 
 Monofásicos:
 
-```Kaifa MA109P``` (plc led vermelho) 
+```Kaifa MA109P``` (plc vermelho) 
 
-```Kaifa MA109P``` (plc led verde)
+```Kaifa MA109P``` (plc verde)
 
-```Landis+Gyr``` (plc led vermelho) 
+```Landis+Gyr``` (plc vermelho) 
 
-```Sagemcom CX1000*``` (plc led verde)
+```Sagemcom CX1000*``` (plc verde)
 
 Trifásicos:
 
-```Janz B2801 GPRS``` (gsm led verde) 
+```Janz B2801 GPRS``` (gsm verde) 
 
-```Sagemcom CX2000*``` (plc led vermelho)
+```Sagemcom CX2000*``` (plc vermelho)
 
 Notas:
 
