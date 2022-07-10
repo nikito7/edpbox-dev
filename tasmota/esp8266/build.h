@@ -4,6 +4,9 @@
 // allow ota for 1M.
 // freeup ram !
 
+// ### ### ###
+// raw copy
+// no changes
 
 #undef FIRMWARE_LITE                             // Disable tasmota-lite with no sensors
 #undef FIRMWARE_SENSORS                          // Disable tasmota-sensors with useful sensors enabled
@@ -122,16 +125,23 @@
 #undef USE_AC_ZERO_CROSS_DIMMER                  // Disable support for AC_ZERO_CROSS_DIMMER
 
 // ### ### ###
+// changes
+
+#define USE_LIGHT
+#define USE_TASMOTA_DISCOVERY
+#define USE_CUSTOM
+#define USE_DISCOVERY
+#define USE_DEEPSLEEP
+#define USE_COUNTER
+#define USE_DS18x20
 
 // ### ### ###
-
 // tasmota4M
 
 #define USE_UFILESYS
 #define UFSYS_SIZE 8192
 
 // ### ### ###
-
 // user_config_override.h
 // sml configs
 
