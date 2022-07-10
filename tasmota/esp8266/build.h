@@ -1,8 +1,8 @@
 // copy to user_config_override.h
 // sml at the end of file.
-// based in 12.x minimal.
-// allow ota for 1M.
-// freeup ram !
+// based in 12.x minimal:
+// - allow ota for 1M
+// - freeup ram !
 
 // ### ### ###
 // raw copy
