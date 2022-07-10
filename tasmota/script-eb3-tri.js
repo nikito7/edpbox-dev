@@ -10,15 +10,9 @@ wtd=0
 mm=0
 ss=0
 
->B
+>BS
 
-if upsecs<5
-then
-print Easy HAN: disabling wifi...
-=>WiFi 0
-endif
-
-tper=20
+tper=31
 smlj=0
 
 =>SerialLog 0
@@ -34,18 +28,12 @@ wfc=WifiConfig#?
 
 print Loop cnt=%0cnt% wtd=%0wtd%
 
-if cnt==5
-then
-print Easy HAN: enabling wifi...
-=>WiFi 1
-endif
-
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 mm=sml[2]
 ss=sml[3]
 
-if cnt==30
+if cnt==40
 then
 smlj=1
 tper=15
@@ -76,7 +64,6 @@ wtd=0
 if old==clk
 then
 print Easy HAN: modbus error !!!
-print Easy HAN: modbus error !!!
 ; 
 =>Restart -3
 ; 
@@ -103,13 +90,13 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,EB3,1,20,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
++1,3,mN1,1,9600,EB3,1,25,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock,h,CH,0
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock,m,CM,0
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock,s,CS,0
+1,01040Cxxxxxxxxxxuu@i0:1,Clock,h,CH,16
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock,m,CM,16
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock,s,CS,16
 
 1,=h<br>
 
