@@ -127,13 +127,13 @@
 // ### ### ###
 // changes
 
-#define USE_LIGHT
+//#define USE_LIGHT
 #define USE_TASMOTA_DISCOVERY
 #define USE_CUSTOM
 #define USE_DISCOVERY
 #define USE_DEEPSLEEP
 #define USE_COUNTER
-#define USE_DS18x20
+//#define USE_DS18x20
 
 // ### ### ###
 // tasmota4M
