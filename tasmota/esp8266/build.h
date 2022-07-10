@@ -140,6 +140,8 @@
 
 #define USE_UFILESYS
 #define UFSYS_SIZE 8192
+#define GUI_TRASH_FILE
+#define GUI_EDIT_FILE
 
 // ### ### ###
 // user_config_override.h
