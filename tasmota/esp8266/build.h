@@ -1,34 +1,41 @@
 // copy to user_config_override.h
 // sml at the end of file.
-// based in 11.1.0 lite.
+// based in 12.x minimal.
 // allow ota for 1M.
 // freeup ram !
+
+
+#undef FIRMWARE_LITE                             // Disable tasmota-lite with no sensors
+#undef FIRMWARE_SENSORS                          // Disable tasmota-sensors with useful sensors enabled
+#undef FIRMWARE_KNX_NO_EMULATION                 // Disable tasmota-knx with KNX but without Emulation
+#undef FIRMWARE_DISPLAYS                         // Disable tasmota-display with display drivers enabled
+#undef FIRMWARE_IR                               // Disable tasmota-ir with IR full protocols activated
 
 #undef USE_IMPROV                                // Disable support for IMPROV serial protocol as used by esp-web-tools (+2k code)
 #undef USE_TASMESH                               // Disable Tasmota Mesh using ESP-NOW (+11k code)
 #undef USE_ARDUINO_OTA                           // Disable support for Arduino OTA
-//#undef USE_INFLUXDB                              // Disable influxdb support (+5k code)
+#undef USE_INFLUXDB                              // Disable influxdb support (+5k code)
 #undef USE_DOMOTICZ                              // Disable Domoticz
-//#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
-//#undef USE_TASMOTA_DISCOVERY                     // Disable Tasmota Discovery support (+2k code)
+#undef USE_HOME_ASSISTANT                        // Disable Home Assistant
+#undef USE_TASMOTA_DISCOVERY                     // Disable Tasmota Discovery support (+2k code)
 #undef USE_TELEGRAM                              // Disable support for Telegram protocol (+49k code, +7.0k mem and +4.8k additional during connection handshake)
 //#undef USE_MQTT_TLS                              // Disable TLS support won't work as the MQTTHost is not set
 #undef USE_KNX                                   // Disable KNX IP Protocol Support
 //#undef USE_WEBSERVER                             // Disable Webserver
-//#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
-//#undef USE_WEBSEND_RESPONSE                      // Disable command WebSend response message (+1k code)
+#undef USE_ENHANCED_GUI_WIFI_SCAN                // Disable wifi scan output with BSSID (+0k5 code)
+#undef USE_WEBSEND_RESPONSE                      // Disable command WebSend response message (+1k code)
 #undef USE_EMULATION                             // Disable Wemo or Hue emulation
 #undef USE_EMULATION_HUE                         // Disable Hue Bridge emulation for Alexa (+14k code, +2k mem common)
 #undef USE_EMULATION_WEMO                        // Disable Belkin WeMo emulation for Alexa (+6k code, +2k mem common)
-//#undef USE_CUSTOM                                // Disable Custom features
-//#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
+#undef USE_CUSTOM                                // Disable Custom features
+#undef USE_DISCOVERY                             // Disable Discovery services for both MQTT and web server
 #undef USE_TIMERS                                // Disable support for up to 16 timers
 #undef USE_TIMERS_WEB                            // Disable support for timer webpage
 #undef USE_SUNRISE                               // Disable support for Sunrise and sunset tools
 #undef USE_PING                                  // Disable Ping command (+2k code)
 #undef USE_UNISHOX_COMPRESSION                   // Disable support for string compression in Rules or Scripts
 #undef USE_RULES                                 // Disable support for rules
-//#undef USE_SCRIPT                                // Disable support for script
+#undef USE_SCRIPT                                // Disable support for script
 
 // -- Optional modules ----------------------------
 #undef ROTARY_V1                                 // Disable support for MI Desk Lamp
@@ -42,7 +49,7 @@
 #undef USE_BUZZER                                // Disable support for a buzzer (+0k6 code)
 #undef USE_ARILUX_RF                             // Disable support for Arilux RF remote controller
 #undef USE_SHUTTER                               // Disable Shutter support for up to 4 shutter with different motortypes (+6k code)
-//#undef USE_DEEPSLEEP                             // Disable support for deepsleep (+1k code)
+#undef USE_DEEPSLEEP                             // Disable support for deepsleep (+1k code)
 #undef USE_EXS_DIMMER                            // Disable support for EX-Store WiFi Dimmer
 #undef USE_HOTPLUG                               // Disable support for HotPlug
 #undef USE_DEVICE_GROUPS                         // Disable support for device groups (+3k5 code)
@@ -109,10 +116,12 @@
 #undef USE_HRE                                   // Disable support for Badger HR-E Water Meter (+1k4 code)
 #undef USE_A4988_STEPPER                         // Disable support for A4988_Stepper
 #undef USE_THERMOSTAT                            // Disable support for Thermostat
-// #undef USE_PROMETHEUS                            // Disable support for https://prometheus.io/ metrics exporting over HTTP /metrics endpoint
+#undef USE_PROMETHEUS                            // Disable support for https://prometheus.io/ metrics exporting over HTTP /metrics endpoint
 #undef DEBUG_THEO                                // Disable debug code
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #undef USE_AC_ZERO_CROSS_DIMMER                  // Disable support for AC_ZERO_CROSS_DIMMER
+
+// ### ### ###
 
 // ### ### ###
 
