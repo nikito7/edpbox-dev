@@ -5,6 +5,7 @@ date=""
 clk=""
 old=""
 wfc=""
+wfp=0
 cnt=0
 wtd=0
 mm=0
@@ -23,6 +24,7 @@ smlj=0
 >E
 
 wfc=WifiConfig#?
+wfp=
 
 >S
 
