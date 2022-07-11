@@ -80,9 +80,9 @@ endif
 
 ; 01
 
-1,01040Cxxxxxxxxxxuu@i0:1,Clock,h,CH,16
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock,m,CM,16
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock,s,CS,16
+1,01040Cxxxxxxxxxxuu@i0:1,Clock,h,CH,0
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock,m,CM,0
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock,s,CS,0
 
 1,=h<br>
 
