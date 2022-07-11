@@ -11,7 +11,10 @@ wtd=0
 mm=0
 ss=0
 
->BS
+>B
+
+=>Delay 100
+=>Delay 100
 
 tper=31
 smlj=0
@@ -19,6 +22,8 @@ smlj=0
 =>SerialLog 0
 =>SensorRetain 0
 =>WifiConfig
+=>WifiPower
+
 =>Sensor53 r
 
 >E
