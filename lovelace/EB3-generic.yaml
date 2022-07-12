@@ -1,4 +1,6 @@
 type: entities
+title: EB3
+show_header_toggle: false
 entities:
 # esp
   - entity: sensor.eb3_easy_han_status
@@ -27,7 +29,7 @@ entities:
   - type: divider
     style:
       height: 1px
-      width: 50%
+      width: 80%
       margin-left: auto
       margin-right: auto
       background: '#62717b'
@@ -50,7 +52,7 @@ entities:
   - type: divider
     style:
       height: 1px
-      width: 50%
+      width: 80%
       margin-left: auto
       margin-right: auto
       background: '#62717b'
@@ -75,7 +77,7 @@ entities:
   - type: divider
     style:
       height: 1px
-      width: 50%
+      width: 80%
       margin-left: auto
       margin-right: auto
       background: '#62717b'
@@ -94,7 +96,7 @@ entities:
   - type: divider
     style:
       height: 1px
-      width: 50%
+      width: 80%
       margin-left: auto
       margin-right: auto
       background: '#62717b'
