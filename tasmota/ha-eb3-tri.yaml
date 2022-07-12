@@ -51,6 +51,12 @@ mqtt:
       icon: mdi:chip
       state_class: measurement
 
+    - name: "EB3 Easy HAN Status"
+      unique_id: EB3_Easy_HAN_Status
+      state_topic: "tele/edpbox3/STATE"
+      value_template: '{{ value_json.EHAN.Status }}'
+      icon: mdi:chip
+
 ###
 
     - name: "EB3 ESP Signal"
