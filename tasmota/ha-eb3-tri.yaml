@@ -51,12 +51,6 @@ mqtt:
       icon: mdi:chip
       state_class: measurement
 
-    - name: "EB3 Easy HAN Status"
-      unique_id: EB3_Easy_HAN_Status
-      state_topic: "tele/edpbox3/STATE"
-      value_template: '{{ value_json.EHAN.Status }}'
-      icon: mdi:chip
-
 ###
 
     - name: "EB3 ESP Signal"
@@ -74,6 +68,14 @@ mqtt:
       unit_of_measurement: "V"
       device_class: voltage
       state_class: measurement
+
+###
+
+    - name: "EB3 Easy HAN Status"
+      unique_id: EB3_Easy_HAN_Status
+      state_topic: "tele/edpbox3/SENSOR"
+      value_template: '{{ value_json.EHAN }}'
+      icon: mdi:chip
 
 ###
 
@@ -313,7 +315,7 @@ mqtt:
       state_topic: "tele/edpbox3/SENSOR"
       value_template: >-
           {% set x = value_json.EB3.APE1|int(0) %}
-          {% if x %}
+          {% if x > -1 %}
             {{ x }}
           {% endif %}
       unit_of_measurement: "W"
@@ -325,7 +327,7 @@ mqtt:
       state_topic: "tele/edpbox3/SENSOR"
       value_template: >-
           {% set x = value_json.EB3.APE2|int(0) %}
-          {% if x %}
+          {% if x > -1 %}
             {{ x }}
           {% endif %}
       unit_of_measurement: "W"
@@ -337,7 +339,7 @@ mqtt:
       state_topic: "tele/edpbox3/SENSOR"
       value_template: >-
           {% set x = value_json.EB3.APE3|int(0) %}
-          {% if x %}
+          {% if x > -1 %}
             {{ x }}
           {% endif %}
       unit_of_measurement: "W"
