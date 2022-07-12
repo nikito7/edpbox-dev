@@ -24,6 +24,14 @@ entities:
   - entity: sensor.eb3_clock
     secondary_info: last-updated
 # v/a
+  - type: divider
+    style:
+      height: 1px
+      width: 50%
+      margin-left: auto
+      margin-right: auto
+      background: '#62717b'
+#
   - entity: sensor.eb3_voltage_l1
     secondary_info: last-updated
   - entity: sensor.eb3_voltage_l2
@@ -39,6 +47,14 @@ entities:
   - entity: sensor.eb3_current_l3
     secondary_info: last-updated
 # power
+  - type: divider
+    style:
+      height: 1px
+      width: 50%
+      margin-left: auto
+      margin-right: auto
+      background: '#62717b'
+#
   - entity: sensor.eb3_active_power_import
     secondary_info: last-updated
   - entity: sensor.eb3_active_power_export
@@ -55,6 +71,15 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb3_active_power_l3_export
     secondary_info: last-updated
+#
+  - type: divider
+    style:
+      height: 1px
+      width: 50%
+      margin-left: auto
+      margin-right: auto
+      background: '#62717b'
+#
   - entity: sensor.eb3_frequency
     secondary_info: last-updated
   - entity: sensor.eb3_power_factor
@@ -66,6 +91,14 @@ entities:
   - entity: sensor.eb3_power_factor_l3
     secondary_info: last-updated
 # total
+  - type: divider
+    style:
+      height: 1px
+      width: 50%
+      margin-left: auto
+      margin-right: auto
+      background: '#62717b'
+#
   - entity: sensor.eb3_t1_vazio
     secondary_info: last-updated
   - entity: sensor.eb3_t2_ponta
