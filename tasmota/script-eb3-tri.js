@@ -60,7 +60,7 @@ endif
 
 >J
 
-,"EHAN":{"Status":1}
+,"EHAN":1
 
 >W
 
