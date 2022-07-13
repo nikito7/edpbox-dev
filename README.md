@@ -4,7 +4,7 @@
 
 <i>Imagem demonstrativa</i>
 
-Mais info no [```discord```](https://discord.gg/6DtJnSXc7B)
+Mais info no [```discord```](https://discord.gg/Mh9mTEA)
 
 # Testados
 
