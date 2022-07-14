@@ -20,14 +20,11 @@ Monofásicos:
 
 ```Landis+Gyr``` (plc vermelho) 
 
-```Sagemcom CX1000*``` (plc verde)
+```Sagemcom CX1000``` (plc verde)
 
 Trifásicos:
 
 ```Janz B2801 GPRS``` (gsm verde) 
 
-```Sagemcom CX2000*``` (plc vermelho)
+```Sagemcom CX2000``` (plc vermelho)
 
-Notas:
-
-```*``` Algo instável. 
