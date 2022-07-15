@@ -58,10 +58,6 @@ endif
 
 ; modbus watchdog block end
 
->J
-
-,"EHAN":%0smlj%
-
 >W
 
 @<b>NTP </b> %date% %time%
@@ -174,4 +170,4 @@ endif
 
 #
 
-; eof script 19:09
+; eof script 01:50
