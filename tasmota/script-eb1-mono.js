@@ -91,8 +91,8 @@ endif
 
 ; 6C
 
-1,010404UUuu@i1:10,Voltage L1 ,V,VL1,1
-1,010404xxxxUUuu@i1:10,Current L1 ,A,CL1,1
+1,010404UUuu@i1:10,Voltage L1 ,V,Voltage_L1,1
+1,010404xxxxUUuu@i1:10,Current L1 ,A,Current_L1,1
 
 1,=h<br>
 
@@ -113,13 +113,13 @@ endif
 
 ; 79
 
-1,01040aUUuuUUuu@i4:1,Active Power Import ,W,API,0
-1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,APE,0
-1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,φ,PF,3
+1,01040aUUuuUUuu@i4:1,Active Power Import ,W,Active_Power_Import,0
+1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,Active_Power_Export,0
+1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,φ,Power_Factor,3
 
 ; 7F
 
-1,01040aUUuu@i5:10,Frequency ,Hz,FR,1
+1,01040aUUuu@i5:10,Frequency ,Hz,Frequency,1
 
 ; 0B
 
@@ -133,17 +133,17 @@ endif
 ; 01441d Imp+Exp
 ; 014411 Imp
 
-1,014411UUuu@i7:1,Year,,L_Y,0
-1,014411xxxxuu@i7:1,Month,,L_M,0
-1,014411xxxxxxuu@i7:1,Day,,L_D,0
-1,014411xxxxxxxxxxuu@i7:1,Hour,h,L_HH,0
-1,014411xxxxxxxxxxxxuu@i7:1,Minute,m,L_MM,0
-1,014411xxxxxxxxxxxxxxxxxxxxxxuu@i7:1,Summer,,*,0
-1,014411xxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Profile Status,,*,0
-1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,L_IMP,0
-;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,*,0
-;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,*,0
-;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,L_EXP,0
+1,014411UUuu@i7:1,Year,,LP1_Y,0
+1,014411xxxxuu@i7:1,Month,,LP1_M,0
+1,014411xxxxxxuu@i7:1,Day,,LP1_D,0
+1,014411xxxxxxxxxxuu@i7:1,Hour,h,LP1_HH,0
+1,014411xxxxxxxxxxxxuu@i7:1,Minute,m,LP1_MM,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxuu@i7:1,Summer,,LP1_DST,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Profile Status,,LP2_AMR,0
+1,014411xxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,LP3_IMP,0
+;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,LP4,0
+;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,LP5,0
+;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP6_EXP,0
 
 ; eof load profile
 
@@ -151,4 +151,5 @@ endif
 
 #
 
-; eof script 19:38
+; eof script 12:58
+
