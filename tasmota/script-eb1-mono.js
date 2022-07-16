@@ -47,6 +47,7 @@ if cnt==40
 then
 smlj=1
 tper=15
+=>So19 0
 endif
 
 if cnt<99
@@ -91,8 +92,8 @@ endif
 
 ; 6C
 
-1,010404UUuu@i1:10,Voltage L1 ,V,Voltage L1,1
-1,010404xxxxUUuu@i1:10,Current L1 ,A,Current L1,1
+1,010404UUuu@i1:10,Voltage L1 ,V,Voltage,1
+1,010404xxxxUUuu@i1:10,Current L1 ,A,Current,1
 
 1,=h<br>
 
@@ -113,7 +114,7 @@ endif
 
 ; 79
 
-1,01040aUUuuUUuu@i4:1,Active Power Import ,W,Active Power Import,0
+1,01040aUUuuUUuu@i4:1,Active Power Import ,W,Active Power,0
 1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,Active Power Export,0
 1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,φ,Power Factor,3
 
@@ -151,5 +152,5 @@ endif
 
 #
 
-; eof script 12:58
+; eof script 13:37
 
