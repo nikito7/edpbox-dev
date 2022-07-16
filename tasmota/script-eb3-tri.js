@@ -47,6 +47,7 @@ if cnt==40
 then
 smlj=1
 tper=15
+=>So19 0
 endif
 
 if cnt<99
