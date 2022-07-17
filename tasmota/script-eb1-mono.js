@@ -114,9 +114,9 @@ endif
 
 ; 79
 
-1,01040aUUuuUUuu@i4:1,Active Power Import ,W,Active Power,0
+1,01040aUUuuUUuu@i4:1,Active Power Import ,W,Power,0
 1,01040axxxxxxxxUUuuUUuu@i4:1,Active Power Export ,W,Active Power Export,0
-1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,φ,Power Factor,3
+1,01040axxxxxxxxxxxxxxxxUUuu@i4:1000,Power Factor ,φ,Factor,3
 
 ; 7F
 
