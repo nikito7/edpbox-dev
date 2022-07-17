@@ -95,7 +95,7 @@ endif
 
 1,=h<br>
 
-1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current Total,A,CT,1
+1,01040ExxxxxxxxxxxxxxxxxxxxxxxxUUuu@i1:10,Current Total,A,Current,1
 
 1,01040ExxxxUUuu@i1:10,Current L1,A,CL1,1
 1,01040ExxxxxxxxxxxxUUuu@i1:10,Current L2,A,CL2,1
@@ -105,7 +105,7 @@ endif
 
 ; 73
 
-1,01041cx8x8x8UUuuUUuu@i2:1,Active Power Import,W,API,0
+1,01041cx8x8x8UUuuUUuu@i2:1,Active Power Import,W,Power,0
 
 1,01041cUUuuUUuu@i2:1,Active Power L1,W,API1,0
 1,01041cx8UUuuUUuu@i2:1,Active Power L2,W,API2,0
@@ -121,11 +121,11 @@ endif
 
 1,01040eUUuuUUuu@i3:1,Active Power Export,W,APE,0
 
-1,01040exxxxxxxxUUuu@i3:1000,Power Factor,φ,PF,3
+1,01040exxxxxxxxUUuu@i3:1000,Power Factor,φ,Factor,3
 1,01040exxxxxxxxxxxxUUuu@i3:1000,Power Factor L1,φ,PF1,3
 1,01040exxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L2,φ,PF2,3
 1,01040exxxxxxxxxxxxxxxxxxxxUUuu@i3:1000,Power Factor L3,φ,PF3,3
-1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency,Hz,FR,1
+1,01040exxxxxxxxxxxxxxxxxxxxxxxxUUuu@i3:10,Frequency,Hz,Frequency,1
 
 1,=h<br>
 
@@ -153,17 +153,17 @@ endif
 1,=h<br>Load Profile (15min)<br>
 1,=h<br>
 
-1,01441dUUuu@i7:1,Year,,L_Y,0
-1,01441dxxxxuu@i7:1,Month,,L_M,0
-1,01441dxxxxxxuu@i7:1,Day,,L_D,0
-1,01441dxxxxxxxxxxuu@i7:1,Hour,h,L_HH,0
-1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,L_MM,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,Summer,,*,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Profile Status,,*,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,L_IMP,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,*,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,*,0
-1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,L_EXP,0
+1,01441dUUuu@i7:1,Year,,LP1_Y,0
+1,01441dxxxxuu@i7:1,Month,,LP1_M,0
+1,01441dxxxxxxuu@i7:1,Day,,LP1_D,0
+1,01441dxxxxxxxxxxuu@i7:1,Hour,h,LP1_HH,0
+1,01441dxxxxxxxxxxxxuu@i7:1,Minute,m,LP1_MM,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,Summer,LP1_DST,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxuu@i7:1,AMR Profile Status,LP2_AMR,*,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Import Inc,Wh,LP3_IMP,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,+Ri Inc,VArh,LP4,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,-Rc Inc,VArh,LP5,0
+1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP6_EXP,0
 
 ; eof load profile
 
@@ -171,4 +171,4 @@ endif
 
 #
 
-; eof script 01:50
+; eof script 13:24
