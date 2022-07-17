@@ -122,7 +122,7 @@ mqtt:
       unique_id: EB1_PowFac
       state_topic: "tele/edpbox1/SENSOR"
       value_template: >-
-          {% set x = value_json['EB1']['Power Factor']|float(0) %}
+          {% set x = value_json['EB1']['Factor']|float(0) %}
           {% if x > -1 %}
             {{ x }}
           {% endif %}
@@ -134,7 +134,7 @@ mqtt:
       unique_id: EB1_ActPow
       state_topic: "tele/edpbox1/SENSOR"
       value_template: >-
-          {% set x = value_json['EB1']['Active Power']|int(0) %}
+          {% set x = value_json['EB1']['Power']|int(0) %}
           {% if x > -1 %}
             {{ x }}
           {% endif %}
