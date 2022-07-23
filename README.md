@@ -8,6 +8,10 @@ Mais info no [```discord```](https://discord.gg/Mh9mTEA)
 
 [![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
 
+E no forum:
+
+https://forum.cpha.pt/t/easy-han-rs485-edpbox-helpdesk/9977
+
 # Testados
 
 **Alimentação directa na HAN**
