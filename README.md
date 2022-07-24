@@ -1,6 +1,6 @@
 # Easy HAN RS485
 
-![edpbox: o seu contador inteligente, é mais que um contador](./edpbox.jpg)
+![edpbox: o seu contador inteligente, é mais que um contador](./Easy-HAN-A2.2.jpg)
 
 <i>Imagem demonstrativa</i>
 
