@@ -26,6 +26,8 @@ Monofásicos:
 
 ```Sagemcom CX1000``` (plc verde)
 
+```Sagemcom S212``` (plc verde)
+
 Trifásicos:
 
 ```Janz B2801 GPRS``` (gsm verde) 
