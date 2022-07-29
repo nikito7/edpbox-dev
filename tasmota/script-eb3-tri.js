@@ -22,7 +22,6 @@ smlj=0
 
 =>Delay 100
 =>SerialLog 0
-=>SensorRetain 0
 =>WifiConfig
 =>WifiPower
 
@@ -36,8 +35,6 @@ wfp=WifiPower
 
 >S
 
-print Loop cnt=%0cnt% wtd=%0wtd%
-
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 mm=sml[2]
@@ -47,7 +44,6 @@ if cnt==40
 then
 smlj=1
 tper=15
-=>So19 0
 endif
 
 if cnt<99
@@ -76,7 +72,7 @@ endif
 : tfreire 14/5 (software serial)
 ; change to your gpios and mode
 ; power off is required
-;  v  v             v
+;  v  v              v
 +1,3,mN1,1,9600,EB73,1,25,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
 ; 01
@@ -171,4 +167,4 @@ endif
 
 #
 
-; eof script 15:07
+; eof script 00:34
