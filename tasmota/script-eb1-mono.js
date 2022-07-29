@@ -22,7 +22,6 @@ smlj=0
 
 =>Delay 100
 =>SerialLog 0
-=>SensorRetain 0
 =>WifiConfig
 =>WifiPower
 
@@ -36,8 +35,6 @@ wfp=WifiPower
 
 >S
 
-print Loop cnt=%0cnt% wtd=%0wtd%
-
 time=st(tstamp T 2)
 date=st(tstamp T 1)
 mm=sml[2]
@@ -47,7 +44,6 @@ if cnt==40
 then
 smlj=1
 tper=15
-=>So19 0
 endif
 
 if cnt<99
