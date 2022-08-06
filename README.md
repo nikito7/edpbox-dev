@@ -19,9 +19,7 @@ https://forum.cpha.pt/t/easy-han-rs485-edpbox-helpdesk/9977
 
 Monofásicos:
 
-```Kaifa MA109P``` (plc vermelho) 
-
-```Kaifa MA109P``` (plc verde)
+```Kaifa MA109P```
 
 ```Landis+Gyr``` (plc vermelho) 
 
@@ -31,9 +29,7 @@ Monofásicos:
 
 Trifásicos:
 
-```Janz B2801 GPRS``` (gsm verde) 
+```Janz B2801 GPRS```
 
-```Sagemcom CX2000``` (plc vermelho)
-
-```Sagemcom CX2000``` (plc verde)
+```Sagemcom CX2000```
 
