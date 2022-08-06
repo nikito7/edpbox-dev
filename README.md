@@ -35,3 +35,5 @@ Trifásicos:
 
 ```Sagemcom CX2000``` (plc vermelho)
 
+```Sagemcom CX2000``` (plc verde)
+
