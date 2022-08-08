@@ -21,11 +21,11 @@ Monofásicos:
 
 - ```Kaifa MA109P```
 
-- ```Landis+Gyr``` (plc vermelho) 
+- ```Landis+Gyr```
 
-- ```Sagemcom CX1000``` (plc verde)
+- ```Sagemcom CX1000```
 
-- ```Sagemcom S212``` (plc verde)
+- ```Sagemcom S212```
 
 Trifásicos:
 
@@ -33,3 +33,6 @@ Trifásicos:
 
 - ```Sagemcom CX2000```
 
+Notas:
+
+Landis+Gyr: Serial mN1/mN2.
