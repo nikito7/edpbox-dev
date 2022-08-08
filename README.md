@@ -36,3 +36,7 @@ Trifásicos:
 Notas:
 
 Landis+Gyr: Serial mN1/mN2.
+
+# Pedido da HAN
+
+https://www.e-redes.pt/pt-pt/transicao-energetica/redes-do-futuro/acesso-porta-serie-de-comunicacao
