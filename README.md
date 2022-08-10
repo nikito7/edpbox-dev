@@ -1,5 +1,6 @@
 # Easy HAN RS485
-Leitor da porta han
+
+Leitor da porta HAN
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./Easy-HAN-A2.2.jpg)
 
