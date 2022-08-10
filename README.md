@@ -4,7 +4,7 @@ Leitor da porta HAN
 
 https://easyhan.pt/
 
-![edpbox: o seu contador inteligente, é mais que um contador](./Easy-HAN-A2.2.jpg)
+![edpbox: o seu contador inteligente, é mais que um contador](./easy-han-0.jpg)
 
 <i>Imagem demonstrativa</i>
 
@@ -43,3 +43,7 @@ Landis+Gyr: Serial mN1/mN2.
 # Pedido da HAN
 
 https://www.e-redes.pt/pt-pt/transicao-energetica/redes-do-futuro/acesso-porta-serie-de-comunicacao
+
+# Imagens
+
+![Easy HAN RS485 foto](./easy-han-1.jpg)
