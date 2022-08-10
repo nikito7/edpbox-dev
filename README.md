@@ -1,6 +1,8 @@
 # Easy HAN RS485
 
-Leitor da porta HAN
+Leitor/Medidor da porta HAN.
+
+Acesso aos dados do contador.
 
 https://easyhan.pt/
 
@@ -8,7 +10,7 @@ https://easyhan.pt/
 
 <i>Imagem demonstrativa</i>
 
-Mais info no [```discord```](https://discord.gg/Mh9mTEA)
+Mais info no [```discord```](https://discord.gg/Mh9mTEA) da CPHA.
 
 [![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
 
@@ -46,4 +48,9 @@ https://www.e-redes.pt/pt-pt/transicao-energetica/redes-do-futuro/acesso-porta-s
 
 # Imagens
 
-![Easy HAN RS485 foto](./easy-han-1.jpg)
+![Easy HAN RS485 foto ](./easy-han-1.jpg)
+
+![Easy HAN RS485 tasmota](./easy-han-2.jpg)
+
+![Easy HAN RS485 tasmota](./easy-han-3.jpg)
+
