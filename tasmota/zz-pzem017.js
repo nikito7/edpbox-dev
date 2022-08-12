@@ -18,8 +18,8 @@
 
 1,=h<hr>
 
-1,01040CUUuu@i0:1,go to console ,V,*,0
-1,01040CxxxxUUuu@i0:1,go to console ,A,*,0
+1,010404UUuu@i0:1,go to console ,V,*,0
+1,010404xxxxUUuu@i0:1,go to console ,A,*,0
 
 1,=h<hr>
 
