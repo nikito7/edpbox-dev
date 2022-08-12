@@ -2,6 +2,7 @@
 >B
 
 =>SerialLog 0
+=>WebLog 4
 =>Sensor53 r
 =>Sensor53 d1
 
