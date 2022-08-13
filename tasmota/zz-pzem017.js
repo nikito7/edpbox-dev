@@ -10,7 +10,7 @@
 
 ; rx mode  baud     tx time
 ;  v  v     v        v  v
-+1,3,mN2,1,9600,pzem,1,15,r010400000002
++1,3,mN2,1,9600,pzem,1,15,r010400000002,rF80600020001
 
 ; console debug
 ;
