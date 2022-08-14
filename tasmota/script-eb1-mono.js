@@ -148,4 +148,9 @@ endif
 
 #
 
-; eof script 00:36
+; escrever aqui qualquer coisa.
+; ( blablabla random text )
+; o tasmota nem sempre grava as alterações.
+; isto confirma que o script foi gravado.
+
+; eof script 17:33
