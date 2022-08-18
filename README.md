@@ -1,4 +1,4 @@
-# Easy HAN RS485
+# Easy HAN RS485 ™
 
 Leitor/Medidor da porta HAN.
 
