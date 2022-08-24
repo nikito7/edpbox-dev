@@ -54,8 +54,6 @@ https://www.e-redes.pt/pt-pt/transicao-energetica/redes-do-futuro/acesso-porta-s
 
 ![Easy HAN RS485 tasmota](./easy-han-3.jpg)
 
-https://www.easyhan.pt/?git
-
 # Home Assistant
 
 ![Home Assistant](./ha.png)
