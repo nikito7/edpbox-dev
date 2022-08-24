@@ -59,3 +59,5 @@ https://www.easyhan.pt/?git
 # Home Assistant
 
 ![Home Assistant](./ha.png)
+
+https://www.home-assistant.io/getting-started/
