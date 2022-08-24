@@ -58,4 +58,4 @@ https://www.easyhan.pt/?git
 
 # Home Assistant
 
-![Home Assistant](./ha.jpg)
+![Home Assistant](./ha.png)
