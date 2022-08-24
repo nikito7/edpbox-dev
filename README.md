@@ -4,7 +4,7 @@ Leitor/Medidor da porta HAN.
 
 Acesso aos dados do contador.
 
-https://www.easyhan.pt/
+https://www.easyhan.pt/?git
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./easy-han-0.jpg)
 
@@ -54,3 +54,4 @@ https://www.e-redes.pt/pt-pt/transicao-energetica/redes-do-futuro/acesso-porta-s
 
 ![Easy HAN RS485 tasmota](./easy-han-3.jpg)
 
+https://www.easyhan.pt/?git
