@@ -1,5 +1,7 @@
 >D
 
+; mudar o EBx abaixo: EB1/EB3
+
 time=""
 date=""
 clk=""
