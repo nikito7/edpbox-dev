@@ -1,6 +1,8 @@
 >D
 
-; mudar o EBx abaixo: EB1/EB3
+; mudar o EBx abaixo, EB1/EB3,
+; depois de confirmar que 
+; obtem valores correctos da han.
 
 time=""
 date=""
