@@ -63,13 +63,12 @@ endif
 @<b>Wifi </b> %wfc% <b> Power </b> %0wfp% <b> Topic </b> %topic%
 @<br>
 
-; EB1
+; EB1 monofasico
 
 >M 1
 
 ; esp32 19/18 (hardware serial)
 ; esp8266 3/1 (hardware serial)
-: tfreire 14/5 (software serial)
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
@@ -149,8 +148,9 @@ endif
 #
 
 ; escrever aqui qualquer coisa.
-; ( blablabla random text )
+; ( random text )
 ; o tasmota nem sempre grava as alterações.
 ; isto confirma que o script foi gravado.
+; copiar todo o script antes de salvar.
 
-; eof script 17:33
+; eof script 07:55
