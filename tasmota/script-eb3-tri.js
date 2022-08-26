@@ -189,4 +189,4 @@ Tarifa {m} %ttext%
 ; o tasmota nem sempre grava as alterações.
 ; isto confirma que o script foi gravado.
 
-; eof script 17:33
+; eof script 07:46
