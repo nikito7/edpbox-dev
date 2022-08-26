@@ -10,6 +10,8 @@ cnt=0
 wtd=0
 mm=0
 ss=0
+tariff=0
+ttext=""
 
 >B
 
@@ -32,6 +34,19 @@ smlj=0
 
 wfc=WifiConfig#?
 wfp=WifiPower
+
+>T
+
+tariff=?#Tariff
+
+switch tariff
+case 1
+ttext="Vazio"
+case 2
+ttext="Ponta"
+case 3
+ttext="Cheias"
+ends
 
 >S
 
@@ -62,6 +77,8 @@ endif
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<b>Wifi </b> %wfc% <b> Power </b> %0wfp% <b> Topic </b> %topic%
 @<br>
+<br>
+Tarifa {m} %ttext%
 
 ; Below registers only work in EB3 !
 
