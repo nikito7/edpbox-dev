@@ -1,5 +1,10 @@
-; switch
+; switch config
 
 Publish2 homeassistant/switch/nikito7-eb1/restart/config {"name":"EB1 ESP Restart","unique_id":"EB1_ESP_Switch","command_topic":"cmnd/edpbox1/restart","payload_on":"1","payload_off":"1","icon":"mdi:restart","device":{"identifiers":"nikito7-eb1","name":"Easy HAN","model":"Easy HAN RS485","manufacturer":"nikito7"}}
+
+; sensor config
+; esp
+
+Publish2 homeassistant/sensor/nikito7-eb1/uptime/config {"name":"EB1 ESP Uptime","unique_id":"EB1_ESP_Uptime","state_topic":"tele/edpbox1/STATE","value_template":"{{ ( value_json.UptimeSec / 3600 ) | round(1) }}","unit_of_measurement":"h","icon":"mdi:alarm","availability_topic":"tele/edpbox1/LWT","payload_available":"Online","payload_not_available":"Offline","device":{"identifiers":"nikito7-eb1","name":"Easy HAN","model":"Easy HAN RS485","manufacturer":"nikito7"}}
 
 ; eof
