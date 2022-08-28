@@ -1,5 +1,5 @@
 ; demo line
 
-Publish2 homeassistant/sensor/EB1/Test/config {"Test":"test","device":{"identifiers":"nikito7-eb1","name":"Easy HAN","model":"Easy HAN"}}
+Publish2 homeassistant/switch/nikito7-eb1/restart/config {"name":"EB1 ESP Restart","unique_id":"EB1_ESP_Switch","command_topic":"cmnd/edpbox1/restart","payload_on":"1","payload_off":"1","icon":"mdi:restart","device":{"identifiers":"nikito7-eb1","name":"Easy HAN","model":"Easy HAN","manufacturer":"nikito7","sw_version":"2022.08.28"}}
 
 ; eof
