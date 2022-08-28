@@ -1,1 +1,9 @@
+Publish2 homeassistant/sensor/EB1/Test/config
 
+{
+ "Test":"test",
+ "device":{
+   "identifiers":"nikito7-eb1",
+   "name":"Easy HAN",
+   "model":"Easy HAN"}
+ }
