@@ -4,8 +4,6 @@ Leitor/Medidor da porta HAN.
 
 Acesso aos dados do contador.
 
-https://www.easyhan.pt/?git
-
 ![edpbox: o seu contador inteligente, é mais que um contador](./easy-han-0.jpg)
 
 <i>Imagem demonstrativa</i>
@@ -16,7 +14,9 @@ Mais info no [```discord```](https://discord.gg/Mh9mTEA) da CPHA.
 
 E no forum:
 
-https://forum.cpha.pt/t/easy-han-rs485-edpbox-helpdesk/9977
+- https://forum.cpha.pt/t/easy-han-rs485-edpbox-helpdesk/9977
+
+- https://forum.cpha.pt/t/easy-han-tasmota-configuracao-wifi-mqtt/10486
 
 # Testados
 
@@ -59,3 +59,7 @@ https://www.e-redes.pt/pt-pt/transicao-energetica/redes-do-futuro/acesso-porta-s
 ![Home Assistant](./ha.png)
 
 https://www.home-assistant.io/
+
+# Site
+
+https://www.easyhan.pt/#git
