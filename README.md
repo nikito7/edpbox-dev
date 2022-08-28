@@ -62,4 +62,4 @@ https://www.home-assistant.io/
 
 # Site
 
-https://www.easyhan.pt/#git
+https://www.easyhan.pt/?git
