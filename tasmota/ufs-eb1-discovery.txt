@@ -7,4 +7,28 @@ Publish2 homeassistant/switch/nikito7-EB1/restart/config {"name":"EB1 ESP Restar
 
 Publish2 homeassistant/sensor/nikito7-EB1/uptime/config {"name":"EB1 ESP Uptime","unique_id":"EB1_ESP_Uptime","state_topic":"tele/edpbox1/STATE","value_template":"{{ ( value_json.UptimeSec / 3600 ) | round(1) }}","unit_of_measurement":"h","icon":"mdi:alarm","availability_topic":"tele/edpbox1/LWT","payload_available":"Online","payload_not_available":"Offline","device":{"identifiers":"nikito7-EB1","name":"EB1","model":"Easy HAN RS485","manufacturer":"nikito7"}}
 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+Publish2 homeassistant/sensor/nikito7-EB1/X/config 
+
 ; eof
