@@ -119,9 +119,6 @@ mqtt:
       icon: mdi:clock
       device:
         identifiers: nikito7-EB1
-        name: EB1
-        model: Easy HAN RS485
-        manufacturer: nikito7
 
     - name: "EB1 ESP Clock"
       unique_id: EB1_ESP_Clock
