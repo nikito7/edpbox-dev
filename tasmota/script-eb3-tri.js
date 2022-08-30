@@ -63,6 +63,7 @@ if cnt==40
 then
 smlj=1
 tper=15
+=>UfsRun discovery.txt
 endif
 
 if cnt<99
