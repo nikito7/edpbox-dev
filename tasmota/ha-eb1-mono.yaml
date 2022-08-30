@@ -10,6 +10,11 @@ mqtt:
       payload_on: "1"
       payload_off: "1"
       icon: mdi:restart
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
 ###
 #
@@ -24,6 +29,11 @@ mqtt:
       availability_topic: "tele/edpbox1/LWT"
       payload_available: "Online"
       payload_not_available: "Offline"
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 ESP Free Heap"
       unique_id: EB1_ESP_Heap
@@ -31,6 +41,11 @@ mqtt:
       value_template: '{{ value_json.Heap }}'
       unit_of_measurement: "kB"
       icon: mdi:chip
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 ESP Signal"
       unique_id: EB1_ESP_Signal
@@ -38,6 +53,11 @@ mqtt:
       value_template: '{{ value_json.Wifi.Signal }}'
       unit_of_measurement: "dB"
       device_class: signal_strength
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 ESP Vcc"
       unique_id: EB1_ESP_Vcc
@@ -46,6 +66,11 @@ mqtt:
       unit_of_measurement: "V"
       device_class: voltage
       state_class: measurement
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
 ###
 
@@ -59,6 +84,11 @@ mqtt:
             {{ states('sensor.eb1_clock_h') }}
           {% endif %}
       icon: mdi:clock
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Clock M"
       unique_id: EB1_Clock_M
@@ -70,6 +100,11 @@ mqtt:
             {{ states('sensor.eb1_clock_m') }}
           {% endif %}
       icon: mdi:clock
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Clock"
       unique_id: EB1_Clock
@@ -82,6 +117,11 @@ mqtt:
             {{ '{0:02d}'.format(hh) + ":" + '{0:02d}'.format(mm) + ":" + '{0:02d}'.format(ss) }}
           {% endif %}
       icon: mdi:clock
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 ESP Clock"
       unique_id: EB1_ESP_Clock
@@ -91,6 +131,11 @@ mqtt:
             {{ value_json.Time.split('T')[1]|string }}
           {% endif %}
       icon: mdi:clock
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
 ###
 
@@ -105,6 +150,11 @@ mqtt:
       unit_of_measurement: "V"
       device_class: voltage
       state_class: measurement
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Current L1"
       unique_id: EB1_CurL1
@@ -117,6 +167,11 @@ mqtt:
       unit_of_measurement: "A"
       device_class: current
       state_class: measurement
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Power Factor"
       unique_id: EB1_PowFac
@@ -129,6 +184,11 @@ mqtt:
       unit_of_measurement: "pu"
       device_class: power_factor
       state_class: measurement
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Active Power Import"
       unique_id: EB1_ActPow
@@ -141,6 +201,11 @@ mqtt:
       unit_of_measurement: "W"
       device_class: power
       state_class: measurement
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Active Power Export"
       unique_id: EB1_ActPowExp
@@ -153,6 +218,11 @@ mqtt:
       unit_of_measurement: "W"
       device_class: power
       state_class: measurement
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Frequency"
       unique_id: EB1_Frequency
@@ -164,6 +234,11 @@ mqtt:
           {% endif %}
       unit_of_measurement: "Hz"
       device_class: frequency
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
 ###
 ###
@@ -179,6 +254,11 @@ mqtt:
       unit_of_measurement: "kWh"
       device_class: energy
       state_class: total_increasing
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 T2 Ponta"
       unique_id: EB1_TotEneT2
@@ -191,6 +271,11 @@ mqtt:
       unit_of_measurement: "kWh"
       device_class: energy
       state_class: total_increasing
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 T3 Cheias"
       unique_id: EB1_TotEneT3
@@ -203,6 +288,11 @@ mqtt:
       unit_of_measurement: "kWh"
       device_class: energy
       state_class: total_increasing
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
 ###
 ###
@@ -218,6 +308,11 @@ mqtt:
       unit_of_measurement: "kWh"
       device_class: energy
       state_class: total_increasing
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
     - name: "EB1 Export"
       unique_id: EB1_TotEneExp
@@ -230,6 +325,11 @@ mqtt:
       unit_of_measurement: "kWh"
       device_class: energy
       state_class: total_increasing
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito7
 
 ###
 ###
@@ -247,6 +347,11 @@ mqtt:
             {{ "Cheias" }}
           {% endif %}
       icon: mdi:counter
+      device:
+        identifiers: nikito7-EB1
+        name: EB1
+        model: Easy HAN RS485
+        manufacturer: nikito
 
 ###
 ##
