@@ -29,4 +29,11 @@ sed -i -e 's/eb3/eb5/g' tasmota5.yaml
 echo eof
 ```
 
+```
+sed -i -e 's/edpbox3/edpbox8/g' tasmota8.yaml
+sed -i -e 's/EB3/EB8/g' tasmota8.yaml
+sed -i -e 's/eb3/eb8/g' tasmota8.yaml
+echo eof
+```
+
 [![Discord](https://img.shields.io/discord/494714310518505472?style=plastic&logo=discord)](https://discord.gg/Mh9mTEA) 
