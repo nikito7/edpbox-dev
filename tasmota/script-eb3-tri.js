@@ -62,7 +62,7 @@ ss=sml[3]
 if cnt==40
 then
 smlj=1
-tper=15
+tper=11
 =>UfsRun discovery.txt
 endif
 
@@ -94,7 +94,7 @@ Tarifa {m} %ttext%
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,EBx,1,15,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
++1,3,mN1,1,9600,EBx,1,11,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
 ; 01
 
@@ -148,16 +148,16 @@ Tarifa {m} %ttext%
 
 ; 26
 
-1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio,kWh,TET1,1
-1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta,kWh,TET2,1
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias,kWh,TET3,1
+1,01040CUUuuUUuu@i4:1000,Total Energy T1 Vazio,kWh,TET1,2
+1,01040CxxxxxxxxUUuuUUuu@i4:1000,Total Energy T2 Ponta,kWh,TET2,2
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i4:1000,Total Energy T3 Cheias,kWh,TET3,2
 
 1,=h<br>
 
 ; 16
 
-1,010418UUuuUUuu@i5:1000,Total Energy Import,kWh,TEI,1
-1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export,kWh,TEE,3
+1,010418UUuuUUuu@i5:1000,Total Energy Import,kWh,TEI,2
+1,010418xxxxxxxxUUuuUUuu@i5:1000,Total Energy Export,kWh,TEE,2
 
 1,=h<br>
 
@@ -194,4 +194,4 @@ Tarifa {m} %ttext%
 ; isto confirma que o script foi gravado.
 ; copiar todo o script antes de salvar.
 
-; eof script 07:53
+; eof script 15:08
