@@ -116,16 +116,16 @@ Tarifa {m} %ttext%
 
 ; 16
 
-1,010408UUuuUUuu@i2:1000,Total Energy Import ,kWh,TEI,3
-1,010408xxxxxxxxUUuuUUuu@i2:1000,Total Energy Export ,kWh,TEE,3
+1,010408UUuuUUuu@i2:1000,Total Energy Import ,kWh,TEI,2
+1,010408xxxxxxxxUUuuUUuu@i2:1000,Total Energy Export ,kWh,TEE,2
 
 1,=h<br>
 
 ; 26
 
-1,01040CUUuuUUuu@i3:1000,Total Energy T1 Vazio ,kWh,TET1,3
-1,01040CxxxxxxxxUUuuUUuu@i3:1000,Total Energy T2 Ponta ,kWh,TET2,3
-1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Total Energy T3 Cheias ,kWh,TET3,3
+1,01040CUUuuUUuu@i3:1000,Total Energy T1 Vazio ,kWh,TET1,2
+1,01040CxxxxxxxxUUuuUUuu@i3:1000,Total Energy T2 Ponta ,kWh,TET2,2
+1,01040CxxxxxxxxxxxxxxxxUUuuUUuu@i3:1000,Total Energy T3 Cheias ,kWh,TET3,2
 
 1,=h<br>
 
@@ -175,4 +175,4 @@ Tarifa {m} %ttext%
 ; isto confirma que o script foi gravado.
 ; copiar todo o script antes de salvar.
 
-; eof script 07:55
+; eof script 15:26
