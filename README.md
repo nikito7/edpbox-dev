@@ -4,7 +4,7 @@ Leitor/Medidor da porta HAN.
 
 Acesso aos dados do contador.
 
-Bridge genérica Modbus para WiFi.
+Adaptador genérico Modbus para WiFi.
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./easy-han-0.jpg)
 
