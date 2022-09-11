@@ -2,8 +2,6 @@
 
 time=""
 date=""
-clk=""
-old=""
 wfc=""
 wfp=0
 cnt=0
@@ -42,15 +40,17 @@ tper=15
 =>UfsRun discovery.txt
 endif
 
+if cnt<99
+then
+cnt+=1
+endif
+
 >W
 
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<b>Wifi </b> %wfc% <b> Power </b> %0wfp% <b> Topic </b> %topic%
 @<br>
-<br>
-Tarifa {m} %ttext%
 
 ; inverter growatt
 
@@ -65,26 +65,12 @@ Tarifa {m} %ttext%
 
 1,=h<br>
 
-; 6C
+; PV kWh
 
-1,010404UUuu@i1:10,Voltage L1 ,V,Voltage,1
-1,010404xxxxUUuu@i1:10,Current L1 ,A,Current,1
-
-1,=h<br>
-
-; 16
-
-1,010408UUuuUUuu@i2:1000,Total Energy Import ,kWh,TEI,2
-1,010408xxxxxxxxUUuuUUuu@i2:1000,Total Energy Export ,kWh,TEE,2
+1,010408UUuuUUuu@i0:1000,Total Energy,kWh,PV_Energy,2
 
 ; eof meter
 
 #
 
-; escrever aqui qualquer coisa.
-; ( random text )
-; o tasmota nem sempre grava as alterações.
-; isto confirma que o script foi gravado.
-; copiar todo o script antes de salvar.
-
-; eof script 15:26
+; eof script 23:24
