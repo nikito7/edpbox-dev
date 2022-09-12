@@ -9,5 +9,7 @@ Publish2 homeassistant/sensor/nikito7-PV1/vcc/config {"name":"PV1 ESP Vcc","uniq
 ; PV Total kWh
 Publish2 homeassistant/sensor/nikito7-PV1/totalkwh/config {"name":"PV1 Total Energy","unique_id":"PV1_TotEne","state_topic":"tele/pv1/SENSOR","value_template":"{%% set x = value_json.PV1.PV_Energy|float(0) %%} {%% if x > 0 %%} {{ x }} {%% endif %%}","unit_of_measurement":"kWh","device_class":"energy","state_class":"total_increasing","device":{"identifiers":"nikito7-PV1","name":"PV1","model":"Easy HAN RS485","manufacturer":"nikito7"}}
 ; Inverter Status
-Publish2 homeassistant/sensor/nikito7-PV1/status/config {"name":"PV1 Inverter Status","unique_id":"PV1_inv_status","state_topic":"tele/pv1/SENSOR","value_template":"{%% set x = value_json.EB1.PV_Status|int(0) %%} {%% if x == 0 %%} {{ 'Em espera' }} {%% elif x == 1 %%} {{ 'Normal' }} {%% elif x == 3 %%} {{ 'Falha' }} {%% endif %%}","icon":"mdi:counter","device":{"identifiers":"nikito7-PV1","name":"PV1","model":"Easy HAN RS485","manufacturer":"nikito7"}}
+Publish2 homeassistant/sensor/nikito7-PV1/status/config {"name":"PV1 Inverter Status","unique_id":"PV1_inv_status","state_topic":"tele/pv1/SENSOR","value_template":"{%% set x = value_json.PV1.PV_Status|int(0) %%} {%% if x == 0 %%} {{ 'Em espera' }} {%% elif x == 1 %%} {{ 'Normal' }} {%% elif x == 3 %%} {{ 'Falha' }} {%% endif %%}","icon":"mdi:counter","device":{"identifiers":"nikito7-PV1","name":"PV1","model":"Easy HAN RS485","manufacturer":"nikito7"}}
 ; eof
+; check code 18:47
+
