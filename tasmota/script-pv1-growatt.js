@@ -67,11 +67,11 @@ endif
 
 ; 0x0000
 
-1,010404UUuu@i0:1,Inverter Status,,*,0
+1,010402UUuu@i0:1,Inverter Status,,*,0
 
 ; 55-56 0x0037
 
-1,010408UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,2
+1,010404UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,2
 
 ; eof meter
 
