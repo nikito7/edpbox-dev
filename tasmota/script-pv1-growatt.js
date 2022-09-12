@@ -61,28 +61,20 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,PVx,1,15,r010400010001
-; r010400000001
-; r010400370002
++1,3,mN1,1,9600,PVx,1,15,r010400000001,r010400370002
 
 1,=h<br>
 
-; 01 test edpbox
-
-1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,CH,0
-1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,CM,0
-1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,CS,0
-
 ; 0x0000
 
-1,010404UUuu@i1:1,Inverter Status,,*,0
+1,010404UUuu@i0:1,Inverter Status,,*,0
 
 ; 55-56 0x0037
 
-1,010408UUuuUUuu@i2:1000,Total Energy,kWh,PV_Energy,2
+1,010408UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,2
 
 ; eof meter
 
 #
 
-; eof script 23:24
+; eof script 14:45
