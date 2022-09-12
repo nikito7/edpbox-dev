@@ -67,8 +67,6 @@ endif
 
 1,010404xxuu@i0:1,Inverter Status,,*,0
 
-1,=h<br>
-
 ; 55-56 0x0037
 
 1,010404UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,1
@@ -77,5 +75,5 @@ endif
 
 #
 
-; eof script 14:55
+; eof script 14:57
 
