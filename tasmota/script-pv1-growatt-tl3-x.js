@@ -49,9 +49,7 @@ endif
 
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Wifi </b> %wfc%
-@<b>Power </b> %0wfp%
-@<b>Topic </b> %topic%
+@<b>Wifi </b> %wfc% <b> Power </b> %0wfp% <b> Topic </b> %topic%
 @<br>
 
 ; inverter growatt
@@ -77,5 +75,6 @@ endif
 
 #
 
-; eof script 14:57
+; eof script 
+; check code 18:50
 
