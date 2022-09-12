@@ -62,8 +62,20 @@ endif
 ; power off is required
 ;  v  v             v
 +1,3,mN1,1,9600,PVx,1,15,r010400010001
+; r010400000001
 
 1,=h<br>
+
+; 01 test edpbox
+
+1,01040Cxxxxxxxxxxuu@i0:1,Clock ,h,CH,0
+1,01040Cxxxxxxxxxxxxuu@i0:1,Clock ,m,CM,0
+1,01040Cxxxxxxxxxxxxxxuu@i0:1,Clock ,s,CS,0
+
+; 0x0000
+
+1,010404UUuu@i1:1,Inverter Status,,*,0
+
 
 ; PV kWh
 
