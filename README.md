@@ -1,10 +1,10 @@
-# Easy HAN RS485 ™
+# Easy HAN RS485
 
 Leitor/Medidor da porta HAN.
 
 Acesso aos dados do contador.
 
-Adaptador genérico Modbus para WiFi.
+Adaptador Modbus para WiFi.
 
 ![edpbox: o seu contador inteligente, é mais que um contador](./easy-han-0.jpg)
 
@@ -20,9 +20,8 @@ E no forum:
 
 - https://forum.cpha.pt/t/easy-han-tasmota-configuracao-wifi-mqtt/10486
 
-# Testados
-
-**Alimentação directa na HAN**
+# Contadores
+> Testados com alimentação directa na HAN
 
 Monofásicos:
 
