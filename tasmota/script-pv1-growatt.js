@@ -71,10 +71,10 @@ endif
 
 ; 55-56 0x0037
 
-1,010404UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,2
+1,010404UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,1
 
 ; eof meter
 
 #
 
-; eof script 14:45
+; eof script 14:48
