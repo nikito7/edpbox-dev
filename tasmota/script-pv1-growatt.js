@@ -63,6 +63,7 @@ endif
 ;  v  v             v
 +1,3,mN1,1,9600,PVx,1,15,r010400010001
 ; r010400000001
+; r010400370002
 
 1,=h<br>
 
@@ -76,10 +77,9 @@ endif
 
 1,010404UUuu@i1:1,Inverter Status,,*,0
 
+; 55-56 0x0037
 
-; PV kWh
-
-1,010408UUuuUUuu@i0:1000,Total Energy,kWh,PV_Energy,2
+1,010408UUuuUUuu@i2:1000,Total Energy,kWh,PV_Energy,2
 
 ; eof meter
 
