@@ -49,7 +49,9 @@ endif
 
 @<b>NTP </b> %date% %time%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
-@<b>Wifi </b> %wfc% <b> Power </b> %0wfp% <b> Topic </b> %topic%
+@<b>Wifi </b> %wfc%
+@<b>Power </b> %0wfp%
+@<b>Topic </b> %topic%
 @<br>
 
 ; inverter growatt
@@ -65,7 +67,7 @@ endif
 
 ; 0x0000
 
-1,010404xxuu@i0:1,Inverter Status,,*,0
+1,010404xxuu@i0:1,Inverter Status,,PV_Status,0
 
 ; 55-56 0x0037
 
