@@ -61,13 +61,13 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,PVx,1,15,r010400000001,r010400370002
-
-1,=h<br>
++1,3,mN1,1,9600,PVx,1,15,r010400000002,r010400370002
 
 ; 0x0000
 
-1,010402UUuu@i0:1,Inverter Status,,*,0
+1,010404xxuu@i0:1,Inverter Status,,*,0
+
+1,=h<br>
 
 ; 55-56 0x0037
 
@@ -77,4 +77,5 @@ endif
 
 #
 
-; eof script 14:48
+; eof script 14:55
+
