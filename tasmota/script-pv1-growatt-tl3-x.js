@@ -56,16 +56,18 @@ endif
 
 1,010404UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,1
 
+1,=h<br>
+
 ; 93-95 0x005D
 
-1,010406UUuu@i2:1,Temp1,°C,*,1
-1,010406xxxxUUuu@i2:1,Temp2,°C,*,1
-1,010406xxxxxxxxUUuu@i2:1,Temp3,°C,*,1
+1,010406UUuu@i2:10,Temp 1,°C,*,1
+1,010406xxxxUUuu@i2:10,Temp 2,°C,*,1
+1,010406xxxxxxxxUUuu@i2:10,Temp 3,°C,*,1
 
 ; eof meter
 
 #
 
 ; eof script 
-; check code 14:29
+; check code 14:31
 
