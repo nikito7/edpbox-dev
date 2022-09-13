@@ -61,7 +61,7 @@ endif
 ; change to your gpios and mode
 ; power off is required
 ;  v  v             v
-+1,3,mN1,1,9600,PVx,1,15,r010400000002,r010400370002
++1,3,mN1,1,9600,PVx,1,15,r010400000002,r010400370002,r0104005D0003
 
 ; 0x0000
 
@@ -70,6 +70,12 @@ endif
 ; 55-56 0x0037
 
 1,010404UUuuUUuu@i1:10,Total Energy,kWh,PV_Energy,1
+
+; 93-95 0x005D
+
+1,010406UUuu@i2:1,Temp1,°C,*,1
+1,010406xxxxUUuu@i2:1,Temp2,°C,*,1
+1,010406xxxxxxxxUUuu@i2:1,Temp3,°C,*,1
 
 ; eof meter
 
