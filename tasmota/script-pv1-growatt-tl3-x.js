@@ -47,11 +47,12 @@ endif
 
 >M 1
 
-+1,3,mN1,1,9600,PVx,1,15,r010400000002,r010400370002,r0104005D0003
++1,3,mN1,1,9600,PVx,1,15,r010400000003,r010400370002,r0104005D0003
 
-; 0x0000
+; 0,1,2 0x0000
 
-1,010404xxuu@i0:1,Inverter Status,,PV_Status,0
+1,010406UUuu@i0:1,Inverter Status,,PV_Status,0
+1,010406xxxxUUuuUUuu@i0:10,Input Power,W,*,0
 
 ; 55-56 0x0037
 
