@@ -1,8 +1,3 @@
->D
-
-; mudar o EBx abaixo, para EB1/EB3,
-; depois de confirmar que 
-; obtem valores correctos da han.
 
 time=""
 date=""
@@ -62,7 +57,7 @@ ss=sml[3]
 if cnt==40
 then
 smlj=1
-tper=15
+tper=11
 =>UfsRun discovery.txt
 endif
 
@@ -89,11 +84,6 @@ Tarifa {m} %ttext%
 
 >M 1
 
-; esp32 19/18 (hardware serial)
-; esp8266 3/1 (hardware serial)
-; change to your gpios and mode
-; power off is required
-;  v  v             v
 +1,3,mN1,1,9600,EBx,1,15,r010400010001,r0104006C0002,r010400160002,r010400260003,r010400790003,r0104007F0002,r0104000B0002,r01440301
 
 ; r01440601 Imp+Exp
@@ -164,15 +154,8 @@ Tarifa {m} %ttext%
 ;1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP6_EXP,0
 
 ; eof load profile
-
 ; eof meter
-
 #
+; eof script
+; check code 12:16
 
-; escrever aqui qualquer coisa.
-; ( random text )
-; o tasmota nem sempre grava as alterações.
-; isto confirma que o script foi gravado.
-; copiar todo o script antes de salvar.
-
-; eof script 15:26
