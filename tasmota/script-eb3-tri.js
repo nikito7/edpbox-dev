@@ -1,9 +1,5 @@
 >D
 
-; mudar o EBx abaixo, para EB1/EB3,
-; depois de confirmar que 
-; obtem valores correctos da han.
-
 time=""
 date=""
 clk=""
@@ -85,15 +81,10 @@ endif
 <br>
 Tarifa {m} %ttext%
 
-; Below registers only work in EB3 !
+; EB3 Trifasico apenas !
 
 >M 1
 
-; esp32 19/18 (hardware serial)
-; esp8266 3/1 (hardware serial)
-; change to your gpios and mode
-; power off is required
-;  v  v             v
 +1,3,mN1,1,9600,EBx,1,11,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
 ; 01
@@ -183,15 +174,7 @@ Tarifa {m} %ttext%
 1,01441dxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxUUuuUUuu@i7:1,Export Inc,Wh,LP6_EXP,0
 
 ; eof load profile
-
 ; eof meter
-
 #
-
-; escrever aqui qualquer coisa.
-; ( random text )
-; o tasmota nem sempre grava as alterações.
-; isto confirma que o script foi gravado.
-; copiar todo o script antes de salvar.
-
-; eof script 15:08
+; eof script
+; check code 12:14
