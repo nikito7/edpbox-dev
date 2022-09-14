@@ -57,7 +57,7 @@ endif
 ; 0x0023 35-36,37
 
 1,010406UUuuUUuu@i1:10,Output Power,W,Power,1
-1,010406xxxxxxxxUUuu@i1:1,Frequency,Hz,Frequency,2
+1,010406xxxxxxxxUUuu@i1:100,Frequency,Hz,Frequency,2
 
 ; 0x0037 55-56
 
