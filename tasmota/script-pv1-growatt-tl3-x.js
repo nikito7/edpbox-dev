@@ -52,12 +52,12 @@ endif
 ; 0x0000 0,1,2
 
 1,010406UUuu@i0:1,Inverter Status,,PV_Status,0
-1,010406xxxxUUuuUUuu@i0:10,Input Power,W,*,1
+1,010406xxxxUUuuUUuu@i0:10,Input Power,W,InputPower,1
 
 ; 0x0023 35-36,37
 
-1,010406UUuuUUuu@i1:10,Output Power,W,*,1
-1,010406xxxxxxxxUUuu@i1:10,Frequency,Hz,*,2
+1,010406UUuuUUuu@i1:10,Output Power,W,Power,1
+1,010406xxxxxxxxUUuu@i1:1,Frequency,Hz,Frequency,2
 
 ; 0x0037 55-56
 
@@ -76,5 +76,5 @@ endif
 #
 
 ; eof script 
-; check code 17:45
+; check code 12:08
 
