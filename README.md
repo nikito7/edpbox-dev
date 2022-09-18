@@ -6,7 +6,7 @@ Acesso aos dados do contador.
 
 Adaptador Modbus para WiFi.
 
-![edpbox: o seu contador inteligente, é mais que um contador](./easy-han.jpg)
+![edpbox: o seu contador inteligente, é mais que um contador](./easy-han-5.jpg)
 
 <i>Imagem demonstrativa</i>
 
@@ -49,7 +49,7 @@ https://www.e-redes.pt/pt-pt/transicao-energetica/redes-do-futuro/acesso-porta-s
 
 # Imagens
 
-![Easy HAN RS485 foto ](./easy-han-4.jpg)
+![Easy HAN RS485 foto ](./easy-han-5.jpg)
 
 ![Easy HAN RS485 tasmota](./easy-han-2.jpg)
 
