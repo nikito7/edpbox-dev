@@ -16,7 +16,7 @@ Mais info no [```discord```](https://discord.gg/Mh9mTEA) da CPHA.
 
 E no forum:
 
-- https://forum.cpha.pt/t/easy-han-rs485-edpbox-helpdesk/9977
+- https://forum.cpha.pt/t/easy-han-wifi-edpbox-rs485/9977
 
 - https://forum.cpha.pt/t/easy-han-tasmota-configuracao-wifi-mqtt/10486
 
