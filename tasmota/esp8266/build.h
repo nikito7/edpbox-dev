@@ -127,19 +127,20 @@
 // ### ### ###
 // changes
 
-//#define USE_LIGHT
 #define USE_TASMOTA_DISCOVERY
 #define USE_CUSTOM
 #define USE_DISCOVERY
 #define USE_DEEPSLEEP
 #define USE_COUNTER
+#define USE_VINDRIKTNING
 //#define USE_DS18x20
+//#define USE_LIGHT
 
 // ### ### ###
 // tasmota4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 8192
+#define UFSYS_SIZE 5120
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
@@ -162,7 +163,7 @@
 
 #define USE_SCRIPT_WEB_DISPLAY
 #define USE_SCRIPT_JSON_EXPORT
-#define MAX_METERS 2
+#define MAX_METERS 1
 #define MAXSVARS 10
 
 // eof
