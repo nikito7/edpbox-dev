@@ -1,3 +1,7 @@
+Some files moved to:
+
+https://github.com/nikito7/easyhan/tree/dev/edpbox
+
 Info:
 
 https://tasmota.github.io/docs/Smart-Meter-Interface/ 
