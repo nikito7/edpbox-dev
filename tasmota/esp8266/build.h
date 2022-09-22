@@ -1,7 +1,6 @@
 // copy to user_config_override.h
 // sml at the end of file.
 // based in 12.x minimal:
-// - allow ota for 1M
 // - freeup ram !
 
 // ### ### ###
@@ -133,8 +132,8 @@
 #define USE_DEEPSLEEP
 #define USE_COUNTER
 #define USE_VINDRIKTNING
-//#define USE_DS18x20
-//#define USE_LIGHT
+#define USE_DS18x20
+#define USE_INFLUXDB
 
 // ### ### ###
 // tasmota4M
