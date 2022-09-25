@@ -13,8 +13,8 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-m:p:glpi=0 96
-m:p:glpe=0 96
+p:m:glpi=0 96
+p:m:glpe=0 96
 gstr=""
 lp3i=0
 
