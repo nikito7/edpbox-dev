@@ -99,6 +99,9 @@ endif
 <br>
 Tarifa {m} %ttext%
 <hr>
+Tvolt %tvolt%
+
+$insa(gvolt)
 
 $<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
 $gc(lt gvolt "wr" "Voltage" cstr)
