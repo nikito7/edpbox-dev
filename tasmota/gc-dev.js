@@ -80,9 +80,9 @@ endif
 
 ; charts
 
-cstr="cnt0/4"
+cstr="cnt0"
 
-if tpwr>-1
+if cnt>20
 then
 gpwrm=tpwr
  if chg[mm]>0
