@@ -77,8 +77,7 @@ then
 cnt+=1
 endif
 
-m15=int(hours*60+mins/15+1)
-cstr="cnt"+s(m15)+"/4"
+cstr="cnt"+s(hh)+"/60h"
 
 if tvolt>0
 then
