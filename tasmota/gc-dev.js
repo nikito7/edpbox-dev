@@ -14,9 +14,9 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-p:m:gvolt1=0 120
+p:m:gvolt1=0 60
 tvolt1=0
-
+cstr=""
 
 >B
 
@@ -76,9 +76,11 @@ then
 cnt+=1
 endif
 
+cstr="cnt"+mm
+
 if chg[mm]>0
 then
-gvolt1=tvolt1
+gvolt1[mm]=tvolt1
 svars
 endif
 
@@ -97,8 +99,8 @@ endif
 Tarifa {m} %ttext%
 <hr>
 
-$<div id="volt1" style="text-align:center;width:300px;height:200px"></div>
-$gc(lt gvolt1 "name" "label1" cnt1/4 "Voltage")
+$<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
+$gc(lt gvolt1 "wr" "label1" cstr "Voltage")
 $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'100%%',
