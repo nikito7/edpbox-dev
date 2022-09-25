@@ -101,7 +101,7 @@ Tarifa {m} %ttext%
 <hr>
 
 $<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
-$gc(lt gvolt1 "name" "label1" cstr "Voltage")
+$gc(lt gvolt1 "wr" "label1" cstr "Voltage")
 $var options = {
 $title:'Voltage L1 [V]'
 $legend: 'none',
