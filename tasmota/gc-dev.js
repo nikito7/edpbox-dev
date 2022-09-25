@@ -13,10 +13,9 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:glpi=0 96
-M:p:glpe=0 96
-m15=0
-cstr=""
+m:p:glpi=0 96
+m:p:glpe=0 96
+gstr=""
 lp3i=0
 
 >B
@@ -44,7 +43,6 @@ wfp=WifiPower
 >T
 
 lp3i=?#LP3_IMP
-m15=?#LP1_MM
 
 tariff=?#Tariff
 
@@ -80,11 +78,12 @@ endif
 
 if chg[mm]>0
 then
-glpi[mm]=lp3i
+glpi=lp3i
+print saving pvars
 svars
 endif
 
-cstr=mm
+gstr="a b c"
 
 ; modbus watchdog block begin
 
@@ -101,7 +100,7 @@ cstr=mm
 Tarifa {m} %ttext%
 <br>
 $<div id="chart2"style="width:300x;height:100px;margin:0 auto"></div>
-$gc(lt glpi "wr" "DE" cstr)
+$gc(lt glpi "wr" "DE" gstr)
 $var options = {
 $vAxis:{viewWindow:{min:0,max:5000},title: 'Watt'},
 $hAxis: {title: 'Watts 24h'},
@@ -109,10 +108,10 @@ $title:'Diagrama de carga'
 $};
 $gc(e)
 <hr>
-cstr %cstr%
-m15 %m15%
+gstr %gstr%
 lp3i %lp3i%
 glp3i %glp3i
+glp3i0 %glp3i[0]
 
 ; EB3 Trifasico apenas !
 
