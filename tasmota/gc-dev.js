@@ -77,7 +77,7 @@ then
 cnt+=1
 endif
 
-cstr="cnt"+s(hh)+"/60h"
+cstr="cnt"+s(hh)+"/60"
 
 if tvolt>0
 then
