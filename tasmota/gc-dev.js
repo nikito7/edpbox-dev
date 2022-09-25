@@ -113,7 +113,7 @@ $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
-$title:'Voltage 1h [V]'
+$title:'Voltage 1h [V]',
 $};
 $gc(e)
 
