@@ -13,8 +13,8 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-p:m:glpi=0 96
-p:m:glpe=0 96
+p:m:glp3i=0 96
+p:m:glp3e=0 96
 gstr=""
 lp3i=0
 
@@ -100,7 +100,7 @@ Tarifa {m} %ttext%
 gstr %gstr%
 lp3i %lp3i%
 glp3i %glp3i%
-glp3i0 %glp3i[0]%
+glp3i3 %glp3i[3]%
 insa(glp3i)
 
 $<div id="chart1"style="height:100px;width:fit-content;background-color:grey;'">
