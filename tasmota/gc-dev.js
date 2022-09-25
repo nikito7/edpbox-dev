@@ -102,12 +102,14 @@ endif
 @<br>
 <br>
 Tarifa {m} %ttext%
-<hr>
 
-Last: %1tvolt% V
-Array Size: %0gvolt[-1]%
-Array Avg : %1gvolt[-2]% V
+; charts
 
+<br>
+Array Size {m} %0gvolt[-1]%
+Array Avg {m} %1gvolt[-2]% V
+Last {m} %1tvolt% V
+<br>
 $<div id="chart1" style="text-align:center;width:300px;height:100%%"></div>
 $gc(lt gvolt "wr" "voltage" cstr)
 $var options = {
