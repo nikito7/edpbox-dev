@@ -109,15 +109,20 @@ Tarifa {m} %ttext%
 
 ; charts
 
-<br>
-Power Size {m} %0gpwrb[-1]%
-Power Average {m} %0gpwrh[-2]% W
-Power Last {m} %0tpwrm% W
-<br>
 $<div id="chart1" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
-$gc(lt gpwrh "wr" "power" cstr)
+$gc(lt gpwrm "wr" "power1m" cstr)
 $var options = {
-$chartArea:{left:40,width:'260px'},
+$chartArea:{left:40,width:'100%%'},
+$width:'300px',
+$legend:'none',
+$title:'Power Import 60s [W]',
+$};
+$gc(e)
+
+$<div id="chart2" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
+$gc(lt gpwrh "wr" "power1h" cstr)
+$var options = {
+$chartArea:{left:40,width:'100%%'},
 $width:'300px',
 $legend:'none',
 $title:'Power Import 1h [W]',
