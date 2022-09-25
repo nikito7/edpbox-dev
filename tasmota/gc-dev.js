@@ -102,9 +102,10 @@ lp3i %lp3i%
 glp3i %glp3i%
 glp3i3 %glp3i[3]%
 
-$<div id="chart1" style="width:300px;height:200px;margin:0 auto"></div>
-$gc(c glp3i "wr" "pwr1" "pwr2" "mo|di|mi|do|fr|sa|so" "Solar feed")
+$<div id="chart1" style="width:300px;height:200px;margin:0 auto">
+$gc(l 12 glp3i "wr" "pwr1" "pwr2" "pwr3" "Solar")
 $gc(e)
+$</div>
 
 ; EB3 Trifasico apenas !
 
