@@ -97,8 +97,8 @@ endif
 Tarifa {m} %ttext%
 <hr>
 
-$<div id="chart1" style="text-align:center;width:320px;height:100px"></div>
-$gc(lt gvolt "a1" "a2" mm)
+$<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
+$gc(lt gvolt "a1" "a2" "a|b|c")
 $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'100%%',
