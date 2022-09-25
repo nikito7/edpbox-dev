@@ -15,6 +15,7 @@ tariff=0
 ttext=""
 M:p:gpwr=0 360
 pwr=0
+cstr=""
 
 >B
 
@@ -55,6 +56,7 @@ ends
 
 pwr=?#Power
 gpwr=pwr
+cstr="cnt0"
 
 if chg[mm]>0
 then
@@ -102,12 +104,12 @@ Tarifa {m} %ttext%
 ; charts
 
 $<div id="chart1" style="width:300px;height:200px;padding:0px;text-align:center"></div><br><br>
-$gc(lt gpwr "wr" "power1m")
+$gc(lt gpwr "wr" "power" cstr)
 $var options = {
 $chartArea:{left:40,width:'80%%'},
 $width:'300px',
 $legend:'none',
-$title:'Power Import 1h [W]',
+$title:'Power Import [W]',
 $};
 $gc(e)
 
