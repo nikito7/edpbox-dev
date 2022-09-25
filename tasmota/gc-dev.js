@@ -77,9 +77,11 @@ then
 cnt+=1
 endif
 
-glp3i[ss]=lp3i
-;print saving pvars
-;svars
+if upd[mm]>0
+then
+glp3i=lp3i
+print saving pvars
+svars
 endif
 
 gstr="a b c"
@@ -98,18 +100,18 @@ gstr="a b c"
 <br>
 Tarifa {m} %ttext%
 <hr>
+
 gstr %gstr%
 lp3i %lp3i%
 glp3i %glp3i%
 glp3i3 %glp3i[3]%
 
 $<div id="chart1" style="text-align:center;width:300px;height:100%%"></div>
-$gc(lt glp3i "wr" "Consumo [Wh]" "x|x|x")
+$gc(lt glp3i "wr" "Consumo [Wh]" "x|x|16h")
 $var options = {
 $chartArea:{left:60,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
-$vAxis:{viewWindow:{min:0,max:500}},
 $title:'Diagrama de Carga 15min [Wh]'
 $};
 $gc(e)
