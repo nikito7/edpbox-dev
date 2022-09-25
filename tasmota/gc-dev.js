@@ -101,11 +101,12 @@ gstr %gstr%
 lp3i %lp3i%
 glp3i %glp3i%
 glp3i3 %glp3i[3]%
-insa(glp3i)
-
+;$insa(glp3i)
 $<div id="chart1"style="height:100px;width:fit-content;background-color:grey;'">
-$gc(T glp3i "Mo|Tu|We|Th|Fr|Sa|Su")
+$gc(c glp3i "aaa" "bbb" "xxx")
+$gc(e)
 $</div>
+
 
 ; EB3 Trifasico apenas !
 
