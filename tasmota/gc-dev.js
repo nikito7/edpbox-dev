@@ -78,10 +78,9 @@ endif
 
 cstr="cnt"+mm+"/4"
 
-if chg[mm]>0
+if chg[ss]>0
 then
 gvolt1=tvolt1
-svars
 endif
 
 ; modbus watchdog block begin
