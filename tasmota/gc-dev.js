@@ -93,14 +93,12 @@ endif
 <br>
 Tarifa {m} %ttext%
 <br>
-; Fenster für Graph 2 definieren
-$<div id="chart2"style="width:640px;height:300px;margin:0 auto"></div>
-;Liniengrafik 24 Stunden
+$<div id="chart2"style="width:300x;height:100px;margin:0 auto"></div>
 $gc(lt glpi "wr" "DE" cstr)
 $var options = {
 $vAxis:{viewWindow:{min:0,max:5000},title: 'Watt'},
-$hAxis: {title: 'Tagesverlauf'},
-$title:'Dacheinspeisung 24 Stunden'
+$hAxis: {title: 'Watts 24h'},
+$title:'Diagrama de carga'
 $};
 $gc(e)
 
