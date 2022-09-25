@@ -77,8 +77,8 @@ cnt+=1
 endif
 
 glp3i[ss]=lp3i
-print saving pvars
-svars
+;print saving pvars
+;svars
 endif
 
 gstr="a b c"
