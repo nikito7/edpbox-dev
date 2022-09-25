@@ -78,7 +78,7 @@ cnt+=1
 endif
 
 m15=int(hours*60+mins/15+1)
-cstr="cnt"+mm
+cstr="cnt"+s(m15)+"/4"
 
 if tvolt>0
 then
@@ -102,10 +102,10 @@ endif
 <br>
 Tarifa {m} %ttext%
 <hr>
-Tvolt %1tvolt%
 
+Last: %1tvolt% V
 Array Size: %0gvolt[-1]%
-Array Avg : %1gvolt[-2]%
+Array Avg : %1gvolt[-2]% V
 
 $<div id="chart1" style="text-align:center;width:310px;height:100%%"></div>
 $gc(lt gvolt "wr" "voltage" cstr)
