@@ -108,7 +108,11 @@ $hAxis: {title: 'Watts 24h'},
 $title:'Diagrama de carga'
 $};
 $gc(e)
-
+<hr>
+cstr %cstr%
+m15 %m15%
+lp3i %lp3i%
+glp3i %glp3i[0]
 
 ; EB3 Trifasico apenas !
 
