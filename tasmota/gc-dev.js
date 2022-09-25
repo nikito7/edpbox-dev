@@ -84,7 +84,7 @@ print saving pvars
 svars
 endif
 
-gstr="a b c"
+gstr="cnt"+s(hours*4)+"/4"
 
 ; modbus watchdog block begin
 
@@ -107,9 +107,9 @@ glp3i %glp3i%
 glp3i3 %glp3i[3]%
 
 $<div id="chart1" style="text-align:center;width:300px;height:100%%"></div>
-$gc(lt glp3i "wr" "Consumo [Wh]" "x|x|16h")
+$gc(lt glp3i "wr" "Consumo [Wh]" gstr)
 $var options = {
-$chartArea:{left:60,width:'83%%'},
+$chartArea:{left:20,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
 $title:'Diagrama de Carga 15min [Wh]'
