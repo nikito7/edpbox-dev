@@ -13,7 +13,7 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:gvolt=0 240
+M:p:gvolt=0 60
 tvolt=0
 cstr=""
 m15=0
@@ -79,16 +79,16 @@ endif
 
 ; charts
 
-cstr="cnt0/60"
+cstr="cnt"+s(mm)+"/4"
 
 if tvolt>0
 then
-  if chg[mm]>0
-  then
-  gvolt=tvolt
-  print saving vars
-  svars
-  endif
+if chg[mm]>0
+then
+gvolt=tvolt
+print Saving Vars
+svars
+endif
 endif
 
 ; modbus watchdog block begin
@@ -109,7 +109,7 @@ Tarifa {m} %ttext%
 
 <br>
 Array Size {m} %0gvolt[-1]%
-Array Avg {m} %1gvolt[-2]% V
+Array Average {m} %1gvolt[-2]% V
 Last {m} %1tvolt% V
 <br>
 $<div id="chart1" style="text-align:center;width:300px;height:200px;padding:0px"></div>
@@ -118,7 +118,7 @@ $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'300px',
 $legend: 'none',
-$title:'Voltage 4h [V]',
+$title:'Voltage 1h [V]',
 $};
 $gc(e)
 
