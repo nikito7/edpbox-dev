@@ -107,7 +107,7 @@ Last: %1tvolt% V
 Array Size: %0gvolt[-1]%
 Array Avg : %1gvolt[-2]% V
 
-$<div id="chart1" style="text-align:center;width:310px;height:100%%"></div>
+$<div id="chart1" style="text-align:center;width:300px;height:100%%"></div>
 $gc(lt gvolt "wr" "voltage" cstr)
 $var options = {
 $chartArea:{left:50,width:'83%%'},
