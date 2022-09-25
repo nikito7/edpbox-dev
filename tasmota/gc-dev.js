@@ -107,8 +107,14 @@ Tvolt %tvolt%
 Array Size: %0gvolt[-1]%
 Array Avg : %1gvolt[-2]%
 
-$<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
-$gc(lt gvolt "wr" "voltage" cstr)
+$<div id="chart1" style="text-align:center;width:400px;height:100%%"></div>
+$gc(lt gvolt "wr" "Leistung [W]" cstr)
+$var options = {
+$chartArea:{left:60,width:'83%%'},
+$width:'100%%',
+$legend: 'none',
+$title:'Leistungsverlauf 4h [Watt]'
+$};
 $gc(e)
 
 ; EB3 Trifasico apenas !
