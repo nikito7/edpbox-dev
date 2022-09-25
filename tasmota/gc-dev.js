@@ -76,7 +76,7 @@ then
 cnt+=1
 endif
 
-cstr="cnt"+int(mm)
+cstr="cnt"+int+"/4"
 
 if chg[mm]>0
 and tvolt1>0
