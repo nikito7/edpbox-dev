@@ -77,13 +77,16 @@ then
 cnt+=1
 endif
 
-cstr="cnt"+s(hh)+"/60"
+; charts
+
+cstr="cnt0/60"
 
 if tvolt>0
 then
   if chg[mm]>0
   then
   gvolt=tvolt
+  print saving vars
   svars
   endif
 endif
@@ -109,11 +112,11 @@ Array Size {m} %0gvolt[-1]%
 Array Avg {m} %1gvolt[-2]% V
 Last {m} %1tvolt% V
 <br>
-$<div id="chart1" style="text-align:center;width:300px;height:100%%;padding:0px"></div>
+$<div id="chart1" style="text-align:center;width:300px;height:100px;padding:0px"></div>
 $gc(lt gvolt "wr" "voltage" cstr)
 $var options = {
 $chartArea:{left:50,width:'83%%'},
-$width:'100%%',
+$width:'300px',
 $legend: 'none',
 $title:'Voltage 4h [V]',
 $};
