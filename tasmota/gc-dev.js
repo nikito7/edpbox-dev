@@ -13,7 +13,7 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:gpwr=0 360
+M:p:gpwr=0 720
 pwr=0
 cstr=""
 
