@@ -109,7 +109,7 @@ $var options = {
 $chartArea:{left:60,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
-$vAxis:{viewWindow:{min:0,max:5000}},
+$vAxis:{viewWindow:{min:0,max:500}},
 $title:'Diagrama de Carga 15min [Wh]'
 $};
 $gc(e)
