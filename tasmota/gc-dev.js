@@ -1,6 +1,6 @@
 >D
 
-SB=5120
+SB=5120:4096
 time=""
 date=""
 clk=""
@@ -76,7 +76,7 @@ then
 cnt+=1
 endif
 
-cstr="cnt"+mm
+cstr="cnt"+mm+"/4"
 
 if chg[mm]>0
 then
