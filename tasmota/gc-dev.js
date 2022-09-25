@@ -112,7 +112,7 @@ Tarifa {m} %ttext%
 $<div id="chart1" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
 $gc(lt gpwrm "wr" "power1m" cstr)
 $var options = {
-$chartArea:{left:40,width:'100%%'},
+$chartArea:{left:40,width:'80%%'},
 $width:'300px',
 $legend:'none',
 $title:'Power Import 60s [W]',
@@ -122,7 +122,7 @@ $gc(e)
 $<div id="chart2" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
 $gc(lt gpwrh "wr" "power1h" cstr)
 $var options = {
-$chartArea:{left:40,width:'100%%'},
+$chartArea:{left:40,width:'80%%'},
 $width:'300px',
 $legend:'none',
 $title:'Power Import 1h [W]',
