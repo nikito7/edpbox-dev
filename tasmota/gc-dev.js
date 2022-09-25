@@ -43,7 +43,7 @@ wfp=WifiPower
 
 >T
 
-tvolt1=?#VL1
+tvolt=?#VL1
 
 tariff=?#Tariff
 
