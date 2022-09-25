@@ -103,15 +103,16 @@ lp3i %lp3i%
 glp3i %glp3i%
 glp3i3 %glp3i[3]%
 
-$<div id="chart1" style="width:300px;height:200px;margin:0 auto">
-$gc(c glp3i "a" "b" "c")
+$<div id="chart1" style="text-align:center;width:400px;height:100%%"></div>
+$gc(lt glp3i "wr" "Leistung [W]" "x x x")
 $var options = {
-$vAxes:{0:{maxValue:40,title:'Außentemperatur'},1:{maxValue:60,title:'Solarspeicher'}},
-$series:{0:{targetAxisIndex:0},1:{targetAxisIndex:1}},
-$hAxis: {title: 'Wochenverlauf'},
+$chartArea:{left:60,width:'83%%'},
+$width:'100%%',
+$legend: 'none',
+$vAxis:{viewWindow:{min:0,max:5000}},
+$title:'Leistungsverlauf 4h [Watt]'
 $};
 $gc(e)
-$</div>
 
 ; EB3 Trifasico apenas !
 
