@@ -101,11 +101,6 @@ Tarifa {m} %ttext%
 <br>
 $<div id="chart2"style="width:300x;height:100px;margin:0 auto"></div>
 $gc(b glpi "AA" "BB" gstr)
-$var options = {
-$vAxis:{viewWindow:{min:0,max:5000},title: 'Watt'},
-$hAxis: {title: 'Watts 24h'},
-$title:'Diagrama de carga'
-$};
 $gc(e)
 <hr>
 gstr %gstr%
