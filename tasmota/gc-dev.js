@@ -8,6 +8,7 @@ wfc=""
 wfp=0
 cnt=0
 wtd=0
+hh=0
 mm=0
 ss=0
 tariff=0
@@ -43,7 +44,7 @@ wfp=WifiPower
 >T
 
 lp3i=?#LP3_IMP
-m15=?#LP_MM
+m15=?#LP1_MM
 
 tariff=?#Tariff
 
@@ -79,7 +80,7 @@ endif
 
 if chg[mm]>0
 then
-glpi[mm]=99
+glpi[mm]=lp3i
 svars
 endif
 
@@ -111,7 +112,7 @@ $gc(e)
 cstr %cstr%
 m15 %m15%
 lp3i %lp3i%
-glp3i %glp3i[0]
+glp3i %glp3i
 
 ; EB3 Trifasico apenas !
 
