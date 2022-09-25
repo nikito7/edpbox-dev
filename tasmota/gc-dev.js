@@ -82,9 +82,10 @@ cstr="cnt"+s(m15)+"/4"
 
 if tvolt>0
 then
-  if chg[ss]>0
+  if chg[mm]>0
   then
   gvolt=tvolt
+  svars
   endif
 endif
 
