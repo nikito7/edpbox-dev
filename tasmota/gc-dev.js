@@ -77,13 +77,13 @@ then
 cnt+=1
 endif
 
-if chg[m15]>0
+if chg[mm]>0
 then
-glpi[0]=99
+glpi[mm]=99
 svars
 endif
 
-cstr="cnt"+s(hours*4)+"/4"
+cstr=mm
 
 ; modbus watchdog block begin
 
