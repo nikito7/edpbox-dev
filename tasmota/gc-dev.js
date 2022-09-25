@@ -56,7 +56,7 @@ ends
 ; charts
 
 pwr=?#Power
-cstr="cnt"+s(mm)+"/4"
+cstr="cnt"+s(mm-1)+"/4"
 
 if chg[mm]>0
 then
