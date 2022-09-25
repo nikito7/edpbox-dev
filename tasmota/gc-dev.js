@@ -103,6 +103,7 @@ $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
+$vAxis:{viewWindow:{min:150,max:300}},
 $title:'Voltage L1 [V]'
 $};
 $gc(e)
