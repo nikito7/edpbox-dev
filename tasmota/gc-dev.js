@@ -112,24 +112,23 @@ Tarifa {m} %ttext%
 <hr>
 
 $<div id="chart1" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
-$gc(lt gpwrm "wr" "power1m" cstr)
+$gc(lt gpwrm "wr1" "power1m" cstr)
 $var options = {
 $chartArea:{left:40,width:'80%%'},
 $width:'300px',
 $legend:'none',
 $title:'Power Import 60s [W]',
 $};
-$<hr>
 $gc(e)
+
 $<div id="chart2" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
-$gc(lt gpwrh "wr" "power1h" cstr)
+$gc(lt gpwrh "wr2" "power1h" cstr)
 $var options = {
 $chartArea:{left:40,width:'80%%'},
 $width:'300px',
 $legend:'none',
 $title:'Power Import 1h [W]',
 $};
-$<hr>
 $gc(e)
 
 ; EB3 Trifasico apenas !
