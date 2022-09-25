@@ -14,8 +14,8 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-p:m:gvolt=0 120
-tvolt=0
+p:m:gvolt1=0 120
+tvolt1=0
 
 
 >B
@@ -42,7 +42,7 @@ wfp=WifiPower
 
 >T
 
-tvolt=?#VL1
+tvolt1=?#VL1
 
 tariff=?#Tariff
 
@@ -78,7 +78,7 @@ endif
 
 if chg[mm]>0
 then
-gvolt=tvolt
+gvolt1=tvolt1
 svars
 endif
 
@@ -97,8 +97,8 @@ endif
 Tarifa {m} %ttext%
 <hr>
 
-$<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
-$gc(lt gvolt "a1" "a2" "a|b|c")
+$<div id="volt1" style="text-align:center;width:300px;height:200px"></div>
+$gc(lt gvolt1 "a1" "a2" "a|b|c")
 $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'100%%',
