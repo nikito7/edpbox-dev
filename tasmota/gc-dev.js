@@ -78,11 +78,14 @@ cnt+=1
 endif
 
 m15=int(hours*60+mins/15+1)
-cstr="cnt"+s(m15)+"/4"
+cstr="cnt"+mm
 
-if chg[ss]>0
+if tvolt>0
 then
-gvolt=tvolt
+  if chg[ss]>0
+  then
+  gvolt=tvolt
+  endif
 endif
 
 ; modbus watchdog block begin
@@ -101,8 +104,8 @@ Tarifa {m} %ttext%
 <hr>
 Tvolt %tvolt%
 
-Array %1gvolt[-1]%
-Array %1gvolt[-2]%
+Array Size: %0gvolt[-1]%
+Array Avg : %1gvolt[-2]%
 
 $<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
 $gc(lt gvolt "wr" "voltage" cstr)
