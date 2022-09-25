@@ -76,9 +76,7 @@ then
 cnt+=1
 endif
 
-if chg[mm]>0
-then
-glpi=lp3i
+glpi[ss]=lp3i
 print saving pvars
 svars
 endif
@@ -103,13 +101,13 @@ gstr %gstr%
 lp3i %lp3i%
 glp3i %glp3i%
 glp3i0 %glp3i[0]%
-Array insa(glp3i)
+insa(glp3i)
 
 ; EB3 Trifasico apenas !
 
 >M 1
 
-+1,3,mN1,1,9600,EBx,1,11,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
++1,3,mN1,1,9600,EB3,1,11,r010400010001,r0104006C0007,r010400730007,r0104007A0006,r010400260003,r010400160006,r0104000B0004,r01440601
 
 ; 01
 
