@@ -76,9 +76,10 @@ then
 cnt+=1
 endif
 
-cstr="cnt"+mm+"/4"
+cstr="cnt"+int(mm)
 
 if chg[mm]>0
+and tvolt1>0
 then
 gvolt1[mm]=tvolt1
 svars
@@ -102,10 +103,6 @@ Tarifa {m} %ttext%
 $<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
 $gc(lt gvolt1 "wr" "label1" cstr "Voltage")
 $var options = {
-$chartArea:{left:50,width:'83%%'},
-$width:'100%%',
-$legend: 'none',
-$vAxis:{viewWindow:{min:150,max:300}},
 $title:'Voltage L1 [V]'
 $};
 $gc(e)
