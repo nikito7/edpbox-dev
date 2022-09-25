@@ -13,8 +13,7 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:gpwrh=0 60
-M:p:gpwrm=0 60
+M:p:gpwr=0 60
 pwr=0
 cstr=""
 
@@ -54,7 +53,17 @@ case 3
 ttext="Cheias"
 ends
 
+; charts
+
 pwr=?#Power
+cstr="cnt"+s(mm)+"/4"
+
+if chg[mm]>0
+then
+gpwr=pwr
+print Saving Vars
+svars
+endif
 
 >S
 
@@ -76,21 +85,6 @@ endif
 if cnt<99
 then
 cnt+=1
-endif
-
-; charts
-
-cstr="cnt0"
-
-if cnt>20
-then
-gpwrm=tpwr
- if chg[mm]>0
- then
-  gpwrh=tpwr
-  print Saving Vars
-  svars
- endif
 endif
 
 ; modbus watchdog block begin
