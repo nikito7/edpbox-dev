@@ -98,15 +98,12 @@ gstr="a b c"
 @<br>
 <br>
 Tarifa {m} %ttext%
-<br>
-$<div id="chart2"style="width:300x;height:100px;margin:0 auto"></div>
-$gc(b glpi "AA" "BB" gstr)
-$gc(e)
 <hr>
 gstr %gstr%
 lp3i %lp3i%
 glp3i %glp3i%
 glp3i0 %glp3i[0]%
+Array insa(glp3i)
 
 ; EB3 Trifasico apenas !
 
