@@ -98,7 +98,7 @@ Tarifa {m} %ttext%
 <hr>
 
 $<div id="volt1" style="text-align:center;width:300px;height:200px"></div>
-$gc(lt gvolt1 "a1" "a2" "a|b|c")
+$gc(lt gvolt1 "name" "label1" cnt1/4 "Voltage")
 $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'100%%',
