@@ -13,10 +13,12 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:gvolt=0 60
-tvolt=0
+M:p:gpwr=0 60
+M:p:gene=0 24
+tpwr=0
+tene=0
 cstr=""
-m15=0
+
 
 >B
 
@@ -42,8 +44,6 @@ wfp=WifiPower
 
 >T
 
-tvolt=?#VL1
-
 tariff=?#Tariff
 
 switch tariff
@@ -54,6 +54,9 @@ ttext="Ponta"
 case 3
 ttext="Cheias"
 ends
+
+tpwr=?#Power
+tene=?#TEI
 
 >S
 
@@ -79,13 +82,13 @@ endif
 
 ; charts
 
-cstr="cnt"+s(mm)+"/4"
+cstr="cnt0/4"
 
-if tvolt>0
+if tpwr>0
 then
 if chg[mm]>0
 then
-gvolt=tvolt
+gpwr=tpwr
 print Saving Vars
 svars
 endif
@@ -108,19 +111,19 @@ Tarifa {m} %ttext%
 ; charts
 
 <br>
-Array Size {m} %0gvolt[-1]%
-Array Average {m} %1gvolt[-2]% V
-Last {m} %1tvolt% V
-<br>
 $<div id="chart1" style="text-align:center;width:300px;height:200px;padding:0px"></div>
-$gc(lt gvolt "wr" "voltage" cstr)
+$gc(lt gpwr "wr" "power" cstr)
 $var options = {
-$chartArea:{left:50,width:'83%%'},
+$chartArea:{left:50,width:'250px'},
 $width:'300px',
 $legend: 'none',
-$title:'Voltage 1h [V]',
+$title:'Power Import 1h [W]',
 $};
 $gc(e)
+<br>
+Array Size {m} %0gpwr[-1]%
+Array Average {m} %0gpwr[-2]% V
+Last {m} %0tpwr% V
 
 ; EB3 Trifasico apenas !
 
