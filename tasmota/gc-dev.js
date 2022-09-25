@@ -13,10 +13,8 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:gpwr=0 60
+M:p:gpwr=0 360
 pwr=0
-cstr=""
-
 
 >B
 
@@ -24,7 +22,7 @@ cstr=""
 =>Delay 100
 =>Delay 100
 
-tper=31
+tper=25
 smlj=0
 
 =>Delay 100
@@ -56,11 +54,10 @@ ends
 ; charts
 
 pwr=?#Power
-cstr="cnt"+s(mm-1)+"/4"
+gpwr=pwr
 
 if chg[mm]>0
 then
-gpwr=pwr
 print Saving Vars
 svars
 endif
@@ -76,7 +73,7 @@ ss=sml[3]
 if cnt==40
 then
 smlj=1
-tper=11
+tper=10
 =>UfsRun discovery1.txt
 =>Delay 100
 =>UfsRun discovery2.txt
@@ -105,7 +102,7 @@ Tarifa {m} %ttext%
 ; charts
 
 $<div id="chart1" style="width:300px;height:200px;padding:0px;text-align:center"></div><br><br>
-$gc(lt gpwr "wr" "power1m" cstr)
+$gc(lt gpwr "wr" "power1m")
 $var options = {
 $chartArea:{left:40,width:'80%%'},
 $width:'300px',
