@@ -14,8 +14,9 @@ tariff=0
 ttext=""
 M:p:glpi=0 96
 M:p:glpe=0 96
-lpmm=0
 m15=0
+cstr=""
+lp3i=0
 
 >B
 
@@ -40,6 +41,8 @@ wfc=WifiConfig#?
 wfp=WifiPower
 
 >T
+
+lp3i=?#LP3_IMP
 
 tariff=?#Tariff
 
@@ -73,11 +76,15 @@ then
 cnt+=1
 endif
 
-if chg[wd]>0
+m15=int(hours*60+mins/15+1)
+
+if chg[m15]>0
 then
-glpi=11
+glpi[m15]=lp3i
 svars
 endif
+
+cstr="cnt"+s(hours*4)+"/4"
 
 ; modbus watchdog block begin
 
