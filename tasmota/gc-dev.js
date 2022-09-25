@@ -43,6 +43,7 @@ wfp=WifiPower
 >T
 
 lp3i=?#LP3_IMP
+m15=?#LP_MM
 
 tariff=?#Tariff
 
@@ -76,11 +77,9 @@ then
 cnt+=1
 endif
 
-m15=int(hours*60+mins/15+1)
-
 if chg[m15]>0
 then
-glpi[m15]=lp3i
+glpi[0]=99
 svars
 endif
 
