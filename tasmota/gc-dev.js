@@ -13,10 +13,9 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:gpwr=0 60
-M:p:gene=0 24
-tpwr=0
-tene=0
+M:p:gpwrh=0 60
+M:p:gpwrm=0 60
+pwr=0
 cstr=""
 
 
@@ -55,8 +54,7 @@ case 3
 ttext="Cheias"
 ends
 
-tpwr=?#Power
-tene=?#TEI
+pwr=?#Power
 
 >S
 
@@ -84,14 +82,15 @@ endif
 
 cstr="cnt0/4"
 
-if tpwr>0
+if tpwr>-1
 then
-if chg[mm]>0
-then
-gpwr=tpwr
-print Saving Vars
-svars
-endif
+gpwrm=tpwr
+ if chg[mm]>0
+ then
+  gpwrh=gpwrm[-2]
+  print Saving Vars
+  svars
+ endif
 endif
 
 ; modbus watchdog block begin
@@ -111,12 +110,12 @@ Tarifa {m} %ttext%
 ; charts
 
 <br>
-Power Size {m} %0gpwr[-1]%
-Power Average {m} %0gpwr[-2]% W
-Power Last {m} %0tpwr% W
+Power Size {m} %0gpwrb[-1]%
+Power Average {m} %0gpwrh[-2]% W
+Power Last {m} %0tpwrm% W
 <br>
 $<div id="chart1" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
-$gc(lt gpwr "wr" "power" cstr)
+$gc(lt gpwrh "wr" "power" cstr)
 $var options = {
 $chartArea:{left:40,width:'260px'},
 $width:'300px',
