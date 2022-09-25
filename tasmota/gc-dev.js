@@ -103,14 +103,14 @@ lp3i %lp3i%
 glp3i %glp3i%
 glp3i3 %glp3i[3]%
 
-$<div id="chart1" style="text-align:center;width:400px;height:100%%"></div>
-$gc(lt glp3i "wr" "Leistung [W]" "x x x")
+$<div id="chart1" style="text-align:center;width:300px;height:100%%"></div>
+$gc(lt glp3i "wr" "Consumo [Wh]" "x|x|x")
 $var options = {
 $chartArea:{left:60,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
 $vAxis:{viewWindow:{min:0,max:5000}},
-$title:'Leistungsverlauf 4h [Watt]'
+$title:'Diagrama de Carga 15min [Wh]'
 $};
 $gc(e)
 
