@@ -76,7 +76,7 @@ then
 cnt+=1
 endif
 
-glpi[ss]=lp3i
+glp3i[ss]=lp3i
 print saving pvars
 svars
 endif
@@ -102,6 +102,10 @@ lp3i %lp3i%
 glp3i %glp3i%
 glp3i0 %glp3i[0]%
 insa(glp3i)
+
+$<div id="chart1"style="height:100px;width:fit-content;background-color:grey;'">
+$gc(T glp3i "Mo|Tu|We|Th|Fr|Sa|Su")
+$</div>
 
 ; EB3 Trifasico apenas !
 
