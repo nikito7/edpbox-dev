@@ -104,7 +104,12 @@ glp3i %glp3i%
 glp3i3 %glp3i[3]%
 
 $<div id="chart1" style="width:300px;height:200px;margin:0 auto">
-$gc(l 12 glp3i "wr" "pwr1" "pwr2" "pwr3" "Solar")
+$gc(c glp3i "a" "b" "c")
+$var options = {
+$vAxes:{0:{maxValue:40,title:'Außentemperatur'},1:{maxValue:60,title:'Solarspeicher'}},
+$series:{0:{targetAxisIndex:0},1:{targetAxisIndex:1}},
+$hAxis: {title: 'Wochenverlauf'},
+$};
 $gc(e)
 $</div>
 
