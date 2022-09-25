@@ -102,18 +102,18 @@ endif
 <br>
 Tarifa {m} %ttext%
 <hr>
-Tvolt %tvolt%
+Tvolt %1tvolt%
 
 Array Size: %0gvolt[-1]%
 Array Avg : %1gvolt[-2]%
 
-$<div id="chart1" style="text-align:center;width:400px;height:100%%"></div>
-$gc(lt gvolt "wr" "Leistung [W]" cstr)
+$<div id="chart1" style="text-align:center;width:310px;height:100%%"></div>
+$gc(lt gvolt "wr" "voltage" cstr)
 $var options = {
-$chartArea:{left:60,width:'83%%'},
+$chartArea:{left:50,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
-$title:'Leistungsverlauf 4h [Watt]'
+$title:'Voltage 1h [V]'
 $};
 $gc(e)
 
