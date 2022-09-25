@@ -12,6 +12,10 @@ mm=0
 ss=0
 tariff=0
 ttext=""
+M:p:glpi=0 96
+M:p:glpe=0 96
+lpmm=0
+m15=0
 
 >B
 
@@ -69,6 +73,12 @@ then
 cnt+=1
 endif
 
+if chg[wd]>0
+then
+glpi=11
+svars
+endif
+
 ; modbus watchdog block begin
 
 ; modbus watchdog block end
@@ -82,6 +92,18 @@ endif
 @<br>
 <br>
 Tarifa {m} %ttext%
+<br>
+; Fenster für Graph 2 definieren
+$<div id="chart2"style="width:640px;height:300px;margin:0 auto"></div>
+;Liniengrafik 24 Stunden
+$gc(lt glpi "wr" "DE" cstr)
+$var options = {
+$vAxis:{viewWindow:{min:0,max:5000},title: 'Watt'},
+$hAxis: {title: 'Tagesverlauf'},
+$title:'Dacheinspeisung 24 Stunden'
+$};
+$gc(e)
+
 
 ; EB3 Trifasico apenas !
 
