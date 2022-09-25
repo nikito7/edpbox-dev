@@ -14,7 +14,7 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-M:p:gvolt=0 60
+M:p:gvolt=0 240
 tvolt=0
 cstr=""
 m15=0
@@ -116,7 +116,7 @@ $var options = {
 $chartArea:{left:50,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
-$title:'Voltage 1h [V]',
+$title:'Voltage 4h [V]',
 $};
 $gc(e)
 
