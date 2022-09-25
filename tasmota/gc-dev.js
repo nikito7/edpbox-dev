@@ -119,10 +119,8 @@ $width:'300px',
 $legend:'none',
 $title:'Power Import 60s [W]',
 $};
+$<hr>
 $gc(e)
-
-<hr>
-
 $<div id="chart2" style="width:300px;height:200px;padding:0px;margin: 0 auto"></div>
 $gc(lt gpwrh "wr" "power1h" cstr)
 $var options = {
@@ -131,9 +129,8 @@ $width:'300px',
 $legend:'none',
 $title:'Power Import 1h [W]',
 $};
+$<hr>
 $gc(e)
-
-<hr>
 
 ; EB3 Trifasico apenas !
 
