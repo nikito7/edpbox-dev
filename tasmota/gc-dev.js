@@ -115,12 +115,12 @@ Power Size {m} %0gpwr[-1]%
 Power Average {m} %0gpwr[-2]% W
 Power Last {m} %0tpwr% W
 <br>
-$<div id="chart1" style="text-align:center;width:300px;height:200px;padding:0px"></div>
+$<div id="chart1" style="width:300px;height:200px;padding:0px"></div>
 $gc(lt gpwr "wr" "power" cstr)
 $var options = {
-$chartArea:{left:50,width:'200px'},
+$chartArea:{left:40,width:'250px'},
 $width:'300px',
-$legend: 'none',
+$legend:'none',
 $title:'Power Import 1h [W]',
 $};
 $gc(e)
