@@ -17,6 +17,7 @@ ttext=""
 p:m:gvolt1=0 60
 tvolt1=0
 cstr=""
+m15=0
 
 >B
 
@@ -76,7 +77,8 @@ then
 cnt+=1
 endif
 
-cstr="cnt"+mm+"/4"
+m15=int(hours*60+mins/15+1)
+cstr="cnt"+s(m15)+"/4"
 
 if chg[ss]>0
 then
