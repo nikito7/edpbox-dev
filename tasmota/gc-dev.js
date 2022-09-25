@@ -77,7 +77,7 @@ then
 cnt+=1
 endif
 
-if upd[mm]>0
+if chg[mm]>0
 then
 glp3i=lp3i
 print saving pvars
