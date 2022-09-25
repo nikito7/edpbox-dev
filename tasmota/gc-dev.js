@@ -1,6 +1,6 @@
 >D
 
-SB=4096
+SB=5120
 time=""
 date=""
 clk=""
