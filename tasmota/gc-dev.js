@@ -100,7 +100,7 @@ gstr="a b c"
 Tarifa {m} %ttext%
 <br>
 $<div id="chart2"style="width:300x;height:100px;margin:0 auto"></div>
-$gc(lt glpi "wr" "DE" gstr)
+$gc(b glpi "AA" "BB" gstr)
 $var options = {
 $vAxis:{viewWindow:{min:0,max:5000},title: 'Watt'},
 $hAxis: {title: 'Watts 24h'},
@@ -110,8 +110,8 @@ $gc(e)
 <hr>
 gstr %gstr%
 lp3i %lp3i%
-glp3i %glp3i
-glp3i0 %glp3i[0]
+glp3i %glp3i%
+glp3i0 %glp3i[0]%
 
 ; EB3 Trifasico apenas !
 
