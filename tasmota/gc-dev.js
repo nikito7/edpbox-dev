@@ -14,8 +14,8 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-p:m:gvolt1=0 60
-tvolt1=0
+M:p:gvolt=0 60
+tvolt=0
 cstr=""
 m15=0
 
@@ -82,7 +82,7 @@ cstr="cnt"+s(m15)+"/4"
 
 if chg[ss]>0
 then
-gvolt1=tvolt1
+gvolt=tvolt
 endif
 
 ; modbus watchdog block begin
@@ -101,7 +101,7 @@ Tarifa {m} %ttext%
 <hr>
 
 $<div id="chart1" style="text-align:center;width:300px;height:200px"></div>
-$gc(lt gvolt1 "wr" "label1" cstr "Voltage")
+$gc(lt gvolt "wr" "label" cstr "Voltage")
 $var options = {
 $title:'Voltage L1 [V]'
 $legend: 'none',
