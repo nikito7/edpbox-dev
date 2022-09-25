@@ -14,10 +14,9 @@ mm=0
 ss=0
 tariff=0
 ttext=""
-p:m:glp3i=0 96
-p:m:glp3e=0 96
-gstr=""
-lp3i=0
+p:m:gvolt=0 120
+tvolt=0
+
 
 >B
 
@@ -43,7 +42,7 @@ wfp=WifiPower
 
 >T
 
-lp3i=?#LP3_IMP
+tvolt=?#VL1
 
 tariff=?#Tariff
 
@@ -79,12 +78,9 @@ endif
 
 if chg[mm]>0
 then
-glp3i=lp3i
-print saving pvars
+gvolt=tvolt
 svars
 endif
-
-gstr="cnt"+s(hours*4)+"/4"
 
 ; modbus watchdog block begin
 
@@ -101,18 +97,13 @@ gstr="cnt"+s(hours*4)+"/4"
 Tarifa {m} %ttext%
 <hr>
 
-gstr %gstr%
-lp3i %lp3i%
-glp3i %glp3i%
-glp3i3 %glp3i[3]%
-
-$<div id="chart1" style="text-align:center;width:300px;height:100%%"></div>
-$gc(lt glp3i "wr" "Consumo [Wh]" gstr)
+$<div id="chart1" style="text-align:center;width:320px;height:100px"></div>
+$gc(lt gvolt "a1" "a2" mm)
 $var options = {
-$chartArea:{left:20,width:'83%%'},
+$chartArea:{left:50,width:'83%%'},
 $width:'100%%',
 $legend: 'none',
-$title:'Diagrama de Carga 15min [Wh]'
+$title:'Voltage L1 [V]'
 $};
 $gc(e)
 
