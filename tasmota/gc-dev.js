@@ -60,6 +60,7 @@ ends
 
 time=st(tstamp T 2)
 date=st(tstamp T 1)
+hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
