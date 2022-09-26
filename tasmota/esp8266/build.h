@@ -126,20 +126,20 @@
 // ### ### ###
 // changes
 
-#define USE_TASMOTA_DISCOVERY
+//#define USE_TASMOTA_DISCOVERY
+//#define USE_DISCOVERY
 #define USE_CUSTOM
-#define USE_DISCOVERY
 #define USE_DEEPSLEEP
 #define USE_COUNTER
 #define USE_VINDRIKTNING
-#define USE_DS18x20
-#define USE_INFLUXDB
+//#define USE_DS18x20
+//#define USE_INFLUXDB
 
 // ### ### ###
 // tasmota4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 5120
+#define UFSYS_SIZE 6144
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
@@ -161,13 +161,11 @@
 // misc
 
 #define USE_SCRIPT_WEB_DISPLAY
-#define USE_SCRIPT_JSON_EXPORT
 #define MAX_METERS 1
-#define MAXSVARS 10
+#define MAXSVARS 15
 #define LARGE_ARRAYS
-#define SCRIPT_FULL_WEBPAGE
 #define SCRIPT_LARGE_VNBUFF
-#define USE_SCRIPT_FATFS_EXT
 #define USE_GOOGLE_CHARTS
+//#define USE_SCRIPT_JSON_EXPORT
 
 // eof
