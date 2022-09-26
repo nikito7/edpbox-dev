@@ -4,6 +4,12 @@ bug="fix"
 wfc=""
 wfp=0
 cnt=0
+m:p:ipwrh=0 180
+m:p:ipwrd=0 24
+ipwr=0
+hour=0
+strh=""
+strd=""
 
 >B
 
@@ -23,12 +29,16 @@ smlj=0
 wfc=WifiConfig#?
 wfp=WifiPower
 
+>T
+
+ipwr=?#Power
+
 >S
 
 if cnt==30
 then
 smlj=1
-tper=10
+tper=20
 =>UfsRun discovery.txt
 endif
 
@@ -37,11 +47,52 @@ then
 cnt+=1
 endif
 
+; charts
+
+if upsecs%tper==0
+and cnt>30
+then
+str="cnt0"
+ipwrh=ipwr
+endif
+
+hour=int(time/60)
+
+if chg[hour]>0
+and cnt>30
+then
+strd="cnt"+s(hour)
+ipwrd=ipwrh[-2]
+print Array: ipwrd
+endif
+
 >W
 
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj%
 @<b>Wifi </b> %wfc% <b> Power </b> %0wfp% <b> Topic </b> %topic%
 @<br>
+
+; charts
+
+$<br><div id="chart1" style="width:300px;height:200px;padding:0px;text-align:center"></div><br><br>
+$gc(lt ipwrh "wr" "Power" strh)
+$var options = {
+$chartArea:{left:40,width:'80%%'},
+$width:'300px',
+$legend:'none',
+$title:'Power 1h [W]',
+$};
+$gc(e)
+
+$<div id="chart2" style="width:300px;height:200px;padding:0px;text-align:center"></div><br><br>
+$gc(lt ipwrd "wr" "Power" strh)
+$var options = {
+$chartArea:{left:40,width:'80%%'},
+$width:'300px',
+$legend:'none',
+$title:'Power 24h [W]',
+$};
+$gc(e)
 
 ; inverter growatt tl3-x
 
