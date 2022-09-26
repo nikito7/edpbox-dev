@@ -7,7 +7,7 @@ cnt=0
 
 >B
 
-tper=31
+tper=25
 smlj=0
 
 =>Delay 100
@@ -25,10 +25,10 @@ wfp=WifiPower
 
 >S
 
-if cnt==40
+if cnt==30
 then
 smlj=1
-tper=15
+tper=10
 =>UfsRun discovery.txt
 endif
 
