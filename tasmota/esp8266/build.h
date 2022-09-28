@@ -1,6 +1,6 @@
 // copy to user_config_override.h
 // sml at the end of file.
-// based in 12.x minimal:
+// based in 12.0.x minimal:
 // - freeup ram !
 
 // ### ### ###
@@ -132,14 +132,15 @@
 #define USE_DEEPSLEEP
 #define USE_COUNTER
 #define USE_VINDRIKTNING
-//#define USE_DS18x20
-//#define USE_INFLUXDB
+#define USE_DS18x20
+#define USE_INFLUXDB
+#define USE_UNISHOX_COMPRESSION
 
 // ### ### ###
 // tasmota4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 6144
+#define UFSYS_SIZE 5120
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
@@ -167,6 +168,6 @@
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
 #define USE_GOOGLE_CHARTS
-//#define USE_SCRIPT_JSON_EXPORT
+#define USE_SCRIPT_JSON_EXPORT
 
 // eof
