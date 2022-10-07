@@ -133,8 +133,10 @@
 #define USE_COUNTER
 #define USE_VINDRIKTNING
 #define USE_DS18x20
+#define USE_SR04
 #define USE_INFLUXDB
 #define USE_UNISHOX_COMPRESSION
+#define USE_ENHANCED_GUI_WIFI_SCAN
 
 // ### ### ###
 // tasmota4M
@@ -169,5 +171,6 @@
 #define SCRIPT_LARGE_VNBUFF
 #define USE_GOOGLE_CHARTS
 #define USE_SCRIPT_JSON_EXPORT
+#define USE_SCRIPT_SUB_COMMAND
 
 // eof
