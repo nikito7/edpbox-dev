@@ -104,6 +104,12 @@ print Array: epwrm %0ipwrm[-1]%
 
 ipwrh=ipwr
 ipwrd=ipwrh[0]-ipwrh[1]
+
+ipwrd[14]=500
+ipwrd[16]=600
+ipwrd[18]=700
+ipwrd[20]=800
+
 svars
 
 endif
