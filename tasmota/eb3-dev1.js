@@ -103,12 +103,12 @@ epwrm=epwr
 print Array: epwrm %0ipwrm[-1]%
 
 ipwrh=ipwr
-ipwrd=ipwrh[0]-ipwrh[1]
+; ipwrd=ipwrh[0]-ipwrh[1]
 
-ipwrd[14]=500
-ipwrd[16]=600
-ipwrd[18]=700
-ipwrd[20]=800
+ipwrd[0]=500
+ipwrd[1]=600
+ipwrd[22]=700
+ipwrd[23]=800
 
 svars
 
