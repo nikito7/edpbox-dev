@@ -12,8 +12,8 @@ wtd=0
 hh=0
 mm=0
 ss=0
-p:m:ipwrm=0 60
-p:m:epwrm=0 60
+M:p:ipwrm=0 60
+M:p:epwrm=0 60
 ipwr=0
 epwr=0
 strm="cnt0"
@@ -99,6 +99,10 @@ ipwrm=ipwr
 print Array: ipwrm %0ipwrm[-1]%
 epwrm=epwr
 print Array: epwrm %0ipwrm[-1]%
+
+svars
+
+=>Delay 100
 
 fr=fo("test.txt" 2)
 fwa(ipwrm fr)
