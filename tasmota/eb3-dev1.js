@@ -12,8 +12,8 @@ wtd=0
 hh=0
 mm=0
 ss=0
-M:p:ipwrm=0 60
-M:p:epwrm=0 60
+m:ipwrm=0 60
+m:epwrm=0 60
 ipwr=0
 epwr=0
 strm="cnt0"
@@ -25,6 +25,8 @@ ikw=0
 ekw=0
 fr=0
 res=0
+m:ipwrh=0 2
+m:p:ipwrd=0 24
 
 >B
 
@@ -100,14 +102,9 @@ print Array: ipwrm %0ipwrm[-1]%
 epwrm=epwr
 print Array: epwrm %0ipwrm[-1]%
 
+ipwrh=ipwr
+ipwrd=ipwrh[0]-ipwrh[1]
 svars
-
-=>Delay 100
-
-fr=fo("test.txt" 2)
-fwa(ipwrm fr)
-print FWA: 
-fc(fr)
 
 endif
 
@@ -131,6 +128,15 @@ $var options = {
 $chartArea:{left:50,width:'80%%'},
 $width:'100%%',legend:'none',
 $title:'Power Import & Power Export 1h [W]',
+$};
+$gc(e)
+
+$<div id="chart2" style="width:100%%;height:250px;padding:0px;"></div><br><br>
+$gc(ct ipwrd "wr" "Import" strm)
+$var options = {
+$chartArea:{left:50,width:'80%%'},
+$width:'100%%',legend:'none',
+$title:'Import 24h [W]',
 $};
 $gc(e)
 
