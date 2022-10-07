@@ -98,6 +98,12 @@ ipwrm=ipwr
 print Array: ipwrm %0ipwrm[-1]%
 epwrm=epwr
 print Array: epwrm %0ipwrm[-1]%
+
+fr=fo("test.txt" 0)
+res=fwa(ipwrm fr)
+print FWA: %0res%
+fc(fr)
+
 endif
 
 ; janz wtd begin
