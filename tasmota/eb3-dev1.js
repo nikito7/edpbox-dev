@@ -105,10 +105,10 @@ print Array: epwrm %0ipwrm[-1]%
 ipwrh=ipwr
 ; ipwrd=ipwrh[0]-ipwrh[1]
 
-ipwrd[0]=500
-ipwrd[1]=600
-ipwrd[22]=700
-ipwrd[23]=800
+ipwrd[1]=500
+ipwrd[2]=600
+ipwrd[23]=700
+ipwrd[24]=800
 
 svars
 
