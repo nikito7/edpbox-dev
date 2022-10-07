@@ -137,8 +137,8 @@ $title:'Power Import & Power Export 1h [W]',
 $};
 $gc(e)
 
-$<div id="chart2" style="width:100%%;height:250px;padding:0px;"></div><br><br>
-$gc(ct ipwrd "wr" "Import" strm)
+$<div id="chart2" style="width:300px;height:250px;padding:0px;"></div><br><br>
+$gc(ct ipwrd "wr" "Import" "cnt0")
 $var options = {
 $chartArea:{left:50,width:'80%%'},
 $width:'100%%',legend:'none',
