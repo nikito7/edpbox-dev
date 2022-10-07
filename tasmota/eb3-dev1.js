@@ -101,8 +101,8 @@ epwrm=epwr
 print Array: epwrm %0ipwrm[-1]%
 
 fr=fo("test.txt" 1)
-fwa(ipwrm fr)
-print FWA: 
+res=fw(ipwr fr)
+print FWA: %0res%
 fc(fr)
 
 endif
