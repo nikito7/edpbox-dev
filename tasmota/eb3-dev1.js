@@ -87,6 +87,7 @@ endif
 
 if cnt<99
 then
+print Script: cnt=%0cnt%
 cnt+=1
 endif
 
@@ -100,8 +101,8 @@ epwrm=epwr
 print Array: epwrm %0ipwrm[-1]%
 
 fr=fo("test.txt" 1)
-res=fwa(ipwrm fr)
-print FWA: %0res%
+fwa(ipwrm fr)
+print FWA: 
 fc(fr)
 
 endif
