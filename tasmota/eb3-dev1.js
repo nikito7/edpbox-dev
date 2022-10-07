@@ -100,7 +100,7 @@ print Array: ipwrm %0ipwrm[-1]%
 epwrm=epwr
 print Array: epwrm %0ipwrm[-1]%
 
-fr=fo("test.txt" 1)
+fr=fo("test.txt" 2)
 fwa(ipwrm fr)
 print FWA: 
 fc(fr)
