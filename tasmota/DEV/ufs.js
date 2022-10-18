@@ -1,6 +1,6 @@
 >D 32
 
-ver=2021
+ver=3
 cnt=0
 hh=0
 mm=0
@@ -15,6 +15,7 @@ ikw=0
 ekw=0
 fr=0
 res=0
+str=""
 
 >B
 
@@ -36,8 +37,6 @@ ekw=?#TEE
 
 >S
 
-time=st(tstamp T 2)
-date=st(tstamp T 1)
 fheap=heap/1024
 
 hh=sml[1]
@@ -69,9 +68,21 @@ ipwrm=ipwr
 epwrm=epwr
 endif
 
+if chg[ss]>0
+then
+
+str="Secs: "+s(ss)
+
+fr=fo("test.txt" 2)
+res=fw(str fr)
+print Str: %0res% [%str%]
+fc(fr)
+
+endif
+
 >W
 
-@<b>NTP </b> %timestamp% <b> Heap </b> %1fheap%
+@<b>NTP </b> %tstamp% <b> Heap </b> %1fheap%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj% ver=%0ver%
 @<br>
 <br>
