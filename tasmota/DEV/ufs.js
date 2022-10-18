@@ -16,6 +16,7 @@ ekw=0
 fr=0
 res=0
 str=""
+file=""
 
 >B
 
@@ -55,11 +56,6 @@ cnt+=1
 print cnt=%0cnt%
 endif
 
-if chg[ss]>0
-then
-print han %2.0hh%:%2.0mm%:%2.0ss%
-endif
-
 if chg[mm]>0
 and cnt>15
 then
@@ -68,14 +64,19 @@ ipwrm=ipwr
 epwrm=epwr
 endif
 
+; ss
+
 if chg[ss]>0
 then
 
-str="Secs: "+s(ss)
+print han %2.0hh%:%2.0mm%:%2.0ss%
 
-fr=fo("test.txt" 2)
+str="Secs: "+s(ss)
+file=s(0hh)+".txt"
+
+fr=fo(file 2)
 res=fw(str fr)
-print Str: %0res% [%str%]
+print Str: %0res% %file% [%str%]
 fc(fr)
 
 endif
