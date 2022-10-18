@@ -1,6 +1,6 @@
 >D 32
 
-ver=3
+ver=5
 cnt=0
 hh=0
 mm=0
@@ -71,7 +71,7 @@ then
 
 print han %2.0hh%:%2.0mm%:%2.0ss%
 
-str="Secs: "+s(ss)
+str="Secs: \t"+s(ss)+"\n"
 file=s(0hh)+".txt"
 
 fr=fo(file 2)
