@@ -1,14 +1,7 @@
 >D 32
 
 ver=2021
-date=""
-time=""
-clk=""
-old=""
-wfc=""
-wfp=0
 cnt=0
-wtd=0
 hh=0
 mm=0
 ss=0
@@ -18,9 +11,6 @@ ipwr=0
 epwr=0
 strm="cnt0"
 fheap=0
-ws=""
-node=""
-key=""
 ikw=0
 ekw=0
 fr=0
@@ -35,17 +25,7 @@ res=0
 tper=25
 smlj=0
 
-=>SerialLog 0
-=>WebLog 4
-=>WifiConfig
-=>WifiPower
-
 =>Sensor53 r
-
->E
-
-wfc=WifiConfig#?
-wfp=WifiPower
 
 >T
 
@@ -70,12 +50,6 @@ smlj=1
 tper=10
 endif
 
-if cnt==45
-then
-=>UfsRun discovery1.txt
-=>UfsRun discovery2.txt
-endif
-
 if cnt<99
 then
 cnt+=1
@@ -95,28 +69,14 @@ ipwrm=ipwr
 epwrm=epwr
 endif
 
-; janz wtd begin
-; janz wtd end
-; emoncms begin
-; emoncms end
-
 >W
 
 @<b>NTP </b> %date% %time% <b> Heap </b> %1fheap%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj% ver=%0ver%
 @<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
-@<b>Wifi </b> %wfc% <b> Power </b> %0wfp% <b> Topic </b> %topic%
 @<br>
 <br>
 
-$<div id="chart1" style="width:95%%;height:250px;padding:0px;"></div><br><br>
-$gc(lt ipwrm epwrm "wr" "Import" "Export" strm)
-$var options = {
-$chartArea:{left:50,width:'80%%'},
-$width:'100%%',legend:'none',
-$title:'Power Import & Power Export 1h [W]',
-$};
-$gc(e)
 
 ; EB3 only !
 
