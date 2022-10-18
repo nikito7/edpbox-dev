@@ -44,7 +44,7 @@ hh=sml[1]
 mm=sml[2]
 ss=sml[3]
 
-if cnt==30
+if cnt==15
 then
 smlj=1
 tper=10
@@ -62,7 +62,7 @@ print han %2.0hh%:%2.0mm%:%2.0ss%
 endif
 
 if chg[mm]>0
-and cnt>30
+and cnt>15
 then
 strm="cnt"+s(mm)
 ipwrm=ipwr
@@ -71,9 +71,8 @@ endif
 
 >W
 
-@<b>NTP </b> %date% %time% <b> Heap </b> %1fheap%
+@<b>NTP </b> %timestamp% <b> Heap </b> %1fheap%
 @<b>Vars </b> cnt=%0cnt% tper=%0tper% smlj=%0smlj% ver=%0ver%
-@<b>Vars </b> wtd=%0wtd% clk=%0clk% old=%0old%
 @<br>
 <br>
 
