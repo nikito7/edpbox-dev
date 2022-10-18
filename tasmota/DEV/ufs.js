@@ -79,12 +79,6 @@ res=fw(str fr)
 print Str: %0res% %file% [%str%]
 fc(fr)
 
-fr=fo("array.txt" 1)
-res=fwa(ipwrm fr)
-print Array: %0res% [%ipwrm%]
-fc(fr)
-
-
 endif
 
 >W
@@ -94,6 +88,13 @@ endif
 @<br>
 <br>
 
+>w
+
+Test
+
+>w1
+
+Test1
 
 ; EB3 only !
 
