@@ -172,6 +172,6 @@
 #define USE_GOOGLE_CHARTS
 #define USE_SCRIPT_JSON_EXPORT
 // #define USE_SCRIPT_SUB_COMMAND // UfsRun issues?
-#define SCRIPT_FULL_WEBPAGE
+// #define SCRIPT_FULL_WEBPAGE
 
 // eof
