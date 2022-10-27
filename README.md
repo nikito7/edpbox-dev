@@ -16,9 +16,9 @@ https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver
 
 ---
 
-PayPal:
+Donate:
 
-https://www.paypal.com/paypalme/easyhanpt/?country.x=PT
+https://www.paypal.com/donate/?business=789YZYG8YXMRN&no_recurring=1&item_name=https%3A%2F%2Fgithub.com%2Fnikito7&currency_code=EUR
 
 ---
 ---
