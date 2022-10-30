@@ -142,7 +142,7 @@
 // tasmota4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 5120
+#define UFSYS_SIZE 6144
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
@@ -165,6 +165,7 @@
 
 #define USE_SCRIPT_WEB_DISPLAY
 #define MAX_METERS 1
+#define MAXVARS 70
 #define MAXSVARS 20
 #define MAXFILT 15
 #define LARGE_ARRAYS
