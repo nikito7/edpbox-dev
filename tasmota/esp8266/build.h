@@ -163,7 +163,6 @@
 
 // misc
 
-#define USE_CORS
 #define USE_SCRIPT_WEB_DISPLAY
 #define MAX_METERS 1
 #define MAXVARS 70
