@@ -8,6 +8,7 @@ MqttUser edpbox;
 MqttPassword edpbox123; 
 WebLog 4; 
 SerialLog 0; 
+Restart 1; 
 ```
 
 ```js
