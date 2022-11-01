@@ -4,6 +4,10 @@ Backlog0
 TimeZone 99; 
 TimeDST 0,0,3,1,1,60; 
 TimeSTD 0,0,10,1,2,0; 
+MqttUser edpbox; 
+MqttPassword edpbox123; 
+WebLog 4; 
+SerialLog 0; 
 ```
 
 ```js
@@ -11,7 +15,6 @@ Backlog0
 SSID2 edpbox2-dev; 
 Password2 edpbox123; 
 Topic edpbox7x; 
-WebLog 4; 
 OtaUrl http://u.easyhan.pt/han/tasmota4M.bin.gz; 
 Hostname Easy-HAN-EBx; 
 MqttClient Easy_HAN_%06X; 
