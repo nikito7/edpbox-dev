@@ -1,4 +1,3 @@
----
 
 ```js
 Backlog0 
@@ -6,8 +5,6 @@ TimeZone 99;
 TimeDST 0,0,3,1,1,60; 
 TimeSTD 0,0,10,1,2,0; 
 ```
-
----
 
 ```js
 Backlog0 
@@ -24,6 +21,3 @@ Module 0;
 WifiConfig 2; 
 Restart 1; 
 ``` 
-
----
-
