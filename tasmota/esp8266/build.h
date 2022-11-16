@@ -127,7 +127,7 @@
 // ### ### ###
 // changes
 
-#define USE_TASMOTA_DISCOVERY
+// #define USE_TASMOTA_DISCOVERY
 #define USE_CUSTOM
 #define USE_DEEPSLEEP
 #define USE_COUNTER
@@ -135,14 +135,14 @@
 // #define USE_VINDRIKTNING
 // #define USE_SR04
 #define USE_INFLUXDB
-#define USE_UNISHOX_COMPRESSION
-// #define USE_ENHANCED_GUI_WIFI_SCAN // UfsRun issues?
+// #define USE_UNISHOX_COMPRESSION
+#define USE_ENHANCED_GUI_WIFI_SCAN // UfsRun issues?
 
 // ### ### ###
 // tasmota4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 6144
+#define UFSYS_SIZE 5120
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
@@ -160,6 +160,7 @@
 // tcp
 
 #define USE_TCP_BRIDGE
+#define USE_MODBUS_BRIDGE
 
 // misc
 
