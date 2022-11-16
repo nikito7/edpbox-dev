@@ -1,6 +1,6 @@
 // copy to user_config_override.h
 // sml at the end of file.
-// based in 12.0.x minimal:
+// based in 12.2.0 minimal:
 // - freeup ram !
 
 // ### ### ###
@@ -80,6 +80,7 @@
 #undef USE_SR04                                  // Disable support for HC-SR04 ultrasonic devices (+1k code)
 #undef USE_DYP                                   // Disable support for DYP ME-007 ultrasonic distance sensor, serial port version (+0k5 code)
 #undef USE_SERIAL_BRIDGE                         // Disable support for software Serial Bridge
+#undef USE_MODBUS_BRIDGE                         // Disable support for software Modbus Bridge (+3k code)
 #undef USE_TCP_BRIDGE                            // DIsable support for Serial to TCP bridge (+1.3k code)
 #undef USE_MP3_PLAYER                            // Disable DFPlayer Mini MP3 Player RB-DFR-562 commands: play, volume and stop
 #undef USE_AZ7798                                // Disable support for AZ-Instrument 7798 CO2 datalogger
