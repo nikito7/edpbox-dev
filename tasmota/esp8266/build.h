@@ -156,8 +156,8 @@
 // tcp
 
 #define USE_TCP_BRIDGE
-#define USE_MODBUS_TCP_BRIDGE
-// #define USE_MODBUS_BRIDGE
+#define USE_MODBUS_BRIDGE_TCP
+#define USE_MODBUS_BRIDGE
 
 // misc
 
