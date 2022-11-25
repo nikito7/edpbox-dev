@@ -4,7 +4,7 @@
 modbus:
 
   - name: edpbox1
-    type: rtuovertcp
+    type: tcp         # rtuovertcp
     host: 10.1.0.200
     port: 9502
     delay: 1
@@ -188,7 +188,7 @@ sensor:
   - platform: template
     sensors:
 
-      EB1rtu_tariff:
+      eb1rtu_tariff:
         friendly_name: "EB1rtu Tariff"
         value_template: >-
           {% set x = states('sensor.eb1rtu_0x000b')|string %}
