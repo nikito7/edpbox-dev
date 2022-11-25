@@ -4,8 +4,8 @@
 modbus:
 
   - name: edpbox1
-    type: tcp
-    host: 10.1.0.47
+    type: rtuovertcp
+    host: 10.1.0.200
     port: 9502
     delay: 1
     timeout: 3
@@ -17,7 +17,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB1 T1 Vazio" # 0x0026
+      - name: "EB1rtu T1 Vazio" # 0x0026
         slave: 1
         address: 38
         input_type: input
@@ -30,7 +30,7 @@ modbus:
         state_class: total_increasing
         scan_interval: 91
 
-      - name: "EB1 T2 Ponta" # 0x0027
+      - name: "EB1rtu T2 Ponta" # 0x0027
         slave: 1
         address: 39
         input_type: input
@@ -43,7 +43,7 @@ modbus:
         state_class: total_increasing
         scan_interval: 92
 
-      - name: "EB1 T3 Cheias" # 0x0028
+      - name: "EB1rtu T3 Cheias" # 0x0028
         slave: 1
         address: 40
         input_type: input
@@ -58,7 +58,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB1 Import" # 0x0016
+      - name: "EB1rtu Import" # 0x0016
         slave: 1
         address: 22
         input_type: input
@@ -71,7 +71,7 @@ modbus:
         state_class: total_increasing
         scan_interval: 94
 
-      - name: "EB1 Export" # 0x0017
+      - name: "EB1rtu Export" # 0x0017
         slave: 1
         address: 23
         input_type: input
@@ -86,7 +86,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB1 Voltage L1" # 0x006C
+      - name: "EB1rtu Voltage L1" # 0x006C
         slave: 1
         address: 108
         input_type: input
@@ -98,7 +98,7 @@ modbus:
         device_class: voltage
         scan_interval: 31
 
-      - name: "EB1 Current L1" # 0x006D
+      - name: "EB1rtu Current L1" # 0x006D
         slave: 1
         address: 109
         input_type: input
@@ -112,7 +112,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB1 Active Power" # 0x0079
+      - name: "EB1rtu Active Power" # 0x0079
         slave: 1
         address: 121
         input_type: input
@@ -125,7 +125,7 @@ modbus:
         state_class: measurement
         scan_interval: 11
 
-      - name: "EB1 Power Export" # 0x007A
+      - name: "EB1rtu Power Export" # 0x007A
         slave: 1
         address: 122
         input_type: input
@@ -137,7 +137,7 @@ modbus:
         device_class: power
         scan_interval: 12
 
-      - name: "EB1 Power Factor" # 0x007B
+      - name: "EB1rtu Power Factor" # 0x007B
         slave: 1
         address: 123
         input_type: input
@@ -149,7 +149,7 @@ modbus:
         device_class: power_factor
         scan_interval: 38
 
-      - name: "EB1 Frequency" # 0x007F
+      - name: "EB1rtu Frequency" # 0x007F
         slave: 1
         address: 127
         input_type: input
@@ -162,7 +162,7 @@ modbus:
 
 # for tariff template
 
-      - name: "EB1 0x000B" # Tariff
+      - name: "EB1rtu 0x000B" # Tariff
         slave: 1
         address: 11
         input_type: input
@@ -173,7 +173,7 @@ modbus:
 
 ### for testing
 
-      - name: "EB1 Firmware" # 0x0004
+      - name: "EB1rtu Firmware" # 0x0004
         slave: 1
         address: 4
         input_type: input
@@ -188,10 +188,10 @@ sensor:
   - platform: template
     sensors:
 
-      eb1_tariff:
-        friendly_name: "EB1 Tariff"
+      EB1rtu_tariff:
+        friendly_name: "EB1rtu Tariff"
         value_template: >-
-          {% set x = states('sensor.eb1_0x000b')|string %}
+          {% set x = states('sensor.eb1rtu_0x000b')|string %}
           {% if x == "1" %}
             {{ "Vazio" }}
           {% elif x == "2" %}
