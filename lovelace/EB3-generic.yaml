@@ -105,6 +105,15 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb3_t3_cheias
     secondary_info: last-updated
+
+  - type: divider
+    style:
+      height: 1px
+      width: 80%
+      margin-left: auto
+      margin-right: auto
+      background: '#62717b'
+
   - entity: sensor.eb3_import
     secondary_info: last-updated
   - entity: sensor.eb3_export
