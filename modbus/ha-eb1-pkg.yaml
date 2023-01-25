@@ -145,7 +145,7 @@ modbus:
         data_type: uint16
         precision: 3
         scale: 0.001
-        unit_of_measurement: pu
+        unit_of_measurement: %
         device_class: power_factor
         scan_interval: 38
 
@@ -171,34 +171,22 @@ modbus:
         structure: ">Bx"
         scan_interval: 43
 
-### for testing
-
-      - name: "EB1rtu Firmware" # 0x0004
-        slave: 1
-        address: 4
-        input_type: input
-        count: 3
-        data_type: string
-        scan_interval: 44
-
 ### edpbox templates
 
-sensor:
-
-  - platform: template
-    sensors:
-
-      eb1rtu_tariff:
-        friendly_name: "EB1rtu Tariff"
-        value_template: >-
-          {% set x = states('sensor.eb1rtu_0x000b')|string %}
-          {% if x == "1" %}
-            {{ "Vazio" }}
-          {% elif x == "2" %}
-            {{ "Ponta" }}
-          {% elif x == "3" %}
-            {{ "Cheias" }}
-          {% endif %}
-        icon_template: mdi:calendar
+template:
+#2
+  - sensor:
+###4
+    - name: "EB1rtu Tariff"
+      state: >
+        {% set x = states('sensor.eb1rtu_0x000b')|string %}
+        {% if x == "1" %}
+          {{ "Vazio" }}
+        {% elif x == "2" %}
+          {{ "Ponta" }}
+        {% elif x == "3" %}
+          {{ "Cheias" }}
+        {% endif %}
+      icon: mdi:calendar
 
 # EOF
