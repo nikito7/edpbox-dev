@@ -1,4 +1,4 @@
-; matter dev
+// matter dev
 
 #define USE_BERRY_INT64
 
@@ -13,4 +13,4 @@
 
 #define USE_DISCOVERY
 
-;EOF
+// EOF
