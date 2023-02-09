@@ -1,6 +1,7 @@
 // matter dev
 
 #define USE_BERRY_INT64
+#define USE_BERRY_DEBUG
 
 #define USE_MATTER_DEVICE
 
