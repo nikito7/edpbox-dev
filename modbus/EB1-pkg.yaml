@@ -19,44 +19,19 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 T1 Vazio" # 0x0026
+      - name: "EB7 0x0026" # Vazio Ponta Cheias
         slave: 1
         address: 38
         input_type: input
-        count: 1
+        count: 3
+        slave_count: 2 # count - 1
         data_type: uint32
-        precision: 1
+        precision: 3
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
         scan_interval: 91
-
-      - name: "EB7 T2 Ponta" # 0x0027
-        slave: 1
-        address: 39
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 1
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scan_interval: 92
-
-      - name: "EB7 T3 Cheias" # 0x0028
-        slave: 1
-        address: 40
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 1
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scan_interval: 93
 
 ### ### ###
 
