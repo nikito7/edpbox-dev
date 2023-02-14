@@ -1,10 +1,12 @@
 # edpbox1 package
 # standard modbus
+# elfin: tcp
+# tasmota: rtuovertcp
 
 modbus:
 
   - name: edpbox1
-    type: tcp         # rtuovertcp
+    type: rtuovertcp # tcp
     host: 10.1.0.200
     port: 9502
     delay: 1
@@ -28,7 +30,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 0x0016" Import Export
+      - name: "EB7 0x0016" # Import Export
         slave: 1
         address: 22
         input_type: input
@@ -39,7 +41,7 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 0x006C" Voltage Current
+      - name: "EB7 0x006C" # Voltage Current
         slave: 1
         address: 108
         input_type: input
@@ -50,7 +52,7 @@ modbus:
 
 ###
 
-      - name: "EB7 0x0079" Power Import Export PF
+      - name: "EB7 0x0079" # Power Import Export PF
         slave: 1
         address: 121
         input_type: input
