@@ -19,19 +19,44 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 0x0026" # Vazio Ponta Cheias
+      - name: "EB7 T1 Vazio" # 0x0026
         slave: 1
         address: 38
         input_type: input
-        count: 3
-        slave_count: 2 # count - 1
+        count: 1
         data_type: uint32
-        precision: 3
+        precision: 2
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 91
+        scan_interval: 32
+
+      - name: "EB7 T2 Ponta" # 0x0027
+        slave: 1
+        address: 39
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 2
+        scale: 0.001
+        unit_of_measurement: kWh
+        device_class: energy
+        state_class: total_increasing
+        scan_interval: 34
+
+      - name: "EB7 T3 Cheias" # 0x0028
+        slave: 1
+        address: 40
+        input_type: input
+        count: 1
+        data_type: uint32
+        precision: 2
+        scale: 0.001
+        unit_of_measurement: kWh
+        device_class: energy
+        state_class: total_increasing
+        scan_interval: 36
 
 ### ### ###
 
@@ -41,12 +66,12 @@ modbus:
         input_type: input
         count: 1
         data_type: uint32
-        precision: 1
+        precision: 2
         scale: 0.001
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 94
+        scan_interval: 38
 
       - name: "EB7 Export" # 0x0017
         slave: 1
@@ -59,7 +84,7 @@ modbus:
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 95
+        scan_interval: 42
 
 ### ### ###
 
@@ -73,7 +98,7 @@ modbus:
         scale: 0.1
         unit_of_measurement: V
         device_class: voltage
-        scan_interval: 31
+        scan_interval: 22
 
       - name: "EB7 Current L1" # 0x006D
         slave: 1
@@ -85,7 +110,7 @@ modbus:
         scale: 0.1
         unit_of_measurement: A
         device_class: current
-        scan_interval: 32
+        scan_interval: 24
 
 ### ### ###
 
@@ -100,7 +125,7 @@ modbus:
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        scan_interval: 11
+        scan_interval: 12
 
       - name: "EB7 Active Power Export" # 0x007A
         slave: 1
@@ -112,7 +137,7 @@ modbus:
         scale: 1
         unit_of_measurement: W
         device_class: power
-        scan_interval: 12
+        scan_interval: 14
 
       - name: "EB7 Power Factor" # 0x007B
         slave: 1
@@ -124,7 +149,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: "%"
         device_class: power_factor
-        scan_interval: 38
+        scan_interval: 44
 
       - name: "EB7 Frequency" # 0x007F
         slave: 1
@@ -135,7 +160,7 @@ modbus:
         precision: 1
         scale: 0.1
         unit_of_measurement: Hz
-        scan_interval: 39
+        scan_interval: 46
 
 # for tariff template
 
@@ -146,7 +171,7 @@ modbus:
         count: 1
         data_type: custom
         structure: ">Bx"
-        scan_interval: 43
+        scan_interval: 48
 
 ### edpbox templates
 
