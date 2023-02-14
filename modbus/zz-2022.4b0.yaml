@@ -4,7 +4,7 @@ modbus:
 
   - name: edpbox9
     type: rtuovertcp
-    host: 10.1.0.37
+    host: 10.1.0.200
     port: 9502
     delay: 1
     timeout: 3
