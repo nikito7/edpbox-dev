@@ -1,11 +1,11 @@
-# edpbox7 package
+# edpbox2 package
 # standard modbus
 # elfin: tcp
 # tasmota: rtuovertcp
 
 modbus:
 
-  - name: edpbox7
+  - name: edpbox2
     type: rtuovertcp #tcp
     host: 10.1.0.200
     port: 9502
@@ -19,7 +19,8 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 T1 Vazio" # 0x0026
+      - name: "EB2 T1 Vazio" # 0x0026
+        unique_id: eb2_t1_vazio
         slave: 1
         address: 38
         input_type: input
@@ -32,7 +33,8 @@ modbus:
         state_class: total_increasing
         scan_interval: 15
 
-      - name: "EB7 T2 Ponta" # 0x0027
+      - name: "EB2 T2 Ponta" # 0x0027
+        unique_id: eb2_t2_ponta
         slave: 1
         address: 39
         input_type: input
@@ -45,7 +47,8 @@ modbus:
         state_class: total_increasing
         scan_interval: 15
 
-      - name: "EB7 T3 Cheias" # 0x0028
+      - name: "EB2 T3 Cheias" # 0x0028
+        unique_id: eb2_t3_cheias
         slave: 1
         address: 40
         input_type: input
@@ -60,7 +63,8 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 Import" # 0x0016
+      - name: "EB2 Import" # 0x0016
+        unique_id: eb2_import
         slave: 1
         address: 22
         input_type: input
@@ -73,7 +77,8 @@ modbus:
         state_class: total_increasing
         scan_interval: 15
 
-      - name: "EB7 Export" # 0x0017
+      - name: "EB2 Export" # 0x0017
+        unique_id: eb2_export
         slave: 1
         address: 23
         input_type: input
@@ -88,7 +93,8 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 Voltage L1" # 0x006C
+      - name: "EB2 Voltage L1" # 0x006C
+        unique_id: eb2_volt
         slave: 1
         address: 108
         input_type: input
@@ -100,7 +106,8 @@ modbus:
         device_class: voltage
         scan_interval: 15
 
-      - name: "EB7 Current L1" # 0x006D
+      - name: "EB2 Current L1" # 0x006D
+        unique_id: eb2_curr
         slave: 1
         address: 109
         input_type: input
@@ -114,7 +121,8 @@ modbus:
 
 ### ### ###
 
-      - name: "EB7 Active Power Import" # 0x0079
+      - name: "EB2 Active Power Import" # 0x0079
+        unique_id: eb2_ActPowImp
         slave: 1
         address: 121
         input_type: input
@@ -127,7 +135,8 @@ modbus:
         state_class: measurement
         scan_interval: 15
 
-      - name: "EB7 Active Power Export" # 0x007A
+      - name: "EB2 Active Power Export" # 0x007A
+        unique_id: eb2_ActPowExp
         slave: 1
         address: 122
         input_type: input
@@ -139,7 +148,8 @@ modbus:
         device_class: power
         scan_interval: 15
 
-      - name: "EB7 Power Factor" # 0x007B
+      - name: "EB2 Power Factor" # 0x007B
+        unique_id: eb2_factor
         slave: 1
         address: 123
         input_type: input
@@ -151,7 +161,8 @@ modbus:
         device_class: power_factor
         scan_interval: 15
 
-      - name: "EB7 Frequency" # 0x007F
+      - name: "EB2 Frequency" # 0x007F
+        unique_id: eb2_freq
         slave: 1
         address: 127
         input_type: input
@@ -164,7 +175,8 @@ modbus:
 
 # for tariff template
 
-      - name: "EB7 0x000B" # Tariff
+      - name: "EB2 0x000B" # Tariff
+        unique_id: eb2_0x000B
         slave: 1
         address: 11
         input_type: input
@@ -179,9 +191,10 @@ template:
 #2
   - sensor:
 ###4
-    - name: "EB7 Tariff"
+    - name: "EB2 Tariff"
+      unique_id: eb2_tariff
       state: >
-        {% set x = states('sensor.eb7_0x000b')|string %}
+        {% set x = states('sensor.eb2_0x000b')|string %}
         {% if x == "1" %}
           {{ "Vazio" }}
         {% elif x == "2" %}
