@@ -1,19 +1,19 @@
-# edpbox1 package
+# edpbox7 package
 # standard modbus
 # elfin: tcp
 # tasmota: rtuovertcp
 
 modbus:
 
-  - name: edpbox1
-    type: rtuovertcp
+  - name: edpbox7
+    type: rtuovertcp #tcp
     host: 10.1.0.200
     port: 9502
     delay: 1
     timeout: 3
-    retries: 3
-    retry_on_empty: true
-    message_wait_milliseconds: 250
+    retries: 1
+    retry_on_empty: false
+    message_wait_milliseconds: 1000
 
     sensors:
 
@@ -30,7 +30,7 @@ modbus:
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 32
+        scan_interval: 15
 
       - name: "EB7 T2 Ponta" # 0x0027
         slave: 1
@@ -43,7 +43,7 @@ modbus:
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 34
+        scan_interval: 15
 
       - name: "EB7 T3 Cheias" # 0x0028
         slave: 1
@@ -56,7 +56,7 @@ modbus:
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 36
+        scan_interval: 15
 
 ### ### ###
 
@@ -71,7 +71,7 @@ modbus:
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 38
+        scan_interval: 15
 
       - name: "EB7 Export" # 0x0017
         slave: 1
@@ -84,7 +84,7 @@ modbus:
         unit_of_measurement: kWh
         device_class: energy
         state_class: total_increasing
-        scan_interval: 42
+        scan_interval: 15
 
 ### ### ###
 
@@ -98,7 +98,7 @@ modbus:
         scale: 0.1
         unit_of_measurement: V
         device_class: voltage
-        scan_interval: 22
+        scan_interval: 15
 
       - name: "EB7 Current L1" # 0x006D
         slave: 1
@@ -110,7 +110,7 @@ modbus:
         scale: 0.1
         unit_of_measurement: A
         device_class: current
-        scan_interval: 24
+        scan_interval: 15
 
 ### ### ###
 
@@ -125,7 +125,7 @@ modbus:
         unit_of_measurement: W
         device_class: power
         state_class: measurement
-        scan_interval: 12
+        scan_interval: 15
 
       - name: "EB7 Active Power Export" # 0x007A
         slave: 1
@@ -137,7 +137,7 @@ modbus:
         scale: 1
         unit_of_measurement: W
         device_class: power
-        scan_interval: 14
+        scan_interval: 15
 
       - name: "EB7 Power Factor" # 0x007B
         slave: 1
@@ -149,7 +149,7 @@ modbus:
         scale: 0.001
         unit_of_measurement: "%"
         device_class: power_factor
-        scan_interval: 44
+        scan_interval: 15
 
       - name: "EB7 Frequency" # 0x007F
         slave: 1
@@ -160,7 +160,7 @@ modbus:
         precision: 1
         scale: 0.1
         unit_of_measurement: Hz
-        scan_interval: 46
+        scan_interval: 15
 
 # for tariff template
 
@@ -171,7 +171,7 @@ modbus:
         count: 1
         data_type: custom
         structure: ">Bx"
-        scan_interval: 48
+        scan_interval: 15
 
 ### edpbox templates
 
