@@ -17,139 +17,50 @@ modbus:
 
 ### ### ###
 
-      - name: "EB1rtu T1 Vazio" # 0x0026
+      - name: "EB7 0x0026" # Vazio Ponta Cheias
         slave: 1
         address: 38
         input_type: input
-        count: 1
-        data_type: uint32
-        precision: 1
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scan_interval: 91
-
-      - name: "EB1rtu T2 Ponta" # 0x0027
-        slave: 1
-        address: 39
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 1
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scan_interval: 92
-
-      - name: "EB1rtu T3 Cheias" # 0x0028
-        slave: 1
-        address: 40
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 1
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scan_interval: 93
+        count: 3
+        data_type: custom
+        structure: ">3I"
+        scan_interval: 31
 
 ### ### ###
 
-      - name: "EB1rtu Import" # 0x0016
+      - name: "EB7 0x0016" Import Export
         slave: 1
         address: 22
         input_type: input
-        count: 1
-        data_type: uint32
-        precision: 1
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scan_interval: 94
-
-      - name: "EB1rtu Export" # 0x0017
-        slave: 1
-        address: 23
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: kWh
-        device_class: energy
-        state_class: total_increasing
-        scan_interval: 95
-
-### ### ###
-
-      - name: "EB1rtu Voltage L1" # 0x006C
-        slave: 1
-        address: 108
-        input_type: input
-        count: 1
-        data_type: uint16
-        precision: 1
-        scale: 0.1
-        unit_of_measurement: V
-        device_class: voltage
-        scan_interval: 31
-
-      - name: "EB1rtu Current L1" # 0x006D
-        slave: 1
-        address: 109
-        input_type: input
-        count: 1
-        data_type: uint16
-        precision: 1
-        scale: 0.1
-        unit_of_measurement: A
-        device_class: current
+        count: 2
+        data_type: custom
+        structure: ">2I"
         scan_interval: 32
 
 ### ### ###
 
-      - name: "EB1rtu Active Power" # 0x0079
+      - name: "EB7 0x006C" Voltage Current
+        slave: 1
+        address: 108
+        input_type: input
+        count: 2
+        data_type: custom
+        structure: ">2h"
+        scan_interval: 21
+
+###
+
+      - name: "EB7 0x0079" Power Import Export PF
         slave: 1
         address: 121
         input_type: input
-        count: 1
-        data_type: uint32
-        precision: 0
-        scale: 1
-        unit_of_measurement: W
-        device_class: power
-        state_class: measurement
+        count: 3
+        data_type: custom
+        structure: ">2IH"
         scan_interval: 11
 
-      - name: "EB1rtu Power Export" # 0x007A
-        slave: 1
-        address: 122
-        input_type: input
-        count: 1
-        data_type: uint32
-        precision: 0
-        scale: 1
-        unit_of_measurement: W
-        device_class: power
-        scan_interval: 12
-
-      - name: "EB1rtu Power Factor" # 0x007B
-        slave: 1
-        address: 123
-        input_type: input
-        count: 1
-        data_type: uint16
-        precision: 3
-        scale: 0.001
-        unit_of_measurement: %
-        device_class: power_factor
-        scan_interval: 38
-
-      - name: "EB1rtu Frequency" # 0x007F
+###
+      - name: "EB7 Frequency" # 0x007F
         slave: 1
         address: 127
         input_type: input
@@ -160,9 +71,9 @@ modbus:
         unit_of_measurement: Hz
         scan_interval: 39
 
-# for tariff template
+###
 
-      - name: "EB1rtu 0x000B" # Tariff
+      - name: "EB7 0x000B" # Tariff
         slave: 1
         address: 11
         input_type: input
@@ -171,7 +82,7 @@ modbus:
         structure: ">Bx"
         scan_interval: 43
 
-### edpbox templates
+### templates
 
 template:
 #2
@@ -179,7 +90,7 @@ template:
 ###4
     - name: "EB1rtu Tariff"
       state: >
-        {% set x = states('sensor.eb1rtu_0x000b')|string %}
+        {% set x = states('sensor.eb7_0x000b')|string %}
         {% if x == "1" %}
           {{ "Vazio" }}
         {% elif x == "2" %}
