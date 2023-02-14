@@ -10,7 +10,6 @@ endif
 
 >W
 
-Bridge Mode
-
+Bridge Mode: RTU over TCP
 
 ;eof
