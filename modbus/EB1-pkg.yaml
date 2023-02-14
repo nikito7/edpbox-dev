@@ -147,7 +147,7 @@ modbus:
         data_type: uint16
         precision: 3
         scale: 0.001
-        unit_of_measurement: %
+        unit_of_measurement: "%"
         device_class: power_factor
         scan_interval: 38
 
