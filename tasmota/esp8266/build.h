@@ -139,7 +139,7 @@
 // tasmota4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 6000
+#define UFSYS_SIZE 5800
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
