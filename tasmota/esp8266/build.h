@@ -1,6 +1,6 @@
 // copy to user_config_override.h
 // sml at the end of file.
-// based in 12.2.0 minimal:
+// based in 12.4.0 minimal:
 // - freeup ram !
 
 // ### ### ###
@@ -78,6 +78,7 @@
 #undef USE_NOVA_SDS                              // Disable support for SDS011 and SDS021 particle concentration sensor
 #undef USE_HPMA                                  // Disable support for Honeywell HPMA115S0 particle concentration sensor
 #undef USE_SR04                                  // Disable support for HC-SR04 ultrasonic devices (+1k code)
+#undef USE_ME007                                 // Disable support for ME007 ultrasonic devices (+1k5 code)
 #undef USE_DYP                                   // Disable support for DYP ME-007 ultrasonic distance sensor, serial port version (+0k5 code)
 #undef USE_SERIAL_BRIDGE                         // Disable support for software Serial Bridge
 #undef USE_MODBUS_BRIDGE                         // Disable support for software Modbus Bridge (+3k code)
