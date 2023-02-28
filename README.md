@@ -24,8 +24,4 @@ https://www.google.pt/search?q=leitor+porta+han
 
 https://www.google.pt/search?q=medidor+porta+han
 
-https://www.google.pt/search?q=easy+han
-
-https://www.google.pt/search?q=easyhan
-
 https://www.google.pt/search?q=easyhan.pt
