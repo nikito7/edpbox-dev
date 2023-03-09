@@ -136,7 +136,7 @@
 #define USE_INFLUXDB
 
 // ### ### ###
-// tasmota4M
+// tasmota-4M
 
 #define USE_UFILESYS
 #define UFSYS_SIZE 5800
