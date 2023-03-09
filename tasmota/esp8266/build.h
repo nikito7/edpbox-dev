@@ -128,7 +128,6 @@
 // ### ### ###
 // changes
 
-#define USE_TASMOTA_DISCOVERY
 #define USE_CUSTOM
 #define USE_DEEPSLEEP
 #define USE_COUNTER
