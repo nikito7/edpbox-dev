@@ -133,6 +133,7 @@
 #define USE_COUNTER
 #define USE_DS18x20
 #define USE_INFLUXDB
+#define USE_PROMETHEUS
 #define USE_UNISHOX_COMPRESSION
 
 // ### ### ###
@@ -157,16 +158,14 @@
 // tcp
 
 #define USE_TCP_BRIDGE
-#define USE_MODBUS_BRIDGE_TCP
-#define USE_MODBUS_BRIDGE
 
 // misc
 
 #define USE_SCRIPT_WEB_DISPLAY
 #define MAX_METERS 1
-#define MAXVARS 60
-#define MAXSVARS 20
-#define MAXFILT 10
+#define MAXVARS 59
+#define MAXSVARS 19
+#define MAXFILT 9
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
 #define USE_GOOGLE_CHARTS
