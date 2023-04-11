@@ -133,6 +133,7 @@
 #define USE_COUNTER
 #define USE_DS18x20
 #define USE_INFLUXDB
+#define USE_UNISHOX_COMPRESSION
 
 // ### ### ###
 // tasmota-4M
