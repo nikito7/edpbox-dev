@@ -4,7 +4,7 @@
 
 ---
 
-Some files moved to:
+Alguns ficheiros movidos para:
 
 https://github.com/nikito7/easyhan/
 
