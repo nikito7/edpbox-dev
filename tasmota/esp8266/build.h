@@ -163,9 +163,9 @@
 
 #define USE_SCRIPT_WEB_DISPLAY
 #define MAX_METERS 1
-#define MAXVARS 59
-#define MAXSVARS 19
-#define MAXFILT 9
+#define MAXVARS 57
+#define MAXSVARS 20
+#define MAXFILT 5
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
 #define USE_GOOGLE_CHARTS
