@@ -133,7 +133,6 @@
 #define USE_COUNTER
 #define USE_DS18x20
 #define USE_INFLUXDB
-#define USE_PROMETHEUS
 #define USE_UNISHOX_COMPRESSION
 
 // ### ### ###
@@ -158,6 +157,7 @@
 // tcp
 
 #define USE_TCP_BRIDGE
+#define USE_MODBUS_BRIDGE_TCP
 
 // misc
 
