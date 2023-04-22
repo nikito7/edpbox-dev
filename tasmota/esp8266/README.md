@@ -7,3 +7,4 @@ OTA:
 ```
 http://u.easyhan.pt/han/tasmota-4M.bin.gz
 ```
+http://u.easyhan.pt/han/
