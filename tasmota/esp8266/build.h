@@ -1,6 +1,6 @@
 // copy to user_config_override.h
 // sml at the end of file.
-// based in 12.4.0 minimal:
+// based in 12.5.0 minimal:
 // - freeup ram !
 
 // ### ### ###
@@ -102,6 +102,7 @@
 #undef USE_TFMINIPLUS                            // Disable support for TFmini Plus (TFmini, TFmini-S) LiDAR modules via UART interface (+0k8)
 #undef USE_HRG15                                 // Disable support for Hydreon RG-15 Solid State Rain sensor (+1k5 code)
 #undef USE_VINDRIKTNING                          // Disable support for IKEA VINDRIKTNING particle concentration sensor (+0k6 code)
+#undef USE_LOX_O2                                // Disable support for LuminOx LOX O2 Sensor
 
 #undef USE_ENERGY_SENSOR                         // Disable energy sensors
 
