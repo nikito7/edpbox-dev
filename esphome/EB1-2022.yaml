@@ -6,8 +6,8 @@
 
 substitutions:
 
-  dev: EB1
-  name: edpbox1
+  dev: EB1test
+  name: edpbox1test
 
 esphome:
 
@@ -16,11 +16,11 @@ esphome:
   #platform: ESP8266
   #board: esp01_1m
 
-  #platform: ESP8266
-  #board: esp07s # 4MB
+  platform: ESP8266
+  board: esp07s # 4MB
 
-  platform: ESP32
-  board: esp32dev
+  #platform: ESP32
+  #board: esp32dev
 
 wifi:
 
@@ -39,14 +39,13 @@ wifi:
 captive_portal:
 
 web_server:
+  local: true
 
 #logger:
 #  level: verbose
 #  baud_rate: 0
 
 api:
-
-  password: !secret api_key
 
 ota:
 
@@ -69,8 +68,8 @@ uart:
 # tfreire 14/5
 
   id: modbus_serial
-  rx_pin: 19
-  tx_pin: 18
+  rx_pin: 3
+  tx_pin: 1
   baud_rate: 9600
   stop_bits: 1
 
@@ -90,10 +89,10 @@ modbus_controller:
 
 sensor:
 
-#  - platform: adc
-#    pin: VCC
-#    name: "${dev} ESP VCC"
-#    # esp8266 only
+  - platform: adc
+    pin: VCC
+    name: "${dev} ESP VCC"
+    # esp8266 only
 
   - platform: template
     name: "${dev} ESP Free Heap"
