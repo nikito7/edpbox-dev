@@ -1,3 +1,7 @@
+https://github.com/nikito7/easyhan/tree/dev/bridge/custom-ha
+
+---
+
 Standard Modbus:
 
 - Modbus TCP
