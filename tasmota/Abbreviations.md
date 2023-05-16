@@ -1,6 +1,11 @@
-'uniq_id':'unique_id',
-'unit_of_meas':'unit_of_measurement',
-'val_tpl':'value_template',
+'uniq_id':'unique_id'
 
-'ids':'identifiers',
-'mf':'manufacturer',
+'unit_of_meas':'unit_of_measurement'
+
+'val_tpl':'value_template'
+
+'ids':'identifiers'
+
+'mf':'manufacturer'
+
+eof
