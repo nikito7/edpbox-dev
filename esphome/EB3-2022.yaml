@@ -65,8 +65,8 @@ uart:
 # tfreire 14/5
 
   id: modbus_serial
-  rx_pin: 1
-  tx_pin: 3
+  rx_pin: 3
+  tx_pin: 1
   baud_rate: 9600
   stop_bits: 1
 
