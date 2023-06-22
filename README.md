@@ -1,3 +1,5 @@
+# Modbus Dev
+
 - Modbus to WiFi dev
 
 - edpbox dev
@@ -28,3 +30,10 @@ https://www.google.com/search?q=medidor+porta+han
 
 https://easyhan.pt
 
+# Donate
+
+https://paypal.me/easyhanpt
+
+Easy HAN RS485 ®
+
+Easy HAN ™
