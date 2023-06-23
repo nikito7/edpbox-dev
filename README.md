@@ -34,6 +34,4 @@ https://easyhan.pt
 
 https://paypal.me/easyhanpt
 
-Easy HAN RS485 ®
-
-Easy HAN ™
+https://patreon.com/user?u=95522534
