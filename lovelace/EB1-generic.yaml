@@ -7,9 +7,9 @@ entities:
     secondary_info: last-updated
   - entity: sensor.eb1_esp_signal
     secondary_info: last-updated
-  - entity: switch.eb1_esp_restart
+  - entity: button.eb1_esp_restart
     secondary_info: last-updated
-  - entity: sensor.eb1_esp_vcc
+  - entity: sensor.eb1_adc_addon
     secondary_info: last-updated
   - entity: sensor.eb1_esp_clock
     secondary_info: last-updated
