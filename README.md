@@ -30,4 +30,4 @@ https://www.google.com/search?q=medidor+porta+han
 
 https://easyhan.pt
 
-https://www.patreon.com/Easy_HAN_PT
+https://www.patreon.com/easyhan
