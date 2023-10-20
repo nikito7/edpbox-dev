@@ -32,4 +32,4 @@ https://www.patreon.com/easyhan
 
 ---
 
-https://www.patreon.com/posts/dev-89360896?utm_medium=sharesheet&utm_source=sharesheet&utm_campaign=postshare_creator&utm_content=join_link
+
