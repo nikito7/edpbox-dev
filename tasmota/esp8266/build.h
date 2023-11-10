@@ -157,6 +157,9 @@
 #define USE_SML_SCRIPT_CMD
 #define SML_MAX_VARS 50
 #define SML_REPLACE_VARS
+#define NO_USE_SML_SPECOPT
+#define NO_USE_SML_DECRYPT
+#define NO_USE_SML_CANBUS
 
 // tcp
 
