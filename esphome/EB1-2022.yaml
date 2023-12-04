@@ -274,7 +274,7 @@ sensor:
     response_size: 4
     accuracy_decimals: 2
     filters:
-      - multiply: 0.01
+      - multiply: 0.001
     unit_of_measurement: "kVA"
     state_class: measurement
 
