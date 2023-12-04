@@ -267,6 +267,7 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Contract T1"
     address: 0x000C
+    force_new_range: true
     register_type: read
     value_type: U_DWORD
     register_count: 1
