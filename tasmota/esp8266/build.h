@@ -1,7 +1,7 @@
 // copy to user_config_override.h
 // sml at the end of file.
 // (include/tasmota_configurations)
-// based in 13.0.0 minimal:
+// based in 13.3.0 minimal:
 // - freeup ram !
 
 // ### ### ###
