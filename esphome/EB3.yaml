@@ -376,7 +376,7 @@ sensor:
     value_type: U_DWORD
     register_count: 1
     response_size: 4
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
@@ -390,7 +390,7 @@ sensor:
     value_type: U_DWORD
     register_count: 1
     response_size: 4
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
@@ -404,7 +404,7 @@ sensor:
     value_type: U_DWORD
     register_count: 1
     response_size: 4
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
@@ -420,7 +420,7 @@ sensor:
     value_type: U_DWORD
     register_count: 1
     response_size: 4
-    accuracy_decimals: 1
+    accuracy_decimals: 3
     filters:
       - multiply: 0.001
     unit_of_measurement: "kWh"
