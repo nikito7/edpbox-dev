@@ -67,10 +67,12 @@ time:
   - platform: homeassistant
     id: esptime
 
-switch:
+button:
 
   - platform: restart
     name: "${dev} ESP Restart"
+
+switch:
 
   - platform: template
     name: "${dev} ESP Polling"
@@ -240,6 +242,20 @@ sensor:
     device_class: power
     unit_of_measurement: "W"
     state_class: measurement
+
+  - platform: modbus_controller
+    name: "${dev} Active Power Export"
+    address: 0x007A
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    state_class: measurement
+
+##
 
   - platform: modbus_controller
     name: "${dev} Active Power L1"
