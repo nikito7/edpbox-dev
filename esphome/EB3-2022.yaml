@@ -405,6 +405,22 @@ sensor:
     state_class: total_increasing
     device_class: energy
 
+### Contract ###
+
+  - platform: modbus_controller
+    name: "${dev} Contract T1"
+    address: 0x000C
+    force_new_range: true
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kVA"
+    state_class: measurement
+
 ### ### ###
 
 text_sensor:
