@@ -48,7 +48,7 @@ wifi:
   password: !secret wifi_key
 
   ap:
-    ssid: "Fallback ${dev}"
+    ssid: "Easy HAN ${dev}"
     password: !secret wifi_key
 
 captive_portal:
@@ -70,10 +70,12 @@ time:
   - platform: homeassistant
     id: esptime
 
-switch:
+button:
 
   - platform: restart
     name: "${dev} ESP Restart"
+
+switch:
 
   - platform: template
     name: "${dev} ESP Polling"
