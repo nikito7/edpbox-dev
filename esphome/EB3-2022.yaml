@@ -43,10 +43,9 @@ web_server:
 #  baud_rate: 0
 
 api:
+  reboot_timeout: 45min
 
 ota:
-
-  password: !secret ota_key
 
 time:
 
