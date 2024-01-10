@@ -22,7 +22,7 @@ esphome:
 wifi:
 
   output_power: 15db
-  domain: .lan
+  #domain: .lan
   # use_address: 10.1.0.36
   # fix ota dns error
 
@@ -69,6 +69,7 @@ uart:
   tx_pin: 1
   baud_rate: 9600
   stop_bits: 1
+  #stop_bits: 2 # ziv
 
 modbus:
 
