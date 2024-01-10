@@ -180,7 +180,7 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
-    name: "${dev} Current Total"
+    name: "${dev} Current"
     address: 0x0072
     unit_of_measurement: "A"
     register_type: read
