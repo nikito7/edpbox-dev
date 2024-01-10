@@ -186,7 +186,7 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Power Factor"
     address: 0x007B
-    unit_of_measurement: "pu"
+    unit_of_measurement: ""
     register_type: read
     value_type: U_WORD
     accuracy_decimals: 3
