@@ -9,6 +9,15 @@ substitutions:
   dev: EB3test
   name: edpbox3test
 
+interval:
+
+  - interval: 11s
+    then:
+      - lambda: |-
+          if (id(edpbox_polling).state) {
+              id(edpbox).update();
+          }
+
 esphome:
 
   name: ${name}
@@ -18,6 +27,12 @@ esphome:
 
   platform: ESP8266
   board: esp07s # 4MB
+
+  on_boot:
+    priority: -500
+    then:
+      - delay: 5s
+      - switch.turn_on: edpbox_polling
 
 wifi:
 
@@ -30,7 +45,7 @@ wifi:
   password: !secret wifi_key
 
   ap:
-    ssid: "Fallback ${dev}"
+    ssid: "Easy HAN ${dev}"
     password: !secret wifi_key
 
 captive_portal:
@@ -57,6 +72,11 @@ switch:
   - platform: restart
     name: "${dev} ESP Restart"
 
+  - platform: template
+    name: "${dev} ESP Polling"
+    id: "edpbox_polling"
+    optimistic: yes
+
 uart:
 
 # esp32 19/18
@@ -79,7 +99,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 11s
+    update_interval: never
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
