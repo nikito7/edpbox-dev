@@ -34,7 +34,7 @@ esphome:
   on_boot:
     priority: -500
     then:
-      - delay: 5s
+      - delay: 30s
       - switch.turn_on: edpbox_polling
 
 wifi:
@@ -100,6 +100,7 @@ modbus:
   #flow_control_pin: 5
   id: modbus1
   uart_id: modbus_serial
+  send_wait_time: 350ms
 
 modbus_controller:
 
@@ -108,12 +109,13 @@ modbus_controller:
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
+    offline_skip_updates: 10
 
 sensor:
 
   - platform: adc
     pin: VCC
-    name: "${dev} ESP VCC"
+    name: "${dev} Adc Addon"
     # esp8266 only
 
   - platform: template
