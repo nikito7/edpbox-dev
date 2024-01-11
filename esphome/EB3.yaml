@@ -31,7 +31,7 @@ esphome:
   on_boot:
     priority: -500
     then:
-      - delay: 5s
+      - delay: 30s
       - switch.turn_on: edpbox_polling
 
 wifi:
