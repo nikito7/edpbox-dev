@@ -11,7 +11,7 @@ substitutions:
 
 interval:
 
-  - interval: 11s
+  - interval: 9s
     then:
       - lambda: |-
           if (id(edpbox_polling).state) {
@@ -118,12 +118,15 @@ sensor:
 
   - platform: adc
     # internal VCC esp8266 only
-    pin: VCC
+    # pin: VCC
+    pin: A0
+    lambda: |-
+      return x/1024.0*6;
     name: "${dev} Adc Addon"
     accuracy_decimals: 3
     device_class: voltage
     state_class: measurement
-    update_interval: 12s
+    update_interval: 11s
 
   - platform: template
     name: "${dev} ESP Free Heap"
@@ -133,7 +136,7 @@ sensor:
     unit_of_measurement: "kB"
     icon: mdi:chip
     state_class: measurement
-    update_interval: 12s
+    update_interval: 11s
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
