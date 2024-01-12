@@ -121,7 +121,7 @@ sensor:
     # pin: VCC
     pin: A0
     filters:
-      - lambda: return x/1024.0*6;
+      - multiply: 6.0
     name: "${dev} Adc Addon"
     accuracy_decimals: 3
     device_class: voltage
