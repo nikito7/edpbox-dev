@@ -140,6 +140,7 @@ sensor:
       - lambda: return x/3600;
     unit_of_measurement: "h"
     accuracy_decimals: 1
+    device_class: ""
 
 ### ### ###
 
