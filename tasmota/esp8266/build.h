@@ -184,8 +184,8 @@
 
 // Default Configs
 
-#define MQTT_USER none
-#define MQTT_PASS none
+#define MQTT_USER "none"
+#define MQTT_PASS "none"
 
 // Avoid users mistakes
 
