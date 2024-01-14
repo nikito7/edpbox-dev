@@ -182,4 +182,13 @@
 
 // #define USE_SCRIPT_SUB_COMMAND // UfsRun issues?!
 
+// Default Configs
+
+#define MQTT_USER none
+#define MQTT_PASS none
+
+// Avoid users mistakes
+
+#define OTA_URL "http://u.easyhan.pt/han/tasmota-4M.bin.gz"
+
 // EOF
