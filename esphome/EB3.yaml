@@ -121,9 +121,9 @@ sensor:
     # pin: VCC
     pin: A0
     filters:
-      - multiply: 6.3
+      - multiply: 6.0
     name: "${dev} Adc Addon"
-    accuracy_decimals: 3
+    accuracy_decimals: 2
     device_class: voltage
     state_class: measurement
     update_interval: 11s
@@ -242,34 +242,19 @@ sensor:
 ### Active Power & Export ###
 
   - platform: modbus_controller
-    name: "${dev} Active Power Import"
-    address: 0x0079
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    response_size: 4
-    accuracy_decimals: 0
-    device_class: power
-    unit_of_measurement: "W"
-    state_class: measurement
-
-  - platform: modbus_controller
-    name: "${dev} Active Power Export"
-    address: 0x007A
-    register_type: read
-    value_type: U_DWORD
-    register_count: 1
-    response_size: 4
-    accuracy_decimals: 0
-    device_class: power
-    unit_of_measurement: "W"
-    state_class: measurement
-
-##
-
-  - platform: modbus_controller
     name: "${dev} Active Power L1"
     address: 0x0073
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    state_class: measurement
+
+    name: "${dev} Active Power L1 Export"
+    address: 0x0074
     register_type: read
     value_type: U_DWORD
     register_count: 1
@@ -292,8 +277,44 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
+    name: "${dev} Active Power L2 Export"
+    address: 0x0076
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    state_class: measurement
+
+  - platform: modbus_controller
     name: "${dev} Active Power L3"
     address: 0x0077
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    state_class: measurement
+
+  - platform: modbus_controller
+    name: "${dev} Active Power L3 Export"
+    address: 0x0078
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 0
+    device_class: power
+    unit_of_measurement: "W"
+    state_class: measurement
+
+  - platform: modbus_controller
+    name: "${dev} Active Power Import"
+    address: 0x0079
     register_type: read
     value_type: U_DWORD
     register_count: 1
