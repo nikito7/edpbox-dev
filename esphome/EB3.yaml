@@ -253,7 +253,8 @@ sensor:
     unit_of_measurement: "W"
     state_class: measurement
 
-  - name: "${dev} Active Power L1 Export"
+  - platform: modbus_controller
+    name: "${dev} Active Power L1 Export"
     address: 0x0074
     register_type: read
     value_type: U_DWORD
