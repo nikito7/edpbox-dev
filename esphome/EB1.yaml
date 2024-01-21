@@ -317,6 +317,46 @@ sensor:
     unit_of_measurement: "kVA"
     state_class: measurement
 
+### Load Profile ###
+
+  - platform: template
+    name: "${dev} LP Import Inc"
+    id: lp3_imp
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh/15m"
+    state_class: measurement
+    icon: mdi:counter
+
+  - platform: template
+    name: "${dev} LP Export Inc"
+    id: lp6_exp
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh/15m"
+    state_class: measurement
+    icon: mdi:counter
+
+  - platform: modbus_controller
+    name: "${dev} LP Minutes"
+    custom_command: [0x1, 0x44, 0x6, 0x1]
+    register_count: 1
+    response_size: 33
+    lambda: |-
+      uint16_t lpYY = data[2] << 8 | data[3];
+      uint8_t lpMM = data[8];
+      uint32_t lpIMP = data[15] << 24 | data[16] << 16 | data[17] << 8 | data[18]; 
+      uint32_t lpEXP = data[27] << 24 | data[28] << 16 | data[29] << 8 | data[30]; 
+      id(lp3_imp).publish_state(lpIMP);
+      id(lp6_exp).publish_state(lpEXP);
+      return lpMM;
+    accuracy_decimals: 0
+    unit_of_measurement: "m"
+    state_class: measurement
+    icon: mdi:calendar
+
 ### ### ###
 
 text_sensor:
