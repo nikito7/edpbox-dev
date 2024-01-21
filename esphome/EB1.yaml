@@ -125,10 +125,12 @@ sensor:
       return heap / 1024.0;
     unit_of_measurement: "kB"
     icon: mdi:chip
+    state_class: measurement
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
     unit_of_measurement: "dB"
+    state_class: measurement
 
   - platform: uptime
     name: "${dev} ESP Uptime"
@@ -152,6 +154,7 @@ sensor:
     filters:
       - multiply: 0.1
     device_class: voltage
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Current L1"
@@ -163,6 +166,7 @@ sensor:
     filters:
       - multiply: 0.1
     device_class: current
+    state_class: measurement
 
 ### Active Power & Power Factor ###
 
@@ -176,6 +180,7 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Active Power Export"
@@ -187,6 +192,7 @@ sensor:
     accuracy_decimals: 0
     device_class: power
     unit_of_measurement: "W"
+    state_class: measurement
 
   - platform: modbus_controller
     name: "${dev} Power Factor"
@@ -198,6 +204,7 @@ sensor:
     filters:
       - multiply: 0.001
     device_class: power_factor
+    state_class: measurement
 
 ### Frequency ###
 
@@ -211,6 +218,7 @@ sensor:
     filters:
       - multiply: 0.1
     icon: "mdi:pulse"
+    state_class: measurement
 
 ### Total Energy Tariffs ###
 
