@@ -82,6 +82,12 @@ switch:
     id: "edpbox_polling"
     optimistic: yes
 
+  - platform: gpio
+    id: led_pin
+    pin:
+      number: 2
+      inverted: yes
+
 uart:
 
 # esp32 19/18
@@ -340,6 +346,10 @@ text_sensor:
         return {buffer};
     on_value:
       - then:
+        - switch.turn_on: led_pin
+        - delay: 50ms
+        - delay: 50ms
+        - switch.turn_off: led_pin
         - lambda: |-
             char str[25];
             time_t currTime = id(esptime).now().timestamp;
