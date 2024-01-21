@@ -11,7 +11,7 @@ substitutions:
 
 interval:
 
-  - interval: 9s
+  - interval: 11s
     then:
       - lambda: |-
           if (id(edpbox_polling).state) {
@@ -123,7 +123,7 @@ sensor:
     filters:
       - multiply: 6.0
     name: "${dev} Adc Addon"
-    accuracy_decimals: 2
+    accuracy_decimals: 3
     device_class: voltage
     state_class: measurement
     update_interval: 11s
@@ -559,7 +559,8 @@ text_sensor:
     on_value:
       - then:
         - switch.turn_on: led_pin
-        - delay: 150ms
+        - delay: 50ms
+        - delay: 50ms
         - switch.turn_off: led_pin
         - lambda: |-
             char str[25];
