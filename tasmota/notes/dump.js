@@ -25,7 +25,7 @@ if cnt>end
 then
 now=cnt
 hex=hx(cnt)
-cmd="014506"+hex+"01"
+cmd="0145060000"+hex+"01"
 res=sml(1 3 cmd)
 cnt-=1
 endif
