@@ -1,4 +1,4 @@
-# 2024.02.03.1512
+# 2024.02.03.2055
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -516,7 +516,7 @@ sensor:
 ### Load Profile ###
 
   - platform: template
-    name: "${dev} LP Import Inc"
+    name: "${dev} LP3 Import Inc"
     id: lp3_imp
     accuracy_decimals: 3
     filters:
@@ -526,7 +526,7 @@ sensor:
     icon: mdi:counter
 
   - platform: template
-    name: "${dev} LP Export Inc"
+    name: "${dev} LP6 Export Inc"
     id: lp6_exp
     accuracy_decimals: 3
     filters:
@@ -534,24 +534,6 @@ sensor:
     unit_of_measurement: "kWh/15m"
     state_class: measurement
     icon: mdi:counter
-
-  - platform: modbus_controller
-    name: "${dev} LP Minutes"
-    custom_command: [0x1, 0x44, 0x6, 0x1]
-    register_count: 1
-    response_size: 33
-    lambda: |-
-      uint16_t lpYY = data[2] << 8 | data[3];
-      uint8_t lpMM = data[8];
-      uint32_t lpIMP = data[15] << 24 | data[16] << 16 | data[17] << 8 | data[18]; 
-      uint32_t lpEXP = data[27] << 24 | data[28] << 16 | data[29] << 8 | data[30]; 
-      id(lp3_imp).publish_state(lpIMP);
-      id(lp6_exp).publish_state(lpEXP);
-      return lpMM;
-    accuracy_decimals: 0
-    unit_of_measurement: "m"
-    state_class: measurement
-    icon: mdi:calendar
 
 ### ### ###
 
@@ -583,14 +565,34 @@ text_sensor:
     on_value:
       - then:
         - switch.turn_on: led_pin
-        - delay: 50ms
-        - delay: 50ms
+        - delay: 30ms
         - switch.turn_off: led_pin
         - lambda: |-
             char str[25];
             time_t currTime = id(esptime).now().timestamp;
             strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
             id(esp_clock).publish_state({str});
+###
+
+  - platform: modbus_controller
+    name: "${dev} LP1 Date Time"
+    custom_command: [0x1, 0x44, 0x6, 0x1]
+    register_count: 1
+    response_size: 34
+    lambda: |-
+      uint16_t lpYY = data[2] << 8 | data[3];
+      uint8_t lpMT = data[4]
+      uint8_t lpDD = data[5]
+      uint8_t lpHH = data[7]
+      uint8_t lpMM = data[8];
+      uint32_t lpIMP = data[15] << 24 | data[16] << 16 | data[17] << 8 | data[18]; 
+      uint32_t lpEXP = data[27] << 24 | data[28] << 16 | data[29] << 8 | data[30]; 
+      id(lp3_imp).publish_state(lpIMP);
+      id(lp6_exp).publish_state(lpEXP);
+      char lpclk[20];
+      sprintf(lpclk,"%04d%02d%02dT%02d%02d",lpYY,lpMT,lpDD,lpHH,lpMM,);
+      return {lpclk};
+    icon: mdi:calendar
 
 ###
 
