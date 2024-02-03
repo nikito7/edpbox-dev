@@ -1,4 +1,4 @@
-# 2024.02.03.1333
+# 2024.02.03.1342
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -352,13 +352,13 @@ text_sensor:
     address: 0x0001
     register_count: 1
     response_size: 12
-    raw_encode: HEXBYTES
+    raw_encode: NONE
     icon: mdi:clock
     lambda: |-
         uint8_t hh, mm, ss;
-        hh = data[7];
-        mm = data[8];
-        ss = data[9];
+        hh = data[9];
+        mm = data[10];
+        ss = data[11];
         char ebclk[10];
         sprintf(ebclk,"%02d:%02d:%02d",hh,mm,ss);
         return {ebclk};
