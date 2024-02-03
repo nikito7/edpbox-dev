@@ -9,15 +9,6 @@ substitutions:
   dev: EB3test
   name: edpbox3test
 
-interval:
-
-  - interval: 11s
-    then:
-      - lambda: |-
-          if (id(edpbox_polling).state) {
-              id(edpbox).update();
-          }
-
 esphome:
 
   name: ${name}
@@ -28,12 +19,6 @@ esphome:
   platform: ESP8266
   board: esp07s # 4MB
 
-  on_boot:
-    priority: -500
-    then:
-      - delay: 30s
-      - switch.turn_on: edpbox_polling
-
 wifi:
 
   output_power: 15db
@@ -41,24 +26,25 @@ wifi:
   # use_address: 10.1.0.36
   # fix ota dns error
 
-  ssid: !secret wifi_ssid
-  password: !secret wifi_key
+  #ssid: !secret wifi_ssid
+  #password: !secret wifi_key
 
   ap:
     ssid: "Easy HAN ${dev}"
-    password: !secret wifi_key
+    password: edpbox123
 
 captive_portal:
 
 web_server:
   local: true
 
+# não ligar com o web_server
 #logger:
 #  level: verbose
 #  baud_rate: 0
 
 api:
-  reboot_timeout: 45min
+  reboot_timeout: 30min
 
 ota:
 
@@ -73,11 +59,6 @@ button:
     name: "${dev} ESP Restart"
 
 switch:
-
-  - platform: template
-    name: "${dev} ESP Polling"
-    id: "edpbox_polling"
-    optimistic: yes
 
   - platform: gpio
     id: led_pin
@@ -108,25 +89,24 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: never
+    update_interval: 9s
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
-    offline_skip_updates: 20
+    offline_skip_updates: 15
 
 sensor:
 
-  - platform: adc
-    # internal VCC esp8266 only
-    # pin: VCC
-    pin: A0
-    filters:
-      - multiply: 6.0
-    name: "${dev} Adc Addon"
-    accuracy_decimals: 3
-    device_class: voltage
-    state_class: measurement
-    update_interval: 11s
+#  - platform: adc
+#    # internal VCC esp8266 only
+#    # pin: VCC
+#    pin: A0
+#    filters:
+#      - multiply: 6.0
+#    name: "${dev} Adc Addon"
+#    accuracy_decimals: 3
+#    device_class: voltage
+#    state_class: measurement
 
   - platform: template
     name: "${dev} ESP Free Heap"
@@ -136,7 +116,6 @@ sensor:
     unit_of_measurement: "kB"
     icon: mdi:chip
     state_class: measurement
-    update_interval: 11s
 
   - platform: wifi_signal
     name: "${dev} ESP Signal"
