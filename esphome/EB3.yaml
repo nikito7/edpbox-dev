@@ -94,7 +94,7 @@ modbus_controller:
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
-    offline_skip_updates: 15
+    offline_skip_updates: 25
 
 sensor:
 
