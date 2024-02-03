@@ -1,4 +1,4 @@
-# 2024.02.03.2113
+# 2024.02.03.2117
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -590,7 +590,7 @@ text_sensor:
       uint32_t lpEXP = data[27] << 24 | data[28] << 16 | data[29] << 8 | data[30]; 
       id(lp3_imp).publish_state(lpIMP);
       id(lp6_exp).publish_state(lpEXP);
-      char lpclk[20];
+      char lpclk[25];
       sprintf(lpclk,"%04d-%02d-%02dT%02d:%02d",lpYY,lpMT,lpDD,lpHH,lpMM);
       return {lpclk};
     icon: mdi:calendar
