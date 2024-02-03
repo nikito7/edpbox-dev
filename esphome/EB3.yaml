@@ -1,4 +1,4 @@
-# 2024.02.03.2055
+# 2024.02.03.2059
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -581,16 +581,16 @@ text_sensor:
     response_size: 34
     lambda: |-
       uint16_t lpYY = data[2] << 8 | data[3];
-      uint8_t lpMT = data[4]
-      uint8_t lpDD = data[5]
-      uint8_t lpHH = data[7]
+      uint8_t lpMT = data[4];
+      uint8_t lpDD = data[5];
+      uint8_t lpHH = data[7];
       uint8_t lpMM = data[8];
       uint32_t lpIMP = data[15] << 24 | data[16] << 16 | data[17] << 8 | data[18]; 
       uint32_t lpEXP = data[27] << 24 | data[28] << 16 | data[29] << 8 | data[30]; 
       id(lp3_imp).publish_state(lpIMP);
       id(lp6_exp).publish_state(lpEXP);
       char lpclk[20];
-      sprintf(lpclk,"%04d%02d%02dT%02d%02d",lpYY,lpMT,lpDD,lpHH,lpMM,);
+      sprintf(lpclk,"%04d%02d%02dT%02d%02d",lpYY,lpMT,lpDD,lpHH,lpMM);
       return {lpclk};
     icon: mdi:calendar
 
