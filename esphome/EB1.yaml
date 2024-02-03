@@ -355,13 +355,12 @@ text_sensor:
     raw_encode: HEXBYTES
     icon: mdi:clock
     lambda: |-
-        uint8_t hh=0,mm=0,ss=0;
-        hh = esphome::modbus_controller::byte_from_hex_str(x,5);
-        mm = esphome::modbus_controller::byte_from_hex_str(x,6);
-        ss = esphome::modbus_controller::byte_from_hex_str(x,7);
-        char buffer[20];
-        sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
-        return {buffer};
+        hh = data[7];
+        mm = data[8];
+        ss = data[9];
+        char ebclk[10];
+        sprintf(ebclk,"%02d:%02d:%02d",hh,mm,ss);
+        return {ebclk};
     on_value:
       - then:
         - switch.turn_on: led_pin
