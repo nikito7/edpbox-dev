@@ -453,6 +453,50 @@ sensor:
     state_class: total_increasing
     device_class: energy
 
+### Total Energy L ###
+
+  - platform: modbus_controller
+    name: "${dev} Import L1"
+    address: 0x001C
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller
+    name: "${dev} Import L2"
+    address: 0x001D
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
+  - platform: modbus_controller
+    name: "${dev} Import L3"
+    address: 0x001E
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
+
 ### Contract ###
 
   - platform: modbus_controller
