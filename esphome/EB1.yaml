@@ -1,4 +1,4 @@
-# 2024.02.03.1342
+# 2024.02.03.1346
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -359,7 +359,7 @@ text_sensor:
         hh = data[9];
         mm = data[10];
         ss = data[11];
-        char ebclk[10];
+        char ebclk[20];
         sprintf(ebclk,"%02d:%02d:%02d",hh,mm,ss);
         return {ebclk};
     on_value:
