@@ -1,4 +1,4 @@
-# 2024.02.03.1334
+# 2024.02.03.1404
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -39,7 +39,7 @@ captive_portal:
 web_server:
   local: true
 
-# não ligar com o web_server
+# não usar com o web_server
 #logger:
 #  level: verbose
 #  baud_rate: 0
@@ -529,13 +529,13 @@ text_sensor:
     raw_encode: HEXBYTES
     icon: mdi:clock
     lambda: |-
-        uint8_t hh=0,mm=0,ss=0;
-        hh = esphome::modbus_controller::byte_from_hex_str(x,5);
-        mm = esphome::modbus_controller::byte_from_hex_str(x,6);
-        ss = esphome::modbus_controller::byte_from_hex_str(x,7);
-        char buffer[20];
-        sprintf(buffer,"%02d:%02d:%02d",hh,mm,ss);
-        return {buffer};
+        uint8_t hh, mm, ss;
+        hh = data[5];
+        mm = data[6];
+        ss = data[7];
+        char ebclk[20];
+        sprintf(ebclk,"%02d:%02d:%02d",hh,mm,ss);
+        return {ebclk};
     on_value:
       - then:
         - switch.turn_on: led_pin
