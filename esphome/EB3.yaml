@@ -1,4 +1,4 @@
-# 2024.02.03.2059
+# 2024.02.03.2113
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -512,6 +512,7 @@ sensor:
       - multiply: 0.001
     unit_of_measurement: "kVA"
     state_class: measurement
+    icon: mdi:flash
 
 ### Load Profile ###
 
@@ -590,7 +591,7 @@ text_sensor:
       id(lp3_imp).publish_state(lpIMP);
       id(lp6_exp).publish_state(lpEXP);
       char lpclk[20];
-      sprintf(lpclk,"%04d%02d%02dT%02d%02d",lpYY,lpMT,lpDD,lpHH,lpMM);
+      sprintf(lpclk,"%04d-%02d-%02dT%02d:%02d",lpYY,lpMT,lpDD,lpHH,lpMM);
       return {lpclk};
     icon: mdi:calendar
 
