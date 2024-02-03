@@ -1,4 +1,4 @@
-# 2024.02.03.1351
+# 2024.02.03.1356
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -356,9 +356,9 @@ text_sensor:
     icon: mdi:clock
     lambda: |-
         uint8_t hh, mm, ss;
-        hh = data[7];
-        mm = data[8];
-        ss = data[9];
+        hh = data[5];
+        mm = data[6];
+        ss = data[7];
         char ebclk[20];
         sprintf(ebclk,"%02d:%02d:%02d",hh,mm,ss);
         return {ebclk};
