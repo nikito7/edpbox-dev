@@ -354,6 +354,7 @@ text_sensor:
     raw_encode: HEXBYTES
     icon: mdi:clock
     lambda: |-
+        uint8_t hh, mm, ss;
         hh = data[7];
         mm = data[8];
         ss = data[9];
