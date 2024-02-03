@@ -9,33 +9,15 @@ substitutions:
   dev: EB1test
   name: edpbox1test
 
-interval:
-
-  - interval: 11s
-    then:
-      - lambda: |-
-          if (id(edpbox_polling).state) {
-              id(edpbox).update();
-          }
-
 esphome:
 
   name: ${name}
-
-  #platform: ESP8266
-  #board: esp01_1m
 
   platform: ESP8266
   board: esp07s # 4MB
 
   #platform: ESP32
   #board: esp32dev
-
-  on_boot:
-    priority: -500
-    then:
-      - delay: 30s
-      - switch.turn_on: edpbox_polling
 
 wifi:
 
@@ -44,24 +26,25 @@ wifi:
   # use_address: 10.3.0.142
   # fix ota dns error
 
-  ssid: !secret wifi_ssid
-  password: !secret wifi_key
+  #ssid: !secret wifi_ssid
+  #password: !secret wifi_key
 
   ap:
     ssid: "Easy HAN ${dev}"
-    password: !secret wifi_key
+    password: edpbox123
 
 captive_portal:
 
 web_server:
   local: true
 
+# não usar com web_server
 #logger:
 #  level: verbose
 #  baud_rate: 0
 
 api:
-  reboot_timeout: 45min
+  reboot_timeout: 30min
 
 ota:
 
@@ -76,11 +59,6 @@ button:
     name: "${dev} ESP Restart"
 
 switch:
-
-  - platform: template
-    name: "${dev} ESP Polling"
-    id: "edpbox_polling"
-    optimistic: yes
 
   - platform: gpio
     id: led_pin
@@ -111,18 +89,18 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: never
+    update_interval: 9
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
-    offline_skip_updates: 20
+    offline_skip_updates: 15
 
 sensor:
 
-  - platform: adc
-    pin: VCC
-    name: "${dev} Adc Addon"
-    # esp8266 only
+#  - platform: adc
+#    pin: VCC
+#    name: "${dev} Adc Addon"
+#    # esp8266 only
 
   - platform: template
     name: "${dev} ESP Free Heap"
