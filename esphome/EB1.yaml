@@ -1,4 +1,4 @@
-# 2024.02.04.2248
+# 2024.02.04.2314
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -28,6 +28,12 @@ esphome:
 
   #platform: ESP32
   #board: esp32dev
+  
+  on_boot:
+    priority: -500
+    then:
+      - delay: 15s
+      - switch.turn_on: edpbox_polling
 
 wifi:
 
