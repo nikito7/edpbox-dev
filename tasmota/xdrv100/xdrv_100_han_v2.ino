@@ -17,7 +17,7 @@ uint16_t hanDTT = 0;
 bool hanWork = true;
 uint32_t hanDelay = 0;
 uint32_t hanDelayWait = 900;
-uint32_t hanDelayError = 66666;
+uint32_t hanDelayError = 1000;
 uint8_t hanIndex = 1;
 uint32_t lastRead = 0;
 uint8_t hanCode = 0;
@@ -436,7 +436,7 @@ void HanDoWork(void) {
     uint8_t fPort = 0x01;
     uint32_t devID = ESP.getChipId();
 
-    hanDelay = (hanDelayWait * 5);
+    hanDelay = (hanDelayWait * 1);
     lastRead = millis();
     hanWork = false;
     hanIndex++;
@@ -451,13 +451,6 @@ void HanDoWork(void) {
 
 } // end HanDoWork
 
-const char HTTP_HAN[] PROGMEM = "{s}EB%d Voltage L1"
-                                "{m}%3_f V"
-                                "{e}"
-                                "{s}EB%d Current L1"
-                                "{m}%3_f V"
-                                "{e}";
-
 void HanJson(bool json) {
 
   float hvl1 = hanVL1 / 10.0f;
@@ -465,10 +458,11 @@ void HanJson(bool json) {
 
 
   if (json) {
-    ResponseAppend_P(PSTR(",\"EB%d\":{\"VL1\":%0.1f,\"CL1\":%0.1f}"), hanEB,
-                     hanVL1, hanCL1);
+    ResponseAppend_P(",\"EB%d\":{\"VL1\":%1_f,\"CL1\":%1_f}", hanEB,
+                     &hvl1, &hcl1);
   } else {
-    WSContentSend_PD(HTTP_HAN, hanEB, &hvl1, hanEB, &hcl1);
+    WSContentSend_PD("{s}EB%d Voltage L1 {m} %1_f V{e}",hanEB,&hvl1);
+    WSContentSend_PD("{s}EB%d Current L1 {m} %1_f V{e}",hanEB,&hcl1);
   }
 
 } // HanWeb
