@@ -1,4 +1,4 @@
-# 2024.02.04.2253
+# 2024.02.04.2307
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -28,6 +28,12 @@ esphome:
 
   platform: ESP8266
   board: esp07s # 4MB
+  
+  on_boot:
+    priority: -500
+    then:
+      - delay: 15s
+      - switch.turn_on: edpbox_polling
 
 wifi:
 
