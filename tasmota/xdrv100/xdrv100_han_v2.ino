@@ -1,6 +1,6 @@
 #ifdef USE_HAN_V2
 
-#warning **** HAN Driver is included... ****
+#warning **** HAN_V2 Driver is included... ****
 
 #define XDRV_100 100
 
@@ -474,6 +474,8 @@ bool Xdrv100(uint32_t function) {
 
   return result;
 }
+
+#warning **** HAN_V2 Driver EOF! ****
 
 #endif // USE_HAN_V2
 
