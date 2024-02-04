@@ -1,4 +1,4 @@
-# 2024.02.03.2123
+# 2024.02.04.2245
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -324,8 +324,13 @@ text_sensor:
 
   - platform: template
     name: "${dev} ESP Clock"
-    id: esp_clock
     icon: mdi:clock
+    lambda: |-
+      char str[25];
+      time_t currTime = id(esptime).now().timestamp;
+      strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
+      return {str};
+    update_interval: 9s
 
 ###
 
@@ -350,11 +355,6 @@ text_sensor:
         - switch.turn_on: led_pin
         - delay: 30ms
         - switch.turn_off: led_pin
-        - lambda: |-
-            char str[25];
-            time_t currTime = id(esptime).now().timestamp;
-            strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
-            id(esp_clock).publish_state({str});
 
 ###
 
