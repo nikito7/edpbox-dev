@@ -1,4 +1,4 @@
-# 2024.02.04.2245
+# 2024.02.04.2248
 # Change to your:
 # - board
 # - adc sensor ( or remove )
@@ -9,6 +9,15 @@ substitutions:
 
   dev: EB1test
   name: edpbox1test
+
+interval:
+
+  - interval: 9s
+    then:
+      - lambda: |-
+          if (id(edpbox_polling).state) {
+              id(edpbox).update();
+          }
 
 esphome:
 
@@ -66,6 +75,11 @@ switch:
       number: 2
       inverted: yes
 
+  - platform: template
+    name: "${dev} ESP Polling"
+    id: "edpbox_polling"
+    optimistic: yes
+
 uart:
 
 # esp32 19/18
@@ -89,7 +103,7 @@ modbus:
 modbus_controller:
 
   - id: edpbox
-    update_interval: 9s
+    update_interval: never
     address: 0x1
     command_throttle: 150ms
     setup_priority: -10
