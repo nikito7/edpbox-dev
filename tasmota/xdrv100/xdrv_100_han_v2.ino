@@ -214,7 +214,10 @@ void HanDoWork(void) {
       hanSS = node.getResponseBuffer(3) & 0xFF;
       hanBlink();
       hanDelay = hanDelayWait;
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: %02d:%02d:%02d !"), hanHH, hanMM, hanSS);
     } else {
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error %d !"), hRes);
+
       hanERR++;
       setDelayError(hRes);
     }
@@ -448,6 +451,28 @@ void HanDoWork(void) {
 
 } // end HanDoWork
 
+const char HTTP_HAN[] PROGMEM = "{s}EB%d Voltage L1"
+                                "{m}%3_f V"
+                                "{e}"
+                                "{s}EB%d Current L1"
+                                "{m}%3_f V"
+                                "{e}";
+
+void HanJson(bool json) {
+
+  float hvl1 = hanVL1 / 10.0f;
+  float hcl1 = hanCL1 / 10.0f;
+
+
+  if (json) {
+    ResponseAppend_P(PSTR(",\"EB%d\":{\"VL1\":%0.1f,\"CL1\":%0.1f}"), hanEB,
+                     hanVL1, hanCL1);
+  } else {
+    WSContentSend_PD(HTTP_HAN, hanEB, &hvl1, hanEB, &hcl1);
+  }
+
+} // HanWeb
+
 /********************************************\
  * Interface
 \********************************************/
@@ -462,13 +487,17 @@ bool Xdrv100(uint32_t function) {
   } else if (initSuccess) {
 
     switch (function) {
-    // Select suitable interval for polling your function
     case FUNC_EVERY_SECOND:
-      //    case FUNC_EVERY_250_MSECOND:
-      //    case FUNC_EVERY_200_MSECOND:
-      //    case FUNC_EVERY_100_MSECOND:
       HanDoWork();
       break;
+    case FUNC_JSON_APPEND:
+      HanJson(true);
+      break;
+#ifdef USE_WEBSERVER
+    case FUNC_WEB_SENSOR:
+      HanJson(false);
+      break;
+#endif // USE_WEBSERVER
     }
   }
 
@@ -478,4 +507,3 @@ bool Xdrv100(uint32_t function) {
 #warning **** HAN_V2 Driver EOF! ****
 
 #endif // USE_HAN_V2
-
