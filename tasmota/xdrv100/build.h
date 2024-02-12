@@ -143,7 +143,7 @@
 // tasmota-4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 5900
+#define UFSYS_SIZE 4096
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
@@ -170,8 +170,6 @@
 #define MQTT_USER "none"
 #undef MQTT_PASS
 #define MQTT_PASS "none"
-
-// Avoid users mistakes
 
 #undef OTA_URL
 #define OTA_URL "http://u.easyhan.pt/v2/tasmota-4M.bin.gz"
