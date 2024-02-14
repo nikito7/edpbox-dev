@@ -131,9 +131,9 @@
 // changes
 
 #undef USE_ADC_VCC
-#define USE_CUSTOM
-#define USE_COUNTER
-#define USE_DS18x20
+// #define USE_CUSTOM
+// #define USE_COUNTER
+// #define USE_DS18x20
 #define USE_INFLUXDB
 #define USE_UNISHOX_COMPRESSION
 // #define USE_DEEPSLEEP
@@ -143,7 +143,7 @@
 // tasmota-4M
 
 #define USE_UFILESYS
-#define UFSYS_SIZE 4096
+#define UFSYS_SIZE 5900
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
 
@@ -161,6 +161,12 @@
 #define USE_SCRIPT_WEB_DISPLAY
 #define USE_GOOGLE_CHARTS
 #define USE_SCRIPT_JSON_EXPORT
+#define MAXVARS 58
+#define MAXSVARS 21
+#define MAXFILT 5
+#define LARGE_ARRAYS
+#define SCRIPT_LARGE_VNBUFF
+
 
 #define USE_HAN_V2
 
