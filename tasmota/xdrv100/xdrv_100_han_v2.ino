@@ -607,7 +607,7 @@ bool Xdrv100(uint32_t function) {
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: Done!"));
   } else if (initSuccess) {
     switch (function) {
-      case FUNC_EVERY_100_MSECOND:
+      case FUNC_EVERY_250_MSECOND:
         HanDoWork();
         break;
       case FUNC_JSON_APPEND:
