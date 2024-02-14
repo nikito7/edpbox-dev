@@ -164,8 +164,8 @@
 #define MAXVARS 58
 #define MAXSVARS 21
 #define MAXFILT 5
-#define LARGE_ARRAYS
-#define SCRIPT_LARGE_VNBUFF
+// #define LARGE_ARRAYS
+// #define SCRIPT_LARGE_VNBUFF
 
 
 #define USE_HAN_V2
