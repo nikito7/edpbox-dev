@@ -1,3 +1,7 @@
+// Tasmota HAN Driver for edpbox
+// easyhan.pt
+// 2024.02.15.1338
+
 #ifdef USE_HAN_V2
 
 #warning **** HAN_V2 Driver is included... ****
@@ -13,13 +17,12 @@ uint8_t hanCNT = 0;
 uint8_t hanCFG = 99;
 uint8_t hanEB = 99;
 uint16_t hanERR = 0;
-uint16_t hanDTT = 0;
 bool hanWork = true;
 uint32_t hanDelay = 0;
 uint32_t hanDelayWait = 800;
 uint32_t hanDelayError = 61000;
 uint8_t hanIndex = 1;
-uint32_t lastRead = 0;
+uint32_t hanRead = 0;
 uint8_t hanCode = 0;
 
 // Clock 01
@@ -80,10 +83,15 @@ uint8_t hLP1MM = 0;
 
 uint16_t hLP2 = 0;  // tweaked to 16bits
 
-uint32_t hLP3 = 0;
-uint32_t hLP4 = 0;
-uint32_t hLP5 = 0;
-uint32_t hLP6 = 0;
+float hLP3 = 0;
+float hLP4 = 0;
+float hLP5 = 0;
+float hLP6 = 0;
+
+// Misc
+
+float hCT1 = 0;
+uint8_t hTariff = 0;
 
 #include <HardwareSerial.h>
 #include <ModbusMaster.h>
@@ -93,14 +101,14 @@ ModbusMaster node;
 void hanBlink() {
 #ifdef ESP8266
   digitalWrite(2, LOW);
-  delay(30);
+  delay(50);
   digitalWrite(2, HIGH);
 #endif
 }
 
 void setDelayError(uint8_t hanRes) {
   hanCode = hanRes;
-  if (hanERR > 1) {
+  if (hanRes == 0xe2) {
     hanDelay = hanDelayError;
   } else {
     hanDelay = hanDelayWait;
@@ -112,15 +120,16 @@ void HanInit() {
 
 #ifdef ESP8266
   pinMode(2, OUTPUT);
+  digitalWrite(2, LOW);
 #endif
 
-  HardwareSerial &serial = Serial;
+  HardwareSerial &HwSerial = Serial;
 
-  serial.begin(9600, SERIAL_8N1);
+  HwSerial.begin(9600, SERIAL_8N1);
 
-  delay(100);
+  delay(50);
 
-  node.begin(1, serial);
+  node.begin(1, HwSerial);
 
   delay(100);
 
@@ -135,11 +144,11 @@ void HanInit() {
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error Code %d"),
            hanCode);
     //
-    serial.end();
-    delay(100);
+    HwSerial.end();
+    delay(50);
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: Testing 8N2"));
-    serial.begin(9600, SERIAL_8N2);
-    delay(100);
+    HwSerial.begin(9600, SERIAL_8N2);
+    delay(50);
 
     testserial = node.readInputRegisters(0x0001, 1);
     if (testserial == node.ku8MBSuccess) {
@@ -149,23 +158,26 @@ void HanInit() {
       hanCode = testserial;
       AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error Code %d"),
              hanCode);
-      serial.end();
-      delay(100);
+      HwSerial.end();
+      delay(50);
       AddLog(LOG_LEVEL_INFO,
              PSTR("HAN: Fail! Default to 8N1"));
-      serial.begin(9600, SERIAL_8N1);
-      delay(100);
+      HwSerial.begin(9600, SERIAL_8N1);
+      delay(50);
       hanCFG = 1;
     }
     //
   }
 
-  delay(100);
+  delay(50);
 
   // Detect EB Type
 
-  testserial = node.readInputRegisters(0x0070, 2);
-  if (testserial == node.ku8MBSuccess) {
+  uint8_t testEB;
+  uint16_t hanDTT = 0;
+
+  testEB = node.readInputRegisters(0x0070, 2);
+  if (testEB == node.ku8MBSuccess) {
     //
     hanDTT = node.getResponseBuffer(0);
     if (hanDTT > 0) {
@@ -177,14 +189,14 @@ void HanInit() {
     }
     //
   } else {
-    hanCode = testserial;
+    hanCode = testEB;
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1! Type 1"));
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error Code %d"),
            hanCode);
     hanEB = 1;
   }
 
-  lastRead = millis() + 10000;
+  hanRead = millis() + 5000;
 
   // Set initSuccess at the very end of the init process
   // Init is successful
@@ -193,9 +205,7 @@ void HanInit() {
 }  // end HanInit
 
 void HanDoWork(void) {
-  delay(30);
-
-  if (lastRead + hanDelay < millis()) {
+  if (hanRead + hanDelay < millis()) {
     hanWork = true;
   }
 
@@ -231,7 +241,7 @@ void HanDoWork(void) {
       hanERR++;
       setDelayError(hRes);
     }
-    lastRead = millis();
+    hanRead = millis();
     hanWork = false;
     hanIndex++;
   }
@@ -269,7 +279,7 @@ void HanDoWork(void) {
         setDelayError(hRes);
       }
     }
-    lastRead = millis();
+    hanRead = millis();
     hanWork = false;
     hanIndex++;
   }
@@ -312,7 +322,7 @@ void HanDoWork(void) {
                  node.getResponseBuffer(0) << 16;
         hanAPE = node.getResponseBuffer(3) |
                  node.getResponseBuffer(2) << 16;
-        hanPF = node.getResponseBuffer(4);
+        hanPF = node.getResponseBuffer(4) / 1000.0;
         hanBlink();
         hanDelay = hanDelayWait;
       } else {
@@ -320,7 +330,7 @@ void HanDoWork(void) {
         setDelayError(hRes);
       }
     }
-    lastRead = millis();
+    hanRead = millis();
     hanWork = false;
     hanIndex++;
   }
@@ -357,7 +367,7 @@ void HanDoWork(void) {
         setDelayError(hRes);
       }
     }
-    lastRead = millis();
+    hanRead = millis();
     hanWork = false;
     hanIndex++;
   }
@@ -384,7 +394,7 @@ void HanDoWork(void) {
       hanERR++;
       setDelayError(hRes);
     }
-    lastRead = millis();
+    hanRead = millis();
     hanWork = false;
     hanIndex++;
   }
@@ -408,13 +418,13 @@ void HanDoWork(void) {
       hanERR++;
       setDelayError(hRes);
     }
-    lastRead = millis();
+    hanRead = millis();
     hanWork = false;
     hanIndex++;
   }
 
   // # # # # # # # # # #
-  // Load Profile (test)
+  // Load Profile
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 7)) {
@@ -431,14 +441,18 @@ void HanDoWork(void) {
       // tweaked to 16bits. branch: LP1.
       hLP2 = node.getResponseBuffer(6);
 
-      hLP3 = node.getResponseBuffer(8) |
-             node.getResponseBuffer(7) << 16;
-      hLP4 = node.getResponseBuffer(10) |
-             node.getResponseBuffer(9) << 16;
-      hLP5 = node.getResponseBuffer(12) |
-             node.getResponseBuffer(11) << 16;
-      hLP6 = node.getResponseBuffer(14) |
-             node.getResponseBuffer(13) << 16;
+      hLP3 = (node.getResponseBuffer(8) |
+              node.getResponseBuffer(7) << 16) /
+             1000.0;
+      hLP4 = (node.getResponseBuffer(10) |
+              node.getResponseBuffer(9) << 16) /
+             1000.0;
+      hLP5 = (node.getResponseBuffer(12) |
+              node.getResponseBuffer(11) << 16) /
+             1000.0;
+      hLP6 = (node.getResponseBuffer(14) |
+              node.getResponseBuffer(13) << 16) /
+             1000.0;
 
       hanBlink();
       hanDelay = hanDelayWait;
@@ -446,7 +460,47 @@ void HanDoWork(void) {
       hanERR++;
       setDelayError(hRes);
     }
-    lastRead = millis();
+    hanRead = millis();
+    hanWork = false;
+    hanIndex++;
+  }
+
+  // # # # # # # # # # #
+  // Contract
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 8)) {
+    hRes = node.readInputRegisters(0x000C, 1);
+    if (hRes == node.ku8MBSuccess) {
+      hCT1 = (node.getResponseBuffer(1) |
+              node.getResponseBuffer(0) << 16) /
+             1000.0;
+      hanBlink();
+      hanDelay = hanDelayWait;
+    } else {
+      hanERR++;
+      setDelayError(hRes);
+    }
+    hanRead = millis();
+    hanWork = false;
+    hanIndex++;
+  }
+
+  // # # # # # # # # # #
+  // Tariff
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 9)) {
+    hRes = node.readInputRegisters(0x000B, 1);
+    if (hRes == node.ku8MBSuccess) {
+      hTariff = node.getResponseBuffer(0) >> 8;
+      hanBlink();
+      hanDelay = hanDelayWait;
+    } else {
+      hanERR++;
+      setDelayError(hRes);
+    }
+    hanRead = millis();
     hanWork = false;
     hanIndex++;
   }
@@ -459,7 +513,7 @@ void HanDoWork(void) {
     hanERR = 0;
   }
 
-  if (hanIndex > 7) {
+  if (hanIndex > 9) {
     hanIndex = 1;
   }
 
@@ -477,27 +531,40 @@ void HanJson(bool json) {
     ResponseAppend_P(",\"SS\":%d", hanSS);
 
     ResponseAppend_P(",\"VL1\":%1_f", &hanVL1);
-    ResponseAppend_P(",\"VL2\":%1_f", &hanVL2);
-    ResponseAppend_P(",\"VL3\":%1_f", &hanVL3);
+
+    if (hanEB == 3) {
+      ResponseAppend_P(",\"VL2\":%1_f", &hanVL2);
+      ResponseAppend_P(",\"VL3\":%1_f", &hanVL3);
+    }
 
     ResponseAppend_P(",\"CL1\":%1_f", &hanCL1);
-    ResponseAppend_P(",\"CL2\":%1_f", &hanCL2);
-    ResponseAppend_P(",\"CL3\":%1_f", &hanCL3);
-    ResponseAppend_P(",\"CL\":%1_f", &hanCLT);
+
+    if (hanEB == 3) {
+      ResponseAppend_P(",\"CL2\":%1_f", &hanCL2);
+      ResponseAppend_P(",\"CL3\":%1_f", &hanCL3);
+      ResponseAppend_P(",\"CL\":%1_f", &hanCLT);
+    }
 
     ResponseAppend_P(",\"API\":%d", hanAPI);
     ResponseAppend_P(",\"APE\":%d", hanAPE);
-    ResponseAppend_P(",\"API1\":%d", hanAPI1);
-    ResponseAppend_P(",\"API2\":%d", hanAPI2);
-    ResponseAppend_P(",\"API3\":%d", hanAPI3);
-    ResponseAppend_P(",\"APE1\":%d", hanAPE1);
-    ResponseAppend_P(",\"APE2\":%d", hanAPE2);
-    ResponseAppend_P(",\"APE3\":%d", hanAPE3);
+
+    if (hanEB == 3) {
+      ResponseAppend_P(",\"API1\":%d", hanAPI1);
+      ResponseAppend_P(",\"API2\":%d", hanAPI2);
+      ResponseAppend_P(",\"API3\":%d", hanAPI3);
+      ResponseAppend_P(",\"APE1\":%d", hanAPE1);
+      ResponseAppend_P(",\"APE2\":%d", hanAPE2);
+      ResponseAppend_P(",\"APE3\":%d", hanAPE3);
+    }
 
     ResponseAppend_P(",\"PF\":%3_f", &hanPF);
-    ResponseAppend_P(",\"PF1\":%3_f", &hanPF1);
-    ResponseAppend_P(",\"PF2\":%3_f", &hanPF2);
-    ResponseAppend_P(",\"PF3\":%3_f", &hanPF3);
+
+    if (hanEB == 3) {
+      ResponseAppend_P(",\"PF1\":%3_f", &hanPF1);
+      ResponseAppend_P(",\"PF2\":%3_f", &hanPF2);
+      ResponseAppend_P(",\"PF3\":%3_f", &hanPF3);
+    }
+
     ResponseAppend_P(",\"FR\":%1_f", &hanFR);
 
     ResponseAppend_P(",\"TET1\":%3_f", &hanTET1);
@@ -506,6 +573,20 @@ void HanJson(bool json) {
 
     ResponseAppend_P(",\"TEI\":%3_f", &hanTEI);
     ResponseAppend_P(",\"TEE\":%3_f", &hanTEE);
+
+    ResponseAppend_P(",\"LP1_Y\":%d", hLP1YY);
+    ResponseAppend_P(",\"LP1_M\":%d", hLP1MT);
+    ResponseAppend_P(",\"LP1_D\":%d", hLP1DD);
+    ResponseAppend_P(",\"LP1_HH\":%d", hLP1HH);
+    ResponseAppend_P(",\"LP1_MM\":%d", hLP1MM);
+
+    ResponseAppend_P(",\"LP3_IMP\":%3_f", &hLP3);
+    ResponseAppend_P(",\"LP4\":%3_f", &hLP4);
+    ResponseAppend_P(",\"LP5\":%3_f", &hLP5);
+    ResponseAppend_P(",\"LP6_EXP\":%3_f", &hLP6);
+
+    ResponseAppend_P(",\"CT1\":%2_f", &hCT1);
+    ResponseAppend_P(",\"Tariff\":%d", hTariff);
 
     ResponseAppend_P("}");
 
@@ -528,46 +609,64 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}Voltage L1 {m} %1_f V{e}",
                      &hanVL1);
-    WSContentSend_PD("{s}Voltage L2 {m} %1_f V{e}",
-                     &hanVL2);
-    WSContentSend_PD("{s}Voltage L3 {m} %1_f V{e}",
-                     &hanVL3);
 
-    WSContentSend_PD("{s}<br>{m} {e}");
-    WSContentSend_PD("{s}Current{m} %1_f A{e}", &hanCLT);
+    if (hanEB == 3) {
+      WSContentSend_PD("{s}Voltage L2 {m} %1_f V{e}",
+                       &hanVL2);
+      WSContentSend_PD("{s}Voltage L3 {m} %1_f V{e}",
+                       &hanVL3);
+
+      WSContentSend_PD("{s}<br>{m} {e}");
+      WSContentSend_PD("{s}Current{m} %1_f A{e}",
+                       &hanCLT);
+    }
+
     WSContentSend_PD("{s}Current L1 {m} %1_f A{e}",
                      &hanCL1);
-    WSContentSend_PD("{s}Current L2 {m} %1_f A{e}",
-                     &hanCL2);
-    WSContentSend_PD("{s}Current L3 {m} %1_f A{e}",
-                     &hanCL3);
 
-    WSContentSend_PD("{s}<br>{m} {e}");
+    if (hanEB == 3) {
+      WSContentSend_PD("{s}Current L2 {m} %1_f A{e}",
+                       &hanCL2);
+      WSContentSend_PD("{s}Current L3 {m} %1_f A{e}",
+                       &hanCL3);
+
+      WSContentSend_PD("{s}<br>{m} {e}");
+    }
 
     WSContentSend_PD("{s}Power Import {m} %d W{e}",
                      hanAPI);
     WSContentSend_PD("{s}Power Export {m} %d W{e}",
                      hanAPE);
-    WSContentSend_PD("{s}Power L1 {m} %d W{e}", hanAPI1);
-    WSContentSend_PD("{s}Power L2 {m} %d W{e}", hanAPI2);
-    WSContentSend_PD("{s}Power L3 {m} %d W{e}", hanAPI3);
-    WSContentSend_PD("{s}Power L1 Export {m} %d W{e}",
-                     hanAPE1);
-    WSContentSend_PD("{s}Power L2 Export {m} %d W{e}",
-                     hanAPE2);
-    WSContentSend_PD("{s}Power L3 Export {m} %d W{e}",
-                     hanAPE3);
 
-    WSContentSend_PD("{s}<br>{m} {e}");
+    if (hanEB == 3) {
+      WSContentSend_PD("{s}Power L1 {m} %d W{e}",
+                       hanAPI1);
+      WSContentSend_PD("{s}Power L2 {m} %d W{e}",
+                       hanAPI2);
+      WSContentSend_PD("{s}Power L3 {m} %d W{e}",
+                       hanAPI3);
+      WSContentSend_PD("{s}Power L1 Export {m} %d W{e}",
+                       hanAPE1);
+      WSContentSend_PD("{s}Power L2 Export {m} %d W{e}",
+                       hanAPE2);
+      WSContentSend_PD("{s}Power L3 Export {m} %d W{e}",
+                       hanAPE3);
+
+      WSContentSend_PD("{s}<br>{m} {e}");
+    }
 
     WSContentSend_PD("{s}Power Factor {m} %3_f φ{e}",
                      &hanPF);
-    WSContentSend_PD("{s}Power Factor L1 {m} %3_f φ{e}",
-                     &hanPF1);
-    WSContentSend_PD("{s}Power Factor L2 {m} %3_f φ{e}",
-                     &hanPF2);
-    WSContentSend_PD("{s}Power Factor L3 {m} %3_f φ{e}",
-                     &hanPF3);
+
+    if (hanEB == 3) {
+      WSContentSend_PD("{s}Power Factor L1 {m} %3_f φ{e}",
+                       &hanPF1);
+      WSContentSend_PD("{s}Power Factor L2 {m} %3_f φ{e}",
+                       &hanPF2);
+      WSContentSend_PD("{s}Power Factor L3 {m} %3_f φ{e}",
+                       &hanPF3);
+    }
+
     WSContentSend_PD("{s}Frequency {m} %1_f Hz{e}",
                      &hanFR);
 
@@ -588,6 +687,52 @@ void HanJson(bool json) {
     WSContentSend_PD(
         "{s}Energy Total Export {m} %3_f kWh{e}",
         &hanTEE);
+
+    WSContentSend_PD("{s}<br>{m} {e}");
+
+    char hLPDate[15];
+    sprintf(hLPDate, "%04d-%02d-%02d", hLP1YY, hLP1MT,
+            hLP1DD);
+
+    WSContentSend_PD("{s}LP1 Date {m} %s{e}", hLPDate);
+
+    char hLPClock[10];
+    sprintf(hLPClock, "%02d:%02d", hLP1HH, hLP1MM);
+
+    WSContentSend_PD("{s}LP1 Time {m} %s{e}", hLPClock);
+
+    WSContentSend_PD("{s}LP2 AMR {m} %d{e}", hLP2);
+
+    WSContentSend_PD("{s}LP3 Import Inc {m} %3_f kWh{e}",
+                     &hLP3);
+    WSContentSend_PD("{s}LP4 {m} %3_f kWh{e}", &hLP4);
+    WSContentSend_PD("{s}LP5 {m} %3_f kWh{e}", &hLP5);
+    WSContentSend_PD("{s}LP6 Export Inc {m} %3_f kWh{e}",
+                     &hLP6);
+
+    WSContentSend_PD("{s}<br>{m} {e}");
+
+    WSContentSend_PD("{s}Contract T1 {m} %2_f kWh{e}",
+                     &hCT1);
+
+    char tarifa[10];
+
+    switch (hTariff) {
+      case 1:
+        sprintf(tarifa, "%s", "Vazio");
+        break;
+      case 2:
+        sprintf(tarifa, "%s", "Ponta");
+        break;
+      case 3:
+        sprintf(tarifa, "%s", "Cheias");
+        break;
+      default:
+        sprintf(tarifa, "Error %d", hTariff);
+    }
+
+    WSContentSend_PD("{s}Tariff {m} %s{e}",
+                     tarifa);
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
