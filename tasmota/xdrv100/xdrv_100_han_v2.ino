@@ -1,6 +1,7 @@
 // Tasmota HAN Driver for edpbox
 // easyhan.pt
-// 2024.02.15.1338
+
+#define HAN_VERSION "2024.02.21.1331"
 
 #ifdef USE_HAN_V2
 
@@ -13,15 +14,14 @@ bool initSuccess = false;
 
 // HAN
 
-uint8_t hanCNT = 0;
 uint8_t hanCFG = 99;
 uint8_t hanEB = 99;
 uint16_t hanERR = 0;
-bool hanWork = true;
+bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 800;
-uint32_t hanDelayError = 61000;
-uint8_t hanIndex = 1;
+uint32_t hanDelayWait = 700;
+uint32_t hanDelayError = 91000;
+uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
 
@@ -92,10 +92,16 @@ float hLP6 = 0;
 
 float hCT1 = 0;
 uint8_t hTariff = 0;
+char hErrTime[10];
+char hErrCode[5];
+char hStatus[10];
+
+// **********************
 
 #include <HardwareSerial.h>
 #include <ModbusMaster.h>
 
+HardwareSerial &HwSerial = Serial;
 ModbusMaster node;
 
 void hanBlink() {
@@ -110,9 +116,14 @@ void setDelayError(uint8_t hanRes) {
   hanCode = hanRes;
   if (hanRes == 0xe2) {
     hanDelay = hanDelayError;
+    hanIndex = 0;
+    sprintf(hStatus, "Error");
   } else {
     hanDelay = hanDelayWait;
   }
+  sprintf(hErrTime, "%02d:%02d:%02d", hanHH, hanMM,
+          hanSS);
+  sprintf(hErrCode, "%02X", hanCode);
 }
 
 void HanInit() {
@@ -120,83 +131,10 @@ void HanInit() {
 
 #ifdef ESP8266
   pinMode(2, OUTPUT);
-  digitalWrite(2, LOW);
 #endif
 
-  HardwareSerial &HwSerial = Serial;
-
-  HwSerial.begin(9600, SERIAL_8N1);
-
-  delay(50);
-
-  node.begin(1, HwSerial);
-
-  delay(100);
-
-  uint8_t testserial;
-
-  testserial = node.readInputRegisters(0x0001, 1);
-  if (testserial == node.ku8MBSuccess) {
-    hanCFG = 1;
-    AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK!"));
-  } else {
-    hanCode = testserial;
-    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error Code %d"),
-           hanCode);
-    //
-    HwSerial.end();
-    delay(50);
-    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Testing 8N2"));
-    HwSerial.begin(9600, SERIAL_8N2);
-    delay(50);
-
-    testserial = node.readInputRegisters(0x0001, 1);
-    if (testserial == node.ku8MBSuccess) {
-      hanCFG = 2;
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK!"));
-    } else {
-      hanCode = testserial;
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error Code %d"),
-             hanCode);
-      HwSerial.end();
-      delay(50);
-      AddLog(LOG_LEVEL_INFO,
-             PSTR("HAN: Fail! Default to 8N1"));
-      HwSerial.begin(9600, SERIAL_8N1);
-      delay(50);
-      hanCFG = 1;
-    }
-    //
-  }
-
-  delay(50);
-
-  // Detect EB Type
-
-  uint8_t testEB;
-  uint16_t hanDTT = 0;
-
-  testEB = node.readInputRegisters(0x0070, 2);
-  if (testEB == node.ku8MBSuccess) {
-    //
-    hanDTT = node.getResponseBuffer(0);
-    if (hanDTT > 0) {
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3!"));
-      hanEB = 3;
-    } else {
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1! Type 3"));
-      hanEB = 1;
-    }
-    //
-  } else {
-    hanCode = testEB;
-    AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1! Type 1"));
-    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error Code %d"),
-           hanCode);
-    hanEB = 1;
-  }
-
-  hanRead = millis() + 5000;
+  sprintf(hStatus, "Init");
+  hanRead = millis() + 31000;
 
   // Set initSuccess at the very end of the init process
   // Init is successful
@@ -205,6 +143,8 @@ void HanInit() {
 }  // end HanInit
 
 void HanDoWork(void) {
+  //
+
   if (hanRead + hanDelay < millis()) {
     hanWork = true;
   }
@@ -216,10 +156,91 @@ void HanDoWork(void) {
   uint8_t hRes;
 
   // # # # # # # # # # #
+  // Setup
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 0)) {
+    //
+    HwSerial.end();
+
+    delay(100);
+
+    HwSerial.begin(9600, SERIAL_8N1);
+
+    delay(100);
+
+    node.begin(1, HwSerial);
+
+    delay(100);
+
+    uint8_t testserial;
+
+    node.clearResponseBuffer();
+    testserial = node.readInputRegisters(0x0001, 1);
+    if (testserial == node.ku8MBSuccess) {
+      hanCFG = 1;
+      hanIndex++;
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
+    } else {
+      hanCode = testserial;
+      AddLog(LOG_LEVEL_INFO,
+             PSTR("HAN: Test 8N2 Error %d"), hanCode);
+      hanERR++;
+      setDelayError(testserial);
+      //
+      HwSerial.end();
+      delay(100);
+      HwSerial.begin(9600, SERIAL_8N2);
+      delay(100);
+      //
+      node.clearResponseBuffer();
+      testserial = node.readInputRegisters(0x0001, 1);
+      if (testserial == node.ku8MBSuccess) {
+        hanCFG = 2;
+        hanIndex++;
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
+      }
+      //
+    }
+
+    delay(100);
+
+    // Detect EB Type
+
+    uint8_t testEB;
+    uint16_t hanDTT = 0;
+
+    node.clearResponseBuffer();
+    testEB = node.readInputRegisters(0x0070, 2);
+    if (testEB == node.ku8MBSuccess) {
+      //
+      hanDTT = node.getResponseBuffer(0);
+      if (hanDTT > 0) {
+        hanEB = 3;
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
+      } else {
+        hanEB = 1;
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
+      }
+      //
+    } else {
+      hanERR++;
+      hanCode = testEB;
+      setDelayError(testEB);
+      hanEB = 1;
+      AddLog(LOG_LEVEL_INFO,
+             PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
+    }
+    hanRead = millis();
+    hanWork = false;
+  }
+
+  // # # # # # # # # # #
   // Clock ( 12 bytes )
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 1)) {
+    node.clearResponseBuffer();
     hRes = node.readInputRegisters(0x0001, 1);
     if (hRes == node.ku8MBSuccess) {
       hanYY = node.getResponseBuffer(0);
@@ -234,10 +255,8 @@ void HanDoWork(void) {
       AddLog(LOG_LEVEL_INFO,
              PSTR("HAN: %02d:%02d:%02d !"), hanHH, hanMM,
              hanSS);
+      sprintf(hStatus, "OK");
     } else {
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: Error %d !"),
-             hRes);
-
       hanERR++;
       setDelayError(hRes);
     }
@@ -252,6 +271,7 @@ void HanDoWork(void) {
 
   if (hanWork & (hanIndex == 2)) {
     if (hanEB == 3) {
+      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x006c, 7);
       if (hRes == node.ku8MBSuccess) {
         hanVL1 = node.getResponseBuffer(0) / 10.0;
@@ -268,6 +288,7 @@ void HanDoWork(void) {
         setDelayError(hRes);
       }
     } else {
+      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x006c, 2);
       if (hRes == node.ku8MBSuccess) {
         hanVL1 = node.getResponseBuffer(0) / 10.0;
@@ -291,6 +312,7 @@ void HanDoWork(void) {
 
   if (hanWork & (hanIndex == 3)) {
     if (hanEB == 3) {
+      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x0073, 8);
       if (hRes == node.ku8MBSuccess) {
         hanAPI1 = node.getResponseBuffer(1) |
@@ -316,6 +338,7 @@ void HanDoWork(void) {
         setDelayError(hRes);
       }
     } else {
+      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x0079, 3);
       if (hRes == node.ku8MBSuccess) {
         hanAPI = node.getResponseBuffer(1) |
@@ -343,6 +366,7 @@ void HanDoWork(void) {
 
   if (hanWork & (hanIndex == 4)) {
     if (hanEB == 3) {
+      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x007b, 5);
       if (hRes == node.ku8MBSuccess) {
         hanPF = node.getResponseBuffer(0) / 1000.0;
@@ -357,6 +381,7 @@ void HanDoWork(void) {
         setDelayError(hRes);
       }
     } else {
+      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x007f, 1);
       if (hRes == node.ku8MBSuccess) {
         hanFR = node.getResponseBuffer(0) / 10.0;
@@ -377,6 +402,7 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 5)) {
+    node.clearResponseBuffer();
     hRes = node.readInputRegisters(0x0026, 3);
     if (hRes == node.ku8MBSuccess) {
       hanTET1 = (node.getResponseBuffer(1) |
@@ -404,6 +430,7 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 6)) {
+    node.clearResponseBuffer();
     hRes = node.readInputRegisters(0x0016, 2);
     if (hRes == node.ku8MBSuccess) {
       hanTEI = (node.getResponseBuffer(1) |
@@ -428,6 +455,7 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 7)) {
+    node.clearResponseBuffer();
     hRes = node.readLastProfile(0x06, 0x01);
     if (hRes == node.ku8MBSuccess) {
       hLP1YY = node.getResponseBuffer(0);
@@ -470,6 +498,7 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 8)) {
+    node.clearResponseBuffer();
     hRes = node.readInputRegisters(0x000C, 1);
     if (hRes == node.ku8MBSuccess) {
       hCT1 = (node.getResponseBuffer(1) |
@@ -491,6 +520,7 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 9)) {
+    node.clearResponseBuffer();
     hRes = node.readInputRegisters(0x000B, 1);
     if (hRes == node.ku8MBSuccess) {
       hTariff = node.getResponseBuffer(0) >> 8;
@@ -509,6 +539,9 @@ void HanDoWork(void) {
   // EASYHAN MODBUS EOF
   // # # # # # # # # # #
 
+  node.clearResponseBuffer();
+  node.clearTransmitBuffer();
+
   if (hanERR > 900) {
     hanERR = 0;
   }
@@ -524,7 +557,10 @@ void HanDoWork(void) {
 void HanJson(bool json) {
   if (json) {
     ResponseAppend_P(",\"EB%d\":{", hanEB);
-    ResponseAppend_P("\"Code\":%d", hanCode);
+    ResponseAppend_P("\"ErrCode\":\"%s-%d\"", hErrCode,
+                     hanCode);
+    ResponseAppend_P(",\"ErrTime\":\"%s\"", hErrTime);
+    ResponseAppend_P(",\"ErrCnt\":%d", hanERR);
 
     ResponseAppend_P(",\"HH\":%d", hanHH);
     ResponseAppend_P(",\"MM\":%d", hanMM);
@@ -591,12 +627,32 @@ void HanJson(bool json) {
     ResponseAppend_P("}");
 
   } else {
-    WSContentSend_PD("{s}EB Error Code {m} %d {e}",
-                     hanCode);
+    WSContentSend_PD("{s}Build: " HAN_VERSION " {m} {e}");
+    WSContentSend_PD("{s}<br>{m} {e}");
+
+    uint32_t tmpWait =
+        ((hanRead + hanDelay) - millis()) / 1000;
+
+    if (tmpWait > 900) {
+      tmpWait = 999;
+    }
+
+    WSContentSend_PD("{s}EB Status {m} %s %ds {e}",
+                     hStatus, tmpWait);
+
+    if (hanERR > 0) {
+      WSContentSend_PD("{s}EB Error Time {m} %s{e}",
+                       hErrTime);
+
+      WSContentSend_PD("{s}EB Error Code {m} %s-%d {e}",
+                       hErrCode, hanCode);
+    }
+
     WSContentSend_PD("{s}EB Error Count {m} %d {e}",
                      hanERR);
+
+    WSContentSend_PD("{s}EB Serial {m} 8N%d {e}", hanCFG);
     WSContentSend_PD("{s}EB Type {m} %d {e}", hanEB);
-    WSContentSend_PD("{s}EB Serial {m} %d {e}", hanCFG);
     WSContentSend_PD("{s}<br>{m} {e}");
 
     char hanClock[10];
@@ -731,8 +787,7 @@ void HanJson(bool json) {
         sprintf(tarifa, "Error %d", hTariff);
     }
 
-    WSContentSend_PD("{s}Tariff {m} %s{e}",
-                     tarifa);
+    WSContentSend_PD("{s}Tariff {m} %s{e}", tarifa);
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
@@ -740,23 +795,50 @@ void HanJson(bool json) {
 
 }  // HanJson
 
-/********************************************\
- * Interface
-\********************************************/
+// ********************************************
+// ********************************************
+
+const char HanCommands[] PROGMEM =
+    "|"  // No Prefix
+    "HanDelay|"
+    "HanHelp";
+
+void (*const HanCommand[])(void) PROGMEM = {&CmdHanDelay,
+                                            &CmdHanHelp};
+
+void CmdHanHelp(void) {
+  AddLog(LOG_LEVEL_INFO, PSTR("HanHelp: Hello!"));
+  AddLog(LOG_LEVEL_INFO,
+         PSTR("HanHelp: Commands available: HanDelay"));
+  ResponseCmndDone();
+}
+
+void CmdHanDelay(void) {
+  AddLog(LOG_LEVEL_INFO,
+         PSTR("HanDelay: Set 300 seconds modbus pause"));
+  hanDelay = 300000;
+  sprintf(hStatus, "Cmd");
+  ResponseCmndDone();
+}
+
+// main tasmota function
 
 bool Xdrv100(uint32_t function) {
   bool result = false;
 
   if (FUNC_INIT == function) {
     HanInit();
-    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Done!"));
+    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Done !"));
   } else if (initSuccess) {
     switch (function) {
-      case FUNC_EVERY_250_MSECOND:
+      case FUNC_LOOP:
         HanDoWork();
         break;
       case FUNC_JSON_APPEND:
         HanJson(true);
+        break;
+      case FUNC_COMMAND:
+        result = DecodeCommand(HanCommands, HanCommand);
         break;
 #ifdef USE_WEBSERVER
       case FUNC_WEB_SENSOR:
@@ -768,5 +850,7 @@ bool Xdrv100(uint32_t function) {
 
   return result;
 }
+
+#warning **** HAN_V2 End! ****
 
 #endif  // USE_HAN_V2
