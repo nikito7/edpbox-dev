@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for edpbox
 // easyhan.pt
 
-#define HAN_VERSION "2024.02.21.1331"
+#define HAN_VERSION "2024.02.22.20.14"
 
 #ifdef USE_HAN_V2
 
@@ -87,6 +87,9 @@ float hLP3 = 0;
 float hLP4 = 0;
 float hLP5 = 0;
 float hLP6 = 0;
+float hLP7 = 0;
+float hLP8 = 0;
+uint8_t hLPid[9];
 
 // Misc
 
@@ -123,7 +126,7 @@ void setDelayError(uint8_t hanRes) {
   }
   sprintf(hErrTime, "%02d:%02d:%02d", hanHH, hanMM,
           hanSS);
-  sprintf(hErrCode, "%02X", hanCode);
+  sprintf(hErrCode, "0x%02X", hanCode);
 }
 
 void HanInit() {
@@ -134,7 +137,7 @@ void HanInit() {
 #endif
 
   sprintf(hStatus, "Init");
-  hanRead = millis() + 31000;
+  hanRead = millis() + 21000;
 
   // Set initSuccess at the very end of the init process
   // Init is successful
@@ -456,7 +459,7 @@ void HanDoWork(void) {
 
   if (hanWork & (hanIndex == 7)) {
     node.clearResponseBuffer();
-    hRes = node.readLastProfile(0x06, 0x01);
+    hRes = node.readLastProfile(0x00, 0x01);
     if (hRes == node.ku8MBSuccess) {
       hLP1YY = node.getResponseBuffer(0);
       hLP1MT = node.getResponseBuffer(1) >> 8;
@@ -480,6 +483,12 @@ void HanDoWork(void) {
              1000.0;
       hLP6 = (node.getResponseBuffer(14) |
               node.getResponseBuffer(13) << 16) /
+             1000.0;
+      hLP7 = (node.getResponseBuffer(16) |
+              node.getResponseBuffer(15) << 16) /
+             1000.0;
+      hLP8 = (node.getResponseBuffer(18) |
+              node.getResponseBuffer(17) << 16) /
              1000.0;
 
       hanBlink();
@@ -536,6 +545,34 @@ void HanDoWork(void) {
   }
 
   // # # # # # # # # # #
+  // LP ID
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 10)) {
+    node.clearResponseBuffer();
+    hRes = node.readInputRegisters(0x0080, 1);
+    if (hRes == node.ku8MBSuccess) {
+      hLPid[1] = node.getResponseBuffer(0) >> 8;
+      hLPid[2] = node.getResponseBuffer(0) & 0xFF;
+      hLPid[3] = node.getResponseBuffer(1) >> 8;
+      hLPid[4] = node.getResponseBuffer(1) & 0xFF;
+      hLPid[5] = node.getResponseBuffer(2) >> 8;
+      hLPid[6] = node.getResponseBuffer(2) & 0xFF;
+      hLPid[7] = node.getResponseBuffer(3) >> 8;
+      hLPid[8] = node.getResponseBuffer(3) & 0xFF;
+
+      hanBlink();
+      hanDelay = hanDelayWait;
+    } else {
+      hanERR++;
+      setDelayError(hRes);
+    }
+    hanRead = millis();
+    hanWork = false;
+    hanIndex++;
+  }
+
+  // # # # # # # # # # #
   // EASYHAN MODBUS EOF
   // # # # # # # # # # #
 
@@ -546,7 +583,7 @@ void HanDoWork(void) {
     hanERR = 0;
   }
 
-  if (hanIndex > 9) {
+  if (hanIndex > 10) {
     hanIndex = 1;
   }
 
@@ -555,10 +592,10 @@ void HanDoWork(void) {
 }  // end HanDoWork
 
 void HanJson(bool json) {
+  //
   if (json) {
     ResponseAppend_P(",\"EB%d\":{", hanEB);
-    ResponseAppend_P("\"ErrCode\":\"%s-%d\"", hErrCode,
-                     hanCode);
+    ResponseAppend_P("\"ErrCode\":\"%s\"", hErrCode);
     ResponseAppend_P(",\"ErrTime\":\"%s\"", hErrTime);
     ResponseAppend_P(",\"ErrCnt\":%d", hanERR);
 
@@ -627,7 +664,8 @@ void HanJson(bool json) {
     ResponseAppend_P("}");
 
   } else {
-    WSContentSend_PD("{s}Build: " HAN_VERSION " {m} {e}");
+    WSContentSend_PD("{s}Build: " HAN_VERSION
+                     " {m} HAN V2 {e}");
     WSContentSend_PD("{s}<br>{m} {e}");
 
     uint32_t tmpWait =
@@ -644,8 +682,8 @@ void HanJson(bool json) {
       WSContentSend_PD("{s}EB Error Time {m} %s{e}",
                        hErrTime);
 
-      WSContentSend_PD("{s}EB Error Code {m} %s-%d {e}",
-                       hErrCode, hanCode);
+      WSContentSend_PD("{s}EB Error Code {m} %s {e}",
+                       hErrCode);
     }
 
     WSContentSend_PD("{s}EB Error Count {m} %d {e}",
@@ -759,12 +797,28 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}LP2 AMR {m} %d{e}", hLP2);
 
-    WSContentSend_PD("{s}LP3 Import Inc {m} %3_f kWh{e}",
+    WSContentSend_PD("{s}LP3 Import Inc  {m} %3_f kWh{e}",
                      &hLP3);
     WSContentSend_PD("{s}LP4 {m} %3_f kWh{e}", &hLP4);
     WSContentSend_PD("{s}LP5 {m} %3_f kWh{e}", &hLP5);
     WSContentSend_PD("{s}LP6 Export Inc {m} %3_f kWh{e}",
                      &hLP6);
+
+    if (hLPid[6] != 10) {
+      WSContentSend_PD(
+          "{s}Error: Export Inc {m} %d != 10 {e}",
+          hLPid[6]);
+    }
+
+    WSContentSend_PD("{s}LP7 {m} %3_f kWh{e}", &hLP7);
+    WSContentSend_PD("{s}LP8 {m} %3_f kWh{e}", &hLP8);
+
+    char tmpLPid[25];
+    sprintf(tmpLPid, "%d %d %d %d %d %d %d %d", hLPid[1],
+            hLPid[2], hLPid[3], hLPid[4], hLPid[5],
+            hLPid[6], hLPid[7], hLPid[8]);
+
+    WSContentSend_PD("{s}IDs: %s {m} {e}", tmpLPid);
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
@@ -814,9 +868,15 @@ void CmdHanHelp(void) {
 }
 
 void CmdHanDelay(void) {
+  if ((XdrvMailbox.payload >= 0) &&
+      (XdrvMailbox.payload <= 900)) {
+    hanDelay = XdrvMailbox.payload * 1000;
+  } else {
+    hanDelay = 300000;
+  }
   AddLog(LOG_LEVEL_INFO,
-         PSTR("HanDelay: Set 300 seconds modbus pause"));
-  hanDelay = 300000;
+         PSTR("HanDelay: Paused modbus %ds"),
+         hanDelay / 1000);
   sprintf(hStatus, "Cmd");
   ResponseCmndDone();
 }
