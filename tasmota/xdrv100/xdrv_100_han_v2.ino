@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for edpbox
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-5"
+#define HAN_VERSION "13.4.0-6.04"
 
 #ifdef USE_HAN_V2
 
@@ -19,8 +19,8 @@ uint8_t hanEB = 99;
 uint16_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 900;
-uint32_t hanDelayError = 301000;
+uint32_t hanDelayWait = 700;
+uint32_t hanDelayError = 91000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -169,7 +169,7 @@ void HanDoWork(void) {
 
     Serial.end();
     Serial.flush();
-    Serial.begin(9600, SERIAL_8N2);
+    Serial.begin(9600, SERIAL_8N1);
 
     delay(250);
 
@@ -182,33 +182,36 @@ void HanDoWork(void) {
     node.clearResponseBuffer();
     testserial = node.readInputRegisters(0x0001, 1);
     if (testserial == node.ku8MBSuccess) {
-      hanCFG = 2;
+      hanCFG = 1;
       hanIndex++;
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
+      hanDelay = hanDelayWait;
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
     } else {
       hanCode = testserial;
       AddLog(LOG_LEVEL_INFO,
-             PSTR("HAN: 8N2 Fail. Error %d"), hanCode);
+             PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
       hanERR++;
       setDelayError(testserial);
       //
       Serial.end();
       Serial.flush();
-      Serial.begin(9600, SERIAL_8N1);
+      Serial.begin(9600, SERIAL_8N2);
       delay(250);
       //
       node.clearResponseBuffer();
       testserial = node.readInputRegisters(0x0001, 1);
       if (testserial == node.ku8MBSuccess) {
-        hanCFG = 1;
+        hanCFG = 2;
         hanIndex++;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
+        hanDelay = hanDelayWait;
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
       } else {
         hanCode = testserial;
         AddLog(LOG_LEVEL_INFO,
-               PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
+               PSTR("HAN: 8N2 Fail. Error %d"), hanCode);
         hanERR++;
         setDelayError(testserial);
+        hanCFG = 99;
       }
       //
     }
@@ -227,17 +230,18 @@ void HanDoWork(void) {
         //
         hanDTT = node.getResponseBuffer(0);
         if (hanDTT > 0) {
+          hanDelay = hanDelayWait;
           hanEB = 3;
           AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
         } else {
+          hanDelay = hanDelayWait;
           hanEB = 1;
           AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
         }
         //
       } else {
-        hanERR++;
         hanCode = testEB;
-        setDelayError(testEB);
+        hanDelay = hanDelayWait;
         hanEB = 1;
         AddLog(LOG_LEVEL_INFO,
                PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
@@ -264,6 +268,7 @@ void HanDoWork(void) {
       hanSS = node.getResponseBuffer(3) & 0xFF;
       hanBlink();
       hanDelay = hanDelayWait;
+      hanIndex++;
       AddLog(LOG_LEVEL_INFO,
              PSTR("HAN: %02d:%02d:%02d !"), hanHH, hanMM,
              hanSS);
@@ -274,7 +279,6 @@ void HanDoWork(void) {
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -295,6 +299,7 @@ void HanDoWork(void) {
         hanCLT = node.getResponseBuffer(6) / 10.0;
         hanBlink();
         hanDelay = hanDelayWait;
+        hanIndex++;
       } else {
         hanERR++;
         setDelayError(hRes);
@@ -307,6 +312,7 @@ void HanDoWork(void) {
         hanCL1 = node.getResponseBuffer(1) / 10.0;
         hanBlink();
         hanDelay = hanDelayWait;
+        hanIndex++;
       } else {
         hanERR++;
         setDelayError(hRes);
@@ -314,7 +320,6 @@ void HanDoWork(void) {
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -345,6 +350,7 @@ void HanDoWork(void) {
                  node.getResponseBuffer(14) << 16;
         hanBlink();
         hanDelay = hanDelayWait;
+        hanIndex++;
       } else {
         hanERR++;
         setDelayError(hRes);
@@ -360,6 +366,7 @@ void HanDoWork(void) {
         hanPF = node.getResponseBuffer(4) / 1000.0;
         hanBlink();
         hanDelay = hanDelayWait;
+        hanIndex++;
       } else {
         hanERR++;
         setDelayError(hRes);
@@ -367,7 +374,6 @@ void HanDoWork(void) {
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -388,6 +394,7 @@ void HanDoWork(void) {
         hanFR = node.getResponseBuffer(4) / 10.0;
         hanBlink();
         hanDelay = hanDelayWait;
+        hanIndex++;
       } else {
         hanERR++;
         setDelayError(hRes);
@@ -399,6 +406,7 @@ void HanDoWork(void) {
         hanFR = node.getResponseBuffer(0) / 10.0;
         hanBlink();
         hanDelay = hanDelayWait;
+        hanIndex++;
       } else {
         hanERR++;
         setDelayError(hRes);
@@ -406,7 +414,6 @@ void HanDoWork(void) {
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -428,13 +435,13 @@ void HanDoWork(void) {
                 1000.0;
       hanBlink();
       hanDelay = hanDelayWait;
+      hanIndex++;
     } else {
       hanERR++;
       setDelayError(hRes);
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -453,13 +460,13 @@ void HanDoWork(void) {
                1000.0;
       hanBlink();
       hanDelay = hanDelayWait;
+      hanIndex++;
     } else {
       hanERR++;
       setDelayError(hRes);
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -502,13 +509,13 @@ void HanDoWork(void) {
 
       hanBlink();
       hanDelay = hanDelayWait;
+      hanIndex++;
     } else {
       hanERR++;
       setDelayError(hRes);
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -524,13 +531,13 @@ void HanDoWork(void) {
              1000.0;
       hanBlink();
       hanDelay = hanDelayWait;
+      hanIndex++;
     } else {
       hanERR++;
       setDelayError(hRes);
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -544,13 +551,13 @@ void HanDoWork(void) {
       hTariff = node.getResponseBuffer(0) >> 8;
       hanBlink();
       hanDelay = hanDelayWait;
+      hanIndex++;
     } else {
       hanERR++;
       setDelayError(hRes);
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -572,13 +579,13 @@ void HanDoWork(void) {
 
       hanBlink();
       hanDelay = hanDelayWait;
+      hanIndex++;
     } else {
       hanERR++;
       setDelayError(hRes);
     }
     hanRead = millis();
     hanWork = false;
-    hanIndex++;
   }
 
   // # # # # # # # # # #
@@ -686,6 +693,8 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}EB Status {m} %s %ds {e}",
                      hStatus, tmpWait);
+
+    WSContentSend_PD("{s}EB Index {m} %d {e}", hanIndex);
 
     if (hanERR > 0) {
       WSContentSend_PD("{s}EB Error Time {m} %s{e}",
