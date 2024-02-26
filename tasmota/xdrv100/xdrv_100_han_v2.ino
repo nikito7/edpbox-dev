@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for edpbox
 // easyhan.pt
 
-#define HAN_VERSION "2024.02.22.20.14"
+#define HAN_VERSION "13.4.0-5"
 
 #ifdef USE_HAN_V2
 
@@ -19,8 +19,8 @@ uint8_t hanEB = 99;
 uint16_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 700;
-uint32_t hanDelayError = 91000;
+uint32_t hanDelayWait = 900;
+uint32_t hanDelayError = 301000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -101,10 +101,8 @@ char hStatus[10];
 
 // **********************
 
-#include <HardwareSerial.h>
 #include <ModbusMaster.h>
 
-HardwareSerial &HwSerial = Serial;
 ModbusMaster node;
 
 void hanBlink() {
@@ -121,6 +119,8 @@ void setDelayError(uint8_t hanRes) {
     hanDelay = hanDelayError;
     hanIndex = 0;
     sprintf(hStatus, "Error");
+    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Waiting %ds"),
+           hanDelayError / 1000);
   } else {
     hanDelay = hanDelayWait;
   }
@@ -135,6 +135,8 @@ void HanInit() {
 #ifdef ESP8266
   pinMode(2, OUTPUT);
 #endif
+
+  ClaimSerial();  // Tasmota SerialLog
 
   sprintf(hStatus, "Init");
   hanRead = millis() + 21000;
@@ -164,15 +166,14 @@ void HanDoWork(void) {
 
   if (hanWork & (hanIndex == 0)) {
     //
-    HwSerial.end();
 
-    delay(100);
+    Serial.end();
+    Serial.flush();
+    Serial.begin(9600, SERIAL_8N2);
 
-    HwSerial.begin(9600, SERIAL_8N1);
+    delay(250);
 
-    delay(100);
-
-    node.begin(1, HwSerial);
+    node.begin(1, Serial);
 
     delay(100);
 
@@ -181,59 +182,67 @@ void HanDoWork(void) {
     node.clearResponseBuffer();
     testserial = node.readInputRegisters(0x0001, 1);
     if (testserial == node.ku8MBSuccess) {
-      hanCFG = 1;
+      hanCFG = 2;
       hanIndex++;
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
     } else {
       hanCode = testserial;
       AddLog(LOG_LEVEL_INFO,
-             PSTR("HAN: Test 8N2 Error %d"), hanCode);
+             PSTR("HAN: 8N2 Fail. Error %d"), hanCode);
       hanERR++;
       setDelayError(testserial);
       //
-      HwSerial.end();
-      delay(100);
-      HwSerial.begin(9600, SERIAL_8N2);
-      delay(100);
+      Serial.end();
+      Serial.flush();
+      Serial.begin(9600, SERIAL_8N1);
+      delay(250);
       //
       node.clearResponseBuffer();
       testserial = node.readInputRegisters(0x0001, 1);
       if (testserial == node.ku8MBSuccess) {
-        hanCFG = 2;
+        hanCFG = 1;
         hanIndex++;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
-      }
-      //
-    }
-
-    delay(100);
-
-    // Detect EB Type
-
-    uint8_t testEB;
-    uint16_t hanDTT = 0;
-
-    node.clearResponseBuffer();
-    testEB = node.readInputRegisters(0x0070, 2);
-    if (testEB == node.ku8MBSuccess) {
-      //
-      hanDTT = node.getResponseBuffer(0);
-      if (hanDTT > 0) {
-        hanEB = 3;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
       } else {
-        hanEB = 1;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
+        hanCode = testserial;
+        AddLog(LOG_LEVEL_INFO,
+               PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
+        hanERR++;
+        setDelayError(testserial);
       }
       //
-    } else {
-      hanERR++;
-      hanCode = testEB;
-      setDelayError(testEB);
-      hanEB = 1;
-      AddLog(LOG_LEVEL_INFO,
-             PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
     }
+
+    delay(150);
+
+    if (hanCFG != 99) {
+      // Detect EB Type
+
+      uint8_t testEB;
+      uint16_t hanDTT = 0;
+
+      node.clearResponseBuffer();
+      testEB = node.readInputRegisters(0x0070, 2);
+      if (testEB == node.ku8MBSuccess) {
+        //
+        hanDTT = node.getResponseBuffer(0);
+        if (hanDTT > 0) {
+          hanEB = 3;
+          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
+        } else {
+          hanEB = 1;
+          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
+        }
+        //
+      } else {
+        hanERR++;
+        hanCode = testEB;
+        setDelayError(testEB);
+        hanEB = 1;
+        AddLog(LOG_LEVEL_INFO,
+               PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
+      }
+    }  // if hanCFG != 99
     hanRead = millis();
     hanWork = false;
   }
@@ -664,8 +673,8 @@ void HanJson(bool json) {
     ResponseAppend_P("}");
 
   } else {
-    WSContentSend_PD("{s}Build: " HAN_VERSION
-                     " {m} HAN V2 {e}");
+    WSContentSend_PD("{s}<br>{m} {e}");
+    WSContentSend_PD("{s}HAN V2 " HAN_VERSION " {m} {e}");
     WSContentSend_PD("{s}<br>{m} {e}");
 
     uint32_t tmpWait =
