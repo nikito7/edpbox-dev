@@ -1,7 +1,7 @@
-// Tasmota HAN Driver for edpbox
+// Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-6.04"
+#define HAN_VERSION "13.4.0-7.04"
 
 #ifdef USE_HAN_V2
 
@@ -19,8 +19,8 @@ uint8_t hanEB = 99;
 uint16_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 700;
-uint32_t hanDelayError = 91000;
+uint32_t hanDelayWait = 800;
+uint32_t hanDelayError = 121000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -134,12 +134,13 @@ void HanInit() {
 
 #ifdef ESP8266
   pinMode(2, OUTPUT);
+  digitalWrite(2, HIGH);
 #endif
 
   ClaimSerial();  // Tasmota SerialLog
 
   sprintf(hStatus, "Init");
-  hanRead = millis() + 21000;
+  hanRead = millis() + 5000;
 
   // Set initSuccess at the very end of the init process
   // Init is successful
@@ -152,6 +153,8 @@ void HanDoWork(void) {
 
   if (hanRead + hanDelay < millis()) {
     hanWork = true;
+    node.clearResponseBuffer();
+    node.clearTransmitBuffer();
   }
 
   // # # # # # # # # # #
@@ -167,8 +170,8 @@ void HanDoWork(void) {
   if (hanWork & (hanIndex == 0)) {
     //
 
-    Serial.end();
     Serial.flush();
+    Serial.end();
     Serial.begin(9600, SERIAL_8N1);
 
     delay(250);
@@ -193,8 +196,8 @@ void HanDoWork(void) {
       hanERR++;
       setDelayError(testserial);
       //
-      Serial.end();
       Serial.flush();
+      Serial.end();
       Serial.begin(9600, SERIAL_8N2);
       delay(250);
       //
@@ -252,11 +255,58 @@ void HanDoWork(void) {
   }
 
   // # # # # # # # # # #
-  // Clock ( 12 bytes )
+  // Contract
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 1)) {
-    node.clearResponseBuffer();
+    hRes = node.readInputRegisters(0x000C, 1);
+    if (hRes == node.ku8MBSuccess) {
+      hCT1 = (node.getResponseBuffer(1) |
+              node.getResponseBuffer(0) << 16) /
+             1000.0;
+      hanBlink();
+      hanDelay = hanDelayWait;
+      hanIndex++;
+    } else {
+      hanERR++;
+      setDelayError(hRes);
+    }
+    hanRead = millis();
+    hanWork = false;
+  }
+
+  // # # # # # # # # # #
+  // LP ID
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 2)) {
+    hRes = node.readInputRegisters(0x0080, 1);
+    if (hRes == node.ku8MBSuccess) {
+      hLPid[1] = node.getResponseBuffer(0) >> 8;
+      hLPid[2] = node.getResponseBuffer(0) & 0xFF;
+      hLPid[3] = node.getResponseBuffer(1) >> 8;
+      hLPid[4] = node.getResponseBuffer(1) & 0xFF;
+      hLPid[5] = node.getResponseBuffer(2) >> 8;
+      hLPid[6] = node.getResponseBuffer(2) & 0xFF;
+      hLPid[7] = node.getResponseBuffer(3) >> 8;
+      hLPid[8] = node.getResponseBuffer(3) & 0xFF;
+
+      hanBlink();
+      hanDelay = hanDelayWait;
+      hanIndex++;
+    } else {
+      hanERR++;
+      setDelayError(hRes);
+    }
+    hanRead = millis();
+    hanWork = false;
+  }
+
+  // # # # # # # # # # #
+  // Clock ( 12 bytes )
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 3)) {
     hRes = node.readInputRegisters(0x0001, 1);
     if (hRes == node.ku8MBSuccess) {
       hanYY = node.getResponseBuffer(0);
@@ -285,9 +335,8 @@ void HanDoWork(void) {
   // Voltage Current
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 2)) {
+  if (hanWork & (hanIndex == 4)) {
     if (hanEB == 3) {
-      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x006c, 7);
       if (hRes == node.ku8MBSuccess) {
         hanVL1 = node.getResponseBuffer(0) / 10.0;
@@ -327,9 +376,8 @@ void HanDoWork(void) {
   // Power Factor (mono) (79..)
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 3)) {
+  if (hanWork & (hanIndex == 5)) {
     if (hanEB == 3) {
-      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x0073, 8);
       if (hRes == node.ku8MBSuccess) {
         hanAPI1 = node.getResponseBuffer(1) |
@@ -382,9 +430,8 @@ void HanDoWork(void) {
   // Frequency (mono)
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 4)) {
+  if (hanWork & (hanIndex == 6)) {
     if (hanEB == 3) {
-      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x007b, 5);
       if (hRes == node.ku8MBSuccess) {
         hanPF = node.getResponseBuffer(0) / 1000.0;
@@ -420,8 +467,7 @@ void HanDoWork(void) {
   // Total Energy Tarifas (kWh) 26
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 5)) {
-    node.clearResponseBuffer();
+  if (hanWork & (hanIndex == 7)) {
     hRes = node.readInputRegisters(0x0026, 3);
     if (hRes == node.ku8MBSuccess) {
       hanTET1 = (node.getResponseBuffer(1) |
@@ -448,8 +494,7 @@ void HanDoWork(void) {
   // Total Energy (total) (kWh) 16
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 6)) {
-    node.clearResponseBuffer();
+  if (hanWork & (hanIndex == 8)) {
     hRes = node.readInputRegisters(0x0016, 2);
     if (hRes == node.ku8MBSuccess) {
       hanTEI = (node.getResponseBuffer(1) |
@@ -473,8 +518,7 @@ void HanDoWork(void) {
   // Load Profile
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 7)) {
-    node.clearResponseBuffer();
+  if (hanWork & (hanIndex == 9)) {
     hRes = node.readLastProfile(0x00, 0x01);
     if (hRes == node.ku8MBSuccess) {
       hLP1YY = node.getResponseBuffer(0);
@@ -519,33 +563,10 @@ void HanDoWork(void) {
   }
 
   // # # # # # # # # # #
-  // Contract
-  // # # # # # # # # # #
-
-  if (hanWork & (hanIndex == 8)) {
-    node.clearResponseBuffer();
-    hRes = node.readInputRegisters(0x000C, 1);
-    if (hRes == node.ku8MBSuccess) {
-      hCT1 = (node.getResponseBuffer(1) |
-              node.getResponseBuffer(0) << 16) /
-             1000.0;
-      hanBlink();
-      hanDelay = hanDelayWait;
-      hanIndex++;
-    } else {
-      hanERR++;
-      setDelayError(hRes);
-    }
-    hanRead = millis();
-    hanWork = false;
-  }
-
-  // # # # # # # # # # #
   // Tariff
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 9)) {
-    node.clearResponseBuffer();
+  if (hanWork & (hanIndex == 10)) {
     hRes = node.readInputRegisters(0x000B, 1);
     if (hRes == node.ku8MBSuccess) {
       hTariff = node.getResponseBuffer(0) >> 8;
@@ -561,46 +582,15 @@ void HanDoWork(void) {
   }
 
   // # # # # # # # # # #
-  // LP ID
-  // # # # # # # # # # #
-
-  if (hanWork & (hanIndex == 10)) {
-    node.clearResponseBuffer();
-    hRes = node.readInputRegisters(0x0080, 1);
-    if (hRes == node.ku8MBSuccess) {
-      hLPid[1] = node.getResponseBuffer(0) >> 8;
-      hLPid[2] = node.getResponseBuffer(0) & 0xFF;
-      hLPid[3] = node.getResponseBuffer(1) >> 8;
-      hLPid[4] = node.getResponseBuffer(1) & 0xFF;
-      hLPid[5] = node.getResponseBuffer(2) >> 8;
-      hLPid[6] = node.getResponseBuffer(2) & 0xFF;
-      hLPid[7] = node.getResponseBuffer(3) >> 8;
-      hLPid[8] = node.getResponseBuffer(3) & 0xFF;
-
-      hanBlink();
-      hanDelay = hanDelayWait;
-      hanIndex++;
-    } else {
-      hanERR++;
-      setDelayError(hRes);
-    }
-    hanRead = millis();
-    hanWork = false;
-  }
-
-  // # # # # # # # # # #
   // EASYHAN MODBUS EOF
   // # # # # # # # # # #
-
-  node.clearResponseBuffer();
-  node.clearTransmitBuffer();
 
   if (hanERR > 900) {
     hanERR = 0;
   }
 
   if (hanIndex > 10) {
-    hanIndex = 1;
+    hanIndex = 3;  // skip setup and one time requests.
   }
 
   // end loop
