@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.04"
+#define HAN_VERSION "13.4.0-7.13"
 
 #ifdef USE_HAN_V2
 
@@ -90,6 +90,7 @@ float hLP6 = 0;
 float hLP7 = 0;
 float hLP8 = 0;
 uint8_t hLPid[9];
+uint32_t hLPX[2];
 
 // Misc
 
@@ -863,16 +864,101 @@ void HanJson(bool json) {
 const char HanCommands[] PROGMEM =
     "|"  // No Prefix
     "HanDelay|"
-    "HanHelp";
+    "HanProfile";
 
-void (*const HanCommand[])(void) PROGMEM = {&CmdHanDelay,
-                                            &CmdHanHelp};
+void (*const HanCommand[])(void) PROGMEM = {
+    &CmdHanDelay, &CmdHanProfile};
 
-void CmdHanHelp(void) {
-  AddLog(LOG_LEVEL_INFO, PSTR("HanHelp: Hello!"));
-  AddLog(LOG_LEVEL_INFO,
-         PSTR("HanHelp: Commands available: HanDelay"));
-  ResponseCmndDone();
+void CmdHanProfile(void) {
+  hanWork = false;
+  hanDelay = 30000;
+
+  uint8_t hRes;
+
+  node.clearResponseBuffer();
+  node.clearTransmitBuffer();
+
+  if (hLPX[0] == 0) {
+    hRes = node.readInputRegisters(0x0082, 2);
+    if (hRes == node.ku8MBSuccess) {
+      hLPX[0] = (node.getResponseBuffer(1) |
+                 node.getResponseBuffer(0) << 16);
+      hLPX[1] = (node.getResponseBuffer(3) |
+                 node.getResponseBuffer(2) << 16);
+      hanBlink();
+    }
+  }
+
+  uint16_t hLPX1YY = 0;
+  uint8_t hLPX1MT = 0;
+  uint8_t hLPX1DD = 0;
+  uint8_t hLPX1HH = 0;
+  uint8_t hLPX1MM = 0;
+
+  uint16_t hLPX2 = 0;  // tweaked to 16bits
+
+  uint32_t hLPX3 = 0;
+  uint32_t hLPX4 = 0;
+  uint32_t hLPX5 = 0;
+  uint32_t hLPX6 = 0;
+  uint32_t hLPX7 = 0;
+  uint32_t hLPX8 = 0;
+
+  uint16_t getLP = 0;
+  char resX[50];
+
+  if ((XdrvMailbox.payload >= 1) &&
+      (XdrvMailbox.payload <= hLPX[0])) {
+    // *****
+    getLP = XdrvMailbox.payload;
+
+    hRes = node.readProfileX(getLP, 0x00);
+    if (hRes == node.ku8MBSuccess) {
+      hLPX1YY = node.getResponseBuffer(0);
+      hLPX1MT = node.getResponseBuffer(1) >> 8;
+      hLPX1DD = node.getResponseBuffer(1) & 0xFF;
+      // hLP1WD = node.getResponseBuffer(2) >> 8;
+      hLPX1HH = node.getResponseBuffer(2) & 0xFF;
+      hLPX1MM = node.getResponseBuffer(3) >> 8;
+      // hLP1SS = node.getResponseBuffer(3) & 0xFF;
+
+      // tweaked to 16bits. branch: LP1.
+      hLPX2 = node.getResponseBuffer(6);
+
+      hLPX3 = (node.getResponseBuffer(8) |
+               node.getResponseBuffer(7) << 16);
+      hLPX4 = (node.getResponseBuffer(10) |
+               node.getResponseBuffer(9) << 16);
+      hLPX5 = (node.getResponseBuffer(12) |
+               node.getResponseBuffer(11) << 16);
+      hLPX6 = (node.getResponseBuffer(14) |
+               node.getResponseBuffer(13) << 16);
+      hLPX7 = (node.getResponseBuffer(16) |
+               node.getResponseBuffer(15) << 16);
+      hLPX8 = (node.getResponseBuffer(18) |
+               node.getResponseBuffer(17) << 16);
+      hanBlink();
+
+      sprintf(resX,
+              "%04d,%04d-%02d-%02dT%02d:%02d,"
+              "%02d,%04d,%04d,%04d,%04d",
+              getLP, hLPX1YY, hLPX1MT, hLPX1DD, hLPX1HH,
+              hLPX1MM, hLPX2, hLPX3, hLPX4, hLPX5, hLPX6);
+
+    } else {
+      sprintf(resX, "%04d,Error,Code,%d", getLP, hRes);
+    }
+    // *****
+  } else {
+    sprintf(resX, "%04d,Error,Limit,%04d,%04d", getLP,
+            hLPX[0], hLPX[1]);
+  }
+
+  hanRead = millis();
+  hanWork = false;
+  //
+  sprintf(hStatus, "Cmd");
+  ResponseCmndChar(resX);
 }
 
 void CmdHanDelay(void) {
@@ -882,8 +968,7 @@ void CmdHanDelay(void) {
   } else {
     hanDelay = 300000;
   }
-  AddLog(LOG_LEVEL_INFO,
-         PSTR("HanDelay: Paused modbus %ds"),
+  AddLog(LOG_LEVEL_INFO, PSTR("HanDelay: Paused %ds"),
          hanDelay / 1000);
   sprintf(hStatus, "Cmd");
   ResponseCmndDone();
