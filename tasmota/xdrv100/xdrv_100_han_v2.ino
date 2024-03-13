@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.13"
+#define HAN_VERSION "13.4.0-7.15"
 
 #ifdef USE_HAN_V2
 
@@ -19,7 +19,7 @@ uint8_t hanEB = 99;
 uint16_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 800;
+uint32_t hanDelayWait = 900;
 uint32_t hanDelayError = 121000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
@@ -116,7 +116,8 @@ void hanBlink() {
 
 void setDelayError(uint8_t hanRes) {
   hanCode = hanRes;
-  if (hanRes == 0xe2) {
+  if ((hanRes == 0xe0) || (hanRes == 0xe1) ||
+      (hanRes == 0xe2)) {
     hanDelay = hanDelayError;
     hanIndex = 0;
     sprintf(hStatus, "Error");
@@ -141,7 +142,7 @@ void HanInit() {
   ClaimSerial();  // Tasmota SerialLog
 
   sprintf(hStatus, "Init");
-  hanRead = millis() + 5000;
+  hanRead = millis() + 10000;
 
   // Set initSuccess at the very end of the init process
   // Init is successful
@@ -154,8 +155,10 @@ void HanDoWork(void) {
 
   if (hanRead + hanDelay < millis()) {
     hanWork = true;
-    node.clearResponseBuffer();
     node.clearTransmitBuffer();
+    delay(100);
+    node.clearResponseBuffer();
+    delay(100);
   }
 
   // # # # # # # # # # #
