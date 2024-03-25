@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.15"
+#define HAN_VERSION "13.4.0-7.19.2"
 
 #ifdef USE_HAN_V2
 
@@ -19,8 +19,8 @@ uint8_t hanEB = 99;
 uint16_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 900;
-uint32_t hanDelayError = 121000;
+uint32_t hanDelayWait = 1100;
+uint32_t hanDelayError = 120000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -80,6 +80,7 @@ uint8_t hLP1MT = 0;
 uint8_t hLP1DD = 0;
 uint8_t hLP1HH = 0;
 uint8_t hLP1MM = 0;
+char hLP1gmt[5];
 
 uint16_t hLP2 = 0;  // tweaked to 16bits
 
@@ -116,13 +117,10 @@ void hanBlink() {
 
 void setDelayError(uint8_t hanRes) {
   hanCode = hanRes;
-  if ((hanRes == 0xe0) || (hanRes == 0xe1) ||
-      (hanRes == 0xe2)) {
+  if (hanRes == 0xe2) {
     hanDelay = hanDelayError;
     hanIndex = 0;
     sprintf(hStatus, "Error");
-    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Waiting %ds"),
-           hanDelayError / 1000);
   } else {
     hanDelay = hanDelayWait;
   }
@@ -136,13 +134,13 @@ void HanInit() {
 
 #ifdef ESP8266
   pinMode(2, OUTPUT);
-  digitalWrite(2, HIGH);
+  digitalWrite(2, LOW);
 #endif
 
   ClaimSerial();  // Tasmota SerialLog
 
   sprintf(hStatus, "Init");
-  hanRead = millis() + 10000;
+  hanRead = millis() + 5000;
 
   // Set initSuccess at the very end of the init process
   // Init is successful
@@ -156,9 +154,10 @@ void HanDoWork(void) {
   if (hanRead + hanDelay < millis()) {
     hanWork = true;
     node.clearTransmitBuffer();
-    delay(100);
+    delay(50);
     node.clearResponseBuffer();
-    delay(100);
+    delay(50);
+    node.setTimeout(750);
   }
 
   // # # # # # # # # # #
@@ -173,6 +172,7 @@ void HanDoWork(void) {
 
   if (hanWork & (hanIndex == 0)) {
     //
+    node.setTimeout(1500);
 
     Serial.flush();
     Serial.end();
@@ -523,6 +523,9 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 9)) {
+    //
+    node.setTimeout(2000);
+    //
     hRes = node.readLastProfile(0x00, 0x01);
     if (hRes == node.ku8MBSuccess) {
       hLP1YY = node.getResponseBuffer(0);
@@ -532,6 +535,8 @@ void HanDoWork(void) {
       hLP1HH = node.getResponseBuffer(2) & 0xFF;
       hLP1MM = node.getResponseBuffer(3) >> 8;
       // hLP1SS = node.getResponseBuffer(3) & 0xFF;
+
+      uint8_t tmpGMT = node.getResponseBuffer(5) & 0xFF;
 
       // tweaked to 16bits. branch: LP1.
       hLP2 = node.getResponseBuffer(6);
@@ -554,6 +559,12 @@ void HanDoWork(void) {
       hLP8 = (node.getResponseBuffer(18) |
               node.getResponseBuffer(17) << 16) /
              1000.0;
+
+      if (tmpGMT == 0x80) {
+        sprintf(hLP1gmt, "01");
+      } else {
+        sprintf(hLP1gmt, "00");
+      }
 
       hanBlink();
       hanDelay = hanDelayWait;
@@ -662,6 +673,7 @@ void HanJson(bool json) {
     ResponseAppend_P(",\"LP1_D\":%d", hLP1DD);
     ResponseAppend_P(",\"LP1_HH\":%d", hLP1HH);
     ResponseAppend_P(",\"LP1_MM\":%d", hLP1MM);
+    ResponseAppend_P(",\"LP1_GMT\":\"%s\"", hLP1gmt);
 
     ResponseAppend_P(",\"LP3_IMP\":%3_f", &hLP3);
     ResponseAppend_P(",\"LP4\":%3_f", &hLP4);
@@ -685,24 +697,24 @@ void HanJson(bool json) {
       tmpWait = 999;
     }
 
-    WSContentSend_PD("{s}EB Status {m} %s %ds {e}",
+    WSContentSend_PD("{s}MB Status {m} %s %ds {e}",
                      hStatus, tmpWait);
 
-    WSContentSend_PD("{s}EB Index {m} %d {e}", hanIndex);
+    WSContentSend_PD("{s}MB Index {m} %d {e}", hanIndex);
 
     if (hanERR > 0) {
-      WSContentSend_PD("{s}EB Error Time {m} %s{e}",
+      WSContentSend_PD("{s}MB Error Time {m} %s{e}",
                        hErrTime);
 
-      WSContentSend_PD("{s}EB Error Code {m} %s {e}",
+      WSContentSend_PD("{s}MB Error Code {m} %s {e}",
                        hErrCode);
     }
 
-    WSContentSend_PD("{s}EB Error Count {m} %d {e}",
+    WSContentSend_PD("{s}MB Error Count {m} %d {e}",
                      hanERR);
 
-    WSContentSend_PD("{s}EB Serial {m} 8N%d {e}", hanCFG);
-    WSContentSend_PD("{s}EB Type {m} %d {e}", hanEB);
+    WSContentSend_PD("{s}MB Serial {m} 8N%d {e}", hanCFG);
+    WSContentSend_PD("{s}MB Type {m} %d {e}", hanEB);
     WSContentSend_PD("{s}<br>{m} {e}");
 
     char hanClock[10];
@@ -802,8 +814,9 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}LP1 Date {m} %s{e}", hLPDate);
 
-    char hLPClock[10];
-    sprintf(hLPClock, "%02d:%02d", hLP1HH, hLP1MM);
+    char hLPClock[15];
+    sprintf(hLPClock, "%02d:%02d Z%s", hLP1HH, hLP1MM,
+            hLP1gmt);
 
     WSContentSend_PD("{s}LP1 Time {m} %s{e}", hLPClock);
 
@@ -874,14 +887,17 @@ void (*const HanCommand[])(void) PROGMEM = {
 
 void CmdHanProfile(void) {
   hanWork = false;
-  hanDelay = 30000;
+  hanDelay = 15000;
 
   uint8_t hRes;
 
-  node.clearResponseBuffer();
-  node.clearTransmitBuffer();
-
   if (hLPX[0] == 0) {
+    //
+    node.clearTransmitBuffer();
+    delay(100);
+    node.clearResponseBuffer();
+    delay(100);
+    //
     hRes = node.readInputRegisters(0x0082, 2);
     if (hRes == node.ku8MBSuccess) {
       hLPX[0] = (node.getResponseBuffer(1) |
@@ -897,6 +913,7 @@ void CmdHanProfile(void) {
   uint8_t hLPX1DD = 0;
   uint8_t hLPX1HH = 0;
   uint8_t hLPX1MM = 0;
+  uint8_t hLPX1gmt = 99;
 
   uint16_t hLPX2 = 0;  // tweaked to 16bits
 
@@ -915,15 +932,23 @@ void CmdHanProfile(void) {
     // *****
     getLP = XdrvMailbox.payload;
 
+    node.clearTransmitBuffer();
+    delay(100);
+    node.clearResponseBuffer();
+    delay(100);
+
+    node.setTimeout(2000);
+
     hRes = node.readProfileX(getLP, 0x00);
     if (hRes == node.ku8MBSuccess) {
       hLPX1YY = node.getResponseBuffer(0);
       hLPX1MT = node.getResponseBuffer(1) >> 8;
       hLPX1DD = node.getResponseBuffer(1) & 0xFF;
-      // hLP1WD = node.getResponseBuffer(2) >> 8;
+
       hLPX1HH = node.getResponseBuffer(2) & 0xFF;
       hLPX1MM = node.getResponseBuffer(3) >> 8;
-      // hLP1SS = node.getResponseBuffer(3) & 0xFF;
+
+      hLPX1gmt = node.getResponseBuffer(5) & 0xFF;
 
       // tweaked to 16bits. branch: LP1.
       hLPX2 = node.getResponseBuffer(6);
@@ -942,11 +967,20 @@ void CmdHanProfile(void) {
                node.getResponseBuffer(17) << 16);
       hanBlink();
 
+      char tmpGMT[5];
+
+      if (hLPX1gmt == 0x80) {
+        sprintf(tmpGMT, "01");
+      } else {
+        sprintf(tmpGMT, "00");
+      }
+
       sprintf(resX,
-              "%04d,%04d-%02d-%02dT%02d:%02d,"
+              "%04d,%04d-%02d-%02dT%02d:%02dZ%s,"
               "%02d,%04d,%04d,%04d,%04d",
               getLP, hLPX1YY, hLPX1MT, hLPX1DD, hLPX1HH,
-              hLPX1MM, hLPX2, hLPX3, hLPX4, hLPX5, hLPX6);
+              hLPX1MM, tmpGMT, hLPX2, hLPX3, hLPX4, hLPX5,
+              hLPX6);
 
     } else {
       sprintf(resX, "%04d,Error,Code,%d", getLP, hRes);
