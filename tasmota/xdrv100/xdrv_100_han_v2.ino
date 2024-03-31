@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.19.2"
+#define HAN_VERSION "13.4.0-7.19.4"
 
 #ifdef USE_HAN_V2
 
@@ -116,14 +116,16 @@ void hanBlink() {
 }
 
 void setDelayError(uint8_t hanRes) {
+  sprintf(hStatus, "Error");
   hanCode = hanRes;
+  //
   if (hanRes == 0xe2) {
     hanDelay = hanDelayError;
     hanIndex = 0;
-    sprintf(hStatus, "Error");
   } else {
-    hanDelay = hanDelayWait;
+    hanDelay = hanDelayError / 2;
   }
+  //
   sprintf(hErrTime, "%02d:%02d:%02d", hanHH, hanMM,
           hanSS);
   sprintf(hErrCode, "0x%02X", hanCode);
