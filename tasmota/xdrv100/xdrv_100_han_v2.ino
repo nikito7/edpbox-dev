@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.19.4"
+#define HAN_VERSION "13.4.0-7.20.0"
 
 #ifdef USE_HAN_V2
 
@@ -19,8 +19,8 @@ uint8_t hanEB = 99;
 uint16_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 1100;
-uint32_t hanDelayError = 120000;
+uint32_t hanDelayWait = 1200;
+uint32_t hanDelayError = 300000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -100,6 +100,7 @@ uint8_t hTariff = 0;
 char hErrTime[10];
 char hErrCode[5];
 char hStatus[10];
+uint32_t hPerf[2] = {0, 0};
 
 // **********************
 
@@ -119,11 +120,12 @@ void setDelayError(uint8_t hanRes) {
   sprintf(hStatus, "Error");
   hanCode = hanRes;
   //
-  if (hanRes == 0xe2) {
+  if ((hanRes == 0xE2) | (hanRes == 0xE1) |
+      (hanRes == 0xE0)) {
     hanDelay = hanDelayError;
     hanIndex = 0;
   } else {
-    hanDelay = hanDelayError / 2;
+    hanDelay = hanDelayWait * 2;
   }
   //
   sprintf(hErrTime, "%02d:%02d:%02d", hanHH, hanMM,
@@ -174,61 +176,74 @@ void HanDoWork(void) {
 
   if (hanWork & (hanIndex == 0)) {
     //
-    node.setTimeout(1500);
+    // Detect Stop Bits
 
-    Serial.flush();
-    Serial.end();
-    Serial.begin(9600, SERIAL_8N1);
+    if (hanCFG == 99) {
+      node.setTimeout(1500);
 
-    delay(250);
-
-    node.begin(1, Serial);
-
-    delay(100);
-
-    uint8_t testserial;
-
-    node.clearResponseBuffer();
-    testserial = node.readInputRegisters(0x0001, 1);
-    if (testserial == node.ku8MBSuccess) {
-      hanCFG = 1;
-      hanIndex++;
-      hanDelay = hanDelayWait;
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
-    } else {
-      hanCode = testserial;
-      AddLog(LOG_LEVEL_INFO,
-             PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
-      hanERR++;
-      setDelayError(testserial);
-      //
       Serial.flush();
       Serial.end();
-      Serial.begin(9600, SERIAL_8N2);
+
+      delay(100);
+
+      Serial.begin(9600, SERIAL_8N1);
+
       delay(250);
-      //
+
+      node.begin(1, Serial);
+
+      delay(100);
+
+      uint8_t testserial;
+
       node.clearResponseBuffer();
       testserial = node.readInputRegisters(0x0001, 1);
       if (testserial == node.ku8MBSuccess) {
-        hanCFG = 2;
+        hanCFG = 1;
         hanIndex++;
         hanDelay = hanDelayWait;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
       } else {
         hanCode = testserial;
         AddLog(LOG_LEVEL_INFO,
-               PSTR("HAN: 8N2 Fail. Error %d"), hanCode);
+               PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
         hanERR++;
         setDelayError(testserial);
-        hanCFG = 99;
+        //
+        Serial.flush();
+        Serial.end();
+        delay(100);
+        Serial.begin(9600, SERIAL_8N2);
+        delay(250);
+        //
+        node.clearResponseBuffer();
+        testserial = node.readInputRegisters(0x0001, 1);
+        if (testserial == node.ku8MBSuccess) {
+          hanCFG = 2;
+          hanIndex++;
+          hanDelay = hanDelayWait;
+          AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
+        } else {
+          hanCode = testserial;
+          AddLog(LOG_LEVEL_INFO,
+                 PSTR("HAN: 8N2 Fail. Error %d"),
+                 hanCode);
+          hanERR++;
+          setDelayError(testserial);
+          hanCFG = 99;
+        }
+        //
       }
       //
-    }
+      delay(150);
+    } else {
+      hanIndex++;
+    }  // if hanCFG == 99
 
-    delay(150);
+    // Detect EB Type
 
-    if (hanCFG != 99) {
-      // Detect EB Type
+    if ((hanCFG != 99) & (hanEB == 99)) {
+      //
 
       uint8_t testEB;
       uint16_t hanDTT = 0;
@@ -255,7 +270,10 @@ void HanDoWork(void) {
         AddLog(LOG_LEVEL_INFO,
                PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
       }
+    } else {
+      hanDelay = hanDelayWait;
     }  // if hanCFG != 99
+
     hanRead = millis();
     hanWork = false;
   }
@@ -474,8 +492,10 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 7)) {
+    hPerf[0] = millis();
     hRes = node.readInputRegisters(0x0026, 3);
     if (hRes == node.ku8MBSuccess) {
+      hPerf[1] = millis() - hPerf[0];
       hanTET1 = (node.getResponseBuffer(1) |
                  node.getResponseBuffer(0) << 16) /
                 1000.0;
@@ -528,8 +548,10 @@ void HanDoWork(void) {
     //
     node.setTimeout(2000);
     //
+    hPerf[0] = millis();
     hRes = node.readLastProfile(0x00, 0x01);
     if (hRes == node.ku8MBSuccess) {
+      hPerf[1] = millis() - hPerf[0];
       hLP1YY = node.getResponseBuffer(0);
       hLP1MT = node.getResponseBuffer(1) >> 8;
       hLP1DD = node.getResponseBuffer(1) & 0xFF;
@@ -717,6 +739,7 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}MB Serial {m} 8N%d {e}", hanCFG);
     WSContentSend_PD("{s}MB Type {m} %d {e}", hanEB);
+    WSContentSend_PD("{s}MB Perf {m} %d ms{e}", hPerf[1]);
     WSContentSend_PD("{s}<br>{m} {e}");
 
     char hanClock[10];
@@ -882,10 +905,15 @@ void HanJson(bool json) {
 const char HanCommands[] PROGMEM =
     "|"  // No Prefix
     "HanDelay|"
+    "HanDelayWait|"
+    "HanDelayError|"
     "HanProfile";
 
 void (*const HanCommand[])(void) PROGMEM = {
-    &CmdHanDelay, &CmdHanProfile};
+    &CmdHanDelay, &CmdHanDelayWait, &CmdHanDelayError,
+    &CmdHanProfile};
+
+//
 
 void CmdHanProfile(void) {
   hanWork = false;
@@ -1000,6 +1028,8 @@ void CmdHanProfile(void) {
   ResponseCmndChar(resX);
 }
 
+//
+
 void CmdHanDelay(void) {
   if ((XdrvMailbox.payload >= 0) &&
       (XdrvMailbox.payload <= 900)) {
@@ -1010,6 +1040,30 @@ void CmdHanDelay(void) {
   AddLog(LOG_LEVEL_INFO, PSTR("HanDelay: Paused %ds"),
          hanDelay / 1000);
   sprintf(hStatus, "Cmd");
+  ResponseCmndDone();
+}
+
+//
+
+void CmdHanDelayWait(void) {
+  if ((XdrvMailbox.payload >= 500) &&
+      (XdrvMailbox.payload <= 99000)) {
+    hanDelayWait = XdrvMailbox.payload;
+  }
+  AddLog(LOG_LEVEL_INFO, PSTR("HanDelayWait: %dms"),
+         hanDelayWait);
+  ResponseCmndDone();
+}
+
+//
+
+void CmdHanDelayError(void) {
+  if ((XdrvMailbox.payload >= 500) &&
+      (XdrvMailbox.payload <= 900000)) {
+    hanDelayError = XdrvMailbox.payload;
+  }
+  AddLog(LOG_LEVEL_INFO, PSTR("HanDelayError: %dms"),
+         hanDelayError);
   ResponseCmndDone();
 }
 
