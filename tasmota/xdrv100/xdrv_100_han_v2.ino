@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.20.2"
+#define HAN_VERSION "13.4.0-7.20.3"
 
 #ifdef USE_HAN_V2
 
@@ -125,15 +125,7 @@ void setDelayError(uint8_t hanRes) {
   sprintf(hStatus, "Error");
   hanCode = hanRes;
   //
-  if ((hanRes == 0xE2) | (hanRes == 0xE1) |
-      (hanRes == 0xE0)) {
-    hanDelay = hanDelayError;
-    hanIndex = 0;
-    hanCFG = 99;
-    HanSerial.end();
-  } else {
-    hanDelay = hanDelayWait * 2;
-  }
+  hanDelay = hanDelayError;
   //
   sprintf(hErrTime, "%02d:%02d:%02d", hanHH, hanMM,
           hanSS);
@@ -185,101 +177,87 @@ void HanDoWork(void) {
     //
     // Detect Stop Bits
 
-    if (hanCFG == 99) {
-      node.setTimeout(1500);
+    node.setTimeout(1500);
 
+    HanSerial.flush();
+    HanSerial.end();
+
+    delay(100);
+
+    HanSerial.begin(9600, SERIAL_8N1);
+
+    delay(250);
+
+    node.begin(1, HanSerial);
+
+    delay(100);
+
+    uint8_t testserial;
+
+    node.clearResponseBuffer();
+    testserial = node.readInputRegisters(0x0001, 1);
+    if ((testserial == 0x00) | (testserial == 0x81)) {
+      hanCFG = 1;
+      hanIndex++;
+      hanDelay = hanDelayWait;
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
+    } else {
+      hanERR++;
+      hanCode = testserial;
+      AddLog(LOG_LEVEL_INFO,
+             PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
+      //
       HanSerial.flush();
       HanSerial.end();
-
       delay(100);
-
-      HanSerial.begin(9600, SERIAL_8N1);
-
+      HanSerial.begin(9600, SERIAL_8N2);
       delay(250);
-
-      node.begin(1, HanSerial);
-
-      delay(100);
-
-      uint8_t testserial;
-
+      //
       node.clearResponseBuffer();
       testserial = node.readInputRegisters(0x0001, 1);
-      if (testserial == node.ku8MBSuccess) {
-        hanCFG = 1;
+      if ((testserial == 0x00) | (testserial == 0x81)) {
+        hanCFG = 2;
         hanIndex++;
         hanDelay = hanDelayWait;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
       } else {
-        hanCode = testserial;
         AddLog(LOG_LEVEL_INFO,
-               PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
-        hanERR++;
+               PSTR("HAN: 8N2 Fail. Error %d"), hanCode);
         setDelayError(testserial);
-        //
-        HanSerial.flush();
-        HanSerial.end();
-        delay(100);
-        HanSerial.begin(9600, SERIAL_8N2);
-        delay(250);
-        //
-        node.clearResponseBuffer();
-        testserial = node.readInputRegisters(0x0001, 1);
-        if (testserial == node.ku8MBSuccess) {
-          hanCFG = 2;
-          hanIndex++;
-          hanDelay = hanDelayWait;
-          AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
-        } else {
-          hanCode = testserial;
-          AddLog(LOG_LEVEL_INFO,
-                 PSTR("HAN: 8N2 Fail. Error %d"),
-                 hanCode);
-          hanERR++;
-          setDelayError(testserial);
-          hanCFG = 99;
-        }
-        //
       }
       //
-      delay(150);
-    } else {
-      hanIndex++;
-    }  // if hanCFG == 99
+    }
+    //
+
+    delay(150);
 
     // Detect EB Type
 
-    if ((hanCFG != 99) & (hanEB == 99)) {
+    uint8_t testEB;
+    uint16_t hanDTT = 0;
+
+    node.clearResponseBuffer();
+    testEB = node.readInputRegisters(0x0070, 2);
+    if (testEB == node.ku8MBSuccess) {
       //
-
-      uint8_t testEB;
-      uint16_t hanDTT = 0;
-
-      node.clearResponseBuffer();
-      testEB = node.readInputRegisters(0x0070, 2);
-      if (testEB == node.ku8MBSuccess) {
-        //
-        hanDTT = node.getResponseBuffer(0);
-        if (hanDTT > 0) {
-          hanDelay = hanDelayWait;
-          hanEB = 3;
-          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
-        } else {
-          hanDelay = hanDelayWait;
-          hanEB = 1;
-          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
-        }
-        //
+      hanDTT = node.getResponseBuffer(0);
+      if (hanDTT > 0) {
+        hanDelay = hanDelayWait;
+        hanEB = 3;
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
       } else {
-        hanCode = testEB;
         hanDelay = hanDelayWait;
         hanEB = 1;
-        AddLog(LOG_LEVEL_INFO,
-               PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
       }
+      //
     } else {
+      hanCode = testEB;
       hanDelay = hanDelayWait;
-    }  // if hanCFG != 99
+      hanEB = 1;
+      AddLog(LOG_LEVEL_INFO,
+             PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
+    }
 
     hanRead = millis();
     hanWork = false;
