@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.20.3"
+#define HAN_VERSION "13.4.0-7.20.4"
 
 #ifdef USE_HAN_V2
 
@@ -233,32 +233,31 @@ void HanDoWork(void) {
 
     // Detect EB Type
 
-    uint8_t testEB;
-    uint16_t hanDTT = 0;
+    if (hanCFG != 99) {
+      uint8_t testEB;
+      uint16_t hanDTT = 0;
 
-    node.clearResponseBuffer();
-    testEB = node.readInputRegisters(0x0070, 2);
-    if (testEB == node.ku8MBSuccess) {
-      //
-      hanDTT = node.getResponseBuffer(0);
-      if (hanDTT > 0) {
-        hanDelay = hanDelayWait;
-        hanEB = 3;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
+      node.clearResponseBuffer();
+      testEB = node.readInputRegisters(0x0070, 2);
+      if (testEB == node.ku8MBSuccess) {
+        //
+        hanDTT = node.getResponseBuffer(0);
+        if (hanDTT > 0) {
+          hanEB = 3;
+          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
+        } else {
+          hanEB = 1;
+          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
+        }
+        //
       } else {
-        hanDelay = hanDelayWait;
+        hanCode = testEB;
         hanEB = 1;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
+        AddLog(LOG_LEVEL_INFO,
+               PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
       }
-      //
-    } else {
-      hanCode = testEB;
-      hanDelay = hanDelayWait;
-      hanEB = 1;
-      AddLog(LOG_LEVEL_INFO,
-             PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
-    }
-
+    }  // if hanCFG != 99
+       //
     hanRead = millis();
     hanWork = false;
   }
