@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.20.4"
+#define HAN_VERSION "13.4.0-7.20.5"
 
 #ifdef USE_HAN_V2
 
@@ -20,7 +20,7 @@ uint16_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
 uint32_t hanDelayWait = 1100;
-uint32_t hanDelayError = 120000;
+uint32_t hanDelayError = 35000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -107,11 +107,17 @@ uint32_t hPerf[2] = {0, 0};
 #include <HardwareSerial.h>
 #include <ModbusMaster.h>
 
+#define MAX485_DE_RE 16
+
 #ifdef ESP8266
 HardwareSerial &HanSerial = Serial;
 #endif
 
 ModbusMaster node;
+
+void preTransmission() { digitalWrite(MAX485_DE_RE, 1); }
+
+void postTransmission() { digitalWrite(MAX485_DE_RE, 0); }
 
 void hanBlink() {
 #ifdef ESP8266
@@ -136,8 +142,13 @@ void HanInit() {
   AddLog(LOG_LEVEL_INFO, PSTR("HAN: Init..."));
 
 #ifdef ESP8266
+  //
   pinMode(2, OUTPUT);
   digitalWrite(2, LOW);
+  //
+  pinMode(MAX485_DE_RE, OUTPUT);
+  digitalWrite(MAX485_DE_RE, 0);
+  //
 #endif
 
   ClaimSerial();  // Tasmota SerialLog
@@ -181,14 +192,12 @@ void HanDoWork(void) {
 
     HanSerial.flush();
     HanSerial.end();
-
     delay(100);
-
     HanSerial.begin(9600, SERIAL_8N1);
-
     delay(250);
-
     node.begin(1, HanSerial);
+    node.preTransmission(preTransmission);
+    node.postTransmission(postTransmission);
 
     delay(100);
 
@@ -211,6 +220,11 @@ void HanDoWork(void) {
       HanSerial.end();
       delay(100);
       HanSerial.begin(9600, SERIAL_8N2);
+      delay(250);
+      node.begin(1, HanSerial);
+      node.preTransmission(preTransmission);
+      node.postTransmission(postTransmission);
+
       delay(250);
       //
       node.clearResponseBuffer();
