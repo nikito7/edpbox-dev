@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.20.5"
+#define HAN_VERSION "13.4.0-7.20.7"
 
 #ifdef USE_HAN_V2
 
@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 // This variable will be set to true after initialization
-bool initSuccess = false;
+bool hDrvInit = false;
 
 // HAN
 
@@ -53,6 +53,11 @@ float hanTET3 = 0;
 // Total Energy (kWh) 16
 float hanTEI = 0;
 float hanTEE = 0;
+
+// Total Energy L1 L2 L3 (kWh) 1C
+float hTEIL1 = 0;
+float hTEIL2 = 0;
+float hTEIL3 = 0;
 
 // Active Power Import/Export 73
 // tri
@@ -141,25 +146,29 @@ void setDelayError(uint8_t hanRes) {
 void HanInit() {
   AddLog(LOG_LEVEL_INFO, PSTR("HAN: Init..."));
 
+  if (PinUsed(GPIO_MBR_RX) | PinUsed(GPIO_MBR_TX) |
+      PinUsed(GPIO_TCP_RX) | PinUsed(GPIO_TCP_TX)) {
+    AddLog(LOG_LEVEL_INFO,
+           PSTR("HAN: Disabled. Bridge Mode..."));
+  } else {
 #ifdef ESP8266
-  //
-  pinMode(2, OUTPUT);
-  digitalWrite(2, LOW);
-  //
-  pinMode(MAX485_DE_RE, OUTPUT);
-  digitalWrite(MAX485_DE_RE, 0);
-  //
+    //
+    pinMode(2, OUTPUT);
+    digitalWrite(2, LOW);
+    //
+    pinMode(MAX485_DE_RE, OUTPUT);
+    digitalWrite(MAX485_DE_RE, 0);
+    //
 #endif
 
-  ClaimSerial();  // Tasmota SerialLog
+    ClaimSerial();  // Tasmota SerialLog
 
-  sprintf(hStatus, "Init");
-  hanRead = millis() + 5000;
+    sprintf(hStatus, "Init");
+    hanRead = millis() + 5000;
 
-  // Set initSuccess at the very end of the init process
-  // Init is successful
-  initSuccess = true;
-
+    // Init is successful
+    hDrvInit = true;
+  }
 }  // end HanInit
 
 void HanDoWork(void) {
@@ -397,7 +406,7 @@ void HanDoWork(void) {
   // Power Factor (mono) (79..)
   // # # # # # # # # # #
 
-  if (hanWork & ((hanIndex == 5) | (hanIndex == 9))) {
+  if (hanWork & ((hanIndex == 5) | (hanIndex == 10))) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x0073, 8);
       if (hRes == node.ku8MBSuccess) {
@@ -539,19 +548,51 @@ void HanDoWork(void) {
     }
     hanRead = millis();
     hanWork = false;
+    //
+    if (hanEB == 1) {
+      hanIndex++;
+    }
+    //
+  }
+
+  // # # # # # # # # # #
+  // Total Energy (L1 L2 L3) (kWh) 1C
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 9)) {
+    hRes = node.readInputRegisters(0x001C, 3);
+    if (hRes == node.ku8MBSuccess) {
+      hTEIL1 = (node.getResponseBuffer(1) |
+                node.getResponseBuffer(0) << 16) /
+               1000.0;
+      hTEIL2 = (node.getResponseBuffer(3) |
+                node.getResponseBuffer(2) << 16) /
+               1000.0;
+      hTEIL3 = (node.getResponseBuffer(5) |
+                node.getResponseBuffer(4) << 16) /
+               1000.0;
+      hanBlink();
+      hanDelay = hanDelayWait;
+      hanIndex++;
+    } else {
+      hanERR++;
+      setDelayError(hRes);
+    }
+    hanRead = millis();
+    hanWork = false;
   }
 
   // # # # # # # # # # #
   // Reserved
   // # # # # # # # # # #
 
-  // hanIndex == 9
+  // hanIndex == 10
 
   // # # # # # # # # # #
   // Load Profile
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 10)) {
+  if (hanWork & (hanIndex == 11)) {
     //
     node.setTimeout(2000);
     //
@@ -611,7 +652,7 @@ void HanDoWork(void) {
   // Tariff
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 11)) {
+  if (hanWork & (hanIndex == 12)) {
     hRes = node.readInputRegisters(0x000B, 1);
     if (hRes == node.ku8MBSuccess) {
       hTariff = node.getResponseBuffer(0) >> 8;
@@ -634,7 +675,7 @@ void HanDoWork(void) {
     hanERR = 0;
   }
 
-  if (hanIndex > 11) {
+  if (hanIndex > 12) {
     hanIndex = 3;  // skip setup and one time requests.
   }
 
@@ -702,6 +743,12 @@ void HanJson(bool json) {
 
     ResponseAppend_P(",\"TEI\":%3_f", &hanTEI);
     ResponseAppend_P(",\"TEE\":%3_f", &hanTEE);
+
+    if (hanEB == 3) {
+      ResponseAppend_P(",\"TEIL1\":%3_f", &hTEIL1);
+      ResponseAppend_P(",\"TEIL2\":%3_f", &hTEIL2);
+      ResponseAppend_P(",\"TEIL3\":%3_f", &hTEIL3);
+    }
 
     ResponseAppend_P(",\"LP1_Y\":%d", hLP1YY);
     ResponseAppend_P(",\"LP1_M\":%d", hLP1MT);
@@ -844,6 +891,17 @@ void HanJson(bool json) {
         &hanTEE);
 
     WSContentSend_PD("{s}<br>{m} {e}");
+
+    if (hanEB == 3) {
+      WSContentSend_PD(
+          "{s}Energy Import L1 {m} %3_f kWh{e}", &hTEIL1);
+      WSContentSend_PD(
+          "{s}Energy Import L2 {m} %3_f kWh{e}", &hTEIL2);
+      WSContentSend_PD(
+          "{s}Energy Import L3 {m} %3_f kWh{e}", &hTEIL3);
+
+      WSContentSend_PD("{s}<br>{m} {e}");
+    }
 
     char hLPDate[15];
     sprintf(hLPDate, "%04d-%02d-%02d", hLP1YY, hLP1MT,
@@ -1087,7 +1145,7 @@ bool Xdrv100(uint32_t function) {
   if (FUNC_INIT == function) {
     HanInit();
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: Done !"));
-  } else if (initSuccess) {
+  } else if (hDrvInit) {
     switch (function) {
       case FUNC_LOOP:
         HanDoWork();
