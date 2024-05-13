@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.20.7"
+#define HAN_VERSION "13.4.0-7.21.3"
 
 #ifdef USE_HAN_V2
 
@@ -16,11 +16,11 @@ bool hDrvInit = false;
 
 uint8_t hanCFG = 99;
 uint8_t hanEB = 99;
-uint16_t hanERR = 0;
+uint8_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
 uint32_t hanDelayWait = 1100;
-uint32_t hanDelayError = 35000;
+uint32_t hanDelayError = 40000;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -78,7 +78,7 @@ float hanPF2 = 0;
 float hanPF3 = 0;
 float hanFR = 0;
 
-// Last Profile
+// Load Profile
 
 uint16_t hLP1YY = 0;
 uint8_t hLP1MT = 0;
@@ -103,9 +103,15 @@ uint32_t hLPX[2];
 float hCT1 = 0;
 uint8_t hTariff = 0;
 char hErrTime[10];
-char hErrCode[5];
+char hErrCode[8];
+uint8_t hErrIdx = 0;
 char hStatus[10];
 uint32_t hPerf[2] = {0, 0};
+uint32_t hMnfC = 0;
+uint16_t hMnfY = 0;
+char hFw1[10];
+char hFw2[10];
+char hFw3[10];
 
 // **********************
 
@@ -140,7 +146,10 @@ void setDelayError(uint8_t hanRes) {
   //
   sprintf(hErrTime, "%02d:%02d:%02d", hanHH, hanMM,
           hanSS);
-  sprintf(hErrCode, "0x%02X", hanCode);
+  hErrIdx = hanIndex;
+  sprintf(hErrCode, "0x%02X-%d", hanCode, hErrIdx);
+  //
+  hanIndex = 0;  // back to setup
 }
 
 void HanInit() {
@@ -149,7 +158,7 @@ void HanInit() {
   if (PinUsed(GPIO_MBR_RX) | PinUsed(GPIO_MBR_TX) |
       PinUsed(GPIO_TCP_RX) | PinUsed(GPIO_TCP_TX)) {
     AddLog(LOG_LEVEL_INFO,
-           PSTR("HAN: Disabled. Bridge Mode..."));
+           PSTR("HAN: Driver disabled. Bridge Mode..."));
   } else {
 #ifdef ESP8266
     //
@@ -157,7 +166,7 @@ void HanInit() {
     digitalWrite(2, LOW);
     //
     pinMode(MAX485_DE_RE, OUTPUT);
-    digitalWrite(MAX485_DE_RE, 0);
+    digitalWrite(MAX485_DE_RE, LOW);
     //
 #endif
 
@@ -190,18 +199,18 @@ void HanDoWork(void) {
   uint8_t hRes;
 
   // # # # # # # # # # #
-  // Setup
+  // Setup: Serial
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 0)) {
     //
     // Detect Stop Bits
 
-    node.setTimeout(1500);
+    node.setTimeout(2000);
 
     HanSerial.flush();
     HanSerial.end();
-    delay(100);
+    delay(250);
     HanSerial.begin(9600, SERIAL_8N1);
     delay(250);
     node.begin(1, HanSerial);
@@ -218,23 +227,22 @@ void HanDoWork(void) {
       hanCFG = 1;
       hanIndex++;
       hanDelay = hanDelayWait;
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N1 OK"));
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: *** 8N1 OK ***"));
     } else {
-      hanERR++;
       hanCode = testserial;
       AddLog(LOG_LEVEL_INFO,
              PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
       //
       HanSerial.flush();
       HanSerial.end();
-      delay(100);
+      delay(250);
       HanSerial.begin(9600, SERIAL_8N2);
       delay(250);
       node.begin(1, HanSerial);
       node.preTransmission(preTransmission);
       node.postTransmission(postTransmission);
 
-      delay(250);
+      delay(100);
       //
       node.clearResponseBuffer();
       testserial = node.readInputRegisters(0x0001, 1);
@@ -242,7 +250,8 @@ void HanDoWork(void) {
         hanCFG = 2;
         hanIndex++;
         hanDelay = hanDelayWait;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: 8N2 OK"));
+        AddLog(LOG_LEVEL_INFO,
+               PSTR("HAN: *** 8N2 OK ***"));
       } else {
         AddLog(LOG_LEVEL_INFO,
                PSTR("HAN: 8N2 Fail. Error %d"), hanCode);
@@ -251,36 +260,39 @@ void HanDoWork(void) {
       //
     }
     //
+    hanRead = millis();
+    hanWork = false;
+  }
 
-    delay(150);
+  // # # # # # # # # # #
+  // Setup: EB
+  // # # # # # # # # # #
 
+  if (hanWork & (hanIndex == 1)) {
+    //
     // Detect EB Type
 
-    if (hanCFG != 99) {
-      uint8_t testEB;
-      uint16_t hanDTT = 0;
+    uint8_t testEB;
+    uint16_t hanDTT = 0;
 
-      node.clearResponseBuffer();
-      testEB = node.readInputRegisters(0x0070, 2);
-      if (testEB == node.ku8MBSuccess) {
-        //
-        hanDTT = node.getResponseBuffer(0);
-        if (hanDTT > 0) {
-          hanEB = 3;
-          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB3"));
-        } else {
-          hanEB = 1;
-          AddLog(LOG_LEVEL_INFO, PSTR("HAN: EB1 Type 3"));
-        }
-        //
+    node.clearResponseBuffer();
+    testEB = node.readInputRegisters(0x0070, 2);
+    if (testEB == node.ku8MBSuccess) {
+      //
+      hanDTT = node.getResponseBuffer(0);
+      if (hanDTT > 0) {
+        hanEB = 3;
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: *** EB3 ***"));
       } else {
-        hanCode = testEB;
         hanEB = 1;
-        AddLog(LOG_LEVEL_INFO,
-               PSTR("HAN: EB1 Type 1 Error %d"), hanCode);
+        AddLog(LOG_LEVEL_INFO, PSTR("HAN: *** EB1 ***"));
       }
-    }  // if hanCFG != 99
-       //
+      //
+    } else {
+      hanEB = 1;
+      AddLog(LOG_LEVEL_INFO, PSTR("HAN: *** EB1 ***"));
+    }
+    hanIndex++;
     hanRead = millis();
     hanWork = false;
   }
@@ -289,7 +301,7 @@ void HanDoWork(void) {
   // Contract
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 1)) {
+  if (hanWork & (hanIndex == 2)) {
     hRes = node.readInputRegisters(0x000C, 1);
     if (hRes == node.ku8MBSuccess) {
       hCT1 = (node.getResponseBuffer(1) |
@@ -310,7 +322,7 @@ void HanDoWork(void) {
   // LP ID
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 2)) {
+  if (hanWork & (hanIndex == 3)) {
     hRes = node.readInputRegisters(0x0080, 1);
     if (hRes == node.ku8MBSuccess) {
       hLPid[1] = node.getResponseBuffer(0) >> 8;
@@ -334,10 +346,53 @@ void HanDoWork(void) {
   }
 
   // # # # # # # # # # #
+  // EMI Info
+  // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 4)) {
+    hRes = node.readInputRegisters(0x0003, 4);
+    if (hRes == node.ku8MBSuccess) {
+      hMnfC = node.getResponseBuffer(1) |
+              node.getResponseBuffer(0) << 16;
+      hMnfY = node.getResponseBuffer(2);
+
+      sprintf(hFw1, "%c%c%c%c%c",
+              node.getResponseBuffer(3) >> 8,
+              node.getResponseBuffer(3) & 0xFF,
+              node.getResponseBuffer(4) >> 8,
+              node.getResponseBuffer(4) & 0xFF,
+              node.getResponseBuffer(5) >> 8);
+
+      sprintf(hFw2, "%c%c%c%c%c",
+              node.getResponseBuffer(5) & 0xFF,
+              node.getResponseBuffer(6) >> 8,
+              node.getResponseBuffer(6) & 0xFF,
+              node.getResponseBuffer(7) >> 8,
+              node.getResponseBuffer(7) & 0xFF);
+
+      sprintf(hFw3, "%c%c%c%c%c",
+              node.getResponseBuffer(8) >> 8,
+              node.getResponseBuffer(8) & 0xFF,
+              node.getResponseBuffer(9) >> 8,
+              node.getResponseBuffer(9) & 0xFF,
+              node.getResponseBuffer(10) >> 8);
+
+      hanBlink();
+      hanDelay = hanDelayWait;
+      hanIndex++;
+    } else {
+      hanERR++;
+      setDelayError(hRes);
+    }
+    hanRead = millis();
+    hanWork = false;
+  }
+
+  // # # # # # # # # # #
   // Clock ( 12 bytes )
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 3)) {
+  if (hanWork & (hanIndex == 5)) {
     hRes = node.readInputRegisters(0x0001, 1);
     if (hRes == node.ku8MBSuccess) {
       hanYY = node.getResponseBuffer(0);
@@ -366,7 +421,7 @@ void HanDoWork(void) {
   // Voltage Current
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 4)) {
+  if (hanWork & (hanIndex == 6)) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x006c, 7);
       if (hRes == node.ku8MBSuccess) {
@@ -406,7 +461,7 @@ void HanDoWork(void) {
   // Power Factor (mono) (79..)
   // # # # # # # # # # #
 
-  if (hanWork & ((hanIndex == 5) | (hanIndex == 10))) {
+  if (hanWork & ((hanIndex == 7) | (hanIndex == 12))) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x0073, 8);
       if (hRes == node.ku8MBSuccess) {
@@ -464,7 +519,7 @@ void HanDoWork(void) {
   // Frequency (mono)
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 6)) {
+  if (hanWork & (hanIndex == 8)) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x007b, 5);
       if (hRes == node.ku8MBSuccess) {
@@ -481,7 +536,6 @@ void HanDoWork(void) {
         setDelayError(hRes);
       }
     } else {
-      node.clearResponseBuffer();
       hRes = node.readInputRegisters(0x007f, 1);
       if (hRes == node.ku8MBSuccess) {
         hanFR = node.getResponseBuffer(0) / 10.0;
@@ -501,7 +555,7 @@ void HanDoWork(void) {
   // Total Energy Tarifas (kWh) 26
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 7)) {
+  if (hanWork & (hanIndex == 9)) {
     hPerf[0] = millis();
     hRes = node.readInputRegisters(0x0026, 3);
     if (hRes == node.ku8MBSuccess) {
@@ -518,6 +572,7 @@ void HanDoWork(void) {
       hanBlink();
       hanDelay = hanDelayWait;
       hanIndex++;
+      sprintf(hStatus, "OK");
     } else {
       hanERR++;
       setDelayError(hRes);
@@ -530,7 +585,7 @@ void HanDoWork(void) {
   // Total Energy (total) (kWh) 16
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 8)) {
+  if (hanWork & (hanIndex == 10)) {
     hRes = node.readInputRegisters(0x0016, 2);
     if (hRes == node.ku8MBSuccess) {
       hanTEI = (node.getResponseBuffer(1) |
@@ -559,7 +614,7 @@ void HanDoWork(void) {
   // Total Energy (L1 L2 L3) (kWh) 1C
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 9)) {
+  if (hanWork & (hanIndex == 11)) {
     hRes = node.readInputRegisters(0x001C, 3);
     if (hRes == node.ku8MBSuccess) {
       hTEIL1 = (node.getResponseBuffer(1) |
@@ -586,13 +641,13 @@ void HanDoWork(void) {
   // Reserved
   // # # # # # # # # # #
 
-  // hanIndex == 10
+  // hanIndex == 12
 
   // # # # # # # # # # #
   // Load Profile
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 11)) {
+  if (hanWork & (hanIndex == 13)) {
     //
     node.setTimeout(2000);
     //
@@ -652,7 +707,7 @@ void HanDoWork(void) {
   // Tariff
   // # # # # # # # # # #
 
-  if (hanWork & (hanIndex == 12)) {
+  if (hanWork & (hanIndex == 14)) {
     hRes = node.readInputRegisters(0x000B, 1);
     if (hRes == node.ku8MBSuccess) {
       hTariff = node.getResponseBuffer(0) >> 8;
@@ -671,12 +726,13 @@ void HanDoWork(void) {
   // EASYHAN MODBUS EOF
   // # # # # # # # # # #
 
-  if (hanERR > 900) {
-    hanERR = 0;
+  if (hanIndex > 14) {
+    hanIndex = 5;  // skip setup and one time requests.
   }
 
-  if (hanIndex > 12) {
-    hanIndex = 3;  // skip setup and one time requests.
+  if (hanERR > 90) {
+    hanERR = 10;
+    hanIndex = 0;  // back to setup
   }
 
   // end loop
@@ -787,16 +843,14 @@ void HanJson(bool json) {
     if (hanERR > 0) {
       WSContentSend_PD("{s}MB Error Time {m} %s{e}",
                        hErrTime);
-
       WSContentSend_PD("{s}MB Error Code {m} %s {e}",
                        hErrCode);
+      WSContentSend_PD("{s}MB Error Count {m} %d {e}",
+                       hanERR);
     }
 
-    WSContentSend_PD("{s}MB Error Count {m} %d {e}",
-                     hanERR);
-
     WSContentSend_PD("{s}MB Serial {m} 8N%d {e}", hanCFG);
-    WSContentSend_PD("{s}MB Type {m} %d {e}", hanEB);
+    WSContentSend_PD("{s}MB Type {m} EB%d {e}", hanEB);
     WSContentSend_PD("{s}MB Latency {m} %d ms{e}",
                      hPerf[1]);
     WSContentSend_PD("{s}MB Delay Wait {m} %d ms{e}",
@@ -813,10 +867,8 @@ void HanJson(bool json) {
                      &hanVL1);
 
     if (hanEB == 3) {
-      WSContentSend_PD("{s}Voltage L2 {m} %1_f V{e}",
-                       &hanVL2);
-      WSContentSend_PD("{s}Voltage L3 {m} %1_f V{e}",
-                       &hanVL3);
+      WSContentSend_PD("{s}L2 {m} %1_f V{e}", &hanVL2);
+      WSContentSend_PD("{s}L3 {m} %1_f V{e}", &hanVL3);
 
       WSContentSend_PD("{s}<br>{m} {e}");
       WSContentSend_PD("{s}Current{m} %1_f A{e}",
@@ -827,10 +879,8 @@ void HanJson(bool json) {
                      &hanCL1);
 
     if (hanEB == 3) {
-      WSContentSend_PD("{s}Current L2 {m} %1_f A{e}",
-                       &hanCL2);
-      WSContentSend_PD("{s}Current L3 {m} %1_f A{e}",
-                       &hanCL3);
+      WSContentSend_PD("{s}L2 {m} %1_f A{e}", &hanCL2);
+      WSContentSend_PD("{s}L3 {m} %1_f A{e}", &hanCL3);
 
       WSContentSend_PD("{s}<br>{m} {e}");
     }
@@ -841,17 +891,14 @@ void HanJson(bool json) {
                      hanAPE);
 
     if (hanEB == 3) {
-      WSContentSend_PD("{s}Power L1 {m} %d W{e}",
-                       hanAPI1);
-      WSContentSend_PD("{s}Power L2 {m} %d W{e}",
-                       hanAPI2);
-      WSContentSend_PD("{s}Power L3 {m} %d W{e}",
-                       hanAPI3);
-      WSContentSend_PD("{s}Power L1 Export {m} %d W{e}",
+      WSContentSend_PD("{s}L1 {m} %d W{e}", hanAPI1);
+      WSContentSend_PD("{s}L2 {m} %d W{e}", hanAPI2);
+      WSContentSend_PD("{s}L3 {m} %d W{e}", hanAPI3);
+      WSContentSend_PD("{s}L1 Export {m} %d W{e}",
                        hanAPE1);
-      WSContentSend_PD("{s}Power L2 Export {m} %d W{e}",
+      WSContentSend_PD("{s}L2 Export {m} %d W{e}",
                        hanAPE2);
-      WSContentSend_PD("{s}Power L3 Export {m} %d W{e}",
+      WSContentSend_PD("{s}L3 Export {m} %d W{e}",
                        hanAPE3);
 
       WSContentSend_PD("{s}<br>{m} {e}");
@@ -861,12 +908,9 @@ void HanJson(bool json) {
                      &hanPF);
 
     if (hanEB == 3) {
-      WSContentSend_PD("{s}Power Factor L1 {m} %3_f φ{e}",
-                       &hanPF1);
-      WSContentSend_PD("{s}Power Factor L2 {m} %3_f φ{e}",
-                       &hanPF2);
-      WSContentSend_PD("{s}Power Factor L3 {m} %3_f φ{e}",
-                       &hanPF3);
+      WSContentSend_PD("{s}L1 {m} %3_f φ{e}", &hanPF1);
+      WSContentSend_PD("{s}L2 {m} %3_f φ{e}", &hanPF2);
+      WSContentSend_PD("{s}L3 {m} %3_f φ{e}", &hanPF3);
     }
 
     WSContentSend_PD("{s}Frequency {m} %1_f Hz{e}",
@@ -895,10 +939,8 @@ void HanJson(bool json) {
     if (hanEB == 3) {
       WSContentSend_PD(
           "{s}Energy Import L1 {m} %3_f kWh{e}", &hTEIL1);
-      WSContentSend_PD(
-          "{s}Energy Import L2 {m} %3_f kWh{e}", &hTEIL2);
-      WSContentSend_PD(
-          "{s}Energy Import L3 {m} %3_f kWh{e}", &hTEIL3);
+      WSContentSend_PD("{s}L2 {m} %3_f kWh{e}", &hTEIL2);
+      WSContentSend_PD("{s}L3 {m} %3_f kWh{e}", &hTEIL3);
 
       WSContentSend_PD("{s}<br>{m} {e}");
     }
@@ -942,7 +984,7 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
-    WSContentSend_PD("{s}Contract T1 {m} %2_f kWh{e}",
+    WSContentSend_PD("{s}Contract T1 {m} %2_f kVA{e}",
                      &hCT1);
 
     char tarifa[10];
@@ -962,6 +1004,43 @@ void HanJson(bool json) {
     }
 
     WSContentSend_PD("{s}Tariff {m} %s{e}", tarifa);
+
+    WSContentSend_PD("{s}<br>{m} {e}");
+
+    char _emi[20];
+
+    switch (hMnfC) {
+      case 6623491:
+        sprintf(_emi, "%s", "T Janz GPRS");
+        break;
+      case 6754306:
+        sprintf(_emi, "%s", "T Landis+Gyr S3");
+        break;
+      case 6754307:
+        sprintf(_emi, "%s", "T Landis+Gyr S5");
+        break;
+      case 11014146:
+        sprintf(_emi, "%s", "T Sagem CX2000-9");
+        break;
+      case 18481154:
+        sprintf(_emi, "%s", "M Kaifa MA109P");
+        break;
+      default:
+        sprintf(_emi, "%s", "???");
+    }
+
+    WSContentSend_PD("{s}EMI Manufacturer Year {m} %d{e}",
+                     hMnfY);
+
+    WSContentSend_PD("{s}EMI ( %s ) {m} %d{e}", _emi,
+                     hMnfC);
+
+    WSContentSend_PD("{s}<br>{m} {e}");
+
+    WSContentSend_PD("{s}EMI Firmware: {m} {e}");
+    WSContentSend_PD("{s}1. Core {m} %s{e}", hFw1);
+    WSContentSend_PD("{s}2. App {m} %s{e}", hFw2);
+    WSContentSend_PD("{s}3. Com {m} %s{e}", hFw3);
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
