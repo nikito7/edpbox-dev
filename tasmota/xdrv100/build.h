@@ -157,9 +157,11 @@
 
 // tcp
 
+#ifdef EASYHAN_TCP
 #define USE_TCP_BRIDGE
 #define USE_MODBUS_BRIDGE
 #define USE_MODBUS_BRIDGE_TCP
+#endif
 
 // misc
 
