@@ -1,7 +1,15 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION "13.4.0-7.21.3"
+#define HAN_VERSION_T "13.4.0-7.21.6"
+
+#ifdef EASYHAN_TCP
+#undef HAN_VERSION
+#define HAN_VERSION HAN_VERSION_T "-tcp"
+#else
+#undef HAN_VERSION
+#define HAN_VERSION HAN_VERSION_T
+#endif
 
 #ifdef USE_HAN_V2
 
@@ -19,8 +27,9 @@ uint8_t hanEB = 99;
 uint8_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint32_t hanDelayWait = 1100;
+uint16_t hanDelayWait = 1100;
 uint32_t hanDelayError = 40000;
+uint16_t hTimeout = 750;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -155,20 +164,25 @@ void setDelayError(uint8_t hanRes) {
 void HanInit() {
   AddLog(LOG_LEVEL_INFO, PSTR("HAN: Init..."));
 
+#ifdef ESP8266
+  //
+  pinMode(2, OUTPUT);
+  digitalWrite(2, LOW);
+  //
+  pinMode(MAX485_DE_RE, OUTPUT);
+  digitalWrite(MAX485_DE_RE, LOW);
+  //
+#endif
+
   if (PinUsed(GPIO_MBR_RX) | PinUsed(GPIO_MBR_TX) |
       PinUsed(GPIO_TCP_RX) | PinUsed(GPIO_TCP_TX)) {
+#ifdef ESP8266
+    digitalWrite(2, HIGH);
+#endif
     AddLog(LOG_LEVEL_INFO,
            PSTR("HAN: Driver disabled. Bridge Mode..."));
   } else {
-#ifdef ESP8266
     //
-    pinMode(2, OUTPUT);
-    digitalWrite(2, LOW);
-    //
-    pinMode(MAX485_DE_RE, OUTPUT);
-    digitalWrite(MAX485_DE_RE, LOW);
-    //
-#endif
 
     ClaimSerial();  // Tasmota SerialLog
 
@@ -189,7 +203,7 @@ void HanDoWork(void) {
     delay(50);
     node.clearResponseBuffer();
     delay(50);
-    node.setTimeout(750);
+    node.setTimeout(hTimeout);
   }
 
   // # # # # # # # # # #
@@ -275,7 +289,6 @@ void HanDoWork(void) {
     uint8_t testEB;
     uint16_t hanDTT = 0;
 
-    node.clearResponseBuffer();
     testEB = node.readInputRegisters(0x0070, 2);
     if (testEB == node.ku8MBSuccess) {
       //
@@ -648,9 +661,6 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 13)) {
-    //
-    node.setTimeout(2000);
-    //
     hPerf[0] = millis();
     hRes = node.readLastProfile(0x00, 0x01);
     if (hRes == node.ku8MBSuccess) {
@@ -853,6 +863,8 @@ void HanJson(bool json) {
     WSContentSend_PD("{s}MB Type {m} EB%d {e}", hanEB);
     WSContentSend_PD("{s}MB Latency {m} %d ms{e}",
                      hPerf[1]);
+    WSContentSend_PD("{s}MB Timeout {m} %d ms{e}",
+                     hTimeout);
     WSContentSend_PD("{s}MB Delay Wait {m} %d ms{e}",
                      hanDelayWait);
     WSContentSend_PD("{s}MB Delay Error {m} %d ms{e}",
@@ -1019,6 +1031,9 @@ void HanJson(bool json) {
       case 6754307:
         sprintf(_emi, "%s", "T Landis+Gyr S5");
         break;
+      case 11010050:
+        sprintf(_emi, "%s", "M Sagem CX1000-6");
+        break;
       case 11014146:
         sprintf(_emi, "%s", "T Sagem CX2000-9");
         break;
@@ -1056,11 +1071,12 @@ const char HanCommands[] PROGMEM =
     "HanDelay|"
     "HanDelayWait|"
     "HanDelayError|"
+    "HanTimeout|"
     "HanProfile";
 
 void (*const HanCommand[])(void) PROGMEM = {
     &CmdHanDelay, &CmdHanDelayWait, &CmdHanDelayError,
-    &CmdHanProfile};
+    &CmdHanTimeout, &CmdHanProfile};
 
 //
 
@@ -1196,14 +1212,21 @@ void CmdHanDelay(void) {
 
 void CmdHanDelayWait(void) {
   if ((XdrvMailbox.payload >= 100) &&
-      (XdrvMailbox.payload <= 99000)) {
+      (XdrvMailbox.payload <= 60000)) {
     hanDelayWait = XdrvMailbox.payload;
   }
-  AddLog(LOG_LEVEL_INFO, PSTR("HanDelayWait: %dms"),
-         hanDelayWait);
-  ResponseCmndDone();
+  ResponseCmndNumber(hanDelayWait);
 }
 
+//
+
+void CmdHanTimeout(void) {
+  if ((XdrvMailbox.payload >= 100) &&
+      (XdrvMailbox.payload <= 5000)) {
+    hTimeout = XdrvMailbox.payload;
+  }
+  ResponseCmndNumber(hTimeout);
+}
 //
 
 void CmdHanDelayError(void) {
