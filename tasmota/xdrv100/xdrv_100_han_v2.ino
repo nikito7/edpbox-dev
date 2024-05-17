@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION_T "13.4.0-7.21.6"
+#define HAN_VERSION_T "13.4.0-7.21.9"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -27,8 +27,8 @@ uint8_t hanEB = 99;
 uint8_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint16_t hanDelayWait = 1100;
-uint32_t hanDelayError = 40000;
+uint16_t hanDelayWait = 1000;
+uint32_t hanDelayError = 35000;
 uint16_t hTimeout = 750;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
@@ -113,7 +113,7 @@ float hCT1 = 0;
 uint8_t hTariff = 0;
 char hErrTime[10];
 char hErrCode[8];
-uint8_t hErrIdx = 0;
+
 char hStatus[10];
 uint32_t hPerf[2] = {0, 0};
 uint32_t hMnfC = 0;
@@ -121,6 +121,11 @@ uint16_t hMnfY = 0;
 char hFw1[10];
 char hFw2[10];
 char hFw3[10];
+
+uint8_t nsMo = 99;
+float nsIkw = 0;
+float nsEkw = 0;
+float nsQs = 0;
 
 // **********************
 
@@ -136,7 +141,6 @@ HardwareSerial &HanSerial = Serial;
 ModbusMaster node;
 
 void preTransmission() { digitalWrite(MAX485_DE_RE, 1); }
-
 void postTransmission() { digitalWrite(MAX485_DE_RE, 0); }
 
 void hanBlink() {
@@ -147,6 +151,26 @@ void hanBlink() {
 #endif
 }
 
+void netSaldo() {
+  //
+  if (nsIkw == 0) {
+    nsIkw = hanTEI;
+  }
+
+  if (nsEkw == 0) {
+    nsEkw = hanTEE;
+  }
+
+  if ((hanMM % 15 == 0) & (hanMM != nsMo) &
+      (hanTEI != 0)) {
+    nsIkw = hanTEI;
+    nsEkw = hanTEE;
+    nsMo = hanMM;
+  }
+
+  nsQs = hanTEI - hanTEE - nsIkw + nsEkw;
+}
+
 void setDelayError(uint8_t hanRes) {
   sprintf(hStatus, "Error");
   hanCode = hanRes;
@@ -155,8 +179,7 @@ void setDelayError(uint8_t hanRes) {
   //
   sprintf(hErrTime, "%02d:%02d:%02d", hanHH, hanMM,
           hanSS);
-  hErrIdx = hanIndex;
-  sprintf(hErrCode, "0x%02X-%d", hanCode, hErrIdx);
+  sprintf(hErrCode, "0x%02X", hanCode);
   //
   hanIndex = 0;  // back to setup
 }
@@ -238,6 +261,7 @@ void HanDoWork(void) {
     node.clearResponseBuffer();
     testserial = node.readInputRegisters(0x0001, 1);
     if ((testserial == 0x00) | (testserial == 0x81)) {
+      hanBlink();
       hanCFG = 1;
       hanIndex++;
       hanDelay = hanDelayWait;
@@ -261,6 +285,7 @@ void HanDoWork(void) {
       node.clearResponseBuffer();
       testserial = node.readInputRegisters(0x0001, 1);
       if ((testserial == 0x00) | (testserial == 0x81)) {
+        hanBlink();
         hanCFG = 2;
         hanIndex++;
         hanDelay = hanDelayWait;
@@ -286,24 +311,30 @@ void HanDoWork(void) {
     //
     // Detect EB Type
 
-    uint8_t testEB;
+    uint8_t testEB = 0xff;
     uint16_t hanDTT = 0;
 
-    testEB = node.readInputRegisters(0x0070, 2);
+    testEB = node.readInputRegisters(0x006E, 1);
     if (testEB == node.ku8MBSuccess) {
       //
+      hanBlink();
       hanDTT = node.getResponseBuffer(0);
       if (hanDTT > 0) {
         hanEB = 3;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: *** EB3 ***"));
+        AddLog(LOG_LEVEL_INFO,
+               PSTR("HAN: *** EB3 *** %d / %d ***"),
+               testEB, hanDTT);
       } else {
         hanEB = 1;
-        AddLog(LOG_LEVEL_INFO, PSTR("HAN: *** EB1 ***"));
+        AddLog(LOG_LEVEL_INFO,
+               PSTR("HAN: *** EB1 *** %d / %d ***"),
+               testEB, hanDTT);
       }
       //
     } else {
       hanEB = 1;
-      AddLog(LOG_LEVEL_INFO, PSTR("HAN: *** EB1 ***"));
+      AddLog(LOG_LEVEL_INFO,
+             PSTR("HAN: *** EB1 *** %d ***"), testEB);
     }
     hanIndex++;
     hanRead = millis();
@@ -610,6 +641,9 @@ void HanDoWork(void) {
       hanBlink();
       hanDelay = hanDelayWait;
       hanIndex++;
+      //
+      netSaldo();
+      //
     } else {
       hanERR++;
       setDelayError(hRes);
@@ -809,6 +843,7 @@ void HanJson(bool json) {
 
     ResponseAppend_P(",\"TEI\":%3_f", &hanTEI);
     ResponseAppend_P(",\"TEE\":%3_f", &hanTEE);
+    ResponseAppend_P(",\"qs\":%3_f", &nsQs);
 
     if (hanEB == 3) {
       ResponseAppend_P(",\"TEIL1\":%3_f", &hTEIL1);
@@ -996,6 +1031,12 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
+    WSContentSend_PD(
+        "{s}Realtime Netmetering (qs) {m} %3_f kWh{e}",
+        &nsQs);
+
+    WSContentSend_PD("{s}<br>{m} {e}");
+
     WSContentSend_PD("{s}Contract T1 {m} %2_f kVA{e}",
                      &hCT1);
 
@@ -1039,6 +1080,9 @@ void HanJson(bool json) {
         break;
       case 18481154:
         sprintf(_emi, "%s", "M Kaifa MA109P");
+        break;
+      case 18481156:
+        sprintf(_emi, "%s", "M Kaifa MA109H");
         break;
       default:
         sprintf(_emi, "%s", "???");
