@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION_T "13.4.0-7.21.9"
+#define HAN_VERSION_T "13.4.0-7.22.1"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -181,7 +181,6 @@ void setDelayError(uint8_t hanRes) {
           hanSS);
   sprintf(hErrCode, "0x%02X", hanCode);
   //
-  hanIndex = 0;  // back to setup
 }
 
 void HanInit() {
@@ -254,7 +253,7 @@ void HanDoWork(void) {
     node.preTransmission(preTransmission);
     node.postTransmission(postTransmission);
 
-    delay(100);
+    delay(250);
 
     uint8_t testserial;
 
@@ -280,7 +279,7 @@ void HanDoWork(void) {
       node.preTransmission(preTransmission);
       node.postTransmission(postTransmission);
 
-      delay(100);
+      delay(250);
       //
       node.clearResponseBuffer();
       testserial = node.readInputRegisters(0x0001, 1);
@@ -774,9 +773,8 @@ void HanDoWork(void) {
     hanIndex = 5;  // skip setup and one time requests.
   }
 
-  if (hanERR > 90) {
-    hanERR = 10;
-    hanIndex = 0;  // back to setup
+  if (hanERR > 50) {
+    hanERR = 30;
   }
 
   // end loop
@@ -1297,7 +1295,9 @@ bool Xdrv100(uint32_t function) {
         HanDoWork();
         break;
       case FUNC_JSON_APPEND:
-        HanJson(true);
+        if (millis() > 31000) {
+          HanJson(true);
+        }
         break;
       case FUNC_COMMAND:
         result = DecodeCommand(HanCommands, HanCommand);
