@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION_T "13.4.0-7.22.1"
+#define HAN_VERSION_T "13.4.0-7.22.3-dev4"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -869,6 +869,13 @@ void HanJson(bool json) {
   } else {
     WSContentSend_PD("{s}<br>{m} {e}");
     WSContentSend_PD("{s}HAN V2 " HAN_VERSION " {m} {e}");
+
+    if (bitRead(Settings->rule_enabled, 0) == 0) {
+      WSContentSend_PD("{s}<br>{m} {e}");
+      WSContentSend_PD(
+          "{s}script.txt disabled !! {m} {e}");
+    }
+
     WSContentSend_PD("{s}<br>{m} {e}");
 
     uint32_t tmpWait =
@@ -1030,8 +1037,7 @@ void HanJson(bool json) {
     WSContentSend_PD("{s}<br>{m} {e}");
 
     WSContentSend_PD(
-        "{s}Realtime Netmetering (qs) {m} %3_f kWh{e}",
-        &nsQs);
+        "{s}Netmetering (qs) {m} %3_f kWh{e}", &nsQs);
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
