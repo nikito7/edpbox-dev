@@ -1,7 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION_T "13.4.0-7.22.3-dev4"
+#define HAN_VERSION_T "13.4.0-7.22.3-b6"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -132,9 +132,8 @@ float nsQs = 0;
 #include <HardwareSerial.h>
 #include <ModbusMaster.h>
 
-#define MAX485_DE_RE 16
-
 #ifdef ESP8266
+#define MAX485_DE_RE 16
 HardwareSerial &HanSerial = Serial;
 #endif
 
@@ -872,8 +871,7 @@ void HanJson(bool json) {
 
     if (bitRead(Settings->rule_enabled, 0) == 0) {
       WSContentSend_PD("{s}<br>{m} {e}");
-      WSContentSend_PD(
-          "{s}script.txt disabled !! {m} {e}");
+      WSContentSend_PD("{s}Script disabled !! {m} {e}");
     }
 
     WSContentSend_PD("{s}<br>{m} {e}");
@@ -1037,7 +1035,8 @@ void HanJson(bool json) {
     WSContentSend_PD("{s}<br>{m} {e}");
 
     WSContentSend_PD(
-        "{s}Netmetering (qs) {m} %3_f kWh{e}", &nsQs);
+        "{s}Realtime Netmetering (qs) {m} %3_f kWh{e}",
+        &nsQs);
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
@@ -1048,16 +1047,16 @@ void HanJson(bool json) {
 
     switch (hTariff) {
       case 1:
-        sprintf(tarifa, "%s", "Vazio");
+        sprintf(tarifa, "%s", "Vazio T1");
         break;
       case 2:
-        sprintf(tarifa, "%s", "Ponta");
+        sprintf(tarifa, "%s", "Ponta T2");
         break;
       case 3:
-        sprintf(tarifa, "%s", "Cheias");
+        sprintf(tarifa, "%s", "Cheias T3");
         break;
       default:
-        sprintf(tarifa, "Error %d", hTariff);
+        sprintf(tarifa, "%d", hTariff);
     }
 
     WSContentSend_PD("{s}Tariff {m} %s{e}", tarifa);
@@ -1082,6 +1081,9 @@ void HanJson(bool json) {
       case 11014146:
         sprintf(_emi, "%s", "T Sagem CX2000-9");
         break;
+      case 16977920:
+        sprintf(_emi, "%s", "T Ziv 5CTD-E2F");
+        break;
       case 18481154:
         sprintf(_emi, "%s", "M Kaifa MA109P");
         break;
@@ -1089,14 +1091,13 @@ void HanJson(bool json) {
         sprintf(_emi, "%s", "M Kaifa MA109H");
         break;
       default:
-        sprintf(_emi, "%s", "???");
+        sprintf(_emi, "%s", "? ??? ???");
     }
 
     WSContentSend_PD("{s}EMI Manufacturer Year {m} %d{e}",
                      hMnfY);
 
-    WSContentSend_PD("{s}EMI ( %s ) {m} %d{e}", _emi,
-                     hMnfC);
+    WSContentSend_PD("{s}EMI %s {m} %d{e}", _emi, hMnfC);
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
