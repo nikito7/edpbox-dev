@@ -1,7 +1,12 @@
 // Tasmota HAN Driver for EMI (edpbox)
 // easyhan.pt
 
-#define HAN_VERSION_T "13.4.0-7.22.3-b6"
+#ifdef USE_HAN_V2
+
+#warning **** HAN_V2 Driver is included... ****
+#define XDRV_100 100
+
+#define HAN_VERSION_T "13.4.0-7.22.4-b0"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -10,12 +15,6 @@
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T
 #endif
-
-#ifdef USE_HAN_V2
-
-#warning **** HAN_V2 Driver is included... ****
-
-#define XDRV_100 100
 
 // This variable will be set to true after initialization
 bool hDrvInit = false;
@@ -435,8 +434,10 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 5)) {
+    hPerf[0] = millis();
     hRes = node.readInputRegisters(0x0001, 1);
     if (hRes == node.ku8MBSuccess) {
+      hPerf[1] = millis() - hPerf[0];
       hanYY = node.getResponseBuffer(0);
       hanMT = node.getResponseBuffer(1) >> 8;
       hanDD = node.getResponseBuffer(1) & 0xFF;
@@ -526,6 +527,7 @@ void HanDoWork(void) {
         hanBlink();
         hanDelay = hanDelayWait;
         hanIndex++;
+        sprintf(hStatus, "OK");
       } else {
         hanERR++;
         setDelayError(hRes);
@@ -866,6 +868,8 @@ void HanJson(bool json) {
     ResponseAppend_P("}");
 
   } else {
+    // webui
+
     WSContentSend_PD("{s}<br>{m} {e}");
     WSContentSend_PD("{s}HAN V2 " HAN_VERSION " {m} {e}");
 
