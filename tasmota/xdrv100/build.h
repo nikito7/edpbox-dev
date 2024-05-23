@@ -1,6 +1,6 @@
 // copy to user_config_override.h
 // (include/tasmota_configurations)
-// based in 13.4.0 minimal:
+// based in 14.0.0 minimal:
 // - freeup ram !
 
 // ### ### ###
@@ -127,10 +127,10 @@
 #undef USE_DEBUG_DRIVER                          // Disable debug code
 #undef USE_AC_ZERO_CROSS_DIMMER                  // Disable support for AC_ZERO_CROSS_DIMMER
 
-
 // ### ### ###
 // changes
 
+#define USE_ENHANCED_GUI_WIFI_SCAN
 #undef USE_ADC_VCC
 // #define USE_CUSTOM
 // #define USE_COUNTER
