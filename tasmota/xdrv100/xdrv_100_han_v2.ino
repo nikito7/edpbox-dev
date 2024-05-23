@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "13.4.0-7.22.4-b0"
+#define HAN_VERSION_T "14.0.0-7.22.5"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -126,6 +126,8 @@ float nsIkw = 0;
 float nsEkw = 0;
 float nsQs = 0;
 
+uint32_t hWtdT = 0;
+
 // **********************
 
 #include <HardwareSerial.h>
@@ -208,6 +210,7 @@ void HanInit() {
 
     sprintf(hStatus, "Init");
     hanRead = millis() + 5000;
+    hWtdT = millis();
 
     // Init is successful
     hDrvInit = true;
@@ -217,7 +220,15 @@ void HanInit() {
 void HanDoWork(void) {
   //
 
-  if (hanRead + hanDelay < millis()) {
+  uint32_t _millis = millis();
+
+  if (((_millis - hWtdT) > 600000) & (_millis > 300000)) {
+    ESP_Restart();
+  }
+
+  //
+
+  if (hanRead + hanDelay < _millis) {
     hanWork = true;
     node.clearTransmitBuffer();
     delay(50);
@@ -438,6 +449,7 @@ void HanDoWork(void) {
     hRes = node.readInputRegisters(0x0001, 1);
     if (hRes == node.ku8MBSuccess) {
       hPerf[1] = millis() - hPerf[0];
+      hWtdT = millis();  // feed han wtd
       hanYY = node.getResponseBuffer(0);
       hanMT = node.getResponseBuffer(1) >> 8;
       hanDD = node.getResponseBuffer(1) & 0xFF;
@@ -650,16 +662,15 @@ void HanDoWork(void) {
     }
     hanRead = millis();
     hanWork = false;
-    //
-    if (hanEB == 1) {
-      hanIndex++;
-    }
-    //
   }
 
   // # # # # # # # # # #
   // Total Energy (L1 L2 L3) (kWh) 1C
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 11) & (hanEB == 1)) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 11)) {
     hRes = node.readInputRegisters(0x001C, 3);
@@ -899,7 +910,9 @@ void HanJson(bool json) {
                        hErrCode);
       WSContentSend_PD("{s}MB Error Count {m} %d {e}",
                        hanERR);
-    }
+      WSContentSend_PD("{s}MB Watchdog {m} %ds {e}",
+                       ((millis() - hWtdT) / 1000));
+    }  // if hanERR
 
     WSContentSend_PD("{s}MB Serial {m} 8N%d {e}", hanCFG);
     WSContentSend_PD("{s}MB Type {m} EB%d {e}", hanEB);
