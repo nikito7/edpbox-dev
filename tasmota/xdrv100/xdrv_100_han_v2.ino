@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.0.0-7.22.5"
+#define HAN_VERSION_T "14.0.0-7.22.8-flash"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -23,6 +23,7 @@ bool hDrvInit = false;
 
 uint8_t hanCFG = 99;
 uint8_t hanEB = 99;
+uint8_t subType = 99;
 uint8_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
@@ -103,23 +104,24 @@ float hLP5 = 0;
 float hLP6 = 0;
 float hLP7 = 0;
 float hLP8 = 0;
-uint8_t hLPid[9];
+uint8_t hLPid[9] = {0, 99, 99, 99, 99, 99, 99, 99, 99};
 uint32_t hLPX[2];
 
 // Misc
 
 float hCT1 = 0;
+float hCT4 = 0;
 uint8_t hTariff = 0;
-char hErrTime[10];
+char hErrTime[12];
 char hErrCode[8];
 
-char hStatus[10];
+char hStatus[12];
 uint32_t hPerf[2] = {0, 0};
 uint32_t hMnfC = 0;
 uint16_t hMnfY = 0;
-char hFw1[10];
-char hFw2[10];
-char hFw3[10];
+char hFw1[12];
+char hFw2[12];
+char hFw3[12];
 
 uint8_t nsMo = 99;
 float nsIkw = 0;
@@ -222,8 +224,10 @@ void HanDoWork(void) {
 
   uint32_t _millis = millis();
 
-  if (((_millis - hWtdT) > 600000) & (_millis > 300000)) {
-    ESP_Restart();
+  if (((_millis - hWtdT) > 600000 * 3) &
+      (_millis > 300000)) {
+    // ESP_Restart();
+    hanIndex = 0;
   }
 
   //
@@ -329,11 +333,13 @@ void HanDoWork(void) {
       hanDTT = node.getResponseBuffer(0);
       if (hanDTT > 0) {
         hanEB = 3;
+        subType = 3;
         AddLog(LOG_LEVEL_INFO,
                PSTR("HAN: *** EB3 *** %d / %d ***"),
                testEB, hanDTT);
       } else {
         hanEB = 1;
+        subType = 3;
         AddLog(LOG_LEVEL_INFO,
                PSTR("HAN: *** EB1 *** %d / %d ***"),
                testEB, hanDTT);
@@ -341,6 +347,7 @@ void HanDoWork(void) {
       //
     } else {
       hanEB = 1;
+      subType = 1;
       AddLog(LOG_LEVEL_INFO,
              PSTR("HAN: *** EB1 *** %d ***"), testEB);
     }
@@ -354,10 +361,13 @@ void HanDoWork(void) {
   // # # # # # # # # # #
 
   if (hanWork & (hanIndex == 2)) {
-    hRes = node.readInputRegisters(0x000C, 1);
+    hRes = node.readInputRegisters(0x000C, 4);
     if (hRes == node.ku8MBSuccess) {
       hCT1 = (node.getResponseBuffer(1) |
               node.getResponseBuffer(0) << 16) /
+             1000.0;
+      hCT4 = (node.getResponseBuffer(7) |
+              node.getResponseBuffer(6) << 16) /
              1000.0;
       hanBlink();
       hanDelay = hanDelayWait;
@@ -915,7 +925,8 @@ void HanJson(bool json) {
     }  // if hanERR
 
     WSContentSend_PD("{s}MB Serial {m} 8N%d {e}", hanCFG);
-    WSContentSend_PD("{s}MB Type {m} EB%d {e}", hanEB);
+    WSContentSend_PD("{s}MB Type {m} EB%d / %d {e}",
+                     hanEB, subType);
     WSContentSend_PD("{s}MB Latency {m} %d ms{e}",
                      hPerf[1]);
     WSContentSend_PD("{s}MB Timeout {m} %d ms{e}",
@@ -1059,6 +1070,8 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}Contract T1 {m} %2_f kVA{e}",
                      &hCT1);
+    WSContentSend_PD("{s}Contract T4 {m} %2_f kVA{e}",
+                     &hCT4);
 
     char tarifa[10];
 
@@ -1202,6 +1215,7 @@ void CmdHanProfile(void) {
 
     hRes = node.readProfileX(getLP, 0x00);
     if (hRes == node.ku8MBSuccess) {
+      hWtdT = millis();  // feed han wtd
       hLPX1YY = node.getResponseBuffer(0);
       hLPX1MT = node.getResponseBuffer(1) >> 8;
       hLPX1DD = node.getResponseBuffer(1) & 0xFF;
