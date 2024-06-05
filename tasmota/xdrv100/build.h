@@ -130,7 +130,7 @@
 // ### ### ###
 // changes
 
-#define USE_ENHANCED_GUI_WIFI_SCAN
+// #define USE_ENHANCED_GUI_WIFI_SCAN
 #undef USE_ADC_VCC
 // #define USE_CUSTOM
 // #define USE_COUNTER
@@ -179,8 +179,32 @@
 
 // Default Configs
 
+#ifdef ESP8266
+#undef USER_BACKLOG
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; SerialLog 0; Sleep 75; WifiPower 15; Template {\"NAME\":\"easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Module 0; WifiConfig 2; Script 1"
+#endif
+
+#undef BOOT_LOOP_OFFSET
+#define BOOT_LOOP_OFFSET       3
+
+#undef SAVE_DATA
+#define SAVE_DATA              9
+
+#undef TELE_PERIOD
+#define TELE_PERIOD            60
+
+#undef MQTT_TOPIC
+#define MQTT_TOPIC             "edpbox99"
+
+#undef WIFI_DEFAULT_HOSTNAME
+#define WIFI_DEFAULT_HOSTNAME  "Easy-HAN-EB99"
+
+#undef MQTT_CLIENT_ID
+#define MQTT_CLIENT_ID         "Easy_HAN_%06X"
+
 #undef MQTT_USER
 #define MQTT_USER "none"
+
 #undef MQTT_PASS
 #define MQTT_PASS "none"
 
@@ -188,3 +212,4 @@
 #define OTA_URL "http://u.easyhan.pt/v2/tasmota-4M.bin.gz"
 
 // EOF
+
