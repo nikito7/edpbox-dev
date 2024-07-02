@@ -63,6 +63,7 @@ api:
   reboot_timeout: 30min
 
 ota:
+#   - platform: esphome # 2024.6
 
 time:
 
