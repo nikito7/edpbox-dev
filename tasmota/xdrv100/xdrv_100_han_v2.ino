@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.0.0-7.22.8-flash"
+#define HAN_VERSION_T "14.0.0-7.23.0-dev1"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -112,6 +112,7 @@ uint32_t hLPX[2];
 float hCT1 = 0;
 float hCT4 = 0;
 uint8_t hTariff = 0;
+
 char hErrTime[12];
 char hErrCode[8];
 
@@ -213,6 +214,10 @@ void HanInit() {
     sprintf(hStatus, "Init");
     hanRead = millis() + 5000;
     hWtdT = millis();
+    //
+
+    sprintf(hErrTime, "%s", "None");
+    sprintf(hErrCode, "%s", "None");
 
     // Init is successful
     hDrvInit = true;
@@ -1165,7 +1170,7 @@ void CmdHanProfile(void) {
 
   uint8_t hRes;
 
-  if (hLPX[0] == 0) {
+  if ((hLPX[0] == 0) | (hLPX[0] < hLPX[1])) {
     //
     node.clearTransmitBuffer();
     delay(100);
@@ -1180,6 +1185,7 @@ void CmdHanProfile(void) {
                  node.getResponseBuffer(2) << 16);
       hanBlink();
     }
+    delay(500);
   }
 
   uint16_t hLPX1YY = 0;
@@ -1202,7 +1208,7 @@ void CmdHanProfile(void) {
   char resX[50];
 
   if ((XdrvMailbox.payload >= 1) &&
-      (XdrvMailbox.payload <= hLPX[0])) {
+      (XdrvMailbox.payload <= hLPX[1])) {
     // *****
     getLP = XdrvMailbox.payload;
 
