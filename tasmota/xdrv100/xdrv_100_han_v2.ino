@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.0.0-7.23.2-dev4"
+#define HAN_VERSION_T "14.0.0-7.23.3"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -231,8 +231,7 @@ void HanDoWork(void) {
 
   if (((_millis - hWtdT) > 600000 * 3) &
       (_millis > 300000)) {
-    // ESP_Restart();
-    hanIndex = 0;
+    ESP_Restart();
   }
 
   //
