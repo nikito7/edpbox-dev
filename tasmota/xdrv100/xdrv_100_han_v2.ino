@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.0.0-7.23.0-dev1"
+#define HAN_VERSION_T "14.0.0-7.23.2-dev4"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -98,13 +98,13 @@ char hLP1gmt[5];
 
 uint16_t hLP2 = 0;  // tweaked to 16bits
 
-float hLP3 = 0;
-float hLP4 = 0;
-float hLP5 = 0;
-float hLP6 = 0;
-float hLP7 = 0;
-float hLP8 = 0;
-uint8_t hLPid[9] = {0, 99, 99, 99, 99, 99, 99, 99, 99};
+float hLP3 = 0;  // retro compatibility
+float hLP4 = 0;  // idem
+float hLP6 = 0;  // idem
+
+uint8_t hLPid[9];
+uint32_t hLPval[9];
+
 uint32_t hLPX[2];
 
 // Misc
@@ -737,24 +737,26 @@ void HanDoWork(void) {
       // tweaked to 16bits. branch: LP1.
       hLP2 = node.getResponseBuffer(6);
 
-      hLP3 = (node.getResponseBuffer(8) |
-              node.getResponseBuffer(7) << 16) /
-             1000.0;
-      hLP4 = (node.getResponseBuffer(10) |
-              node.getResponseBuffer(9) << 16) /
-             1000.0;
-      hLP5 = (node.getResponseBuffer(12) |
-              node.getResponseBuffer(11) << 16) /
-             1000.0;
-      hLP6 = (node.getResponseBuffer(14) |
-              node.getResponseBuffer(13) << 16) /
-             1000.0;
-      hLP7 = (node.getResponseBuffer(16) |
-              node.getResponseBuffer(15) << 16) /
-             1000.0;
-      hLP8 = (node.getResponseBuffer(18) |
-              node.getResponseBuffer(17) << 16) /
-             1000.0;
+      // new
+
+      hLPval[3] = node.getResponseBuffer(8) |
+                  node.getResponseBuffer(7) << 16;
+      hLPval[4] = node.getResponseBuffer(10) |
+                  node.getResponseBuffer(9) << 16;
+      hLPval[5] = node.getResponseBuffer(12) |
+                  node.getResponseBuffer(11) << 16;
+      hLPval[6] = node.getResponseBuffer(14) |
+                  node.getResponseBuffer(13) << 16;
+      hLPval[7] = node.getResponseBuffer(16) |
+                  node.getResponseBuffer(15) << 16;
+      hLPval[8] = node.getResponseBuffer(18) |
+                  node.getResponseBuffer(17) << 16;
+
+      hLP3 = hLPval[3] / 1000.0;
+      hLP4 = hLPval[4] / 1000.0;
+      hLP6 = hLPval[6] / 1000.0;
+
+      //
 
       if (tmpGMT == 0x80) {
         sprintf(hLP1gmt, "01");
@@ -885,8 +887,18 @@ void HanJson(bool json) {
 
     ResponseAppend_P(",\"LP3_IMP\":%3_f", &hLP3);
     ResponseAppend_P(",\"LP4\":%3_f", &hLP4);
-    ResponseAppend_P(",\"LP5\":%3_f", &hLP5);
     ResponseAppend_P(",\"LP6_EXP\":%3_f", &hLP6);
+
+    // new LP
+
+    for (uint8_t i = 3; i < 9; i++) {
+      if ((hLPid[i] > 2) & (hLPid[i] < 99)) {
+        ResponseAppend_P(",\"LPid%d\":%d", hLPid[i],
+                         hLPval[i]);
+      }
+    }
+
+    //
 
     ResponseAppend_P(",\"CT1\":%2_f", &hCT1);
     ResponseAppend_P(",\"Tariff\":%d", hTariff);
@@ -1028,35 +1040,46 @@ void HanJson(bool json) {
       WSContentSend_PD("{s}<br>{m} {e}");
     }
 
+    WSContentSend_PD(
+        "{s}Diagrama de Carga {m} Load Profile{e}");
+
+    WSContentSend_PD("{s}<br>{m} {e}");
     char hLPDate[15];
     sprintf(hLPDate, "%04d-%02d-%02d", hLP1YY, hLP1MT,
             hLP1DD);
 
-    WSContentSend_PD("{s}LP1 Date {m} %s{e}", hLPDate);
+    WSContentSend_PD("{s}LP 1 Date {m} %s{e}", hLPDate);
 
     char hLPClock[15];
     sprintf(hLPClock, "%02d:%02d Z%s", hLP1HH, hLP1MM,
             hLP1gmt);
 
-    WSContentSend_PD("{s}LP1 Time {m} %s{e}", hLPClock);
+    WSContentSend_PD("{s}LP 1 Time {m} %s{e}", hLPClock);
 
-    WSContentSend_PD("{s}LP2 AMR {m} %d{e}", hLP2);
+    WSContentSend_PD("{s}LP 2 AMR {m} %d{e}", hLP2);
 
-    WSContentSend_PD("{s}LP3 Import Inc  {m} %3_f kWh{e}",
-                     &hLP3);
-    WSContentSend_PD("{s}LP4 {m} %3_f kWh{e}", &hLP4);
-    WSContentSend_PD("{s}LP5 {m} %3_f kWh{e}", &hLP5);
-    WSContentSend_PD("{s}LP6 Export Inc {m} %3_f kWh{e}",
-                     &hLP6);
+    // new LP
 
-    if (hLPid[6] != 10) {
-      WSContentSend_PD(
-          "{s}Error: Export Inc {m} %d != 10 {e}",
-          hLPid[6]);
+    for (uint8_t i = 3; i < 9; i++) {
+      //
+
+      char _name[20];
+
+      if (hLPid[i] == 9) {
+        sprintf(_name, "%s", "Import Inc");
+      } else if (hLPid[i] == 10) {
+        sprintf(_name, "%s", "Export Inc");
+      } else {
+        sprintf(_name, "%s", "Reactive");
+      }
+
+      if ((hLPid[i] > 2) & (hLPid[i] < 99)) {
+        WSContentSend_PD("{s}LP %d %s {m} %d Wh{e}",
+                         hLPid[i], _name, hLPval[i]);
+      }
     }
 
-    WSContentSend_PD("{s}LP7 {m} %3_f kWh{e}", &hLP7);
-    WSContentSend_PD("{s}LP8 {m} %3_f kWh{e}", &hLP8);
+    //
 
     char tmpLPid[25];
     sprintf(tmpLPid, "%d %d %d %d %d %d %d %d", hLPid[1],
@@ -1258,7 +1281,7 @@ void CmdHanProfile(void) {
 
       sprintf(resX,
               "%04d,%04d-%02d-%02dT%02d:%02dZ%s,"
-              "%02d,%04d,%04d,%04d,%04d",
+              "%02d,%05d,%05d,%05d,%05d",
               getLP, hLPX1YY, hLPX1MT, hLPX1DD, hLPX1HH,
               hLPX1MM, tmpGMT, hLPX2, hLPX3, hLPX4, hLPX5,
               hLPX6);
@@ -1268,8 +1291,12 @@ void CmdHanProfile(void) {
     }
     // *****
   } else {
-    sprintf(resX, "%04d,Error,Limit,%04d,%04d", getLP,
-            hLPX[0], hLPX[1]);
+    sprintf(resX,
+            "%04d,Error,Limit,%04d,%04d,"
+            "ID,%d-%d-%d-%d-%d-%d-%d-%d",
+            getLP, hLPX[0], hLPX[1], hLPid[1], hLPid[2],
+            hLPid[3], hLPid[4], hLPid[5], hLPid[6],
+            hLPid[7], hLPid[8]);
   }
 
   hanRead = millis();
