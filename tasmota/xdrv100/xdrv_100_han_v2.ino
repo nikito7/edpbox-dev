@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.1.0-7.23.5b3"
+#define HAN_VERSION_T "14.1.0-7.23.5b4"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -16,7 +16,7 @@
 #define HAN_VERSION HAN_VERSION_T
 #endif
 
-#ifdef ESP32
+#ifdef ESP32S3
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T "-S3"
 #endif
@@ -147,16 +147,6 @@ uint32_t hWtdT = 0;
 HardwareSerial &HanSerial = Serial;
 #endif
 
-#ifdef ESP32
-#undef MAX485_DE_RE
-#define MAX485_DE_RE 18
-#undef HAN_TX
-#define HAN_TX 16
-#undef HAN_RX
-#define HAN_RX 17
-HardwareSerial &HanSerial = Serial1;
-#endif
-
 #ifdef ESP32S3
 #undef MAX485_DE_RE
 #define MAX485_DE_RE 17
@@ -165,9 +155,8 @@ HardwareSerial &HanSerial = Serial1;
 #undef HAN_RX
 #define HAN_RX 18
 HardwareSerial &HanSerial = Serial2;
-#endif
-
-#ifdef ESP32C3
+//
+#elif ESP32C3
 #undef MAX485_DE_RE
 #define MAX485_DE_RE 3
 #undef HAN_TX
@@ -175,9 +164,8 @@ HardwareSerial &HanSerial = Serial2;
 #undef HAN_RX
 #define HAN_RX 5
 HardwareSerial &HanSerial = Serial1;
-#endif
-
-#ifdef ESP32C6
+//
+#elif ESP32C6
 #undef MAX485_DE_RE
 #define MAX485_DE_RE 3
 #undef HAN_TX
@@ -185,6 +173,16 @@ HardwareSerial &HanSerial = Serial1;
 #undef HAN_RX
 #define HAN_RX 5
 HardwareSerial &HanSerial = Serial1;
+//
+#elif ESP32
+#undef MAX485_DE_RE
+#define MAX485_DE_RE 18
+#undef HAN_TX
+#define HAN_TX 16
+#undef HAN_RX
+#define HAN_RX 17
+HardwareSerial &HanSerial = Serial1;
+//
 #endif
 
 ModbusMaster node;
