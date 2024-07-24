@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.0.0-7.23.3"
+#define HAN_VERSION_T "14.1.0-7.23.5b3"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -14,6 +14,11 @@
 #else
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T
+#endif
+
+#ifdef ESP32
+#undef HAN_VERSION
+#define HAN_VERSION HAN_VERSION_T "-S3"
 #endif
 
 // This variable will be set to true after initialization
@@ -33,6 +38,7 @@ uint16_t hTimeout = 750;
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
+uint8_t hRestart = 0;
 
 // Clock 01
 uint16_t hanYY = 0;
@@ -141,6 +147,46 @@ uint32_t hWtdT = 0;
 HardwareSerial &HanSerial = Serial;
 #endif
 
+#ifdef ESP32
+#undef MAX485_DE_RE
+#define MAX485_DE_RE 18
+#undef HAN_TX
+#define HAN_TX 16
+#undef HAN_RX
+#define HAN_RX 17
+HardwareSerial &HanSerial = Serial1;
+#endif
+
+#ifdef ESP32S3
+#undef MAX485_DE_RE
+#define MAX485_DE_RE 17
+#undef HAN_TX
+#define HAN_TX 16
+#undef HAN_RX
+#define HAN_RX 18
+HardwareSerial &HanSerial = Serial2;
+#endif
+
+#ifdef ESP32C3
+#undef MAX485_DE_RE
+#define MAX485_DE_RE 3
+#undef HAN_TX
+#define HAN_TX 4
+#undef HAN_RX
+#define HAN_RX 5
+HardwareSerial &HanSerial = Serial1;
+#endif
+
+#ifdef ESP32C6
+#undef MAX485_DE_RE
+#define MAX485_DE_RE 3
+#undef HAN_TX
+#define HAN_TX 4
+#undef HAN_RX
+#define HAN_RX 5
+HardwareSerial &HanSerial = Serial1;
+#endif
+
 ModbusMaster node;
 
 void preTransmission() { digitalWrite(MAX485_DE_RE, 1); }
@@ -209,7 +255,9 @@ void HanInit() {
   } else {
     //
 
+#ifdef ESP8266
     ClaimSerial();  // Tasmota SerialLog
+#endif
 
     sprintf(hStatus, "Init");
     hanRead = millis() + 5000;
@@ -229,9 +277,11 @@ void HanDoWork(void) {
 
   uint32_t _millis = millis();
 
-  if (((_millis - hWtdT) > 600000 * 3) &
-      (_millis > 300000)) {
-    ESP_Restart();
+  if (((_millis - hWtdT) > 600000) & (_millis > 300000)) {
+    if (hRestart == 1) {
+      ESP_Restart();
+    }
+    hanIndex = 0;
   }
 
   //
@@ -264,7 +314,11 @@ void HanDoWork(void) {
     HanSerial.flush();
     HanSerial.end();
     delay(250);
+#ifdef ESP8266
     HanSerial.begin(9600, SERIAL_8N1);
+#else
+    HanSerial.begin(9600, SERIAL_8N1, HAN_RX, HAN_TX);
+#endif
     delay(250);
     node.begin(1, HanSerial);
     node.preTransmission(preTransmission);
@@ -290,7 +344,11 @@ void HanDoWork(void) {
       HanSerial.flush();
       HanSerial.end();
       delay(250);
+#ifdef ESP8266
       HanSerial.begin(9600, SERIAL_8N2);
+#else
+      HanSerial.begin(9600, SERIAL_8N2, HAN_RX, HAN_TX);
+#endif
       delay(250);
       node.begin(1, HanSerial);
       node.preTransmission(preTransmission);
@@ -936,6 +994,8 @@ void HanJson(bool json) {
                        hErrCode);
       WSContentSend_PD("{s}MB Error Count {m} %d {e}",
                        hanERR);
+      WSContentSend_PD("{s}MB Restart {m} %d {e}",
+                       hRestart);
       WSContentSend_PD("{s}MB Watchdog {m} %ds {e}",
                        ((millis() - hWtdT) / 1000));
     }  // if hanERR
@@ -1178,11 +1238,12 @@ const char HanCommands[] PROGMEM =
     "HanDelayWait|"
     "HanDelayError|"
     "HanTimeout|"
+    "HanRestart|"
     "HanProfile";
 
 void (*const HanCommand[])(void) PROGMEM = {
-    &CmdHanDelay, &CmdHanDelayWait, &CmdHanDelayError,
-    &CmdHanTimeout, &CmdHanProfile};
+    &CmdHanDelay,   &CmdHanDelayWait, &CmdHanDelayError,
+    &CmdHanTimeout, &CmdHanRestart,   &CmdHanProfile};
 
 //
 
@@ -1338,6 +1399,15 @@ void CmdHanTimeout(void) {
     hTimeout = XdrvMailbox.payload;
   }
   ResponseCmndNumber(hTimeout);
+}
+//
+
+void CmdHanRestart(void) {
+  if ((XdrvMailbox.payload >= 0) &&
+      (XdrvMailbox.payload <= 9)) {
+    hRestart = XdrvMailbox.payload;
+  }
+  ResponseCmndNumber(hRestart);
 }
 //
 
