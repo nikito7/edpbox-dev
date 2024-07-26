@@ -3,6 +3,8 @@
 // based in 14.0.0 minimal:
 // - freeup ram !
 
+#ifdef ESP8266
+
 // ### ### ###
 // raw copy
 // no changes
@@ -128,7 +130,18 @@
 #undef USE_AC_ZERO_CROSS_DIMMER                  // Disable support for AC_ZERO_CROSS_DIMMER
 
 // ### ### ###
-// changes
+
+// ifdef ESP8266
+#endif
+
+// ### ### ###
+// changes 2024.07.25.1544
+
+#ifdef ESP32
+#undef USE_ENHANCED_GUI_WIFI_SCAN
+#endif
+
+#undef USE_FTP
 
 // #define USE_ENHANCED_GUI_WIFI_SCAN
 #undef USE_ADC_VCC
@@ -143,10 +156,12 @@
 // ### ### ###
 // tasmota-4M
 
+#ifdef ESP8266
 #define USE_UFILESYS
 #define UFSYS_SIZE 5900
 #define GUI_TRASH_FILE
 #define GUI_EDIT_FILE
+#endif
 
 // ### ### ###
 // user_config_override.h
@@ -155,9 +170,19 @@
 #undef USE_RULES
 #define USE_SCRIPT
 
+#ifdef ESP32
+#define USE_SML_M
+#define USE_SML_SCRIPT_CMD
+#define SML_MAX_VARS 50
+#define SML_REPLACE_VARS
+#define NO_USE_SML_SPECOPT
+#define NO_USE_SML_DECRYPT
+#define NO_USE_SML_CANBUS
+#endif
+
 // tcp
 
-#ifdef EASYHAN_TCP
+#if defined(EASYHAN_TCP) || defined(ESP32)
 #define USE_TCP_BRIDGE
 #define USE_MODBUS_BRIDGE
 #define USE_MODBUS_BRIDGE_TCP
@@ -171,9 +196,11 @@
 #define MAXVARS 58
 #define MAXSVARS 21
 #define MAXFILT 5
-// #define LARGE_ARRAYS
-// #define SCRIPT_LARGE_VNBUFF
 
+#ifdef ESP32
+#define LARGE_ARRAYS
+#define SCRIPT_LARGE_VNBUFF
+#endif
 
 #define USE_HAN_V2
 
@@ -181,14 +208,12 @@
 
 #ifdef ESP8266
 #undef USER_BACKLOG
-#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; SerialLog 0; Sleep 75; WifiPower 15; Template {\"NAME\":\"easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Module 0; WifiConfig 2; Script 1"
-#endif
-
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; SerialLog 0; Sleep 75; WifiPower 15; Template {\"NAME\":\"easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Module 0; SaveData 9; WifiConfig 2; Script 1"
 #undef BOOT_LOOP_OFFSET
 #define BOOT_LOOP_OFFSET       3
-
-#undef SAVE_DATA
-#define SAVE_DATA              9
+#else
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; Sleep 75; WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
+#endif
 
 #undef TELE_PERIOD
 #define TELE_PERIOD            60
@@ -208,8 +233,17 @@
 #undef MQTT_PASS
 #define MQTT_PASS "none"
 
+#ifdef ESP8266
 #undef OTA_URL
 #define OTA_URL "http://u.easyhan.pt/v2/tasmota-4M.bin.gz"
+// 
+#elif ESP32S3
+#undef OTA_URL
+#define OTA_URL "https://u.easyhan.pt/v2/tasmota32s3.bin"
+// 
+#elif ESP32
+#undef OTA_URL
+#define OTA_URL "https://u.easyhan.pt/v2/tasmota32.bin"
+#endif
 
 // EOF
-
