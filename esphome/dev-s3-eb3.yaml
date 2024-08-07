@@ -1,72 +1,71 @@
-# 2024.02.09.2319
-# Change to your:
-# - board
-# - adc sensor ( or remove )
-# - wifi
-# - uart pins
+# S3 tests 20:49 07/08/2024
+#
+# Based in 2024.02.09.2319
 
 substitutions:
-
-  dev: EB3test
-  name: edpbox3test
+  dev: EB3
+  name: t43s3
 
 interval:
 
-  - interval: 9s
+  - interval: 15s
     then:
       - lambda: |-
           if (id(edpbox_polling).state) {
+              id(esp_clock).update();
               id(edpbox).update();
           }
 
 esphome:
-
   name: ${name}
-
-  #platform: ESP32
-  #board: esp32dev
-
-  platform: ESP8266
-  board: esp07s # 4MB
-  
   on_boot:
     priority: -500
     then:
-      - delay: 15s
+      - delay: 5s
       - switch.turn_on: edpbox_polling
+
+esp32:
+  board: adafruit_feather_esp32s3
+  framework:
+    type: arduino
+  flash_size: 4MB
+  variant: esp32s3
+
 
 wifi:
 
+  use_address: 10.1.0.44
   output_power: 15db
-  #domain: .lan
-  # use_address: 10.1.0.36
-  # fix ota dns error
 
-  #ssid: !secret wifi_ssid
-  #password: !secret wifi_key
-
+  ssid: !secret wifi_ssid
+  password: !secret wifi_key
   ap:
     ssid: "Easy HAN ${dev}"
     password: edpbox123
 
 captive_portal:
 
+###
+
+#esp32_ble_tracker:
+
+#bluetooth_proxy:
+
+###
+
 web_server:
   local: true
 
-# não usar com web_server
-#logger:
-#  level: verbose
-#  baud_rate: 0
+logger:
+  level: verbose
 
 api:
   reboot_timeout: 30min
 
 ota:
-#   - platform: esphome # 2024.6
+  - platform: esphome
 
 time:
-
   - platform: homeassistant
     id: esptime
 
@@ -76,12 +75,6 @@ button:
     name: "${dev} ESP Restart"
 
 switch:
-
-  - platform: gpio
-    id: led_pin
-    pin:
-      number: 2
-      inverted: yes
 
   - platform: template
     name: "${dev} ESP Polling"
@@ -95,45 +88,56 @@ uart:
 # tfreire 14/5
 
   id: modbus_serial
-  rx_pin: 3
-  tx_pin: 1
+  rx_pin: 17
+  tx_pin: 15
   baud_rate: 9600
   stop_bits: 1
   #stop_bits: 2 # ziv
 
 modbus:
-
-  #flow_control_pin: 5
+  flow_control_pin: 16
   id: modbus1
   uart_id: modbus_serial
-  send_wait_time: 350ms
+  send_wait_time: 1000ms
 
 modbus_controller:
-
   - id: edpbox
     update_interval: never
     address: 0x1
-    command_throttle: 150ms
+    command_throttle: 1000ms
     setup_priority: -10
-    offline_skip_updates: 25
+    offline_skip_updates: 8
 
 sensor:
 
-#  - platform: adc
-#    # internal VCC esp8266 only
-#    # pin: VCC
-#    pin: A0
-#    filters:
-#      - multiply: 6.0
-#    name: "${dev} Adc Addon"
-#    accuracy_decimals: 3
-#    device_class: voltage
-#    state_class: measurement
+  - platform: adc
+    name: "${dev} Adc In raw"
+    id: adc_in
+    raw: true
+    pin: 1
+    attenuation: 0dB
+    samples: 20
+    accuracy_decimals: 0
+    device_class: ""
+    unit_of_measurement: "raw"
+    state_class: measurement
+
+  - platform: template
+    name: "${dev} Adc In"
+    lambda: |-
+      return  id(adc_in).state / 257.2580645161;
+    accuracy_decimals: 2
+    device_class: voltage
+    unit_of_measurement: "V"
+    state_class: measurement
+
+###
 
   - platform: template
     name: "${dev} ESP Free Heap"
     lambda: |-
-      int heap = ESP.getFreeHeap();
+      float heap = ESP.getFreeHeap();
+      // float heap = esp_get_free_heap_size();
       return heap / 1024.0;
     unit_of_measurement: "kB"
     icon: mdi:chip
@@ -193,18 +197,6 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
-    name: "${dev} Current"
-    address: 0x0072
-    unit_of_measurement: "A"
-    register_type: read
-    value_type: U_WORD
-    filters:
-      - multiply: 0.1
-    accuracy_decimals: 1
-    device_class: current
-    state_class: measurement
-
-  - platform: modbus_controller
     name: "${dev} Current L1"
     address: 0x006D
     unit_of_measurement: "A"
@@ -240,11 +232,24 @@ sensor:
     device_class: current
     state_class: measurement
 
+  - platform: modbus_controller
+    name: "${dev} Current"
+    address: 0x0072
+    unit_of_measurement: "A"
+    register_type: read
+    value_type: U_WORD
+    filters:
+      - multiply: 0.1
+    accuracy_decimals: 1
+    device_class: current
+    state_class: measurement
+
 ### Active Power & Export ###
 
   - platform: modbus_controller
     name: "${dev} Active Power L1"
     address: 0x0073
+    force_new_range: true    #####
     register_type: read
     value_type: U_DWORD
     register_count: 1
@@ -343,6 +348,7 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Power Factor"
     address: 0x007B
+    force_new_range: true    #####
     unit_of_measurement: ""
     register_type: read
     value_type: U_WORD
@@ -476,53 +482,67 @@ sensor:
 
 ### Total Energy L ###
 
-#  - platform: modbus_controller
-#    name: "${dev} Import L1"
-#    address: 0x001C
-#    register_type: read
-#    value_type: U_DWORD
-#    register_count: 1
-#    response_size: 4
-#    accuracy_decimals: 3
-#    filters:
-#      - multiply: 0.001
-#    unit_of_measurement: "kWh"
-#    state_class: total_increasing
-#    device_class: energy
+  - platform: modbus_controller
+    name: "${dev} Import L1"
+    address: 0x001C
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
 
-#  - platform: modbus_controller
-#    name: "${dev} Import L2"
-#    address: 0x001D
-#    register_type: read
-#    value_type: U_DWORD
-#    register_count: 1
-#    response_size: 4
-#    accuracy_decimals: 3
-#    filters:
-#      - multiply: 0.001
-#    unit_of_measurement: "kWh"
-#    state_class: total_increasing
-#    device_class: energy
+  - platform: modbus_controller
+    name: "${dev} Import L2"
+    address: 0x001D
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
 
-#  - platform: modbus_controller
-#    name: "${dev} Import L3"
-#    address: 0x001E
-#    register_type: read
-#    value_type: U_DWORD
-#    register_count: 1
-#    response_size: 4
-#    accuracy_decimals: 3
-#    filters:
-#      - multiply: 0.001
-#    unit_of_measurement: "kWh"
-#    state_class: total_increasing
-#    device_class: energy
+  - platform: modbus_controller
+    name: "${dev} Import L3"
+    address: 0x001E
+    register_type: read
+    value_type: U_DWORD
+    register_count: 1
+    response_size: 4
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh"
+    state_class: total_increasing
+    device_class: energy
 
 ### Contract ###
 
   - platform: modbus_controller
     name: "${dev} Contract T1"
     address: 0x000C
+    register_type: read
+    value_type: U_DWORD
+    register_count: 3 # ranges optimization
+    response_size: 12 # 
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kVA"
+    state_class: measurement
+    icon: mdi:flash
+
+  - platform: modbus_controller
+    name: "${dev} Contract T4"
+    address: 0x000F
     force_new_range: true
     register_type: read
     value_type: U_DWORD
@@ -538,8 +558,8 @@ sensor:
 ### Load Profile ###
 
   - platform: template
-    name: "${dev} LP3 Import Inc"
-    id: lp3_imp
+    name: "${dev} LP ID 3"
+    id: lp3x
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
@@ -548,8 +568,18 @@ sensor:
     icon: mdi:counter
 
   - platform: template
-    name: "${dev} LP6 Export Inc"
-    id: lp6_exp
+    name: "${dev} LP ID 4"
+    id: lp4x
+    accuracy_decimals: 3
+    filters:
+      - multiply: 0.001
+    unit_of_measurement: "kWh/15m"
+    state_class: measurement
+    icon: mdi:counter
+
+  - platform: template
+    name: "${dev} LP ID 6"
+    id: lp6x
     accuracy_decimals: 3
     filters:
       - multiply: 0.001
@@ -569,7 +599,8 @@ text_sensor:
       time_t currTime = id(esptime).now().timestamp;
       strftime(str, sizeof(str), "%H:%M:%S", localtime(&currTime));
       return {str};
-    update_interval: 9s
+    update_interval: never
+    id: esp_clock
 
 ###
 
@@ -589,29 +620,31 @@ text_sensor:
         char ebclk[20];
         sprintf(ebclk,"%02d:%02d:%02d",hh,mm,ss);
         return {ebclk};
-    on_value:
-      - then:
-        - switch.turn_on: led_pin
-        - delay: 30ms
-        - switch.turn_off: led_pin
+#    on_value:
+#      - then:
+#        - switch.turn_on: led_pin
+#        - delay: 30ms
+#        - switch.turn_off: led_pin
 
 ###
 
   - platform: modbus_controller
     name: "${dev} LP1 Date Time"
-    custom_command: [0x1, 0x44, 0x6, 0x1]
+    custom_command: [0x1, 0x44, 0x0, 0x1]
     register_count: 1
-    response_size: 34
+    response_size: 41
     lambda: |-
-      uint16_t lpYY = data[2] << 8 | data[3];
+      uint16_t lpYY = (data[2] << 8 | data[3]);
       uint8_t lpMT = data[4];
       uint8_t lpDD = data[5];
       uint8_t lpHH = data[7];
       uint8_t lpMM = data[8];
-      uint32_t lpIMP = data[15] << 24 | data[16] << 16 | data[17] << 8 | data[18]; 
-      uint32_t lpEXP = data[27] << 24 | data[28] << 16 | data[29] << 8 | data[30]; 
-      id(lp3_imp).publish_state(lpIMP);
-      id(lp6_exp).publish_state(lpEXP);
+      uint32_t lpID3 = (data[15] << 24 | data[16] << 16 | data[17] << 8 | data[18]);
+      uint32_t lpID4 = (data[19] << 24 | data[20] << 16 | data[21] << 8 | data[22]);
+      uint32_t lpID6 = (data[27] << 24 | data[28] << 16 | data[29] << 8 | data[30]); 
+      id(lp3x).publish_state(lpID3);
+      id(lp4x).publish_state(lpID4);
+      id(lp6x).publish_state(lpID6);
       char lpclk[25];
       sprintf(lpclk,"%04d-%02d-%02dT%02d:%02d",lpYY,lpMT,lpDD,lpHH,lpMM);
       return {lpclk};
