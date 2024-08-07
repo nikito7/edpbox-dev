@@ -1,4 +1,4 @@
-# S3 tests 20:49 07/08/2024
+# S3 tests 22:19 07/08/2024
 #
 # Based in 2024.02.09.2319
 
@@ -8,7 +8,7 @@ substitutions:
 
 interval:
 
-  - interval: 15s
+  - interval: 12s
     then:
       - lambda: |-
           if (id(edpbox_polling).state) {
@@ -21,7 +21,7 @@ esphome:
   on_boot:
     priority: -500
     then:
-      - delay: 5s
+      - delay: 7s
       - switch.turn_on: edpbox_polling
 
 esp32:
@@ -121,6 +121,7 @@ sensor:
     device_class: ""
     unit_of_measurement: "raw"
     state_class: measurement
+    update_interval: 5s
 
   - platform: template
     name: "${dev} Adc In"
@@ -173,30 +174,6 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
-    name: "${dev} Voltage L2"
-    address: 0x006E
-    unit_of_measurement: "V"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-      - multiply: 0.1
-    device_class: voltage
-    state_class: measurement
-
-  - platform: modbus_controller
-    name: "${dev} Voltage L3"
-    address: 0x0070
-    unit_of_measurement: "V"
-    register_type: read
-    value_type: U_WORD
-    accuracy_decimals: 1
-    filters:
-     - multiply: 0.1
-    device_class: voltage
-    state_class: measurement
-
-  - platform: modbus_controller
     name: "${dev} Current L1"
     address: 0x006D
     unit_of_measurement: "A"
@@ -209,6 +186,18 @@ sensor:
     state_class: measurement
 
   - platform: modbus_controller
+    name: "${dev} Voltage L2"
+    address: 0x006E
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+      - multiply: 0.1
+    device_class: voltage
+    state_class: measurement
+
+  - platform: modbus_controller
     name: "${dev} Current L2"
     address: 0x006F
     unit_of_measurement: "A"
@@ -218,6 +207,18 @@ sensor:
     filters:
       - multiply: 0.1
     device_class: current
+    state_class: measurement
+
+  - platform: modbus_controller
+    name: "${dev} Voltage L3"
+    address: 0x0070
+    unit_of_measurement: "V"
+    register_type: read
+    value_type: U_WORD
+    accuracy_decimals: 1
+    filters:
+     - multiply: 0.1
+    device_class: voltage
     state_class: measurement
 
   - platform: modbus_controller
@@ -249,7 +250,6 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Active Power L1"
     address: 0x0073
-    force_new_range: true    #####
     register_type: read
     value_type: U_DWORD
     register_count: 1
@@ -348,7 +348,6 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Power Factor"
     address: 0x007B
-    force_new_range: true    #####
     unit_of_measurement: ""
     register_type: read
     value_type: U_WORD
@@ -454,6 +453,7 @@ sensor:
 
   - platform: modbus_controller
     name: "${dev} Import"
+    skip_updates: 4
     address: 0x0016
     register_type: read
     value_type: U_DWORD
@@ -485,6 +485,7 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Import L1"
     address: 0x001C
+    skip_updates: 4
     register_type: read
     value_type: U_DWORD
     register_count: 1
@@ -529,6 +530,7 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Contract T1"
     address: 0x000C
+    skip_updates: 4
     register_type: read
     value_type: U_DWORD
     register_count: 3 # ranges optimization
@@ -543,7 +545,6 @@ sensor:
   - platform: modbus_controller
     name: "${dev} Contract T4"
     address: 0x000F
-    force_new_range: true
     register_type: read
     value_type: U_DWORD
     register_count: 1
@@ -629,10 +630,10 @@ text_sensor:
 ###
 
   - platform: modbus_controller
-    name: "${dev} LP1 Date Time"
+    name: "${dev} LP Date Time"
     custom_command: [0x1, 0x44, 0x0, 0x1]
     register_count: 1
-    response_size: 41
+    response_size: 42
     lambda: |-
       uint16_t lpYY = (data[2] << 8 | data[3]);
       uint8_t lpMT = data[4];
@@ -656,6 +657,7 @@ text_sensor:
     name: "${dev} Tariff"
     register_type: read
     address: 0x000B
+    force_new_range: true    #####
     register_count: 1
     response_size: 2
     raw_encode: COMMA
