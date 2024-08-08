@@ -135,16 +135,19 @@
 #endif
 
 // ### ### ###
-// changes 2024.07.25.1544
+// changes 2024.08.08.2106
 
 #ifdef ESP32
 #undef USE_ENHANCED_GUI_WIFI_SCAN
+// #define USE_BLE_ESP32
+// #define USE_MI_ESP32
 #endif
 
+#ifdef ESP8266
 #undef USE_FTP
-
-// #define USE_ENHANCED_GUI_WIFI_SCAN
 #undef USE_ADC_VCC
+#endif
+
 // #define USE_CUSTOM
 // #define USE_COUNTER
 // #define USE_DS18x20
@@ -212,11 +215,11 @@
 #undef BOOT_LOOP_OFFSET
 #define BOOT_LOOP_OFFSET       3
 #else
-#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; Sleep 75; WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
 #endif
 
 #undef TELE_PERIOD
-#define TELE_PERIOD            60
+#define TELE_PERIOD            31
 
 #undef MQTT_TOPIC
 #define MQTT_TOPIC             "edpbox99"
