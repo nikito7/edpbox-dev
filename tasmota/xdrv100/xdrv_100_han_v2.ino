@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.1.0-7.23.5b5"
+#define HAN_VERSION_T "14.1.0-7.23.7"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -139,56 +139,61 @@ uint32_t hWtdT = 0;
 
 // **********************
 
-#include <HardwareSerial.h>
 #include <ModbusMaster.h>
 
 #ifdef ESP8266
-#define MAX485_DE_RE 16
-HardwareSerial &HanSerial = Serial;
+#undef HAN_DIR
+#define HAN_DIR 16
+#undef HAN_SERIAL
+#define HAN_SERIAL Serial
 #endif
 
 #ifdef ESP32S3
-#undef MAX485_DE_RE
-#define MAX485_DE_RE 17
+#undef HAN_DIR
+#define HAN_DIR 16
 #undef HAN_TX
-#define HAN_TX 16
+#define HAN_TX 15
 #undef HAN_RX
-#define HAN_RX 18
-HardwareSerial &HanSerial = Serial2;
+#define HAN_RX 17
+#undef HAN_SERIAL
+#define HAN_SERIAL Serial2
 //
 #elif ESP32C3
-#undef MAX485_DE_RE
-#define MAX485_DE_RE 3
+#undef HAN_DIR
+#define HAN_DIR 3
 #undef HAN_TX
 #define HAN_TX 4
 #undef HAN_RX
 #define HAN_RX 5
-HardwareSerial &HanSerial = Serial1;
+#undef HAN_SERIAL
+#define HAN_SERIAL Serial1
 //
 #elif ESP32C6
-#undef MAX485_DE_RE
-#define MAX485_DE_RE 3
+#undef HAN_DIR
+#define HAN_DIR 3
 #undef HAN_TX
 #define HAN_TX 4
 #undef HAN_RX
 #define HAN_RX 5
-HardwareSerial &HanSerial = Serial1;
+#undef HAN_SERIAL
+#define HAN_SERIAL Serial1
 //
 #elif ESP32
-#undef MAX485_DE_RE
-#define MAX485_DE_RE 18
+#undef HAN_DIR
+#define HAN_DIR 18
 #undef HAN_TX
 #define HAN_TX 16
 #undef HAN_RX
 #define HAN_RX 17
-HardwareSerial &HanSerial = Serial1;
+#undef HAN_SERIAL
+#define HAN_SERIAL Serial1
 //
 #endif
 
 ModbusMaster node;
 
-void preTransmission() { digitalWrite(MAX485_DE_RE, 1); }
-void postTransmission() { digitalWrite(MAX485_DE_RE, 0); }
+void preTransmission() { digitalWrite(HAN_DIR, 1); }
+void postTransmission() { digitalWrite(HAN_DIR, 0); }
 
 void hanBlink() {
 #ifdef ESP8266
@@ -234,14 +239,12 @@ void HanInit() {
   AddLog(LOG_LEVEL_INFO, PSTR("HAN: Init..."));
 
 #ifdef ESP8266
-  //
   pinMode(2, OUTPUT);
   digitalWrite(2, LOW);
-  //
-  pinMode(MAX485_DE_RE, OUTPUT);
-  digitalWrite(MAX485_DE_RE, LOW);
-  //
 #endif
+
+  pinMode(HAN_DIR, OUTPUT);
+  digitalWrite(HAN_DIR, LOW);
 
   if (PinUsed(GPIO_MBR_RX) | PinUsed(GPIO_MBR_TX) |
       PinUsed(GPIO_TCP_RX) | PinUsed(GPIO_TCP_TX)) {
@@ -309,16 +312,16 @@ void HanDoWork(void) {
 
     node.setTimeout(2000);
 
-    HanSerial.flush();
-    HanSerial.end();
+    HAN_SERIAL.flush();
+    HAN_SERIAL.end();
     delay(250);
 #ifdef ESP8266
-    HanSerial.begin(9600, SERIAL_8N1);
+    HAN_SERIAL.begin(9600, SERIAL_8N1);
 #else
-    HanSerial.begin(9600, SERIAL_8N1, HAN_RX, HAN_TX);
+    HAN_SERIAL.begin(9600, SERIAL_8N1, HAN_RX, HAN_TX);
 #endif
     delay(250);
-    node.begin(1, HanSerial);
+    node.begin(1, HAN_SERIAL);
     node.preTransmission(preTransmission);
     node.postTransmission(postTransmission);
 
@@ -339,16 +342,16 @@ void HanDoWork(void) {
       AddLog(LOG_LEVEL_INFO,
              PSTR("HAN: 8N1 Fail. Error %d"), hanCode);
       //
-      HanSerial.flush();
-      HanSerial.end();
+      HAN_SERIAL.flush();
+      HAN_SERIAL.end();
       delay(250);
 #ifdef ESP8266
-      HanSerial.begin(9600, SERIAL_8N2);
+      HAN_SERIAL.begin(9600, SERIAL_8N2);
 #else
-      HanSerial.begin(9600, SERIAL_8N2, HAN_RX, HAN_TX);
+      HAN_SERIAL.begin(9600, SERIAL_8N2, HAN_RX, HAN_TX);
 #endif
       delay(250);
-      node.begin(1, HanSerial);
+      node.begin(1, HAN_SERIAL);
       node.preTransmission(preTransmission);
       node.postTransmission(postTransmission);
 
@@ -857,7 +860,7 @@ void HanDoWork(void) {
     hanIndex = 5;  // skip setup and one time requests.
   }
 
-  if (hanERR > 50) {
+  if (hanERR > 90) {
     hanERR = 30;
   }
 
