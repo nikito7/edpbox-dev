@@ -135,7 +135,7 @@
 #endif
 
 // ### ### ###
-// changes 2024.08.08.2106
+// changes 2024.08.17.0109
 
 #ifdef ESP32
 #undef USE_ENHANCED_GUI_WIFI_SCAN
@@ -171,7 +171,7 @@
 // sml configs
 
 #undef USE_RULES
-#define USE_SCRIPT
+#define USE_SCRIPT // script or matter!?
 
 #ifdef ESP32
 #define USE_SML_M
@@ -242,11 +242,15 @@
 // 
 #elif ESP32S3
 #undef OTA_URL
-#define OTA_URL "https://u.easyhan.pt/v2/tasmota32s3.bin"
+#define OTA_URL "https://u.easyhan.pt/v2/32/tasmota32s3.bin"
+// 
+#elif ESP32C6
+#undef OTA_URL
+#define OTA_URL "https://u.easyhan.pt/v2/32/tasmota32c6.bin"
 // 
 #elif ESP32
 #undef OTA_URL
-#define OTA_URL "https://u.easyhan.pt/v2/tasmota32.bin"
+#define OTA_URL "https://u.easyhan.pt/v2/32/tasmota32.bin"
 #endif
 
 // EOF
