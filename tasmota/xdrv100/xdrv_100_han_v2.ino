@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.1.0-7.23.7"
+#define HAN_VERSION_T "14.2.0-7.23.8b2"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -19,6 +19,9 @@
 #ifdef ESP32S3
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T "-S3"
+#elif ESP32C6
+#undef HAN_VERSION
+#define HAN_VERSION HAN_VERSION_T "-C6"
 #endif
 
 // This variable will be set to true after initialization
@@ -968,6 +971,12 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}<br>{m} {e}");
     WSContentSend_PD("{s}HAN V2 " HAN_VERSION " {m} {e}");
+
+#ifdef ESP32
+    uint16_t cpu_freq = getCpuFrequencyMhz();
+    WSContentSend_PD("{s}CPU Freq {m} %d MHz{e}",
+                     cpu_freq);
+#endif
 
     if (bitRead(Settings->rule_enabled, 0) == 0) {
       WSContentSend_PD("{s}<br>{m} {e}");
