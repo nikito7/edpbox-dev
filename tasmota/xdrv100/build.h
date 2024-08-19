@@ -56,8 +56,8 @@
 #undef ROTARY_V1     // Disable support for MI Desk Lamp
 #undef USE_SONOFF_RF // Disable support for Sonoff Rf Bridge (+3k2 code)
 #undef USE_RF_FLASH  // Disable support for flashing the EFM8BB1 chip on the
-                    // Sonoff RF Bridge. C2CK must be connected to GPIO4, C2D to
-                    // GPIO5 on the PCB
+// Sonoff RF Bridge. C2CK must be connected to GPIO4, C2D to
+// GPIO5 on the PCB
 #undef USE_SONOFF_SC         // Disable support for Sonoff Sc (+1k1 code)
 #undef USE_TUYA_MCU          // Disable support for Tuya Serial MCU
 #undef USE_ARMTRONIX_DIMMERS // Disable support for Armtronix Dimmers (+1k4
@@ -183,7 +183,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2024.08.19.1440
+// changes 2024.08.19.2152
 
 #ifdef ESP32S3
 #define USE_LD2410 // radar
@@ -225,7 +225,7 @@
 #undef USE_RULES
 #define USE_SCRIPT // script or matter!?
 
-#ifdef ESP32
+#if defined(ESP32) || defined(HAN_V1)
 #define USE_SML_M
 #define USE_SML_SCRIPT_CMD
 #define SML_MAX_VARS 50
@@ -254,12 +254,24 @@
 #define MAXFILT 5
 #endif
 
-#ifdef defined(ESP32) && defined(USE_SCRIPT)
+#if defined(ESP32) && defined(USE_SCRIPT)
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
 #endif
 
+#ifndef HAN_V1
+//
 #define USE_HAN_V2
+//
+#else
+#undef USE_ADC_VCC
+#define USE_CUSTOM
+#define USE_COUNTER
+#define USE_DS18x20
+#define USE_INFLUXDB
+#define USE_UNISHOX_COMPRESSION
+#define USE_SML_TCP
+#endif
 
 // Default Configs
 
@@ -296,7 +308,11 @@
 #undef MQTT_PASS
 #define MQTT_PASS "none"
 
-#ifdef ESP8266
+#if defined(ESP8266) && defined(HAN_V1)
+#undef OTA_URL
+#define OTA_URL "http://u.easyhan.pt/v2/tasmota-4M-v1.bin.gz"
+//
+#elif ESP8266
 #undef OTA_URL
 #define OTA_URL "http://u.easyhan.pt/v2/tasmota-4M.bin.gz"
 //
