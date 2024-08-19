@@ -6,11 +6,12 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.2.0-7.23.8b2"
+#define HAN_VERSION_T "14.2.0-7.23.9"
 
-#ifdef EASYHAN_TCP
+#if defined(ESP8266) && defined(EASYHAN_TCP)
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T "-tcp"
+//
 #else
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T
