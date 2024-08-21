@@ -267,7 +267,7 @@ void HanInit() {
 #endif
 //
 #ifdef ESP32C6
-    digitalWrite(2, LOW;
+    digitalWrite(2, LOW);
 #endif
 //
     AddLog(LOG_LEVEL_INFO,
