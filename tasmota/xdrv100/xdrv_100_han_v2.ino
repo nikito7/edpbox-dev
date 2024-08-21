@@ -6,12 +6,11 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.2.0-7.23.9"
+#define HAN_VERSION_T "14.2.0-7.24.1"
 
-#if defined(ESP8266) && defined(EASYHAN_TCP)
+#ifdef EASYHAN_TCP
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T "-tcp"
-//
 #else
 #undef HAN_VERSION
 #define HAN_VERSION HAN_VERSION_T
@@ -176,9 +175,9 @@ uint32_t hWtdT = 0;
 #undef HAN_DIR
 #define HAN_DIR 3
 #undef HAN_TX
-#define HAN_TX 4
+#define HAN_TX 5
 #undef HAN_RX
-#define HAN_RX 5
+#define HAN_RX 4
 #undef HAN_SERIAL
 #define HAN_SERIAL Serial1
 //
@@ -204,6 +203,11 @@ void hanBlink() {
   digitalWrite(2, LOW);
   delay(50);
   digitalWrite(2, HIGH);
+#endif
+#ifdef ESP32C6
+  digitalWrite(2, HIGH);
+  delay(50);
+  digitalWrite(2, LOW);
 #endif
 }
 
@@ -247,14 +251,25 @@ void HanInit() {
   digitalWrite(2, LOW);
 #endif
 
+#ifdef ESP32C6
+  pinMode(2, OUTPUT);
+  digitalWrite(2, HIGH);
+#endif
+
   pinMode(HAN_DIR, OUTPUT);
   digitalWrite(HAN_DIR, LOW);
 
   if (PinUsed(GPIO_MBR_RX) | PinUsed(GPIO_MBR_TX) |
       PinUsed(GPIO_TCP_RX) | PinUsed(GPIO_TCP_TX)) {
+//
 #ifdef ESP8266
     digitalWrite(2, HIGH);
 #endif
+//
+#ifdef ESP32C6
+    digitalWrite(2, LOW;
+#endif
+//
     AddLog(LOG_LEVEL_INFO,
            PSTR("HAN: Driver disabled. Bridge Mode..."));
   } else {
@@ -872,6 +887,25 @@ void HanDoWork(void) {
 
 }  // end HanDoWork
 
+void HanDisabled() {
+  WSContentSend_PD("{s}<br>{m} {e}");
+  WSContentSend_PD("{s}HAN V2 " HAN_VERSION " {m} {e}");
+
+#ifdef ESP32
+  uint16_t cpu_freq = getCpuFrequencyMhz();
+  WSContentSend_PD("{s}CPU Freq {m} %d MHz{e}", cpu_freq);
+#endif
+
+  if (bitRead(Settings->rule_enabled, 0) == 0) {
+    WSContentSend_PD("{s}<br>{m} {e}");
+    WSContentSend_PD("{s}Script disabled !! {m} {e}");
+  }
+
+  WSContentSend_PD("{s}Bridge Mode {m} {e}");
+
+  WSContentSend_PD("{s}<br>{m} {e}");
+}
+
 void HanJson(bool json) {
   //
   char hanClock[10];
@@ -1456,6 +1490,15 @@ bool Xdrv100(uint32_t function) {
 #ifdef USE_WEBSERVER
       case FUNC_WEB_SENSOR:
         HanJson(false);
+        break;
+#endif  // USE_WEBSERVER
+    }
+  } else {
+    // disabled
+    switch (function) {
+#ifdef USE_WEBSERVER
+      case FUNC_WEB_SENSOR:
+        HanDisabled();
         break;
 #endif  // USE_WEBSERVER
     }
