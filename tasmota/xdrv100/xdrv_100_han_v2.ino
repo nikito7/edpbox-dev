@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.2.0-7.24.1"
+#define HAN_VERSION_T "14.2.0-7.24.3"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -24,20 +24,25 @@
 #define HAN_VERSION HAN_VERSION_T "-C6"
 #endif
 
-// This variable will be set to true after initialization
+// This variable will be set to true
+// after initialization
 bool hDrvInit = false;
 
 // HAN
 
-uint8_t hanCFG = 99;
-uint8_t hanEB = 99;
-uint8_t subType = 99;
+uint8_t hanCFG = 99;  // def: serial stop bits
+uint8_t hanEB = 99;   // def: mono or tri
+uint8_t subType =
+    99;  // def: if meter reply to L1 L2 L3 in mono.
 uint8_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint16_t hanDelayWait = 1000;
-uint32_t hanDelayError = 35000;
-uint16_t hTimeout = 750;
+uint16_t hanDelayWait =
+    1000;  // 1000: Required by e-redes.
+uint32_t hanDelayError =
+    35000;  // Janz GPRS need 35000ms.
+uint16_t hTimeout =
+    1500;  // 1500: Some meters are slow to reply.
 uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
@@ -161,16 +166,6 @@ uint32_t hWtdT = 0;
 #undef HAN_SERIAL
 #define HAN_SERIAL Serial2
 //
-#elif ESP32C3
-#undef HAN_DIR
-#define HAN_DIR 3
-#undef HAN_TX
-#define HAN_TX 4
-#undef HAN_RX
-#define HAN_RX 5
-#undef HAN_SERIAL
-#define HAN_SERIAL Serial1
-//
 #elif ESP32C6
 #undef HAN_DIR
 #define HAN_DIR 3
@@ -269,7 +264,7 @@ void HanInit() {
 #ifdef ESP32C6
     digitalWrite(2, LOW);
 #endif
-//
+    //
     AddLog(LOG_LEVEL_INFO,
            PSTR("HAN: Driver disabled. Bridge Mode..."));
   } else {
@@ -301,6 +296,7 @@ void HanDoWork(void) {
     if (hRestart == 1) {
       ESP_Restart();
     }
+    hWtdT = _millis;
     hanIndex = 0;
   }
 
