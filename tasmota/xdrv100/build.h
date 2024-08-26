@@ -6,7 +6,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2024.08.26
+// changes 2024.08.26.2223
 
 #ifdef ESP32S3
 #define USE_LD2410 // radar
@@ -16,6 +16,7 @@
 #undef USE_ENHANCED_GUI_WIFI_SCAN // do not work here
 // #define USE_BLE_ESP32
 // #define USE_MI_ESP32
+#define USE_4K_RSA
 #endif
 
 #ifdef ESP32C6
@@ -86,6 +87,7 @@
 #if defined(ESP32) && defined(USE_SCRIPT)
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
+#define SCRIPT_MAXSSIZE 128
 #endif
 
 #ifndef HAN_V1
