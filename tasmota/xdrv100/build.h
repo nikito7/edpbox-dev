@@ -6,7 +6,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2024.08.19.2152
+// changes 2024.08.26
 
 #ifdef ESP32S3
 #define USE_LD2410 // radar
@@ -16,6 +16,12 @@
 #undef USE_ENHANCED_GUI_WIFI_SCAN // do not work here
 // #define USE_BLE_ESP32
 // #define USE_MI_ESP32
+#endif
+
+#ifdef ESP32C6
+#undef USE_AHT1x
+#define USE_AHT2x
+#undef USE_VEML6070 // UV sensor with conflicting I2C address
 #endif
 
 #ifdef ESP8266
@@ -46,7 +52,7 @@
 // sml configs
 
 #undef USE_RULES
-#define USE_SCRIPT // script or matter!?
+#define USE_SCRIPT
 
 #if defined(ESP32) || defined(HAN_V1)
 #define USE_SML_M
@@ -98,20 +104,22 @@
 
 // Default Configs
 
-#ifdef ESP8266
+// clang-format off
+
+#if defined(ESP8266)
 #undef USER_BACKLOG
-#define USER_BACKLOG                                                           \
-  "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; "        \
-  "SerialLog 0; Sleep 75; WifiPower 15; Template "                             \
-  "{\"NAME\":\"easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":"  \
-  "0,\"BASE\":18}; Module 0; SaveData 9; WifiConfig 2; Script 1"
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Module 0; SaveData 9; SerialLog 0; WifiConfig 2; Script 1"
 #undef BOOT_LOOP_OFFSET
 #define BOOT_LOOP_OFFSET 3
+//
+#elif defined(ESP32C6)
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; Sleep 75; WifiPower 15; SaveData 9; WifiConfig 2; I2cDriver12 0; Script 1"
+//
 #else
-#define USER_BACKLOG                                                           \
-  "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; "        \
-  "WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
 #endif
+
+// clang-format on
 
 #undef TELE_PERIOD
 #define TELE_PERIOD 31
