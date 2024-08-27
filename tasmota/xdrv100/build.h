@@ -6,7 +6,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2024.08.26.2223
+// changes 2024.08.27
 
 #ifdef ESP32S3
 #define USE_LD2410 // radar
@@ -14,8 +14,7 @@
 
 #ifdef ESP32
 #undef USE_ENHANCED_GUI_WIFI_SCAN // do not work here
-// #define USE_BLE_ESP32
-// #define USE_MI_ESP32
+#undef USE_4K_RSA
 #define USE_4K_RSA
 #endif
 
@@ -30,13 +29,8 @@
 #undef USE_ADC_VCC
 #endif
 
-// #define USE_CUSTOM
-// #define USE_COUNTER
-// #define USE_DS18x20
 #define USE_INFLUXDB
 #define USE_UNISHOX_COMPRESSION
-// #define USE_DEEPSLEEP
-// #define TASMOTAMODBUSDEBUG
 
 // ### ### ###
 // tasmota-4M
@@ -82,6 +76,7 @@
 #define MAXVARS 58
 #define MAXSVARS 21
 #define MAXFILT 5
+#define USE_SCRIPT_FATFS_EXT
 #endif
 
 #if defined(ESP32) && defined(USE_SCRIPT)
@@ -111,8 +106,6 @@
 #if defined(ESP8266)
 #undef USER_BACKLOG
 #define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Module 0; SaveData 9; SerialLog 0; WifiConfig 2; Script 1"
-#undef BOOT_LOOP_OFFSET
-#define BOOT_LOOP_OFFSET 3
 //
 #elif defined(ESP32C6)
 #define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; Sleep 75; WifiPower 15; SaveData 9; WifiConfig 2; I2cDriver12 0; Script 1"
