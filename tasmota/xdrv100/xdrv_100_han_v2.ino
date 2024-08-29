@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "7.24.5b1"
+#define HAN_VERSION_T "7.24.5b2"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -242,7 +242,7 @@ void HanInit() {
 #ifdef ESP8266
   pinMode(2, OUTPUT);
   digitalWrite(2, LOW);
-#eif ESP32C6
+#elif ESP32C6
   pinMode(2, OUTPUT);
   digitalWrite(2, HIGH);
 #elif ESP32S3
@@ -254,6 +254,8 @@ void HanInit() {
 
   pinMode(HAN_DIR, OUTPUT);
   digitalWrite(HAN_DIR, LOW);
+
+  //
 
   if (PinUsed(GPIO_MBR_RX) | PinUsed(GPIO_MBR_TX) |
       PinUsed(GPIO_TCP_RX) | PinUsed(GPIO_TCP_TX)) {
