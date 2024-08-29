@@ -6,7 +6,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "14.2.0-7.24.4"
+#define HAN_VERSION_T "7.24.5b1"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -16,34 +16,26 @@
 #define HAN_VERSION HAN_VERSION_T
 #endif
 
-#ifdef ESP32S3
-#undef HAN_VERSION
-#define HAN_VERSION HAN_VERSION_T "-S3"
-#elif ESP32C6
-#undef HAN_VERSION
-#define HAN_VERSION HAN_VERSION_T "-C6"
-#endif
-
 // This variable will be set to true
 // after initialization
 bool hDrvInit = false;
 
 // HAN
 
-uint8_t hanCFG = 99;  // def: serial stop bits
-uint8_t hanEB = 99;   // def: mono or tri
-uint8_t subType =
-    99;  // def: if meter reply to L1 L2 L3 in mono.
+uint8_t hanCFG = 99;   // def: serial stop bits
+uint8_t hanEB = 99;    // def: mono or tri
+uint8_t subType = 99;  // def: if meter reply
+                       // to L1 L2 L3 in mono.
 uint8_t hanERR = 0;
 bool hanWork = false;
 uint32_t hanDelay = 0;
-uint16_t hanDelayWait =
-    1000;  // 1000: Required by e-redes.
-uint32_t hanDelayError =
-    35000;  // Janz GPRS need 35000ms.
-uint16_t hTimeout =
-    1500;  // 1500: Some meters are slow to reply.
-uint8_t hanIndex = 0;  // 0 = setup
+uint16_t hanDelayWait = 1000;    // 1000:
+                                 // Required by e-redes.
+uint32_t hanDelayError = 35000;  // Janz GPRS
+                                 // need 35000ms.
+uint16_t hTimeout = 1500;        // 1500: Some  meters
+                                 // are slow to reply.
+uint8_t hanIndex = 0;            // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
 uint8_t hRestart = 0;
@@ -154,9 +146,8 @@ uint32_t hWtdT = 0;
 #define HAN_DIR 16
 #undef HAN_SERIAL
 #define HAN_SERIAL Serial
-#endif
-
-#ifdef ESP32S3
+//
+#elif ESP32S3
 #undef HAN_DIR
 #define HAN_DIR 16
 #undef HAN_TX
@@ -194,15 +185,22 @@ void preTransmission() { digitalWrite(HAN_DIR, 1); }
 void postTransmission() { digitalWrite(HAN_DIR, 0); }
 
 void hanBlink() {
+//
 #ifdef ESP8266
   digitalWrite(2, LOW);
   delay(50);
   digitalWrite(2, HIGH);
-#endif
-#ifdef ESP32C6
+//
+#elif ESP32C6
   digitalWrite(2, HIGH);
   delay(50);
   digitalWrite(2, LOW);
+//
+#elif ESP32S3
+  digitalWrite(39, LOW);
+  delay(50);
+  digitalWrite(39, HIGH);
+//
 #endif
 }
 
@@ -244,25 +242,28 @@ void HanInit() {
 #ifdef ESP8266
   pinMode(2, OUTPUT);
   digitalWrite(2, LOW);
-#endif
-
-#ifdef ESP32C6
+#eif ESP32C6
   pinMode(2, OUTPUT);
   digitalWrite(2, HIGH);
+#elif ESP32S3
+  pinMode(39, OUTPUT);
+  digitalWrite(39, LOW);
 #endif
+
+  //
 
   pinMode(HAN_DIR, OUTPUT);
   digitalWrite(HAN_DIR, LOW);
 
   if (PinUsed(GPIO_MBR_RX) | PinUsed(GPIO_MBR_TX) |
       PinUsed(GPIO_TCP_RX) | PinUsed(GPIO_TCP_TX)) {
-//
+    //
 #ifdef ESP8266
     digitalWrite(2, HIGH);
-#endif
-//
-#ifdef ESP32C6
+#elif ESP32C6
     digitalWrite(2, LOW);
+#elif ESP32S3
+    digitalWrite(39, HIGH);
 #endif
     //
     AddLog(LOG_LEVEL_INFO,
