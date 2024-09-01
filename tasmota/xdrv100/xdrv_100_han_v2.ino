@@ -2,11 +2,12 @@
 // easyhan.pt
 
 #ifdef USE_HAN_V2
+#ifndef HAN_V1
 
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "7.24.5b2"
+#define HAN_VERSION_T "7.24.5.1"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -1004,7 +1005,8 @@ void HanJson(bool json) {
     // webui
 
     WSContentSend_PD("{s}<br>{m} {e}");
-    WSContentSend_PD("{s}HAN V2 " HAN_VERSION " {m} {e}");
+    WSContentSend_PD("{s}Easy HAN ® V2 {m}" HAN_VERSION
+                     "{e}");
 
 #ifdef ESP32
     uint16_t cpu_freq = getCpuFrequencyMhz();
@@ -1508,4 +1510,5 @@ bool Xdrv100(uint32_t function) {
 
 #warning **** HAN_V2 End! ****
 
+#endif  // HAN_V1
 #endif  // USE_HAN_V2
