@@ -1,9 +1,7 @@
->D 48
+>D 128
 
-ver=0001
-;
-
-;
+;ESP32
+ver=1001
 EBx="EB3"
 C="Net."
 date=""
@@ -20,8 +18,8 @@ ss=0
 thh=0
 tmm=0
 ;
-m:ipwrm=0 50
-m:epwrm=0 50
+m:ipwrm=0 250
+m:epwrm=0 250
 ipwr=0
 epwr=0
 strm="cnt0"
@@ -60,11 +58,25 @@ vtf=""
 vt1=0
 vt2=0
 vt3=0
+;
+p:ipwrpos=0
+array=""
 
 >B
 
 tper=30
 =>SerialLog 0
+
+array="array.txt"
+res=fx(array)
+if res==1
+{
+fr=fo(array 0)
+res=fra(ipwrm fr)
+print Arrays: Loading %array%
+fc(fr)
+ipwrm[0]=ipwrpos
+}
 
 >E
 
@@ -127,6 +139,20 @@ then
 ipwrm=ipwr
 epwrm=epwr
 endif
+
+
+if upsecs%300==0
+and cnt>30
+{
+array="array.txt"
+fr=fo(array 1)
+res=fwa(ipwrm fr)
+print Arrays: Saving %array%
+fc(fr)
+ipwrpos=ipwrm[0];
+svars
+}
+
 
 if upsecs%600==0
 and cnt>30
@@ -204,6 +230,7 @@ fc(fr)
 ;
 ikwo=ikw
 ekwo=ekw
+;
 svars
 ;
 endif
