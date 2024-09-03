@@ -7,7 +7,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "7.24.5.1"
+#define HAN_VERSION_T "7.24.5.2"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
