@@ -6,7 +6,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2024.08.27
+// changes 2024.09.03
 
 #ifdef ESP32S3
 #define USE_LD2410 // radar
@@ -108,10 +108,10 @@
 #define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Module 0; SaveData 9; SerialLog 0; WifiConfig 2; Script 1"
 //
 #elif defined(ESP32C6)
-#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; Sleep 75; WifiPower 15; SaveData 9; WifiConfig 2; I2cDriver12 0; Script 1"
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; Sleep 75; WifiPower 15; Template {\"NAME\":\"aht.c6.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,640,608,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; I2cDriver12 0; Script 1"
 //
 #else
-#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
+#define USER_BACKLOG "TimeZone 99; TimeDST 0,0,3,1,1,60; TimeSTD 0,0,10,1,2,0; WebLog 4; Sleep 75; WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
 #endif
 
 // clang-format on
