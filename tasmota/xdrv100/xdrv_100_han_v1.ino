@@ -7,6 +7,8 @@
 #warning **** HAN_V1 ****
 #define XDRV_100 100
 
+#define HAN_VERSION_T "7.24.6"
+
 // This variable will be set to true
 // after initialization
 bool hDrvInit = false;
@@ -27,7 +29,8 @@ void HanJson(bool json) {
     // webui
 
     WSContentSend_PD("{s}<br>{m} {e}");
-    WSContentSend_PD("{s}Easy HAN ® V1 {m} {e}");
+    WSContentSend_PD("{s}Easy HAN ® V1 {m}" HAN_VERSION_T
+                     "{e}");
 
 #ifdef ESP32
     uint16_t cpu_freq = getCpuFrequencyMhz();
