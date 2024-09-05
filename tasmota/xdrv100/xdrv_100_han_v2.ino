@@ -7,7 +7,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "7.24.5.2"
+#define HAN_VERSION_T "7.24.5.3"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -1231,6 +1231,9 @@ void HanJson(bool json) {
     switch (hMnfC) {
       case 6623491:
         sprintf(_emi, "%s", "T Janz GPRS");
+        break;
+      case 6750210:
+        sprintf(_emi, "%s", "M Landis+Gyr S3");
         break;
       case 6754306:
         sprintf(_emi, "%s", "T Landis+Gyr S3");
