@@ -59,7 +59,7 @@ vt1=0
 vt2=0
 vt3=0
 ;
-p:ipwrpos=0
+p:ipwrpos=1
 array=""
 
 >B
@@ -67,7 +67,7 @@ array=""
 tper=30
 =>SerialLog 0
 
-array="/0/array.txt"
+array="array.txt"
 res=fx(array)
 if res==1
 {
@@ -76,6 +76,15 @@ res=fra(ipwrm fr)
 print Arrays: Loading %array%
 fc(fr)
 ipwrm[0]=ipwrpos
+epwrm[0]=ipwrpos
+} else {
+for tmp 1 ipwrm[-1] 1
+ipwrm[tmp]=0
+epwrm[tmp]=0
+ipwrpos=tmp
+next
+ipwrpos=1
+svars
 }
 
 >E
@@ -136,15 +145,24 @@ cnt+=1
 if chg[ss]>0
 and cnt>30
 then
-ipwrm=ipwr
-epwrm=epwr
+ipwrpos+=1
+if ipwrpos>ipwrm[-1]
+then
+ipwrpos=1
+endif
+;
+ipwrm[0]=ipwrpos
+epwrm[0]=ipwrpos
+ipwrm[ipwrpos]=ipwr
+epwrm[ipwrpos]=epwr
+strm="cnt"+s(ipwrpos)
 endif
 
 
-if upsecs%300==0
+if upsecs%30==0
 and cnt>30
 {
-array="/0/array.txt"
+array="array.txt"
 fr=fo(array 1)
 res=fwa(ipwrm fr)
 print Arrays: Saving %array%
@@ -296,7 +314,7 @@ $gc(lt ipwrm epwrm "wr" "Import" "Export" strm)
 $var options = {
 $chartArea:{left:50,width:'80%%'},
 $width:'100%%',legend:'none',
-$title:'Potência (W) (~10min)',
+$title:'Potência (W)',
 $};
 $gc(e)
 
