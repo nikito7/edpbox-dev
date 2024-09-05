@@ -67,7 +67,7 @@ array=""
 tper=30
 =>SerialLog 0
 
-array="array.txt"
+array="/0/array.txt"
 res=fx(array)
 if res==1
 {
@@ -144,7 +144,7 @@ endif
 if upsecs%300==0
 and cnt>30
 {
-array="array.txt"
+array="/0/array.txt"
 fr=fo(array 1)
 res=fwa(ipwrm fr)
 print Arrays: Saving %array%
