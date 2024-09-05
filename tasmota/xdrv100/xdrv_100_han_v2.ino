@@ -7,7 +7,7 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "7.24.5.3"
+#define HAN_VERSION_T "7.24.6"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -889,8 +889,8 @@ void HanDoWork(void) {
 
 void HanDisabled() {
   WSContentSend_PD("{s}<br>{m} {e}");
-  WSContentSend_PD("{s}HAN V2 " HAN_VERSION " {m} {e}");
-
+  WSContentSend_PD("{s}Easy HAN ® V2 {m}" HAN_VERSION
+                   "{e}");
 #ifdef ESP32
   uint16_t cpu_freq = getCpuFrequencyMhz();
   WSContentSend_PD("{s}CPU Freq {m} %d MHz{e}", cpu_freq);
