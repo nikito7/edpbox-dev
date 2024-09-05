@@ -149,7 +149,7 @@ fr=fo(array 1)
 res=fwa(ipwrm fr)
 print Arrays: Saving %array%
 fc(fr)
-ipwrpos=ipwrm[0];
+ipwrpos=ipwrm[0]
 svars
 }
 
