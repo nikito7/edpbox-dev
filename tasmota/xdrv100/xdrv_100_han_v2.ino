@@ -7,7 +7,8 @@
 #warning **** HAN_V2 Driver is included... ****
 #define XDRV_100 100
 
-#define HAN_VERSION_T "7.24.6"
+#undef HAN_VERSION_T
+#define HAN_VERSION_T "7.24.7b3"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -29,6 +30,7 @@ uint8_t subType = 99;  // def: if meter reply
                        // to L1 L2 L3 in mono.
 uint8_t hanERR = 0;
 bool hanWork = false;
+bool hDiscovery = true;
 uint32_t hanDelay = 0;
 uint16_t hanDelayWait = 1000;    // 1000:
                                  // Required by e-redes.
@@ -237,6 +239,50 @@ void setDelayError(uint8_t hanRes) {
   //
 }
 
+// ###
+
+void HanDiscovery() {
+  char _topic[100];
+  char _msg[768];
+
+  uint8_t _nick = hanEB;
+
+  AddLog(LOG_LEVEL_INFO, PSTR("HAN: Discovery..."));
+
+  //
+
+  snprintf_P(_topic, sizeof(_topic),
+             PSTR("homeassistant/sensor/nikito7-EB%d/"
+                  "fw/config"),
+             _nick);
+
+  snprintf_P(
+      _msg, sizeof(_msg),
+      PSTR(""
+           "{\"name\":\"ESP Firmware\","
+           "\"uniq_id\":\"EB%d_ESP_FW\","
+           "\"stat_t\":\"tele/edpbox%d/SENSOR\","
+           "\"val_tpl\":\"{%% if value_json.EB%d.FW is "
+           "defined %%} {{ value_json.EB%d.FW|string "
+           "}} {%% else %%} {{ "
+           "states('sensor.eb%d_esp_firmware') }} {%% "
+           "endif %%}\","
+           "\"ic\":\"mdi:chip\","
+           "\"dev\":{"
+           "\"ids\":\"nikito7-EB%d\","
+           "\"name\":\"EB%d\"}}"
+           ""),
+      _nick, _nick, hanEB, hanEB, _nick, _nick, _nick);
+
+  MqttPublishPayload(_topic, _msg, strlen(_msg),
+                     true);  // retain = true
+
+  // end
+  hDiscovery = false;
+}  // HanDiscovery
+
+// ###
+
 void HanInit() {
   AddLog(LOG_LEVEL_INFO, PSTR("HAN: Init..."));
 
@@ -302,6 +348,10 @@ void HanDoWork(void) {
     }
     hWtdT = _millis;
     hanIndex = 0;
+  }
+
+  if ((hDiscovery) && (_millis > 50000)) {
+    HanDiscovery();
   }
 
   //
@@ -998,6 +1048,7 @@ void HanJson(bool json) {
 
     ResponseAppend_P(",\"CT1\":%2_f", &hCT1);
     ResponseAppend_P(",\"Tariff\":%d", hTariff);
+    ResponseAppend_P(",\"FW\":\"" HAN_VERSION "\"");
 
     ResponseAppend_P("}");
 
