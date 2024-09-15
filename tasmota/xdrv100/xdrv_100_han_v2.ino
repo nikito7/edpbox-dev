@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.24.7b3"
+#define HAN_VERSION_T "7.24.7.1"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -158,7 +158,7 @@ uint32_t hWtdT = 0;
 #undef HAN_RX
 #define HAN_RX 17
 #undef HAN_SERIAL
-#define HAN_SERIAL Serial2
+#define HAN_SERIAL Serial1  // Serial2 used by radar
 //
 #elif ESP32C6
 #undef HAN_DIR
@@ -242,40 +242,68 @@ void setDelayError(uint8_t hanRes) {
 // ###
 
 void HanDiscovery() {
+  //
   char _topic[100];
   char _msg[768];
 
-  uint8_t _nick = hanEB;
-
   AddLog(LOG_LEVEL_INFO, PSTR("HAN: Discovery..."));
+  uint8_t _nick = 0;
+
+  char _file[20];
+  char _settings[1];
+
+  snprintf_P(_file, sizeof(_file), PSTR("id.txt"));
+
+  if (TfsLoadFile(_file, (uint8_t *)&_settings,
+                  sizeof(_settings))) {
+    AddLog(LOG_LEVEL_INFO, PSTR("HAN: %s found: [%d]"),
+           _file, _settings[0] - 48);
+    _nick = (uint8_t)_settings[0] - 48;
+  } else {
+    _nick = hanEB;
+  }
 
   //
+  for (size_t i = 1; i <= 1; i++) {
+    //
 
-  snprintf_P(_topic, sizeof(_topic),
-             PSTR("homeassistant/sensor/nikito7-EB%d/"
-                  "fw/config"),
-             _nick);
+    //
+    if (i == 1) {
+      snprintf_P(_topic, sizeof(_topic),
+                 PSTR("homeassistant/sensor/nikito7-EB%d/"
+                      "fw/config"),
+                 _nick);
 
-  snprintf_P(
-      _msg, sizeof(_msg),
-      PSTR(""
-           "{\"name\":\"ESP Firmware\","
-           "\"uniq_id\":\"EB%d_ESP_FW\","
-           "\"stat_t\":\"tele/edpbox%d/SENSOR\","
-           "\"val_tpl\":\"{%% if value_json.EB%d.FW is "
-           "defined %%} {{ value_json.EB%d.FW|string "
-           "}} {%% else %%} {{ "
-           "states('sensor.eb%d_esp_firmware') }} {%% "
-           "endif %%}\","
-           "\"ic\":\"mdi:chip\","
-           "\"dev\":{"
-           "\"ids\":\"nikito7-EB%d\","
-           "\"name\":\"EB%d\"}}"
-           ""),
-      _nick, _nick, hanEB, hanEB, _nick, _nick, _nick);
+      snprintf_P(
+          _msg, sizeof(_msg),
+          PSTR(""
+               "{\"name\":\"ESP Firmware\","
+               "\"uniq_id\":\"EB%d_ESP_FW\","
+               "\"stat_t\":\"tele/edpbox%d/SENSOR\","
+               "\"val_tpl\":\""
+               "{%% if value_json.EB%d is defined %%}"
+               "{%% if value_json.EB%d.FW is defined %%}"
+               "{{ value_json.EB%d.FW|string }}"
+               "{%% else %%}"
+               "{{ states('sensor.eb%d_esp_firmware') }} "
+               "{%% endif %%}"
+               "{%% endif %%}\","
+               "\"ic\":\"mdi:chip\","
+               "\"dev\":{"
+               "\"ids\":\"nikito7-EB%d\","
+               "\"name\":\"EB%d\"}}"
+               ""),
+          _nick, _nick, _nick, hanEB, hanEB, _nick, _nick,
+          _nick);
+    }  // 1
 
-  MqttPublishPayload(_topic, _msg, strlen(_msg),
-                     true);  // retain = true
+    // publish
+
+    AddLog(LOG_LEVEL_INFO, PSTR("HAN: Publish [%d]"), i);
+    MqttPublishPayload(_topic, _msg, strlen(_msg),
+                       true);  // retain = true
+
+  }  // end for
 
   // end
   hDiscovery = false;
