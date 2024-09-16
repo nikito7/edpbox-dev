@@ -1,12 +1,14 @@
 // copy to user_config_override.h
 
+#if !defined(FIRMWARE_SAFEBOOT) && !defined(FIRMWARE_MINIMAL)
+
 #ifdef ESP8266
 #include "./han_esp8266.h"
 #endif
 
 // ### ### ###
 // ### ### ###
-// changes 2024.09.12
+// changes 2024.09.17
 
 #ifdef ESP32S3
 #define USE_LD2410 // radar
@@ -192,5 +194,7 @@
 #undef OTA_URL
 #define OTA_URL "https://u.easyhan.pt/v2/32/tasmota32.bin"
 #endif
+
+#endif // ! FIRMWARE_SAFEBOOT ! FIRMWARE_MINIMAL
 
 // EOF
