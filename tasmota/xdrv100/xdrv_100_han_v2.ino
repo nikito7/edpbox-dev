@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.24.7.1"
+#define HAN_VERSION_T "7.24.8.2"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -293,14 +293,14 @@ void HanDiscovery() {
                "\"ids\":\"nikito7-EB%d\","
                "\"name\":\"EB%d\"}}"
                ""),
-          _nick, _nick, _nick, hanEB, hanEB, _nick, _nick,
+          _nick, _nick, hanEB, hanEB, hanEB, _nick, _nick,
           _nick);
     }  // 1
 
     // publish
 
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: Publish [%d]"), i);
-    MqttPublishPayload(_topic, _msg, strlen(_msg),
+    MqttPublishPayload(_topic, _msg, 0,
                        true);  // retain = true
 
   }  // end for
@@ -1323,8 +1323,14 @@ void HanJson(bool json) {
       case 11010050:
         sprintf(_emi, "%s", "M Sagem CX1000-6");
         break;
+      case 11010051:
+        sprintf(_emi, "%s", "M Sagem S212");
+        break;
       case 11014146:
         sprintf(_emi, "%s", "T Sagem CX2000-9");
+        break;
+      case 16973825:
+        sprintf(_emi, "%s", "? Ziv ???");
         break;
       case 16977920:
         sprintf(_emi, "%s", "T Ziv 5CTD-E2F");
