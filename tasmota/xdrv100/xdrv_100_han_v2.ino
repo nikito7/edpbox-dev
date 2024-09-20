@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.24.8.2"
+#define HAN_VERSION_T "7.254"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -140,6 +140,9 @@ float nsQs = 0;
 
 uint32_t hWtdT = 0;
 
+uint8_t hNick = 0;
+int32_t hFreeDS = 0;
+
 // **********************
 
 #include <ModbusMaster.h>
@@ -227,6 +230,39 @@ void netSaldo() {
   nsQs = hanTEI - hanTEE - nsIkw + nsEkw;
 }
 
+void freeDS() {
+  //
+  int32_t ape = hanAPE;
+  int32_t api = hanAPI;
+  hFreeDS = api - ape;
+  //
+  char _dst[30];
+  char _dsm[120];
+  //
+  snprintf_P(_dst, sizeof(_dst),
+             PSTR("freeds/edpbox%d/SENSOR"), hNick);
+
+  snprintf_P(_dsm, sizeof(_dsm),
+             PSTR(""
+                  "{\"Time\":\"%04d-%02d-%02d"
+                  "T%02d:%02d:%02d\","
+                  "\"ENERGY\":{"
+                  "\"Voltage\":%d,"
+                  "\"Power\":%d,"
+                  "\"Import\":%d,"
+                  "\"Export\":%d"
+                  "}}"
+                  ""),
+             hanYY, hanMT, hanDD, hanHH, hanMM, hanSS,
+             (uint16_t)hanVL1, hFreeDS, hanAPI, hanAPE);
+
+  //
+
+  MqttPublishPayload(_dst, _dsm, 0,
+                     false);  // retain = true
+
+}  // freeDS
+
 void setDelayError(uint8_t hanRes) {
   sprintf(hStatus, "Error");
   hanCode = hanRes;
@@ -247,7 +283,6 @@ void HanDiscovery() {
   char _msg[768];
 
   AddLog(LOG_LEVEL_INFO, PSTR("HAN: Discovery..."));
-  uint8_t _nick = 0;
 
   char _file[20];
   char _settings[1];
@@ -258,21 +293,21 @@ void HanDiscovery() {
                   sizeof(_settings))) {
     AddLog(LOG_LEVEL_INFO, PSTR("HAN: %s found: [%d]"),
            _file, _settings[0] - 48);
-    _nick = (uint8_t)_settings[0] - 48;
+    hNick = (uint8_t)_settings[0] - 48;
   } else {
-    _nick = hanEB;
+    hNick = hanEB;
   }
 
   //
-  for (size_t i = 1; i <= 1; i++) {
+  for (size_t i = 1; i <= 2; i++) {
     //
 
-    //
+    // firmware
     if (i == 1) {
       snprintf_P(_topic, sizeof(_topic),
                  PSTR("homeassistant/sensor/nikito7-EB%d/"
                       "fw/config"),
-                 _nick);
+                 hNick);
 
       snprintf_P(
           _msg, sizeof(_msg),
@@ -293,9 +328,33 @@ void HanDiscovery() {
                "\"ids\":\"nikito7-EB%d\","
                "\"name\":\"EB%d\"}}"
                ""),
-          _nick, _nick, hanEB, hanEB, hanEB, _nick, _nick,
-          _nick);
+          hNick, hNick, hanEB, hanEB, hanEB, hNick, hNick,
+          hNick);
     }  // 1
+
+    // fake_solar freeds
+    if (i == 2) {
+      snprintf_P(_topic, sizeof(_topic),
+                 PSTR("freeds/fake_solar/SENSOR"));
+
+      snprintf_P(_msg, sizeof(_msg),
+                 PSTR(""
+                      "{\"Time\":\"%04d-%02d-%02d"
+                      "T%02d:%02d:%02d\","
+                      "\"ENERGY\":{\"Pv1Current\":0,"
+                      "\"Pv2Current\":0,"
+                      "\"Pv1Voltage\":0,"
+                      "\"Pv2Voltage\":0,"
+                      "\"Pv1Power\":0,"
+                      "\"Pv2Power\":0,"
+                      "\"Today\":0,"
+                      "\"Power\":300,"
+                      "\"Temperature\":0"
+                      "}}"
+                      ""),
+                 hanYY, hanMT, hanDD, hanHH, hanMM,
+                 hanSS);
+    }  // 2
 
     // publish
 
@@ -731,9 +790,13 @@ void HanDoWork(void) {
       }
     }
     //
+    if (!hDiscovery) {
+      freeDS();
+    }
+    //
     AddLog(LOG_LEVEL_INFO,
-           PSTR("HAN: Import %d Export %d"), hanAPI,
-           hanAPE);
+           PSTR("HAN: Import %d Export %d FreeDS %d"),
+           hanAPI, hanAPE, hFreeDS);
     //
     hanRead = millis();
     hanWork = false;
@@ -1076,7 +1139,7 @@ void HanJson(bool json) {
 
     ResponseAppend_P(",\"CT1\":%2_f", &hCT1);
     ResponseAppend_P(",\"Tariff\":%d", hTariff);
-    ResponseAppend_P(",\"FW\":\"" HAN_VERSION "\"");
+    ResponseAppend_P(",\"FW\":" HAN_VERSION);
 
     ResponseAppend_P("}");
 
