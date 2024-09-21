@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.254"
+#define HAN_VERSION_T "7.255"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -244,8 +244,7 @@ void freeDS() {
 
   snprintf_P(_dsm, sizeof(_dsm),
              PSTR(""
-                  "{\"Time\":\"%04d-%02d-%02d"
-                  "T%02d:%02d:%02d\","
+                  "{\"Time\":\"%s\","
                   "\"ENERGY\":{"
                   "\"Voltage\":%d,"
                   "\"Power\":%d,"
@@ -253,7 +252,7 @@ void freeDS() {
                   "\"Export\":%d"
                   "}}"
                   ""),
-             hanYY, hanMT, hanDD, hanHH, hanMM, hanSS,
+             GetDT(Rtc.local_time).c_str(),
              (uint16_t)hanVL1, hFreeDS, hanAPI, hanAPE);
 
   //
@@ -339,8 +338,7 @@ void HanDiscovery() {
 
       snprintf_P(_msg, sizeof(_msg),
                  PSTR(""
-                      "{\"Time\":\"%04d-%02d-%02d"
-                      "T%02d:%02d:%02d\","
+                      "{\"Time\":\"%s\","
                       "\"ENERGY\":{\"Pv1Current\":0,"
                       "\"Pv2Current\":0,"
                       "\"Pv1Voltage\":0,"
@@ -352,8 +350,7 @@ void HanDiscovery() {
                       "\"Temperature\":0"
                       "}}"
                       ""),
-                 hanYY, hanMT, hanDD, hanHH, hanMM,
-                 hanSS);
+                 GetDT(Rtc.local_time).c_str());
     }  // 2
 
     // publish
@@ -793,10 +790,6 @@ void HanDoWork(void) {
     if (!hDiscovery) {
       freeDS();
     }
-    //
-    AddLog(LOG_LEVEL_INFO,
-           PSTR("HAN: Import %d Export %d FreeDS %d"),
-           hanAPI, hanAPE, hFreeDS);
     //
     hanRead = millis();
     hanWork = false;
