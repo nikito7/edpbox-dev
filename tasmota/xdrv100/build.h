@@ -1,4 +1,4 @@
-// copy to user_config_override.h
+g// copy to user_config_override.h
 
 #if !defined(FIRMWARE_SAFEBOOT) && !defined(FIRMWARE_MINIMAL)
 
@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2024.09.17
+// changes 2024.09.26
 
 #ifdef ESP32S3
 #define USE_LD2410 // radar
@@ -150,6 +150,9 @@
 #elif defined(ESP32C6)
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"aht.c6.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,640,608,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; I2cDriver12 0; Script 1"
 //
+#elif defined(HAN_S3_ETH)
+#define USER_BACKLOG "WebLog 4; Sleep 50; WifiPower 15; Template {\"NAME\":\"eth.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; EthType 8; Script 1"
+//
 #else
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; SaveData 9; WifiConfig 2; Script 1"
 #endif
@@ -198,3 +201,4 @@
 #endif // ! FIRMWARE_SAFEBOOT ! FIRMWARE_MINIMAL
 
 // EOF
+
