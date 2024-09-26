@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.255"
+#define HAN_VERSION_T "7.256"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
