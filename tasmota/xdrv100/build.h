@@ -1,4 +1,4 @@
-g// copy to user_config_override.h
+// copy to user_config_override.h
 
 #if !defined(FIRMWARE_SAFEBOOT) && !defined(FIRMWARE_MINIMAL)
 
@@ -185,6 +185,10 @@ g// copy to user_config_override.h
 #undef OTA_URL
 #define OTA_URL "http://u.easyhan.pt/v2/tasmota-4M.bin.gz"
 //
+#elif HAN_S3_ETH
+#undef OTA_URL
+#define OTA_URL "https://u.easyhan.pt/v2/32/tasmota32s3eth.bin"
+//
 #elif ESP32S3
 #undef OTA_URL
 #define OTA_URL "https://u.easyhan.pt/v2/32/tasmota32s3.bin"
@@ -201,4 +205,3 @@ g// copy to user_config_override.h
 #endif // ! FIRMWARE_SAFEBOOT ! FIRMWARE_MINIMAL
 
 // EOF
-
