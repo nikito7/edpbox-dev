@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.25801"
+#define HAN_VERSION_T "7.260"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -175,7 +175,7 @@ char hDSm[120];
 #undef HAN_SERIAL
 #define HAN_SERIAL Serial1
 //
-#elif ESP32
+#else
 #undef HAN_DIR
 #define HAN_DIR 18
 #undef HAN_TX
