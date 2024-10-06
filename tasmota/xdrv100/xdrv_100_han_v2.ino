@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.256"
+#define HAN_VERSION_T "7.25801"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -32,7 +32,7 @@ uint8_t hanERR = 0;
 bool hanWork = false;
 bool hDiscovery = true;
 uint32_t hanDelay = 0;
-uint16_t hanDelayWait = 1000;    // 1000:
+uint16_t hanDelayWait = 900;     // 1000:
                                  // Required by e-redes.
 uint32_t hanDelayError = 35000;  // Janz GPRS
                                  // need 35000ms.
@@ -142,6 +142,8 @@ uint32_t hWtdT = 0;
 
 uint8_t hNick = 0;
 int32_t hFreeDS = 0;
+char hDSt[30];
+char hDSm[120];
 
 // **********************
 
@@ -210,6 +212,20 @@ void hanBlink() {
 #endif
 }
 
+void ledOn() {
+//
+#ifdef ESP8266
+  digitalWrite(2, LOW);
+//
+#elif ESP32C6
+  digitalWrite(2, HIGH);
+//
+#elif ESP32S3
+  digitalWrite(39, LOW);
+//
+#endif
+}
+
 void netSaldo() {
   //
   if (nsIkw == 0) {
@@ -236,13 +252,10 @@ void freeDS() {
   int32_t api = hanAPI;
   hFreeDS = api - ape;
   //
-  char _dst[30];
-  char _dsm[120];
-  //
-  snprintf_P(_dst, sizeof(_dst),
+  snprintf_P(hDSt, sizeof(hDSt),
              PSTR("freeds/edpbox%d/SENSOR"), hNick);
 
-  snprintf_P(_dsm, sizeof(_dsm),
+  snprintf_P(hDSm, sizeof(hDSm),
              PSTR(""
                   "{\"Time\":\"%s\","
                   "\"ENERGY\":{"
@@ -257,7 +270,7 @@ void freeDS() {
 
   //
 
-  MqttPublishPayload(_dst, _dsm, 0,
+  MqttPublishPayload(hDSt, hDSm, 0,
                      false);  // retain = true
 
 }  // freeDS
@@ -265,6 +278,8 @@ void freeDS() {
 void setDelayError(uint8_t hanRes) {
   sprintf(hStatus, "Error");
   hanCode = hanRes;
+  //
+  ledOn();
   //
   hanDelay = hanDelayError;
   //
