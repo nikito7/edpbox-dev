@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.260"
+#define HAN_VERSION_T "7.263"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -123,7 +123,7 @@ float hCT4 = 0;
 uint8_t hTariff = 0;
 
 char hErrTime[12];
-char hErrCode[8];
+char hErrCode[12];
 
 char hStatus[12];
 uint32_t hPerf[2] = {0, 0};
@@ -313,7 +313,10 @@ void HanDiscovery() {
   }
 
   //
-  for (size_t i = 1; i <= 2; i++) {
+
+  uint8_t _count = 5;
+
+  for (size_t i = 1; i <= _count; i++) {
     //
 
     // firmware
@@ -334,7 +337,9 @@ void HanDiscovery() {
                "{%% if value_json.EB%d.FW is defined %%}"
                "{{ value_json.EB%d.FW|string }}"
                "{%% else %%}"
-               "{{ states('sensor.eb%d_esp_firmware') }} "
+               "{{ "
+               "states('sensor.eb%d_esp_firmware')|"
+               "string }} "
                "{%% endif %%}"
                "{%% endif %%}\","
                "\"ic\":\"mdi:chip\","
@@ -367,6 +372,90 @@ void HanDiscovery() {
                       ""),
                  GetDT(Rtc.local_time).c_str());
     }  // 2
+
+    // freeds power
+    if (i == 3) {
+      snprintf_P(_topic, sizeof(_topic),
+                 PSTR("homeassistant/sensor/nikito7-EB%d/"
+                      "fdsp/config"),
+                 hNick);
+
+      snprintf_P(
+          _msg, sizeof(_msg),
+          PSTR(""
+               "{\"name\":\"FreeDS Power\","
+               "\"uniq_id\":\"EB%d_FreeDS_P\","
+               "\"stat_t\":\"freeds/"
+               "edpbox%d/SENSOR\","
+               "\"val_tpl\":\""
+               "{%% if value_json.ENERGY is defined %%}"
+               "{%% set x = "
+               "value_json.ENERGY.Power|int(0) %%}"
+               "{{ x }}"
+               "{%% endif %%}\","
+               "\"unit_of_meas\":\"W\","
+               "\"dev_cla\":\"power\","
+               "\"stat_cla\":\"measurement\","
+               "\"dev\":{\"ids\":\"nikito7-EB%d\"}}"
+               ""),
+          hNick, hNick, hNick);
+    }  // 3
+
+    // freeds power import
+    if (i == 4) {
+      snprintf_P(_topic, sizeof(_topic),
+                 PSTR("homeassistant/sensor/nikito7-EB%d/"
+                      "fdspi/config"),
+                 hNick);
+
+      snprintf_P(
+          _msg, sizeof(_msg),
+          PSTR(""
+               "{\"name\":\"FreeDS Import\","
+               "\"uniq_id\":\"EB%d_FreeDS_Pi\","
+               "\"stat_t\":\"freeds/"
+               "edpbox%d/SENSOR\","
+               "\"val_tpl\":\""
+               "{%% if value_json.ENERGY is defined %%}"
+               "{%% set x = "
+               "value_json.ENERGY.Import|int(0) %%}"
+               "{{ x }}"
+               "{%% endif %%}\","
+               "\"unit_of_meas\":\"W\","
+               "\"dev_cla\":\"power\","
+               "\"stat_cla\":\"measurement\","
+               "\"dev\":{\"ids\":\"nikito7-EB%d\"}}"
+               ""),
+          hNick, hNick, hNick);
+    }  // 4
+
+    // freeds power export
+    if (i == 5) {
+      snprintf_P(_topic, sizeof(_topic),
+                 PSTR("homeassistant/sensor/nikito7-EB%d/"
+                      "fdspe/config"),
+                 hNick);
+
+      snprintf_P(
+          _msg, sizeof(_msg),
+          PSTR(""
+               "{\"name\":\"FreeDS Export\","
+               "\"uniq_id\":\"EB%d_FreeDS_Pe\","
+               "\"stat_t\":\"freeds/"
+               "edpbox%d/SENSOR\","
+               "\"val_tpl\":\""
+               "{%% if value_json.ENERGY is defined %%}"
+               "{%% set x = "
+               "value_json.ENERGY.Export|int(0) %%}"
+               "{{ x }}"
+               "{%% endif %%}\","
+               "\"unit_of_meas\":\"W\","
+               "\"dev_cla\":\"power\","
+               "\"stat_cla\":\"measurement\","
+               "\"dev\":{\"ids\":\"nikito7-EB%d\"}}"
+               ""),
+          hNick, hNick, hNick);
+    }  // 5
 
     // publish
 
@@ -428,8 +517,8 @@ void HanInit() {
     hWtdT = millis();
     //
 
-    sprintf(hErrTime, "%s", "None");
-    sprintf(hErrCode, "%s", "None");
+    sprintf(hErrTime, "%s", "NoError");
+    sprintf(hErrCode, "%s", "NoError");
 
     // Init is successful
     hDrvInit = true;
