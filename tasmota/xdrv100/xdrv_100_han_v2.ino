@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.263"
+#define HAN_VERSION_T "7.264"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -396,9 +396,11 @@ void HanDiscovery() {
                "\"unit_of_meas\":\"W\","
                "\"dev_cla\":\"power\","
                "\"stat_cla\":\"measurement\","
-               "\"dev\":{\"ids\":\"nikito7-EB%d\"}}"
+               "\"dev\":{"
+               "\"ids\":\"nikito7-EB%d\","
+               "\"name\":\"EB%d\"}}"
                ""),
-          hNick, hNick, hNick);
+          hNick, hNick, hNick, hNick);
     }  // 3
 
     // freeds power import
@@ -424,9 +426,11 @@ void HanDiscovery() {
                "\"unit_of_meas\":\"W\","
                "\"dev_cla\":\"power\","
                "\"stat_cla\":\"measurement\","
-               "\"dev\":{\"ids\":\"nikito7-EB%d\"}}"
+               "\"dev\":{"
+               "\"ids\":\"nikito7-EB%d\","
+               "\"name\":\"EB%d\"}}"
                ""),
-          hNick, hNick, hNick);
+          hNick, hNick, hNick, hNick);
     }  // 4
 
     // freeds power export
@@ -452,9 +456,11 @@ void HanDiscovery() {
                "\"unit_of_meas\":\"W\","
                "\"dev_cla\":\"power\","
                "\"stat_cla\":\"measurement\","
-               "\"dev\":{\"ids\":\"nikito7-EB%d\"}}"
+               "\"dev\":{"
+               "\"ids\":\"nikito7-EB%d\","
+               "\"name\":\"EB%d\"}}"
                ""),
-          hNick, hNick, hNick);
+          hNick, hNick, hNick, hNick);
     }  // 5
 
     // publish
