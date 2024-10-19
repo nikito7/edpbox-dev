@@ -8,7 +8,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.24.7.1"
+#define HAN_VERSION_T "7.26599"
 
 // This variable will be set to true
 // after initialization
