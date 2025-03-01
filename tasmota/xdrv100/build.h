@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2025.03.01
+// changes 2025.03.01.1828
 
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
@@ -16,6 +16,12 @@
 #define USE_GPS
 #endif
 
+#if defined(EASYHAN_LORA) && defined(ESP32)
+#define USE_GPS
+#define USE_UNIVERSAL_DISPLAY
+#define USE_DISPLAY_SSD1306
+#define USE_DISPLAY_SH1106
+#endif
 
 #ifdef ESP32
 #define USE_LD2410 // radar
