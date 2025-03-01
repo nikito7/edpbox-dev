@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2025.01.25
+// changes 2025.03.01
 
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
@@ -35,8 +35,8 @@
 #define USE_INFLUXDB
 #define USE_UNISHOX_COMPRESSION
 
-#undef INFLUXDB_INITIAL       // it need to be
-#define INFLUXDB_INITIAL 50   // fixed in driver too
+#undef INFLUXDB_INITIAL
+#define INFLUXDB_INITIAL 50
 
 // ### ### ###
 // tasmota-4M
