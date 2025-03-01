@@ -15,11 +15,6 @@
 #undef USE_TASMOTA_DISCOVERY
 #endif
 
-#if defined(HAN_C6_HW50)
-//#define USE_WS2812_FORCE_NEOPIXELBUS
-#undef USE_WS2812
-#endif
-
 #ifdef ESP32C6
 #undef USE_SHT
 #undef USE_VEML6070 // UV sensor with conflicting I2C address
