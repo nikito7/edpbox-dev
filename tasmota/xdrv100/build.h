@@ -13,6 +13,7 @@
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
 #define USE_LORA_SX127X
+#define USE_GPS
 #endif
 
 
