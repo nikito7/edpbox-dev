@@ -11,6 +11,9 @@
 #undef USE_TIMERS_WEB
 #undef USE_AUTOCONF
 
+#undef INFLUXDB_INITIAL
+#define INFLUXDB_INITIAL 50
+
 #if defined(USE_HAN_V2) && defined(ESP32C6)
 #undef USE_TASMOTA_DISCOVERY
 #endif
