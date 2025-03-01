@@ -9,7 +9,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.284"
+#define HAN_VERSION_T "7.285991"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -705,6 +705,33 @@ void HanDoWork(void) {
       hMnfC = node.getResponseBuffer(1) |
               node.getResponseBuffer(0) << 16;
       hMnfY = node.getResponseBuffer(2);
+
+      // ###
+
+      switch (hMnfC) {
+        case 6623491:  // T Janz GPRS
+          if (hJanz) {
+            hanDelayError = 35000;
+            hJanz = false;
+          }
+          hanEB = 3;
+          subType = 3;
+          AddLog(LOG_LEVEL_INFO,
+                 PSTR("HAN: *** Janz Tweak ***"));
+          break;
+        case 6754306:   // T Landis+Gyr S3
+        case 6754307:   // T Landis+Gyr S5
+        case 11014146:  // T Sagem CX2000-9
+        case 16977920:  // T Ziv 5CTD E2F
+          hanEB = 3;
+          subType = 3;
+          AddLog(LOG_LEVEL_INFO,
+                 PSTR("HAN: *** Force EB%d / %d ***"),
+                 hanEB, subType);
+          break;
+      }
+
+      // ###
 
       hanBlink();
       hanDelay = hanDelayWait;
@@ -1535,12 +1562,6 @@ void HanJson(bool json) {
     switch (hMnfC) {
       case 6623491:
         sprintf(_emi, "%s", "T Janz GPRS");
-        //
-        if (hJanz) {
-          hanDelayError = 35000;
-          hJanz = false;
-        }
-        //
         break;
       case 6750210:
         sprintf(_emi, "%s", "M Landis+Gyr S3");
