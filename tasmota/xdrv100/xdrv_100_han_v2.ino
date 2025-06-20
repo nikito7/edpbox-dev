@@ -1,6 +1,7 @@
 // Tasmota HAN Driver for EMI (edpbox)
-// easyhan.pt
-// github.com/nikito7
+// Easy HAN - Smart Solutions
+// https://easyhan.pt
+// https://github.com/nikito7
 
 #ifdef USE_HAN_V2
 #ifndef HAN_V1
@@ -9,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.285991"
+#define HAN_VERSION_T "7.287991"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -709,6 +710,14 @@ void HanDoWork(void) {
       // ###
 
       switch (hMnfC) {
+        case 6619395:  // M Janz GPRS
+          if (hJanz) {
+            hanDelayError = 35000;
+            hJanz = false;
+          }
+          AddLog(LOG_LEVEL_INFO,
+                 PSTR("HAN: *** M Janz Tweak ***"));
+          break;
         case 6623491:  // T Janz GPRS
           if (hJanz) {
             hanDelayError = 35000;
@@ -717,7 +726,7 @@ void HanDoWork(void) {
           hanEB = 3;
           subType = 3;
           AddLog(LOG_LEVEL_INFO,
-                 PSTR("HAN: *** Janz Tweak ***"));
+                 PSTR("HAN: *** T Janz Tweak ***"));
           break;
         case 6754306:   // T Landis+Gyr S3
         case 6754307:   // T Landis+Gyr S5
@@ -1560,6 +1569,9 @@ void HanJson(bool json) {
     char _emi[20];
 
     switch (hMnfC) {
+      case 6619395:
+        sprintf(_emi, "%s", "M Janz GPRS");
+        break;
       case 6623491:
         sprintf(_emi, "%s", "T Janz GPRS");
         break;
@@ -1585,7 +1597,7 @@ void HanJson(bool json) {
         sprintf(_emi, "%s", "T Sagem ???");
         break;
       case 16973825:
-        sprintf(_emi, "%s", "? Ziv ???");
+        sprintf(_emi, "%s", "M Ziv ???");
         break;
       case 16977920:
         sprintf(_emi, "%s", "T Ziv 5CTD E2F");
