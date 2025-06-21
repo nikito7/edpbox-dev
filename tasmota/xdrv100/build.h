@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2025.03.01.2107
+// changes 2025.06.21
 
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
@@ -125,34 +125,34 @@
 
 // Default Configs
 
-#undef  APP_TIMEZONE
+#undef APP_TIMEZONE
 #define APP_TIMEZONE 99
 
-#undef  TIME_DST_HEMISPHERE
-#define TIME_DST_HEMISPHERE    0
-#undef  TIME_DST_WEEK
-#define TIME_DST_WEEK          0
-#undef  TIME_DST_MONTH
-#define TIME_DST_MONTH         3
-#undef  TIME_DST_DAY
-#define TIME_DST_DAY           1
-#undef  TIME_DST_HOUR
-#define TIME_DST_HOUR          1
-#undef  TIME_DST_OFFSET
-#define TIME_DST_OFFSET        60
+#undef TIME_DST_HEMISPHERE
+#define TIME_DST_HEMISPHERE 0
+#undef TIME_DST_WEEK
+#define TIME_DST_WEEK 0
+#undef TIME_DST_MONTH
+#define TIME_DST_MONTH 3
+#undef TIME_DST_DAY
+#define TIME_DST_DAY 1
+#undef TIME_DST_HOUR
+#define TIME_DST_HOUR 1
+#undef TIME_DST_OFFSET
+#define TIME_DST_OFFSET 60
 
-#undef  TIME_STD_HEMISPHERE
-#define TIME_STD_HEMISPHERE    0
-#undef  TIME_STD_WEEK
-#define TIME_STD_WEEK          0
-#undef  TIME_STD_MONTH
-#define TIME_STD_MONTH         10
-#undef  TIME_STD_DAY
-#define TIME_STD_DAY           1
-#undef  TIME_STD_HOUR
-#define TIME_STD_HOUR          2
-#undef  TIME_STD_OFFSET
-#define TIME_STD_OFFSET        0
+#undef TIME_STD_HEMISPHERE
+#define TIME_STD_HEMISPHERE 0
+#undef TIME_STD_WEEK
+#define TIME_STD_WEEK 0
+#undef TIME_STD_MONTH
+#define TIME_STD_MONTH 10
+#undef TIME_STD_DAY
+#define TIME_STD_DAY 1
+#undef TIME_STD_HOUR
+#define TIME_STD_HOUR 2
+#undef TIME_STD_OFFSET
+#define TIME_STD_OFFSET 0
 
 // clang-format off
 
@@ -160,11 +160,11 @@
 #undef USER_BACKLOG
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"e5.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Module 0; SaveData 9; SerialLog 0; WifiConfig 2; Script 1"
 //
-#elif defined(HAN_C6_HW51) || defined(HAN_C6_HW50)
-#define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"hw5x.c6.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; Script 1"
+#elif defined(HAN_C6_HW51)
+#define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"b5.hw5x.c6.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; Script 1"
 //
 #elif defined(HAN_S3_ETH)
-#define USER_BACKLOG "WebLog 4; Sleep 50; WifiPower 15; Template {\"NAME\":\"eth.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; EthType 8; Script 1"
+#define USER_BACKLOG "WebLog 4; Sleep 50; WifiPower 15; Template {\"NAME\":\"h5.eth.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; EthType 8; Script 1"
 //
 #else
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Module 0; SaveData 9; WifiConfig 2; Script 1"
@@ -206,7 +206,7 @@
 #undef OTA_URL
 #define OTA_URL "https://u.easyhan.pt/v2/32/han32s3base.bin"
 //
-#elif defined(HAN_C6_HW51) || defined(HAN_C6_HW50)
+#elif defined(HAN_C6_HW51)
 #undef OTA_URL
 #define OTA_URL "https://u.easyhan.pt/v2/32/han32c6hw51.bin"
 //
