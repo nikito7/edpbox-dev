@@ -58,6 +58,9 @@
 #undef  USE_WEB_STATUS_LINE_HEAP
 #define USE_WEB_STATUS_LINE_HEAP
 
+#undef USE_WIREGUARD
+#define USE_WIREGUARD
+
 // ### ### ###
 // tasmota-4M
 
@@ -233,3 +236,4 @@
 #endif // ! FIRMWARE_SAFEBOOT ! FIRMWARE_MINIMAL
 
 // EOF
+
