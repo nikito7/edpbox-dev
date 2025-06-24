@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2025.06.21
+// changes 2025.06.24
 
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
@@ -46,6 +46,17 @@
 
 #undef INFLUXDB_INITIAL
 #define INFLUXDB_INITIAL 50
+
+// new 2025
+
+#undef  USE_WEB_STATUS_LINE
+#define USE_WEB_STATUS_LINE
+
+#undef  USE_WEB_STATUS_LINE_WIFI
+#define USE_WEB_STATUS_LINE_WIFI
+
+#undef  USE_WEB_STATUS_LINE_HEAP
+#define USE_WEB_STATUS_LINE_HEAP
 
 // ### ### ###
 // tasmota-4M
