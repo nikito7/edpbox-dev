@@ -2,7 +2,7 @@
 #define _HAN_ESP8266_H_
 
 // (include/tasmota_configurations)
-// based in 14.5.0 minimal:
+// based in 15.0.1 minimal:
 // - freeup ram !
 
 // ### ### ###
