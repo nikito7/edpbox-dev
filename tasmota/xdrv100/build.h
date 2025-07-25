@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2025.07.25.001
+// changes 2025.07.25.002
 
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
@@ -94,7 +94,7 @@
 #define USE_SML_SCRIPT_CMD
 
 #undef SML_MAX_VARS
-#define SML_MAX_VARS 30
+#define SML_MAX_VARS 50
 
 #define SML_REPLACE_VARS
 #define NO_USE_SML_SPECOPT
@@ -254,4 +254,3 @@
 #endif // ! FIRMWARE_SAFEBOOT ! FIRMWARE_MINIMAL
 
 // EOF
-
