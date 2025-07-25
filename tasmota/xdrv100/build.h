@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2025.06.24
+// changes 2025.07.25.001
 
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
@@ -45,21 +45,32 @@
 #define USE_UNISHOX_COMPRESSION
 
 #undef INFLUXDB_INITIAL
-#define INFLUXDB_INITIAL 50
+#define INFLUXDB_INITIAL 53
 
 // new 2025
 
-#undef  USE_WEB_STATUS_LINE
+#if defined(ESP32)
+
+#undef USE_WEB_STATUS_LINE
 #define USE_WEB_STATUS_LINE
 
-#undef  USE_WEB_STATUS_LINE_WIFI
+#undef USE_WEB_STATUS_LINE_WIFI
 #define USE_WEB_STATUS_LINE_WIFI
 
-#undef  USE_WEB_STATUS_LINE_HEAP
+#undef USE_WEB_STATUS_LINE_HEAP
 #define USE_WEB_STATUS_LINE_HEAP
 
 #undef USE_WIREGUARD
 #define USE_WIREGUARD
+
+#else
+
+#undef USE_WEB_STATUS_LINE
+#undef USE_WEB_STATUS_LINE_WIFI
+#undef USE_WEB_STATUS_LINE_HEAP
+#undef USE_WIREGUARD
+
+#endif
 
 // ### ### ###
 // tasmota-4M
@@ -81,7 +92,10 @@
 #if defined(ESP32) || defined(HAN_V1)
 #define USE_SML_M
 #define USE_SML_SCRIPT_CMD
-#define SML_MAX_VARS 50
+
+#undef SML_MAX_VARS
+#define SML_MAX_VARS 30
+
 #define SML_REPLACE_VARS
 #define NO_USE_SML_SPECOPT
 #define NO_USE_SML_DECRYPT
@@ -102,15 +116,19 @@
 #define USE_SCRIPT_WEB_DISPLAY
 #define USE_GOOGLE_CHARTS
 #define USE_SCRIPT_JSON_EXPORT
+#undef MAXVARS
 #define MAXVARS 58
+#undef MAXSVARS
 #define MAXSVARS 21
-#define MAXFILT 5
+#undef MAXFILT
+#define MAXFILT 2
 #define USE_SCRIPT_FATFS_EXT
 #endif
 
 #if defined(ESP32) && defined(USE_SCRIPT)
 #define LARGE_ARRAYS
 #define SCRIPT_LARGE_VNBUFF
+#undef SCRIPT_MAXSSIZE
 #define SCRIPT_MAXSSIZE 128
 #define USE_FEXTRACT
 #undef MAXVARS
