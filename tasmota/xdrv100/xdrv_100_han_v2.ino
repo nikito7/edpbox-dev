@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.3019901"
+#define HAN_VERSION_T "7.302"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -34,14 +34,17 @@ uint16_t hanERR = 0;
 bool hanWork = false;
 bool hDiscovery = true;
 uint32_t hanDelay = 0;
-uint16_t hanDelayWait = 900;  // 1000:
-                              // Required by e-redes.
+
+uint16_t hanDelayWait = 750;  // Default delay
+
 bool hJanz = true;
 uint32_t hanDelayError = 5000;  // Janz GPRS
                                 // need 35000ms.
-uint16_t hTimeout = 1500;       // 1500: Some  meters
-                                // are slow to reply.
-uint8_t hanIndex = 0;           // 0 = setup
+
+uint16_t hTimeout = 1500;  // 1500: Some  meters
+                           // are slow to reply.
+
+uint8_t hanIndex = 0;  // 0 = setup
 uint32_t hanRead = 0;
 uint8_t hanCode = 0;
 uint8_t hRestart = 0;
@@ -1578,6 +1581,9 @@ void HanJson(bool json) {
       case 6750210:
         sprintf(_emi, "%s", "M Landis+Gyr S3");
         break;
+      case 6750211:
+        sprintf(_emi, "%s", "M Landis+Gyr S5");
+        break;
       case 6754306:
         sprintf(_emi, "%s", "T Landis+Gyr S3");
         break;
@@ -1604,6 +1610,9 @@ void HanJson(bool json) {
         break;
       case 18481154:
         sprintf(_emi, "%s", "M Kaifa MA109P");
+        break;
+      case 18481155:
+        sprintf(_emi, "%s", "M Kaifa MA109P 2021");
         break;
       case 18481156:
         sprintf(_emi, "%s", "M Kaifa MA109H");
