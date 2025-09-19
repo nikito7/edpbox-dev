@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.303903"
+#define HAN_VERSION_T "7.304"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -150,7 +150,7 @@ int32_t hFreeDS = 0;
 char hDSt[30];
 char hDSm[120];
 
-bool hSkip[16] = {0};
+bool hSkip[20] = {0};
 
 // **********************
 
@@ -1723,7 +1723,7 @@ void CmdHanSkip(void) {
   char resX[50];
   char sub_string[XdrvMailbox.data_len + 1];
 
-  for (uint8_t i = 1; i <= 16; i++) {
+  for (uint8_t i = 1; i <= 15; i++) {
     //
     uint8_t x = 0;
 
@@ -1732,6 +1732,8 @@ void CmdHanSkip(void) {
 
     if (x == 1) {
       hSkip[i] = 1;
+    } else {
+      hSkip[i] = 0;
     }
 
     //
