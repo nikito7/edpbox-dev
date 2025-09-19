@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.302"
+#define HAN_VERSION_T "7.303991"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -149,6 +149,8 @@ uint8_t hNick = 0;
 int32_t hFreeDS = 0;
 char hDSt[30];
 char hDSm[120];
+
+bool hSkip[16] = {0};
 
 // **********************
 
@@ -582,7 +584,7 @@ void HanDoWork(void) {
     //
     // Detect Stop Bits
 
-    node.setTimeout(2000);
+    node.setTimeout(1500);
 
     HAN_SERIAL.flush();
     HAN_SERIAL.end();
@@ -706,6 +708,7 @@ void HanDoWork(void) {
   if (hanWork & (hanIndex == 2)) {
     hRes = node.readInputRegisters(0x0003, 1);
     if (hRes == node.ku8MBSuccess) {
+      hWtdT = millis();  // feed han wtd
       hMnfC = node.getResponseBuffer(1) |
               node.getResponseBuffer(0) << 16;
       hMnfY = node.getResponseBuffer(2);
@@ -763,6 +766,7 @@ void HanDoWork(void) {
   if (hanWork & (hanIndex == 3)) {
     hRes = node.readInputRegisters(0x000C, 4);
     if (hRes == node.ku8MBSuccess) {
+      hWtdT = millis();  // feed han wtd
       hCT1 = (node.getResponseBuffer(1) |
               node.getResponseBuffer(0) << 16) /
              1000.0;
@@ -787,6 +791,7 @@ void HanDoWork(void) {
   if (hanWork & (hanIndex == 4)) {
     hRes = node.readInputRegisters(0x0080, 1);
     if (hRes == node.ku8MBSuccess) {
+      hWtdT = millis();  // feed han wtd
       hLPid[1] = node.getResponseBuffer(0) >> 8;
       hLPid[2] = node.getResponseBuffer(0) & 0xFF;
       hLPid[3] = node.getResponseBuffer(1) >> 8;
@@ -847,6 +852,7 @@ void HanDoWork(void) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x006c, 7);
       if (hRes == node.ku8MBSuccess) {
+        hWtdT = millis();  // feed han wtd
         hanVL1 = node.getResponseBuffer(0) / 10.0;
         hanCL1 = node.getResponseBuffer(1) / 10.0;
         hanVL2 = node.getResponseBuffer(2) / 10.0;
@@ -883,10 +889,11 @@ void HanDoWork(void) {
   // Power Factor (mono) (79..)
   // # # # # # # # # # #
 
-  if (hanWork & ((hanIndex == 7) | (hanIndex == 12))) {
+  if (hanWork & (hanIndex == 7)) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x0073, 8);
       if (hRes == node.ku8MBSuccess) {
+        hWtdT = millis();  // feed han wtd
         hanAPI1 = node.getResponseBuffer(1) |
                   node.getResponseBuffer(0) << 16;
         hanAPE1 = node.getResponseBuffer(3) |
@@ -946,6 +953,7 @@ void HanDoWork(void) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x007b, 5);
       if (hRes == node.ku8MBSuccess) {
+        hWtdT = millis();  // feed han wtd
         hanPF = node.getResponseBuffer(0) / 1000.0;
         hanPF1 = node.getResponseBuffer(1) / 1000.0;
         hanPF2 = node.getResponseBuffer(2) / 1000.0;
@@ -961,6 +969,7 @@ void HanDoWork(void) {
     } else {
       hRes = node.readInputRegisters(0x007f, 1);
       if (hRes == node.ku8MBSuccess) {
+        hWtdT = millis();  // feed han wtd
         hanFR = node.getResponseBuffer(0) / 10.0;
         hanBlink();
         hanDelay = hanDelayWait;
@@ -1011,6 +1020,7 @@ void HanDoWork(void) {
   if (hanWork & (hanIndex == 10)) {
     hRes = node.readInputRegisters(0x0016, 2);
     if (hRes == node.ku8MBSuccess) {
+      hWtdT = millis();  // feed han wtd
       hanTEI = (node.getResponseBuffer(1) |
                 node.getResponseBuffer(0) << 16) /
                1000.0;
@@ -1077,6 +1087,7 @@ void HanDoWork(void) {
     hRes = node.readLastProfile(0x00, 0x01);
     if (hRes == node.ku8MBSuccess) {
       hPerf[1] = millis() - hPerf[0];
+      hWtdT = millis();  // feed han wtd
       hLP1YY = node.getResponseBuffer(0);
       hLP1MT = node.getResponseBuffer(1) >> 8;
       hLP1DD = node.getResponseBuffer(1) & 0xFF;
@@ -1134,6 +1145,7 @@ void HanDoWork(void) {
   if (hanWork & (hanIndex == 14)) {
     hRes = node.readInputRegisters(0x000A, 2);
     if (hRes == node.ku8MBSuccess) {
+      hWtdT = millis();  // feed han wtd
       //
       sprintf(hCiclo, "%c%c%c%c",
               node.getResponseBuffer(0) >> 8,
