@@ -1,5 +1,5 @@
 // Tasmota HAN Driver for EMI (edpbox)
-// Easy HAN - Smart Solutions
+// Easy HAN Smart Solutions
 // https://easyhan.pt
 // https://github.com/nikito7
 
@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.303991"
+#define HAN_VERSION_T "7.303903"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -705,6 +705,10 @@ void HanDoWork(void) {
   // EMI Info
   // # # # # # # # # # #
 
+  if (hanWork & (hanIndex == 2) & hSkip[2]) {
+    hanIndex++;
+  }
+
   if (hanWork & (hanIndex == 2)) {
     hRes = node.readInputRegisters(0x0003, 1);
     if (hRes == node.ku8MBSuccess) {
@@ -763,6 +767,10 @@ void HanDoWork(void) {
   // Contract
   // # # # # # # # # # #
 
+  if (hanWork & (hanIndex == 3) & hSkip[3]) {
+    hanIndex++;
+  }
+
   if (hanWork & (hanIndex == 3)) {
     hRes = node.readInputRegisters(0x000C, 4);
     if (hRes == node.ku8MBSuccess) {
@@ -787,6 +795,10 @@ void HanDoWork(void) {
   // # # # # # # # # # #
   // LP ID
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 4) & hSkip[4]) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 4)) {
     hRes = node.readInputRegisters(0x0080, 1);
@@ -815,6 +827,10 @@ void HanDoWork(void) {
   // # # # # # # # # # #
   // Clock ( 12 bytes )
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 5) & hSkip[5]) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 5)) {
     hPerf[0] = millis();
@@ -847,6 +863,10 @@ void HanDoWork(void) {
   // # # # # # # # # # #
   // Voltage Current
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 6) & hSkip[6]) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 6)) {
     if (hanEB == 3) {
@@ -888,6 +908,10 @@ void HanDoWork(void) {
   // Active Power Import/Export 73 (tri)
   // Power Factor (mono) (79..)
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 7) & hSkip[7]) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 7)) {
     if (hanEB == 3) {
@@ -949,6 +973,10 @@ void HanDoWork(void) {
   // Frequency (mono)
   // # # # # # # # # # #
 
+  if (hanWork & (hanIndex == 8) & hSkip[8]) {
+    hanIndex++;
+  }
+
   if (hanWork & (hanIndex == 8)) {
     if (hanEB == 3) {
       hRes = node.readInputRegisters(0x007b, 5);
@@ -987,6 +1015,10 @@ void HanDoWork(void) {
   // Total Energy Tarifas (kWh) 26
   // # # # # # # # # # #
 
+  if (hanWork & (hanIndex == 9) & hSkip[9]) {
+    hanIndex++;
+  }
+
   if (hanWork & (hanIndex == 9)) {
     hPerf[0] = millis();
     hRes = node.readInputRegisters(0x0026, 3);
@@ -1017,6 +1049,10 @@ void HanDoWork(void) {
   // Total Energy (total) (kWh) 16
   // # # # # # # # # # #
 
+  if (hanWork & (hanIndex == 10) & hSkip[10]) {
+    hanIndex++;
+  }
+
   if (hanWork & (hanIndex == 10)) {
     hRes = node.readInputRegisters(0x0016, 2);
     if (hRes == node.ku8MBSuccess) {
@@ -1044,6 +1080,10 @@ void HanDoWork(void) {
   // # # # # # # # # # #
   // Total Energy (L1 L2 L3) (kWh) 1C
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 11) & hSkip[11]) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 11) & (hanEB == 1)) {
     hanIndex++;
@@ -1076,11 +1116,17 @@ void HanDoWork(void) {
   // Reserved
   // # # # # # # # # # #
 
-  // hanIndex == 12
+  if (hanWork & (hanIndex == 12)) {
+    hanIndex++;
+  }
 
   // # # # # # # # # # #
   // Load Profile
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 13) & hSkip[13]) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 13)) {
     hPerf[0] = millis();
@@ -1142,6 +1188,10 @@ void HanDoWork(void) {
   // Ciclo / Tariff
   // # # # # # # # # # #
 
+  if (hanWork & (hanIndex == 14) & hSkip[14]) {
+    hanIndex++;
+  }
+
   if (hanWork & (hanIndex == 14)) {
     hRes = node.readInputRegisters(0x000A, 2);
     if (hRes == node.ku8MBSuccess) {
@@ -1169,6 +1219,10 @@ void HanDoWork(void) {
   // # # # # # # # # # #
   // ICP
   // # # # # # # # # # #
+
+  if (hanWork & (hanIndex == 15) & hSkip[15]) {
+    hanIndex++;
+  }
 
   if (hanWork & (hanIndex == 15)) {
     hRes = node.readInputRegisters(0x0084, 1);
@@ -1655,12 +1709,47 @@ const char HanCommands[] PROGMEM =
     "HanTimeout|"
     "HanRestart|"
     "HanGet|"
+    "HanSkip|"
     "HanProfile";
 
 void (*const HanCommand[])(void) PROGMEM = {
     &CmdHanDelay,   &CmdHanDelayWait, &CmdHanDelayError,
     &CmdHanTimeout, &CmdHanRestart,   &CmdHanGet,
-    &CmdHanProfile};
+    &CmdHanSkip,    &CmdHanProfile};
+
+//
+
+void CmdHanSkip(void) {
+  char resX[50];
+  char sub_string[XdrvMailbox.data_len + 1];
+
+  for (uint8_t i = 1; i <= 16; i++) {
+    //
+    uint8_t x = 0;
+
+    x = atoi(
+        subStr(sub_string, XdrvMailbox.data, ",", i));
+
+    if (x == 1) {
+      hSkip[i] = 1;
+    }
+
+    //
+  }
+
+  sprintf(resX,
+          "Skip,"
+          "%d,%d,%d,%d,%d,%d,%d,%d,"
+          "%d,%d,%d,%d,%d,%d,%d",
+          hSkip[1], hSkip[2], hSkip[3], hSkip[4],
+          hSkip[5], hSkip[6], hSkip[7], hSkip[8],
+          hSkip[9], hSkip[10], hSkip[11], hSkip[12],
+          hSkip[13], hSkip[14], hSkip[15]
+
+  );
+
+  ResponseCmndChar(resX);
+}
 
 //
 
