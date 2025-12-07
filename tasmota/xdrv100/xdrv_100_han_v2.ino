@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.304"
+#define HAN_VERSION_T "7.305991"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -1274,6 +1274,16 @@ void HanDisabled() {
   WSContentSend_PD("{s}<br>{m} {e}");
 }
 
+void HanJsonError() {
+  ResponseAppend_P(",\"EB%d\":{", hanEB);
+  ResponseAppend_P("\"ErrCode\":\"%s\"", hErrCode);
+  ResponseAppend_P(",\"ErrTime\":\"%s\"", hErrTime);
+  ResponseAppend_P(",\"ErrCnt\":%d", hanERR);
+  ResponseAppend_P(",\"FW\":" HAN_VERSION);
+
+  ResponseAppend_P("}");
+}
+
 void HanJson(bool json) {
   //
   char hanClock[10];
@@ -1388,16 +1398,6 @@ void HanJson(bool json) {
       WSContentSend_PD("{s}<br>{m} {e}");
       WSContentSend_PD("{s}Script disabled {m} !! {e}");
     }
-
-#if defined(HAN_C6_HW50)
-    WSContentSend_PD("{s}<br>{m} {e}");
-    WSContentSend_PD("{s}Disable I2C {m} !! {e}");
-    WSContentSend_PD(
-        "{s}Configuration, Template {m} !! {e}");
-    WSContentSend_PD("{s}And upgrade to {m} !! {e}");
-    WSContentSend_PD("{s}han32c6hw51.bin{m} !! {e}");
-    WSContentSend_PD("{s}<br>{m} {e}");
-#endif
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
@@ -1740,7 +1740,6 @@ void CmdHanSkip(void) {
   }
 
   sprintf(resX,
-          "Skip,"
           "%d,%d,%d,%d,%d,%d,%d,%d,"
           "%d,%d,%d,%d,%d,%d,%d",
           hSkip[1], hSkip[2], hSkip[3], hSkip[4],
@@ -2072,6 +2071,8 @@ bool Xdrv100(uint32_t function) {
         //
         if ((millis() > 31000) && (hanEB != 99)) {
           HanJson(true);
+        } else {
+          HanJsonError();
         }
         //
         break;
