@@ -1,5 +1,5 @@
 // Tasmota HAN Driver for EMI (edpbox)
-// Easy HAN Smart Solutions
+// Easy HAN - Smart Solutions
 // https://easyhan.pt
 // https://github.com/nikito7
 
@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.305991"
+#define HAN_VERSION_T "7.307"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -114,7 +114,6 @@ char hLP1gmt[5];
 uint16_t hLP2 = 0;  // tweaked to 16bits
 
 float hLP3 = 0;  // retro compatibility
-float hLP4 = 0;  // idem
 float hLP6 = 0;  // idem
 
 uint8_t hLPid[9];
@@ -1146,24 +1145,41 @@ void HanDoWork(void) {
       // tweaked to 16bits. branch: LP1.
       hLP2 = node.getResponseBuffer(6);
 
-      // new
+      // new id9
 
-      hLPval[3] = node.getResponseBuffer(8) |
-                  node.getResponseBuffer(7) << 16;
-      hLPval[4] = node.getResponseBuffer(10) |
-                  node.getResponseBuffer(9) << 16;
-      hLPval[5] = node.getResponseBuffer(12) |
-                  node.getResponseBuffer(11) << 16;
-      hLPval[6] = node.getResponseBuffer(14) |
-                  node.getResponseBuffer(13) << 16;
-      hLPval[7] = node.getResponseBuffer(16) |
-                  node.getResponseBuffer(15) << 16;
-      hLPval[8] = node.getResponseBuffer(18) |
-                  node.getResponseBuffer(17) << 16;
+      if (hLPid[3] == 9) {
+        hLPval[3] = node.getResponseBuffer(8) |
+                    node.getResponseBuffer(7) << 16;
+        hLPval[4] = node.getResponseBuffer(10) |
+                    node.getResponseBuffer(9) << 16;
+        hLPval[5] = node.getResponseBuffer(12) |
+                    node.getResponseBuffer(11) << 16;
+        hLPval[6] = node.getResponseBuffer(14) |
+                    node.getResponseBuffer(13) << 16;
+        hLPval[7] = node.getResponseBuffer(16) |
+                    node.getResponseBuffer(15) << 16;
+        hLPval[8] = node.getResponseBuffer(18) |
+                    node.getResponseBuffer(17) << 16;
 
-      hLP3 = hLPval[3] / 1000.0;
-      hLP4 = hLPval[4] / 1000.0;
-      hLP6 = hLPval[6] / 1000.0;
+        hLP3 = hLPval[3] / 1000.0;
+        hLP6 = hLPval[6] / 1000.0;
+      }
+
+      // id 20 short
+
+      if (hLPid[3] == 20) {
+        hLPval[3] = node.getResponseBuffer(7);
+        hLPval[4] = node.getResponseBuffer(8);
+        hLPval[5] = node.getResponseBuffer(9);
+
+        if (hanEB == 3) {
+          hLPval[6] = node.getResponseBuffer(10);
+          hLPval[7] = node.getResponseBuffer(11);
+        }
+
+        hLP3 = hLPval[3] / 1000.0;
+        hLP6 = hLPval[4] / 1000.0;
+      }
 
       //
 
@@ -1172,6 +1188,8 @@ void HanDoWork(void) {
       } else {
         sprintf(hLP1gmt, "00");
       }
+
+      //
 
       hanBlink();
       hanDelay = hanDelayWait;
@@ -1360,7 +1378,6 @@ void HanJson(bool json) {
     ResponseAppend_P(",\"LP1_GMT\":\"%s\"", hLP1gmt);
 
     ResponseAppend_P(",\"LP3_IMP\":%3_f", &hLP3);
-    ResponseAppend_P(",\"LP4\":%3_f", &hLP4);
     ResponseAppend_P(",\"LP6_EXP\":%3_f", &hLP6);
 
     // new LP
@@ -1370,6 +1387,15 @@ void HanJson(bool json) {
         ResponseAppend_P(",\"LPid%d\":%d", hLPid[i],
                          hLPval[i]);
       }
+    }
+
+    // retro compat lpid9/10
+
+    if (hLPid[3] == 20) {
+      ResponseAppend_P(",\"LPid9\":%d", hLPval[3]);
+    }
+    if (hLPid[4] == 24) {
+      ResponseAppend_P(",\"LPid10\":%d", hLPval[4]);
     }
 
     //
@@ -1424,15 +1450,7 @@ void HanJson(bool json) {
 
     WSContentSend_PD("{s}<br>{m} {e}");
 
-    uint32_t tmpWait =
-        ((hanRead + hanDelay) - millis()) / 1000;
-
-    if (tmpWait > 900) {
-      tmpWait = 999;
-    }
-
-    WSContentSend_PD("{s}MB Status {m} %s %ds {e}",
-                     hStatus, tmpWait);
+    WSContentSend_PD("{s}MB Status {m} %s {e}", hStatus);
 
     WSContentSend_PD("{s}MB Index {m} %d {e}", hanIndex);
 
@@ -1576,18 +1594,39 @@ void HanJson(bool json) {
     for (uint8_t i = 3; i < 9; i++) {
       //
 
-      char _name[20];
+      char _name[24];
 
-      if (hLPid[i] == 9) {
-        sprintf(_name, "%s", "Import Inc");
-      } else if (hLPid[i] == 10) {
-        sprintf(_name, "%s", "Export Inc");
-      } else {
-        sprintf(_name, "%s", "Reactive");
+      switch (hLPid[i]) {
+        case 9:
+          sprintf(_name, "%s", "Import Inc (Wh)");
+          break;
+        case 10:
+          sprintf(_name, "%s", "Export Inc (Wh)");
+          break;
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+          sprintf(_name, "%s", "Reactive");
+          break;
+        case 20:
+          sprintf(_name, "%s", "Import Inc (Wh) ~id9");
+          break;
+        case 24:
+          sprintf(_name, "%s", "Export Inc (Wh) ~id10");
+          break;
+        case 45:
+        case 46:
+        case 47:
+        case 48:
+          sprintf(_name, "%s", "Voltage (V)");
+          break;
+        default:
+          sprintf(_name, "%s", "???");
       }
 
       if ((hLPid[i] > 2) & (hLPid[i] < 99)) {
-        WSContentSend_PD("{s}LP %d %s {m} %d Wh{e}",
+        WSContentSend_PD("{s}LP %d %s {m} %d{e}",
                          hLPid[i], _name, hLPval[i]);
       }
     }
@@ -1950,18 +1989,38 @@ void CmdHanProfile(void) {
       // tweaked to 16bits. branch: LP1.
       hLPX2 = node.getResponseBuffer(6);
 
-      hLPX3 = (node.getResponseBuffer(8) |
-               node.getResponseBuffer(7) << 16);
-      hLPX4 = (node.getResponseBuffer(10) |
-               node.getResponseBuffer(9) << 16);
-      hLPX5 = (node.getResponseBuffer(12) |
-               node.getResponseBuffer(11) << 16);
-      hLPX6 = (node.getResponseBuffer(14) |
-               node.getResponseBuffer(13) << 16);
-      hLPX7 = (node.getResponseBuffer(16) |
-               node.getResponseBuffer(15) << 16);
-      hLPX8 = (node.getResponseBuffer(18) |
-               node.getResponseBuffer(17) << 16);
+      // new id9
+
+      if (hLPid[3] == 9) {
+        hLPX3 = node.getResponseBuffer(8) |
+                node.getResponseBuffer(7) << 16;
+        hLPX4 = node.getResponseBuffer(10) |
+                node.getResponseBuffer(9) << 16;
+        hLPX5 = node.getResponseBuffer(12) |
+                node.getResponseBuffer(11) << 16;
+        hLPX6 = node.getResponseBuffer(14) |
+                node.getResponseBuffer(13) << 16;
+        hLPX7 = node.getResponseBuffer(16) |
+                node.getResponseBuffer(15) << 16;
+        hLPX8 = node.getResponseBuffer(18) |
+                node.getResponseBuffer(17) << 16;
+      }
+
+      // id 20 short
+
+      if (hLPid[3] == 20) {
+        hLPX3 = node.getResponseBuffer(7);
+        hLPX4 = node.getResponseBuffer(8);
+        hLPX5 = node.getResponseBuffer(9);
+
+        if (hanEB == 3) {
+          hLPX6 = node.getResponseBuffer(10);
+          hLPX7 = node.getResponseBuffer(11);
+        }
+      }
+
+      //
+
       hanBlink();
 
       char tmpGMT[5];
