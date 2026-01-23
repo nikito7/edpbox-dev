@@ -8,7 +8,17 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2025.07.25.002
+// changes 2026.01.23.1913
+
+
+// Number of minutes between wifi network rescan
+#undef  WIFI_RESCAN_MINUTES
+#define WIFI_RESCAN_MINUTES 11
+
+// Difference in dB between current network and scanned network
+#undef  WIFI_RSSI_THRESHOLD
+#define WIFI_RSSI_THRESHOLD 5
+
 
 #if defined(EASYHAN_LORA)
 #define USE_SPI_LORA
