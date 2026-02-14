@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2026.02.14.001
+// changes 2026.02.14.002
 
 
 // Number of minutes between wifi network rescan
@@ -126,6 +126,7 @@
 #define USE_SCRIPT_WEB_DISPLAY
 #define USE_GOOGLE_CHARTS
 #define USE_SCRIPT_JSON_EXPORT
+#define SCRIPT_LARGE_VNBUFF
 #undef MAXVARS
 #define MAXVARS 64
 #undef MAXSVARS
