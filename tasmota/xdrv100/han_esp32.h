@@ -12,18 +12,10 @@
 #undef USE_AUTOCONF
 
 #undef INFLUXDB_INITIAL
-#define INFLUXDB_INITIAL 50
+#define INFLUXDB_INITIAL 51
 
 #if defined(USE_HAN_V2) && defined(ESP32C6)
 #undef USE_TASMOTA_DISCOVERY
-#endif
-
-#ifdef ESP32C6
-#undef USE_SHT
-#undef USE_VEML6070 // UV sensor with conflicting I2C address
-#undef USE_AHT1x
-#undef USE_AHT2x
-#define USE_AHT2x
 #endif
 
 // ### ### ###
