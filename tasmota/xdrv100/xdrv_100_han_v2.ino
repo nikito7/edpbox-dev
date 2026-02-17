@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.307"
+#define HAN_VERSION_T "7.312991"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -112,9 +112,6 @@ uint8_t hLP1MM = 0;
 char hLP1gmt[5];
 
 uint16_t hLP2 = 0;  // tweaked to 16bits
-
-float hLP3 = 0;  // retro compatibility
-float hLP6 = 0;  // idem
 
 uint8_t hLPid[9];
 uint32_t hLPval[9];
@@ -1160,9 +1157,6 @@ void HanDoWork(void) {
                     node.getResponseBuffer(15) << 16;
         hLPval[8] = node.getResponseBuffer(18) |
                     node.getResponseBuffer(17) << 16;
-
-        hLP3 = hLPval[3] / 1000.0;
-        hLP6 = hLPval[6] / 1000.0;
       }
 
       // id 20 short
@@ -1176,9 +1170,6 @@ void HanDoWork(void) {
           hLPval[6] = node.getResponseBuffer(10);
           hLPval[7] = node.getResponseBuffer(11);
         }
-
-        hLP3 = hLPval[3] / 1000.0;
-        hLP6 = hLPval[4] / 1000.0;
       }
 
       //
@@ -1376,9 +1367,6 @@ void HanJson(bool json) {
     ResponseAppend_P(",\"LP1_HH\":%d", hLP1HH);
     ResponseAppend_P(",\"LP1_MM\":%d", hLP1MM);
     ResponseAppend_P(",\"LP1_GMT\":\"%s\"", hLP1gmt);
-
-    ResponseAppend_P(",\"LP3_IMP\":%3_f", &hLP3);
-    ResponseAppend_P(",\"LP6_EXP\":%3_f", &hLP6);
 
     // new LP
 
