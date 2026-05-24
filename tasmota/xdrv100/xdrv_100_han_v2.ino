@@ -1,5 +1,5 @@
 // Tasmota HAN Driver for EMI (edpbox)
-// Easy HAN - Smart Solutions
+// Easy HAN
 // https://easyhan.pt
 // https://github.com/nikito7
 
@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.312991"
+#define HAN_VERSION_T "7.314"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
