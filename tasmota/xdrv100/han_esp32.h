@@ -14,6 +14,8 @@
 #undef INFLUXDB_INITIAL
 #define INFLUXDB_INITIAL 51
 
-// ### ### ###
+//
+// #endif // FIRMWARE_TASMOTA32
+//
 
 #endif // _HAN_ESP32_H_
