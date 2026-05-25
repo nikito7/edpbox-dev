@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2026.05.24.001
+// changes 2026.05.25.001
 
 
 // Number of minutes between wifi network rescan
@@ -206,7 +206,7 @@
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"b5.hw5x.c6.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; WifiConfig 2; Script 1"
 //
 #elif defined(HAN_S3_ETH)
-#define USER_BACKLOG "WebLog 4; Sleep 50; WifiPower 15; Template {\"NAME\":\"h5.eth.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; EthType 8; Script 1"
+#define USER_BACKLOG "WebLog 2; Sleep 50; WifiPower 15; Template {\"NAME\":\"h5.eth.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Module 0; SaveData 9; EthType 8; Script 1"
 //
 #else
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Module 0; SaveData 9; WifiConfig 2; Script 1"
