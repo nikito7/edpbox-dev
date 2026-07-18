@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2026.07.18.002
+// changes 2026.07.18.003
 
 
 // Number of minutes between wifi network rescan
@@ -200,16 +200,16 @@
 
 #if defined(ESP8266)
 #undef USER_BACKLOG
-#define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"esp8266.e5.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Script 1; SerialLog 0; Module 0; WifiConfig 2"
+#define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"e5.esp8266.easyhan\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":18}; Script 1; SerialLog 0; Module 0; WifiConfig 2"
 //
 #elif defined(HAN_C6_HW51)
-#define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"b5.hw5x.c6.easyhan.pt\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}; Script 1; Module 0; WifiConfig 2"
+#define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"b5.hw5x.c6.easyhan\",\"ARCH\":\"ESP32C6\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],\"FLAG\":0,\"BASE\":1}; Script 1; Module 0; WifiConfig 2"
 //
 #elif defined(HAN_S3_ETH)
-#define USER_BACKLOG "WebLog 2; Sleep 50; WifiPower 15; Template {\"NAME\":\"h5.eth.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Script 1; EthType 8; Module 0"
+#define USER_BACKLOG "WebLog 2; Sleep 50; WifiPower 15; Template {\"NAME\":\"h5.eth.s3.easyhan\",\"ARCH\":\"ESP32S3\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Script 1; EthType 8; Module 0"
 //
 #elif defined(HAN_S3_WS485RELAY)
-#define USER_BACKLOG "WebLog 2; Sleep 50; WifiPower 15; Template {\"NAME\":\"ws485relay.s3.easyhan.pt\",\"ARCH\":\"ESP32S3\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,608,640,0,1,1,1,1,1,1,224,1],\"FLAG\":0,\"BASE\":1}; Script 1; Module 0; WifiConfig 2"
+#define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Template {\"NAME\":\"ws485relay.s3.easyhan\",\"ARCH\":\"ESP32S3\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,608,640,0,1,1,1,1,1,1,224,1],\"FLAG\":0,\"BASE\":1}; Script 1; Module 0; WifiConfig 2"
 //
 #else
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Script 1; Module 0; WifiConfig 2"
