@@ -166,7 +166,7 @@ bool hSkip[20] = {0};
 #undef HAN_RX
 #define HAN_RX 18
 #undef HAN_SERIAL
-#define HAN_SERIAL Serial
+#define HAN_SERIAL Serial1
 //
 #elif ESP32S3
 #undef HAN_DIR
