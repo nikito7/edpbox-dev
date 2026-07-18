@@ -209,7 +209,7 @@
 #define USER_BACKLOG "WebLog 2; Sleep 50; WifiPower 15; Template {\"NAME\":\"h5.eth.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Module 0; EthType 8; Script 1"
 //
 #elif defined(HAN_S3_WS485RELAY)
-#define USER_BACKLOG "WebLog 2; Sleep 50; WifiPower 15; Template {\"NAME\":\"ws485relay.s3.easyhan.pt\",\"GPIO\":[1,4704,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,672,5536,704,736,5568,5600,1,1,1,1,1,1,1,1,1,1],\"FLAG\":0,\"BASE\":1}; Module 0; Script 1"
+#define USER_BACKLOG "WebLog 4; Template {\"NAME\":\"ws485relay.s3.easyhan.pt\",\"ARCH\":\"ESP32S3\",\"GPIO\":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,608,640,0,1,1,1,1,1,1,224,1],\"FLAG\":0,\"BASE\":1}; Module 0; Script 1"
 //
 #else
 #define USER_BACKLOG "WebLog 2; Sleep 75; WifiPower 15; Module 0; WifiConfig 2; Script 1"
