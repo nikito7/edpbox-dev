@@ -1,3 +1,6 @@
+// tasmota/tasmota_support/support_command.ino
+// ...
+
 void CmndTeleperiod(void)
 {
   if ((XdrvMailbox.payload >= 0) && (XdrvMailbox.payload < 3601)) {
@@ -9,3 +12,5 @@ void CmndTeleperiod(void)
   TasmotaGlobal.tele_period = (Settings->tele_period) ? Settings->tele_period : 3601;  // Show teleperiod data also on empty command
   ResponseCmndNumber(Settings->tele_period);
 }
+
+// ...
