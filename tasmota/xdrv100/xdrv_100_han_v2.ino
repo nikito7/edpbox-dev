@@ -35,7 +35,7 @@ bool hanWork = false;
 bool hDiscovery = true;
 uint32_t hanDelay = 0;
 
-uint16_t hanDelayWait = 750;  // Default delay
+uint16_t hanDelayWait = 1000;  // Default delay
 
 bool hJanz = true;
 uint32_t hanDelayError = 5000;  // Janz GPRS
