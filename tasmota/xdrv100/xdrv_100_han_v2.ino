@@ -10,7 +10,7 @@
 #define XDRV_100 100
 
 #undef HAN_VERSION_T
-#define HAN_VERSION_T "7.315991"
+#define HAN_VERSION_T "7.317992"
 
 #ifdef EASYHAN_TCP
 #undef HAN_VERSION
@@ -155,6 +155,16 @@ bool hSkip[20] = {0};
 #ifdef ESP8266
 #undef HAN_DIR
 #define HAN_DIR 16
+#undef HAN_SERIAL
+#define HAN_SERIAL Serial
+//
+#elif HAN_S3_WS485RELAY
+#undef HAN_DIR
+#define HAN_DIR 21
+#undef HAN_TX
+#define HAN_TX 17
+#undef HAN_RX
+#define HAN_RX 18
 #undef HAN_SERIAL
 #define HAN_SERIAL Serial
 //
