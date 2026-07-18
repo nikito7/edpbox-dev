@@ -8,7 +8,7 @@
 
 // ### ### ###
 // ### ### ###
-// changes 2026.07.18.003
+// changes 2026.07.18.004
 
 
 // Number of minutes between wifi network rescan
@@ -224,7 +224,7 @@
 #define MQTT_TOPIC "edpbox99"
 
 #undef WIFI_DEFAULT_HOSTNAME
-#define WIFI_DEFAULT_HOSTNAME "Easy-HAN-%NX"
+#define WIFI_DEFAULT_HOSTNAME "Easy-HAN-EB99"
 
 #undef MQTT_CLIENT_ID
 #define MQTT_CLIENT_ID "Easy_HAN_%06X"
